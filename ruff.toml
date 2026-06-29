@@ -1,0 +1,18 @@
+# Ruff configuration for PGDA-CSNet
+# 只检查 error 级别，不强制风格
+
+line-length = 120
+target-version = "py310"
+
+[lint]
+select = ["E", "F"]  # Pyflakes + pycodestyle errors only
+ignore = [
+    "E501",   # line too long — 不强制
+    "E741",   # ambiguous variable name — 常用 l1, L1
+    "F841",   # local variable assigned but never used — 调试阶段常见
+    "F401",   # unused import — 调试阶段常见
+]
+
+[lint.per-file-ignores]
+"scripts/*.py" = ["F841", "F401", "E402", "E501"]  # 脚本允许 sys.path + 长行
+"_*.py" = ["F841", "F401"]         # 临时调试脚本全部放宽

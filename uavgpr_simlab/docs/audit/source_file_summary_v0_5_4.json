@@ -1,0 +1,218 @@
+[
+  {
+    "file": "scripts/gui_deep_smoke_test.py",
+    "lines": 147,
+    "nonblank": 129,
+    "comments": 7,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "scripts/make_ui_screenshots.py",
+    "lines": 75,
+    "nonblank": 61,
+    "comments": 2,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "scripts/self_test.py",
+    "lines": 117,
+    "nonblank": 97,
+    "comments": 6,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/__init__.py",
+    "lines": 1,
+    "nonblank": 1,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/__main__.py",
+    "lines": 6,
+    "nonblank": 4,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/app.py",
+    "lines": 16,
+    "nonblank": 10,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/cli.py",
+    "lines": 461,
+    "nonblank": 404,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/__init__.py",
+    "lines": 0,
+    "nonblank": 0,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/config.py",
+    "lines": 235,
+    "nonblank": 192,
+    "comments": 4,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/environment.py",
+    "lines": 121,
+    "nonblank": 102,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/history.py",
+    "lines": 230,
+    "nonblank": 204,
+    "comments": 5,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/hpc.py",
+    "lines": 298,
+    "nonblank": 275,
+    "comments": 9,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/job_registry.py",
+    "lines": 310,
+    "nonblank": 266,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/materials.py",
+    "lines": 63,
+    "nonblank": 51,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/pipeline.py",
+    "lines": 222,
+    "nonblank": 198,
+    "comments": 4,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/postprocess.py",
+    "lines": 222,
+    "nonblank": 187,
+    "comments": 3,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/real_data.py",
+    "lines": 174,
+    "nonblank": 149,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/reporting.py",
+    "lines": 224,
+    "nonblank": 193,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/runner.py",
+    "lines": 200,
+    "nonblank": 174,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/scenario.py",
+    "lines": 342,
+    "nonblank": 308,
+    "comments": 3,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/softmask.py",
+    "lines": 328,
+    "nonblank": 293,
+    "comments": 2,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/core/visual_history.py",
+    "lines": 237,
+    "nonblank": 213,
+    "comments": 2,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/gui/__init__.py",
+    "lines": 0,
+    "nonblank": 0,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/gui/main_window.py",
+    "lines": 1246,
+    "nonblank": 1158,
+    "comments": 16,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/ml/__init__.py",
+    "lines": 0,
+    "nonblank": 0,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/sim/__init__.py",
+    "lines": 0,
+    "nonblank": 0,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  },
+  {
+    "file": "src/uavgpr_simlab/sim/materials.py",
+    "lines": 53,
+    "nonblank": 48,
+    "comments": 0,
+    "ast_ok": true,
+    "ast_error": ""
+  }
+]

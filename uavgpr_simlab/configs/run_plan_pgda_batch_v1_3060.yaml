@@ -1,0 +1,56 @@
+# PGDA-CSNet 批量仿真生产配置 v1
+# 基于 XG03 最优配置，针对 3060 6GB 优化
+# 验证结论:
+#   - Gaussian 波形优于 Ricker（近表面能量降低 50%）
+#   - 48m 域宽足够（XG03 = XG04）
+#   - PML=20 足够（PML30 无改善）
+#   - dx=0.05m 在 3060 上约 1.2GB VRAM
+plan_name: pgda_batch_v1_3060_optimized
+random_seed: 20260628
+scene_count: 50
+components: [raw, target_only, background_only, air_only]
+
+scene:
+  dimension: 2D
+  family: yingshan_pilot_all_families
+  scan_length_m: 25.6          # 64 trace × 0.4m
+  trace_count: 64
+  trace_interval_m: 0.4
+  domain_depth_m: 28
+  air_margin_m: 8
+  dx_m: 0.05
+  column_width_m: 0.50
+  samples: 501
+  time_window_ns: 700
+  center_frequency_hz: 100000000
+  waveform: gaussian            # Gaussian 非 Ricker！
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [5.0, 22.0]
+  interface_roughness_m: [0.3, 3.0]
+  slope_deg: [0, 20]
+  clutter_level: medium
+
+geology:
+  scenario_family: yingshan_pilot_all_families
+  interface_depth_min_m: 5.0
+  interface_depth_max_m: 22.0
+  interface_roughness_m: 1.5
+  slope_deg_min: 0
+  slope_deg_max: 20
+  water_table_probability: 0.25
+  paddy_water_probability: 0.25
+  overhead_wire_probability: 0.0
+  tree_probability: 0.0
+  building_probability: 0.0
+  anomaly_probability: 0.20
+  terrace_probability: 0.30
+  blocky_gravel_probability: 0.45
+
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 4
+  mpi_tasks: 0

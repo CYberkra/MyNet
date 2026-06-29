@@ -1,0 +1,31 @@
+model:
+  name: PGDA-CSNet
+  backbone: residual_dense_unet
+  input_channels:
+    - raw_bscan
+    - svd_low_rank
+    - svd_residual
+    - fk_low_frequency_prior
+    - flight_height_channel
+    - terrain_slope_channel
+  outputs:
+    - clean_bscan
+    - clutter_estimate
+    - uncertainty_map
+loss:
+  reconstruction_l1: 1.0
+  clutter_l1: 0.5
+  gradient_preservation: 0.2
+  fk_spectrum_consistency: 0.2
+  interface_protection: 0.4
+  domain_adversarial: 0.1
+training:
+  patch_size: [256, 256]
+  batch_size_3060: 2
+  batch_size_4090: 8
+  optimizer: AdamW
+  learning_rate: 0.0002
+  epochs_sim_pretrain: 150
+  epochs_real_adapt: 40
+  mixed_precision: true
+  seed: 20250608

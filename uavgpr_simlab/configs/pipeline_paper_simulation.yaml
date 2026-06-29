@@ -1,0 +1,43 @@
+# Paper simulation pipeline. Safe default: generate inputs and safe SLURM/local scripts; solver is run only when you submit the generated script.
+workspace: workspace/paper_main_simulation
+
+generate:
+  enabled: true
+  plan: configs/run_plan_paper_main_500.yaml
+  count: 500
+
+commands:
+  enabled: true
+  variants: raw,target_only,clutter_only,background_only,air_only
+  gpu_ids: "0"
+  conda_env: gprMax
+  geometry_only: false
+  max_tasks: 0
+
+hpc:
+  enabled: true
+  mode: slurm
+  variants: raw,target_only,clutter_only,background_only,air_only
+  conda_env: gprMax
+  gprmax_root: ""
+  partition: gpu
+  time_limit: "12:00:00"
+  gpus_per_task: 1
+  cpus_per_task: 4
+  mem: 24G
+  gpu_ids: "0"
+  array_parallelism: 4
+  geometry_only: false
+  postprocess: false
+  safe_runner: true
+  skip_completed: true
+  force: false
+  max_tasks: 0
+
+real_csv:
+  enabled: false
+soft_mask:
+  enabled: false
+report:
+  enabled: true
+  title: UavGPR-SimLab Paper Simulation Preparation Report

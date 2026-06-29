@@ -1,0 +1,30 @@
+plan_name: yingshan_sceneworld_smoke_v080a12
+random_seed: 20260610
+scene_count: 5
+components: [raw, target_only, background_only, clutter_only, air_only]
+scene:
+  dimension: 2D
+  family: yingshan_smoke_all_families
+  scan_length_m: 36
+  trace_count: 72
+  trace_interval_m: 0.5
+  domain_depth_m: 28
+  air_margin_m: 8
+  dx_m: 0.10
+  column_width_m: 1.00
+  samples: 501
+  time_window_ns: 450
+  center_frequency_hz: 50000000
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [5.0, 22.0]
+  interface_roughness_m: [0.2, 1.8]
+  slope_deg: [0, 18]
+  clutter_level: hard
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 1
+  mpi_tasks: 0

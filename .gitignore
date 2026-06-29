@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# gprMax simulation outputs
+*.out
+*.vti
+geometry*.vti
+
+# Data files
+*.npy
+*.npz
+*.zip
+*.h5
+*.hdf5
+
+# Large data directories
+workspace/
+data/
+uavgpr_simlab/workspace/
+
+# Logs
+logs/
+*.log

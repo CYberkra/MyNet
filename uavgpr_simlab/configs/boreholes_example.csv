@@ -1,0 +1,4 @@
+line_id,borehole_id,trace_index,distance_m,depth_m,uncertainty_m,weight
+Line9,ZK07,4,,8.5,0.6,1.0
+Line9,ZK08,8,,12.0,0.8,1.0
+Line9,ZK09,12,,15.5,0.8,1.0

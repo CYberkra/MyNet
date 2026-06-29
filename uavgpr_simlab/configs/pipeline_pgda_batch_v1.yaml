@@ -1,0 +1,20 @@
+# PGDA-CSNet 批量仿真生产管线
+# 使用 XG03 最优参数 + Gaussian 波形
+workspace: workspace/pgda_batch_v1_3060
+
+generate:
+  enabled: true
+  plan: configs/run_plan_pgda_batch_v1_3060.yaml
+  count: 50
+
+commands:
+  enabled: true
+  variants: raw,target_only,background_only,air_only
+  gpu_ids: "0"
+  geometry_only: false
+  max_tasks: 0
+  safe_runner: true
+
+report:
+  enabled: true
+  title: PGDA-CSNet Batch v1 — Gaussian 48m PML20 Production Report

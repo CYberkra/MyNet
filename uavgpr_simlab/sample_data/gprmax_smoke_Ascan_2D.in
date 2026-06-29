@@ -1,0 +1,9 @@
+#title: smoke_Ascan_2D
+#domain: 3 2 0.1
+#dx_dy_dz: 0.02 0.02 0.1
+#time_window: 20e-9
+#material: 6 0.001 1 0 soil
+#box: 0 0 0 3 1 0.1 soil
+#waveform: ricker 1 100e6 src
+#hertzian_dipole: z 1 1.5 0.05 src
+#rx: 1.2 1.5 0.05

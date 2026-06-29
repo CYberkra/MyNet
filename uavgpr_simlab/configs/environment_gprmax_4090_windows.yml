@@ -1,0 +1,19 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Prefix-based environment for Windows GPU gprMax runtime on RTX 3060/4090 machines.
+  # GUI-only packages are installed later from requirements_gui.txt to reduce solver pressure.
+  - python=3.10
+  - pip>=23
+  - setuptools<70
+  - wheel
+  - numpy>=1.24,<2
+  - scipy>=1.10
+  - h5py>=3.9
+  - cython>=0.29,<3
+  - matplotlib>=3.7
+  - pyyaml>=6.0
+  - colorama
+  - psutil
+  - git

@@ -1,0 +1,75 @@
+runtime:
+  project_root: workspace/yingshan_pilot_3060
+  conda_env_gprmax: ""
+  gprmax_source_dir: E:/gprMax/gprMax-v.3.1.7
+  python_executable: E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe
+  use_conda_run: false
+  gpu_enabled: true
+  gpu_ids: '0'
+  gpu_launch_mode: windows_cmd_vcvars_wrapper
+  cuda_vcvars: E:/sisual stdio 2022/VC/Auxiliary/Build/vcvars64.bat
+  mpi_tasks: 0
+  omp_threads: 4
+  geometry_only_first: true
+  auto_merge_outputs: true
+  geometry_fixed: true
+  write_processed: false
+radar:
+  radar_name: CDUT-UavGPR UG10
+  frequency_start_mhz: 20.0
+  frequency_stop_mhz: 170.0
+  center_frequency_mhz: 100.0
+  intermediate_bandwidth_khz: 10.0
+  frequency_step_mhz: 1.0
+  frequency_points: 501
+  time_window_ns: 700.0
+  tx_gain_dbm: 36.0
+  trace_rate_hz: 10.0
+  flight_speed_mps: 1.0
+  nominal_flight_height_m: 8.0
+  flight_height_min_m: 2.0
+  flight_height_max_m: 20.0
+  tx_rx_offset_m: 1.4
+  antenna_length_m: 1.4
+  antenna_model: wire_dipole_equivalent
+  simulation_mode: both
+geometry:
+  dimension: 2D_patch
+  model_length_m: 48.0
+  subsurface_depth_m: 24.0
+  y_thickness_m: 0.05
+  dx_m: 0.08
+  dy_m: 0.05
+  dz_m: 0.08
+  trace_step_m: 0.20
+  trace_count: 180
+  air_margin_m: 1.0
+  pml_cells: 10
+  geometry_column_width_m: 0.40
+geology:
+  scenario_family: landslide_bedrock_interface
+  interface_depth_min_m: 3.7
+  interface_depth_max_m: 16.3
+  interface_roughness_m: 1.5
+  slope_deg_min: 0.0
+  slope_deg_max: 25.0
+  terrace_probability: 0.35
+  water_table_probability: 0.30
+  blocky_gravel_probability: 0.55
+  paddy_water_probability: 0.35
+  overhead_wire_probability: 0.35
+  tree_probability: 0.45
+  building_probability: 0.12
+  anomaly_probability: 0.25
+  random_seed: 20250301
+dataset:
+  cases: 10
+  variants: [raw, target_only, clutter_only, background_only, air_only]
+  split_train: 0.70
+  split_val: 0.15
+  split_test: 0.15
+  export_npz: true
+  export_hdf5: true
+  export_png: true
+  keep_gprmax_out: true
+  paper_mode: true

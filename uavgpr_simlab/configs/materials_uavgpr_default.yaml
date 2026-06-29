@@ -1,0 +1,20 @@
+materials:
+  silty_clay:
+    eps_r: [8.0, 22.0]
+    sigma: [0.008, 0.120]
+  gravelly_silty_clay:
+    eps_r: [6.0, 18.0]
+    sigma: [0.004, 0.080]
+  wet_silty_clay:
+    eps_r: [18.0, 32.0]
+    sigma: [0.050, 0.180]
+  sandstone:
+    eps_r: [4.0, 10.0]
+    sigma: [0.0005, 0.030]
+  mudstone:
+    eps_r: [7.0, 18.0]
+    sigma: [0.003, 0.100]
+  fresh_water:
+    # FDTD-safe surrogate for 5 cm grid paper batches. Use dx <= 0.02 m if true eps_r~80 water is required.
+    eps_r: [24.0, 32.0]
+    sigma: [0.005, 0.080]

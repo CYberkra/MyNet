@@ -1,0 +1,28 @@
+plan_name: 3060_quick_smoke
+random_seed: 20250608
+scene_count: 12
+components: [raw, target, clutter, background, air]
+scene:
+  dimension: 2D
+  scan_length_m: 36
+  trace_count: 72
+  trace_interval_m: 0.5
+  domain_depth_m: 24
+  air_margin_m: 6
+  dx_m: 0.10
+  column_width_m: 1.00
+  time_window_ns: 450
+  center_frequency_hz: 100000000
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [4.0, 18.0]
+  interface_roughness_m: [0.2, 2.5]
+  slope_deg: [0, 22]
+  clutter_level: medium
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 4
+  mpi_tasks: 0

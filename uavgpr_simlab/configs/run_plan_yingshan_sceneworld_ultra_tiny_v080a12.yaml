@@ -1,0 +1,30 @@
+plan_name: yingshan_sceneworld_ultra_tiny_v080a12
+random_seed: 20260611
+scene_count: 1
+components: [raw, target_only, background_only, clutter_only, air_only]
+scene:
+  dimension: 2D
+  family: wire_tree_endpoint
+  scan_length_m: 6
+  trace_count: 2
+  trace_interval_m: 0.5
+  domain_depth_m: 6
+  air_margin_m: 3
+  dx_m: 0.25
+  column_width_m: 1.00
+  samples: 61
+  time_window_ns: 40
+  center_frequency_hz: 50000000
+  flight_height_m: 3
+  tx_rx_offset_m: 1.0
+  interface_depth_m: [1.5, 4.5]
+  interface_roughness_m: [0.05, 0.25]
+  slope_deg: [0, 3]
+  clutter_level: hard
+run:
+  use_gpu: false
+  gpu_ids: []
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 1
+  mpi_tasks: 0

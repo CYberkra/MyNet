@@ -1,0 +1,49 @@
+name: yingshan_real_uavgpr_inventory
+schema_version: 1
+raw_data_package: 营山测线数据.zip
+profile_package: 营山测线剖面图、钻孔柱状图.zip
+dwg_package: 滑坡剖面图等.zip
+lines:
+- line_id: '3'
+  zip_member: 营山测线数据/Line3origin(36).csv
+  samples: 501
+  traces: 1813
+  time_window_ns: 700.0
+  trace_interval_m: 0.08537
+  distance_m: 154.77581
+- line_id: '6'
+  zip_member: 营山测线数据/Line6origin(36).csv
+  samples: 501
+  traces: 1661
+  time_window_ns: 700.0
+  trace_interval_m: 0.09347
+  distance_m: 155.25367
+- line_id: '7'
+  zip_member: 营山测线数据/Line7origin(36).csv
+  samples: 501
+  traces: 1654
+  time_window_ns: 700.0
+  trace_interval_m: 0.09427
+  distance_m: 155.92258
+- line_id: '9'
+  zip_member: 营山测线数据/Line9origin(36).csv
+  samples: 501
+  traces: 2378
+  time_window_ns: 700.0
+  trace_interval_m: 0.09093
+  distance_m: 216.23154
+- line_id: L1
+  zip_member: 营山测线数据/LineL1origin(36).csv
+  samples: 501
+  traces: 1950
+  time_window_ns: 700.0
+  trace_interval_m: 0.09526
+  distance_m: 185.757
+- line_id: X1
+  zip_member: 营山测线数据/LineX1origin(36).csv
+  samples: 501
+  traces: 938
+  time_window_ns: 700.0
+  trace_interval_m: 0.09339
+  distance_m: 87.59982
+borehole_contract_status: pending_manual_mapping_ZK07_ZK10

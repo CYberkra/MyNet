@@ -1,0 +1,68 @@
+# UavGPR-SimLab v0.5.1 automation template
+# Safe default: it generates gprMax inputs, solver scripts, real-data QC,
+# borehole soft masks and an auto report; it does not run the expensive solver.
+workspace: workspace/paper_automation_demo
+
+environment:
+  enabled: false
+  conda_env: gprMax
+  gprmax_root: ""
+  no_conda_run: false
+
+generate:
+  enabled: true
+  plan: configs/run_plan_3060_quick.yaml
+  count: 2
+
+commands:
+  enabled: true
+  variants: raw,target_only,clutter_only,background_only,air_only
+  gpu_ids: "0"
+  conda_env: gprMax
+  geometry_only: false
+  max_tasks: 0
+  # out_bat omitted: defaults to <workspace>/logs/run_all_gprmax.bat
+
+hpc:
+  enabled: true
+  mode: slurm          # slurm or local
+  variants: raw,target_only,clutter_only,background_only,air_only
+  conda_env: gprMax
+  gprmax_root: ""
+  partition: gpu
+  time_limit: "12:00:00"
+  gpus_per_task: 1
+  cpus_per_task: 4
+  mem: 24G
+  gpu_ids: "0"
+  array_parallelism: 4
+  geometry_only: false
+  postprocess: true
+  safe_runner: true       # v0.4: call uavgpr_simlab.cli run-one instead of raw gprMax, enabling resume/skip
+  skip_completed: true    # do not rerun jobs that already have a matching success marker
+  force: false            # set true only when you intentionally want to rerun
+  max_tasks: 0
+  # out_sh omitted: defaults to <workspace>/logs/run_gprmax_slurm_array.sh
+
+real_csv:
+  enabled: true
+  csv: sample_data/Line9origin36_first16traces.csv
+  out_dir: workspace/paper_automation_demo/real_data/line9_qc   # rewritten under active workspace
+  max_traces: 16
+  no_baselines: false
+
+soft_mask:
+  enabled: true
+  # bscan_npz may be omitted when real_csv.enabled=true; the pipeline will use real_csv/out_dir/real_uavgpr_bscan_preview.npz.
+  boreholes: configs/boreholes_example.csv
+  out_dir: workspace/paper_automation_demo/real_data/line9_soft_mask   # rewritten under active workspace
+  line_id: Line9
+  velocity_m_per_ns: 0.10
+  trace_sigma: 2.5
+  time_sigma_ns: 20
+  two_way_time: true
+
+report:
+  enabled: true
+  out_dir: workspace/paper_automation_demo/reports   # rewritten under active workspace
+  title: UavGPR-SimLab 自动化优化验证报告

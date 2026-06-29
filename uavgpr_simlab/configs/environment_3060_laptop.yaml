@@ -1,0 +1,10 @@
+environment:
+  name: 3060_laptop
+  description: RTX 3060 Laptop 6GB for Pilot-Train
+run:
+  gpu_ids: [0]
+  python_exe: "E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe"
+  gprmax_root: "E:/gprMax/gprMax-v.3.1.7"
+install:
+  gprmax_root: "E:/gprMax/gprMax-v.3.1.7"
+  msvc_env: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build"

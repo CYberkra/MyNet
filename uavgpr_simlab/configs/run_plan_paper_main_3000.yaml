@@ -1,0 +1,28 @@
+plan_name: paper_main_2d_3000
+random_seed: 20260610
+scene_count: 3000
+components: [raw, target, clutter, background, air]
+scene:
+  dimension: 2D
+  scan_length_m: 60
+  trace_count: 300
+  trace_interval_m: 0.20
+  domain_depth_m: 28
+  air_margin_m: 8
+  dx_m: 0.05
+  column_width_m: 0.50
+  time_window_ns: 700
+  center_frequency_hz: 100000000
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [3.0, 21.5]
+  interface_roughness_m: [0.2, 4.0]
+  slope_deg: [0, 35]
+  clutter_level: hard
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 12
+  mpi_tasks: 0

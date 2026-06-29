@@ -1,0 +1,312 @@
+{
+  "ok": true,
+  "data_zip": "/mnt/data/营山测线数据.zip",
+  "profile_zip": "/mnt/data/营山测线剖面图、钻孔柱状图.zip",
+  "dwg_zip": "/mnt/data/滑坡剖面图等.zip",
+  "csv_files": [
+    {
+      "line_id": "3",
+      "zip_member": "营山测线数据/Line3origin(36).csv",
+      "file_size_bytes": 46948191,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 1813,
+      "trace_interval_m": 0.08537,
+      "expected_numeric_rows": 908313,
+      "numeric_rows": 908313,
+      "invalid_rows": 0,
+      "traces_read": 1813,
+      "shape_samples_x_traces": [
+        501,
+        1813
+      ],
+      "distance_m": 154.77581,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 908313,
+        "min": -0.062927656,
+        "max": 0.069964953,
+        "mean": 6.064778322010117e-06,
+        "std": 0.007535660141033639
+      },
+      "first_trace": {
+        "longitude": 106.8065572,
+        "latitude": 31.26087006,
+        "elevation_m": 440.238,
+        "extra_m": 12.353
+      },
+      "last_trace": {
+        "longitude": 106.8067411,
+        "latitude": 31.25939282,
+        "elevation_m": 459.477,
+        "extra_m": 9.246
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    },
+    {
+      "line_id": "6",
+      "zip_member": "营山测线数据/Line6origin(36).csv",
+      "file_size_bytes": 48223598,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 1661,
+      "trace_interval_m": 0.09347,
+      "expected_numeric_rows": 832161,
+      "numeric_rows": 832161,
+      "invalid_rows": 0,
+      "traces_read": 1661,
+      "shape_samples_x_traces": [
+        501,
+        1661
+      ],
+      "distance_m": 155.25367,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 832161,
+        "min": -0.060610931,
+        "max": 0.066912659,
+        "mean": 5.515064668976317e-06,
+        "std": 0.007508588008447996
+      },
+      "first_trace": {
+        "longitude": 106.805512,
+        "latitude": 31.26109179,
+        "elevation_m": 437.8762,
+        "extra_m": 11.0078
+      },
+      "last_trace": {
+        "longitude": 106.8056343,
+        "latitude": 31.25971601,
+        "elevation_m": 457.3491,
+        "extra_m": 10.3569
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    },
+    {
+      "line_id": "7",
+      "zip_member": "营山测线数据/Line7origin(36).csv",
+      "file_size_bytes": 46813602,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 1654,
+      "trace_interval_m": 0.09427,
+      "expected_numeric_rows": 828654,
+      "numeric_rows": 828654,
+      "invalid_rows": 0,
+      "traces_read": 1654,
+      "shape_samples_x_traces": [
+        501,
+        1654
+      ],
+      "distance_m": 155.92258,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 828654,
+        "min": -0.058767021,
+        "max": 0.066465221,
+        "mean": 5.966522856342915e-06,
+        "std": 0.007499465360552568
+      },
+      "first_trace": {
+        "longitude": 106.8054221,
+        "latitude": 31.25974871,
+        "elevation_m": 455.3992,
+        "extra_m": 10.5388
+      },
+      "last_trace": {
+        "longitude": 106.8069889,
+        "latitude": 31.25983806,
+        "elevation_m": 455.1528,
+        "extra_m": 12.1142
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    },
+    {
+      "line_id": "9",
+      "zip_member": "营山测线数据/Line9origin(36).csv",
+      "file_size_bytes": 68794423,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 2378,
+      "trace_interval_m": 0.09093,
+      "expected_numeric_rows": 1191378,
+      "numeric_rows": 1191378,
+      "invalid_rows": 0,
+      "traces_read": 2378,
+      "shape_samples_x_traces": [
+        501,
+        2378
+      ],
+      "distance_m": 216.23154,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 1191378,
+        "min": -0.068787515,
+        "max": 0.075539112,
+        "mean": 4.645011196278648e-06,
+        "std": 0.007848723873278738
+      },
+      "first_trace": {
+        "longitude": 106.8068912,
+        "latitude": 31.26075037,
+        "elevation_m": 441.7954,
+        "extra_m": 8.9436
+      },
+      "last_trace": {
+        "longitude": 106.8045867,
+        "latitude": 31.26064125,
+        "elevation_m": 444.7874,
+        "extra_m": 9.0406
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    },
+    {
+      "line_id": "L1",
+      "zip_member": "营山测线数据/LineL1origin(36).csv",
+      "file_size_bytes": 54764223,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 1950,
+      "trace_interval_m": 0.09526,
+      "expected_numeric_rows": 976950,
+      "numeric_rows": 976950,
+      "invalid_rows": 0,
+      "traces_read": 1950,
+      "shape_samples_x_traces": [
+        501,
+        1950
+      ],
+      "distance_m": 185.757,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 976950,
+        "min": -0.063871399,
+        "max": 0.070494279,
+        "mean": 5.885333404984899e-06,
+        "std": 0.007612060697196342
+      },
+      "first_trace": {
+        "longitude": 106.8066635,
+        "latitude": 31.26037291,
+        "elevation_m": 445.9551,
+        "extra_m": 10.4909
+      },
+      "last_trace": {
+        "longitude": 106.8047819,
+        "latitude": 31.26024372,
+        "elevation_m": 449.61,
+        "extra_m": 8.126
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    },
+    {
+      "line_id": "X1",
+      "zip_member": "营山测线数据/LineX1origin(36).csv",
+      "file_size_bytes": 24014207,
+      "samples": 501,
+      "time_window_ns": 700.0,
+      "traces_declared": 938,
+      "trace_interval_m": 0.09339,
+      "expected_numeric_rows": 469938,
+      "numeric_rows": 469938,
+      "invalid_rows": 0,
+      "traces_read": 938,
+      "shape_samples_x_traces": [
+        501,
+        938
+      ],
+      "distance_m": 87.59982,
+      "row_count_matches_declared": true,
+      "amplitude": {
+        "count": 469938,
+        "min": -0.063056298,
+        "max": 0.070089422,
+        "mean": 6.276595767952392e-06,
+        "std": 0.007564868825550171
+      },
+      "first_trace": {
+        "longitude": 106.8060698,
+        "latitude": 31.26084432,
+        "elevation_m": 436.18,
+        "extra_m": 8.576
+      },
+      "last_trace": {
+        "longitude": 106.8061343,
+        "latitude": 31.26012468,
+        "elevation_m": 452.197,
+        "extra_m": 13.329
+      },
+      "parser_contract": "metadata lines followed by numeric columns: longitude, latitude, elevation_m, amplitude, extra/flight_height"
+    }
+  ],
+  "profile_pdfs": [
+    {
+      "name": "营山测线剖面图、钻孔柱状图/2南充市营山消水镇峰台村滑坡勘查平面图-Model.pdf",
+      "size_bytes": 5348501
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/3号测线.pdf",
+      "size_bytes": 308449
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/6号测线l.pdf",
+      "size_bytes": 295523
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/7号测线.pdf",
+      "size_bytes": 293275
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/9号测线.pdf",
+      "size_bytes": 284402
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图1.pdf",
+      "size_bytes": 345697
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图2.pdf",
+      "size_bytes": 344957
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图3.pdf",
+      "size_bytes": 334998
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图4.pdf",
+      "size_bytes": 293329
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图5.pdf",
+      "size_bytes": 288823
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图6.pdf",
+      "size_bytes": 290655
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图7.pdf",
+      "size_bytes": 294371
+    },
+    {
+      "name": "营山测线剖面图、钻孔柱状图/钻孔柱状图8.pdf",
+      "size_bytes": 247360
+    }
+  ],
+  "dwg_files": [
+    {
+      "name": "3大秧坪滑坡剖面图等.dwg",
+      "size_bytes": 462918
+    },
+    {
+      "name": "2南充市营山消水镇峰台村滑坡勘查平面图.dwg",
+      "size_bytes": 75714912
+    }
+  ],
+  "notes": [
+    "This audit reads package metadata and streamed CSV values; it does not permanently extract raw data into the release package.",
+    "Shape convention is samples x traces, consistent with core.real_data."
+  ],
+  "report_name": "YINGSHAN_REAL_DATA_AUDIT",
+  "versioned_source": "v0.8.0a18 archived"
+}

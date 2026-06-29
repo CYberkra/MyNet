@@ -1,0 +1,55 @@
+# 3060 Laptop (6 GB) safe smoke test — avoids high-eps_r materials
+# that violate gprMax wavelength sampling at dx=0.10m
+plan_name: 3060_smoke_safe
+random_seed: 20260611
+scene_count: 3
+components: [raw, target_only, background_only, clutter_only, air_only]
+
+scene:
+  dimension: 2D
+  family: gentle_interbed               # no water/clutter required
+  scan_length_m: 24                      # smaller domain for 6 GB
+  trace_count: 40
+  trace_interval_m: 0.60                 # sparse traces for speed
+  domain_depth_m: 20
+  air_margin_m: 5
+  dx_m: 0.10
+  column_width_m: 1.00
+  samples: 350                           # fewer time steps
+  time_window_ns: 350
+  center_frequency_hz: 50000000          # 50 MHz to increase cells/wavelength
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [5.0, 15.0]
+  interface_roughness_m: [0.3, 1.5]
+  slope_deg: [0, 15]
+  clutter_level: light
+
+geology:
+  # Disable all clutter sources that use high-eps_r materials
+  scenario_family: gentle_interbed
+  water_table_probability: 0.0
+  paddy_water_probability: 0.0
+  overhead_wire_probability: 0.0
+  tree_probability: 0.0
+  building_probability: 0.0
+  anomaly_probability: 0.0
+  terrace_probability: 0.0
+  blocky_gravel_probability: 0.3
+  interface_roughness_m: 1.0
+  slope_deg_min: 0
+  slope_deg_max: 15
+
+materials:
+  # Override surface_water to be FDTD-safe at dx=0.10m / 50 MHz
+  surface_water:
+    eps_r: [6.0, 9.0]
+    sigma: [0.001, 0.010]
+
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 4
+  mpi_tasks: 0

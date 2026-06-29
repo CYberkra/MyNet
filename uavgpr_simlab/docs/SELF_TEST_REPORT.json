@@ -1,0 +1,140 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "name": "GUI imports and offscreen launch",
+      "ok": true,
+      "skipped": true,
+      "reason": "GUI dependency unavailable or offscreen init failed: No module named 'PySide6'"
+    },
+    {
+      "name": "Dynamic .in/labels/manifest generation",
+      "ok": true,
+      "data": {
+        "records": 10,
+        "raw_n_traces": 72,
+        "advanced_queue_preview_displayed": 3,
+        "advanced_queue_preview_total": 10,
+        "advanced_queue_tasks": 1,
+        "easy_project_service_models": 2,
+        "easy_project_service_manifest": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/easy_service_project/3060_quick_smoke/datasets/3060_quick_smoke_manifest.csv",
+        "easy_model_plan_presets": 14,
+        "scene_world_family": "gentle_interbed",
+        "scene_world_schema": "uavgpr_simlab.scene_world.v1alpha1",
+        "scene_world_homologous_variants": true,
+        "scene_world_flight_mode": "constant_level",
+        "scene_world_smoke_families": [
+          "cross_slope_high_relief",
+          "deep_anomaly_21m",
+          "gentle_interbed",
+          "terrace_paddy",
+          "wire_tree_endpoint"
+        ],
+        "scene_world_mask_shape": [
+          501,
+          72
+        ],
+        "scene_world_pilot_samples": 501,
+        "scene_world_pilot_time_window_ns": 700.0,
+        "scene_world_pilot_trace_count": 300,
+        "scene_world_pilot_cases": 60,
+        "scene_world_pilot_high_relief_ratio": 0.083,
+        "scene_world_dataset_contract_ok": true,
+        "scene_world_dataset_contract_report": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/scene_world_smoke/yingshan_sceneworld_smoke/reports/dataset_contract_report.json",
+        "workspace_relocation_report": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/relocation_copy/reports/workspace_relocation_report.json",
+        "scene_world_case_package_ok": true,
+        "scene_world_bscan_qc_status": "success",
+        "scene_world_clutter_gt_generated": true
+      }
+    },
+    {
+      "name": "Real Line9 CSV preview/export service",
+      "ok": true,
+      "data": {
+        "shape": [
+          501,
+          16
+        ],
+        "preview_shape": [
+          501,
+          16
+        ],
+        "snr_bg": -29.40358312293529
+      }
+    },
+    {
+      "name": "Borehole soft-mask generation",
+      "ok": true,
+      "data": {
+        "shape": [
+          501,
+          16
+        ],
+        "picks_used": 2
+      }
+    },
+    {
+      "name": "gprMax .out HDF5 merge/export",
+      "ok": true,
+      "data": {
+        "shape": [
+          501,
+          4
+        ],
+        "products": [
+          "raw",
+          "dewow",
+          "mean_subtract",
+          "gain",
+          "svd_clean",
+          "svd_clutter",
+          "fk_clean",
+          "fk_clutter"
+        ]
+      }
+    },
+    {
+      "name": "Easy project/environment services",
+      "ok": true,
+      "data": {
+        "gprmax_source": {
+          "path": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/fake_gprMax_source",
+          "exists": true,
+          "is_source_tree": true,
+          "detected_version": "self-test",
+          "missing_required": [],
+          "present_optional": [
+            "conda_env.yml"
+          ],
+          "user_model_count": 0,
+          "compiled_extension_count": 0,
+          "missing_compiled_extensions": [
+            "gprMax/fields_updates_ext",
+            "gprMax/fractals_generate_ext",
+            "gprMax/geometry_outputs_ext",
+            "gprMax/geometry_primitives_ext",
+            "gprMax/snapshots_ext",
+            "gprMax/yee_cell_build_ext",
+            "gprMax/yee_cell_setget_rigid_ext",
+            "gprMax/pml_updates/pml_updates_electric_HORIPML_ext",
+            "gprMax/pml_updates/pml_updates_electric_MRIPML_ext",
+            "gprMax/pml_updates/pml_updates_magnetic_HORIPML_ext",
+            "gprMax/pml_updates/pml_updates_magnetic_MRIPML_ext"
+          ],
+          "message": "gprMax 源码目录结构有效，检测到版本 self-test；已编译扩展 0/11，需要在目标环境执行 build_ext 或安装 gprMax 后再真实运行。"
+        },
+        "project_root": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/3060_quick_smoke",
+        "formatted_env_has_summary": true,
+        "formatted_smoke_has_summary": true
+      }
+    },
+    {
+      "name": "HPC script and auto report generation",
+      "ok": true,
+      "data": {
+        "tasks": 2,
+        "report": "/mnt/data/uavgpr_a38_work/workspace/self_test_runtime/3060_quick_smoke/reports/auto_report.md"
+      }
+    }
+  ]
+}

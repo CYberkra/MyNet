@@ -1,0 +1,30 @@
+plan_name: yingshan_sceneworld_4090_validation_hifi
+random_seed: 20260610
+scene_count: 48
+components: [raw, target_only, background_only, clutter_only, air_only]
+scene:
+  dimension: 2D
+  family: yingshan_pilot_all_families
+  scan_length_m: 48
+  trace_count: 240
+  trace_interval_m: 0.20
+  domain_depth_m: 30
+  air_margin_m: 8
+  dx_m: 0.05
+  column_width_m: 0.50
+  samples: 501
+  time_window_ns: 700
+  center_frequency_hz: 100000000
+  flight_height_m: 8
+  tx_rx_offset_m: 1.4
+  interface_depth_m: [3.7, 21.5]
+  interface_roughness_m: [0.3, 3.5]
+  slope_deg: [0, 35]
+  clutter_level: hard
+run:
+  use_gpu: true
+  gpu_ids: [0]
+  geometry_only_first: true
+  geometry_fixed: true
+  openmp_threads: 8
+  mpi_tasks: 0
