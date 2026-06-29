@@ -1,0 +1,109 @@
+{
+  "description": "LOLO-CV manifest for v4 (100 Pilot-Train sim cases)",
+  "base_config": "configs\\gpu_train_v4_pilot_mixed.json",
+  "lines": [
+    "Line3",
+    "Line6",
+    "Line7",
+    "Line9",
+    "LineL1"
+  ],
+  "seeds": [
+    1901,
+    1902,
+    1903
+  ],
+  "n_configs": 15,
+  "entries": [
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line3_seed1901.json",
+      "heldout_line": "Line3",
+      "seed": 1901,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line3_seed1901"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line3_seed1902.json",
+      "heldout_line": "Line3",
+      "seed": 1902,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line3_seed1902"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line3_seed1903.json",
+      "heldout_line": "Line3",
+      "seed": 1903,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line3_seed1903"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line6_seed1901.json",
+      "heldout_line": "Line6",
+      "seed": 1901,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line6_seed1901"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line6_seed1902.json",
+      "heldout_line": "Line6",
+      "seed": 1902,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line6_seed1902"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line6_seed1903.json",
+      "heldout_line": "Line6",
+      "seed": 1903,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line6_seed1903"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line7_seed1901.json",
+      "heldout_line": "Line7",
+      "seed": 1901,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line7_seed1901"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line7_seed1902.json",
+      "heldout_line": "Line7",
+      "seed": 1902,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line7_seed1902"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line7_seed1903.json",
+      "heldout_line": "Line7",
+      "seed": 1903,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line7_seed1903"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line9_seed1901.json",
+      "heldout_line": "Line9",
+      "seed": 1901,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line9_seed1901"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line9_seed1902.json",
+      "heldout_line": "Line9",
+      "seed": 1902,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line9_seed1902"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_Line9_seed1903.json",
+      "heldout_line": "Line9",
+      "seed": 1903,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_Line9_seed1903"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_LineL1_seed1901.json",
+      "heldout_line": "LineL1",
+      "seed": 1901,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_LineL1_seed1901"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_LineL1_seed1902.json",
+      "heldout_line": "LineL1",
+      "seed": 1902,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_LineL1_seed1902"
+    },
+    {
+      "config": "gpu_train_v4_pilot_mixed_loo_LineL1_seed1903.json",
+      "heldout_line": "LineL1",
+      "seed": 1903,
+      "run_dir": "outputs/run_gpu_v4_pilot_mixed_loo_LineL1_seed1903"
+    }
+  ]
+}
