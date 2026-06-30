@@ -13,12 +13,13 @@ The core challenge: low-frequency airborne GPR suffers from strong clutter (dire
 The full research plan is in `UavGPR_机器学习背景杂波抑制全项研究计划.docx`.
 Extract text via pandoc or python-docx (see docx skill).
 
-## Current State (2026-06-29)
+## Current State (2026-07-01)
 
-**Pilot-Train 100 场景仿真准备就绪**：所有代码修复已完成，待审计通过后批量启动。
-**Line9 LOLO-CV**：3-seed 训练已完成（best val_loss 0.93-1.06）。
+**Pilot-Train 仿真**: 17/100 场景已完成（含续跑机制: `scripts/run_pilot_train_resumable.py`）
+**v4 LOLO-CV 配置**: 15 个 config 已生成（5 折 × 3 种子），脚本 `scripts/make_v4_loo_configs.py`
+**Line9 LOLO-CV**: DP MAE=37.19ns, Pick Rate=96.6% (Line9 fold)
 
-**LOLO Baseline**: DP MAE=37.19ns, Pick Rate=96.6% (Line9 fold)
+**X Pattern 实验结论**: 地表起伏是直达波×地面反射交叉的唯一成因，平坦地表 + 固定 TX-RX 高度会产生对称反射路径交叉；起伏地形消除此现象（`data/gprmax_experiments/` 含 M0→M1→M2 渐变链）
 
 **工作空间**：
 | 路径 | 内容 |
@@ -77,6 +78,10 @@ C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中
 **gprMax**: v3.1.7 at `E:\gprMax\gprMax-v.3.1.7`，Python: `.venv\Scripts\python.exe`  
 **GPU**: `SafeGprMaxRunner` 自动注入 MSVC + CUDA 路径到 PATH，无需 conda 或 vcvars
 
+**⚠️ GPU 复杂模型**: 带介电平滑的复杂模型（643+ box）直接 `python -m gprMax` 会因 MSVC INCLUDE/LIB 路径缺失导致 nvcc 编译失败。**必须使用 SafeGprMaxRunner**。
+
+**⚠️ .in 文件注释语法**: gprMax v3.1.7 `check_cmd_names` 会解析所有 `#` 行并分割 `:`。纯注释行（无冒号如 `# --- geometry boxes ---`）导致 IndexError。必须用 `#:` 或移除该行。
+
 ### 常用命令
 ```bash
 # 生成 SceneWorld 数据集
@@ -99,6 +104,10 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 |------|------|
 | `configs/run_plan_3060_pilot_v1.yaml` | Pilot-Mini 旧配置 |
 | `configs/run_plan_3060_pilot_train_v1.yaml` | Pilot-Train 100 场景生产配置 |
+| `configs/gpu_train_v4_pilot_mixed.json` | v4 训练配置（100 仿真场景） |
+| `scripts/run_pilot_train_resumable.py` | 续跑脚本（SafeGprMaxRunner，跳过已完成 case） |
+| `scripts/postprocess_simulation_batch.py` | .out → raw_bscan_native.npy 批量后处理 |
+| `scripts/make_v4_loo_configs.py` | LOLO-CV 5折×3种子 config 生成器 |
 | `configs/default_app.yaml` | 应用默认值（已更新为本地路径） |
 | `configs/environment_3060_laptop.yaml` | 3060 环境配置 |
 | `scripts/run_batch_safe_3060.py` | 批量运行脚本 |
@@ -156,9 +165,9 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 | Stage | Status | 说明 |
 |-------|--------|------|
 | 0: Baseline | ✅ 完成 | P0-3 Center Fusion: MAE=3.268 |
-| 1: Supervised Pretrain | 🔄 进行中 | v3_pilot_mixed LOLO-CV Line9 fold 完成（3-seed）|
-| 2: Pilot-Train 100 场景 | ⏳ 待启动 | 100 scenes × raw/background_only → ~500 训练窗口 |
-| 3: v4 LOLO-CV | ⏳ Pilot-Train 完成后 | 用新数据重跑 5 折 × 3 种子 |
+| 1: v3 Supervised Pretrain | ✅ 完成 | 20 Pilot-Mini 场景, LOLO-CV Line9: DP MAE=37.19ns |
+| 2: Pilot-Train 100 场景 | 🔄 进行中(17/100) | 续跑脚本 `scripts/run_pilot_train_resumable.py` |
+| 3: v4 LOLO-CV | ⏳ Pilot-Train 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
 
 ### Data Split Discipline (Critical)
 - 按**测线**分割，非随机 patch
@@ -240,13 +249,12 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 | `/data-audit` | "审计数据" | NPZ 训练数据完整性验证 |
 
 ### Agents
-| Agent | 作用 |
-|-------|------|
-| `training-launcher` | 训练启动专家 |
-| `bscan-reviewer` | B-scan 质量审查 |
-| `pgda-experiment-auditor` | 实验审计 |
-| `simulation-auditor` | 仿真数据审计（domain/PML/mask/变体）|
-| `training-data-validator` | 训练数据 NPZ 完整性验证 |
+| Agent | 调用方式 | 作用 |
+|-------|---------|------|
+| `training-launcher` | 默认 | 训练启动专家 |
+| `pgda-experiment-auditor` | 默认 | 实验审计 |
+| `simulation-auditor` | 默认 | 仿真数据审计 |
+| `training-data-validator` | 默认 | 训练数据 NPZ 验证 |
 
 ### Workflows
 | Workflow | 作用 |
