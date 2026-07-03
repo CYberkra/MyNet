@@ -33,3 +33,4 @@ uavgpr_simlab/workspace/
 # Logs
 logs/
 *.log
+__pycache__/
