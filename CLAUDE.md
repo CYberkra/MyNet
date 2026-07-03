@@ -1,6 +1,19 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## ⚠️ 致命铁律：汇报仿真结果必须附带三件套
+
+**任何仿真跑完后，汇报时必须同时包含：**
+1. **几何模型图**（材料分层、TX/RX位置、图例）
+2. **原始 B-scan**
+3. **处理后 B-scan**（AGC 或 air_only 减法）
+
+**缺一不可。先出齐三件套再说话。否则等着挨骂。**
+
+**使用方式：**
+```bash
+python .claude/skills/sim-report/sim_report.py <仿真输出目录>
+```
+自动出 几何模型图 + 原始B-scan + 处理后图 + 清理.vti
 
 ## Project Overview
 
@@ -13,13 +26,78 @@ The core challenge: low-frequency airborne GPR suffers from strong clutter (dire
 The full research plan is in `UavGPR_机器学习背景杂波抑制全项研究计划.docx`.
 Extract text via pandoc or python-docx (see docx skill).
 
-## Current State (2026-07-01)
+## Current State (2026-07-03)
 
-**Pilot-Train 仿真**: 17/100 场景已完成（含续跑机制: `scripts/run_pilot_train_resumable.py`）
-**v4 LOLO-CV 配置**: 15 个 config 已生成（5 折 × 3 种子），脚本 `scripts/make_v4_loo_configs.py`
-**Line9 LOLO-CV**: DP MAE=37.19ns, Pick Rate=96.6% (Line9 fold)
+**batch_001**: 12 case (LINE9_STYLE_001~010 + TERRAIN_011~012)  
+全部跑完 128/128 道 → QC GREEN → promote 到 `05_accepted_dataset/` ✅  
+**trainset_v1_0_line9_style_12cases**: 已导出（13 case × 128 道 = 1664 trace，含原始 LINE9_STYLE_V1）  
+**batch_002_depth_30cases**: 30 深度变体 case 已生成（6-24m, 70% flat + 30% terrain），待仿真  
+**FiLM/UDA 实验**:
+- v1.8b FiLM (无特征): 50 epoch 训练 → 实测 0% pick rate（预期内）
+- v1.8b FiLM + terrain features: 50 epoch 训练 → MAE 256ns（略改善）
+- UDA (域自适应): 域损失 0.91→0.43，对抗训练有效但实测仍需深度多样数据
 
-**X Pattern 实验结论**: 地表起伏是直达波×地面反射交叉的唯一成因，平坦地表 + 固定 TX-RX 高度会产生对称反射路径交叉；起伏地形消除此现象（`data/gprmax_experiments/` 含 M0→M1→M2 渐变链）
+**V3.x 控制实验系列**:
+- **V3.2**: 宽域300m + PML60，验证X来自侧边界反射 ✅
+- **V3.3**: 宽域+平滑起伏+`#triangle`介电平滑，迹间差异46.93
+- **V3.4**: `#triangle averaging=y` 替代 H5，避免台阶效应，迹间差异45.37
+- **V3.5**: +weak_cover_band，迹间差异45.37
+- **V3.6**: +浅层扰动，完整y_soft/geom_onset/visible_phase标签
+- **V3.7**: 浅（10m, 95/128迹）/深（18m, 128迹）✅
+
+**LINE9_LABEL_INSPIRED_V1**: 480m域 Line9 地形追随模型，128 道，trace_var=44.53。  
+标签匹配 Line9 V14 实测仅 **0.06ns misfit**（68% trace < 0.1ns），已在 `PGDA_SYNTH_DATASET_V1/` 完成建档。  
+预检 18 项全 PASS，QC GREEN（target_local_peak_median=0.909, support=83.6%）。
+
+## 仿真数据管理 (PGDA_SYNTH_DATASET_V1)
+
+所有正式仿真统归 `data/PGDA_SYNTH_DATASET_V1/`。
+
+### 五层治理
+
+| 层级 | 路径 | 说明 |
+|------|------|------|
+| 模型源 | `01_templates/` | 已验证的几何模板，作为生成源 |
+| 仿真输出 | `03_runs/` | gprMax 实际运行结果 |
+| 质检 | `04_qc/` | preflight + after_run 检查结果 |
+| 训练数据 | `05_accepted_dataset/` | GREEN 通过后 promote 至此 |
+| 归档 | `08_archives/` | .out 大文件压缩归档 |
+
+### 流转规则
+
+```
+生成 → preflight_check → gprMax 跑 → after_run_qc → GREEN → promote_to_accepted
+```
+
+**跑前预检 18 项**（不全 PASS 不进 gprMax）：
+pml_cells, domain_grid, H5禁止, noair禁止, triangle平滑, source/rx不在PML, 侧边界>700ns, 标签完整性, generator记录, 标签非平坦(range>0.5ns), TX/RX高于地面(gap>1m), 三角形不超出domain_y
+
+**结果分级**：
+GREEN_ACCEPTED → accepted_dataset / YELLOW_REVIEW → 人工审查 / RED_REJECTED → failed / GRAY_DEBUG_ONLY → 诊断
+
+### 自动化工具
+
+```bash
+# 跑前预检（必做）
+python data/PGDA_SYNTH_DATASET_V1/tools/preflight_check.py <case_dir>
+
+# 跑后质检（一次性出6个QC文件）
+python data/PGDA_SYNTH_DATASET_V1/tools/after_run_qc.py <case_run_dir>
+
+# GREEN → promote
+python data/PGDA_SYNTH_DATASET_V1/tools/promote_to_accepted.py <case_run_dir>
+```
+
+### 当前状态
+
+| 模板 | 状态 | 存放 |
+|------|------|------|
+| V3.4/V3.5/V3.6 | 历史参考模板 | 01_templates/ |
+| LINE9_LABEL_INSPIRED_V1 | 当前主模板，已 promote | 01_templates/ + 05_accepted_dataset/ |
+
+详细规则见 `data/PGDA_SYNTH_DATASET_V1/00_docs/`。
+
+**X Pattern 实验结论**: X = 空气耦合直达波 A + 地表反射 S 的早时时空交叠。根本成因：空气（ε_r=1, v≈0.3m/ns）与地面介质（ε_r≈6-19, v≈0.07-0.12m/ns）的巨大波速差→A 与 S 双曲曲率不同→交叉形成 X。去掉空气层（`case_000001_no_air_fill`，20 迹对照）后直达波被彻底消除：峰值从 90→30，均值迹零点从 1409→10。起伏地形仅破坏对称性但非 X 根源。`data/gprmax_experiments/` 含 M0→M1→M1b→M1c→M2 渐变链 + `case_000001_no_air_fill` 诊断。**生产模型必须保留空气层**，PGDA-CSNet 需学习在有强 A 的情况下同时分离 A/S/G。
 
 **工作空间**：
 | 路径 | 内容 |
@@ -50,26 +128,18 @@ C_gt    = Y_full - X_clean  = A + E    (操作性杂波标签)
 
 C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中存在多次散射）。
 
-## Pipeline Fixes (2026-06-29)
+## Pipeline Bug History (参考)
 
-### Mask Depth-Time Conversion
-- **Bug**: `interface_mask_bscan.npy` 缺少空气走时（`2×(UAV-地面)/0.3`）
-- **Fix**: `scene_variant_writer.py` — 加了 `air_twt` + `compute_cover_velocity()` 从材质 eps_r 动态算速度
-- **Velocity**: cover 材质平均 eps_r ≈ 19 → v ≈ 0.069 m/ns
+以下为已修复 bug，仅摘要。详情见 commit log。
 
-### Domain Grid
-- **Bug**: `domain_y / dx` 非整数（如 48.309/0.05=966.18）
-- **Fix**: `scene_world_generator.py` — `math.ceil(val/dx)*dx`
-
-### PML
-- **Fix**: `.in` 文件加 `#pml_cells: 10 10 0 10 10 0`
-
-### 数据转换 (convert_pilot_to_training.py)
-- **FFT ringing** → `np.interp` 线性插值
-- **P99** → 全 100 场景全局统一而非每 case 独立
-- **padding** → 零填充，label_weight=0
-- **y_soft** → 高斯软标签 (Gaussian σ=8, 峰值=1.0)
-- **y_mask 时间错位** → 加了空气走时，用有效平均速度 (~0.069 m/ns)
+| Bug | 修复 |
+|-----|------|
+| mask 缺少空气走时 | 加 `air_twt` + 动态速度 |
+| domain_y/dx 非整数 | `math.ceil(val/dx)*dx` |
+| PML 未声明 | 强制 `#pml_cells: 60 60 0 60 60 0` |
+| FFT ringing | `np.interp` 线性插值 |
+| P99 独立计算 | 改为全局统一 |
+| y_mask 时间错位 | 加空气走时，用有效平均速度 ~0.069 m/ns |
 
 ## SimLab (仿真工具)
 
@@ -82,8 +152,21 @@ C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中
 
 **⚠️ .in 文件注释语法**: gprMax v3.1.7 `check_cmd_names` 会解析所有 `#` 行并分割 `:`。纯注释行（无冒号如 `# --- geometry boxes ---`）导致 IndexError。必须用 `#:` 或移除该行。
 
+### gprMax 源码关键发现
+
+- **`#geometry_objects_read` 覆盖不彻底**: 写入 G.solid + G.ID + G.rigidE/H，后续 `#box` 只改 G.solid 不改 G.ID/rigid（`input_cmds_geometry.py:136`）
+- **`#triangle` 介电平滑**: 第 13 个参数 `y` 启用 dielectric smoothing，避免 H5 stair-step（`input_cmds_geometry.py:355`）
+- **GPU 常量内存 64KB**: 每材料 128 bytes → 最多 ~1600 个材料（`fields_updates_gpu.py`）
+- **介电平滑副作用**: 在材料边界创建平均材料（如 `air+weathered_bedrock`），增加材料总数，改变反射强度
+
 ### 常用命令
 ```bash
+# 三件套（仿真跑完立即执行）
+python .claude/skills/sim-report/sim_report.py <输出目录>
+
+# case 生成（深度变体 batch）
+python data/PGDA_SYNTH_DATASET_V1/tools/generate_cases.py batch_xxx --n-cases 30 --depth-range 6 24
+
 # 生成 SceneWorld 数据集
 python -m uavgpr_simlab.cli generate --plan configs/run_plan_3060_pilot_v1.yaml --workspace workspace/my_run --count 20
 
@@ -94,9 +177,8 @@ r = run_geometry_dry_run('path/to/raw.in', python_exe='E:/gprMax/gprMax-v.3.1.7/
 print(r.status)
 "
 
-# 批量运行（manifest CSV → GPU 仿真）
-python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifest.csv --dry-run
-python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifest.csv --variants raw,target_only
+# 批量运行（PGDA_SYNTH_DATASET_V1 模式）
+python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
 ```
 
 ### 关键配置文件
@@ -110,7 +192,7 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 | `scripts/make_v4_loo_configs.py` | LOLO-CV 5折×3种子 config 生成器 |
 | `configs/default_app.yaml` | 应用默认值（已更新为本地路径） |
 | `configs/environment_3060_laptop.yaml` | 3060 环境配置 |
-| `scripts/run_batch_safe_3060.py` | 批量运行脚本 |
+| `data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py` | 批量运行（PGDA 治理模式） |
 | `scripts/convert_pilot_to_training.py` | 新版数据转换（线性插值 + 全局P99 + 软标签） |
 
 ### 数据转换
@@ -128,46 +210,24 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 - **钻孔**: ZK07 (~21-23m), ZK09 (~20-23m), 多个浅钻孔 (~9-17m)，数据在 `data/营山/`
 - **决策**: 仿真用 gprMax 原生时域 Ricker 100 MHz，不做 SFCW 转换。当前阶段暂不做外部杂波（电线/树木/建筑），聚焦地质核心
 
-## Pilot 数据集方案
-
-详见 `docs/PILOT_MODEL_PLAN.md`。
-
-**已完成**: Pilot-Mini 20 场景，仿真数据在 `data/simulation_pretrain_v2/`。
-
-**进行中**: Pilot-Train 100 场景，计划配置在 `configs/run_plan_3060_pilot_train_v1.yaml`。
-
-**仿真参数**: 网格 ~1458×967×1, dx=0.05m, 时窗 700ns, 频率 100 MHz Ricker, #pml_cells 显式声明
-**变体**: raw / background_only（target_only 因无外部杂波而移除）
-**杂波**: 外部杂波暂关，水田/饱和带/地形保留
-**材料 σ**: 0.002-0.015 S/m
-
-## Architecture: PGDA-CSNet (v1_9d_mambavision_hybrid)
-
-网络以原始 B-scan 为输入，输出干净 B-scan + 杂波图 + 不确定度图。已实现并训练。
-
-### Backbone
-- **Residual Dense U-Net** (4级 encoder-decoder, 通道 32→64→128→256→512)
-- **Multi-scale receptive field**: 并行 3×3, 5×5, atrous conv (d=1/2/4)
-- **Residual learning**: 预测杂波图 C_hat；clean = Input – C_hat
-
-### Physics-Guided Branches
-1. **f-k Spectral Branch**: 2D FFT per patch → 可学习频谱掩码 → IFFT 融合
-2. **SVD Low-Rank Branch**: SVD 分量图 → Soft Singular Shrinkage (可微)
-3. **Geometric Conditioning (FiLM)**: UAV 高度/地表高程/坡度 → scale/shift 调制
-
-### Output Heads
-- `Y_clean`: 预测干净 B-scan
-- `C_hat`: 杂波图 (可解释性)
-- `σ_hat`: 不确定度图 (MC Dropout / Deep Ensemble)
-
 ## Training Strategy
 
 | Stage | Status | 说明 |
 |-------|--------|------|
 | 0: Baseline | ✅ 完成 | P0-3 Center Fusion: MAE=3.268 |
 | 1: v3 Supervised Pretrain | ✅ 完成 | 20 Pilot-Mini 场景, LOLO-CV Line9: DP MAE=37.19ns |
-| 2: Pilot-Train 100 场景 | 🔄 进行中(17/100) | 续跑脚本 `scripts/run_pilot_train_resumable.py` |
-| 3: v4 LOLO-CV | ⏳ Pilot-Train 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
+| 2: batch_001 仿真训练 | ✅ 完成 | 12 LINE9-style 场景，50 epoch → 实测 pick rate 0%（域偏移）|
+| 3: FiLM v1.8b | ✅ 完成 | +terrain features → MAE 256ns（略改善）|
+| 4: UDA 训练 | ✅ 完成 | 域损失 0.91→0.43，对抗训练有效 |
+| 5: Pilot-Train 100 场景 | 🔄 进行中(17/100) | 续跑脚本 `scripts/run_pilot_train_resumable.py` |
+| 6: batch_002 深度多样仿真 | ⏳ 待跑 | 30 场景（6-24m），解决深度泛化 |
+| 7: v4 LOLO-CV | ⏳ Pilot-Train 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
+
+## Architecture Reference
+
+**PGDA-CSNet (v1_9d_mambavision_hybrid)**: 网络架构代码在 `pgdacsnet/model_raw_unet.py`。
+核心组件见 [[pgda-csnet-architecture]] — ConvNeXtStage 编码器 + DilatedBottleneck + AxialSSM + MetadataFiLM + GatedSequenceBlock。
+训练入口: `train_raw_only.py` / `resume_train.py`，`build_model(cfg)` 构建完整管线。
 
 ### Data Split Discipline (Critical)
 - 按**测线**分割，非随机 patch
@@ -212,9 +272,38 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 ## GPU 注意事项 (RTX 3060 Laptop 6GB)
 
 - **VRAM 上限**: 6144 MiB，训练占用 ~4000 MiB，不要同时跑多个训练
-- **TDR 风险**: Windows GPU 超时检测会在 GPU 无响应 >2s 时重置驱动，导致训练静默死亡。症状：日志突然停止，无 Python 错误
 - **温度**: 训练时 80-87°C 正常，>90°C 有热降频风险
 - **建议**: 训练前检查 GPU 状态 (`/gpu-health`)，确保无其他进程占用显存
+
+### TDR 问题与解决方案
+
+Windows GPU 超时检测（TDR）会在 GPU 无响应 >2s 时重置驱动，导致训练/仿真静默死亡。症状：日志突然停止，无 Python 错误。
+
+**解决方案：nvidia-smi 周期性轮询**
+
+原理：`nvidia-smi` 通过 NVML 通道查询 GPU，不干扰 CUDA 内核运行。定期调用会触发驱动 IO，重置 Windows TDR 计时器。
+
+```bash
+# 方法 1：batch runner 自带 watchdog（推荐）
+python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
+# 内部已集成 20s 间隔的 GPU 轮询
+
+# 方法 2：独立 sidecar（手工跑仿真时使用）
+# 开一个新终端先运行：
+python data/PGDA_SYNTH_DATASET_V1/tools/gpu_keepalive.py --interval 15
+# 然后在原终端跑 gprMax
+
+# 方法 3：保持第二个终端运行 nvidia-smi
+# 开一个新终端：
+"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe" -c "import subprocess,time; [subprocess.run(['nvidia-smi'],capture_output=True) or time.sleep(15) for _ in iter(int,1)]"
+```
+
+**registry 修改**（永久解决，需管理员权限）：
+```
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers
+  TdrDelay = 8  (默认 2 秒，改为 8 秒)
+```
+改后需重启。Batch runner 的 watchdog 轮询已足够覆盖 2 秒限制，一般不需改 registry。
 
 ## 自动化工具 (`.claude/`)
 
@@ -228,6 +317,17 @@ python scripts/run_batch_safe_3060.py --manifest workspace/my_run/<name>_manifes
 | `py_compile_on_edit` | Edit/Write .py | Python 语法检查 |
 | `py_lint_on_edit` | Edit/Write .py | Ruff lint（尊重 ruff.toml，不强制 E501）|
 | `npz_validation` | Bash 含 convert_pilot_to_training | NPZ 训练数据完整性验证 |
+
+### 仿真数据管理脚本
+| 脚本 | 用法 | 作用 |
+|------|------|------|
+| `tools/preflight_check.py` | `python ... <case_dir>` | 跑前 18 项预检 |
+| `tools/generate_cases.py` | `python ... <batch_id> --n-cases 30 --depth-range 6 24` | 参数化 case 生成器（深度/地形/标签）|
+| `tools/run_batch.py` | `python ... <batch_dir>` | 批量运行（自动 preflight + gprMax + QC，带 TDR 保护和续跑）|
+| `tools/run_batch_standalone.py` | 双击桌面 `.bat` 或独立终端 | 独立批量仿真脚本（不依赖 Claude Code）|
+| `tools/gpu_keepalive.py` | `python ... [--interval 15]` | TDR 预防 sidecar（nvidia-smi 周期性轮询）|
+| `tools/after_run_qc.py` | `python ... <run_dir>` | 跑后质检（6 产物，含几何模型图）|
+| `tools/promote_to_accepted.py` | `python ... <run_dir>` | GREEN → accepted_dataset |
 
 ### Skills (手动调用)
 | Skill | 触发词 | 作用 |

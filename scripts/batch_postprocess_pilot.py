@@ -1,5 +1,11 @@
 """Batch postprocess Pilot-Mini: merge gprMax .out files into .npy bscan arrays.
 
+WARNING: clutter_gt = raw - target_only is LEGACY semantics. The current
+PGDA-CSNet signal model defines:
+  X_clean = Y_target - Y_air = S + G
+  C_gt    = Y_full - X_clean = raw - (target_only - air_only) = A + E
+For new conversions use the air_only subtraction. See CLAUDE.md signal model.
+
 For each case (000001-000020) and variant (raw/target_only/background_only/air_only),
 calls merge_available_bscan_for_input() to merge matching .out files and saves
 to outputs/{variant}_bscan.npy. Also computes clutter_gt = raw - target_only.

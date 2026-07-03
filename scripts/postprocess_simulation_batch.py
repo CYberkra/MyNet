@@ -35,12 +35,19 @@ def process_case(case_dir):
     """Merge .out → raw_bscan_native.npy for one case."""
     case_id = case_dir.name
 
-    # Check if already done
+    # Check if already done — verify content, not just existence
     out_dir = case_dir / "outputs"
     out_npy = out_dir / "raw_bscan_native.npy"
     if out_npy.exists():
-        print(f"  {case_id}: raw_bscan_native.npy exists, skip")
-        return True
+        try:
+            existing = np.load(str(out_npy))
+            if existing.shape == (NATIVE_SAMPLES, N_TRACES) and np.isfinite(existing).all() and existing.ptp() > 1e-12:
+                print(f"  {case_id}: raw_bscan_native.npy valid ({existing.shape}), skip")
+                return True
+            else:
+                print(f"  {case_id}: raw_bscan_native.npy invalid (shape={existing.shape}, finite={np.isfinite(existing).all()}), rebuilding")
+        except Exception:
+            print(f"  {case_id}: raw_bscan_native.npy unreadable, rebuilding")
 
     out_files = sort_out_files(case_dir, "raw")
     if len(out_files) < N_TRACES:

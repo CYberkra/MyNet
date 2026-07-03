@@ -1,4 +1,8 @@
-"""Convert batch v1 extracted B-scans (6 valid cases) to training .npz windows.
+"""DEPRECATED: Convert batch v1 extracted B-scans to training .npz windows.
+WARNING: This script uses per-case P99 normalization, NOT the global P99
+used by current training pipeline (convert_pilot_to_training.py).
+The clutter_gt semantics are also legacy (raw - target_only, missing air_only).
+Use convert_pilot_to_training.py for new conversions.
 
 Format matches existing simulation_pretrain_v1: (501, 256) per window,
 P99-normalized raw, interface mask as y_target, reflect-padded to 256 traces.

@@ -11,7 +11,12 @@
             "type": "command",
             "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/pgda_safety_guard.py\"",
             "timeout": 5
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(train_raw_only|resume_train|train_gprmax_adapter|train_final_from_cv|_keep_training|_retry_train|python.*gprMax|uavgpr_simlab)",
+        "hooks": [
           {
             "type": "command",
             "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/training_process_guard.py\"",
@@ -42,32 +47,31 @@
         ]
       },
       {
-        "matcher": "Bash",
+        "matcher": "Bash(train_raw_only|resume_train|train_gprmax_adapter)",
         "hooks": [
           {
             "type": "command",
             "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/checkpoint_sanity.py\"",
             "timeout": 10
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(eval_full_line)",
+        "hooks": [
           {
             "type": "command",
             "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/report_on_eval.py\"",
             "timeout": 10
-          },
-          {
-            "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/npz_validation.py\"",
-            "timeout": 10
           }
         ]
-      }
-    ],
-    "Stop": [
+      },
       {
+        "matcher": "Bash(convert_pilot_to_training|convert_batch_v1_to_training)",
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/session_end_digest.py\"",
+            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/npz_validation.py\"",
             "timeout": 10
           }
         ]
