@@ -10,7 +10,13 @@
   "model_dropout": 0.05,
   "num_workers": 0,
   "seed": 1902,
-  "train_lines": [],
+  "train_lines": [
+    "batch_anomaly", "batch_cross", "batch_gentle", "batch_gentle2",
+    "batch_terrace", "batch_wire", "bx",
+    "case_000001", "case_000002", "case_000003", "case_000004", "case_000005", "case_000006",
+    "line", "lm",
+    "sim_l1", "sim_line3", "sim_line9", "sim_zk09", "sm"
+  ],
   "train_trace_ranges": {},
   "val_lines": [],
   "test_lines": [],

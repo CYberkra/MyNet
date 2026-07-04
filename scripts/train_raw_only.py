@@ -180,11 +180,9 @@ def dice_loss_from_prob(pred,target,weight):
     return (1-2*inter/den).mean()
 
 def unpack_model_output(out):
-    if isinstance(out, (tuple, list)) and len(out) == 3:
-        return out[0], out[1], out[2]
-    if isinstance(out, (tuple, list)) and len(out) == 2:
-        return out[0], out[1], None
-    raise ValueError('model output must be (mask_logits, presence_logits) or (mask_logits, presence_logits, center_logits)')
+    from pgdacsnet.model_interfaces import unpack_pgda_output
+    packed = unpack_pgda_output(out)
+    return packed[0], packed[1], packed[2]
 
 def centerline_aux_losses(center_logits, target, weight, cfg, ignore=None):
     if center_logits is None:
