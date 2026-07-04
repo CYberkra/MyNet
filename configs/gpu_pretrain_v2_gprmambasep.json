@@ -1,22 +1,16 @@
 {
-  "data_root": "data/PGDA_SYNTH_DATASET_V1/05_accepted_dataset",
+  "data_root": "data/simulation_pretrain_v1",
   "height_resize": 512,
   "width_resize": 256,
   "batch_size": 2,
-  "epochs": 120,
-  "lr": 0.0004,
+  "epochs": 80,
+  "lr": 0.0003,
   "base_ch": 16,
   "mamba_state_dim": 32,
   "model_dropout": 0.05,
   "num_workers": 0,
   "seed": 1902,
-  "train_lines": [
-    "LINE9_STYLE_001", "LINE9_STYLE_002", "LINE9_STYLE_003",
-    "LINE9_STYLE_004", "LINE9_STYLE_005", "LINE9_STYLE_006",
-    "LINE9_STYLE_007", "LINE9_STYLE_008", "LINE9_STYLE_009",
-    "LINE9_STYLE_010", "LINE9_TERRAIN_011", "LINE9_TERRAIN_012",
-    "LINE9_STYLE_V1_001"
-  ],
+  "train_lines": [],
   "train_trace_ranges": {},
   "val_lines": [],
   "test_lines": [],
@@ -59,7 +53,5 @@
   "max_preview_val": 0,
   "run_dir": "outputs/run_gprmambasep_pretrain_v2",
   "version": "v2_gprmambasep_pretrain",
-  "note": "Stage 1 sim-only pretrain for GprMambaSep (v2_0). Shared encoder + A/S/G decoders. 13 sim cases from PGDA_SYNTH_DATASET_V1/05_accepted_dataset (1664 traces). A/S/G component recon losses weighted: a=0.3, s=0.3, g=1.0, decomp_consistency=0.5.",
-  "ssm_kernel": 31,
-  "attention_heads": 4
+  "note": "Stage 1 sim-only pretrain for GprMambaSep (v2_0). data=simulation_pretrain_v1 (191 windows). Component losses: self_consistency=2.0, sim_supervised=0.5, contrastive=0.05, arrival_prior=0.1."
 }
