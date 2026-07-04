@@ -70,6 +70,7 @@
   "ssm_kernel": 31,
   "attention_heads": 4,
   "sim_batch_ratio": 0.3,
-  "sim_data_root": "data/PGDA_SYNTH_DATASET_V1/05_accepted_dataset",
-  "sim_train_lines": []
+  "sim_data_root": "data/simulation_pretrain_v1",
+  "sim_train_lines": [],
+  "warm_start_from": "outputs/run_gprmambasep_pretrain_v2/checkpoint_best.pt"
 }
