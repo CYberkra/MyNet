@@ -20,9 +20,13 @@
   ],
   "train_trace_ranges": {},
   "val_lines": [],
-  "test_lines": ["Line9"],
+  "test_lines": [
+    "Line9"
+  ],
   "test_trace_ranges": {},
-  "review_lines": ["LineX1"],
+  "review_lines": [
+    "LineX1"
+  ],
   "loss": {
     "core_weight": 0.55,
     "outside_weight": 0.36,
@@ -39,10 +43,12 @@
     "continuity_weight": 0.035,
     "center_valid_min_sum": 0.001,
     "spectral_consistency_weight": 0,
-    "a_recon_weight": 0.3,
-    "s_recon_weight": 0.3,
-    "g_recon_weight": 1.0,
-    "decomp_consistency_weight": 0.5
+    "g_segmentation_weight": 1.0,
+    "self_consistency_weight": 2.0,
+    "sim_supervised_weight": 0.5,
+    "contrastive_weight": 0.05,
+    "arrival_prior_weight": 0.1,
+    "amplitude_ratio_weight": 0.01
   },
   "augment": {
     "enabled": true,
