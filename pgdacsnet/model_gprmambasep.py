@@ -139,9 +139,8 @@ class GprMambaSep(nn.Module):
         self.mask_head = nn.Conv2d(c, 1, 1)                  # 16→1
         self.center_head = CenterRefineHead(c, dropout=dp)   # CenterRefineHead(16)
         self.pres_head = nn.Sequential(
-            nn.AdaptiveAvgPool2d(1),                          # (B, 16, 1, 1)
-            nn.Flatten(),                                     # (B, 16)
-            nn.Linear(c, 1),                                  # (B, 1)
+            nn.AdaptiveAvgPool2d((1, None)),                   # (B, 16, 1, W) — pool height
+            nn.Conv2d(c, 1, 1),                                # (B, 1, 1, W)
         )
 
         # ---- Expose the G-decoder's inner 16ch ConvNeXtStage for task heads ----
@@ -220,8 +219,9 @@ class GprMambaSep(nn.Module):
         center_raw = self.center_head(g_16ch)  # (B, 1, H/2, W/2)
         center_logits = F.interpolate(center_raw, size=(H, W), mode='bilinear', align_corners=False)
 
-        # Presence head (per-sample scalar)
-        presence_logits = self.pres_head(g_16ch)  # (B, 1)
+        # Presence head (per-trace) — interpolate to full trace width
+        presence_logits = self.pres_head(g_16ch).squeeze(2)           # (B, 1, 1, W/2) → (B, 1, W/2)
+        presence_logits = F.interpolate(presence_logits, size=W, mode='linear', align_corners=False)  # (B, 1, W)
 
         return GprMambaSepOutput(
             mask_logits=mask_logits,
