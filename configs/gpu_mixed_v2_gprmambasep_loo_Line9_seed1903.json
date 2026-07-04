@@ -1,0 +1,74 @@
+{
+  "data_root": "data_corrected_v1_4_terrain_direction",
+  "paper_split_file": "configs/paper_splits_v1_6.json",
+  "height_resize": 512,
+  "width_resize": 256,
+  "batch_size": 2,
+  "epochs": 120,
+  "lr": 0.0004,
+  "base_ch": 16,
+  "mamba_state_dim": 32,
+  "model_dropout": 0.05,
+  "num_workers": 0,
+  "seed": 1903,
+  "train_lines": [
+    "Line3",
+    "Line6",
+    "Line7",
+    "LineL1"
+  ],
+  "train_trace_ranges": {},
+  "val_lines": [
+    "Line9"
+  ],
+  "test_lines": [
+    "Line9"
+  ],
+  "test_trace_ranges": {},
+  "review_lines": [
+    "LineX1"
+  ],
+  "loss": {
+    "core_weight": 0.55,
+    "outside_weight": 0.36,
+    "dice_weight": 0.85,
+    "presence_weight": 0.42,
+    "presence_negative_weight": 2.8,
+    "core_threshold": 0.55,
+    "outside_margin": 0.05,
+    "weak_presence_target": 0.65,
+    "positive_pixel_boost": 8.0,
+    "hard_negative_weight": 0.24,
+    "hard_negative_topk_frac": 0.02,
+    "centerline_weight": 0.2,
+    "continuity_weight": 0.035,
+    "center_valid_min_sum": 0.001,
+    "spectral_consistency_weight": 0,
+    "a_recon_weight": 0.3,
+    "s_recon_weight": 0.3,
+    "g_recon_weight": 1.0,
+    "decomp_consistency_weight": 0.5
+  },
+  "augment": {
+    "enabled": true,
+    "amp_scale_min": 0.88,
+    "amp_scale_max": 1.12,
+    "noise_std": 0.0001,
+    "trace_dropout_prob": 0.015,
+    "horizontal_flip_prob": 0.35
+  },
+  "deterministic": false,
+  "input_log_scale": 0.001,
+  "no_pick_window_repeats": 2,
+  "acceptance_note": "LineX1 is review-only.",
+  "model_arch": "v2_0_gprmambasep",
+  "max_preview_val": 0,
+  "run_dir": "outputs/run_gprmambasep_loo_Line9_seed1903",
+  "version": "v2_gprmambasep_mixed_loo_Line9_seed1903",
+  "note": "LOLO-CV fold: heldout=Line9, train_lines=['Line3', 'Line6', 'Line7', 'LineL1'], seed=1903, sim_batch_ratio=0.3, sim data from PGDA_SYNTH_DATASET_V1/05_accepted_dataset (auto-detected sim lines)",
+  "ssm_kernel": 31,
+  "attention_heads": 4,
+  "sim_batch_ratio": 0.3,
+  "sim_data_root": "data/PGDA_SYNTH_DATASET_V1/05_accepted_dataset",
+  "sim_train_lines": []
+}
