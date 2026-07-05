@@ -252,7 +252,7 @@ def compute_loss(model,b,device,cfg):
         from scripts.losses_gprmambasep import compute_gprmambasep_loss
         batch = {'x': x, 'y': y, 'y_core': y_core, 'presence': pres, 'presence_valid': pres_valid,
                  'weight': lw, 'valid_pix': valid_pix, 'valid_denom': valid_denom}
-        total_loss, parts = compute_gprmambasep_loss(output, batch, cfg, model)
+        total_loss, parts = compute_gprmambasep_loss(output, batch, cfg, model, stage3=bool(cfg.get('stage3', False)))
         return total_loss, parts
 
     # Standard model — original loss

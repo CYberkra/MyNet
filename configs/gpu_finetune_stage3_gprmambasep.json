@@ -48,7 +48,8 @@
     "sim_supervised_weight": 0.5,
     "contrastive_weight": 0.05,
     "arrival_prior_weight": 0.1,
-    "amplitude_ratio_weight": 0.01
+    "amplitude_ratio_weight": 0.01,
+    "co_prediction_cycle_weight": 0.3
   },
   "augment": {
     "enabled": true,
@@ -74,5 +75,5 @@
   "sim_train_lines": [],
   "warm_start_from": "outputs/run_gprmambasep_mixed_v2/checkpoint_best.pt",
   "fine_tune_stage3": true,
-  "co_prediction_weight": 0.3
+  "stage3": true
 }
