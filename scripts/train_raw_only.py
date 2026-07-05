@@ -244,7 +244,19 @@ def compute_loss(model,b,device,cfg):
     ignore=ignore.to(device) if ignore is not None else torch.zeros_like(y)
     valid_pix=(1.0-ignore).clamp(0.0,1.0)
     valid_denom=valid_pix.sum().clamp_min(1.0)
-    logits,pres_logits,center_logits=unpack_model_output(model(x)); prob=torch.sigmoid(logits)
+    output = model(x)
+
+    # GprMambaSep model — use extended decomposition losses
+    if hasattr(output, 'A_hat') and output.A_hat is not None:
+        from pgdacsnet.losses_pgda import compute_segmentation_losses as compute_seg
+        from scripts.losses_gprmambasep import compute_gprmambasep_loss
+        batch = {'x': x, 'y': y, 'y_core': y_core, 'presence': pres, 'presence_valid': pres_valid,
+                 'weight': lw, 'valid_pix': valid_pix, 'valid_denom': valid_denom}
+        total_loss, parts = compute_gprmambasep_loss(output, batch, cfg, model)
+        return total_loss, parts
+
+    # Standard model — original loss
+    logits,pres_logits,center_logits=unpack_model_output(output); prob=torch.sigmoid(logits)
     pix_w=(float(lp.get('base_pixel_weight',0.10))+lw[:,None,None,:])*valid_pix
     pos_boost=float(lp.get('positive_pixel_boost',4.0))
     bce_w=pix_w*(1.0+pos_boost*y)
