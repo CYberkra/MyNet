@@ -15,8 +15,7 @@
     "Line3",
     "Line6",
     "Line7",
-    "LineL1",
-    "Line9"
+    "LineL1"
   ],
   "train_trace_ranges": {},
   "val_lines": [],
@@ -49,7 +48,7 @@
     "contrastive_weight": 0.05,
     "arrival_prior_weight": 0.1,
     "amplitude_ratio_weight": 0.01,
-    "co_prediction_cycle_weight": 0.3
+    "co_prediction_cycle_weight": 0.0
   },
   "augment": {
     "enabled": true,
