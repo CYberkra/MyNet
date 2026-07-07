@@ -1,8 +1,11 @@
 from pathlib import Path
 import json,csv,random,sys,platform
+import os
+os.environ.setdefault('TORCHDYNAMO_DISABLE', '1')
+os.environ.setdefault('PYTORCH_NO_DYNAMO', '1')
 import numpy as np
 import torch
-from torch.utils.data import Dataset,DataLoader
+from torch.utils.data import Dataset,DataLoader,ConcatDataset,WeightedRandomSampler
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[1]
@@ -42,6 +45,39 @@ def normalize_raw_channel_3d(x, cfg):
 def resolve_data_root(cfg):
     data_root=Path(cfg.get('data_root','data'))
     return data_root if data_root.is_absolute() else ROOT/data_root
+
+
+def build_mixed_train_loader(train_real, train_sim, batch_size, sim_ratio, num_workers=0):
+    """Build a train loader with an actual configurable real/sim sampling ratio."""
+    combined = ConcatDataset([train_real.dataset, train_sim.dataset])
+    real_n = len(train_real.dataset)
+    sim_n = len(train_sim.dataset)
+    ratio = float(max(0.0, min(1.0, sim_ratio)))
+    if real_n <= 0 or sim_n <= 0:
+        return DataLoader(combined, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    real_weight = (1.0 - ratio) / max(real_n, 1)
+    sim_weight = ratio / max(sim_n, 1)
+    weights = torch.cat([
+        torch.full((real_n,), real_weight, dtype=torch.float32),
+        torch.full((sim_n,), sim_weight, dtype=torch.float32),
+    ])
+    sampler = WeightedRandomSampler(weights, num_samples=real_n + sim_n, replacement=True)
+    return DataLoader(combined, batch_size=batch_size, sampler=sampler, num_workers=num_workers)
+
+
+OPTIONAL_COMPONENT_ARRAY_ALIASES = {
+    'Y_air': ('Y_air', 'y_air', 'air_only', 'air_only_bscan'),
+    'Y_target_without_G': ('Y_target_without_G', 'y_target_without_g'),
+    'X_clean': ('X_clean', 'x_clean', 'clean', 'clean_bscan', 'x_target_clean'),
+    'G_target': ('G_target', 'g_target'),
+}
+
+
+def _load_optional_component_array(z, aliases):
+    for key in aliases:
+        if key in z.files:
+            return z[key].astype(np.float32)
+    return None
 
 class DS(Dataset):
     def __init__(self,split,cfg):
@@ -164,6 +200,16 @@ class DS(Dataset):
         pres_valid=F.interpolate(pres_valid[None,None],(1,W),mode='nearest')[0,0]
         lw=F.interpolate(lw[None,None,None],(1,W),mode='nearest')[0,0,0]
         weak=F.interpolate(weak[None,None,None],(1,W),mode='nearest')[0,0,0]
+        component_tensors = {}
+        for batch_key, aliases in OPTIONAL_COMPONENT_ARRAY_ALIASES.items():
+            arr = _load_optional_component_array(z, aliases)
+            if arr is None or arr.ndim != 2:
+                continue
+            t = torch.from_numpy(arr[None]).float()
+            t = F.interpolate(t[None], (H, W), mode='bilinear', align_corners=False)[0]
+            t = compress_raw(t, self.cfg.get('input_log_scale', 1e-3))
+            t = normalize_raw_channel_3d(t, self.cfg)
+            component_tensors[batch_key] = t
         lp=self.cfg.get('loss',{})
         if float(lp.get('label_weight_power',1.0)) != 1.0:
             lw=lw.clamp(0.0,1.0).pow(float(lp.get('label_weight_power',1.0)))
@@ -173,7 +219,9 @@ class DS(Dataset):
         x,y,pres,pres_valid,lw,ignore=self.augment_train(x,y,pres,pres_valid,lw,ignore)
         core_thr=float(self.cfg.get('loss',{}).get('core_threshold',0.55))
         y_core=(y>=core_thr).float()
-        return {'x':x,'y':y,'y_core':y_core,'presence':pres,'presence_valid':pres_valid,'weight':lw,'ignore_mask':ignore,'id':r['sample_id'],'line':r['line']}
+        sample = {'x':x,'y':y,'y_core':y_core,'presence':pres,'presence_valid':pres_valid,'weight':lw,'ignore_mask':ignore,'id':r['sample_id'],'line':r['line']}
+        sample.update(component_tensors)
+        return sample
 
 def dice_loss_from_prob(pred,target,weight):
     eps=1e-6; inter=(pred*target*weight).sum((1,2,3)); den=((pred+target)*weight).sum((1,2,3))+eps
@@ -248,10 +296,21 @@ def compute_loss(model,b,device,cfg):
 
     # GprMambaSep model — use extended decomposition losses
     if hasattr(output, 'A_hat') and output.A_hat is not None:
-        from pgdacsnet.losses_pgda import compute_segmentation_losses as compute_seg
         from scripts.losses_gprmambasep import compute_gprmambasep_loss
-        batch = {'x': x, 'y': y, 'y_core': y_core, 'presence': pres, 'presence_valid': pres_valid,
-                 'weight': lw, 'valid_pix': valid_pix, 'valid_denom': valid_denom}
+        batch = {
+            'x': x,
+            'y': y,
+            'y_core': y_core,
+            'presence': pres,
+            'presence_valid': pres_valid,
+            'weight': lw,
+            'valid_pix': valid_pix,
+            'valid_denom': valid_denom,
+            'ignore_mask': ignore,
+        }
+        for key in OPTIONAL_COMPONENT_ARRAY_ALIASES:
+            if key in b:
+                batch[key] = b[key].to(device)
         total_loss, parts = compute_gprmambasep_loss(output, batch, cfg, model, stage3=bool(cfg.get('stage3', False)))
         return total_loss, parts
 
@@ -290,13 +349,18 @@ def reduce_parts(parts):
     if not parts: return {'loss':float('nan')}
     return {k:float(np.mean([p[k] for p in parts])) for k in parts[0]}
 
-def run_epoch(model,loader,device,cfg,opt=None):
-    is_train=opt is not None; model.train(is_train); parts=[]
+def run_epoch(model,loader,device,cfg,opt=None,scaler=None):
+    is_train=opt is not None; model.train(is_train); parts=[]; amp_enabled=bool(cfg.get('amp',False)) and device.type=='cuda'
     for b in loader:
         with torch.set_grad_enabled(is_train):
-            loss,p=compute_loss(model,b,device,cfg)
+            with torch.cuda.amp.autocast(enabled=amp_enabled):
+                loss,p=compute_loss(model,b,device,cfg)
             if is_train:
-                opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(),5.0); opt.step()
+                opt.zero_grad()
+                if scaler is not None and scaler.is_enabled():
+                    scaler.scale(loss).backward(); scaler.unscale_(opt); torch.nn.utils.clip_grad_norm_(model.parameters(),5.0); scaler.step(opt); scaler.update()
+                else:
+                    loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(),5.0); opt.step()
         parts.append(p)
     return reduce_parts(parts)
 
@@ -360,17 +424,20 @@ def run(cfg_path):
     json.dump(info,open(run_dir/'environment.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
     json.dump(cfg,open(run_dir/'used_config.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
     print('ENV',info,flush=True); print('DATA_ROOT',str(data_root),flush=True); print('TRAIN_LINES',cfg.get('train_lines'), 'VAL_LINES',cfg.get('val_lines'), 'TEST_LINES',cfg.get('test_lines'), flush=True); print('VAL_COUNT', len(val_ds), flush=True)
-    # Create combined train loader if sim data is configured
+    # Create mixed train loader with an actual configurable sim/real ratio
     if train_sim:
-        from torch.utils.data import ConcatDataset
-        combined = ConcatDataset([train_real.dataset, train_sim.dataset])
-        train = DataLoader(combined, batch_size=cfg['batch_size'], shuffle=True, num_workers=0)
-        print(f'TRAIN combined: {len(combined)} samples (real={len(train_real.dataset)}, sim={len(train_sim.dataset)})')
+        train = build_mixed_train_loader(
+            train_real,
+            train_sim,
+            batch_size=cfg['batch_size'],
+            sim_ratio=sim_ratio,
+            num_workers=0,
+        )
+        print(f'TRAIN mixed-ratio: real={len(train_real.dataset)} sim={len(train_sim.dataset)} sim_ratio={sim_ratio:.3f}')
     else:
         train = train_real
     for ep in range(1,cfg['epochs']+1):
         tr=run_epoch(model,train,device,cfg,opt)
-        va=run_epoch(model,val,device,cfg,None) if len(val_ds)>0 else {'loss': float('nan')}
         va=run_epoch(model,val,device,cfg,None) if len(val_ds)>0 else {'loss': float('nan')}
         rec={'epoch':ep,'device':str(device)}; rec.update({f'train_{k}':v for k,v in tr.items()}); rec.update({f'val_{k}':v for k,v in va.items()})
         hist.append(rec); print(rec,flush=True)

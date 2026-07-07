@@ -26,16 +26,13 @@ The core challenge: low-frequency airborne GPR suffers from strong clutter (dire
 The full research plan is in `UavGPR_机器学习背景杂波抑制全项研究计划.docx`.
 Extract text via pandoc or python-docx (see docx skill).
 
-## Current State (2026-07-03)
+## Current State (2026-07-04)
 
 **batch_001**: 12 case (LINE9_STYLE_001~010 + TERRAIN_011~012)  
 全部跑完 128/128 道 → QC GREEN → promote 到 `05_accepted_dataset/` ✅  
 **trainset_v1_0_line9_style_12cases**: 已导出（13 case × 128 道 = 1664 trace，含原始 LINE9_STYLE_V1）  
-**batch_002_depth_30cases**: 30 深度变体 case 已生成（6-24m, 70% flat + 30% terrain），待仿真  
-**FiLM/UDA 实验**:
-- v1.8b FiLM (无特征): 50 epoch 训练 → 实测 0% pick rate（预期内）
-- v1.8b FiLM + terrain features: 50 epoch 训练 → MAE 256ns（略改善）
-- UDA (域自适应): 域损失 0.91→0.43，对抗训练有效但实测仍需深度多样数据
+**batch_002_depth_30cases**: 30 深度变体 case，**已用修后生成器重生成**（坐标修正，天线不再埋入地层），preflight 19项全 PASS ✅  
+**batch_003**: 24 case（浅层干扰+中深度+hard negative）从 WSL 迁入，**仿真进行中 ✅**（独立 CMD 窗口运行）
 
 **V3.x 控制实验系列**:
 - **V3.2**: 宽域300m + PML60，验证X来自侧边界反射 ✅
@@ -69,8 +66,8 @@ Extract text via pandoc or python-docx (see docx skill).
 生成 → preflight_check → gprMax 跑 → after_run_qc → GREEN → promote_to_accepted
 ```
 
-**跑前预检 18 项**（不全 PASS 不进 gprMax）：
-pml_cells, domain_grid, H5禁止, noair禁止, triangle平滑, source/rx不在PML, 侧边界>700ns, 标签完整性, generator记录, 标签非平坦(range>0.5ns), TX/RX高于地面(gap>1m), 三角形不超出domain_y
+**跑前预检 19 项**（不全 PASS 不进 gprMax）：
+pml_cells, domain_grid, H5禁止, noair禁止, triangle平滑, 所有三角形必须 averaging=y, `#`注释语法, source/rx不在PML(x/y上下边界), 侧边界>700ns(空气速度+地层速度), 标签完整性, generator记录, 标签非平坦(range>0.5ns), TX/RX按几何交点检测是否埋入介质, 三角形不超出domain_y
 
 **结果分级**：
 GREEN_ACCEPTED → accepted_dataset / YELLOW_REVIEW → 人工审查 / RED_REJECTED → failed / GRAY_DEBUG_ONLY → 诊断
@@ -140,6 +137,16 @@ C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中
 | FFT ringing | `np.interp` 线性插值 |
 | P99 独立计算 | 改为全局统一 |
 | y_mask 时间错位 | 加空气走时，用有效平均速度 ~0.069 m/ns |
+| generate_cases 坐标系反(2026-07-04) | SURFACE_BASE=0, 天线在空气区 |
+| preflight min(y)推断地面(2026-07-04) | 改为按几何交点检测 |
+| preflight PML只检查上边(2026-07-04) | 同时检查 y > domain_y - PML_y1 |
+| run_batch 重复-n(2026-07-04) | 合并为一次 |
+| run_batch VENV_PYTHON无.parent(2026-07-04) | 改为 Path(VENV_PYTHON) |
+| run_batch QC失败仍completed(2026-07-04) | QC非零→qc_failed |
+| promote缺bscan只warning(2026-07-04) | 必须存在，否则exit(1) |
+| promote metadata从任意模板复制(2026-07-04) | 改为从run_info真实模板 |
+| after_run_qc不查本地labels(2026-07-04) | 优先检查case_run_dir/labels |
+| sim_report不支持raw/子目录(2026-07-04) | 自动识别run_dir/raw/ |
 
 ## SimLab (仿真工具)
 
@@ -148,7 +155,9 @@ C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中
 **gprMax**: v3.1.7 at `E:\gprMax\gprMax-v.3.1.7`，Python: `.venv\Scripts\python.exe`  
 **GPU**: `SafeGprMaxRunner` 自动注入 MSVC + CUDA 路径到 PATH，无需 conda 或 vcvars
 
-**⚠️ GPU 复杂模型**: 带介电平滑的复杂模型（643+ box）直接 `python -m gprMax` 会因 MSVC INCLUDE/LIB 路径缺失导致 nvcc 编译失败。**必须使用 SafeGprMaxRunner**。
+**⚠️ GPU 复杂模型**: 带介电平滑的复杂模型（643+ box）直接 `python -m gprMax` 会因 MSVC INCLUDE/LIB 路径缺失导致 nvcc 编译失败。**必须使用 SafeGprMaxRunner** 或 `run_batch.py`（内部通过 `_inject_msvc_paths()` 注入 PATH/INCLUDE/LIB）。
+
+**⚠️ MSVC 路径注入是最易被忽略的陷阱**: Bash 下直接 `python -m gprMax raw.in -gpu` 进程会挂死、GPU 0% 占用。详细排错见 `.claude/skills/gprmax-usage/` 技能。
 
 **⚠️ .in 文件注释语法**: gprMax v3.1.7 `check_cmd_names` 会解析所有 `#` 行并分割 `:`。纯注释行（无冒号如 `# --- geometry boxes ---`）导致 IndexError。必须用 `#:` 或移除该行。
 
@@ -220,8 +229,9 @@ python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
 | 3: FiLM v1.8b | ✅ 完成 | +terrain features → MAE 256ns（略改善）|
 | 4: UDA 训练 | ✅ 完成 | 域损失 0.91→0.43，对抗训练有效 |
 | 5: Pilot-Train 100 场景 | 🔄 进行中(17/100) | 续跑脚本 `scripts/run_pilot_train_resumable.py` |
-| 6: batch_002 深度多样仿真 | ⏳ 待跑 | 30 场景（6-24m），解决深度泛化 |
-| 7: v4 LOLO-CV | ⏳ Pilot-Train 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
+| 6: batch_002 深度多样仿真 | ✅ 完成 | 30 场景已用修后生成器重生成 |
+| 7: batch_003 深度泛化仿真 | 🔄 进行中 | 24 case（浅层干扰+中深度+hard negative）|
+| 8: v4 LOLO-CV | ⏳ batch_003 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
 
 ## Architecture Reference
 
@@ -321,17 +331,19 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers
 ### 仿真数据管理脚本
 | 脚本 | 用法 | 作用 |
 |------|------|------|
-| `tools/preflight_check.py` | `python ... <case_dir>` | 跑前 18 项预检 |
+| `tools/preflight_check.py` | `python ... <case_dir>` | 跑前 **19 项**预检 |
 | `tools/generate_cases.py` | `python ... <batch_id> --n-cases 30 --depth-range 6 24` | 参数化 case 生成器（深度/地形/标签）|
-| `tools/run_batch.py` | `python ... <batch_dir>` | 批量运行（自动 preflight + gprMax + QC，带 TDR 保护和续跑）|
+| `tools/run_batch.py` | `python ... <batch_dir>` | 批量运行（自动 preflight + gprMax + QC，带 MSVC 注入、TDR 保护和续跑）|
 | `tools/run_batch_standalone.py` | 双击桌面 `.bat` 或独立终端 | 独立批量仿真脚本（不依赖 Claude Code）|
 | `tools/gpu_keepalive.py` | `python ... [--interval 15]` | TDR 预防 sidecar（nvidia-smi 周期性轮询）|
 | `tools/after_run_qc.py` | `python ... <run_dir>` | 跑后质检（6 产物，含几何模型图）|
 | `tools/promote_to_accepted.py` | `python ... <run_dir>` | GREEN → accepted_dataset |
+| `scripts/run_batch003.bat` | 双击 | 独立 CMD 窗口启动 batch_003 仿真 |
 
 ### Skills (手动调用)
 | Skill | 触发词 | 作用 |
 |-------|--------|------|
+| `/gprmax-usage` | "跑仿真""GPU没占用" | gprMax 仿真全流程指南，自动加载 |
 | `/train-launch` | "开始训练" | 一键安全启动训练 |
 | `/gpu-health` | "GPU状态" | GPU 健康快诊 |
 | `/lolo-eval` | "评估 Line9" | LOLO-CV 集成评估 |

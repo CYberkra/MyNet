@@ -115,13 +115,18 @@ def sim_supervised_component_loss(
     Y_air: torch.Tensor | None = None,
     Y_target_without_G: torch.Tensor | None = None,
     X_clean: torch.Tensor | None = None,
+    G_target: torch.Tensor | None = None,
 ) -> dict[str, torch.Tensor]:
-    """L2: L1 supervision on each component when ground-truth is available.
+    """L2: Component-aware supervision when simulation targets are available.
 
     Returns dict with keys:
         'a_l1', 's_l1', 'g_l1' — per-component L1 losses (zero if target missing).
 
-    Only computed for provided targets. Missing targets yield zero loss.
+    Semantics follow the locked signal model:
+      - Y_air supervises A_hat.
+      - Y_target_without_G supervises S_hat when available.
+      - X_clean corresponds to S + G, so it supervises (S_hat + G_hat), not pure G_hat.
+      - G_hat is only directly supervised when an explicit pure-G target is provided.
     """
     zero = (A_hat * 0.0).mean()
 
@@ -135,8 +140,10 @@ def sim_supervised_component_loss(
     else:
         s_l1 = zero
 
-    if X_clean is not None:
-        g_l1 = F.l1_loss(G_hat, X_clean)
+    if G_target is not None:
+        g_l1 = F.l1_loss(G_hat, G_target)
+    elif X_clean is not None:
+        g_l1 = F.l1_loss(S_hat + G_hat, X_clean)
     else:
         g_l1 = zero
 
@@ -349,19 +356,21 @@ def compute_gprmambasep_loss(
 ) -> tuple[torch.Tensor, dict[str, float]]:
     """Compute the combined GPRMambaSep loss.
 
-    Calls compute_segmentation_losses on the G-head outputs, then adds
+    Calls compute_segmentation_losses on the standard PGDA heads, then adds
     L1-L5 (and optionally L6 for Stage 3).
 
     Args:
-        outputs: Dict with keys:
-            - 'G_mask_logits' / 'G_presence_logits' / 'G_center_logits' —
-              segmentation heads for the G component (fed to compute_segmentation_losses)
+        outputs: Dict-like object with standard keys:
+            - 'mask_logits' / 'presence_logits' / 'center_logits'
             - 'A_hat', 'S_hat', 'G_hat' — component predictions (B, 1, H, W)
+          Backward-compatible aliases 'G_mask_logits' / 'G_presence_logits' /
+          'G_center_logits' are also accepted.
         batch: Dataset batch dict. Keys used:
             - 'y', 'y_core', 'presence', 'presence_valid', 'weight' (for segmentation loss)
             - 'valid_pix', 'valid_denom' (for segmentation loss)
             - 'x' — the input B-scan (Y_full)
             - 'Y_air', 'Y_target_without_G', 'X_clean' (optional, for L2)
+            - 'G_target' (optional explicit pure-G supervision for L2)
             - 'altitude' (optional, for L4)
         cfg: Training config dict with loss weights under cfg['loss'].
         model: The GPRMambaSep model instance. Required for Stage 3 (L6).
@@ -377,25 +386,38 @@ def compute_gprmambasep_loss(
     device = batch["x"].device if isinstance(batch.get("x"), torch.Tensor) else outputs.get("A_hat").device
     dtype = outputs.get("A_hat", outputs.get("G_hat")).dtype if any(outputs.get(k) is not None for k in ("A_hat", "G_hat")) else torch.float32
 
-    # ---- Helper: build a zero tensor for missing items ----
     def _zero():
         ref = batch.get("x", outputs.get("G_hat"))
         if ref is None:
             return torch.tensor(0.0, device=device, dtype=dtype)
         return ref.mean() * 0.0
 
+    def _get_output(*names: str):
+        for name in names:
+            value = outputs.get(name)
+            if value is not None:
+                return value
+        return None
+
+    def _loss_weight(*names: str, default: float = 0.0) -> float:
+        for name in names:
+            if name in lp:
+                return float(lp.get(name, default))
+        return float(default)
+
     zero = _zero()
     parts: dict[str, torch.Tensor] = {}
     total = zero.clone()
 
-    # ---- Segmentation losses on G head ----
-    # Only run if G_mask_logits is present (compute_segmentation_losses
-    # requires mask_logits to be non-None).
-    if outputs.get("G_mask_logits") is not None:
+    # ---- Segmentation losses on standard G/PGDA heads ----
+    mask_logits = _get_output("mask_logits", "G_mask_logits")
+    presence_logits = _get_output("presence_logits", "G_presence_logits")
+    center_logits = _get_output("center_logits", "G_center_logits")
+    if mask_logits is not None:
         seg_outputs = {
-            "mask_logits": outputs.get("G_mask_logits"),
-            "presence_logits": outputs.get("G_presence_logits"),
-            "center_logits": outputs.get("G_center_logits"),
+            "mask_logits": mask_logits,
+            "presence_logits": presence_logits,
+            "center_logits": center_logits,
         }
         seg_parts = compute_segmentation_losses(seg_outputs, batch, cfg)
         seg_weight = float(lp.get("g_segmentation_weight", 1.0))
@@ -417,15 +439,28 @@ def compute_gprmambasep_loss(
                 }.get(k, None)
                 w = float(lp.get(w_key, 1.0)) if w_key else 1.0
                 total = total + seg_weight * w * v
+    else:
+        for k in (
+            "seg_band_bce",
+            "seg_band_dice",
+            "seg_core_bce",
+            "seg_outside_penalty",
+            "seg_hard_negative",
+            "seg_presence_loss",
+            "seg_centerline_l1",
+            "seg_continuity",
+            "seg_spec_loss",
+        ):
+            parts[k] = zero.detach()
 
     # ---- Extract component tensors ----
     A_hat = outputs.get("A_hat")
     S_hat = outputs.get("S_hat")
     G_hat = outputs.get("G_hat")
-    Y_full = batch.get("x")  # (B, C, H, W) — use first channel
+    Y_full = batch.get("x")
 
     if Y_full is not None and Y_full.dim() == 4 and Y_full.shape[1] > 1:
-        Y_full = Y_full[:, :1]  # take first channel
+        Y_full = Y_full[:, :1]
 
     # ---- L1: Self-consistency loss ----
     l1_weight = float(lp.get("self_consistency_weight", 0.0))
@@ -437,12 +472,13 @@ def compute_gprmambasep_loss(
         parts["self_consistency"] = zero.detach()
 
     # ---- L2: Supervised component loss ----
-    l2_weight = float(lp.get("sim_supervised_component_weight", 0.0))
+    l2_weight = _loss_weight("sim_supervised_component_weight", "sim_supervised_weight", default=0.0)
     if l2_weight > 0 and all(t is not None for t in (A_hat, S_hat, G_hat)):
         Y_air = batch.get("Y_air")
         Y_tgt = batch.get("Y_target_without_G")
         X_clean = batch.get("X_clean")
-        l2_parts = sim_supervised_component_loss(A_hat, S_hat, G_hat, Y_air, Y_tgt, X_clean)
+        G_target = batch.get("G_target")
+        l2_parts = sim_supervised_component_loss(A_hat, S_hat, G_hat, Y_air, Y_tgt, X_clean, G_target)
         l2_total = l2_parts["a_l1"] + l2_parts["s_l1"] + l2_parts["g_l1"]
         parts["l2_a_l1"] = l2_parts["a_l1"].detach()
         parts["l2_s_l1"] = l2_parts["s_l1"].detach()
@@ -454,7 +490,7 @@ def compute_gprmambasep_loss(
         parts["l2_g_l1"] = zero.detach()
 
     # ---- L3: Contrastive separation loss ----
-    l3_weight = float(lp.get("contrastive_separation_weight", 0.0))
+    l3_weight = _loss_weight("contrastive_separation_weight", "contrastive_weight", default=0.0)
     if l3_weight > 0 and all(t is not None for t in (A_hat, G_hat)):
         if discriminator is None:
             discriminator = ComponentDiscriminator(input_dim=1, hidden_dim=32).to(device)
@@ -467,7 +503,7 @@ def compute_gprmambasep_loss(
         parts["contrastive_separation"] = zero.detach()
 
     # ---- L4: Arrival time prior loss ----
-    l4_weight = float(lp.get("arrival_time_prior_weight", 0.0))
+    l4_weight = _loss_weight("arrival_time_prior_weight", "arrival_prior_weight", default=0.0)
     if l4_weight > 0 and G_hat is not None:
         l4_loss = arrival_time_prior_loss(G_hat, batch, cfg)
         parts["arrival_time_prior"] = l4_loss.detach()
@@ -476,9 +512,9 @@ def compute_gprmambasep_loss(
         parts["arrival_time_prior"] = zero.detach()
 
     # ---- L5: Amplitude ratio prior loss ----
-    l5_weight = float(lp.get("amplitude_ratio_prior_weight", 0.0))
+    l5_weight = _loss_weight("amplitude_ratio_prior_weight", "amplitude_ratio_weight", default=0.0)
     if l5_weight > 0 and all(t is not None for t in (A_hat, S_hat)):
-        l5_loss = amplitude_ratio_prior_loss(A_hat, S_hat, weight=1.0)  # weight applied via l5_weight
+        l5_loss = amplitude_ratio_prior_loss(A_hat, S_hat, weight=1.0)
         parts["amplitude_ratio_prior"] = l5_loss.detach()
         total = total + l5_weight * l5_loss
     else:
@@ -493,7 +529,6 @@ def compute_gprmambasep_loss(
     else:
         parts["co_prediction_cycle"] = zero.detach()
 
-    # ---- Parts dict: convert to float ----
     parts_float: dict[str, float] = {"loss": float(total.detach().cpu())}
     for k, v in parts.items():
         parts_float[k] = float(v.cpu())

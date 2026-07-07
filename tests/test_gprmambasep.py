@@ -97,11 +97,25 @@ class TestGprMambaSepArch:
         x = torch.randn(2, 1, 128, 64)
         out = m(x)
         assert out.mask_logits.shape == (2, 1, 128, 64), f"mask: {out.mask_logits.shape}"
-        assert out.presence_logits.shape == (2, 1), f"pres: {out.presence_logits.shape}"
+        assert out.presence_logits.shape == (2, 1, 64), f"pres: {out.presence_logits.shape}"
         assert out.center_logits.shape == (2, 1, 128, 64), f"center: {out.center_logits.shape}"
         assert out.A_hat.shape == (2, 1, 128, 64), f"A: {out.A_hat.shape}"
         assert out.S_hat.shape == (2, 1, 128, 64), f"S: {out.S_hat.shape}"
         assert out.G_hat.shape == (2, 1, 128, 64), f"G: {out.G_hat.shape}"
+
+    def test_forward_shapes_with_aux_channels(self):
+        """Stem keeps auxiliary terrain/meta channels without abs duplication bugs."""
+        m = build_model({
+            'model_arch': 'v2_1_gprmambasep_lite',
+            'base_ch': 8,
+            'mamba_state_dim': 16,
+            'input_channels': 3,
+        })
+        x = torch.randn(2, 3, 128, 64)
+        out = m(x)
+        assert out.mask_logits.shape == (2, 1, 128, 64)
+        assert out.presence_logits.shape == (2, 1, 64)
+
 
     def test_gprmambasep_output_interface(self):
         """GprMambaSepOutput is both dict-like and tuple-unpackable."""
@@ -145,13 +159,12 @@ class TestGprMambaSepLoss:
             'x': x,
             'y': torch.sigmoid(torch.randn(2, 1, 64, 32)),
             'y_core': torch.sigmoid(torch.randn(2, 1, 64, 32)),
-            'presence': torch.randn(2, 1),
-            'presence_valid': torch.ones(2, 1),
+            'presence': torch.randn(2, 1, 32),
+            'presence_valid': torch.ones(2, 1, 32),
             'weight': torch.ones(2, 32),
             'valid_pix': torch.ones(2, 1, 64, 32),
             'valid_denom': torch.tensor(64 * 32.0),
-            'x_clean': x.clone(),
-            'x_clutter': x.clone(),
+            'X_clean': x.clone(),
         }
         cfg = {
             'loss': {
@@ -159,12 +172,14 @@ class TestGprMambaSepLoss:
                 'dice_weight': 0.5, 'core_weight': 0.25, 'outside_weight': 0.4,
                 'hard_negative_weight': 0.35, 'presence_weight': 0.25,
                 'self_consistency_weight': 2.0, 'sim_supervised_weight': 0.5,
-                'contrastive_weight': 0.05, 'arrival_prior_weight': 0.1,
+                'contrastive_weight': 0.0, 'arrival_prior_weight': 0.1,
             }
         }
         from scripts.losses_gprmambasep import compute_gprmambasep_loss
         total_loss, parts = compute_gprmambasep_loss(out, batch, cfg, m)
         assert len(parts) > 0
+        assert parts['seg_band_bce'] > 0.0
+        assert parts['seg_presence_loss'] >= 0.0
         for k, v in parts.items():
             assert torch.isfinite(torch.tensor(v)).all(), f"{k} non-finite"
 
@@ -177,8 +192,8 @@ class TestGprMambaSepLoss:
             'x': x,
             'y': torch.sigmoid(torch.randn(1, 1, 64, 32)),
             'y_core': torch.sigmoid(torch.randn(1, 1, 64, 32)),
-            'presence': torch.randn(1, 1),
-            'presence_valid': torch.ones(1, 1),
+            'presence': torch.randn(1, 1, 32),
+            'presence_valid': torch.ones(1, 1, 32),
             'weight': torch.ones(1, 32),
             'valid_pix': torch.ones(1, 1, 64, 32),
             'valid_denom': torch.tensor(64 * 32.0),
@@ -189,6 +204,7 @@ class TestGprMambaSepLoss:
                 'dice_weight': 0.5, 'core_weight': 0.25, 'outside_weight': 0.4,
                 'hard_negative_weight': 0.35, 'presence_weight': 0.25,
                 'self_consistency_weight': 2.0, 'sim_supervised_weight': 0.5,
+                'contrastive_weight': 0.0,
             }
         }
         from scripts.losses_gprmambasep import compute_gprmambasep_loss

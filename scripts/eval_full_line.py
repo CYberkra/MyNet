@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from pgdacsnet.model_raw_unet import build_model, compress_raw
+from pgdacsnet.model_interfaces import unpack_pgda_output
 from pgdacsnet.font_utils import get_chinese_font
 FONT=get_chinese_font()
 
@@ -39,11 +40,10 @@ def normalize_raw_channel_4d(x, cfg):
     return x
 
 def unpack_model_output(out):
-    if isinstance(out, (tuple, list)) and len(out) >= 3:
-        return out[0], out[1], out[2]
-    if isinstance(out, (tuple, list)) and len(out) >= 2:
-        return out[0], out[1], None
-    raise ValueError('model output must include mask and presence logits')
+    mask_logits, presence_logits, center_logits = unpack_pgda_output(out)
+    if mask_logits is None or presence_logits is None:
+        raise ValueError('model output must include mask and presence logits')
+    return mask_logits, presence_logits, center_logits
 
 def resolve_data_root(data_root=None, cfg=None):
     value=data_root or (cfg or {}).get('data_root','data')

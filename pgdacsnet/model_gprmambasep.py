@@ -3,28 +3,26 @@ pgdacsnet/model_gprmambasep.py
 
 GprMambaSep: Multi-decoder architecture for separable A/S/G clutter suppression.
 
-Architecture overview (from research plan TASK 4):
+Architecture overview (current implementation direction):
 
 1. Shared encoder (4 stages, 3 MaxPool):
-   ConvNeXtStage(2→16ch) → MaxPool → ConvNeXtStage(16→32ch) + Mamba2DBlock(32ch)
-   → MaxPool → ConvNeXtStage(32→64ch) + Mamba2DBlock(64ch)
-   → MaxPool → ConvNeXtStage(64→128ch) + Mamba2DBlock(128ch)
-
-   The Mamba2DBlock at each stage provides a skip-connection feature that can
-   be injected into the decoders (currently unused; skips are a future extension).
+   ConvNeXtStage(stem→c) → MaxPool → ConvNeXtStage(c→2c) + Mamba2DBlock(2c)
+   → MaxPool → ConvNeXtStage(2c→4c) + Mamba2DBlock(4c)
+   → MaxPool → ConvNeXtStage(4c→8c) + Mamba2DBlock(8c)
 
 2. Decomposition bottleneck:
-   DilatedBottleneck(128ch) → Mamba2DBlock(128ch) → DilatedBottleneck(128ch)
-   → 1x1 split conv (128→3×64) → 3× ConvNeXtBlock(64ch) refinement blocks
+   DilatedBottleneck(8c) → Mamba2DBlock(8c) → DilatedBottleneck(8c)
+   → 1x1 split conv (8c→3×4c) → 3× ConvNeXtBlock(4c) refinement blocks
 
-3. Three decoders (A / S / G), same topology, unique weights:
-   TransposedConv(64→32ch) → ConvNeXtStage → TransposedConv(32→16ch)
-   → ConvNeXtStage → 1×1(16→1ch) → bilinear upsample to input resolution
+3. Three decoders (A / S / G):
+   each returns both a 1-channel component reconstruction and the last c-channel
+   feature map before projection. The G branch feature map feeds the standard PGDA
+   task heads.
 
-4. Task heads on G_decoder 16ch features:
-   - Mask: 1×1 conv (16→1ch)
-   - Center: CenterRefineHead(16ch)
-   - Presence: global pool → FC(16→1)
+4. Task heads on G branch features:
+   - Mask: 1×1 conv (c→1)
+   - Center: CenterRefineHead(c)
+   - Presence: per-trace logits (B, 1, W) via height pooling + 1×1 conv
 
 Signal model (locked):
     A = air-coupled direct wave
@@ -34,40 +32,62 @@ Signal model (locked):
     Y_full = A + S + G
     A_hat, S_hat, G_hat = GprMambaSep(x)
 
-    mask_logits  ~ G_hat activation (binary segmentation of target signal)
+    mask_logits   ~ G_hat activation (binary segmentation of target signal)
     center_logits ~ G_hat curve center refinement
-    presence_logits ~ per-sample target presence indicator
+    presence_logits ~ per-trace target presence indicator
 """
+
+from __future__ import annotations
+
+from typing import Tuple
 
 import torch
 from torch import nn
 import torch.nn.functional as F
-from typing import Optional, Tuple
 
 from pgdacsnet.model_raw_unet import (
     ConvNeXtStage,
     ConvNeXtBlock,
     DilatedBottleneck,
     CenterRefineHead,
-    SEBlock,
-    SpectralGatingModule,
 )
 from pgdacsnet.model_mamba import Mamba2DBlock
 from pgdacsnet.model_interfaces import GprMambaSepOutput
+
+
+class _ComponentDecoder(nn.Module):
+    """Lightweight decoder returning both component image and task features."""
+
+    def __init__(self, base_ch: int, dropout: float = 0.0):
+        super().__init__()
+        c = int(base_ch)
+        dp = float(dropout)
+        self.up1 = nn.ConvTranspose2d(c * 4, c * 2, 2, 2)
+        self.stage1 = ConvNeXtStage(c * 2, c * 2, depth=2, dropout=dp)
+        self.up2 = nn.ConvTranspose2d(c * 2, c, 2, 2)
+        self.stage2 = ConvNeXtStage(c, c, depth=2, dropout=dp)
+        self.proj = nn.Conv2d(c, 1, 1)
+
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        x = self.up1(x)
+        x = self.stage1(x)
+        x = self.up2(x)
+        feat = self.stage2(x)
+        out = self.proj(feat)
+        return out, feat
 
 
 class GprMambaSep(nn.Module):
     """Separable A/S/G clutter suppression network with shared encoder.
 
     Uses a shared ConvNeXt-Mamba2D encoder to extract multi-scale features,
-    a decomposition bottleneck that splits the latent into three 64-channel
-    streams (A, S, G), and three independent decoders that reconstruct each
-    component at full resolution.
+    a decomposition bottleneck that splits the latent into three 4c-channel
+    streams (A, S, G), and three decoders that reconstruct each component.
 
-    Task heads on the G-decoder provide:
-    - mask_logits:  binary target segmentation (1-ch map)
+    Task heads on the G branch provide:
+    - mask_logits: binary target segmentation (1-ch map)
     - center_logits: curve center refinement (1-ch map)
-    - presence_logits: per-sample target presence (scalar)
+    - presence_logits: per-trace target presence (B, 1, W)
     """
 
     def __init__(
@@ -76,179 +96,138 @@ class GprMambaSep(nn.Module):
         mamba_state_dim: int = 32,
         mamba_d_conv: int = 4,
         decoder_dropout: float = 0.0,
+        input_channels: int = 1,
     ):
         super().__init__()
         c = int(base_ch)
         d_state = int(mamba_state_dim)
         d_conv = int(mamba_d_conv)
         dp = float(decoder_dropout)
+        self.input_channels = int(input_channels)
+        stem_channels = self.input_channels + 1  # raw -> raw + |raw|, plus auxiliaries
 
         # ---- Shared encoder ----
-        # Stage 1: 2 → c  (input = raw + |raw|, no Mamba2D here)
-        self.e1 = ConvNeXtStage(2, c, depth=2, dropout=dp)
+        self.e1 = ConvNeXtStage(stem_channels, c, depth=2, dropout=dp)
         self.p = nn.MaxPool2d(2)
 
-        # Stage 2: c → 2c, with Mamba2DBlock for skip
         self.e2 = ConvNeXtStage(c, c * 2, depth=2, dropout=dp)
-        self.mamba_2c = Mamba2DBlock(c * 2, d_state=d_state, d_conv=d_conv)
+        self.mamba_2c = Mamba2DBlock(c * 2, d_state=d_state, d_conv=d_conv) if d_state > 0 else nn.Identity()
 
-        # Stage 3: 2c → 4c, with Mamba2DBlock for skip
         self.e3 = ConvNeXtStage(c * 2, c * 4, depth=2, dropout=dp)
-        self.mamba_4c = Mamba2DBlock(c * 4, d_state=d_state, d_conv=d_conv)
+        self.mamba_4c = Mamba2DBlock(c * 4, d_state=d_state, d_conv=d_conv) if d_state > 0 else nn.Identity()
 
-        # Stage 4: 4c → 8c, with Mamba2DBlock for skip
         self.e4 = ConvNeXtStage(c * 4, c * 8, depth=2, dropout=dp)
-        self.mamba_8c = Mamba2DBlock(c * 8, d_state=d_state, d_conv=d_conv)
+        self.mamba_8c = Mamba2DBlock(c * 8, d_state=d_state, d_conv=d_conv) if d_state > 0 else nn.Identity()
 
         # ---- Decomposition bottleneck ----
         self.bottleneck = nn.Sequential(
             DilatedBottleneck(c * 8),
-            Mamba2DBlock(c * 8, d_state=d_state, d_conv=d_conv),
+            Mamba2DBlock(c * 8, d_state=d_state, d_conv=d_conv) if d_state > 0 else nn.Identity(),
             DilatedBottleneck(c * 8),
         )
 
-        # Split conv: 8c → 3 × 4c (192 = 3 * 64 when c=16)
         self.split_conv = nn.Conv2d(c * 8, c * 4 * 3, 1)
-
-        # Refinement per branch: 3 × ConvNeXtBlock(4c)
         self.a_refine = nn.Sequential(*[ConvNeXtBlock(c * 4, dropout=dp) for _ in range(3)])
         self.s_refine = nn.Sequential(*[ConvNeXtBlock(c * 4, dropout=dp) for _ in range(3)])
         self.g_refine = nn.Sequential(*[ConvNeXtBlock(c * 4, dropout=dp) for _ in range(3)])
 
-        # ---- Three decoders (same topology, unique weights) ----
-        def _make_decoder():
-            """Build one A/S/G decoder with 2× upsampling + final scale_factor=2."""
-            return nn.Sequential(
-                # Step 1: 4c → 2c, 2× up
-                nn.ConvTranspose2d(c * 4, c * 2, 2, 2),
-                ConvNeXtStage(c * 2, c * 2, depth=2, dropout=dp),
-                # Step 2: 2c → c, 2× up
-                nn.ConvTranspose2d(c * 2, c, 2, 2),
-                ConvNeXtStage(c, c, depth=2, dropout=dp),
-                # Step 3: project to 1 channel and upsample to input resolution
-                nn.Conv2d(c, 1, 1),
-            )
+        # ---- Component decoders ----
+        self.decoder_a = _ComponentDecoder(c, dropout=dp)
+        self.decoder_s = _ComponentDecoder(c, dropout=dp)
+        self.decoder_g = _ComponentDecoder(c, dropout=dp)
 
-        self.decoder_a = _make_decoder()
-        self.decoder_s = _make_decoder()
-        self.decoder_g = _make_decoder()
-
-        # ---- Task heads on G-decoder intermediate features ----
-        # These operate on the 16ch features at H/2, W/2 resolution
-        # (the ConvNeXtStage right before the final 1×1 conv in decoder_g)
-        self.mask_head = nn.Conv2d(c, 1, 1)                  # 16→1
-        self.center_head = CenterRefineHead(c, dropout=dp)   # CenterRefineHead(16)
+        # ---- Task heads on G-decoder features ----
+        self.mask_head = nn.Conv2d(c, 1, 1)
+        self.center_head = CenterRefineHead(c, dropout=dp)
         self.pres_head = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1, None)),                   # (B, 16, 1, W) — pool height
-            nn.Conv2d(c, 1, 1),                                # (B, 1, 1, W)
+            nn.AdaptiveAvgPool2d((1, None)),
+            nn.Conv2d(c, 1, 1),
         )
 
-        # ---- Expose the G-decoder's inner 16ch ConvNeXtStage for task heads ----
-        # We hack around nn.Sequential by storing references (see forward)
-        self._g_decoder_up2_proj = self.decoder_g[3]  # ConvNeXtStage(c, c) at position 3
+    def _build_stem_input(self, x: torch.Tensor) -> torch.Tensor:
+        """Build raw-domain stem input safely when terrain channels are appended.
+
+        The first channel is always treated as raw radar amplitude. Any remaining
+        channels are appended unchanged as auxiliary terrain/metadata channels.
+        """
+        raw = x[:, :1]
+        aux = x[:, 1:] if x.shape[1] > 1 else None
+        parts = [raw, torch.abs(raw)]
+        if aux is not None and aux.shape[1] > 0:
+            parts.append(aux)
+        return torch.cat(parts, dim=1)
 
     def forward(self, x: torch.Tensor) -> GprMambaSepOutput:
         """Forward pass.
 
         Args:
-            x: Input B-scan of shape (B, 1, H, W).
+            x: Input B-scan of shape (B, C, H, W). Channel 0 is raw radar;
+               optional remaining channels are terrain/metadata features.
 
         Returns:
-            GprMambaSepOutput with all six fields.
+            GprMambaSepOutput with standard PGDA heads and A/S/G components.
         """
-        B, C_in, H, W = x.shape
+        _, _, h, w = x.shape
 
         # ---- Encoder (shared) ----
-        # Input: raw + |raw|
-        e1_in = torch.cat([x, torch.abs(x)], dim=1)  # (B, 2, H, W)
-        e1 = self.e1(e1_in)                          # (B, c, H, W)
-        p1 = self.p(e1)                              # (B, c, H/2, W/2)
+        e1_in = self._build_stem_input(x)
+        e1 = self.e1(e1_in)
+        p1 = self.p(e1)
 
-        e2_feat = self.e2(p1)                        # (B, 2c, H/2, W/2)
-        e2_skip = self.mamba_2c(e2_feat)             # (B, 2c, H/2, W/2) — reserved for future skip
-        p2 = self.p(e2_feat)                         # (B, 2c, H/4, W/4)
+        e2_feat = self.mamba_2c(self.e2(p1))
+        p2 = self.p(e2_feat)
 
-        e3_feat = self.e3(p2)                        # (B, 4c, H/4, W/4)
-        e3_skip = self.mamba_4c(e3_feat)             # (B, 4c, H/4, W/4)
-        p3 = self.p(e3_feat)                         # (B, 4c, H/8, W/8)
+        e3_feat = self.mamba_4c(self.e3(p2))
+        p3 = self.p(e3_feat)
 
-        e4_feat = self.e4(p3)                        # (B, 8c, H/8, W/8)
-        e4_skip = self.mamba_8c(e4_feat)             # (B, 8c, H/8, W/8)
+        e4_feat = self.mamba_8c(self.e4(p3))
 
         # ---- Bottleneck ----
-        b = self.bottleneck(e4_feat)                 # (B, 8c, H/8, W/8)
+        b = self.bottleneck(e4_feat)
 
         # ---- Split and refine ----
-        split = self.split_conv(b)                   # (B, 12c, H/8, W/8)
-        a_feat, s_feat, g_feat = split.chunk(3, dim=1)  # each (B, 4c, H/8, W/8)
+        split = self.split_conv(b)
+        a_feat, s_feat, g_feat = split.chunk(3, dim=1)
 
-        a_feat = self.a_refine(a_feat)               # (B, 4c, H/8, W/8)
-        s_feat = self.s_refine(s_feat)               # (B, 4c, H/8, W/8)
-        g_feat = self.g_refine(g_feat)               # (B, 4c, H/8, W/8)
+        a_feat = self.a_refine(a_feat)
+        s_feat = self.s_refine(s_feat)
+        g_feat = self.g_refine(g_feat)
 
-        # ---- Decoders (2× upsample per TConv = 4× total) ----
-        # TConv 64→32 stride 2: (B, 4c, H/8, W/8) → (B, 2c, H/4, W/4)
-        # ConvNeXtStage(2c→2c)
-        # TConv 32→16 stride 2: (B, 2c, H/4, W/4) → (B, c, H/2, W/2)
-        # ConvNeXtStage(c→c)
-        # 1×1 conv c→1: (B, c, H/2, W/2) → (B, 1, H/2, W/2)
-        # Final bilinear upsample: (B, 1, H/2, W/2) → (B, 1, H, W)
-        A_hat_raw = self.decoder_a(a_feat)           # (B, 1, H/2, W/2)
-        S_hat_raw = self.decoder_s(s_feat)           # (B, 1, H/2, W/2)
-        G_decoder_out = self.decoder_g(g_feat)         # (B, 1, H/2, W/2)
+        # ---- Component decoders ----
+        a_hat_raw, _ = self.decoder_a(a_feat)
+        s_hat_raw, _ = self.decoder_s(s_feat)
+        g_hat_raw, g_task_feat = self.decoder_g(g_feat)
 
-        # Upsample to input resolution
-        A_hat = F.interpolate(A_hat_raw, size=(H, W), mode='bilinear', align_corners=False)
-        S_hat = F.interpolate(S_hat_raw, size=(H, W), mode='bilinear', align_corners=False)
-        G_hat = F.interpolate(G_decoder_out, size=(H, W), mode='bilinear', align_corners=False)
+        a_hat = F.interpolate(a_hat_raw, size=(h, w), mode='bilinear', align_corners=False)
+        s_hat = F.interpolate(s_hat_raw, size=(h, w), mode='bilinear', align_corners=False)
+        g_hat = F.interpolate(g_hat_raw, size=(h, w), mode='bilinear', align_corners=False)
 
-        # ---- Task heads on G-decoder 16ch features ----
-        # Extract the 16ch features from G_decoder's ConvNeXtStage
-        # We need to replicate the decoder_g forward partially to get the
-        # intermediate 16ch features at H/2, W/2.
-        g_up1 = self.decoder_g[0](g_feat)      # TConv 64→32 (B, 2c, H/4, W/4)
-        g_up1 = self.decoder_g[1](g_up1)       # ConvNeXtStage(2c, 2c)
-        g_up2 = self.decoder_g[2](g_up1)       # TConv 32→16 (B, c, H/2, W/2)
-        g_16ch = self.decoder_g[3](g_up2)      # ConvNeXtStage(c, c) — (B, c, H/2, W/2)
+        # ---- Standard PGDA heads on G task features ----
+        mask_raw = self.mask_head(g_task_feat)
+        mask_logits = F.interpolate(mask_raw, size=(h, w), mode='bilinear', align_corners=False)
 
-        # Mask head
-        mask_raw = self.mask_head(g_16ch)      # (B, 1, H/2, W/2)
-        mask_logits = F.interpolate(mask_raw, size=(H, W), mode='bilinear', align_corners=False)
+        center_raw = self.center_head(g_task_feat)
+        center_logits = F.interpolate(center_raw, size=(h, w), mode='bilinear', align_corners=False)
 
-        # Center head (already produces 1ch maps via its internal 1×1)
-        center_raw = self.center_head(g_16ch)  # (B, 1, H/2, W/2)
-        center_logits = F.interpolate(center_raw, size=(H, W), mode='bilinear', align_corners=False)
-
-        # Presence head (per-trace) — interpolate to full trace width
-        presence_logits = self.pres_head(g_16ch).squeeze(2)           # (B, 1, 1, W/2) → (B, 1, W/2)
-        presence_logits = F.interpolate(presence_logits, size=W, mode='linear', align_corners=False)  # (B, 1, W)
+        presence_logits = self.pres_head(g_task_feat).squeeze(2)
+        presence_logits = F.interpolate(presence_logits, size=w, mode='linear', align_corners=False)
 
         return GprMambaSepOutput(
             mask_logits=mask_logits,
             presence_logits=presence_logits,
             center_logits=center_logits,
-            A_hat=A_hat,
-            S_hat=S_hat,
-            G_hat=G_hat,
+            A_hat=a_hat,
+            S_hat=s_hat,
+            G_hat=g_hat,
         )
 
 
 def build_gprmambasep(cfg: dict) -> GprMambaSep:
-    """Construct a GprMambaSep from a config dict.
-
-    Args:
-        cfg: Dictionary with keys:
-            - base_ch (int): Base channel count (default: 16).
-            - mamba_state_dim (int): Mamba state dimension (default: 32).
-            - mamba_d_conv (int): Mamba depthwise conv kernel (default: 4).
-            - decoder_dropout (float): Dropout in decoder ConvNeXtStages (default: 0.0).
-
-    Returns:
-        Initialised GprMambaSep model.
-    """
+    """Construct a GprMambaSep from a config dict."""
     return GprMambaSep(
         base_ch=int(cfg.get('base_ch', 16)),
         mamba_state_dim=int(cfg.get('mamba_state_dim', 32)),
         mamba_d_conv=int(cfg.get('mamba_d_conv', 4)),
         decoder_dropout=float(cfg.get('decoder_dropout', 0.0)),
+        input_channels=int(cfg.get('input_channels', 1)),
     )

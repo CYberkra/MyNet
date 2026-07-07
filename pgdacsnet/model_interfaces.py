@@ -86,7 +86,7 @@ class GprMambaSepOutput(PGDAOutput):
     """Model output for GprMambaSep with separable A/S/G component fields.
 
     Extends PGDAOutput with A_hat (air wave), S_hat (surface reflection),
-    and G_hat (geological signal).  Supports all three calling conventions
+    and G_hat (geological signal). Supports all three calling conventions
     transparently:
 
         mask, pres, center, A_hat, S_hat, G_hat = output  # tuple unpacking
@@ -94,7 +94,15 @@ class GprMambaSepOutput(PGDAOutput):
         output.G_hat                                         # attribute access
 
     The `__contains__`, `keys()`, `get()` etc. all include the six fields.
+    Backward-compatible aliases `G_mask_logits`, `G_presence_logits`, and
+    `G_center_logits` map to the standard three PGDA head tensors.
     """
+
+    _ALIASES = {
+        'G_mask_logits': 'mask_logits',
+        'G_presence_logits': 'presence_logits',
+        'G_center_logits': 'center_logits',
+    }
 
     def __init__(self, mask_logits, presence_logits, center_logits=None,
                  A_hat=None, S_hat=None, G_hat=None):
@@ -108,9 +116,14 @@ class GprMambaSepOutput(PGDAOutput):
     def __len__(self):
         return 6
 
+    def __getitem__(self, key):
+        if isinstance(key, str) and key in self._ALIASES:
+            key = self._ALIASES[key]
+        return super().__getitem__(key)
+
     def __contains__(self, key):
         return key in ('mask_logits', 'presence_logits', 'center_logits',
-                       'A_hat', 'S_hat', 'G_hat')
+                       'A_hat', 'S_hat', 'G_hat', *self._ALIASES.keys())
 
     def keys(self):
         return ['mask_logits', 'presence_logits', 'center_logits',

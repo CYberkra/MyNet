@@ -17,7 +17,7 @@ from pgdacsnet.model_interfaces import (
 
 @pytest.fixture
 def t():
-    return torch.randn(2, 1, 128, 64), torch.randn(2, 64), torch.randn(2, 1, 128, 64)
+    return torch.randn(2, 1, 128, 64), torch.randn(2, 1, 64), torch.randn(2, 1, 128, 64)
 
 
 class TestPGDAOutput:
@@ -64,6 +64,16 @@ class TestGprMambaSepOutput:
                                      A_hat=t[0], S_hat=t[0], G_hat=t[0])
         m, p, c = unpack_pgda_output(o)
         assert m is t[0] and p is t[1] and c is t[2]
+
+    def test_g_aliases(self, t):
+        o = make_gprmambasep_output(t[0], t[1], center_logits=t[2],
+                                     A_hat=t[0], S_hat=t[0], G_hat=t[0])
+        assert o['G_mask_logits'] is t[0]
+        assert o['G_presence_logits'] is t[1]
+        assert o['G_center_logits'] is t[2]
+        assert 'G_mask_logits' in o
+        assert 'G_presence_logits' in o
+        assert 'G_center_logits' in o
 
 
 class TestUnpackPGDAOutput:

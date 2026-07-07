@@ -598,7 +598,7 @@ def build_model(cfg):
             attention_heads=int(cfg.get("attention_heads", 4)),
             input_channels=input_channels,
         )
-    if arch in ("v2_0_gprmambasep", "gprmambasep"):
+    if arch in ("v2_0_gprmambasep", "gprmambasep", "v2_1_gprmambasep_lite", "gprmambasep_lite"):
         from pgdacsnet.model_gprmambasep import build_gprmambasep
-        return build_gprmambasep(cfg)
+        return build_gprmambasep({**cfg, "input_channels": input_channels})
     raise ValueError(f"Unknown model_arch: {cfg.get('model_arch')}")
