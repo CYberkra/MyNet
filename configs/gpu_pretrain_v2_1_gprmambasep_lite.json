@@ -2,7 +2,7 @@
   "data_root": "data/simulation_pretrain_v1",
   "height_resize": 512,
   "width_resize": 256,
-  "batch_size": 2,
+  "batch_size": 1,
   "epochs": 80,
   "lr": 0.0003,
   "base_ch": 12,
@@ -54,6 +54,7 @@
     "horizontal_flip_prob": 0.35
   },
   "deterministic": false,
+  "amp": true,
   "input_log_scale": 0.001,
   "no_pick_window_repeats": 2,
   "model_arch": "v2_1_gprmambasep_lite",
