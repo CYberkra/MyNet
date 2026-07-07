@@ -105,11 +105,14 @@ class GprMambaSepOutput(PGDAOutput):
     }
 
     def __init__(self, mask_logits, presence_logits, center_logits=None,
-                 A_hat=None, S_hat=None, G_hat=None):
+                 A_hat=None, S_hat=None, G_hat=None, component_gates=None):
         super().__init__(mask_logits, presence_logits, center_logits)
         self.A_hat = A_hat
         self.S_hat = S_hat
         self.G_hat = G_hat
+        # Optional diagnostic tensor, shape (B, 3, H, W).  It is deliberately
+        # not part of tuple unpacking so old six-value callers remain valid.
+        self.component_gates = component_gates
         self._iter_items = (mask_logits, presence_logits, center_logits,
                             A_hat, S_hat, G_hat)
 
@@ -123,11 +126,20 @@ class GprMambaSepOutput(PGDAOutput):
 
     def __contains__(self, key):
         return key in ('mask_logits', 'presence_logits', 'center_logits',
-                       'A_hat', 'S_hat', 'G_hat', *self._ALIASES.keys())
+                       'A_hat', 'S_hat', 'G_hat', 'component_gates', *self._ALIASES.keys())
 
     def keys(self):
         return ['mask_logits', 'presence_logits', 'center_logits',
-                'A_hat', 'S_hat', 'G_hat']
+                'A_hat', 'S_hat', 'G_hat', 'component_gates']
+
+    def values(self):
+        # Dict-like views should include diagnostic component_gates.  Tuple
+        # unpacking intentionally remains six items via _iter_items/.__iter__.
+        return [self.mask_logits, self.presence_logits, self.center_logits,
+                self.A_hat, self.S_hat, self.G_hat, self.component_gates]
+
+    def items(self):
+        return zip(self.keys(), self.values())
 
     def __repr__(self):
         return (
@@ -137,15 +149,16 @@ class GprMambaSepOutput(PGDAOutput):
             f"center_logits={self._shape_repr(self.center_logits)}, "
             f"A_hat={self._shape_repr(self.A_hat)}, "
             f"S_hat={self._shape_repr(self.S_hat)}, "
-            f"G_hat={self._shape_repr(self.G_hat)})"
+            f"G_hat={self._shape_repr(self.G_hat)}, "
+            f"component_gates={self._shape_repr(self.component_gates)})"
         )
 
 
 def make_gprmambasep_output(mask_logits, presence_logits, center_logits=None,
-                             A_hat=None, S_hat=None, G_hat=None):
-    """Construct a GprMambaSepOutput from the six head/component tensors."""
+                             A_hat=None, S_hat=None, G_hat=None, component_gates=None):
+    """Construct a GprMambaSepOutput from the head/component tensors."""
     return GprMambaSepOutput(mask_logits, presence_logits, center_logits,
-                              A_hat, S_hat, G_hat)
+                              A_hat, S_hat, G_hat, component_gates=component_gates)
 
 
 def unpack_pgda_output(output):

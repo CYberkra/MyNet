@@ -1,12 +1,11 @@
 """
 pgdacsnet/model_mamba.py
 
-Mamba-2/SSD components for GprMambaSep:
+Mamba-like / SSM-lite components for GprMambaSep.
 
-- SelectiveSSMLite: Pure-PyTorch proxy with input-dependent depthwise conv1d
-  modulation that approximates Mamba-2's selection mechanism.
-- SelectiveSSMCUDA: Thin wrapper around VMamba's selective_scan_cuda kernel
-  with graceful ImportError fallback on Windows.
+Important: this module does NOT implement the official Mamba-2 block.
+SelectiveSSMLite is a project-local, pure-PyTorch, content-adaptive SSM-lite
+proxy. AxialSSMLiteBlock applies it along B-scan time and trace axes.
 """
 
 import torch
@@ -14,12 +13,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-__all__ = ["SelectiveSSMLite", "SelectiveSSMCUDA", "Mamba2DBlock"]
+__all__ = ["SelectiveSSMLite", "SelectiveSSMCUDA", "OfficialMamba2Sequence", "AxialSSMLiteBlock", "AxialMamba2Block", "Mamba2DBlock", "make_axial_sequence_block"]
 
 
 class SelectiveSSMLite(nn.Module):
     """
-    Pure-PyTorch approximation of Mamba-2 SSD selection mechanism.
+    Pure-PyTorch Mamba-like / SSM-lite sequence mixer.
 
     Replaces the continuous-time SSM discretization with an input-dependent
     depthwise conv1d where the kernel at position t is modulated by the
@@ -29,11 +28,11 @@ class SelectiveSSMLite(nn.Module):
     Compared to GatedSequenceBlock (static kernel):
     - Same O(L) complexity with conv1d
     - Content-dependent modulation adds conv_kernel * d_model extra params
-    - Acts as a learnable proxy for Mamba-2's A/B/C selection
+    - Acts as a learnable proxy for content-adaptive SSM mixing
 
     Args:
         d_model: Model dimension (input/output channels).
-        d_state: SSM state dimension (for interface compatibility with Mamba-2).
+        d_state: SSM state dimension (for interface compatibility with SSM-style blocks).
         d_conv: Depthwise convolution kernel size.
         expand: Channel expansion factor.
         dt_rank: Delta projection rank (for interface compatibility).
@@ -135,10 +134,11 @@ class SelectiveSSMLite(nn.Module):
 
 class SelectiveSSMCUDA(nn.Module):
     """
-    Thin wrapper around VMamba's selective_scan_cuda kernel.
+    Experimental wrapper around a selective_scan_cuda-style kernel.
 
-    When available (WSL2/Linux with CUDA), delegates to the highly optimized
-    fused kernel for exact Mamba-2 SSD computation.
+    This path is not used by the default GprMambaSep model and is retained
+    only for future experiments. It should not be cited as the project using
+    official Mamba-2 unless the dependency and numerical interface are audited.
 
     On Windows, raises a clear ImportError directing the user to use
     SelectiveSSMLite instead.
@@ -180,7 +180,7 @@ class SelectiveSSMCUDA(nn.Module):
         self.dt_rank = dt_rank
         self.d_inner = int(expand * d_model)
 
-        # Standard Mamba-2 parameter layout
+        # Experimental selective-scan-style parameter layout
         # Input projection: d_model -> 2 * d_inner
         self.in_proj = nn.Linear(d_model, self.d_inner * 2, bias=False)
 
@@ -249,15 +249,13 @@ class SelectiveSSMCUDA(nn.Module):
         return out
 
 
-class Mamba2DBlock(nn.Module):
-    """2D spatial SSM block powered by SelectiveSSMLite.
+class AxialSSMLiteBlock(nn.Module):
+    """2D axial SSM-lite block powered by SelectiveSSMLite.
 
     Applies the content-adaptive SelectiveSSMLite independently along the
-    horizontal (W) and vertical (H) axes of a 2D feature map, then merges
-    with a learned 1x1 mix plus residual connection.
-
-    Architecture mirrors AxialSSMLiteBlock but replaces GatedSequenceBlock
-    with the more expressive SelectiveSSMLite (input-dependent modulation).
+    horizontal (W/trace) and vertical (H/time) axes of a B-scan feature map,
+    then merges with a learned 1x1 mix plus residual connection. This is a
+    Mamba-like proxy, not the official Mamba-2 implementation.
 
     Args:
         channels: Number of input/output channels.
@@ -311,3 +309,76 @@ class Mamba2DBlock(nn.Module):
 
         # Merge and residual
         return x + self.mix(0.5 * (hx + vx))
+
+
+
+
+class OfficialMamba2Sequence(nn.Module):
+    """Optional wrapper around mamba_ssm.Mamba2 for 1D sequences.
+
+    This is disabled unless ``mamba-ssm`` is installed.  It exists so the code
+    path is explicit and auditable; requesting official_mamba2 in an environment
+    without the dependency raises a clear ImportError rather than silently using
+    the SSM-lite proxy.
+    """
+
+    def __init__(self, d_model: int, d_state: int = 64, d_conv: int = 4, expand: int = 2):
+        super().__init__()
+        try:
+            from mamba_ssm import Mamba2  # type: ignore[import-untyped]
+        except Exception as exc:  # pragma: no cover - dependency-specific
+            raise ImportError(
+                "ssm_impl='official_mamba2' requires the official mamba-ssm package. "
+                "Install a CUDA/Linux-compatible mamba-ssm build, or use "
+                "ssm_impl='ssm_lite'."
+            ) from exc
+        self.block = Mamba2(d_model=int(d_model), d_state=int(d_state), d_conv=int(d_conv), expand=int(expand))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # mamba_ssm blocks use (B, L, C); project from/to the repository convention (B, C, L).
+        return self.block(x.transpose(1, 2)).transpose(1, 2)
+
+
+class AxialMamba2Block(nn.Module):
+    """2D axial mixer using the official Mamba2 sequence block when available."""
+
+    def __init__(self, channels: int, d_state: int = 32, d_conv: int = 4, expand: int = 2):
+        super().__init__()
+        self.norm_h = nn.GroupNorm(1, channels)
+        self.norm_v = nn.GroupNorm(1, channels)
+        self.ssm_h = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+        self.ssm_v = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+        self.mix = nn.Sequential(nn.Conv2d(channels, channels, 1), nn.GroupNorm(1, channels), nn.GELU())
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        B, C, H, W = x.shape
+        hx = self.norm_h(x).permute(0, 2, 1, 3).reshape(B * H, C, W)
+        hx = self.ssm_h(hx).reshape(B, H, C, W).permute(0, 2, 1, 3)
+        vx = self.norm_v(x).permute(0, 3, 1, 2).reshape(B * W, C, H)
+        vx = self.ssm_v(vx).reshape(B, W, C, H).permute(0, 2, 3, 1)
+        return x + self.mix(0.5 * (hx + vx))
+
+
+def make_axial_sequence_block(
+    impl: str,
+    channels: int,
+    d_state: int = 32,
+    d_conv: int = 4,
+    expand: int = 2,
+) -> nn.Module:
+    """Factory for the axial sequence mixer used by GprMambaSep.
+
+    ``ssm_lite`` is the default and is always available. ``official_mamba2`` is
+    opt-in and requires mamba-ssm; it never falls back silently.
+    """
+    impl = str(impl or "ssm_lite").lower()
+    if impl in ("ssm_lite", "lite", "axial_ssm_lite", "mamba_like"):
+        return AxialSSMLiteBlock(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+    if impl in ("official_mamba2", "mamba2", "mamba-2"):
+        return AxialMamba2Block(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+    raise ValueError(f"Unknown axial sequence mixer impl: {impl!r}")
+
+
+# Backward-compatible alias.  Kept so old checkpoints/configs/tests import,
+# but new code should use AxialSSMLiteBlock to avoid claiming official Mamba-2.
+Mamba2DBlock = AxialSSMLiteBlock

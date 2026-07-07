@@ -9,7 +9,7 @@ import pytest
 
 from pgdacsnet.model_raw_unet import build_model
 from pgdacsnet.model_gprmambasep import build_gprmambasep, GprMambaSep
-from pgdacsnet.model_mamba import SelectiveSSMLite, Mamba2DBlock
+from pgdacsnet.model_mamba import SelectiveSSMLite, AxialSSMLiteBlock, Mamba2DBlock
 from pgdacsnet.model_interfaces import GprMambaSepOutput, unpack_pgda_output
 
 
@@ -49,17 +49,17 @@ class TestSelectiveSSMLite:
         assert 50000 < n < 200000, f"params={n}"
 
 
-# ── Mamba2DBlock tests ──
+# ── AxialSSMLiteBlock tests ──
 
-class TestMamba2DBlock:
+class TestAxialSSMLiteBlock:
     def test_forward_shape(self):
-        m = Mamba2DBlock(64, 32, 4, 2)
+        m = AxialSSMLiteBlock(64, 32, 4, 2)
         x = torch.randn(2, 64, 32, 16)
         y = m(x)
         assert y.shape == (2, 64, 32, 16)
 
     def test_gradient_flow(self):
-        m = Mamba2DBlock(32, 16, 4, 2)
+        m = AxialSSMLiteBlock(32, 16, 4, 2)
         x = torch.randn(1, 32, 64, 32, requires_grad=True)
         y = m(x)
         loss = y.sum()
@@ -67,16 +67,22 @@ class TestMamba2DBlock:
         assert x.grad is not None and torch.isfinite(x.grad).all()
 
     def test_non_square_input(self):
-        m = Mamba2DBlock(16, 16, 4, 2)
+        m = AxialSSMLiteBlock(16, 16, 4, 2)
         y = m(torch.randn(1, 16, 48, 24))
         assert y.shape == (1, 16, 48, 24)
 
     def test_multiple_stacked(self):
-        m = torch.nn.Sequential(*[Mamba2DBlock(32, 16, 4, 2) for _ in range(3)])
+        m = torch.nn.Sequential(*[AxialSSMLiteBlock(32, 16, 4, 2) for _ in range(3)])
         x = torch.randn(2, 32, 64, 32)
         y = m(x)
         assert y.shape == (2, 32, 64, 32)
 
+
+
+def test_legacy_mamba2dblock_alias_kept_for_checkpoint_compatibility():
+    """Old imports keep working, but new code should use AxialSSMLiteBlock."""
+    m = Mamba2DBlock(8, 8, 4, 2)
+    assert isinstance(m, AxialSSMLiteBlock)
 
 # ── GprMambaSep architecture tests ──
 
@@ -106,7 +112,7 @@ class TestGprMambaSepArch:
     def test_forward_shapes_with_aux_channels(self):
         """Stem keeps auxiliary terrain/meta channels without abs duplication bugs."""
         m = build_model({
-            'model_arch': 'v2_1_gprmambasep_lite',
+            'model_arch': 'v2_0_gprmambasep',
             'base_ch': 8,
             'mamba_state_dim': 16,
             'input_channels': 3,
@@ -116,6 +122,30 @@ class TestGprMambaSepArch:
         assert out.mask_logits.shape == (2, 1, 128, 64)
         assert out.presence_logits.shape == (2, 1, 64)
 
+
+
+    def test_component_gates_shape_and_sum(self):
+        """Soft A/S/G gates are exposed and sum to one per pixel."""
+        m = build_gprmambasep({'base_ch': 8, 'mamba_state_dim': 16})
+        out = m(torch.randn(2, 1, 64, 32))
+        assert out.component_gates.shape == (2, 3, 64, 32)
+        s = out.component_gates.sum(dim=1)
+        assert torch.allclose(s, torch.ones_like(s), atol=1e-5)
+
+    def test_official_mamba2_requires_dependency_when_requested(self):
+        """official_mamba2 is explicit and never silently falls back to SSM-lite."""
+        from pgdacsnet.model_mamba import make_axial_sequence_block
+        try:
+            import mamba_ssm  # noqa: F401
+            has_dep = True
+        except Exception:
+            has_dep = False
+        if has_dep:
+            block = make_axial_sequence_block('official_mamba2', channels=8, d_state=8, d_conv=4)
+            assert block is not None
+        else:
+            with pytest.raises(ImportError):
+                make_axial_sequence_block('official_mamba2', channels=8, d_state=8, d_conv=4)
 
     def test_gprmambasep_output_interface(self):
         """GprMambaSepOutput is both dict-like and tuple-unpackable."""
@@ -212,3 +242,71 @@ class TestGprMambaSepLoss:
         total_loss.backward()
         grads = sum(1 for p in m.parameters() if p.grad is not None and p.grad.abs().sum() > 0)
         assert grads > 0, f"no non-zero gradients ({grads})"
+
+
+def test_component_separation_requires_persistent_discriminator():
+    from scripts.losses_gprmambasep import compute_gprmambasep_loss
+    m = build_gprmambasep({'base_ch': 8, 'mamba_state_dim': 16})
+    x = torch.randn(1, 1, 32, 16)
+    out = m(x)
+    batch = {
+        'x': x,
+        'y': torch.zeros(1, 1, 32, 16),
+        'y_core': torch.zeros(1, 1, 32, 16),
+        'presence': torch.zeros(1, 1, 16),
+        'presence_valid': torch.ones(1, 1, 16),
+        'weight': torch.ones(1, 16),
+        'valid_pix': torch.ones(1, 1, 32, 16),
+        'valid_denom': torch.tensor(32 * 16.0),
+    }
+    cfg = {'loss': {'component_separation_weight': 0.1, 'self_consistency_weight': 0.0}}
+    with pytest.raises(RuntimeError):
+        compute_gprmambasep_loss(out, batch, cfg, m, discriminator=None)
+
+
+def test_component_coverage_default_gate_when_supervision_enabled():
+    from scripts.train_raw_only import _min_component_target_coverage
+    assert _min_component_target_coverage({'loss': {'sim_supervised_weight': 0.5}}) > 0
+    assert _min_component_target_coverage({'loss': {'sim_supervised_weight': 0.0}}) == 0
+
+
+def test_sim_supervised_component_loss_honors_valid_flags():
+    from scripts.losses_gprmambasep import sim_supervised_component_loss
+    pred = torch.ones(2, 1, 8, 4)
+    target = torch.zeros_like(pred)
+    valid = torch.tensor([1.0, 0.0])
+    parts = sim_supervised_component_loss(pred, pred, pred, Y_air=target, Y_air_valid=valid)
+    assert abs(float(parts['a_l1']) - 1.0) < 1e-6
+    parts_zero = sim_supervised_component_loss(pred, pred, pred, Y_air=target, Y_air_valid=torch.zeros(2))
+    assert abs(float(parts_zero['a_l1'])) < 1e-8
+
+
+def test_dataset_returns_component_placeholders_for_mixed_collation(tmp_path):
+    import csv
+    import numpy as np
+    from torch.utils.data import DataLoader
+    from scripts.train_raw_only import DS, OPTIONAL_COMPONENT_ARRAY_ALIASES
+    root = tmp_path / 'data'
+    (root / 'windows').mkdir(parents=True)
+    rows = []
+    for i, with_comp in enumerate([False, True]):
+        sid = f's{i}'
+        rows.append({'sample_id': sid, 'line': 'sim', 'start': '0', 'end': '7', 'present': '16', 'weak': '0', 'no_pick': '0'})
+        arr = {
+            'x_raw': np.random.randn(16, 8).astype('float32'),
+            'y_mask': np.zeros((16, 8), dtype='float32'),
+            'status_code': np.ones((8,), dtype='int64'),
+            'label_weight': np.ones((8,), dtype='float32'),
+        }
+        if with_comp:
+            arr['Y_air'] = np.random.randn(16, 8).astype('float32')
+        np.savez(root / 'windows' / f'{sid}.npz', **arr)
+    with open(root / 'window_index.csv', 'w', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader(); w.writerows(rows)
+    cfg = {'data_root': str(root), 'train_lines': ['sim'], 'val_lines': [], 'test_lines': [], 'height_resize': 16, 'width_resize': 8, 'batch_size': 2}
+    batch = next(iter(DataLoader(DS('train', cfg), batch_size=2, shuffle=False)))
+    for key in OPTIONAL_COMPONENT_ARRAY_ALIASES:
+        assert key in batch and f'{key}_valid' in batch
+        assert batch[key].shape == (2, 1, 16, 8)
+    assert float(batch['Y_air_valid'].sum()) == 1.0

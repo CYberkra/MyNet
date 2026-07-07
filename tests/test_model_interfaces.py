@@ -96,3 +96,10 @@ class TestUnpackPGDAOutput:
     def test_invalid_raises(self):
         with pytest.raises(TypeError):
             unpack_pgda_output(42)
+
+
+def test_gprmambasep_values_include_component_gates(t):
+    gates = torch.randn(2, 3, 128, 64)
+    o = make_gprmambasep_output(t[0], t[1], center_logits=t[2], A_hat=t[0], S_hat=t[0], G_hat=t[0], component_gates=gates)
+    assert len(list(o.keys())) == len(list(o.values())) == len(list(o.items()))
+    assert dict(o.items())['component_gates'] is gates

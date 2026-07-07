@@ -1,11 +1,14 @@
-"""GPRMambaSep physics-guided loss functions.
+"""Physics-guided losses for GprMambaSep.
 
-Six new losses (L1-L6) for the GPRMambaSep architecture that decomposes
-the GPR B-scan into A (air-coupled direct wave), S (surface reflection),
-and G (geological signal) components.
+The model decomposes a UAV-GPR B-scan into A (air-coupled direct wave),
+S (surface reflection), and G (subsurface geological signal).  This module
+keeps the standard PGDA segmentation losses and adds component-aware losses.
 
-Imports compute_segmentation_losses from pgdacsnet.losses_pgda and
-wraps it together with the new component-aware losses.
+Important implementation rule:
+    A_hat + S_hat + G_hat is only a physically linear reconstruction when
+    the batch supplies ``Y_full_component`` in a linear/affine component space.
+    If the batch does not supply that key, the reconstruction loss falls back
+    to the model input tensor space and is logged as tensor-space consistency.
 """
 
 from __future__ import annotations
@@ -18,17 +21,11 @@ import torch.nn.functional as F
 
 from pgdacsnet.losses_pgda import compute_segmentation_losses
 
-# ---------------------------------------------------------------------------
-# L3 building blocks: Gradient Reversal Layer + Discriminator
-# ---------------------------------------------------------------------------
+COMPONENT_TARGET_KEYS = ("Y_air", "Y_target_without_G", "X_clean", "G_target")
 
 
 class GradReverse(torch.autograd.Function):
-    """Gradient reversal layer for adversarial training.
-
-    Forward: identity (passes input through unchanged).
-    Backward: multiplies gradient by -lambda.
-    """
+    """Gradient reversal layer for optional domain-adversarial experiments."""
 
     @staticmethod
     def forward(ctx, x: torch.Tensor, lambd: float = 1.0) -> torch.Tensor:
@@ -41,11 +38,7 @@ class GradReverse(torch.autograd.Function):
 
 
 class GRL(nn.Module):
-    """Gradient reversal layer module.
-
-    Wraps GradReverse as an nn.Module. The scale factor lambda controls
-    the strength of gradient reversal (default 1.0).
-    """
+    """Gradient reversal layer module."""
 
     def __init__(self, lambd: float = 1.0):
         super().__init__()
@@ -56,15 +49,15 @@ class GRL(nn.Module):
 
 
 class ComponentDiscriminator(nn.Module):
-    """3-layer MLP discriminator for the contrastive separation loss (L3).
+    """MLP classifier over hand-crafted component statistics.
 
-    Takes pooled feature vectors from A and G pathways and classifies
-    which pathway they came from (binary: 0 = A, 1 = G).
-
-    Architecture: Linear(64 -> 32) -> ReLU -> Linear(32 -> 32) -> ReLU -> Linear(32 -> 1)
+    The default feature vector has 8 dimensions and includes signed/global,
+    early/mid/late, gradient and coherence statistics.  The discriminator must
+    be owned by the trainer and included in the optimizer/checkpoint; this
+    module intentionally does not get instantiated inside the loss function.
     """
 
-    def __init__(self, input_dim: int = 64, hidden_dim: int = 32):
+    def __init__(self, input_dim: int = 8, hidden_dim: int = 32):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(input_dim, hidden_dim),
@@ -75,13 +68,38 @@ class ComponentDiscriminator(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """x: (B, input_dim) — pooled feature vectors. Returns logits (B, 1)."""
         return self.net(x)
 
 
-# ---------------------------------------------------------------------------
-# L1: Self-consistency loss
-# ---------------------------------------------------------------------------
+def _zero_like(ref: torch.Tensor) -> torch.Tensor:
+    return ref.mean() * 0.0
+
+
+def _component_stats(x: torch.Tensor) -> torch.Tensor:
+    """Return compact differentiable stats for one component, shape (B, 8)."""
+    B, _, H, W = x.shape
+    abs_x = x.abs()
+    thirds = torch.chunk(abs_x, 3, dim=2)
+    early = thirds[0].mean(dim=(1, 2, 3))
+    mid = thirds[1].mean(dim=(1, 2, 3)) if len(thirds) > 1 else early * 0
+    late = thirds[2].mean(dim=(1, 2, 3)) if len(thirds) > 2 else early * 0
+    signed_mean = x.mean(dim=(1, 2, 3))
+    abs_mean = abs_x.mean(dim=(1, 2, 3))
+    std = x.flatten(1).std(dim=1, unbiased=False)
+    if H > 1:
+        grad_t = (x[:, :, 1:, :] - x[:, :, :-1, :]).abs().mean(dim=(1, 2, 3))
+    else:
+        grad_t = abs_mean * 0
+    if W > 1:
+        # Adjacent-trace similarity proxy; higher for horizontally coherent events.
+        a = x[:, :, :, 1:]
+        b = x[:, :, :, :-1]
+        coh = (a * b).mean(dim=(1, 2, 3)) / (
+            (a.square().mean(dim=(1, 2, 3)).sqrt() * b.square().mean(dim=(1, 2, 3)).sqrt()).clamp_min(1e-6)
+        )
+    else:
+        coh = abs_mean * 0
+    return torch.stack([signed_mean, abs_mean, early, mid, late, std, grad_t, coh], dim=1)
 
 
 def self_consistency_loss(
@@ -90,22 +108,28 @@ def self_consistency_loss(
     G_hat: torch.Tensor,
     Y_full: torch.Tensor,
 ) -> torch.Tensor:
-    """L1: Enforce that A_hat + S_hat + G_hat reconstructs Y_full.
-
-    loss = ||Y_full - (A_hat + S_hat + G_hat)||_1
-         + ||Y_full - (A_hat + S_hat + G_hat)||_2
-
-    All tensors: (B, 1, H, W).
-    """
+    """Reconstruction consistency in the supplied target space."""
     recon = A_hat + S_hat + G_hat
-    l1_loss = F.l1_loss(recon, Y_full)
-    l2_loss = F.mse_loss(recon, Y_full)
-    return l1_loss + l2_loss
+    return F.l1_loss(recon, Y_full) + F.mse_loss(recon, Y_full)
 
 
-# ---------------------------------------------------------------------------
-# L2: Supervised component loss
-# ---------------------------------------------------------------------------
+def _valid_vector(valid: torch.Tensor | None, ref: torch.Tensor) -> torch.Tensor | None:
+    if valid is None:
+        return None
+    v = valid.to(device=ref.device, dtype=ref.dtype).reshape(ref.shape[0], -1).mean(dim=1)
+    return (v > 0.5).to(ref.dtype)
+
+
+def _masked_l1(pred: torch.Tensor, target: torch.Tensor | None, valid: torch.Tensor | None) -> torch.Tensor:
+    if target is None:
+        return _zero_like(pred)
+    if valid is None:
+        return F.l1_loss(pred, target)
+    v = _valid_vector(valid, pred)
+    if v is None or float(v.sum().detach().cpu()) <= 0:
+        return _zero_like(pred)
+    per = torch.abs(pred - target).mean(dim=(1, 2, 3))
+    return (per * v).sum() / v.sum().clamp_min(1.0)
 
 
 def sim_supervised_component_loss(
@@ -116,43 +140,27 @@ def sim_supervised_component_loss(
     Y_target_without_G: torch.Tensor | None = None,
     X_clean: torch.Tensor | None = None,
     G_target: torch.Tensor | None = None,
+    Y_air_valid: torch.Tensor | None = None,
+    Y_target_without_G_valid: torch.Tensor | None = None,
+    X_clean_valid: torch.Tensor | None = None,
+    G_target_valid: torch.Tensor | None = None,
 ) -> dict[str, torch.Tensor]:
-    """L2: Component-aware supervision when simulation targets are available.
+    """Component-aware supervision with per-sample validity flags.
 
-    Returns dict with keys:
-        'a_l1', 's_l1', 'g_l1' — per-component L1 losses (zero if target missing).
-
-    Semantics follow the locked signal model:
-      - Y_air supervises A_hat.
-      - Y_target_without_G supervises S_hat when available.
-      - X_clean corresponds to S + G, so it supervises (S_hat + G_hat), not pure G_hat.
-      - G_hat is only directly supervised when an explicit pure-G target is provided.
+    Datasets always return placeholder tensors for optional component targets so
+    mixed real/sim batches collate safely.  The *_valid flags decide whether a
+    sample contributes to each component loss.
     """
-    zero = (A_hat * 0.0).mean()
-
-    if Y_air is not None:
-        a_l1 = F.l1_loss(A_hat, Y_air)
-    else:
-        a_l1 = zero
-
-    if Y_target_without_G is not None:
-        s_l1 = F.l1_loss(S_hat, Y_target_without_G)
-    else:
-        s_l1 = zero
-
-    if G_target is not None:
-        g_l1 = F.l1_loss(G_hat, G_target)
-    elif X_clean is not None:
-        g_l1 = F.l1_loss(S_hat + G_hat, X_clean)
-    else:
-        g_l1 = zero
-
-    return {"a_l1": a_l1, "s_l1": s_l1, "g_l1": g_l1}
-
-
-# ---------------------------------------------------------------------------
-# L3: Contrastive separation loss
-# ---------------------------------------------------------------------------
+    a_l1 = _masked_l1(A_hat, Y_air, Y_air_valid)
+    s_l1 = _masked_l1(S_hat, Y_target_without_G, Y_target_without_G_valid)
+    sg_clean_l1 = _masked_l1(S_hat + G_hat, X_clean, X_clean_valid)
+    g_pure_l1 = _masked_l1(G_hat, G_target, G_target_valid)
+    return {
+        "a_l1": a_l1,
+        "s_l1": s_l1,
+        "sg_clean_l1": sg_clean_l1,
+        "g_pure_l1": g_pure_l1,
+    }
 
 
 def contrastive_separation_loss(
@@ -160,193 +168,139 @@ def contrastive_separation_loss(
     S_hat: torch.Tensor,
     G_hat: torch.Tensor,
     discriminator: ComponentDiscriminator,
-    grl_layer: GRL,
+    grl_layer: GRL | None = None,
+    use_gradient_reversal: bool = False,
 ) -> torch.Tensor:
-    """L3: Adversarial loss to encourage A and G pathways to learn
-    statistically distinguishable features.
+    """Separate A and G statistics using a persistent discriminator.
 
-    Pools A_hat and G_hat to fixed-size vectors, runs through gradient
-    reversal + discriminator. The discriminator is trained to classify
-    A vs G; the encoder is trained adversarially (via GRL) to fool it.
-
-    Returns binary cross-entropy loss over the discriminator output.
+    By default this is a discriminative separation objective: both the
+    discriminator and component pathways receive gradients that make A/G more
+    distinguishable.  Set use_gradient_reversal=True only for experimental
+    domain-invariance/adversarial ablations.
     """
-    # Global average pool to (B, 1, 1, 1) then squeeze to (B,)
-    pool_a = A_hat.mean(dim=(2, 3), keepdim=False)  # (B, 1)
-    pool_g = G_hat.mean(dim=(2, 3), keepdim=False)  # (B, 1)
-
-    # Concatenate features: (2*B, 1) — but we need (B, C) for the MLP
-    # Instead, stack into a single batch with labels
-    feat = torch.cat([pool_a, pool_g], dim=0)  # (2*B, 1)
+    feat_a = _component_stats(A_hat)
+    feat_g = _component_stats(G_hat)
+    feat = torch.cat([feat_a, feat_g], dim=0)
+    if use_gradient_reversal:
+        feat = (grl_layer or GRL(1.0))(feat)
     labels = torch.cat(
         [
             torch.zeros(A_hat.size(0), 1, device=A_hat.device, dtype=A_hat.dtype),
             torch.ones(G_hat.size(0), 1, device=G_hat.device, dtype=G_hat.dtype),
         ],
         dim=0,
-    )  # (2*B, 1): 0 = A pathway, 1 = G pathway
-
-    # Pass through gradient reversal (adversarial for encoder), then discriminator
-    feat_rev = grl_layer(feat)
-    logits = discriminator(feat_rev)  # (2*B, 1)
-
-    loss = F.binary_cross_entropy_with_logits(logits, labels)
-    return loss
+    )
+    return F.binary_cross_entropy_with_logits(discriminator(feat), labels)
 
 
-# ---------------------------------------------------------------------------
-# L4: Arrival time prior loss
-# ---------------------------------------------------------------------------
-
-
-def arrival_time_prior_loss(
-    G_hat: torch.Tensor,
-    batch: dict[str, Any],
-    cfg: dict[str, Any],
-) -> torch.Tensor:
-    """L4: Penalize G_hat energy that appears before the physically
-    plausible earliest arrival time.
-
-    t_min(trace) = 2 * altitude / c_air + 2 * z_min / v_earth
-
-    Mask: w_prior[t] = 1 if t < t_min else 0
-    loss = ||G_hat * w_prior||_1 / ||w_prior||_1
-
-    G_hat: (B, 1, H, W)
-    batch: dict that may contain 'altitude' (scalar or (B,) tensor).
-    cfg: config dict with optional 'time_window_ns', 'height_resize', etc.
-    """
+def arrival_time_prior_loss(G_hat: torch.Tensor, batch: dict[str, Any], cfg: dict[str, Any]) -> torch.Tensor:
+    """Penalise G energy before the plausible earliest subsurface arrival."""
     B, C, H, W = G_hat.shape
-    device = G_hat.device
-    dtype = G_hat.dtype
-
-    # --- constants ---
-    c_air: float = 0.3      # m/ns
-    v_earth: float = 0.07   # m/ns
-    z_min: float = 3.0      # m
-
-    # --- altitude: normalize to (B,) tensor ---
+    device, dtype = G_hat.device, G_hat.dtype
+    c_air = float(cfg.get("c_air_m_per_ns", 0.3))
+    v_earth = float(cfg.get("v_earth_m_per_ns", 0.07))
+    z_min = float(cfg.get("g_min_depth_m", 3.0))
     altitude = batch.get("altitude", None)
     if altitude is None:
-        altitude_t = torch.full((B,), 2.4, device=device, dtype=dtype)
+        altitude_t = torch.full((B,), float(cfg.get("default_altitude_m", 2.4)), device=device, dtype=dtype)
     elif isinstance(altitude, (float, int)):
         altitude_t = torch.full((B,), float(altitude), device=device, dtype=dtype)
     else:
         altitude_t = altitude.to(device=device, dtype=dtype).reshape(-1)
         if altitude_t.numel() == 1:
             altitude_t = altitude_t.expand(B)
-
-    # --- t_min in ns -> sample index ---
-    t_min_ns = 2 * altitude_t / c_air + 2 * z_min / v_earth  # (B,)
-
-    time_window_ns: float = float(cfg.get("time_window_ns", 700.0))
-    n_time_samples: int = int(cfg.get("height_resize", H))
-    dt: float = time_window_ns / max(n_time_samples, 1)
-
-    t_min_samples = (t_min_ns / dt).long().clamp(0, H)  # (B,)
-
-    # --- build mask: (B, 1, H, 1) then expand to (B, 1, H, W) ---
-    t_grid = torch.arange(H, device=device, dtype=dtype).view(1, 1, H, 1)  # (1, 1, H, 1)
-    t_limit = t_min_samples.float().view(B, 1, 1, 1)                     # (B, 1, 1, 1)
-    w_prior = (t_grid < t_limit).float()                                  # (B, 1, H, 1)
-    w_prior = w_prior.expand(B, C, H, W)                                  # (B, 1, H, W)
-
-    # --- compute loss ---
-    numerator = (G_hat.abs() * w_prior).sum()
-    denominator = w_prior.sum().clamp_min(1.0)
-    return numerator / denominator
+    t_min_ns = 2 * altitude_t / c_air + 2 * z_min / v_earth
+    time_window_ns = float(cfg.get("time_window_ns", 700.0))
+    dt = time_window_ns / max(int(cfg.get("height_resize", H)), 1)
+    t_min_samples = (t_min_ns / dt).long().clamp(0, H)
+    t_grid = torch.arange(H, device=device, dtype=dtype).view(1, 1, H, 1)
+    t_limit = t_min_samples.float().view(B, 1, 1, 1)
+    w_prior = (t_grid < t_limit).float().expand(B, C, H, W)
+    return (G_hat.abs() * w_prior).sum() / w_prior.sum().clamp_min(1.0)
 
 
-# ---------------------------------------------------------------------------
-# L5: Amplitude ratio prior loss
-# ---------------------------------------------------------------------------
-
-
-def amplitude_ratio_prior_loss(
-    A_hat: torch.Tensor,
-    S_hat: torch.Tensor,
-    weight: float = 0.01,
-) -> torch.Tensor:
-    """L5: Soft constraint on the |A_hat| / |S_hat| amplitude ratio.
-
-    The theoretical Fresnel reflection coefficient at the air-ground
-    interface for typical GPR scenarios falls in the range [-0.63, -0.42].
-    This loss penalizes deviation of the log-ratio from that interval.
-
-    Returns: weight * MSE(log_ratio, target_log_ratio)
-
-    If S_hat has negligible energy, the loss returns 0 (avoids division
-    by near-zero values).
-    """
+def amplitude_ratio_prior_loss(A_hat: torch.Tensor, S_hat: torch.Tensor, weight: float = 0.01) -> torch.Tensor:
+    """Very weak A/S amplitude-ratio prior; keep low-weight and metadata-aware later."""
     eps = 1e-8
-    a_abs = A_hat.abs().mean(dim=(2, 3), keepdim=True)  # (B, 1, 1, 1)
-    s_abs = S_hat.abs().mean(dim=(2, 3), keepdim=True)  # (B, 1, 1, 1)
-
-    # Avoid division by near-zero
-    s_abs = s_abs.clamp_min(eps)
-
-    ratio = a_abs / s_abs  # (B, 1, 1, 1) — positive by construction
-
-    # Target: mean of Fresnel magnitude range [0.42, 0.63]
-    target_ratio = (0.42 + 0.63) / 2.0  # ~0.525
-
-    # MSE on the ratio itself (symmetric penalty)
-    loss = F.mse_loss(ratio, torch.full_like(ratio, target_ratio))
-
-    return weight * loss
+    ratio = A_hat.abs().mean(dim=(2, 3), keepdim=True) / S_hat.abs().mean(dim=(2, 3), keepdim=True).clamp_min(eps)
+    target_ratio = (0.42 + 0.63) / 2.0
+    return weight * F.mse_loss(ratio, torch.full_like(ratio, target_ratio))
 
 
-# ---------------------------------------------------------------------------
-# L6: Co-prediction cycle loss (Stage 3 only)
-# ---------------------------------------------------------------------------
+def g_envelope_mask_consistency_loss(G_hat: torch.Tensor, batch: dict[str, Any]) -> torch.Tensor:
+    """Force G_hat energy/envelope to be explainable by the target mask."""
+    target = batch.get("y_core", batch.get("y"))
+    if target is None:
+        return _zero_like(G_hat)
+    env = G_hat.abs()
+    env = env / env.amax(dim=(2, 3), keepdim=True).clamp_min(1e-6)
+    valid = batch.get("valid_pix", torch.ones_like(env)).to(device=env.device, dtype=env.dtype)
+    ignore = 1.0 - valid
+    mse = ((env - target.to(env.device, env.dtype)).square() * valid).sum() / valid.sum().clamp_min(1.0)
+    outside = (target.to(env.device, env.dtype) < 0.05).float() * valid
+    outside_penalty = (env * outside).sum() / outside.sum().clamp_min(1.0)
+    return mse + 0.25 * outside_penalty + ignore.mean() * 0.0
 
+
+
+
+def component_gate_regularization_loss(gates: torch.Tensor, cfg: dict[str, Any]) -> dict[str, torch.Tensor]:
+    """Regularise soft A/S/G allocation gates to reduce branch collapse.
+
+    gates has shape (B, 3, H, W) and sums to one along dim=1.  The balance term
+    keeps the dataset-level branch allocation near a configurable prior; the
+    entropy term can be enabled to avoid overly hard early collapse.
+    """
+    if gates is None:
+        raise ValueError("gates must be a tensor")
+    prior_cfg = cfg.get("component_gate_prior", [1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0])
+    prior = torch.as_tensor(prior_cfg, device=gates.device, dtype=gates.dtype).view(3)
+    prior = prior / prior.sum().clamp_min(1e-6)
+    mean_gate = gates.mean(dim=(0, 2, 3))
+    balance = F.mse_loss(mean_gate, prior)
+    entropy = -(gates.clamp_min(1e-8) * gates.clamp_min(1e-8).log()).sum(dim=1).mean()
+    target_entropy = float(cfg.get("component_gate_entropy_target", 0.70)) * torch.log(torch.tensor(3.0, device=gates.device, dtype=gates.dtype))
+    entropy_match = (entropy - target_entropy).square()
+    return {"balance": balance, "entropy": entropy, "entropy_match": entropy_match}
 
 def co_prediction_cycle_loss(
     A_hat: torch.Tensor,
     S_hat: torch.Tensor,
     G_hat: torch.Tensor,
     Y_full: torch.Tensor,
-    model_fn: Callable[[torch.Tensor], dict[str, torch.Tensor]],
+    model_fn: Callable[[torch.Tensor], Any],
+    original_input: torch.Tensor | None = None,
 ) -> torch.Tensor:
-    """L6: Cycle-consistency loss for Stage 3 training.
-
-    Reconstructs Y_target_hat = A_hat + S_hat (geological signal removed),
-    runs it through the shared encoder again, and enforces consistency.
-
-    cycle_loss = ||Y_full - (A_hat2 + S_hat2 + G_hat2)||_1
-               + ||A_hat - A_hat2||_1
-               + ||S_hat - S_hat2||_1
-
-    model_fn: Callable that takes (B, 1, H, W) B-scan and returns a dict
-              with keys 'A_hat', 'S_hat', 'G_hat'.
-    """
-    # Reconstruct: Y_full without geological signal (S + A components)
+    """Stage-3 cycle loss that preserves auxiliary channels when present."""
     Y_target_hat = A_hat + S_hat
-
-    # Pass through shared encoder
+    if original_input is not None and original_input.dim() == 4 and original_input.shape[1] > 1:
+        Y_target_hat = torch.cat([Y_target_hat, original_input[:, 1:]], dim=1)
     outputs2 = model_fn(Y_target_hat)
-
-    A_hat2 = outputs2["A_hat"]
-    S_hat2 = outputs2["S_hat"]
-    G_hat2 = outputs2["G_hat"]
-
-    # Reconstruction loss: the second pass should still reconstruct Y_full
+    A_hat2, S_hat2, G_hat2 = outputs2["A_hat"], outputs2["S_hat"], outputs2["G_hat"]
     recon_loss = F.l1_loss(A_hat2 + S_hat2 + G_hat2, Y_full)
-
-    # Cycle consistency: A and S should be preserved through the cycle
-    cycle_a = F.l1_loss(A_hat2, A_hat)
-    cycle_s = F.l1_loss(S_hat2, S_hat)
-
-    return recon_loss + cycle_a + cycle_s
+    return recon_loss + F.l1_loss(A_hat2, A_hat) + F.l1_loss(S_hat2, S_hat)
 
 
-# ---------------------------------------------------------------------------
-# Orchestrator: compute_gprmambasep_loss
-# ---------------------------------------------------------------------------
+def _get_output(outputs: Any, *names: str):
+    for name in names:
+        try:
+            value = outputs.get(name)
+        except AttributeError:
+            value = getattr(outputs, name, None)
+        if value is not None:
+            return value
+    return None
+
+
+def _loss_weight(lp: dict[str, Any], *names: str, default: float = 0.0) -> float:
+    for name in names:
+        if name in lp:
+            return float(lp.get(name, default))
+    return float(default)
 
 
 def compute_gprmambasep_loss(
-    outputs: dict[str, torch.Tensor | None],
+    outputs: Any,
     batch: dict[str, Any],
     cfg: dict[str, Any],
     model: Any = None,
@@ -354,78 +308,27 @@ def compute_gprmambasep_loss(
     grl_layer: GRL | None = None,
     stage3: bool = False,
 ) -> tuple[torch.Tensor, dict[str, float]]:
-    """Compute the combined GPRMambaSep loss.
-
-    Calls compute_segmentation_losses on the standard PGDA heads, then adds
-    L1-L5 (and optionally L6 for Stage 3).
-
-    Args:
-        outputs: Dict-like object with standard keys:
-            - 'mask_logits' / 'presence_logits' / 'center_logits'
-            - 'A_hat', 'S_hat', 'G_hat' — component predictions (B, 1, H, W)
-          Backward-compatible aliases 'G_mask_logits' / 'G_presence_logits' /
-          'G_center_logits' are also accepted.
-        batch: Dataset batch dict. Keys used:
-            - 'y', 'y_core', 'presence', 'presence_valid', 'weight' (for segmentation loss)
-            - 'valid_pix', 'valid_denom' (for segmentation loss)
-            - 'x' — the input B-scan (Y_full)
-            - 'Y_air', 'Y_target_without_G', 'X_clean' (optional, for L2)
-            - 'G_target' (optional explicit pure-G supervision for L2)
-            - 'altitude' (optional, for L4)
-        cfg: Training config dict with loss weights under cfg['loss'].
-        model: The GPRMambaSep model instance. Required for Stage 3 (L6).
-        discriminator: ComponentDiscriminator instance for L3. Created if None and L3 weight > 0.
-        grl_layer: GRL instance for L3. Created if None and L3 weight > 0.
-        stage3: If True, include L6 co-prediction cycle loss.
-
-    Returns:
-        (total_loss, parts_dict) where total_loss is a scalar tensor for
-        backward and parts_dict contains float values for logging.
-    """
+    """Compute standard PGDA + GprMambaSep component losses."""
     lp = cfg.get("loss", {})
-    device = batch["x"].device if isinstance(batch.get("x"), torch.Tensor) else outputs.get("A_hat").device
-    dtype = outputs.get("A_hat", outputs.get("G_hat")).dtype if any(outputs.get(k) is not None for k in ("A_hat", "G_hat")) else torch.float32
-
-    def _zero():
-        ref = batch.get("x", outputs.get("G_hat"))
-        if ref is None:
-            return torch.tensor(0.0, device=device, dtype=dtype)
-        return ref.mean() * 0.0
-
-    def _get_output(*names: str):
-        for name in names:
-            value = outputs.get(name)
-            if value is not None:
-                return value
-        return None
-
-    def _loss_weight(*names: str, default: float = 0.0) -> float:
-        for name in names:
-            if name in lp:
-                return float(lp.get(name, default))
-        return float(default)
-
-    zero = _zero()
+    ref = batch.get("x")
+    if ref is None:
+        ref = _get_output(outputs, "G_hat", "A_hat")
+    zero = ref.mean() * 0.0
     parts: dict[str, torch.Tensor] = {}
     total = zero.clone()
 
-    # ---- Segmentation losses on standard G/PGDA heads ----
-    mask_logits = _get_output("mask_logits", "G_mask_logits")
-    presence_logits = _get_output("presence_logits", "G_presence_logits")
-    center_logits = _get_output("center_logits", "G_center_logits")
+    mask_logits = _get_output(outputs, "mask_logits", "G_mask_logits")
+    presence_logits = _get_output(outputs, "presence_logits", "G_presence_logits")
+    center_logits = _get_output(outputs, "center_logits", "G_center_logits")
     if mask_logits is not None:
-        seg_outputs = {
-            "mask_logits": mask_logits,
-            "presence_logits": presence_logits,
-            "center_logits": center_logits,
-        }
+        seg_outputs = {"mask_logits": mask_logits, "presence_logits": presence_logits, "center_logits": center_logits}
         seg_parts = compute_segmentation_losses(seg_outputs, batch, cfg)
         seg_weight = float(lp.get("g_segmentation_weight", 1.0))
         for k, v in seg_parts.items():
             parts[f"seg_{k}"] = v.detach()
-            if k in ("spec_loss",):
+            if k == "spec_loss":
                 total = total + v
-            elif k in ("band_bce",):
+            elif k == "band_bce":
                 total = total + seg_weight * v
             else:
                 w_key = {
@@ -436,74 +339,103 @@ def compute_gprmambasep_loss(
                     "presence_loss": "presence_weight",
                     "centerline_l1": "centerline_weight",
                     "continuity": "continuity_weight",
-                }.get(k, None)
-                w = float(lp.get(w_key, 1.0)) if w_key else 1.0
-                total = total + seg_weight * w * v
-    else:
-        for k in (
-            "seg_band_bce",
-            "seg_band_dice",
-            "seg_core_bce",
-            "seg_outside_penalty",
-            "seg_hard_negative",
-            "seg_presence_loss",
-            "seg_centerline_l1",
-            "seg_continuity",
-            "seg_spec_loss",
-        ):
-            parts[k] = zero.detach()
+                }.get(k)
+                total = total + seg_weight * (float(lp.get(w_key, 1.0)) if w_key else 1.0) * v
 
-    # ---- Extract component tensors ----
-    A_hat = outputs.get("A_hat")
-    S_hat = outputs.get("S_hat")
-    G_hat = outputs.get("G_hat")
-    Y_full = batch.get("x")
-
-    if Y_full is not None and Y_full.dim() == 4 and Y_full.shape[1] > 1:
+    A_hat = _get_output(outputs, "A_hat")
+    S_hat = _get_output(outputs, "S_hat")
+    G_hat = _get_output(outputs, "G_hat")
+    Y_full = batch.get("Y_full_component", batch.get("x"))
+    if isinstance(Y_full, torch.Tensor) and Y_full.dim() == 4 and Y_full.shape[1] > 1:
         Y_full = Y_full[:, :1]
 
-    # ---- L1: Self-consistency loss ----
+    # Coverage/provenance diagnostics are always logged.  Optional component
+    # tensors may be zero placeholders; validity flags are authoritative.
+    for key in COMPONENT_TARGET_KEYS:
+        flag = batch.get(f"{key}_valid")
+        if isinstance(flag, torch.Tensor):
+            has_key = flag.to(zero.device, zero.dtype).float().mean()
+        else:
+            has_key = torch.as_tensor(1.0 if isinstance(batch.get(key), torch.Tensor) else 0.0, device=zero.device, dtype=zero.dtype)
+        parts[f"component_has_{key}"] = has_key
+    if isinstance(batch.get("has_component_targets"), torch.Tensor):
+        parts["component_has_any"] = batch["has_component_targets"].to(zero.device, zero.dtype).float().mean()
+    else:
+        parts["component_has_any"] = torch.stack([parts[f"component_has_{k}"] for k in COMPONENT_TARGET_KEYS]).amax()
+
+    # L1 reconstruction consistency.
     l1_weight = float(lp.get("self_consistency_weight", 0.0))
     if l1_weight > 0 and all(t is not None for t in (A_hat, S_hat, G_hat, Y_full)):
         l1_loss = self_consistency_loss(A_hat, S_hat, G_hat, Y_full)
         parts["self_consistency"] = l1_loss.detach()
+        parts["self_consistency_linear_space"] = torch.as_tensor(
+            1.0 if "Y_full_component" in batch else 0.0, device=zero.device, dtype=zero.dtype
+        )
         total = total + l1_weight * l1_loss
     else:
         parts["self_consistency"] = zero.detach()
+        parts["self_consistency_linear_space"] = zero.detach()
 
-    # ---- L2: Supervised component loss ----
-    l2_weight = _loss_weight("sim_supervised_component_weight", "sim_supervised_weight", default=0.0)
+    # L2 component supervision.
+    l2_weight = _loss_weight(lp, "sim_supervised_component_weight", "sim_supervised_weight", default=0.0)
     if l2_weight > 0 and all(t is not None for t in (A_hat, S_hat, G_hat)):
-        Y_air = batch.get("Y_air")
-        Y_tgt = batch.get("Y_target_without_G")
-        X_clean = batch.get("X_clean")
-        G_target = batch.get("G_target")
-        l2_parts = sim_supervised_component_loss(A_hat, S_hat, G_hat, Y_air, Y_tgt, X_clean, G_target)
-        l2_total = l2_parts["a_l1"] + l2_parts["s_l1"] + l2_parts["g_l1"]
-        parts["l2_a_l1"] = l2_parts["a_l1"].detach()
-        parts["l2_s_l1"] = l2_parts["s_l1"].detach()
-        parts["l2_g_l1"] = l2_parts["g_l1"].detach()
+        l2_parts = sim_supervised_component_loss(
+            A_hat,
+            S_hat,
+            G_hat,
+            batch.get("Y_air"),
+            batch.get("Y_target_without_G"),
+            batch.get("X_clean"),
+            batch.get("G_target"),
+            batch.get("Y_air_valid"),
+            batch.get("Y_target_without_G_valid"),
+            batch.get("X_clean_valid"),
+            batch.get("G_target_valid"),
+        )
+        l2_total = sum(l2_parts.values())
+        for k, v in l2_parts.items():
+            parts[f"l2_{k}"] = v.detach()
         total = total + l2_weight * l2_total
     else:
-        parts["l2_a_l1"] = zero.detach()
-        parts["l2_s_l1"] = zero.detach()
-        parts["l2_g_l1"] = zero.detach()
+        for k in ("a_l1", "s_l1", "sg_clean_l1", "g_pure_l1"):
+            parts[f"l2_{k}"] = zero.detach()
 
-    # ---- L3: Contrastive separation loss ----
-    l3_weight = _loss_weight("contrastive_separation_weight", "contrastive_weight", default=0.0)
-    if l3_weight > 0 and all(t is not None for t in (A_hat, G_hat)):
+    # L3 separation.  The discriminator must be supplied by the trainer.
+    l3_weight = _loss_weight(lp, "component_separation_weight", "contrastive_separation_weight", "contrastive_weight", default=0.0)
+    if l3_weight > 0 and all(t is not None for t in (A_hat, S_hat, G_hat)):
         if discriminator is None:
-            discriminator = ComponentDiscriminator(input_dim=1, hidden_dim=32).to(device)
-        if grl_layer is None:
-            grl_layer = GRL(lambd=float(lp.get("grad_reverse_lambda", 1.0)))
-        l3_loss = contrastive_separation_loss(A_hat, S_hat, G_hat, discriminator, grl_layer)
-        parts["contrastive_separation"] = l3_loss.detach()
-        total = total + l3_weight * l3_loss
+            raise RuntimeError(
+                "component/contrastive separation loss is enabled, but no persistent "
+                "ComponentDiscriminator was supplied by the trainer. Disable the weight "
+                "or create/pass a discriminator so it enters the optimizer/checkpoint."
+            )
+        l3_A, l3_S, l3_G = A_hat, S_hat, G_hat
+        if bool(lp.get("component_separation_requires_targets", True)):
+            valid_any = batch.get("has_component_targets")
+            if isinstance(valid_any, torch.Tensor):
+                mask = _valid_vector(valid_any, A_hat) > 0.5
+                if bool(mask.any()):
+                    l3_A, l3_S, l3_G = A_hat[mask], S_hat[mask], G_hat[mask]
+                else:
+                    l3_A = l3_S = l3_G = None
+        if l3_A is not None:
+            l3_loss = contrastive_separation_loss(
+                l3_A,
+                l3_S,
+                l3_G,
+                discriminator,
+                grl_layer,
+                use_gradient_reversal=bool(lp.get("use_gradient_reversal", False)),
+            )
+            parts["component_separation"] = l3_loss.detach()
+            total = total + l3_weight * l3_loss
+        else:
+            parts["component_separation"] = zero.detach()
     else:
-        parts["contrastive_separation"] = zero.detach()
+        parts["component_separation"] = zero.detach()
 
-    # ---- L4: Arrival time prior loss ----
-    l4_weight = _loss_weight("arrival_time_prior_weight", "arrival_prior_weight", default=0.0)
+    # L4/L5 priors.
+    l4_weight = _loss_weight(lp, "arrival_time_prior_weight", "arrival_prior_weight", default=0.0)
     if l4_weight > 0 and G_hat is not None:
         l4_loss = arrival_time_prior_loss(G_hat, batch, cfg)
         parts["arrival_time_prior"] = l4_loss.detach()
@@ -511,8 +443,7 @@ def compute_gprmambasep_loss(
     else:
         parts["arrival_time_prior"] = zero.detach()
 
-    # ---- L5: Amplitude ratio prior loss ----
-    l5_weight = _loss_weight("amplitude_ratio_prior_weight", "amplitude_ratio_weight", default=0.0)
+    l5_weight = _loss_weight(lp, "amplitude_ratio_prior_weight", "amplitude_ratio_weight", default=0.0)
     if l5_weight > 0 and all(t is not None for t in (A_hat, S_hat)):
         l5_loss = amplitude_ratio_prior_loss(A_hat, S_hat, weight=1.0)
         parts["amplitude_ratio_prior"] = l5_loss.detach()
@@ -520,10 +451,34 @@ def compute_gprmambasep_loss(
     else:
         parts["amplitude_ratio_prior"] = zero.detach()
 
-    # ---- L6: Co-prediction cycle loss (Stage 3 only) ----
+    # G-envelope/mask consistency to prevent a correct mask with meaningless G_hat.
+    env_weight = _loss_weight(lp, "g_envelope_mask_weight", "g_mask_consistency_weight", default=0.0)
+    if env_weight > 0 and G_hat is not None:
+        env_loss = g_envelope_mask_consistency_loss(G_hat, batch)
+        parts["g_envelope_mask"] = env_loss.detach()
+        total = total + env_weight * env_loss
+    else:
+        parts["g_envelope_mask"] = zero.detach()
+
+    # Soft component gate regularisation.
+    gates = _get_output(outputs, "component_gates")
+    gate_balance_weight = _loss_weight(lp, "component_gate_balance_weight", default=0.0)
+    gate_entropy_weight = _loss_weight(lp, "component_gate_entropy_weight", default=0.0)
+    if gates is not None and (gate_balance_weight > 0 or gate_entropy_weight > 0):
+        gate_parts = component_gate_regularization_loss(gates, lp)
+        parts["component_gate_balance"] = gate_parts["balance"].detach()
+        parts["component_gate_entropy"] = gate_parts["entropy"].detach()
+        parts["component_gate_entropy_match"] = gate_parts["entropy_match"].detach()
+        total = total + gate_balance_weight * gate_parts["balance"] + gate_entropy_weight * gate_parts["entropy_match"]
+    else:
+        parts["component_gate_balance"] = zero.detach()
+        parts["component_gate_entropy"] = zero.detach()
+        parts["component_gate_entropy_match"] = zero.detach()
+
+    # Stage-3 cycle.
     l6_weight = float(lp.get("co_prediction_cycle_weight", 0.0))
     if stage3 and l6_weight > 0 and all(t is not None for t in (A_hat, S_hat, G_hat, Y_full)) and model is not None:
-        l6_loss = co_prediction_cycle_loss(A_hat, S_hat, G_hat, Y_full, model.forward)
+        l6_loss = co_prediction_cycle_loss(A_hat, S_hat, G_hat, Y_full, model.forward, batch.get("x"))
         parts["co_prediction_cycle"] = l6_loss.detach()
         total = total + l6_weight * l6_loss
     else:
@@ -531,6 +486,5 @@ def compute_gprmambasep_loss(
 
     parts_float: dict[str, float] = {"loss": float(total.detach().cpu())}
     for k, v in parts.items():
-        parts_float[k] = float(v.cpu())
-
+        parts_float[k] = float(v.detach().cpu())
     return total, parts_float
