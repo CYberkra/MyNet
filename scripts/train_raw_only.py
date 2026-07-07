@@ -648,7 +648,7 @@ def run(cfg_path):
     if discriminator is not None:
         param_groups.append({"params": discriminator.parameters(), "lr": float(cfg.get('component_discriminator_lr', cfg['lr'])), "weight_decay": float(cfg.get('component_discriminator_weight_decay', 1e-4))})
     opt=torch.optim.AdamW(param_groups)
-    scaler = torch.cuda.amp.GradScaler(enabled=bool(cfg.get('amp', False)) and device.type == 'cuda')
+    scaler = torch.amp.GradScaler('cuda', enabled=bool(cfg.get('amp', False)) and device.type == 'cuda')
     train_real_ds = DS('train', cfg)
     assert_nonempty_dataset(train_real_ds, 'train')
     train_real=DataLoader(train_real_ds,batch_size=cfg['batch_size'],shuffle=True,num_workers=int(cfg.get('num_workers',0)))
