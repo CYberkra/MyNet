@@ -5,7 +5,7 @@
   "width_resize": 256,
   "batch_size": 1,
   "epochs": 80,
-  "lr": 0.0004,
+  "lr": 0.0001,
   "base_ch": 12,
   "mamba_state_dim": 32,
   "model_dropout": 0.05,
@@ -59,6 +59,7 @@
     "horizontal_flip_prob": 0.35
   },
   "deterministic": false,
+  "amp": true,
   "input_log_scale": 0.001,
   "no_pick_window_repeats": 2,
   "acceptance_note": "LineX1 is review-only. Line9 remains full holdout for real evaluation.",
