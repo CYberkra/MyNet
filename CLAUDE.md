@@ -26,25 +26,157 @@ The core challenge: low-frequency airborne GPR suffers from strong clutter (dire
 The full research plan is in `UavGPR_机器学习背景杂波抑制全项研究计划.docx`.
 Extract text via pandoc or python-docx (see docx skill).
 
-## Current State (2026-07-04)
+## Current State (2026-07-08)
 
-**batch_001**: 12 case (LINE9_STYLE_001~010 + TERRAIN_011~012)  
-全部跑完 128/128 道 → QC GREEN → promote 到 `05_accepted_dataset/` ✅  
-**trainset_v1_0_line9_style_12cases**: 已导出（13 case × 128 道 = 1664 trace，含原始 LINE9_STYLE_V1）  
-**batch_002_depth_30cases**: 30 深度变体 case，**已用修后生成器重生成**（坐标修正，天线不再埋入地层），preflight 19项全 PASS ✅  
-**batch_003**: 24 case（浅层干扰+中深度+hard negative）从 WSL 迁入，**仿真进行中 ✅**（独立 CMD 窗口运行）
+### Architecture
+**GprMambaSep v2.1 (B-Guarded GprMambaSepLite)** — code in `pgdacsnet/model_gprmambasep.py`.
+ConvNeXt encoder + axial SSM mixer → split bottleneck → **A/S/G explicit decomposition** (three `_ComponentDecoder`s) → G-branch task heads (mask/presence/center).
 
-**V3.x 控制实验系列**:
-- **V3.2**: 宽域300m + PML60，验证X来自侧边界反射 ✅
-- **V3.3**: 宽域+平滑起伏+`#triangle`介电平滑，迹间差异46.93
-- **V3.4**: `#triangle averaging=y` 替代 H5，避免台阶效应，迹间差异45.37
-- **V3.5**: +weak_cover_band，迹间差异45.37
-- **V3.6**: +浅层扰动，完整y_soft/geom_onset/visible_phase标签
-- **V3.7**: 浅（10m, 95/128迹）/深（18m, 128迹）✅
+Old `v1_9d_mambavision_hybrid` (UNet-based) archived at `legacy/unet-arch` branch.
 
-**LINE9_LABEL_INSPIRED_V1**: 480m域 Line9 地形追随模型，128 道，trace_var=44.53。  
-标签匹配 Line9 V14 实测仅 **0.06ns misfit**（68% trace < 0.1ns），已在 `PGDA_SYNTH_DATASET_V1/` 完成建档。  
-预检 18 项全 PASS，QC GREEN（target_local_peak_median=0.909, support=83.6%）。
+### Training Progress
+
+| Stage | Status | Line9 DP MAE | Key Takeaway |
+|-------|--------|-------------|--------------|
+| 0: P0-3 Baseline | ✅ | **3.27 ns** | Center fusion baseline, no decomposition |
+| 1: Sim-only pretrain (v2.1) | ✅ 80 ep | — | AMP enabled, 192 NPZ from Pilot-Mini, stable |
+| 2: Mixed sim-real Line9 holdout | ✅ 80 ep | **25.24 ns** | Self-consistency=0.003 but G branch drifts — no component supervision |
+
+**Critical finding**: The model achieves near-perfect reconstruction (`A_hat+S_hat+G_hat ≈ Y_full`, self-consistency loss=0.003) but the G component is **not aligned to the correct geological interface**. DP MAE=25.24ns vs P0-3 baseline of 3.27ns — the model picks correctly (56% pick rate) but picks the wrong depth. Root cause: no L2 component supervision (`sim_supervised_weight=0.0` in config), so G self-organizes as an unconstrained residual bucket.
+
+### Data Status
+
+| Dataset | Samples | Has Y_air / X_clean / G_target? | Status |
+|---------|---------|----------------------------------|--------|
+| `simulation_pretrain_v1` | 192 NPZ | ❌ No | Stage 1 used |
+| `data_corrected_v1_4` | 78 NPZ (6 lines) | ❌ No | Stage 2 used |
+| `batch_003` | 20/24 cases with raw | ❌ No air_only | Not used yet |
+
+**No component arrays exist in any current NPZ.** This is the primary bottleneck for L2 G supervision.
+
+### Next Bottleneck
+1. Generate Batch4 with `raw_full + background_only + basal_only` paired simulations
+2. Inject component arrays into NPZ pipeline
+3. Enable `sim_supervised_weight` with G_target / X_clean / Y_air supervision
+4. Add G_band / distractor / global no-target losses
+
+---
+
+## Architecture Reference
+
+**Current main: GprMambaSep (v2_0 / v2_1_gprmambasep_lite / gprmambasep_lite)** — `pgdacsnet/model_gprmambasep.py`
+
+- `build_gprmambasep(cfg)` → `GprMambaSep`
+- Dispatched via `build_model(cfg)` in `pgdacsnet/model_raw_unet.py`
+- All `model_arch` aliases map to the same class: `"v2_0_gprmambasep"`, `"gprmambasep"`, `"v2_1_gprmambasep_lite"`, `"gprmambasep_lite"`
+
+### Architecture Diagram
+
+```
+Input (B, C, H, W)  C=1(radar)+N(aux)
+  └─ Stem (conv3x3 → LN)
+       └─ ConvNeXt Stages (×4, 64→128→256→512)
+            └─ AxialSSMLiteBlock mixer
+                 └─ Split Bottleneck
+                      ├─ Decoder_A ──► A_hat (air wave)
+                      ├─ Decoder_S ──► S_hat (surface)
+                      └─ Decoder_G ──► g_task_feat
+                              ├─ mask_head ──► mask_logits (B,1,H,W)
+                              ├─ pres_head ──► presence_logits (B,1,W)
+                              └─ center_head ──► center_logits (B,1,H,W)
+```
+
+### Output Contract
+
+`GprMambaSepOutput` (in `pgdacsnet/model_interfaces.py`):
+- `mask_logits` / `presence_logits` / `center_logits` — standard PGDA (with backward-compat aliases `G_mask_logits` etc.)
+- `A_hat` / `S_hat` / `G_hat` — component decomposition (B,1,H,W)
+- `component_gates` — diagnostic per-trace A/S/G gating weights
+- Tuple-unpackable: `(mask, pres, center, A_hat, S_hat, G_hat)` — 6 fields
+- Dict/attribute access supported
+
+### Key Architectural Features
+- **`_SkipFuse`**: Gated skip connections that learn to fuse encoder features into decoders
+- **`_ComponentDecoder`**: 3-stage full-resolution decoder (no resolution loss, stride-1 convs)
+- **`component_gate`**: Softmax over pooled decoder features — models which component dominates each trace
+- **Validity-masked losses**: `*_valid` flags in loss functions for mixed-batch safety (sim vs real)
+- **AMP**: `torch.amp.GradScaler` — production 512×256 fits on 6GB RTX 3060
+
+### PGDA Output Contract
+- `mask_logits`: (B,1,H,W) — per-pixel target probability logits
+- `presence_logits`: (B,1,W) — per-trace target presence (NOT (B,1,H,W))
+- `center_logits`: (B,1,H,W) — per-column center depth
+- `unpack_pgda_output()` / `unpack_model_output()` handles all output types
+
+---
+
+## Training Strategy
+
+| Phase | Config | Data | Key Settings | Results |
+|-------|--------|------|-------------|---------|
+| Stage 1: Sim pretrain | `gpu_pretrain_v2_1_gprmambasep_lite.json` | `simulation_pretrain_v1` (192 NPZ) | lr=3e-4, ep=80, AMP, self_consistency=2.0 | Stable convergence, warm-start for Stage 2 |
+| Stage 2: Mixed sim-real | `gpu_mixed_v2_1_gprmambasep_lite_line9holdout.json` | Real L3/L6/L7/L1 + sim v1 | lr=1e-4, ep=80, AMP, sim_batch_ratio=0.3, sim_supervised_weight=0.0 | DP MAE=25.24ns, PR=56%, self-consistency=0.003 |
+| Stage 2.1 (planned): +Component supervision | TBD | +Batch4 component arrays | Enable sim_supervised_weight, add G_band/distractor/global losses | Target: DP MAE < 10ns |
+
+### Critical Config Fields
+```json
+{
+  "model_arch": "v2_1_gprmambasep_lite",   // dispatches to GprMambaSep
+  "base_ch": 12,                            // stem channels (controls model width)
+  "mamba_state_dim": 32,                    // SSM state dimension
+  "ssm_kernel": 31,                         // SSM convolution kernel
+  "attention_heads": 4,
+  "sim_supervised_weight": 0.0,             // OFF — needs component arrays
+  "self_consistency_weight": 1.5,           // A_hat+S_hat+G_hat ≈ Y_full
+  "warm_start_from": "path/to/checkpoint_best.pt"
+}
+```
+
+### Data Split Discipline (Critical)
+- **按测线分割**，非随机 patch
+- **Leave-one-line-out**: 至少一条完整测线用于测试
+- 同测线不同功率档 → 同一 split
+
+---
+
+## Loss Functions
+
+`scripts/losses_gprmambasep.py` — `compute_gprmambasep_loss()` orchestrates:
+
+| Loss | Config Key | Receptive? | Notes |
+|------|-----------|------------|-------|
+| Segmentation BCE/Dice/Core | `core_weight`, `dice_weight` | ✅ | Standard PGDA, applied to mask_logits via g_task_feat |
+| Outside penalty | `outside_weight` | ✅ | Penalizes predictions outside valid time window |
+| Presence (per-trace) | `presence_weight` | ✅ | BCE with negative weighting, no-pick support |
+| Centerline L1 | `centerline_weight` | ✅ | Supervises center depth |
+| Continuity | `continuity_weight` | ✅ | Smoothness prior on center prediction |
+| Self-consistency | `self_consistency_weight` | ✅ | L1+MSE: A_hat+S_hat+G_hat ≈ Y_full |
+| L2 component supervision | `sim_supervised_weight` | ❌ OFF | Reads Y_air/X_clean/G_target from NPZ — none exist yet |
+| Arrival prior | `arrival_prior_weight` | ✅ | Penalizes G_hat energy before expected arrival |
+| Amplitude ratio prior | `amplitude_ratio_weight` | ✅ | Constrains A/S/G relative amplitudes |
+| Co-prediction cycle | `co_prediction_cycle_weight` | ✅ | Cycle-consistency between heads |
+
+---
+
+## Signal Model (Locked Definition)
+
+```
+A = 直达波 / 天线间空气耦合
+S = 地表参考反射
+G = 地下有效地质信号（基覆界面、互层、深部异常）
+E = 外部杂波（电线、树木、建筑 — 当前阶段暂不生成）
+
+Y_full   = A + S + G + E          (raw 变体)
+Y_target = A + S + G              (target_only 变体)
+Y_air    = A                      (air_only 变体, 全局模板, 固定几何下复用)
+
+X_clean = Y_target - Y_air = S + G     (保留地表反射)
+C_gt    = Y_full - X_clean  = A + E    (操作性杂波标签)
+```
+
+C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中存在多次散射）。
+
+---
 
 ## 仿真数据管理 (PGDA_SYNTH_DATASET_V1)
 
@@ -66,64 +198,80 @@ Extract text via pandoc or python-docx (see docx skill).
 生成 → preflight_check → gprMax 跑 → after_run_qc → GREEN → promote_to_accepted
 ```
 
-**跑前预检 19 项**（不全 PASS 不进 gprMax）：
-pml_cells, domain_grid, H5禁止, noair禁止, triangle平滑, 所有三角形必须 averaging=y, `#`注释语法, source/rx不在PML(x/y上下边界), 侧边界>700ns(空气速度+地层速度), 标签完整性, generator记录, 标签非平坦(range>0.5ns), TX/RX按几何交点检测是否埋入介质, 三角形不超出domain_y
-
-**结果分级**：
-GREEN_ACCEPTED → accepted_dataset / YELLOW_REVIEW → 人工审查 / RED_REJECTED → failed / GRAY_DEBUG_ONLY → 诊断
-
-### 自动化工具
-
-```bash
-# 跑前预检（必做）
-python data/PGDA_SYNTH_DATASET_V1/tools/preflight_check.py <case_dir>
-
-# 跑后质检（一次性出6个QC文件）
-python data/PGDA_SYNTH_DATASET_V1/tools/after_run_qc.py <case_run_dir>
-
-# GREEN → promote
-python data/PGDA_SYNTH_DATASET_V1/tools/promote_to_accepted.py <case_run_dir>
-```
-
-### 当前状态
+### 关键模板
 
 | 模板 | 状态 | 存放 |
 |------|------|------|
-| V3.4/V3.5/V3.6 | 历史参考模板 | 01_templates/ |
-| LINE9_LABEL_INSPIRED_V1 | 当前主模板，已 promote | 01_templates/ + 05_accepted_dataset/ |
+| V3.4/V3.5/V3.6 | 历史参考模板 | `01_templates/` |
+| LINE9_LABEL_INSPIRED_V1 | 当前主模板，已 promote | `01_templates/` + `05_accepted_dataset/` |
 
-详细规则见 `data/PGDA_SYNTH_DATASET_V1/00_docs/`。
+### 工作空间
 
-**X Pattern 实验结论**: X = 空气耦合直达波 A + 地表反射 S 的早时时空交叠。根本成因：空气（ε_r=1, v≈0.3m/ns）与地面介质（ε_r≈6-19, v≈0.07-0.12m/ns）的巨大波速差→A 与 S 双曲曲率不同→交叉形成 X。去掉空气层（`case_000001_no_air_fill`，20 迹对照）后直达波被彻底消除：峰值从 90→30，均值迹零点从 1409→10。起伏地形仅破坏对称性但非 X 根源。`data/gprmax_experiments/` 含 M0→M1→M1b→M1c→M2 渐变链 + `case_000001_no_air_fill` 诊断。**生产模型必须保留空气层**，PGDA-CSNet 需学习在有强 A 的情况下同时分离 A/S/G。
-
-**工作空间**：
 | 路径 | 内容 |
 |------|------|
-| `workspace/transfer_20260627_142748/.../PGDA_CSNet_v0_9_6_SEARCH_WINDOW_GUARD/` | 主训练/评估工作目录（含 scripts/、configs/、outputs/） |
-| `data_corrected_v1_4_terrain_direction/` | 当前训练数据（实测+标注） |
-| `data/simulation_pretrain_v2/` | 20 Pilot-Mini 仿真场景 |
-| `data/simulation_pretrain_v3/` | Pilot-Train 100 场景（待仿真）|
-| `data/simulation_pretrain_v3_check/` | 单场景验证测试数据 |
+| `data_corrected_v1_4_terrain_direction/` | 实测训练数据（6 测线 × 3 功率档） |
+| `data/simulation_pretrain_v1/` | 20 Pilot-Mini 仿真场景（192 NPZ） |
+| `data/simulation_pretrain_v3/` | Pilot-Train 100 场景（待仿真） |
 | `data/营山/` | 原始实测数据 + 钻孔资料 |
+| `data/PGDA_SYNTH_DATASET_V1/` | 正式仿真数据治理目录 |
 | `uavgpr_simlab/` | SimLab 仿真工具 |
 
-## Signal Model (Locked Definition)
+---
 
+## SimLab (仿真工具)
+
+**位置**: `D:\Claude\PGDA-CSNet\uavgpr_simlab\`
+**安装**: `pip install -e D:\Claude\PGDA-CSNet\uavgpr_simlab` (已安装在 gprMax .venv)
+**gprMax**: v3.1.7 at `E:\gprMax\gprMax-v.3.1.7`，Python: `.venv\Scripts\python.exe`
+**GPU**: `SafeGprMaxRunner` 自动注入 MSVC + CUDA 路径到 PATH，无需 conda 或 vcvars
+
+**⚠️ GPU 复杂模型**: 带介电平滑的复杂模型（643+ box）直接 `python -m gprMax` 会因 MSVC INCLUDE/LIB 路径缺失导致 nvcc 编译失败。**必须使用 SafeGprMaxRunner** 或 `run_batch.py`（内部通过 `_inject_msvc_paths()` 注入 PATH/INCLUDE/LIB）。
+
+**⚠️ MSVC 路径注入是最易被忽略的陷阱**: Bash 下直接 `python -m gprMax raw.in -gpu` 进程会挂死、GPU 0% 占用。详细排错见 `.claude/skills/gprmax-usage/` 技能。
+
+**⚠️ .in 文件注释语法**: gprMax v3.1.7 `check_cmd_names` 会解析所有 `#` 行并分割 `:`。纯注释行（无冒号如 `# --- geometry boxes ---`）导致 IndexError。必须用 `#:` 或移除该行。
+
+### gprMax 源码关键发现
+
+- **`#geometry_objects_read` 覆盖不彻底**: 写入 G.solid + G.ID + G.rigidE/H，后续 `#box` 只改 G.solid 不改 G.ID/rigid（`input_cmds_geometry.py:136`）
+- **`#triangle` 介电平滑**: 第 13 个参数 `y` 启用 dielectric smoothing，避免 H5 stair-step（`input_cmds_geometry.py:355`）
+- **GPU 常量内存 64KB**: 每材料 128 bytes → 最多 ~1600 个材料（`fields_updates_gpu.py`）
+- **介电平滑副作用**: 在材料边界创建平均材料（如 `air+weathered_bedrock`），增加材料总数，改变反射强度
+
+### 关键配置文件
+
+| 文件 | 用途 |
+|------|------|
+| `configs/run_plan_3060_pilot_train_v1.yaml` | Pilot-Train 100 场景生产配置 |
+| `configs/gpu_train_v4_pilot_mixed.json` | v4 训练配置（100 仿真场景） |
+| `scripts/run_pilot_train_resumable.py` | 续跑脚本（SafeGprMaxRunner，跳过已完成 case） |
+| `scripts/postprocess_simulation_batch.py` | .out → raw_bscan_native.npy 批量后处理 |
+| `scripts/convert_pilot_to_training.py` | 新版数据转换（线性插值 + 全局P99 + 软标签） |
+| `data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py` | 批量运行（PGDA 治理模式） |
+
+### 常用命令
+
+```bash
+# 三件套（仿真跑完立即执行）
+python .claude/skills/sim-report/sim_report.py <输出目录>
+
+# case 生成（深度变体 batch）
+python data/PGDA_SYNTH_DATASET_V1/tools/generate_cases.py batch_xxx --n-cases 30 --depth-range 6 24
+
+# 跑前预检（必做）
+python data/PGDA_SYNTH_DATASET_V1/tools/preflight_check.py <case_dir>
+
+# 批量运行
+python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
+
+# 跑后质检
+python data/PGDA_SYNTH_DATASET_V1/tools/after_run_qc.py <case_run_dir>
+
+# 数据转换
+"E:\gprMax\gprMax-v.3.1.7\.venv\Scripts\python.exe" scripts/convert_pilot_to_training.py
 ```
-A = 直达波 / 天线间空气耦合
-S = 地表参考反射
-G = 地下有效地质信号（基覆界面、互层、深部异常）
-E = 外部杂波（电线、树木、建筑 — 当前阶段暂不生成）
 
-Y_full   = A + S + G + E          (raw 变体)
-Y_target = A + S + G              (target_only 变体)
-Y_air    = A                      (air_only 变体, 全局模板, 固定几何下复用)
-
-X_clean = Y_target - Y_air = S + G     (保留地表反射)
-C_gt    = Y_full - X_clean  = A + E    (操作性杂波标签)
-```
-
-C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中存在多次散射）。
+---
 
 ## Pipeline Bug History (参考)
 
@@ -148,67 +296,7 @@ C_gt 是**操作性标签**，不等同于严格电磁场分解真值（FDTD 中
 | after_run_qc不查本地labels(2026-07-04) | 优先检查case_run_dir/labels |
 | sim_report不支持raw/子目录(2026-07-04) | 自动识别run_dir/raw/ |
 
-## SimLab (仿真工具)
-
-**位置**: `D:\Claude\PGDA-CSNet\uavgpr_simlab\`  
-**安装**: `pip install -e D:\Claude\PGDA-CSNet\uavgpr_simlab` (已安装在 gprMax .venv)  
-**gprMax**: v3.1.7 at `E:\gprMax\gprMax-v.3.1.7`，Python: `.venv\Scripts\python.exe`  
-**GPU**: `SafeGprMaxRunner` 自动注入 MSVC + CUDA 路径到 PATH，无需 conda 或 vcvars
-
-**⚠️ GPU 复杂模型**: 带介电平滑的复杂模型（643+ box）直接 `python -m gprMax` 会因 MSVC INCLUDE/LIB 路径缺失导致 nvcc 编译失败。**必须使用 SafeGprMaxRunner** 或 `run_batch.py`（内部通过 `_inject_msvc_paths()` 注入 PATH/INCLUDE/LIB）。
-
-**⚠️ MSVC 路径注入是最易被忽略的陷阱**: Bash 下直接 `python -m gprMax raw.in -gpu` 进程会挂死、GPU 0% 占用。详细排错见 `.claude/skills/gprmax-usage/` 技能。
-
-**⚠️ .in 文件注释语法**: gprMax v3.1.7 `check_cmd_names` 会解析所有 `#` 行并分割 `:`。纯注释行（无冒号如 `# --- geometry boxes ---`）导致 IndexError。必须用 `#:` 或移除该行。
-
-### gprMax 源码关键发现
-
-- **`#geometry_objects_read` 覆盖不彻底**: 写入 G.solid + G.ID + G.rigidE/H，后续 `#box` 只改 G.solid 不改 G.ID/rigid（`input_cmds_geometry.py:136`）
-- **`#triangle` 介电平滑**: 第 13 个参数 `y` 启用 dielectric smoothing，避免 H5 stair-step（`input_cmds_geometry.py:355`）
-- **GPU 常量内存 64KB**: 每材料 128 bytes → 最多 ~1600 个材料（`fields_updates_gpu.py`）
-- **介电平滑副作用**: 在材料边界创建平均材料（如 `air+weathered_bedrock`），增加材料总数，改变反射强度
-
-### 常用命令
-```bash
-# 三件套（仿真跑完立即执行）
-python .claude/skills/sim-report/sim_report.py <输出目录>
-
-# case 生成（深度变体 batch）
-python data/PGDA_SYNTH_DATASET_V1/tools/generate_cases.py batch_xxx --n-cases 30 --depth-range 6 24
-
-# 生成 SceneWorld 数据集
-python -m uavgpr_simlab.cli generate --plan configs/run_plan_3060_pilot_v1.yaml --workspace workspace/my_run --count 20
-
-# 几何预检（快速验证 .in 文件, ~3s）
-python -c "
-from uavgpr_simlab.core.runner import run_geometry_dry_run
-r = run_geometry_dry_run('path/to/raw.in', python_exe='E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe')
-print(r.status)
-"
-
-# 批量运行（PGDA_SYNTH_DATASET_V1 模式）
-python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
-```
-
-### 关键配置文件
-| 文件 | 用途 |
-|------|------|
-| `configs/run_plan_3060_pilot_v1.yaml` | Pilot-Mini 旧配置 |
-| `configs/run_plan_3060_pilot_train_v1.yaml` | Pilot-Train 100 场景生产配置 |
-| `configs/gpu_train_v4_pilot_mixed.json` | v4 训练配置（100 仿真场景） |
-| `scripts/run_pilot_train_resumable.py` | 续跑脚本（SafeGprMaxRunner，跳过已完成 case） |
-| `scripts/postprocess_simulation_batch.py` | .out → raw_bscan_native.npy 批量后处理 |
-| `scripts/make_v4_loo_configs.py` | LOLO-CV 5折×3种子 config 生成器 |
-| `configs/default_app.yaml` | 应用默认值（已更新为本地路径） |
-| `configs/environment_3060_laptop.yaml` | 3060 环境配置 |
-| `data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py` | 批量运行（PGDA 治理模式） |
-| `scripts/convert_pilot_to_training.py` | 新版数据转换（线性插值 + 全局P99 + 软标签） |
-
-### 数据转换
-```bash
-# 新版转换：.npy → NPZ 训练窗口
-"E:\gprMax\gprMax-v.3.1.7\.venv\Scripts\python.exe" scripts/convert_pilot_to_training.py
-```
+---
 
 ## Hardware & Data Constraints
 
@@ -219,30 +307,7 @@ python data/PGDA_SYNTH_DATASET_V1/tools/run_batch.py <batch_dir>
 - **钻孔**: ZK07 (~21-23m), ZK09 (~20-23m), 多个浅钻孔 (~9-17m)，数据在 `data/营山/`
 - **决策**: 仿真用 gprMax 原生时域 Ricker 100 MHz，不做 SFCW 转换。当前阶段暂不做外部杂波（电线/树木/建筑），聚焦地质核心
 
-## Training Strategy
-
-| Stage | Status | 说明 |
-|-------|--------|------|
-| 0: Baseline | ✅ 完成 | P0-3 Center Fusion: MAE=3.268 |
-| 1: v3 Supervised Pretrain | ✅ 完成 | 20 Pilot-Mini 场景, LOLO-CV Line9: DP MAE=37.19ns |
-| 2: batch_001 仿真训练 | ✅ 完成 | 12 LINE9-style 场景，50 epoch → 实测 pick rate 0%（域偏移）|
-| 3: FiLM v1.8b | ✅ 完成 | +terrain features → MAE 256ns（略改善）|
-| 4: UDA 训练 | ✅ 完成 | 域损失 0.91→0.43，对抗训练有效 |
-| 5: Pilot-Train 100 场景 | 🔄 进行中(17/100) | 续跑脚本 `scripts/run_pilot_train_resumable.py` |
-| 6: batch_002 深度多样仿真 | ✅ 完成 | 30 场景已用修后生成器重生成 |
-| 7: batch_003 深度泛化仿真 | 🔄 进行中 | 24 case（浅层干扰+中深度+hard negative）|
-| 8: v4 LOLO-CV | ⏳ batch_003 完成后 | 15 config 已生成, 用新数据重跑 5 折 × 3 种子 |
-
-## Architecture Reference
-
-**PGDA-CSNet (v1_9d_mambavision_hybrid)**: 网络架构代码在 `pgdacsnet/model_raw_unet.py`。
-核心组件见 [[pgda-csnet-architecture]] — ConvNeXtStage 编码器 + DilatedBottleneck + AxialSSM + MetadataFiLM + GatedSequenceBlock。
-训练入口: `train_raw_only.py` / `resume_train.py`，`build_model(cfg)` 构建完整管线。
-
-### Data Split Discipline (Critical)
-- 按**测线**分割，非随机 patch
-- **Leave-one-line-out**: 至少一条完整测线用于测试
-- 同测线不同功率档 → 同一 split
+---
 
 ## ⚠️ Python 解释器（关键陷阱）
 
