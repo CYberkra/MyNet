@@ -68,7 +68,7 @@ Old `v1_9d_mambavision_hybrid` (UNet-based) archived at `legacy/unet-arch` branc
 
 - `build_gprmambasep(cfg)` → `GprMambaSep`
 - Dispatched via `build_model(cfg)` in `pgdacsnet/model_raw_unet.py`
-- All `model_arch` aliases map to the same class: `"v2_0_gprmambasep"`, `"gprmambasep"`, `"v2_1_gprmambasep_lite"`, `"gprmambasep_lite"`
+- All `model_arch` aliases map to the same class: `"v2_0_gprmambasep"`, `"gprmambasep"`, `"v2_1_gprmambasep_lite"`, `"gprmambasep_lite"`, `"v2_1_curvegassist_lite"`, `"curvegassist_lite"`, `"g_assisted_curvemamba"`
 
 ### Architecture Diagram
 
@@ -84,6 +84,11 @@ Input (B, C, H, W)  C=1(radar)+N(aux)
                               ├─ mask_head ──► mask_logits (B,1,H,W)
                               ├─ pres_head ──► presence_logits (B,1,W)
                               └─ center_head ──► center_logits (B,1,H,W)
+                              (optional: curve_head / global_no_target_head / uncertainty_head)
+
+**(Route 2 — G-assisted curve path)**: When `task_feature_mode="g_assisted"`, a
+shared decoder from bottleneck + raw-local stem features are fused with G-decoder
+features before the task heads, decoupling curve/presence/center from G-branch drift.
 ```
 
 ### Output Contract
@@ -116,6 +121,7 @@ Input (B, C, H, W)  C=1(radar)+N(aux)
 |-------|--------|------|-------------|---------|
 | Stage 1: Sim pretrain | `gpu_pretrain_v2_1_gprmambasep_lite.json` | `simulation_pretrain_v1` (192 NPZ) | lr=3e-4, ep=80, AMP, self_consistency=2.0 | Stable convergence, warm-start for Stage 2 |
 | Stage 2: Mixed sim-real | `gpu_mixed_v2_1_gprmambasep_lite_line9holdout.json` | Real L3/L6/L7/L1 + sim v1 | lr=1e-4, ep=80, AMP, sim_batch_ratio=0.3, sim_supervised_weight=0.0 | DP MAE=25.24ns, PR=56%, self-consistency=0.003 |
+| Stage 2a (Route 2): G-assisted CurveMamba | `gpu_mixed_v2_1_curvegassist_line9holdout_6g.json` (6G) / `_12g.json` (12G) | Real L3/L6/L7/L1 + sim v1 | task_feature_mode=g_assisted, curve_head, global_no_target, grad_accum_steps=4/2 | ⏳ Pending — curve P(t|trace) + fused task path |
 | Stage 2.1 (planned): +Component supervision | TBD | +Batch4 component arrays | Enable sim_supervised_weight, add G_band/distractor/global losses | Target: DP MAE < 10ns |
 
 ### Critical Config Fields
@@ -155,6 +161,11 @@ Input (B, C, H, W)  C=1(radar)+N(aux)
 | Arrival prior | `arrival_prior_weight` | ✅ | Penalizes G_hat energy before expected arrival |
 | Amplitude ratio prior | `amplitude_ratio_weight` | ✅ | Constrains A/S/G relative amplitudes |
 | Co-prediction cycle | `co_prediction_cycle_weight` | ✅ | Cycle-consistency between heads |
+| Curve distribution (Route 2) | `curve_distribution_weight` | ✅ | Trace-wise CE + center + smooth + curvature + shallow |
+| Global no-target (Route 2) | `global_no_target_weight` | ✅ | Window-level abstention BCE |
+| Uncertainty NLL (Route 2) | `uncertainty_weight` | ✅ | Heteroscedastic NLL calibration |
+| G-envelope mask consistency | `g_envelope_mask_weight` | ✅ | Forces G_hat energy to match target mask |
+| Component gate regularization | `component_gate_balance/entropy_weight` | ✅ | Prevents A/S/G gate collapse |
 
 ---
 
