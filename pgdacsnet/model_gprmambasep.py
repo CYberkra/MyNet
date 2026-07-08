@@ -125,6 +125,10 @@ class GprMambaSep(nn.Module):
         presence_pool_hi_frac: float | None = None,
         ssm_impl: str = "ssm_lite",
         gated_decomposition: bool = True,
+        task_feature_mode: str = "g_only",
+        enable_curve_head: bool = False,
+        enable_global_no_target_head: bool = False,
+        enable_uncertainty_head: bool = False,
     ):
         super().__init__()
         c = int(base_ch)
@@ -136,6 +140,13 @@ class GprMambaSep(nn.Module):
         self.presence_pool_hi_frac = presence_pool_hi_frac
         self.gated_decomposition = bool(gated_decomposition)
         self.ssm_impl = str(ssm_impl)
+        self.task_feature_mode = str(task_feature_mode).lower()
+        self.enable_curve_head = bool(enable_curve_head)
+        self.enable_global_no_target_head = bool(enable_global_no_target_head)
+        self.enable_uncertainty_head = bool(enable_uncertainty_head)
+        self.use_fused_task_path = self.task_feature_mode in (
+            "g_assisted", "shared_g", "shared_plus_g", "shared_g_raw", "curvegassist"
+        )
         stem_channels = self.input_channels + 1  # raw -> raw + |raw|, plus auxiliaries
 
         def seq_block(ch: int) -> nn.Module:
@@ -183,13 +194,44 @@ class GprMambaSep(nn.Module):
         self.decoder_s = _ComponentDecoder(c, dropout=dp, skip_gate_priors=(0.75, 1.00, 0.80))
         self.decoder_g = _ComponentDecoder(c, dropout=dp, skip_gate_priors=(1.00, 0.80, 0.35))
 
-        # ---- Task heads on full-resolution G-decoder features ----
+        # ---- v2.1 optional G-assisted task path ----
+        # Legacy GprMambaSep uses G-decoder features directly for all task
+        # heads.  The G-assisted path decodes a shared full-resolution feature
+        # from the bottleneck and fuses it with G features and a raw-local stem;
+        # this prevents an unsupervised/weakly supervised G branch from being
+        # the only route to the curve/presence heads.
+        if self.use_fused_task_path:
+            self.shared_task_proj = nn.Conv2d(c * 8, c * 4, 1)
+            self.shared_task_refine = nn.Sequential(*[ConvNeXtBlock(c * 4, dropout=dp) for _ in range(2)])
+            self.decoder_task = _ComponentDecoder(c, dropout=dp, skip_gate_priors=(1.00, 1.00, 1.00))
+            self.raw_local_proj = nn.Sequential(
+                nn.Conv2d(stem_channels, c, 3, padding=1),
+                ConvNeXtBlock(c, dropout=dp),
+            )
+            self.task_fuse = nn.Sequential(
+                nn.Conv2d(c * 3, c, 1),
+                ConvNeXtStage(c, c, depth=2, dropout=dp),
+            )
+        else:
+            self.shared_task_proj = None
+            self.shared_task_refine = None
+            self.decoder_task = None
+            self.raw_local_proj = None
+            self.task_fuse = None
+
+        # ---- Task heads on full-resolution task features ----
         self.mask_head = nn.Conv2d(c, 1, 1)
         self.center_head = CenterRefineHead(c, dropout=dp)
         self.pres_head = nn.Sequential(
             nn.AdaptiveAvgPool2d((1, None)),
             nn.Conv2d(c, 1, 1),
         )
+        self.curve_head = nn.Conv2d(c, 1, 1) if self.enable_curve_head else None
+        self.global_no_target_head = (
+            nn.Sequential(nn.AdaptiveAvgPool2d(1), nn.Conv2d(c, 1, 1))
+            if self.enable_global_no_target_head else None
+        )
+        self.uncertainty_head = nn.Conv2d(c, 1, 1) if self.enable_uncertainty_head else None
 
     def _build_stem_input(self, x: torch.Tensor) -> torch.Tensor:
         """Build raw-domain stem input with raw, |raw| and optional auxiliaries."""
@@ -251,9 +293,39 @@ class GprMambaSep(nn.Module):
         s_hat = F.interpolate(s_hat_raw, size=(h, w), mode="bilinear", align_corners=False)
         g_hat = F.interpolate(g_hat_raw, size=(h, w), mode="bilinear", align_corners=False)
 
-        mask_logits = F.interpolate(self.mask_head(g_task_feat), size=(h, w), mode="bilinear", align_corners=False)
-        center_logits = F.interpolate(self.center_head(g_task_feat), size=(h, w), mode="bilinear", align_corners=False)
-        presence_logits = self._presence_logits_from_feat(g_task_feat, w)
+        if self.use_fused_task_path:
+            assert self.shared_task_proj is not None
+            assert self.shared_task_refine is not None
+            assert self.decoder_task is not None
+            assert self.raw_local_proj is not None
+            assert self.task_fuse is not None
+            task_latent = self.shared_task_refine(self.shared_task_proj(b))
+            _, shared_task_feat = self.decoder_task(task_latent, e1, e2, e3)
+            raw_local_feat = self.raw_local_proj(e1_in)
+            if shared_task_feat.shape[-2:] != (h, w):
+                shared_task_feat = F.interpolate(shared_task_feat, size=(h, w), mode="bilinear", align_corners=False)
+            if g_task_feat.shape[-2:] != (h, w):
+                g_task_feat_for_task = F.interpolate(g_task_feat, size=(h, w), mode="bilinear", align_corners=False)
+            else:
+                g_task_feat_for_task = g_task_feat
+            if raw_local_feat.shape[-2:] != (h, w):
+                raw_local_feat = F.interpolate(raw_local_feat, size=(h, w), mode="bilinear", align_corners=False)
+            task_feat = self.task_fuse(torch.cat([shared_task_feat, g_task_feat_for_task, raw_local_feat], dim=1))
+        else:
+            task_feat = g_task_feat
+
+        mask_logits = F.interpolate(self.mask_head(task_feat), size=(h, w), mode="bilinear", align_corners=False)
+        center_logits = F.interpolate(self.center_head(task_feat), size=(h, w), mode="bilinear", align_corners=False)
+        presence_logits = self._presence_logits_from_feat(task_feat, w)
+        curve_logits = None
+        if self.curve_head is not None:
+            curve_logits = F.interpolate(self.curve_head(task_feat), size=(h, w), mode="bilinear", align_corners=False)
+        global_no_target_logits = None
+        if self.global_no_target_head is not None:
+            global_no_target_logits = self.global_no_target_head(task_feat).flatten(1)
+        uncertainty_logits = None
+        if self.uncertainty_head is not None:
+            uncertainty_logits = F.interpolate(self.uncertainty_head(task_feat), size=(h, w), mode="bilinear", align_corners=False)
         full_gates = F.interpolate(gates, size=(h, w), mode="bilinear", align_corners=False)
 
         return GprMambaSepOutput(
@@ -264,6 +336,9 @@ class GprMambaSep(nn.Module):
             S_hat=s_hat,
             G_hat=g_hat,
             component_gates=full_gates,
+            curve_logits=curve_logits,
+            global_no_target_logits=global_no_target_logits,
+            uncertainty_logits=uncertainty_logits,
         )
 
 
@@ -279,4 +354,8 @@ def build_gprmambasep(cfg: dict) -> GprMambaSep:
         presence_pool_hi_frac=cfg.get("presence_pool_hi_frac", None),
         ssm_impl=str(cfg.get("ssm_impl", cfg.get("mamba_impl", "ssm_lite"))),
         gated_decomposition=bool(cfg.get("gated_decomposition", True)),
+        task_feature_mode=str(cfg.get("task_feature_mode", "g_only")),
+        enable_curve_head=bool(cfg.get("enable_curve_head", cfg.get("curve_head", False))),
+        enable_global_no_target_head=bool(cfg.get("enable_global_no_target_head", cfg.get("global_no_target_head", False))),
+        enable_uncertainty_head=bool(cfg.get("enable_uncertainty_head", cfg.get("uncertainty_head", False))),
     )

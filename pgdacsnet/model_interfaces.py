@@ -86,8 +86,8 @@ class GprMambaSepOutput(PGDAOutput):
     """Model output for GprMambaSep with separable A/S/G component fields.
 
     Extends PGDAOutput with A_hat (air wave), S_hat (surface reflection),
-    and G_hat (geological signal). Supports all three calling conventions
-    transparently:
+    G_hat (geological signal), and optional v2.1 curve-picking heads.
+    Supports all three calling conventions transparently:
 
         mask, pres, center, A_hat, S_hat, G_hat = output  # tuple unpacking
         output['A_hat']                                     # dict-style key access
@@ -105,7 +105,9 @@ class GprMambaSepOutput(PGDAOutput):
     }
 
     def __init__(self, mask_logits, presence_logits, center_logits=None,
-                 A_hat=None, S_hat=None, G_hat=None, component_gates=None):
+                 A_hat=None, S_hat=None, G_hat=None, component_gates=None,
+                 curve_logits=None, global_no_target_logits=None,
+                 uncertainty_logits=None):
         super().__init__(mask_logits, presence_logits, center_logits)
         self.A_hat = A_hat
         self.S_hat = S_hat
@@ -113,6 +115,11 @@ class GprMambaSepOutput(PGDAOutput):
         # Optional diagnostic tensor, shape (B, 3, H, W).  It is deliberately
         # not part of tuple unpacking so old six-value callers remain valid.
         self.component_gates = component_gates
+        # Optional v2.1 curve-picking fields.  They are not part of tuple
+        # unpacking so legacy training/eval callers remain valid.
+        self.curve_logits = curve_logits
+        self.global_no_target_logits = global_no_target_logits
+        self.uncertainty_logits = uncertainty_logits
         self._iter_items = (mask_logits, presence_logits, center_logits,
                             A_hat, S_hat, G_hat)
 
@@ -126,17 +133,22 @@ class GprMambaSepOutput(PGDAOutput):
 
     def __contains__(self, key):
         return key in ('mask_logits', 'presence_logits', 'center_logits',
-                       'A_hat', 'S_hat', 'G_hat', 'component_gates', *self._ALIASES.keys())
+                       'A_hat', 'S_hat', 'G_hat', 'component_gates',
+                       'curve_logits', 'global_no_target_logits',
+                       'uncertainty_logits', *self._ALIASES.keys())
 
     def keys(self):
         return ['mask_logits', 'presence_logits', 'center_logits',
-                'A_hat', 'S_hat', 'G_hat', 'component_gates']
+                'A_hat', 'S_hat', 'G_hat', 'component_gates',
+                'curve_logits', 'global_no_target_logits', 'uncertainty_logits']
 
     def values(self):
-        # Dict-like views should include diagnostic component_gates.  Tuple
-        # unpacking intentionally remains six items via _iter_items/.__iter__.
+        # Dict-like views should include diagnostics and v2.1 curve heads.
+        # Tuple unpacking intentionally remains six items via _iter_items/.__iter__.
         return [self.mask_logits, self.presence_logits, self.center_logits,
-                self.A_hat, self.S_hat, self.G_hat, self.component_gates]
+                self.A_hat, self.S_hat, self.G_hat, self.component_gates,
+                self.curve_logits, self.global_no_target_logits,
+                self.uncertainty_logits]
 
     def items(self):
         return zip(self.keys(), self.values())
@@ -150,15 +162,23 @@ class GprMambaSepOutput(PGDAOutput):
             f"A_hat={self._shape_repr(self.A_hat)}, "
             f"S_hat={self._shape_repr(self.S_hat)}, "
             f"G_hat={self._shape_repr(self.G_hat)}, "
-            f"component_gates={self._shape_repr(self.component_gates)})"
+            f"component_gates={self._shape_repr(self.component_gates)}, "
+            f"curve_logits={self._shape_repr(self.curve_logits)}, "
+            f"global_no_target_logits={self._shape_repr(self.global_no_target_logits)}, "
+            f"uncertainty_logits={self._shape_repr(self.uncertainty_logits)})"
         )
 
 
 def make_gprmambasep_output(mask_logits, presence_logits, center_logits=None,
-                             A_hat=None, S_hat=None, G_hat=None, component_gates=None):
+                             A_hat=None, S_hat=None, G_hat=None, component_gates=None,
+                             curve_logits=None, global_no_target_logits=None,
+                             uncertainty_logits=None):
     """Construct a GprMambaSepOutput from the head/component tensors."""
     return GprMambaSepOutput(mask_logits, presence_logits, center_logits,
-                              A_hat, S_hat, G_hat, component_gates=component_gates)
+                              A_hat, S_hat, G_hat, component_gates=component_gates,
+                              curve_logits=curve_logits,
+                              global_no_target_logits=global_no_target_logits,
+                              uncertainty_logits=uncertainty_logits)
 
 
 def unpack_pgda_output(output):

@@ -598,7 +598,18 @@ def build_model(cfg):
             attention_heads=int(cfg.get("attention_heads", 4)),
             input_channels=input_channels,
         )
-    if arch in ("v2_0_gprmambasep", "gprmambasep", "v2_1_gprmambasep_lite", "gprmambasep_lite"):
+    if arch in (
+        "v2_0_gprmambasep", "gprmambasep", "v2_1_gprmambasep_lite", "gprmambasep_lite",
+        "v2_1_curvegassist_lite", "curvegassist_lite", "g_assisted_curvemamba",
+    ):
         from pgdacsnet.model_gprmambasep import build_gprmambasep
-        return build_gprmambasep({**cfg, "input_channels": input_channels})
+        extra = {}
+        if arch in ("v2_1_curvegassist_lite", "curvegassist_lite", "g_assisted_curvemamba"):
+            extra = {
+                "task_feature_mode": cfg.get("task_feature_mode", "g_assisted"),
+                "enable_curve_head": cfg.get("enable_curve_head", True),
+                "enable_global_no_target_head": cfg.get("enable_global_no_target_head", True),
+                "enable_uncertainty_head": cfg.get("enable_uncertainty_head", False),
+            }
+        return build_gprmambasep({**cfg, **extra, "input_channels": input_channels})
     raise ValueError(f"Unknown model_arch: {cfg.get('model_arch')}")

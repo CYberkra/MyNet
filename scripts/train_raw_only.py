@@ -582,19 +582,37 @@ def reduce_parts(parts):
     return {k:float(np.mean([p[k] for p in parts])) for k in parts[0]}
 
 def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,grl_layer=None):
-    is_train=opt is not None; model.train(is_train);
-    if discriminator is not None: discriminator.train(is_train)
-    parts=[]; amp_enabled=bool(cfg.get('amp',False)) and device.type=='cuda'
-    for b in loader:
+    is_train=opt is not None
+    model.train(is_train)
+    if discriminator is not None:
+        discriminator.train(is_train)
+    parts=[]
+    amp_enabled=bool(cfg.get('amp',False)) and device.type=='cuda'
+    grad_accum_steps=max(1,int(cfg.get('grad_accum_steps',1))) if is_train else 1
+    if is_train:
+        opt.zero_grad(set_to_none=True)
+    for step,b in enumerate(loader, start=1):
         with torch.set_grad_enabled(is_train):
             with torch.cuda.amp.autocast(enabled=amp_enabled):
                 loss,p=compute_loss(model,b,device,cfg,discriminator=discriminator,grl_layer=grl_layer)
+                loss_for_backward=loss/float(grad_accum_steps)
             if is_train:
-                opt.zero_grad()
                 if scaler is not None and scaler.is_enabled():
-                    scaler.scale(loss).backward(); scaler.unscale_(opt); torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params']],5.0); scaler.step(opt); scaler.update()
+                    scaler.scale(loss_for_backward).backward()
+                    if step % grad_accum_steps == 0 or step == len(loader):
+                        scaler.unscale_(opt)
+                        torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params'] if p.grad is not None],5.0)
+                        scaler.step(opt)
+                        scaler.update()
+                        opt.zero_grad(set_to_none=True)
                 else:
-                    loss.backward(); torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params']],5.0); opt.step()
+                    loss_for_backward.backward()
+                    if step % grad_accum_steps == 0 or step == len(loader):
+                        torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params'] if p.grad is not None],5.0)
+                        opt.step()
+                        opt.zero_grad(set_to_none=True)
+        p=dict(p)
+        p.setdefault('grad_accum_steps', float(grad_accum_steps))
         parts.append(p)
     return reduce_parts(parts)
 

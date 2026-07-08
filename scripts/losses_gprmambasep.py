@@ -244,6 +244,173 @@ def g_envelope_mask_consistency_loss(G_hat: torch.Tensor, batch: dict[str, Any])
 
 
 
+
+def _normalise_curve_target(target: torch.Tensor, valid_pix: torch.Tensor | None = None) -> tuple[torch.Tensor, torch.Tensor]:
+    """Convert a wide/narrow mask into trace-wise P(t|trace) and validity."""
+    if target.dim() != 4 or target.shape[1] != 1:
+        raise ValueError(f"target must have shape (B,1,H,W), got {tuple(target.shape)}")
+    t = target.clamp_min(0.0)
+    if valid_pix is not None:
+        t = t * valid_pix.to(device=t.device, dtype=t.dtype)
+    mass = t.sum(dim=2, keepdim=True)
+    valid = (mass.squeeze(2) > 1e-6).to(t.dtype)  # (B,1,W)
+    probs = t / mass.clamp_min(1e-6)
+    return probs, valid
+
+
+def curve_distribution_loss(
+    curve_logits: torch.Tensor,
+    batch: dict[str, Any],
+    cfg: dict[str, Any],
+) -> dict[str, torch.Tensor]:
+    """Trace-wise curve distribution supervision for P(t|trace).
+
+    The target is derived from the existing soft/wide mask, then normalised over
+    the time axis.  This makes the main head optimise the actual picking target
+    instead of a generic pixel mask.
+    """
+    lp = cfg.get("loss", {})
+    y = batch["y"].to(device=curve_logits.device, dtype=curve_logits.dtype)
+    valid_pix = batch.get("valid_pix")
+    if valid_pix is not None:
+        valid_pix = valid_pix.to(device=curve_logits.device, dtype=curve_logits.dtype)
+    weight = batch.get("weight")
+    if weight is None:
+        weight = torch.ones((curve_logits.shape[0], curve_logits.shape[-1]), device=curve_logits.device, dtype=curve_logits.dtype)
+    else:
+        weight = weight.to(device=curve_logits.device, dtype=curve_logits.dtype)
+    ignore = batch.get("ignore_mask")
+    if ignore is not None:
+        ignore = ignore.to(device=curve_logits.device, dtype=curve_logits.dtype)
+
+    target_probs, target_valid = _normalise_curve_target(y, valid_pix)  # (B,1,H,W), (B,1,W)
+    if ignore is not None:
+        target_valid = target_valid * (ignore.mean(dim=2) < 0.5).to(target_valid.dtype)
+
+    log_probs = F.log_softmax(curve_logits, dim=2)
+    probs = log_probs.exp()
+    per_trace_ce = -(target_probs * log_probs).sum(dim=2)  # (B,1,W)
+    col_w = (0.25 + weight[:, None, :]) * target_valid
+    ce = (per_trace_ce * col_w).sum() / col_w.sum().clamp_min(1e-6)
+
+    h = curve_logits.shape[2]
+    ys = torch.linspace(0.0, 1.0, h, device=curve_logits.device, dtype=curve_logits.dtype)[None, None, :, None]
+    pred_center = (probs * ys).sum(dim=2)
+    target_center = (target_probs * ys).sum(dim=2)
+    center = (F.smooth_l1_loss(pred_center, target_center, reduction="none") * col_w).sum() / col_w.sum().clamp_min(1e-6)
+
+    if pred_center.shape[-1] > 1:
+        smooth_valid = target_valid[..., 1:] * target_valid[..., :-1]
+        first = (pred_center[..., 1:] - pred_center[..., :-1]).abs()
+        smooth = (first * smooth_valid).sum() / smooth_valid.sum().clamp_min(1e-6)
+    else:
+        smooth = curve_logits.mean() * 0.0
+
+    if pred_center.shape[-1] > 2:
+        smooth2_valid = target_valid[..., 2:] * target_valid[..., 1:-1] * target_valid[..., :-2]
+        second = (pred_center[..., 2:] - 2.0 * pred_center[..., 1:-1] + pred_center[..., :-2]).abs()
+        curvature = (second * smooth2_valid).sum() / smooth2_valid.sum().clamp_min(1e-6)
+    else:
+        curvature = curve_logits.mean() * 0.0
+
+    shallow_max_ns = float(lp.get("shallow_suppression_max_ns", -1.0))
+    shallow = curve_logits.mean() * 0.0
+    if shallow_max_ns > 0:
+        time_window_ns = float(cfg.get("time_window_ns", cfg.get("time_window", 700.0)))
+        hi = int(round(shallow_max_ns / max(time_window_ns, 1e-6) * h))
+        hi = max(1, min(h, hi))
+        # Penalise probability mass in shallow forbidden area, mostly on traces
+        # without target support there.  This is intentionally soft: it should
+        # suppress distractors, not make early targets impossible in future data.
+        shallow_mass = probs[:, :, :hi, :].sum(dim=2)
+        shallow = (shallow_mass * (0.25 + weight[:, None, :])).mean()
+
+    return {
+        "curve_ce": ce,
+        "curve_center": center,
+        "curve_smooth": smooth,
+        "curve_curvature": curvature,
+        "curve_shallow_suppression": shallow,
+    }
+
+
+def global_no_target_loss(
+    global_no_target_logits: torch.Tensor,
+    batch: dict[str, Any],
+    cfg: dict[str, Any],
+) -> torch.Tensor:
+    """Binary line-level no-target supervision.
+
+    The head predicts P(no target in this window).  A line/window is treated as
+    no-target when no trace-level presence target exceeds the configured floor.
+    """
+    pres = batch.get("presence")
+    if pres is None:
+        return global_no_target_logits.mean() * 0.0
+    pres = pres.to(device=global_no_target_logits.device, dtype=global_no_target_logits.dtype)
+    thr = float(cfg.get("loss", {}).get("global_no_target_presence_thr", 0.05))
+    target_no = (pres.amax(dim=-1) <= thr).to(global_no_target_logits.dtype)
+    logits = global_no_target_logits.reshape_as(target_no)
+    return F.binary_cross_entropy_with_logits(logits, target_no)
+
+
+
+def uncertainty_nll_loss(
+    curve_logits: torch.Tensor,
+    uncertainty_logits: torch.Tensor,
+    batch: dict[str, Any],
+    cfg: dict[str, Any],
+) -> torch.Tensor:
+    """Heteroscedastic trace-wise center loss for the optional uncertainty head.
+
+    The head predicts a per-pixel log-variance proxy.  We collapse it to one
+    trace-wise log-sigma value by taking the expectation under ``P(t|trace)``.
+    This gives the uncertainty head a real training signal without requiring a
+    separate uncertainty label.  It is intentionally low-weight: the head is for
+    calibration/diagnostics, not for rescuing poor curve logits.
+    """
+    if uncertainty_logits is None:
+        return curve_logits.mean() * 0.0
+    if uncertainty_logits.shape[-2:] != curve_logits.shape[-2:]:
+        uncertainty_logits = F.interpolate(
+            uncertainty_logits,
+            size=curve_logits.shape[-2:],
+            mode="bilinear",
+            align_corners=False,
+        )
+    y = batch["y"].to(device=curve_logits.device, dtype=curve_logits.dtype)
+    valid_pix = batch.get("valid_pix")
+    if valid_pix is not None:
+        valid_pix = valid_pix.to(device=curve_logits.device, dtype=curve_logits.dtype)
+    ignore = batch.get("ignore_mask")
+    if ignore is not None:
+        ignore = ignore.to(device=curve_logits.device, dtype=curve_logits.dtype)
+    weight = batch.get("weight")
+    if weight is None:
+        weight = torch.ones((curve_logits.shape[0], curve_logits.shape[-1]), device=curve_logits.device, dtype=curve_logits.dtype)
+    else:
+        weight = weight.to(device=curve_logits.device, dtype=curve_logits.dtype)
+
+    target_probs, target_valid = _normalise_curve_target(y, valid_pix)
+    if ignore is not None:
+        target_valid = target_valid * (ignore.mean(dim=2) < 0.5).to(target_valid.dtype)
+
+    probs = F.softmax(curve_logits, dim=2)
+    h = curve_logits.shape[2]
+    ys = torch.linspace(0.0, 1.0, h, device=curve_logits.device, dtype=curve_logits.dtype)[None, None, :, None]
+    pred_center = (probs * ys).sum(dim=2)
+    target_center = (target_probs * ys).sum(dim=2)
+    err2 = (pred_center - target_center).square().detach()
+
+    # Convert pixel-wise log-sigma logits to a trace-wise log-sigma.  Clamp for
+    # stable NLL and to prevent the trivial high-uncertainty escape.
+    log_sigma_map = uncertainty_logits.clamp(-5.0, 2.0)
+    log_sigma = (probs.detach() * log_sigma_map).sum(dim=2)
+    nll = 0.5 * (err2 * torch.exp(-2.0 * log_sigma) + 2.0 * log_sigma)
+    col_w = (0.25 + weight[:, None, :]) * target_valid
+    return (nll * col_w).sum() / col_w.sum().clamp_min(1e-6)
+
+
 def component_gate_regularization_loss(gates: torch.Tensor, cfg: dict[str, Any]) -> dict[str, torch.Tensor]:
     """Regularise soft A/S/G allocation gates to reduce branch collapse.
 
@@ -341,6 +508,42 @@ def compute_gprmambasep_loss(
                     "continuity": "continuity_weight",
                 }.get(k)
                 total = total + seg_weight * (float(lp.get(w_key, 1.0)) if w_key else 1.0) * v
+
+    curve_logits = _get_output(outputs, "curve_logits")
+    curve_weight = _loss_weight(lp, "curve_distribution_weight", "curve_weight", default=0.0)
+    if curve_logits is not None and curve_weight > 0:
+        curve_parts = curve_distribution_loss(curve_logits, batch, cfg)
+        curve_total = (
+            curve_parts["curve_ce"]
+            + float(lp.get("curve_center_weight", 0.5)) * curve_parts["curve_center"]
+            + float(lp.get("curve_smooth_weight", 0.02)) * curve_parts["curve_smooth"]
+            + float(lp.get("curve_curvature_weight", 0.02)) * curve_parts["curve_curvature"]
+            + float(lp.get("shallow_suppression_weight", 0.0)) * curve_parts["curve_shallow_suppression"]
+        )
+        for k, v in curve_parts.items():
+            parts[k] = v.detach()
+        total = total + curve_weight * curve_total
+    else:
+        for k in ("curve_ce", "curve_center", "curve_smooth", "curve_curvature", "curve_shallow_suppression"):
+            parts[k] = zero.detach()
+
+    global_no_target_logits = _get_output(outputs, "global_no_target_logits")
+    global_no_target_weight = _loss_weight(lp, "global_no_target_weight", "no_target_weight", default=0.0)
+    if global_no_target_logits is not None and global_no_target_weight > 0:
+        gnt = global_no_target_loss(global_no_target_logits, batch, cfg)
+        parts["global_no_target"] = gnt.detach()
+        total = total + global_no_target_weight * gnt
+    else:
+        parts["global_no_target"] = zero.detach()
+
+    uncertainty_logits = _get_output(outputs, "uncertainty_logits")
+    uncertainty_weight = _loss_weight(lp, "uncertainty_weight", "uncertainty_nll_weight", default=0.0)
+    if uncertainty_logits is not None and curve_logits is not None and uncertainty_weight > 0:
+        unc = uncertainty_nll_loss(curve_logits, uncertainty_logits, batch, cfg)
+        parts["uncertainty_nll"] = unc.detach()
+        total = total + uncertainty_weight * unc
+    else:
+        parts["uncertainty_nll"] = zero.detach()
 
     A_hat = _get_output(outputs, "A_hat")
     S_hat = _get_output(outputs, "S_hat")

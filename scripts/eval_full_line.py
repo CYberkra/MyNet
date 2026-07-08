@@ -139,7 +139,7 @@ def wbce(pred,gt,weight=None,eps=1e-6):
     if weight is None: return float(b.mean())
     return float((b*weight).sum()/(weight.sum()+eps))
 
-def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg_json=''):
+def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg_json='',prefer_curve_logits=True):
     run_dir=ROOT/run_dir
     
     if checkpoint=='final':
@@ -158,6 +158,7 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
     line=np.load(data_root/'lines'/f'{line_name}.npz')
     raw=line['raw_full_normalized'].astype(np.float32); H0,W0=raw.shape
     pred_sum=np.zeros((H0,W0),np.float32); weight_sum=np.zeros((H0,W0),np.float32)
+    curve_sum=np.zeros((H0,W0),np.float32); curve_wsum=np.zeros((H0,W0),np.float32)
     center_sum=np.zeros((H0,W0),np.float32); center_wsum=np.zeros((H0,W0),np.float32)
     pres_sum=np.zeros((W0,),np.float32); pres_wsum=np.zeros((W0,),np.float32)
     H,W=cfg['height_resize'],cfg['width_resize']
@@ -170,22 +171,32 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
         xrs=normalize_raw_channel_4d(xrs,cfg)
         xrs=add_terrain_channels(xrs,line_name,s,e,cfg,data_root)
         with torch.no_grad():
-            logits,pres_logits,center_logits=unpack_model_output(model(xrs)); p=torch.sigmoid(logits); pp=torch.sigmoid(pres_logits)
+            out_obj=model(xrs)
+            logits,pres_logits,center_logits=unpack_model_output(out_obj)
+            curve_logits=getattr(out_obj,'curve_logits',None)
+            mask_prob=torch.sigmoid(logits)
+            curve_prob=torch.softmax(curve_logits,dim=2) if curve_logits is not None else None
+            p=curve_prob if (prefer_curve_logits and curve_prob is not None) else mask_prob
+            pp=torch.sigmoid(pres_logits)
             cp=torch.sigmoid(center_logits) if center_logits is not None else None
         p0=F.interpolate(p,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy()
         pp0=F.interpolate(pp, size=e-s, mode='linear', align_corners=False)[0,0].detach().cpu().numpy()
         cp0=F.interpolate(cp,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if cp is not None else None
+        curve0=F.interpolate(curve_prob,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if curve_prob is not None else None
         ww=np.hanning(e-s).astype(np.float32)
         if ww.max()>0: ww=ww/ww.max()
         ww=0.15+0.85*ww
         w2=np.broadcast_to(ww[None,:],p0.shape).astype(np.float32)
         pred_sum[:,s:e]+=p0*w2; weight_sum[:,s:e]+=w2
+        if curve0 is not None:
+            curve_sum[:,s:e]+=curve0*w2; curve_wsum[:,s:e]+=w2
         if cp0 is not None:
             center_sum[:,s:e]+=cp0*w2; center_wsum[:,s:e]+=w2
         pres_sum[s:e]+=pp0*ww; pres_wsum[s:e]+=ww
     pred=pred_sum/np.maximum(weight_sum,1e-6)
+    curve_pred=curve_sum/np.maximum(curve_wsum,1e-6) if curve_wsum.max()>0 else None
     center_pred=center_sum/np.maximum(center_wsum,1e-6) if center_wsum.max()>0 else None
-    return pred, pres_sum/np.maximum(pres_wsum,1e-6), center_pred, cfg, data_root
+    return pred, pres_sum/np.maximum(pres_wsum,1e-6), center_pred, curve_pred, cfg, data_root
 
 
 def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=320.0, search_max_ns=560.0, presence_thr=0.45, path_prob_thr=0.20, trace_offset=0, dp_max_jump=8, dp_smooth_weight=0.08, dp_breakable=False, dp_min_segment=16):
@@ -287,6 +298,7 @@ def main():
     ap.add_argument('--trace-start',type=int,default=0)
     ap.add_argument('--trace-end',type=int,default=-1,help='Inclusive; -1 evaluates through the final trace')
     ap.add_argument('--center-fusion-weight',type=float,default=0.0,help='0 keeps legacy mask-DP; >0 fuses center head probability into the DP path image.')
+    ap.add_argument('--disable-curve-logits',action='store_true',help='For models with curve_logits, ignore them and evaluate the legacy mask logits instead.')
     ap.add_argument('--override-cfg-json',default='',help='JSON object with evaluation-time cfg overrides, e.g. {"per_trace_robust_norm": true}.')
     args=ap.parse_args()
     if args.threshold_json:
@@ -299,12 +311,14 @@ def main():
         args.dp_smooth_weight=float(tj.get('dp_smooth_weight',args.dp_smooth_weight))
     torch.set_num_threads(max(1,min(4,torch.get_num_threads())))
     device=torch.device('cpu' if args.force_cpu else ('cuda' if torch.cuda.is_available() else 'cpu'))
-    preds=[]; presses=[]; centers=[]; data_roots=[]
+    preds=[]; presses=[]; centers=[]; curves=[]; data_roots=[]
     for rd in args.run_dirs:
         print(f'评估 {args.line}: {rd}',flush=True)
-        p,pp,cp,cfg,data_root=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json); preds.append(p); presses.append(pp); centers.append(cp); data_roots.append(data_root)
+        p,pp,cp,curve,cfg,data_root=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json,prefer_curve_logits=not args.disable_curve_logits); preds.append(p); presses.append(pp); centers.append(cp); curves.append(curve); data_roots.append(data_root)
     pred=np.mean(preds,axis=0).astype(np.float32); pres_pred=np.mean(presses,axis=0).astype(np.float32)
     center_pred=np.mean([cp for cp in centers if cp is not None],axis=0).astype(np.float32) if any(cp is not None for cp in centers) else None
+    curve_pred=np.mean([cv for cv in curves if cv is not None],axis=0).astype(np.float32) if any(cv is not None for cv in curves) else None
+    used_curve_logits = (curve_pred is not None) and (not args.disable_curve_logits)
     data_root=data_roots[0] if data_roots else resolve_data_root(args.data_root)
     if any(dr!=data_root for dr in data_roots):
         raise ValueError('All run dirs must resolve to the same data root for one evaluation.')
@@ -319,17 +333,20 @@ def main():
         center_pred=center_pred[:,sl]
     fusion_w=max(0.0,min(1.0,float(args.center_fusion_weight)))
     path_pred=pred
-    curve_source='mask_dp'
+    curve_source='curve_logits_dp' if used_curve_logits else 'mask_dp'
     if center_pred is not None and fusion_w>0:
         path_pred=((1.0-fusion_w)*pred+fusion_w*center_pred).astype(np.float32)
         curve_source=f'mask_center_fusion_{fusion_w:.2f}_dp'
     eval_name=args.line if trace_start==0 and trace_end==line['raw_full_normalized'].shape[1]-1 else f'{args.line}_holdout_tr{trace_start}_{trace_end}'
     out=ROOT/args.out_dir; out.mkdir(parents=True,exist_ok=True)
     np.save(out/f'{eval_name}_pred_softmask.npy',pred); np.save(out/f'{eval_name}_presence_prob.npy',pres_pred)
+    if curve_pred is not None:
+        np.save(out/f'{eval_name}_curve_prob.npy',curve_pred)
     if center_pred is not None:
         np.save(out/f'{eval_name}_center_softmask.npy',center_pred)
-    if path_pred is not pred:
-        np.save(out/f'{eval_name}_path_softmask.npy',path_pred)
+    # Always save the actual DP path image so diagnostics can reconstruct the
+    # same path that metrics used, even when it is identical to pred.
+    np.save(out/f'{eval_name}_path_softmask.npy',path_pred)
     cmean,vmean,cdp,vdp,cgt,vgt,path_prob=write_centerline_csv(out,eval_name,path_pred,pres_pred,gt,float(line['dt_ns']),args.search_min_ns,args.search_max_ns,args.presence_thr,args.path_prob_thr,trace_start,args.dp_max_jump,args.dp_smooth_weight,args.dp_breakable,args.dp_min_segment)
     write_metrics(out,eval_name,pred,pres_pred,gt,status,label_w,float(line['dt_ns']),cmean,vmean,cdp,vdp,cgt,vgt,path_prob,args.presence_thr,args.path_prob_thr,trace_start,trace_end,args.dp_max_jump,args.dp_smooth_weight,curve_source,args.dp_breakable,args.dp_min_segment)
     if args.no_plot:
