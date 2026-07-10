@@ -12,7 +12,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.signal import hilbert, savgol_filter
+from scipy.signal import hilbert
 
 from build_yingshan_v15_candidate import (
     C_M_PER_NS,
@@ -23,6 +23,7 @@ from build_yingshan_v15_candidate import (
     centerline,
     load_line,
     robust_view,
+    smooth_scores,
     trace_range_for_radius,
     window_starts,
     write_csv,
@@ -191,7 +192,7 @@ def track_ridge_near_target(
 
     smooth_window = min(21, width if width % 2 else width - 1)
     if smooth_window >= 7:
-        path = savgol_filter(path, smooth_window, 2, mode='interp')
+        path = smooth_scores(path, smooth_window)
     return (path * dt).astype(np.float32)
 
 

@@ -13,7 +13,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.signal import hilbert, find_peaks, savgol_filter
+from scipy.signal import hilbert, find_peaks
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'data_corrected_v1_4_terrain_direction'
@@ -75,6 +75,15 @@ def bootstrap_direct_peak(raw: np.ndarray, time_ns: np.ndarray, *, seed: int = 2
     return float(np.std(peaks, ddof=1)) if len(peaks) > 1 else 0.0
 
 
+def smooth_scores(scores: np.ndarray, window: int = 15) -> np.ndarray:
+    """Smooth one-dimensional audit scores without a SciPy linear solve."""
+    if window < 3 or window % 2 == 0:
+        raise ValueError("window must be an odd integer of at least three")
+    pad = window // 2
+    padded = np.pad(np.asarray(scores, dtype=np.float64), (pad, pad), mode="edge")
+    return np.convolve(padded, np.full(window, 1.0 / window, dtype=np.float64), mode="valid")
+
+
 def surface_warp_offset(raw: np.ndarray, time_ns: np.ndarray, height_m: np.ndarray) -> tuple[float, float, float]:
     """Find the earliest strong height-linked surface-response envelope phase.
 
@@ -93,7 +102,7 @@ def surface_warp_offset(raw: np.ndarray, time_ns: np.ndarray, height_m: np.ndarr
         target = off + 2.0 * height_m / C_M_PER_NS
         sample = np.clip(np.rint(target / dt).astype(np.int64), 0, time_ns.size - 1)
         scores[i] = float(np.median(env[sample, trace_idx]))
-    smooth = savgol_filter(scores, 15, 3, mode='interp')
+    smooth = smooth_scores(scores, 15)
     peaks, props = find_peaks(smooth, prominence=0.005, distance=8)
     if peaks.size:
         # Prefer the strongest peak in this physically constrained early range.
