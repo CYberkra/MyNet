@@ -26,7 +26,7 @@ YINGSHAN_SCENEWORLD_FAMILIES: dict[str, SceneFamilySpec] = {
     "gentle_interbed": SceneFamilySpec(
         name="gentle_interbed",
         description="常规基覆界面 + 砂岩/泥岩连续互层；营山训练集基础样本。",
-        bedrock_depth_m=(5.0, 18.0),
+        bedrock_depth_m=(3.0, 8.0),
         ground_relief_m=(0.8, 4.5),
         interbed_count=(2, 5),
         external_clutter_probability=0.20,
@@ -38,7 +38,7 @@ YINGSHAN_SCENEWORLD_FAMILIES: dict[str, SceneFamilySpec] = {
     "terrace_paddy": SceneFamilySpec(
         name="terrace_paddy",
         description="梯田/水田饱和带场景；必须生成 water_zones / saturated_zones。",
-        bedrock_depth_m=(6.0, 20.0),
+        bedrock_depth_m=(3.5, 9.0),
         ground_relief_m=(2.0, 8.0),
         interbed_count=(2, 5),
         external_clutter_probability=0.25,
@@ -51,7 +51,7 @@ YINGSHAN_SCENEWORLD_FAMILIES: dict[str, SceneFamilySpec] = {
     "wire_tree_endpoint": SceneFamilySpec(
         name="wire_tree_endpoint",
         description="电线/树木/端点强杂波；必须生成 wires / trees / buildings 等 external_clutter_objects。",
-        bedrock_depth_m=(8.0, 18.0),
+        bedrock_depth_m=(4.0, 9.0),
         ground_relief_m=(1.5, 7.0),
         interbed_count=(2, 4),
         external_clutter_probability=0.0,     # 暂不做外部杂波
@@ -62,8 +62,8 @@ YINGSHAN_SCENEWORLD_FAMILIES: dict[str, SceneFamilySpec] = {
     ),
     "deep_anomaly_21m": SceneFamilySpec(
         name="deep_anomaly_21m",
-        description="约 21m 深部异常体；必须生成 anomaly_objects，深度范围 18–23m。",
-        bedrock_depth_m=(11.0, 20.0),
+        description="基覆界面浅变体 (原 21m 深部异常家族，深度缩至 5–10m 以保信号可探测)。",
+        bedrock_depth_m=(5.0, 10.0),
         ground_relief_m=(1.0, 6.0),
         interbed_count=(2, 5),
         external_clutter_probability=0.20,
@@ -76,7 +76,7 @@ YINGSHAN_SCENEWORLD_FAMILIES: dict[str, SceneFamilySpec] = {
     "cross_slope_high_relief": SceneFamilySpec(
         name="cross_slope_high_relief",
         description="跨坡高起伏地形；ground_relief_m 目标范围 8–30m。",
-        bedrock_depth_m=(8.0, 22.0),
+        bedrock_depth_m=(4.0, 10.0),
         ground_relief_m=(8.0, 30.0),
         interbed_count=(2, 6),
         external_clutter_probability=0.0,     # 暂不做外部杂波

@@ -1,0 +1,117 @@
+{
+  "case_id": "pgda_line9_label_inspired_air_model_v1",
+  "purpose": "A stable wide-domain air-coupled 2D gprMax model whose visible target phase follows Line9 V14 label time shape.",
+  "source_label": {
+    "file": "source_refs/Line9_v14_labels_source.csv",
+    "line": "Line9",
+    "label_column": "label_time_center_v14_ns",
+    "distance_range_m": [
+      0.0,
+      216.141
+    ],
+    "original_trace_count": 2378,
+    "resampled_trace_count": 128,
+    "use_policy": "target_visible_phase_time_ns follows Line9 V14 label center after smoothing/resampling",
+    "visible_phase_offset_ns": 22.0
+  },
+  "domain": {
+    "x_m": 480.0,
+    "y_m": 45.0,
+    "z_m": 0.05,
+    "dx_m": 0.05,
+    "dy_m": 0.05,
+    "dz_m": 0.05
+  },
+  "geometry_method": "gprMax #triangle with averaging y; no H5 geometry_objects_read",
+  "triangle_segment_length_m": 1.0,
+  "triangle_count_raw": 3840,
+  "pml_cells": [
+    60,
+    60,
+    0,
+    60,
+    60,
+    0
+  ],
+  "scan": {
+    "trace_count": 128,
+    "line9_distance_range_m": [
+      0.0,
+      216.141
+    ],
+    "mid_x_start_m": 120.0,
+    "mid_x_end_m": 336.14099999999996,
+    "trace_step_m": 1.7018976377952755,
+    "left_margin_m": 120.0,
+    "right_margin_m": 143.85900000000004,
+    "side_boundary_min_ns": 800.0,
+    "source_y_m": 32.44501875686468,
+    "top_pml_start_y_m": 42.0,
+    "source_below_top_pml_start_m": 9.554981243135323
+  },
+  "materials": {
+    "air": {
+      "eps_r": 1.0,
+      "sigma": 0.0
+    },
+    "moist_silty_clay": {
+      "eps_r": 13.5,
+      "sigma": 0.001
+    },
+    "weak_cover_band": {
+      "eps_r": 12.9,
+      "sigma": 0.001
+    },
+    "slide_zone": {
+      "eps_r": 24.0,
+      "sigma": 0.003
+    },
+    "weathered_bedrock": {
+      "eps_r": 6.0,
+      "sigma": 0.001
+    },
+    "background_surrogate": {
+      "eps_r": 13.5,
+      "sigma": 0.001
+    }
+  },
+  "expected": {
+    "line9_label_time_q05_q50_q95_ns": [
+      365.4607064115533,
+      382.21604287335464,
+      404.17753188825475
+    ],
+    "target_geom_q05_q50_q95_ns": [
+      343.5187223124179,
+      360.21653638599935,
+      381.6956616604265
+    ],
+    "target_visible_q05_q50_q95_ns": [
+      365.5187223124179,
+      382.21653638599935,
+      403.6956616604265
+    ],
+    "line9_to_synthetic_visible_misfit_q05_q50_q95_ns": [
+      -0.2911921330522744,
+      -0.00014103620776495518,
+      0.2610678898552633
+    ],
+    "target_depth_q05_q50_q95_m": [
+      13.069699154362372,
+      13.788106692222453,
+      14.625783622897318
+    ],
+    "R_target": -0.3333333333333333,
+    "R_band_top": -0.011365104154459599,
+    "R_band_bottom": 0.011365104154459599,
+    "side_boundary_outer_min_ns": 800.0,
+    "side_boundary_inner_min_ns": 780.0
+  },
+  "label_policy": {
+    "interface_mask_bscan.npy": "visible-phase hard label following the Line9 V14 label time shape",
+    "target_visible_phase_time_ns.npy": "designed synthetic visible target phase, near Line9 V14 label time center",
+    "target_geom_time_ns.npy": "synthetic geometric onset, visible_phase - 22 ns",
+    "line9_label_time_v14_resampled_ns.npy": "reference measured Line9 V14 label center resampled to 128 traces",
+    "y_soft_501x128.npy": "wide soft label from geometric onset to visible phase"
+  }
+}

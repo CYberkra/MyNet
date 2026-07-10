@@ -1,0 +1,22 @@
+{
+  "trace_count": 128,
+  "trace_var": 44.53218460083008,
+  "trace_var_mean": 32.43203238852584,
+  "dead_trace_ratio": 0.0,
+  "target_local_peak_median": 0.9089221023176066,
+  "support_ratio": 0.8359375,
+  "peak_offset_median_ns": -0.540911865234392,
+  "peak_offset_std_ns": 2.920903246426552,
+  "early_over_target": 40.11772568078897,
+  "shallow_over_target": 0.10243601285558769,
+  "mid_over_target": 0.04019122884948148,
+  "post_over_target": 0.012196034037591794,
+  "has_dominant_X": 0,
+  "label_alignment_ok": 1,
+  "polarity_match": 0,
+  "qc_grade": "GREEN",
+  "search_lo_sample": 225,
+  "search_hi_sample": 327,
+  "vis_min_ns": 364.9488220214844,
+  "vis_max_ns": 407.99005126953125
+}

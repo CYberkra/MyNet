@@ -1,0 +1,15 @@
+#title: v4_quick_test bedrock=7.0m
+#domain: 52.000 48.000 0.08000
+#dx_dy_dz: 0.08000 0.08000 0.08000
+#time_window: 7.00e-07
+#pml_cells: 60 60 0 60 60 0
+#material: 1 0 1 0 air
+#material: 13 0.0015 1 0 silty_clay
+#material: 5 0.0005 1 0 sandstone_bedrock
+#waveform: ricker 1 1e+08 uavgpr_wavelet
+#hertzian_dipole: z 2.000 32.000 0.0400 uavgpr_wavelet
+#rx: 3.400 32.000 0.0400
+#src_steps: 0.2000 0 0
+#rx_steps: 0.2000 0 0
+#box: 0 0 0 52.000 17.000 0.080 sandstone_bedrock
+#box: 0 17.000 0 52.000 24.000 0.080 silty_clay

@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 *.egg-info/
 .venv/
 venv/
@@ -8,29 +9,34 @@ venv/
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
 Thumbs.db
 
-# gprMax simulation outputs
+# gprMax simulation outputs (reproducible intermediates)
 *.out
-*.vti
-geometry*.vti
-
-# Data files
-*.npy
-*.npz
-*.zip
 *.h5
 *.hdf5
+*.vti
 
-# Large data directories
-workspace/
-data/
+# Large data directories NOT for git
+data/*
+!data/PGDA_SYNTH_DATASET_V1/05_accepted_dataset/
+!data/PGDA_SYNTH_DATASET_V1/DATA_QUALITY.md
 uavgpr_simlab/workspace/
+
+# Workspace (simulation runs)
+workspace/
 
 # Logs
 logs/
 *.log
-__pycache__/
+
+# Playwright screenshots
+.playwright-mcp/
+
+# Claude Code worktrees
+.claude/worktrees/

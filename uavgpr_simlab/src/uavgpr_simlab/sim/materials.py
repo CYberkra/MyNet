@@ -17,11 +17,11 @@ class MaterialRange:
 def default_material_ranges() -> Dict[str, MaterialRange]:
     return {
         'air': MaterialRange((1.0,1.0),(0.0,0.0)),
-        'silty_clay': MaterialRange((8.0,28.0),(0.002,0.010)),
-        'gravelly_silty_clay': MaterialRange((6.0,22.0),(0.001,0.008)),
-        'weathered_mudstone': MaterialRange((6.0,16.0),(0.002,0.015)),
-        'sandstone_bedrock': MaterialRange((4.0,10.0),(0.0003,0.008)),
-        'saturated_zone': MaterialRange((18.0,32.0),(0.005,0.030)),
+        'silty_clay': MaterialRange((8.0,19.0),(0.0005,0.003)),
+        'gravelly_silty_clay': MaterialRange((6.0,19.0),(0.0003,0.003)),
+        'weathered_mudstone': MaterialRange((6.0,16.0),(0.0005,0.005)),
+        'sandstone_bedrock': MaterialRange((3.0,7.0),(0.0002,0.002)),
+        'saturated_zone': MaterialRange((8.0, 14.0),(0.002,0.010)),
         # FDTD-safe surrogate for shallow water at the default 5 cm grid.
         # True fresh water eps_r~80 would violate gprMax's wavelength sampling
         # check at the 100 MHz Ricker wavelet significant-frequency band unless
