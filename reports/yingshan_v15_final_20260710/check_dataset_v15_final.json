@@ -1,0 +1,84 @@
+{
+  "ok": true,
+  "formal_ready": false,
+  "errors": [],
+  "warnings": [
+    "dataset policy blocks training: V15 labels are finalized and ambiguous crossings are excluded, but formal training remains blocked by missing confirmed true negatives, independent simulations, and a formal line-level split.",
+    "no confirmed status_code=0 traces; presence/no-target rejection supervision is not trainable"
+  ],
+  "facts": {
+    "data_root": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710",
+    "dataset_policy": {
+      "dataset_id": "data_yingshan_v15_final_20260710",
+      "label_version": "YINGSHAN_V15_FINAL_20260710",
+      "training_allowed": false,
+      "release_status": "final_label_release_not_formal_training_release",
+      "reason": "V15 labels are finalized and ambiguous crossings are excluded, but formal training remains blocked by missing confirmed true negatives, independent simulations, and a formal line-level split.",
+      "line9_split": "test",
+      "x1_split": "exclude",
+      "confirmed_true_negative_traces": 0,
+      "missing_required_artifacts": [],
+      "_path": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/dataset_policy.json"
+    },
+    "window_index": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/window_index.csv",
+    "window_count": 78,
+    "lines": [
+      "Line3",
+      "Line6",
+      "Line7",
+      "Line9",
+      "LineL1",
+      "LineX1"
+    ],
+    "index_columns": [
+      "sample_id",
+      "line",
+      "start",
+      "end",
+      "split",
+      "present",
+      "weak",
+      "no_pick",
+      "source_csv_member",
+      "source_csv_sha256",
+      "source_trace_start",
+      "source_trace_end",
+      "antenna_height_agl_m",
+      "antenna_height_agl_valid",
+      "flight_height_min_m",
+      "flight_height_max_m",
+      "flight_height_std_m",
+      "flight_height_outside_2_20_fraction",
+      "ground_elevation_median_m",
+      "antenna_elevation_median_m",
+      "longitude_start",
+      "latitude_start",
+      "longitude_end",
+      "latitude_end",
+      "gnss_distance_start_m",
+      "gnss_distance_end_m",
+      "gnss_span_m",
+      "nominal_profile_distance_start_m",
+      "nominal_profile_distance_end_m",
+      "acquisition_bearing_deg",
+      "profile_display_flip",
+      "canonical_trace_order",
+      "height_source",
+      "height_quality",
+      "ignore",
+      "relabelled",
+      "source_line_path",
+      "label_version"
+    ],
+    "height_columns": [
+      "antenna_height_agl_m"
+    ],
+    "orientation_registry": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/trace_direction_registry.csv",
+    "orientation_contract": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/orientation_contract.json",
+    "status_code_counts": {
+      "1": 10119,
+      "2": 9849
+    },
+    "confirmed_negative_trace_count": 0
+  }
+}

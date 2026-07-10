@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "dataset_contract_v2 explicitly blocks formal training"
+  ],
+  "counts": {
+    "config_count": 44,
+    "disabled_config_count": 44,
+    "formal_config_count": 35,
+    "registered_simulation_cases": 33,
+    "human_audit_records": 39,
+    "train_allowed_simulation_cases": 0,
+    "line9_conditioned_cases": 33
+  }
+}

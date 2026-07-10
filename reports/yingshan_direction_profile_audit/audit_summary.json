@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "canonical_order": "acquisition_csv",
+  "profile_order_is_display_only": true,
+  "direction_registry": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/trace_direction_registry.csv",
+  "crossings": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/line_intersections.csv",
+  "pdf_consistency_notes": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/pdf_internal_consistency_notes.csv",
+  "profile_alignment_checks": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/profile_alignment_checks.csv",
+  "borehole_anchor_checks": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/borehole_anchor_checks.csv",
+  "profile_archive_sha256": "0e802c7d4ff7d64600fc3e97d6bdad394c13dabc22c09f60d9ecea5dc3f82a2a",
+  "map_preview": "/mnt/data/MyNet_work/MyNet/reports/yingshan_direction_profile_audit/acquisition_direction_crossings.png",
+  "crossing_qc_counts": {
+    "critical_mismatch_weak_label": 1,
+    "high_risk_weak_label": 2,
+    "pass": 1,
+    "pass_but_weak_label": 1,
+    "review": 1,
+    "review_weak_label": 2
+  },
+  "warnings": [
+    "Line6 report crossing annotations are internally inconsistent with the displayed profile direction.",
+    "LineL1 and LineX1 profile orientations are medium-confidence because standalone engineering profiles were not supplied.",
+    "GNSS cumulative distance and engineering-profile chainage are distinct axes and must not be used interchangeably.",
+    "Line3-Line9 and Line6-Line9 crossing labels show large air-path-corrected time disagreement and require label review before training release."
+  ]
+}

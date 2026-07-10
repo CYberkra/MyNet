@@ -1,0 +1,7 @@
+item,status,note
+Line3,consistent_after_profile_flip,CSV traces run north/ZK08 to south/ZK07; engineering profile and migrated section display ZK07 left and ZK08 right.
+Line6,terrain_direction_consistent_but_slide_crossing_labels_inconsistent,Profile display requires reversal. The page-30 orange 9/L1 crossing labels follow acquisition order while the displayed terrain/profile direction is reversed; do not use those orange labels as exact chainage.
+Line7,consistent,"CSV, engineering profile, and migrated section all run west to east."
+Line9,consistent_after_profile_flip,CSV traces run east/ZK08 to west; engineering profile and migrated section display west left and ZK08/east right.
+LineL1,medium_confidence_arrow_conflict,"No standalone engineering profile was supplied. The main migrated section agrees with CSV east-to-west order, but aerial arrows in the report are not mutually consistent."
+LineX1,medium_confidence_report_only,No standalone engineering profile was supplied. The report migrated section places the L1 crossing in reversed CSV display order.

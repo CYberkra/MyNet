@@ -1,0 +1,83 @@
+{
+  "profile_archive": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/source/ying_shan_profiles_and_boreholes.zip",
+  "profile_archive_sha256": "0e802c7d4ff7d64600fc3e97d6bdad394c13dabc22c09f60d9ecea5dc3f82a2a",
+  "contains": "survey plan, engineering profiles 3/6/7/9, borehole logs",
+  "standalone_profiles_available": [
+    "Line3",
+    "Line6",
+    "Line7",
+    "Line9"
+  ],
+  "standalone_profiles_missing": [
+    "LineL1",
+    "LineX1"
+  ],
+  "uavgpr_report_role": "flight arrows, migrated B-scan/profile display relationships, borehole anchors",
+  "members": [
+    {
+      "member": "营山测线剖面图、钻孔柱状图/2南充市营山消水镇峰台村滑坡勘查平面图-Model.pdf",
+      "sha256": "4f00b0ade49c46b520a47deb2dbea2f07acea8b85ca86cc917f874e2a5e99a2b",
+      "size_bytes": 5348501
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/3号测线.pdf",
+      "sha256": "ef582143ffd15f3544636eb62ebe5969d86c2801d2b9de7d1519f2c4cb40883b",
+      "size_bytes": 308449
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/6号测线l.pdf",
+      "sha256": "4131a32471509b9bfea9eb35218d3991e487fa5b8c87acd36735efe04d705056",
+      "size_bytes": 295523
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/7号测线.pdf",
+      "sha256": "93e38bbe3982ef7be2ca6f21ca325ec9738628462787f7be0b3828793798ccfa",
+      "size_bytes": 293275
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/9号测线.pdf",
+      "sha256": "08633d87b79e02b2ca83c203c92e32f03a0e2a8e18020eb3724f5c54d0c3deed",
+      "size_bytes": 284402
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图1.pdf",
+      "sha256": "5fe36ef730a9bf8b114ea538030aae30cc132bc74308d208eaf95f262dfc4d99",
+      "size_bytes": 345697
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图2.pdf",
+      "sha256": "2ef477513e2a107a420267bc8ce39db5586a5e48e03e94bccfe9e96ae62ec7c2",
+      "size_bytes": 344957
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图3.pdf",
+      "sha256": "8bd5ab04181e2ba640b8cc6ad0d8e362a33cc7f574e804b526ab08c9aaf9bf6e",
+      "size_bytes": 334998
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图4.pdf",
+      "sha256": "73bde1d4b662ae223a87937219cafd2ab4765a95b79ed7eb02da4b64ce22608e",
+      "size_bytes": 293329
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图5.pdf",
+      "sha256": "153cfd7b3b287aa0fce907c2f3ebe0f63885c94fbfad70db9bc348715a749f1c",
+      "size_bytes": 288823
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图6.pdf",
+      "sha256": "8ed97f9256ef58c92473bf358ee9f39051cb493566543ec480dccb5e0ef98b08",
+      "size_bytes": 290655
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图7.pdf",
+      "sha256": "33825fe449a55742d3e813f19aafbab5551b5a87032cad8ed1a2804a533a7abf",
+      "size_bytes": 294371
+    },
+    {
+      "member": "营山测线剖面图、钻孔柱状图/钻孔柱状图8.pdf",
+      "sha256": "c6ba9beaf3f477e4ce2f83e841073255cd49f2356d36a40210b878fcc801bf5a",
+      "size_bytes": 247360
+    }
+  ]
+}

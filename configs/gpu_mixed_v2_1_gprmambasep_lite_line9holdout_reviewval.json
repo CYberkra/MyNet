@@ -1,6 +1,5 @@
 {
   "data_root": "data_corrected_v1_4_terrain_direction",
-  "paper_split_file": "configs/paper_splits_v1_6.json",
   "height_resize": 512,
   "width_resize": 256,
   "batch_size": 1,
@@ -14,18 +13,19 @@
   "train_lines": [
     "Line3",
     "Line6",
-    "Line7",
     "LineL1"
   ],
   "train_trace_ranges": {},
   "val_lines": [
-    "LineX1"
+    "Line7"
   ],
   "test_lines": [
     "Line9"
   ],
   "test_trace_ranges": {},
-  "review_lines": [],
+  "review_lines": [
+    "LineX1"
+  ],
   "loss": {
     "core_weight": 0.55,
     "outside_weight": 0.36,
@@ -73,5 +73,9 @@
   "sim_batch_ratio": 0.3,
   "sim_data_root": "data/simulation_pretrain_v1",
   "sim_train_lines": [],
-  "warm_start_from": "outputs/run_gprmambasep_lite_pretrain_v2_1/checkpoint_best.pt"
+  "warm_start_from": "outputs/run_gprmambasep_lite_pretrain_v2_1/checkpoint_best.pt",
+  "run_type": "holdout_eval",
+  "arrival_prior_missing_height_policy": "error",
+  "enabled": false,
+  "training_block_reason": "Frozen by 2026-07-10 audit: dataset_contract_v2 is not formal-training-ready."
 }

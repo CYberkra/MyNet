@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "formal_training_allowed": false,
+  "failures": [],
+  "warnings": [],
+  "line_summary": [
+    {
+      "line": "Line3",
+      "trace_count": 1813,
+      "ignored_trace_count": 126,
+      "active_strong": 949,
+      "active_weak": 738,
+      "review_geometry_preserved": true
+    },
+    {
+      "line": "Line6",
+      "trace_count": 1661,
+      "ignored_trace_count": 0,
+      "active_strong": 1078,
+      "active_weak": 583,
+      "review_geometry_preserved": true
+    },
+    {
+      "line": "Line7",
+      "trace_count": 1654,
+      "ignored_trace_count": 0,
+      "active_strong": 515,
+      "active_weak": 1139,
+      "review_geometry_preserved": true
+    },
+    {
+      "line": "Line9",
+      "trace_count": 2378,
+      "ignored_trace_count": 254,
+      "active_strong": 937,
+      "active_weak": 1187,
+      "review_geometry_preserved": true
+    },
+    {
+      "line": "LineL1",
+      "trace_count": 1950,
+      "ignored_trace_count": 0,
+      "active_strong": 1406,
+      "active_weak": 544,
+      "review_geometry_preserved": true
+    },
+    {
+      "line": "LineX1",
+      "trace_count": 938,
+      "ignored_trace_count": 278,
+      "active_strong": 300,
+      "active_weak": 360,
+      "review_geometry_preserved": true
+    }
+  ],
+  "crossing_decisions": 8,
+  "workbench_images": 8,
+  "window_count": 78
+}

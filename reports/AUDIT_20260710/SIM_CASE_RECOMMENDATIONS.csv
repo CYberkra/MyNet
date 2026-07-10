@@ -1,0 +1,39 @@
+case_id,current_human_label,automatic_qc_grade,audit_recommendation,note
+LINE9_STYLE_001,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_002,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_003,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_004,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_005,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_006,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_007,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_008,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_009,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_STYLE_010,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_TERRAIN_011,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+LINE9_TERRAIN_012,inconclusive/GREEN accepted,GREEN,usable_but_line9_conditioned,Same raw and labels exist in accepted; exclude from Line9 holdout training
+B003_MEDDEPTH_013,inconclusive,YELLOW,keep_inconclusive,Peak support 0.531
+B003_MEDDEPTH_014,inconclusive,YELLOW,keep_inconclusive,Peak support 0.484
+B003_MEDDEPTH_015,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_MEDDEPTH_016,inconclusive,YELLOW,keep_inconclusive,Peak support 0.461
+B003_MEDDEPTH_017,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_MEDDEPTH_018,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_MEDDEPTH_019,inconclusive,YELLOW,keep_inconclusive,Peak support 0.492
+B003_MEDDEPTH_020,inconclusive,YELLOW,keep_inconclusive,Peak support 0.414
+B003_SHALLOW_DISTRACTOR_001,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_002,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_003,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_004,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_005,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_006,inconclusive,GREEN,promote_candidate,Peak support 0.812; requires geometry review
+B003_SHALLOW_DISTRACTOR_007,inconclusive,GREEN,promote_candidate,Peak support 0.836; requires geometry review
+B003_SHALLOW_DISTRACTOR_008,inconclusive,YELLOW,keep_inconclusive,Peak support 0.406
+B003_SHALLOW_DISTRACTOR_009,inconclusive,RED,exclude_from_positive_training,Support below 0.4
+B003_SHALLOW_DISTRACTOR_010,inconclusive,RED,exclude_from_positive_training,Peak ratio below 0.3 and support 0.180
+B003_SHALLOW_DISTRACTOR_011,inconclusive,GREEN,promote_candidate,Peak support 0.672; requires geometry review
+B003_SHALLOW_DISTRACTOR_012,inconclusive,RED,exclude_from_positive_training,Peak ratio below 0.3 and support 0.203
+V4_QUICK_TEST,usable,not_governed,relabel_before_training,Visible peak is 23.4 ns later than current geometric-time label
+PILOT_VALIDATION_000001,inconclusive,not_available,missing_data,Repository contains no case body
+PILOT_VALIDATION_000002,rejected,not_available,missing_data,Repository contains no case body
+PILOT_VALIDATION_000003,inconclusive,not_available,missing_data,Repository contains no case body
+PILOT_VALIDATION_000004,rejected,not_available,missing_data,Repository contains no case body
+PILOT_VALIDATION_000005,rejected,not_available,missing_data,Repository contains no case body

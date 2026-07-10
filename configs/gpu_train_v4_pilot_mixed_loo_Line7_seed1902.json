@@ -1,6 +1,5 @@
 {
   "data_root": "data_corrected_v1_4_terrain_direction",
-  "paper_split_file": "configs/paper_splits_v1_6.json",
   "height_resize": 512,
   "width_resize": 256,
   "batch_size": 2,
@@ -12,13 +11,12 @@
   "seed": 1902,
   "train_lines": [
     "Line3",
-    "Line6",
     "Line9",
     "LineL1"
   ],
   "train_trace_ranges": {},
   "val_lines": [
-    "Line7"
+    "Line6"
   ],
   "test_lines": [
     "Line7"
@@ -65,5 +63,8 @@
   "attention_heads": 4,
   "sim_batch_ratio": 0.3,
   "sim_data_root": "data/simulation_pretrain_v3",
-  "sim_train_lines": []
+  "sim_train_lines": [],
+  "run_type": "lolo_eval",
+  "enabled": false,
+  "training_block_reason": "Frozen by 2026-07-10 audit: dataset_contract_v2 is not formal-training-ready."
 }

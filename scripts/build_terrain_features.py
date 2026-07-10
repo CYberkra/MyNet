@@ -1,15 +1,22 @@
-from pathlib import Path
-import csv
+#!/usr/bin/env python3
+"""Build leakage-safe terrain/flight metadata channels from canonical line NPZ files.
+
+The canonical line archives are generated from the original YingShan CSV schema:
+longitude, latitude, ground elevation, radar amplitude, flight height AGL.
+No manual labels or test-line distribution statistics are used here.
+"""
+from __future__ import annotations
+
+import hashlib
 import json
+from pathlib import Path
 
 import numpy as np
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
-BY_TRACE = ROOT / "reports" / "full_label_reaudit_terrain_direction" / "by_trace"
 OUT_DIR = DATA_ROOT / "terrain_features"
-MAIN_LINES = ["Line3", "Line6", "Line7", "Line9", "LineL1"]
+ALL_LINES = ["Line3", "Line6", "Line7", "Line9", "LineL1", "LineX1"]
 FEATURE_NAMES = [
     "relative_height_z",
     "ground_elevation_z",
@@ -18,99 +25,117 @@ FEATURE_NAMES = [
     "trace_position",
 ]
 
-
-def read_trace_csv(line):
-    path = BY_TRACE / f"{line}_terrain_label_by_trace.csv"
-    rows = []
-    for r in csv.DictReader(open(path, encoding="utf-8")):
-        rows.append(
-            {
-                "trace_idx": int(r["trace_idx"]),
-                "relative_height_m": float(r["relative_height_m"]),
-                "ground_elevation_est_m": float(r["ground_elevation_est_m"]),
-                "altitude_m": float(r["altitude_m"]),
-            }
-        )
-    rows.sort(key=lambda x: x["trace_idx"])
-    return rows
+# Fixed physical scales avoid any train/test distribution leakage.
+# Site ground range 350-610 m comes from the project survey description.
+PHYSICAL_NORMALIZATION = {
+    "relative_height_m": {"center": 11.0, "scale": 9.0, "basis": "planned flight range 2-20 m"},
+    "ground_elevation_m": {"center": 480.0, "scale": 130.0, "basis": "site elevation range 350-610 m"},
+    "antenna_elevation_m": {"center": 491.0, "scale": 139.0, "basis": "ground center + flight center"},
+    "terrain_slope": {"center": 0.0, "scale": 0.5, "basis": "fixed dimensionless slope scale"},
+}
 
 
-def fill_to_width(rows, width, key):
-    x = np.array([r["trace_idx"] for r in rows], dtype=np.float32)
-    y = np.array([r[key] for r in rows], dtype=np.float32)
-    keep = np.isfinite(y)
-    if keep.sum() == 0:
-        return np.zeros(width, dtype=np.float32)
-    traces = np.arange(width, dtype=np.float32)
-    return np.interp(traces, x[keep], y[keep]).astype(np.float32)
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 
-def robust_stats(values):
-    values = np.asarray(values, dtype=np.float32)
-    med = float(np.nanmedian(values))
-    q25, q75 = np.nanpercentile(values, [25, 75])
-    scale = float((q75 - q25) / 1.349)
-    if not np.isfinite(scale) or scale < 1e-6:
-        scale = float(np.nanstd(values))
-    if not np.isfinite(scale) or scale < 1e-6:
-        scale = 1.0
-    return med, scale
+def z_fixed(values: np.ndarray, key: str) -> np.ndarray:
+    spec = PHYSICAL_NORMALIZATION[key]
+    return ((values.astype(np.float32) - float(spec["center"])) / float(spec["scale"])).astype(np.float32)
 
 
-def main():
+def terrain_slope(ground: np.ndarray, distance: np.ndarray) -> np.ndarray:
+    ground = ground.astype(np.float64)
+    distance = distance.astype(np.float64)
+    if ground.size < 2:
+        return np.zeros_like(ground, dtype=np.float32)
+    dg = np.gradient(ground)
+    dx = np.gradient(distance)
+    slope = dg / np.maximum(np.abs(dx), 1e-3)
+    return np.clip(slope, -3.0, 3.0).astype(np.float32)
+
+
+def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    raw_by_line = {}
-    stats_pool = {"relative_height_m": [], "ground_elevation_est_m": [], "altitude_m": [], "terrain_slope": []}
-    for line in MAIN_LINES + ["LineX1"]:
-        z = np.load(DATA_ROOT / "lines" / f"{line}.npz")
-        width = int(z["raw_full_normalized"].shape[1])
-        rows = read_trace_csv(line)
-        rel = fill_to_width(rows, width, "relative_height_m")
-        ground = fill_to_width(rows, width, "ground_elevation_est_m")
-        alt = fill_to_width(rows, width, "altitude_m")
-        slope = np.gradient(ground).astype(np.float32)
-        raw_by_line[line] = {"relative_height_m": rel, "ground_elevation_est_m": ground, "altitude_m": alt, "terrain_slope": slope}
-        if line in MAIN_LINES:
-            stats_pool["relative_height_m"].append(rel)
-            stats_pool["ground_elevation_est_m"].append(ground)
-            stats_pool["altitude_m"].append(alt)
-            stats_pool["terrain_slope"].append(slope)
-
-    stats = {k: robust_stats(np.concatenate(v)) for k, v in stats_pool.items()}
     manifest = {
-        "source": str(BY_TRACE.relative_to(ROOT)).replace("\\", "/"),
+        "schema_version": "terrain_features_original_csv_v2",
         "dataset": str(DATA_ROOT.relative_to(ROOT)).replace("\\", "/"),
-        "main_lines_for_normalization": MAIN_LINES,
+        "source": "canonical line NPZ metadata imported directly from the original YingShan CSV archive",
         "feature_names": FEATURE_NAMES,
-        "normalization": {k: {"center": c, "scale": s} for k, (c, s) in stats.items()},
-        "policy": "Per-trace flight/terrain metadata channels; normalized on main measured lines only. LineX1 remains review-only.",
+        "normalization": PHYSICAL_NORMALIZATION,
+        "normalization_policy": (
+            "Fixed physical scales only. No statistics from Line9 or any validation/test line are used."
+        ),
+        "lines": {},
     }
 
-    for line, raw in raw_by_line.items():
-        width = raw["relative_height_m"].shape[0]
-        pos = np.linspace(-1.0, 1.0, width, dtype=np.float32)
-        channels = []
-        for key in ["relative_height_m", "ground_elevation_est_m", "altitude_m", "terrain_slope"]:
-            center, scale = stats[key]
-            channels.append(((raw[key] - center) / scale).astype(np.float32))
-        channels.append(pos)
-        features = np.stack(channels, axis=0).astype(np.float32)
+    for line in ALL_LINES:
+        line_path = DATA_ROOT / "lines" / f"{line}.npz"
+        with np.load(line_path, allow_pickle=False) as data:
+            required = {
+                "flight_height_agl_m", "ground_elevation_m", "antenna_elevation_m",
+                "gnss_cumulative_distance_m", "source_csv_sha256",
+            }
+            missing = sorted(required - set(data.files))
+            if missing:
+                raise RuntimeError(f"{line_path} lacks canonical metadata: {missing}")
+            flight = np.asarray(data["flight_height_agl_m"], dtype=np.float32)
+            ground = np.asarray(data["ground_elevation_m"], dtype=np.float32)
+            antenna = np.asarray(data["antenna_elevation_m"], dtype=np.float32)
+            distance = np.asarray(data["gnss_cumulative_distance_m"], dtype=np.float64)
+            source_csv_sha = str(np.asarray(data["source_csv_sha256"]).item())
+
+        width = flight.size
+        if any(values.shape != (width,) for values in (ground, antenna, distance)):
+            raise RuntimeError(f"{line}: canonical spatial vectors have inconsistent lengths")
+        slope = terrain_slope(ground, distance)
+        if distance[-1] > 0:
+            position = (2.0 * distance / distance[-1] - 1.0).astype(np.float32)
+        else:
+            position = np.linspace(-1.0, 1.0, width, dtype=np.float32)
+
+        features = np.stack(
+            [
+                z_fixed(flight, "relative_height_m"),
+                z_fixed(ground, "ground_elevation_m"),
+                z_fixed(antenna, "antenna_elevation_m"),
+                z_fixed(slope, "terrain_slope"),
+                position,
+            ],
+            axis=0,
+        ).astype(np.float32)
+        out_path = OUT_DIR / f"{line}_terrain_features.npz"
         np.savez_compressed(
-            OUT_DIR / f"{line}_terrain_features.npz",
+            out_path,
             features=features,
-            feature_names=np.array(FEATURE_NAMES),
-            raw_relative_height_m=raw["relative_height_m"],
-            raw_ground_elevation_est_m=raw["ground_elevation_est_m"],
-            raw_altitude_m=raw["altitude_m"],
-            raw_terrain_slope=raw["terrain_slope"],
+            feature_names=np.asarray(FEATURE_NAMES),
+            raw_flight_height_agl_m=flight,
+            raw_ground_elevation_m=ground,
+            raw_antenna_elevation_m=antenna,
+            raw_terrain_slope=slope,
+            raw_gnss_cumulative_distance_m=distance,
+            source_line_npz_sha256=np.asarray(sha256(line_path)),
+            source_csv_sha256=np.asarray(source_csv_sha),
+            normalization_policy=np.asarray("fixed_physical_scales_no_split_statistics"),
         )
-        manifest.setdefault("lines", {})[line] = {
+        manifest["lines"][line] = {
             "width": int(width),
-            "feature_file": str((OUT_DIR / f"{line}_terrain_features.npz").relative_to(ROOT)).replace("\\", "/"),
+            "feature_file": str(out_path.relative_to(ROOT)).replace("\\", "/"),
+            "feature_sha256": sha256(out_path),
+            "source_line_npz_sha256": sha256(line_path),
+            "source_csv_sha256": source_csv_sha,
+            "flight_height_range_m": [float(flight.min()), float(flight.max())],
+            "ground_elevation_range_m": [float(ground.min()), float(ground.max())],
+            "gnss_distance_m": float(distance[-1]),
         }
 
-    (OUT_DIR / "terrain_feature_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(OUT_DIR / "terrain_feature_manifest.json")
+    manifest_path = OUT_DIR / "terrain_feature_manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(manifest_path)
 
 
 if __name__ == "__main__":

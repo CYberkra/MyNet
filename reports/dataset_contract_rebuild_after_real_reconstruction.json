@@ -1,0 +1,32 @@
+{
+  "schema_version": "dataset_contract_v2",
+  "generated_at": "2026-07-10",
+  "audit_commit": "1818b25f54f5313d6096f7d36e569859f8a29f1d",
+  "formal_training_allowed": false,
+  "label_semantics": "visible_phase_pending_global_revalidation",
+  "required_files": [
+    "real_lines.csv",
+    "real_windows.csv",
+    "simulation_cases.csv",
+    "human_audit_manifest.csv",
+    "split_manifest.csv",
+    "label_semantics.json"
+  ],
+  "blockers": [
+    "no confirmed true-negative real windows",
+    "real full-line arrays are reconstructed exactly from overlapping window caches; original acquisition-to-window source mapping remains unavailable",
+    "Line9-conditioned simulations are quarantined",
+    "V4 visible-phase labels require regeneration",
+    "Batch 3 requires case-wise geometry review"
+  ],
+  "counts": {
+    "simulation_cases_registered": 33,
+    "human_audit_records": 39,
+    "accepted_quarantine_cases": 13,
+    "line9_conditioned_cases": 33,
+    "training_allowed_cases": 0,
+    "real_lines_registered": 6,
+    "real_windows_registered": 78,
+    "confirmed_true_negative_windows": 0
+  }
+}

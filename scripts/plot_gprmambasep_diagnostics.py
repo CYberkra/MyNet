@@ -127,9 +127,17 @@ def main():
             gt = line_npz[key]
             break
 
-    pred = load_optional(eval_dir / f"{line}_pred_softmask.npy")
-    center = load_optional(eval_dir / f"{line}_center_softmask.npy")
-    path_mask = load_optional(eval_dir / f"{line}_path_softmask.npy")
+    # Prefer explicit post-audit artifact names; retain old aliases only for
+    # historical runs generated before the metric-contract split.
+    pred = load_optional(eval_dir / f"{line}_mask_prob.npy")
+    if pred is None:
+        pred = load_optional(eval_dir / f"{line}_pred_softmask.npy")
+    center = load_optional(eval_dir / f"{line}_center_response_prob.npy")
+    if center is None:
+        center = load_optional(eval_dir / f"{line}_center_softmask.npy")
+    path_mask = load_optional(eval_dir / f"{line}_path_prob_image.npy")
+    if path_mask is None:
+        path_mask = load_optional(eval_dir / f"{line}_path_softmask.npy")
     pres = load_optional(eval_dir / f"{line}_presence_prob.npy")
     curve = load_optional(eval_dir / f"{line}_curve_prob.npy")
     if curve is None:

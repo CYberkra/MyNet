@@ -1,0 +1,286 @@
+ .gitattributes                                     |  12 +
+ README.md                                          |  66 ++
+ configs/README_AUDIT_STATUS.md                     |  19 +
+ configs/gpu_finetune_stage3_gprmambasep.json       |   9 +-
+ ...u_mixed_v2_1_curvegassist_line9holdout_12g.json |  14 +-
+ ...pu_mixed_v2_1_curvegassist_line9holdout_6g.json |  16 +-
+ ...u_mixed_v2_1_gprmambasep_lite_line9holdout.json |  12 +-
+ ..._1_gprmambasep_lite_line9holdout_reviewval.json |  16 +-
+ configs/gpu_mixed_v2_gprmambasep.json              |   9 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line3_seed1901.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line3_seed1902.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line3_seed1903.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line6_seed1901.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line6_seed1902.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line6_seed1903.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line7_seed1901.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line7_seed1902.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line7_seed1903.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line9_seed1901.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line9_seed1902.json |  12 +-
+ ...pu_mixed_v2_gprmambasep_loo_Line9_seed1903.json |  12 +-
+ ...u_mixed_v2_gprmambasep_loo_LineL1_seed1901.json |  12 +-
+ ...u_mixed_v2_gprmambasep_loo_LineL1_seed1902.json |  12 +-
+ ...u_mixed_v2_gprmambasep_loo_LineL1_seed1903.json |  12 +-
+ configs/gpu_pretrain_v2_1_gprmambasep_lite.json    |  35 +-
+ .../gpu_pretrain_v2_1_gprmambasep_lite_smoke.json  |  33 +-
+ ..._pretrain_v2_1_gprmambasep_lite_tiny_smoke.json |  35 +-
+ configs/gpu_pretrain_v2_gprmambasep.json           |  35 +-
+ configs/gpu_train_v1_16_batch192_mixed.json        |   6 +-
+ configs/gpu_train_v2_pilot_mixed.json              |   6 +-
+ configs/gpu_train_v3_pilot_mixed.json              |  48 +-
+ configs/gpu_train_v4_pilot_mixed.json              |  14 +-
+ ...pu_train_v4_pilot_mixed_loo_Line3_seed1901.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line3_seed1902.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line3_seed1903.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line6_seed1901.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line6_seed1902.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line6_seed1903.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line7_seed1901.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line7_seed1902.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line7_seed1903.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line9_seed1901.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line9_seed1902.json |  11 +-
+ ...pu_train_v4_pilot_mixed_loo_Line9_seed1903.json |  11 +-
+ ...u_train_v4_pilot_mixed_loo_LineL1_seed1901.json |  11 +-
+ ...u_train_v4_pilot_mixed_loo_LineL1_seed1902.json |  11 +-
+ ...u_train_v4_pilot_mixed_loo_LineL1_seed1903.json |  11 +-
+ .../dataset_policy.json                            |   7 +
+ .../05_accepted_dataset/accepted_manifest.csv      |  14 +
+ .../05_accepted_dataset/dataset_policy.json        |   8 +
+ .../tools/promote_to_accepted.py                   | 480 ++++++++------
+ data/dataset_contract_v2/README.md                 |  23 +
+ data/dataset_contract_v2/dataset_manifest.json     |  43 ++
+ data/dataset_contract_v2/human_audit_manifest.csv  |  40 ++
+ data/dataset_contract_v2/label_semantics.json      |  27 +
+ data/dataset_contract_v2/real_lines.csv            |   7 +
+ data/dataset_contract_v2/real_windows.csv          |  79 +++
+ data/dataset_contract_v2/simulation_cases.csv      |  34 +
+ data/dataset_contract_v2/split_manifest.csv        |  79 +++
+ .../dataset_policy.json                            |  47 ++
+ .../lines/Line3.npz                                | Bin 0 -> 6157411 bytes
+ .../lines/Line6.npz                                | Bin 0 -> 5701488 bytes
+ .../lines/Line7.npz                                | Bin 0 -> 6059505 bytes
+ .../lines/Line9.npz                                | Bin 0 -> 8604302 bytes
+ .../lines/LineL1.npz                               | Bin 0 -> 6998583 bytes
+ .../lines/LineX1.npz                               | Bin 0 -> 3418608 bytes
+ .../orientation_contract.json                      | 119 ++++
+ .../reconstruction_manifest.json                   | 135 ++++
+ .../ying_shan_measurement_lines_original.zip       | Bin 0 -> 26262107 bytes
+ .../source/ying_shan_profiles_and_boreholes.zip    | Bin 0 -> 8446331 bytes
+ .../terrain_features/Line3_terrain_features.npz    | Bin 0 -> 63629 bytes
+ .../terrain_features/Line6_terrain_features.npz    | Bin 0 -> 63898 bytes
+ .../terrain_features/Line7_terrain_features.npz    | Bin 0 -> 62354 bytes
+ .../terrain_features/Line9_terrain_features.npz    | Bin 0 -> 85685 bytes
+ .../terrain_features/LineL1_terrain_features.npz   | Bin 0 -> 71501 bytes
+ .../terrain_features/LineX1_terrain_features.npz   | Bin 0 -> 35741 bytes
+ .../terrain_features/terrain_feature_manifest.json | 133 ++++
+ .../Line3_terrain_features.npz                     | Bin 0 -> 41458 bytes
+ .../Line6_terrain_features.npz                     | Bin 0 -> 40086 bytes
+ .../Line7_terrain_features.npz                     | Bin 0 -> 40043 bytes
+ .../Line9_terrain_features.npz                     | Bin 0 -> 55525 bytes
+ .../LineL1_terrain_features.npz                    | Bin 0 -> 45776 bytes
+ .../LineX1_terrain_features.npz                    | Bin 0 -> 23243 bytes
+ .../terrain_feature_manifest.json                  |  70 ++
+ .../trace_direction_registry.csv                   |   7 +
+ .../window_index.csv                               |  79 +++
+ data_yingshan_v15_final_20260710/DATASET_README.md |  12 +
+ .../dataset_policy.json                            |  11 +
+ data_yingshan_v15_final_20260710/lines/Line3.npz   | Bin 0 -> 7578956 bytes
+ data_yingshan_v15_final_20260710/lines/Line6.npz   | Bin 0 -> 6932260 bytes
+ data_yingshan_v15_final_20260710/lines/Line7.npz   | Bin 0 -> 7483549 bytes
+ data_yingshan_v15_final_20260710/lines/Line9.npz   | Bin 0 -> 10647197 bytes
+ data_yingshan_v15_final_20260710/lines/LineL1.npz  | Bin 0 -> 8651033 bytes
+ data_yingshan_v15_final_20260710/lines/LineX1.npz  | Bin 0 -> 4239924 bytes
+ .../manifests/v15_final_line_summary.csv           |   7 +
+ .../manifests/v15_final_manifest.json              |  76 +++
+ .../orientation_contract.json                      | 119 ++++
+ .../terrain_features/Line3_terrain_features.npz    | Bin 0 -> 63629 bytes
+ .../terrain_features/Line6_terrain_features.npz    | Bin 0 -> 63898 bytes
+ .../terrain_features/Line7_terrain_features.npz    | Bin 0 -> 62354 bytes
+ .../terrain_features/Line9_terrain_features.npz    | Bin 0 -> 85685 bytes
+ .../terrain_features/LineL1_terrain_features.npz   | Bin 0 -> 71501 bytes
+ .../terrain_features/LineX1_terrain_features.npz   | Bin 0 -> 35741 bytes
+ .../terrain_features/terrain_feature_manifest.json | 133 ++++
+ .../Line3_terrain_features.npz                     | Bin 0 -> 41458 bytes
+ .../Line6_terrain_features.npz                     | Bin 0 -> 40086 bytes
+ .../Line7_terrain_features.npz                     | Bin 0 -> 40043 bytes
+ .../Line9_terrain_features.npz                     | Bin 0 -> 55525 bytes
+ .../LineL1_terrain_features.npz                    | Bin 0 -> 45776 bytes
+ .../LineX1_terrain_features.npz                    | Bin 0 -> 23243 bytes
+ .../terrain_feature_manifest.json                  |  70 ++
+ .../trace_direction_registry.csv                   |   7 +
+ data_yingshan_v15_final_20260710/window_index.csv  |  79 +++
+ .../windows/Line3_tr0000_0255.npz                  | Bin 0 -> 639025 bytes
+ .../windows/Line3_tr0128_0383.npz                  | Bin 0 -> 707060 bytes
+ .../windows/Line3_tr0256_0511.npz                  | Bin 0 -> 748663 bytes
+ .../windows/Line3_tr0384_0639.npz                  | Bin 0 -> 748568 bytes
+ .../windows/Line3_tr0512_0767.npz                  | Bin 0 -> 840355 bytes
+ .../windows/Line3_tr0640_0895.npz                  | Bin 0 -> 798153 bytes
+ .../windows/Line3_tr0768_1023.npz                  | Bin 0 -> 781631 bytes
+ .../windows/Line3_tr0896_1151.npz                  | Bin 0 -> 777203 bytes
+ .../windows/Line3_tr1024_1279.npz                  | Bin 0 -> 773848 bytes
+ .../windows/Line3_tr1152_1407.npz                  | Bin 0 -> 604159 bytes
+ .../windows/Line3_tr1280_1535.npz                  | Bin 0 -> 410601 bytes
+ .../windows/Line3_tr1408_1663.npz                  | Bin 0 -> 429901 bytes
+ .../windows/Line3_tr1536_1791.npz                  | Bin 0 -> 570861 bytes
+ .../windows/Line3_tr1557_1812.npz                  | Bin 0 -> 576105 bytes
+ .../windows/Line6_tr0000_0255.npz                  | Bin 0 -> 802958 bytes
+ .../windows/Line6_tr0128_0383.npz                  | Bin 0 -> 790883 bytes
+ .../windows/Line6_tr0256_0511.npz                  | Bin 0 -> 782193 bytes
+ .../windows/Line6_tr0384_0639.npz                  | Bin 0 -> 606803 bytes
+ .../windows/Line6_tr0512_0767.npz                  | Bin 0 -> 426577 bytes
+ .../windows/Line6_tr0640_0895.npz                  | Bin 0 -> 402685 bytes
+ .../windows/Line6_tr0768_1023.npz                  | Bin 0 -> 544173 bytes
+ .../windows/Line6_tr0896_1151.npz                  | Bin 0 -> 623688 bytes
+ .../windows/Line6_tr1024_1279.npz                  | Bin 0 -> 658690 bytes
+ .../windows/Line6_tr1152_1407.npz                  | Bin 0 -> 781244 bytes
+ .../windows/Line6_tr1280_1535.npz                  | Bin 0 -> 747788 bytes
+ .../windows/Line6_tr1405_1660.npz                  | Bin 0 -> 736745 bytes
+ .../windows/Line7_tr0000_0255.npz                  | Bin 0 -> 852680 bytes
+ .../windows/Line7_tr0128_0383.npz                  | Bin 0 -> 875853 bytes
+ .../windows/Line7_tr0256_0511.npz                  | Bin 0 -> 871725 bytes
+ .../windows/Line7_tr0384_0639.npz                  | Bin 0 -> 897900 bytes
+ .../windows/Line7_tr0512_0767.npz                  | Bin 0 -> 721749 bytes
+ .../windows/Line7_tr0640_0895.npz                  | Bin 0 -> 648883 bytes
+ .../windows/Line7_tr0768_1023.npz                  | Bin 0 -> 811111 bytes
+ .../windows/Line7_tr0896_1151.npz                  | Bin 0 -> 830531 bytes
+ .../windows/Line7_tr1024_1279.npz                  | Bin 0 -> 614554 bytes
+ .../windows/Line7_tr1152_1407.npz                  | Bin 0 -> 435609 bytes
+ .../windows/Line7_tr1280_1535.npz                  | Bin 0 -> 572472 bytes
+ .../windows/Line7_tr1398_1653.npz                  | Bin 0 -> 673751 bytes
+ .../windows/Line9_tr0000_0255.npz                  | Bin 0 -> 567078 bytes
+ .../windows/Line9_tr0128_0383.npz                  | Bin 0 -> 619213 bytes
+ .../windows/Line9_tr0256_0511.npz                  | Bin 0 -> 712940 bytes
+ .../windows/Line9_tr0384_0639.npz                  | Bin 0 -> 816337 bytes
+ .../windows/Line9_tr0512_0767.npz                  | Bin 0 -> 734049 bytes
+ .../windows/Line9_tr0640_0895.npz                  | Bin 0 -> 728634 bytes
+ .../windows/Line9_tr0768_1023.npz                  | Bin 0 -> 849749 bytes
+ .../windows/Line9_tr0896_1151.npz                  | Bin 0 -> 873077 bytes
+ .../windows/Line9_tr1024_1279.npz                  | Bin 0 -> 706924 bytes
+ .../windows/Line9_tr1152_1407.npz                  | Bin 0 -> 640196 bytes
+ .../windows/Line9_tr1280_1535.npz                  | Bin 0 -> 787905 bytes
+ .../windows/Line9_tr1408_1663.npz                  | Bin 0 -> 831811 bytes
+ .../windows/Line9_tr1536_1791.npz                  | Bin 0 -> 840414 bytes
+ .../windows/Line9_tr1664_1919.npz                  | Bin 0 -> 838925 bytes
+ .../windows/Line9_tr1792_2047.npz                  | Bin 0 -> 824327 bytes
+ .../windows/Line9_tr1920_2175.npz                  | Bin 0 -> 758621 bytes
+ .../windows/Line9_tr2048_2303.npz                  | Bin 0 -> 674806 bytes
+ .../windows/Line9_tr2122_2377.npz                  | Bin 0 -> 556751 bytes
+ .../windows/LineL1_tr0000_0255.npz                 | Bin 0 -> 692491 bytes
+ .../windows/LineL1_tr0128_0383.npz                 | Bin 0 -> 835014 bytes
+ .../windows/LineL1_tr0256_0511.npz                 | Bin 0 -> 836363 bytes
+ .../windows/LineL1_tr0384_0639.npz                 | Bin 0 -> 870467 bytes
+ .../windows/LineL1_tr0512_0767.npz                 | Bin 0 -> 859754 bytes
+ .../windows/LineL1_tr0640_0895.npz                 | Bin 0 -> 847071 bytes
+ .../windows/LineL1_tr0768_1023.npz                 | Bin 0 -> 740010 bytes
+ .../windows/LineL1_tr0896_1151.npz                 | Bin 0 -> 516149 bytes
+ .../windows/LineL1_tr1024_1279.npz                 | Bin 0 -> 428727 bytes
+ .../windows/LineL1_tr1152_1407.npz                 | Bin 0 -> 530163 bytes
+ .../windows/LineL1_tr1280_1535.npz                 | Bin 0 -> 735268 bytes
+ .../windows/LineL1_tr1408_1663.npz                 | Bin 0 -> 842389 bytes
+ .../windows/LineL1_tr1536_1791.npz                 | Bin 0 -> 858956 bytes
+ .../windows/LineL1_tr1664_1919.npz                 | Bin 0 -> 714624 bytes
+ .../windows/LineL1_tr1694_1949.npz                 | Bin 0 -> 655611 bytes
+ .../windows/LineX1_tr0000_0255.npz                 | Bin 0 -> 560835 bytes
+ .../windows/LineX1_tr0128_0383.npz                 | Bin 0 -> 649505 bytes
+ .../windows/LineX1_tr0256_0511.npz                 | Bin 0 -> 772795 bytes
+ .../windows/LineX1_tr0384_0639.npz                 | Bin 0 -> 805924 bytes
+ .../windows/LineX1_tr0512_0767.npz                 | Bin 0 -> 807057 bytes
+ .../windows/LineX1_tr0640_0895.npz                 | Bin 0 -> 829141 bytes
+ .../windows/LineX1_tr0682_0937.npz                 | Bin 0 -> 822404 bytes
+ docs/real_data/YINGSHAN_RAW_CSV_SCHEMA.md          |  35 +
+ pgdacsnet/experiment_contract.py                   | 290 ++++++++
+ pgdacsnet/spatial_orientation.py                   | 144 ++++
+ pytest.ini                                         |   5 +
+ .../CHATGPT_REPAIR_20260710/FINAL_REPAIR_REPORT.md | 100 +++
+ .../config_repair_summary.csv                      |  46 ++
+ .../CHATGPT_REPAIR_20260710/export_guard_check.txt |   1 +
+ .../formal_ready_check.json                        |  19 +
+ .../project_contract_validation.json               |  16 +
+ .../project_contract_validation_final.json         |  19 +
+ .../REPAIR_REPORT.md                               |  69 ++
+ .../check_dataset_after_original_csv_import.json   |  90 +++
+ reports/check_dataset_after_reconstruction.json    |  53 ++
+ reports/check_dataset_final_original_csv.json      |  91 +++
+ ...dataset_contract_after_original_csv_import.json |  34 +
+ ...contract_rebuild_after_real_reconstruction.json |  32 +
+ .../formal_ready_after_original_csv_import.json    |  90 +++
+ .../formal_ready_after_real_reconstruction.json    |  19 +
+ reports/formal_ready_final_original_csv.json       |  93 +++
+ .../project_contract_after_builder_rebuild.json    |  19 +
+ ...project_contract_after_original_csv_import.json |  19 +
+ ...project_contract_after_real_reconstruction.json |  19 +
+ reports/project_contract_final_original_csv.json   |  19 +
+ ...ect_formal_ready_after_original_csv_import.json |  19 +
+ .../project_formal_ready_final_original_csv.json   |  21 +
+ reports/real_dataset_reconstruction_20260710.json  | 100 +++
+ .../COMPREHENSIVE_DIRECTION_PROFILE_AUDIT.md       | 112 ++++
+ .../acquisition_direction_crossings.png            | Bin 0 -> 141528 bytes
+ .../audit_summary.json                             |  26 +
+ .../borehole_anchor_checks.csv                     |   6 +
+ .../line_intersections.csv                         |   9 +
+ .../pdf_internal_consistency_notes.csv             |   7 +
+ .../profile_alignment_checks.csv                   |   7 +
+ .../source_manifest.json                           |  83 +++
+ .../trace_direction_registry.csv                   |   7 +
+ reports/yingshan_original_csv_import.json          | 116 ++++
+ .../V15_CANDIDATE_AUDIT_REPORT.md                  |  84 +++
+ .../audit_summary.json                             | 402 +++++++++++
+ .../crossing_v15_decisions.csv                     |   9 +
+ .../crossing_workbench/01_Line3-Line9.png          | Bin 0 -> 1729132 bytes
+ .../crossing_workbench/02_Line3-LineL1.png         | Bin 0 -> 1656612 bytes
+ .../crossing_workbench/03_Line3-Line7.png          | Bin 0 -> 1737250 bytes
+ .../crossing_workbench/04_Line6-Line9.png          | Bin 0 -> 1744252 bytes
+ .../crossing_workbench/05_Line6-LineL1.png         | Bin 0 -> 1716949 bytes
+ .../crossing_workbench/06_Line6-Line7.png          | Bin 0 -> 1544030 bytes
+ .../crossing_workbench/07_Line9-LineX1.png         | Bin 0 -> 1853212 bytes
+ .../crossing_workbench/08_LineL1-LineX1.png        | Bin 0 -> 1839065 bytes
+ .../v15_ignored_crossing_segments.csv              |   6 +
+ .../validation_result.json                         |  59 ++
+ .../zero_time_audit.csv                            |   7 +
+ .../FINAL_VALIDATION_REPORT.md                     |  66 ++
+ .../V15_FINAL_RELEASE_REPORT.md                    |  27 +
+ .../check_dataset_v15_final.json                   |  84 +++
+ .../formal_ready_validation.json                   |  19 +
+ .../project_contract_validation.json               |  19 +
+ .../v15_final_crossing_decisions.csv               |   9 +
+ .../v15_final_crossing_preview.png                 | Bin 0 -> 983539 bytes
+ .../v15_final_segments.csv                         |   5 +
+ .../v15_final_trace_changes.csv                    | 529 +++++++++++++++
+ .../v15_final_validation.json                      |  51 ++
+ .../v15_final_validation_stdout.json               |  51 ++
+ .../v15_final_zero_time_audit.csv                  |   7 +
+ requirements-dev.txt                               |   3 +
+ requirements.txt                                   |  10 +
+ scripts/build_crossing_direction_audit.py          | 734 +++++++++++----------
+ scripts/build_dataset_contract_v2.py               | 584 ++++++++++++++++
+ scripts/build_terrain_features.py                  | 183 ++---
+ scripts/build_yingshan_v15_candidate.py            | 611 +++++++++++++++++
+ scripts/build_yingshan_v15_final.py                | 715 ++++++++++++++++++++
+ scripts/build_zero_material_terrain_features.py    | 112 ++--
+ scripts/check_dataset.py                           | 302 ++++++---
+ scripts/eval_full_line.py                          | 312 +++++++--
+ scripts/export_sim_training_npz.py                 | 197 ++++++
+ scripts/import_yingshan_raw_csv.py                 | 667 +++++++++++++++++++
+ scripts/losses_gprmambasep.py                      | 146 +++-
+ scripts/plot_gprmambasep_diagnostics.py            |  14 +-
+ scripts/reconstruct_real_dataset_from_windows.py   | 553 ++++++++++++++++
+ scripts/train_raw_only.py                          | 496 +++++++++++---
+ scripts/validate_project_contracts.py              | 295 +++++++++
+ scripts/validate_yingshan_v15_candidate.py         | 108 +++
+ scripts/validate_yingshan_v15_final.py             | 243 +++++++
+ tests/test_audit_guards.py                         | 109 +++
+ tests/test_crossing_direction_audit.py             |  35 +
+ tests/test_dataset_governance.py                   |  56 ++
+ tests/test_eval_metric_contract.py                 |  43 ++
+ tests/test_eval_metric_semantics.py                |  48 ++
+ tests/test_experiment_contract.py                  |  71 ++
+ tests/test_loss_contracts.py                       |  77 +++
+ tests/test_original_csv_dataset_contract.py        |  97 +++
+ tests/test_real_dataset_reconstruction.py          |  90 +++
+ tests/test_spatial_orientation.py                  |  93 +++
+ tests/test_yingshan_raw_csv_import.py              |  90 +++
+ tests/test_yingshan_v15_candidate.py               |  74 +++
+ tests/test_yingshan_v15_final.py                   | 116 ++++
+ 285 files changed, 12038 insertions(+), 1190 deletions(-)

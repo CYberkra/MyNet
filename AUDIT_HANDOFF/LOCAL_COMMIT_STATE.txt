@@ -1,0 +1,15 @@
+LOCAL_HEAD=7a250a7d5ad4a33667124664deb846f73fe2e993
+LOCAL_BRANCH=audit-fixes-20260710
+ORIGIN_MASTER=1818b25f54f5313d6096f7d36e569859f8a29f1d
+AHEAD_COUNT=10
+
+7a250a7 (HEAD -> audit-fixes-20260710) release audited YingShan V15 final labels
+799f229 build conservative YingShan V15 crossing review candidate
+6fbbf83 audit survey direction and profile alignment
+609e759 restore canonical Ying Shan data from original CSV
+d51862a record formal training release gate checks
+8dd49b5 add auditable dataset contract and project validation
+94addef make dataset checks and case promotion fail safe
+c6b35f5 separate curve path and mask evaluation semantics
+f7d77f4 enforce training and dataset contracts
+de81b4b freeze and repair audited experiment configs

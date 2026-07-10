@@ -1,0 +1,7 @@
+line,profile_left,profile_right,profile_display_flip,crossings_left_to_right,confidence,audit_status
+Line3,3 / ZK07 / south,3′ / ZK08 / north,True,Line7@30.99m -> LineL1@104.24m -> Line9@140.43m,high,consistent_after_profile_flip
+Line6,6 / ZK09 / south,6′ / ZK10 / north,True,Line7@2.62m -> LineL1@65.71m -> Line9@106.28m,high,terrain_direction_consistent_but_slide_crossing_labels_inconsistent
+Line7,7 / west / ZK09 side,7′ / east / Line3 crossing side,False,Line6@19.98m -> Line3@121.42m,high,consistent
+Line9,9 / west,9′ / east / ZK08 side,True,Line6@89.66m -> LineX1@138.58m -> Line3@186.68m,high,consistent_after_profile_flip
+LineL1,east / Line3 crossing side,west / Line6 crossing side,False,Line3@5.91m -> LineX1@54.11m -> Line6@106.69m,medium,medium_confidence_arrow_conflict
+LineX1,south / L1 crossing side,north / Line9 crossing side,True,LineL1@25.96m -> Line9@69.11m,medium,medium_confidence_report_only

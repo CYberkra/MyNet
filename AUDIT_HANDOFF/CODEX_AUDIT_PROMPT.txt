@@ -1,0 +1,19 @@
+请对这个 MyNet 精简源码包做独立、全面、证据驱动的审计。
+
+基线：origin/master
+本地修复终点：7a250a7d5ad4a33667124664deb846f73fe2e993
+注意：这些本地提交未推送到远端，包内源码是 7a250a7 的干净快照。
+
+审计重点：
+1. 数据泄漏、Line9 strict holdout、split/source-trace overlap；
+2. V15-final 标签读取、strong/weak/ignore 权重和 loss masking；
+3. 原始 CSV 空间/飞高字段、方向翻转、GNSS/剖面双距离轴；
+4. curve-distribution 与 mask 评估语义；
+5. 仿真缺失时是否 fail-fast，是否仍可能静默退化 real-only；
+6. presence/no-target 在无真负样本时是否被正确阻断；
+7. 配置冻结、formal-ready 门禁和复现性；
+8. A/S/G 可辨识性、Route 2 绕过 G、非官方 Mamba-2 等架构风险；
+9. 测试是否覆盖关键合同，是否存在假通过或只验证文件存在；
+10. 按 P0/P1/P2/P3 输出：文件路径、行号、复现步骤、影响、最小修复建议。
+
+V15 数据和原始证据不在本源码 ZIP 内，需同时解压另两个精简包。

@@ -1,6 +1,5 @@
 {
   "data_root": "data_corrected_v1_4_terrain_direction",
-  "paper_split_file": "configs/paper_splits_v1_6.json",
   "height_resize": 512,
   "width_resize": 256,
   "batch_size": 2,
@@ -110,5 +109,8 @@
     "case_000004",
     "case_000005",
     "case_000006"
-  ]
+  ],
+  "run_type": "development",
+  "enabled": false,
+  "training_block_reason": "Frozen by 2026-07-10 audit: dataset_contract_v2 is not formal-training-ready."
 }

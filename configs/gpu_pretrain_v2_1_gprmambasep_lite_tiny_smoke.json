@@ -11,16 +11,33 @@
   "num_workers": 0,
   "seed": 1902,
   "train_lines": [
-    "batch_anomaly", "batch_cross", "batch_gentle", "batch_gentle2",
-    "batch_terrace", "batch_wire", "bx",
-    "case_000001", "case_000002", "case_000003", "case_000004", "case_000005", "case_000006",
-    "line", "lm",
-    "sim_l1", "sim_line3", "sim_line9", "sim_zk09", "sm"
+    "batch_anomaly",
+    "batch_cross",
+    "batch_gentle",
+    "batch_gentle2",
+    "batch_terrace",
+    "batch_wire",
+    "bx",
+    "case_000001",
+    "case_000002",
+    "case_000003",
+    "case_000004",
+    "case_000005",
+    "case_000006",
+    "line",
+    "lm",
+    "sim_l1",
+    "sim_line3",
+    "sim_line9",
+    "sim_zk09",
+    "sm"
   ],
   "train_trace_ranges": {},
   "val_lines": [],
   "test_lines": [],
-  "review_lines": [],
+  "review_lines": [
+    "LineX1"
+  ],
   "loss": {
     "core_weight": 0.55,
     "outside_weight": 0.36,
@@ -62,5 +79,9 @@
   "max_train_samples": 8,
   "run_dir": "outputs/run_gprmambasep_lite_pretrain_tiny_smoke",
   "version": "v2_1_gprmambasep_lite_pretrain_tiny_smoke",
-  "note": "Tiny one-epoch smoke config for B-Guarded GprMambaSepLite. This is a training-viability probe only, using the smallest shape that completed a full backward step on the 6GB GPU: height_resize=128, width_resize=128, base_ch=8, mamba_state_dim=0, batch_size=1, amp=true. It is not a production training resolution."
+  "note": "Tiny one-epoch smoke config for B-Guarded GprMambaSepLite. This is a training-viability probe only, using the smallest shape that completed a full backward step on the 6GB GPU: height_resize=128, width_resize=128, base_ch=8, mamba_state_dim=0, batch_size=1, amp=true. It is not a production training resolution.",
+  "run_type": "debug",
+  "arrival_prior_missing_height_policy": "error",
+  "enabled": false,
+  "training_block_reason": "Frozen by 2026-07-10 audit: dataset_contract_v2 is not formal-training-ready."
 }

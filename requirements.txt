@@ -1,0 +1,10 @@
+numpy>=1.26,<3
+scipy>=1.11
+pandas>=2.1
+matplotlib>=3.8
+Pillow>=10
+h5py>=3.10
+scikit-image>=0.22
+requests>=2.31
+qrcode>=7.4
+torch>=2.3

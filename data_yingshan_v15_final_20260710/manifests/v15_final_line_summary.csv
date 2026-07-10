@@ -1,0 +1,7 @@
+line,trace_count,changed_trace_count,ignored_trace_count,active_strong,active_weak,split,formal_training_allowed
+Line3,1813,126,42,949,822,unassigned,False
+Line6,1661,0,129,949,583,unassigned,False
+Line7,1654,0,0,515,1139,unassigned,False
+Line9,2378,0,0,937,1441,test,False
+LineL1,1950,0,0,1406,544,unassigned,False
+LineX1,938,134,139,300,499,exclude,False

@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "formal_ready": false,
+  "errors": [],
+  "warnings": [
+    "dataset policy blocks training: Canonical full-line arrays now come from the original CSV archive with measured ground elevation and flight height. Formal training remains blocked by the absence of confirmed true negatives, non-Line9-conditioned approved simulations, and pending label review.",
+    "no confirmed status_code=0 traces; presence/no-target rejection supervision is not trainable"
+  ],
+  "facts": {
+    "data_root": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction",
+    "dataset_policy": {
+      "dataset_id": "data_corrected_v1_4_terrain_direction_canonical_from_original_csv",
+      "training_allowed": false,
+      "reason": "Canonical full-line arrays now come from the original CSV archive with measured ground elevation and flight height. Formal training remains blocked by the absence of confirmed true negatives, non-Line9-conditioned approved simulations, and pending label review.",
+      "missing_required_artifacts": [],
+      "confirmed_true_negative_traces": 0,
+      "canonical_source": {
+        "mode": "direct_original_csv_import",
+        "raw_zip_path": "data_corrected_v1_4_terrain_direction/source/ying_shan_measurement_lines_original.zip",
+        "raw_zip_sha256": "a147ea2e5b47da80dfafbea68ed6728823df45e0b00709846ef4144bc3ea04ad",
+        "csv_schema": [
+          "longitude_deg",
+          "latitude_deg",
+          "ground_elevation_m",
+          "radar_reflection_amplitude",
+          "flight_height_agl_m"
+        ],
+        "line_count": 6,
+        "original_full_line_sources_available": true,
+        "normalization": "per-line P99 absolute amplitude"
+      },
+      "height_policy": {
+        "field": "flight_height_agl_m",
+        "source": "original CSV column 5",
+        "values_outside_planned_2_20_m_are_flagged_but_remain_measured_valid": true,
+        "arrival_prior_uses_tracewise_measured_height": true,
+        "window_median_is_legacy_fallback_only": true
+      },
+      "_path": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/dataset_policy.json"
+    },
+    "window_index": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/window_index.csv",
+    "window_count": 78,
+    "lines": [
+      "Line3",
+      "Line6",
+      "Line7",
+      "Line9",
+      "LineL1",
+      "LineX1"
+    ],
+    "index_columns": [
+      "sample_id",
+      "line",
+      "start",
+      "end",
+      "split",
+      "present",
+      "weak",
+      "no_pick",
+      "source_csv_member",
+      "source_csv_sha256",
+      "source_trace_start",
+      "source_trace_end",
+      "antenna_height_agl_m",
+      "antenna_height_agl_valid",
+      "flight_height_min_m",
+      "flight_height_max_m",
+      "flight_height_std_m",
+      "flight_height_outside_2_20_fraction",
+      "ground_elevation_median_m",
+      "antenna_elevation_median_m",
+      "longitude_start",
+      "latitude_start",
+      "longitude_end",
+      "latitude_end",
+      "gnss_distance_start_m",
+      "gnss_distance_end_m",
+      "gnss_span_m",
+      "height_source",
+      "height_quality"
+    ],
+    "height_columns": [
+      "antenna_height_agl_m"
+    ],
+    "status_code_counts": {
+      "1": 10405,
+      "2": 9563
+    },
+    "confirmed_negative_trace_count": 0
+  }
+}

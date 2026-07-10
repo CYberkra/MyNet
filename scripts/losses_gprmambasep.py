@@ -15,6 +15,7 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -194,30 +195,83 @@ def contrastive_separation_loss(
 
 
 def arrival_time_prior_loss(G_hat: torch.Tensor, batch: dict[str, Any], cfg: dict[str, Any]) -> torch.Tensor:
-    """Penalise G energy before the plausible earliest subsurface arrival."""
+    """Penalise G energy before the earliest physically plausible arrival.
+
+    Height metadata may be one scalar per sample or one measured AGL value per
+    trace.  Per-trace heights are preferred because terrain-following UAV data
+    can vary materially inside a 256-trace training window. Missing values are
+    handled only by the explicit policy ``error``, ``skip`` or ``default``.
+    """
     B, C, H, W = G_hat.shape
     device, dtype = G_hat.device, G_hat.dtype
+    policy = str(cfg.get("arrival_prior_missing_height_policy", "error")).strip().lower()
+    if policy not in {"error", "skip", "default"}:
+        raise ValueError(f"invalid arrival_prior_missing_height_policy={policy!r}")
+
+    def _as_height_grid(value: Any, *, name: str, fill: float) -> torch.Tensor:
+        if value is None:
+            return torch.full((B, W), fill, device=device, dtype=dtype)
+        if isinstance(value, (float, int)):
+            return torch.full((B, W), float(value), device=device, dtype=dtype)
+        tensor = value.to(device=device, dtype=dtype)
+        if tensor.numel() == 1:
+            return tensor.reshape(1, 1).expand(B, W)
+        if tensor.shape == (B,):
+            return tensor[:, None].expand(B, W)
+        if tensor.shape == (B, 1):
+            return tensor.expand(B, W)
+        if tensor.shape == (B, W):
+            return tensor
+        if B == 1 and tensor.shape == (W,):
+            return tensor[None, :]
+        raise ValueError(f"{name} shape {tuple(tensor.shape)} is incompatible with batch/width {(B, W)}")
+
+    altitude_t = _as_height_grid(batch.get("altitude"), name="altitude", fill=float("nan"))
+    altitude_valid = batch.get("altitude_valid")
+    if altitude_valid is None:
+        valid_t = torch.isfinite(altitude_t) & (altitude_t > 0)
+    else:
+        valid_grid = _as_height_grid(altitude_valid, name="altitude_valid", fill=0.0)
+        valid_t = (valid_grid > 0.5) & torch.isfinite(altitude_t) & (altitude_t > 0)
+
+    if not bool(valid_t.all()):
+        if policy == "error":
+            missing = int((~valid_t).sum().item())
+            raise RuntimeError(
+                "arrival prior cannot run without valid measured AGL height metadata; "
+                f"missing/invalid trace heights={missing}/{B * W}"
+            )
+        if policy == "default":
+            try:
+                default_height = float(cfg["default_altitude_m"])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError("default height policy requires positive default_altitude_m") from exc
+            if not math.isfinite(default_height) or default_height <= 0:
+                raise ValueError("default height policy requires positive default_altitude_m")
+            altitude_t = torch.where(valid_t, altitude_t, torch.full_like(altitude_t, default_height))
+            valid_t = torch.ones_like(valid_t)
+        # policy=skip leaves invalid traces masked out.
+
+    if not bool(valid_t.any()):
+        return G_hat.sum() * 0.0
+
     c_air = float(cfg.get("c_air_m_per_ns", 0.3))
     v_earth = float(cfg.get("v_earth_m_per_ns", 0.07))
     z_min = float(cfg.get("g_min_depth_m", 3.0))
-    altitude = batch.get("altitude", None)
-    if altitude is None:
-        altitude_t = torch.full((B,), float(cfg.get("default_altitude_m", 2.4)), device=device, dtype=dtype)
-    elif isinstance(altitude, (float, int)):
-        altitude_t = torch.full((B,), float(altitude), device=device, dtype=dtype)
-    else:
-        altitude_t = altitude.to(device=device, dtype=dtype).reshape(-1)
-        if altitude_t.numel() == 1:
-            altitude_t = altitude_t.expand(B)
-    t_min_ns = 2 * altitude_t / c_air + 2 * z_min / v_earth
+    if c_air <= 0 or v_earth <= 0 or z_min < 0:
+        raise ValueError("arrival-prior physical constants must satisfy c_air>0, v_earth>0, g_min_depth>=0")
     time_window_ns = float(cfg.get("time_window_ns", 700.0))
-    dt = time_window_ns / max(int(cfg.get("height_resize", H)), 1)
-    t_min_samples = (t_min_ns / dt).long().clamp(0, H)
-    t_grid = torch.arange(H, device=device, dtype=dtype).view(1, 1, H, 1)
-    t_limit = t_min_samples.float().view(B, 1, 1, 1)
-    w_prior = (t_grid < t_limit).float().expand(B, C, H, W)
-    return (G_hat.abs() * w_prior).sum() / w_prior.sum().clamp_min(1.0)
+    if time_window_ns <= 0:
+        raise ValueError("time_window_ns must be positive")
 
+    safe_altitude = torch.where(valid_t, altitude_t, torch.zeros_like(altitude_t))
+    t_min_ns = 2 * safe_altitude / c_air + 2 * z_min / v_earth
+    dt_ns = time_window_ns / max(H, 1)
+    t_min_samples = torch.floor(t_min_ns / dt_ns).long().clamp(0, H)
+    t_grid = torch.arange(H, device=device).view(1, 1, H, 1)
+    mask = (t_grid < t_min_samples[:, None, None, :]).to(dtype)
+    mask = mask.expand(B, C, H, W) * valid_t.to(dtype)[:, None, None, :]
+    return (G_hat.abs() * mask).sum() / mask.sum().clamp_min(1.0)
 
 def amplitude_ratio_prior_loss(A_hat: torch.Tensor, S_hat: torch.Tensor, weight: float = 0.01) -> torch.Tensor:
     """Very weak A/S amplitude-ratio prior; keep low-weight and metadata-aware later."""
@@ -319,11 +373,31 @@ def curve_distribution_loss(
         time_window_ns = float(cfg.get("time_window_ns", cfg.get("time_window", 700.0)))
         hi = int(round(shallow_max_ns / max(time_window_ns, 1e-6) * h))
         hi = max(1, min(h, hi))
-        # Penalise probability mass in shallow forbidden area, mostly on traces
-        # without target support there.  This is intentionally soft: it should
-        # suppress distractors, not make early targets impossible in future data.
+        # Penalise shallow mass only on traces that are validly supervised and
+        # do not contain a legitimate shallow target.  Weak/unknown traces are
+        # excluded rather than being converted into a global depth shortcut.
         shallow_mass = probs[:, :, :hi, :].sum(dim=2)
-        shallow = (shallow_mass * (0.25 + weight[:, None, :])).mean()
+        target_shallow_mass = target_probs[:, :, :hi, :].sum(dim=2)
+        presence = batch.get("presence")
+        presence_valid = batch.get("presence_valid")
+        if presence_valid is not None:
+            eligible = presence_valid.to(device=curve_logits.device, dtype=curve_logits.dtype)
+            if eligible.dim() == 2:
+                eligible = eligible[:, None, :]
+        else:
+            eligible = target_valid
+        no_legit_shallow_target = (
+            target_shallow_mass <= float(lp.get("shallow_target_mass_tolerance", 1e-3))
+        ).to(curve_logits.dtype)
+        if presence is not None:
+            presence = presence.to(device=curve_logits.device, dtype=curve_logits.dtype)
+            if presence.dim() == 2:
+                presence = presence[:, None, :]
+            # Valid negatives and valid deep positives are both eligible; weak
+            # targets remain excluded by presence_valid.
+            eligible = eligible * torch.isfinite(presence).to(eligible.dtype)
+        shallow_w = (0.25 + weight[:, None, :]) * eligible * no_legit_shallow_target
+        shallow = (shallow_mass * shallow_w).sum() / shallow_w.sum().clamp_min(1e-6)
 
     return {
         "curve_ce": ce,
@@ -339,19 +413,35 @@ def global_no_target_loss(
     batch: dict[str, Any],
     cfg: dict[str, Any],
 ) -> torch.Tensor:
-    """Binary line-level no-target supervision.
+    """Binary window-level no-target supervision using valid trace labels only.
 
-    The head predicts P(no target in this window).  A line/window is treated as
-    no-target when no trace-level presence target exceeds the configured floor.
+    Weak/unknown traces (presence_valid=0) cannot turn a window into a positive
+    or negative example.  Windows with no valid trace labels are skipped.
     """
     pres = batch.get("presence")
     if pres is None:
         return global_no_target_logits.mean() * 0.0
     pres = pres.to(device=global_no_target_logits.device, dtype=global_no_target_logits.dtype)
+    valid = batch.get("presence_valid")
+    if valid is None:
+        valid = torch.ones_like(pres)
+    else:
+        valid = valid.to(device=global_no_target_logits.device, dtype=global_no_target_logits.dtype)
+    if pres.dim() == 3:
+        pres = pres.squeeze(1)
+    if valid.dim() == 3:
+        valid = valid.squeeze(1)
+    valid_mask = valid > 0.5
+    sample_valid = valid_mask.any(dim=-1)
+    if not sample_valid.any():
+        return global_no_target_logits.mean() * 0.0
     thr = float(cfg.get("loss", {}).get("global_no_target_presence_thr", 0.05))
-    target_no = (pres.amax(dim=-1) <= thr).to(global_no_target_logits.dtype)
-    logits = global_no_target_logits.reshape_as(target_no)
-    return F.binary_cross_entropy_with_logits(logits, target_no)
+    has_target = ((pres > thr) & valid_mask).any(dim=-1)
+    target_no = (~has_target).to(global_no_target_logits.dtype)
+    logits = global_no_target_logits.reshape(-1)
+    per_sample = F.binary_cross_entropy_with_logits(logits, target_no, reduction="none")
+    sample_w = sample_valid.to(per_sample.dtype)
+    return (per_sample * sample_w).sum() / sample_w.sum().clamp_min(1.0)
 
 
 

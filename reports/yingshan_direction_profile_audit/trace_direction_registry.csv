@@ -1,0 +1,7 @@
+line,canonical_trace_order,trace_count,acquisition_bearing_deg,acquisition_compass,engineering_profile,profile_left,profile_right,profile_display_flip,confidence,gnss_trajectory_length_m,nominal_profile_length_m,evidence
+Line3,acquisition_csv,1813,173.926,S,3-3′,3 / ZK07 / south,3′ / ZK08 / north,True,high,171.332,154.69,Engineering profile is south-to-north; CSV acquisition runs north/ZK08 to south/ZK07.
+Line6,acquisition_csv,1661,175.654,S,6-6′,6 / ZK09 / south,6′ / ZK10 / north,True,high,153.578,155.16,Engineering profile and migrated terrain descend south-to-north; CSV acquisition runs north to south.
+Line7,acquisition_csv,1654,86.183,E,7-7′,7 / west / ZK09 side,7′ / east / Line3 crossing side,False,high,155.876,155.828,Engineering profile and CSV acquisition both run west-to-east.
+Line9,acquisition_csv,2378,266.83,W,9-9′,9 / west,9′ / east / ZK08 side,True,high,224.375,216.141,Engineering profile runs west-to-east; CSV acquisition runs east/ZK08 to west.
+LineL1,acquisition_csv,1950,265.408,W,report-only L1 section,east / Line3 crossing side,west / Line6 crossing side,False,medium,179.43,185.662,No standalone engineering-profile PDF supplied; main migrated section agrees with CSV east-to-west order despite conflicting aerial arrows.
+LineX1,acquisition_csv,938,175.619,S,report-only X1 section,south / L1 crossing side,north / Line9 crossing side,True,medium,80.702,87.506,No standalone engineering-profile PDF supplied; report section places L1 crossing in the reversed CSV display order.

@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "label_release_complete": true,
+  "formal_training_allowed": false,
+  "failures": [],
+  "warnings": [],
+  "facts": {
+    "Line3-Line9_final_air_corrected_difference_ns": 6.697710871146796,
+    "LineL1-LineX1_final_air_corrected_difference_ns": 0.6888539538583132,
+    "line_summary": {
+      "Line3": {
+        "changed_traces": 126,
+        "ignored_traces": 42,
+        "active_strong": 949,
+        "active_weak": 822
+      },
+      "Line6": {
+        "changed_traces": 0,
+        "ignored_traces": 129,
+        "active_strong": 949,
+        "active_weak": 583
+      },
+      "Line7": {
+        "changed_traces": 0,
+        "ignored_traces": 0,
+        "active_strong": 515,
+        "active_weak": 1139
+      },
+      "Line9": {
+        "changed_traces": 0,
+        "ignored_traces": 0,
+        "active_strong": 937,
+        "active_weak": 1441
+      },
+      "LineL1": {
+        "changed_traces": 0,
+        "ignored_traces": 0,
+        "active_strong": 1406,
+        "active_weak": 544
+      },
+      "LineX1": {
+        "changed_traces": 134,
+        "ignored_traces": 139,
+        "active_strong": 300,
+        "active_weak": 499
+      }
+    },
+    "window_count": 78,
+    "formal_training_allowed": false
+  }
+}

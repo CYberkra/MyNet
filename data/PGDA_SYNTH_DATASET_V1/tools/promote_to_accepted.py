@@ -11,7 +11,7 @@ Copies only training-essential files: input/, label/, metadata/, preview/.
 Updates manifest_master.csv.
 """
 
-import sys, json, shutil, argparse
+import sys, json, shutil, argparse, csv, hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def _detect_family(case_id):
     """Map case_id to 05_accepted_dataset/ subdirectory."""
     cid_lower = case_id.lower()
-    if cid_lower.startswith('line9_style'):
+    if cid_lower.startswith('line9_style') or cid_lower.startswith('line9_terrain'):
         if 'terrain' in cid_lower or 'gentle' in cid_lower:
             return 'line9_style/terrain'
         elif 'flat' in cid_lower or 'v1' in cid_lower:
@@ -34,7 +34,32 @@ def _detect_family(case_id):
         return 'generic_smooth'
 
 
-def promote(case_run_dir, force=False):
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with Path(path).open('rb') as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _load_human_decision(manifest_path, case_id, source_sha256):
+    """Return the unique human decision only when it matches the case bytes."""
+    with Path(manifest_path).open('r', encoding='utf-8', newline='') as handle:
+        rows = [row for row in csv.DictReader(handle) if row.get('case_id', '').strip() == case_id]
+    if len(rows) != 1:
+        raise RuntimeError(f'expected exactly one human-audit row for {case_id}, found {len(rows)}')
+    row = rows[0]
+    recorded = row.get('source_sha256', '').strip().lower()
+    if not recorded:
+        raise RuntimeError(f'human-audit row for {case_id} is missing source_sha256')
+    if recorded != str(source_sha256).strip().lower():
+        raise RuntimeError(f'source hash mismatch for {case_id}: manifest={recorded}, source={source_sha256}')
+    if row.get('decision', '').strip().lower() not in {'promote', 'train_approved'}:
+        raise RuntimeError(f'human-audit decision does not approve promotion for {case_id}: {row.get("decision", "")}')
+    return row
+
+
+def promote(case_run_dir, force=False, human_audit_manifest=None):
     run_dir = Path(case_run_dir)
     case_id = run_dir.name
     batch_id = run_dir.parent.name
@@ -83,6 +108,11 @@ def promote(case_run_dir, force=False):
     if not src_bscan.exists():
         print(f"ERROR: bscan.npy not found at {src_bscan}")
         sys.exit(1)
+    if not force:
+        if not human_audit_manifest:
+            print('ERROR: A human-audit manifest is required for promotion. Use --force only for debugging.')
+            sys.exit(1)
+        _load_human_decision(human_audit_manifest, case_id, _sha256_file(src_bscan))
     shutil.copy2(src_bscan, dest / 'input' / 'raw_bscan.npy')
     print(f"  input/raw_bscan.npy ✓")
 
@@ -214,8 +244,9 @@ def main():
     ap = argparse.ArgumentParser(description="Promote GREEN case to accepted_dataset")
     ap.add_argument('case_run_dir', help='Path to run directory (e.g. 03_runs/batch_001/CASE_ID/)')
     ap.add_argument('--force', action='store_true', help='Force promote even if not GREEN')
+    ap.add_argument('--human-audit-manifest', help='CSV with a matching human-approved case decision')
     args = ap.parse_args()
-    promote(args.case_run_dir, args.force)
+    promote(args.case_run_dir, args.force, args.human_audit_manifest)
 
 
 if __name__ == '__main__':

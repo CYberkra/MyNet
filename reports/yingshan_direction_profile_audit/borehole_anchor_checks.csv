@@ -1,0 +1,6 @@
+line,borehole,borehole_basal_depth_m,reported_imaging_depth_m,absolute_error_m
+Line3,ZK07,16.5,16.7,0.2
+Line3,ZK08,14.0,14.4,0.4
+Line6,ZK09,11.2,11.5,0.3
+Line7,ZK09,11.2,11.5,0.3
+Line9,ZK08,14.0,14.4,0.4
