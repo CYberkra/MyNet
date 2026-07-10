@@ -1,0 +1,92 @@
+{
+  "physical_case_copies": 45,
+  "unique_raw_label_pairs": 33,
+  "exact_duplicate_copies": 12,
+  "source_copy_counts": {
+    "batch1": 12,
+    "batch3": 20,
+    "accepted": 13,
+    "other": 0
+  },
+  "automatic_signal_grade_counts": {
+    "SUPPORTED": 33,
+    "REVIEW": 0,
+    "UNSUPPORTED": 0
+  },
+  "visual_decision_counts": {
+    "VISUAL_PASS": 29,
+    "VISUAL_PASS_LOW_CONTRAST": 2,
+    "VISUAL_REVIEW_LOCAL_ARTIFACT": 2,
+    "PENDING": 0
+  },
+  "all_unique_cases_line9_conditioned": true,
+  "formal_train_allowed_count": 0,
+  "curve_training_contract_ok_count": 20,
+  "curve_training_contract_blocked_count": 13,
+  "file_integrity": {
+    "npy_count": 1070,
+    "npy_load_errors": 0,
+    "npy_nan_files": 0,
+    "npy_inf_files": 0,
+    "json_count": 26,
+    "json_parse_errors": 0,
+    "csv_count": 13,
+    "csv_parse_errors": 0
+  },
+  "metadata_audit": {
+    "run_case_copies": 32,
+    "run_cases_with_scene_metadata": 0,
+    "run_cases_with_raw_input": 0,
+    "accepted_case_copies": 13,
+    "accepted_scene_metadata_files": 13,
+    "accepted_unique_scene_metadata_hashes": 1,
+    "accepted_design_metadata_files": 13,
+    "accepted_unique_design_metadata_hashes": 1,
+    "paired_component_cases": 0
+  },
+  "family_diversity": [
+    {
+      "family": "batch1_line9_style",
+      "case_count": 12,
+      "pair_count": 66,
+      "full_raw_correlation_median": 0.9983830652869948,
+      "full_raw_correlation_min": 0.35436302749773296,
+      "full_raw_correlation_max": 0.9991911946203424,
+      "aligned_target_patch_correlation_median": 0.7646454672821572,
+      "aligned_target_patch_correlation_min": 0.6317551221744878,
+      "aligned_target_patch_correlation_max": 0.8576968844203682,
+      "label_curve_correlation_median": 0.999999999999251,
+      "label_curve_correlation_min": 0.9999906596271662,
+      "label_curve_correlation_max": 0.9999999999994348
+    },
+    {
+      "family": "batch3_meddepth",
+      "case_count": 8,
+      "pair_count": 28,
+      "full_raw_correlation_median": 0.996502154574197,
+      "full_raw_correlation_min": 0.17622716684134027,
+      "full_raw_correlation_max": 0.9994900083859163,
+      "aligned_target_patch_correlation_median": 0.4979630886965397,
+      "aligned_target_patch_correlation_min": 0.25892654199596704,
+      "aligned_target_patch_correlation_max": 0.6563368101181983,
+      "label_curve_correlation_median": 0.808989950632272,
+      "label_curve_correlation_min": 0.09407761691725373,
+      "label_curve_correlation_max": 0.9896171722677103
+    },
+    {
+      "family": "batch3_shallow_distractor",
+      "case_count": 12,
+      "pair_count": 66,
+      "full_raw_correlation_median": 0.8406909177523789,
+      "full_raw_correlation_min": 0.059773628897742154,
+      "full_raw_correlation_max": 0.9998555070757287,
+      "aligned_target_patch_correlation_median": 0.4211267881270635,
+      "aligned_target_patch_correlation_min": 0.16830936539905064,
+      "aligned_target_patch_correlation_max": 0.6982944749227683,
+      "label_curve_correlation_median": 0.7802551558879647,
+      "label_curve_correlation_min": -0.3579189940419548,
+      "label_curve_correlation_max": 0.9828787846619903
+    }
+  ],
+  "note": "Visual decisions are complete; signal support does not override provenance or label-contract blockers."
+}

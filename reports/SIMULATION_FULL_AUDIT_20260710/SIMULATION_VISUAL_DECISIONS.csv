@@ -1,0 +1,34 @@
+case_id,visual_decision,label_signal_supported,local_review_trace_range,visual_note,development_use,formal_training_decision
+B003_MEDDEPTH_013,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_014,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_015,VISUAL_PASS,true,,Old RED grade is contradicted by continuous envelope and phase support along the full curve,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_016,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_017,VISUAL_PASS,true,,Old RED grade is contradicted by continuous envelope and phase support along the full curve,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_018,VISUAL_PASS,true,,Old RED grade is contradicted by continuous envelope and phase support along the full curve,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_019,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_MEDDEPTH_020,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_001,VISUAL_PASS,true,,Old RED grade is contradicted by a continuous labeled event despite the intended shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_002,VISUAL_PASS,true,,Old RED grade is contradicted by a continuous labeled event despite the intended shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_003,VISUAL_PASS,true,,Old RED grade is contradicted by a continuous labeled event despite the intended shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_004,VISUAL_PASS,true,,Old RED grade is contradicted by a continuous labeled event despite the intended shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_005,VISUAL_PASS,true,,Old RED grade is contradicted by a continuous labeled event despite the intended shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_006,VISUAL_REVIEW_LOCAL_ARTIFACT,true,32-35,Target event is present but a local competing phase causes an envelope-peak jump; mask or review this trace span,KEEP_AFTER_LOCAL_MASK,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_007,VISUAL_PASS,true,,Target event is continuous and remains separable from the shallow distractor,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_008,VISUAL_PASS,true,,Label follows a continuous coherent target event in time-gain AGC and envelope views,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_009,VISUAL_PASS,true,,Old RED grade is contradicted by continuous envelope and phase support along the full curve,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_010,VISUAL_PASS,true,,Old RED grade is contradicted by continuous envelope and phase support along the full curve,KEEP_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_011,VISUAL_PASS_LOW_CONTRAST,true,,Target is weak in the common full view but forms a continuous coherent event in AGC and envelope views,KEEP_WEAK_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+B003_SHALLOW_DISTRACTOR_012,VISUAL_PASS_LOW_CONTRAST,true,,Target is weak in the common full view but forms a continuous coherent event in AGC and envelope views,KEEP_WEAK_DEVELOPMENT_ONLY,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_001,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_002,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_003,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_004,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_005,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_006,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_007,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_008,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_009,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_010,VISUAL_PASS,true,,Label follows a clear continuous event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_STYLE_V1_001,VISUAL_REVIEW_LOCAL_ARTIFACT,true,47-52,Target event is present but the central discontinuity has local phase ambiguity and should be masked or rechecked,REBUILD_SOFT_LABEL_AND_MASK_LOCAL_ARTIFACT,EXCLUDE_LINE9_HOLDOUT
+LINE9_TERRAIN_011,VISUAL_PASS,true,,Label follows a clear terrain-varying event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
+LINE9_TERRAIN_012,VISUAL_PASS,true,,Label follows a clear terrain-varying event; exact duplicate also exists under accepted,REBUILD_SOFT_LABEL_BEFORE_USE,EXCLUDE_LINE9_HOLDOUT
