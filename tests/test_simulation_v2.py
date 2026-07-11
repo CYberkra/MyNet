@@ -293,6 +293,18 @@ def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
     assert "-n 256 --geometry-fixed" in run_text
 
 
+def test_negative_control_run_plan_includes_postprocess(tmp_path: Path) -> None:
+    from scripts.run_physical_sim_v2_controls import case_plan
+
+    case = tmp_path / "CTRL04"
+    case.mkdir()
+    (case / "scene_manifest.json").write_text(
+        json.dumps({"case_id": "CTRL04", "target_presence": False}), encoding="utf-8"
+    )
+    plan = case_plan(case, gpu=0, geometry_only=False, python_executable=sys.executable)
+    assert [entry["stage"] for entry in plan["commands"]][-1] == "postprocess"
+
+
 def test_hdf5_contract_rejects_short_canonical_coverage(tmp_path: Path) -> None:
     from scripts.postprocess_physical_sim_v2 import read_merged_bscan, validate_hdf5_contract
 

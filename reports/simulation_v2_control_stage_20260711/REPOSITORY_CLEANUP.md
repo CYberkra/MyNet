@@ -5,7 +5,7 @@
 - `data/PGDA_SYNTH_DATASET_V2/00_controls/`: audited, versioned source decks
   from `00_controls_gprMax_official_audited_20260711.zip`.
 - `outputs/simulation_v2_controls/official_audited_20260711/`: reproducible
-  solver execution copy and CTRL01 runtime evidence. It is intentionally
+  solver execution copies and CTRL01-CTRL04 runtime evidence. It is intentionally
   ignored by Git because merged gprMax outputs are generated artifacts.
 - `reports/simulation_v2_control_stage_20260711/`: import provenance, GPU
   smoke evidence, execution plans, and validation results.

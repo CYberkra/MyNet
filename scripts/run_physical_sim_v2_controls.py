@@ -49,17 +49,20 @@ def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool, python_ex
                     "command": [python_executable, "-m", "tools.outputfiles_merge", stem, "--remove-files"],
                 }
             )
-        if target_presence:
-            commands.append(
-                {
-                    "stage": "postprocess",
-                    "command": [
-                        python_executable,
-                        str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"),
-                        str(case_dir),
-                    ],
-                }
-            )
+        # Positive controls extract a visible target phase; negative controls
+        # must still postprocess their full/air pair into a confirmed-zero
+        # target mask. Omitting this stage would leave a solved negative case
+        # in the pre-solver state and invite an unsafe manual promotion.
+        commands.append(
+            {
+                "stage": "postprocess",
+                "command": [
+                    python_executable,
+                    str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"),
+                    str(case_dir),
+                ],
+            }
+        )
 
     return {
         "case_id": manifest["case_id"],
