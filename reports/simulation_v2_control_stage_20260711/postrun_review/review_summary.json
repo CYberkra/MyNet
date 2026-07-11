@@ -14,7 +14,8 @@
       "figure": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL01_FLAT_SHALLOW_LOWLOSS_POS_review.png",
       "support_median": 61943.4140625,
       "target_mask_nonzero_count": 44288,
-      "phase_contract_ok": true
+      "phase_contract_ok": true,
+      "target_zoom": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL01_FLAT_SHALLOW_LOWLOSS_POS_target_zoom.png"
     },
     {
       "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
@@ -26,7 +27,8 @@
       "figure": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL02_FLAT_DEEP_MODERATE_POS_review.png",
       "support_median": 1442.43505859375,
       "target_mask_nonzero_count": 44288,
-      "phase_contract_ok": true
+      "phase_contract_ok": true,
+      "target_zoom": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL02_FLAT_DEEP_MODERATE_POS_target_zoom.png"
     },
     {
       "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
@@ -38,7 +40,8 @@
       "figure": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL03_SMOOTH_INTERFACE_POS_review.png",
       "support_median": 6315.9794921875,
       "target_mask_nonzero_count": 44288,
-      "phase_contract_ok": true
+      "phase_contract_ok": true,
+      "target_zoom": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL03_SMOOTH_INTERFACE_POS_target_zoom.png"
     },
     {
       "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
@@ -50,7 +53,8 @@
       "figure": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\postrun_review\\CTRL04_MATCHED_BACKGROUND_NEG_review.png",
       "support_median": null,
       "target_mask_nonzero_count": 0,
-      "phase_contract_ok": true
+      "phase_contract_ok": true,
+      "target_zoom": ""
     }
   ]
 }

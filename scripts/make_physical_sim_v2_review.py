@@ -45,9 +45,15 @@ def title(draw: ImageDraw.ImageDraw, text: str) -> None:
     draw.text((10, 8), text, fill=(245, 247, 250), font=ImageFont.load_default())
 
 
-def curve_points(values: np.ndarray) -> list[tuple[int, int]]:
+def curve_points(
+    values: np.ndarray, *, time_low_ns: float = 0.0, time_high_ns: float = 700.0
+) -> list[tuple[int, int]]:
     x = np.linspace(0, PANEL_W - 1, values.size).astype(int)
-    y = np.clip(values / 700.0 * (PANEL_H - 1), 0, PANEL_H - 1).astype(int)
+    y = np.clip(
+        (values - time_low_ns) / (time_high_ns - time_low_ns) * (PANEL_H - 1),
+        0,
+        PANEL_H - 1,
+    ).astype(int)
     return list(zip(x.tolist(), y.tolist()))
 
 
@@ -110,6 +116,48 @@ def save_case_figure(case_dir: Path, report_dir: Path) -> dict[str, Any]:
                 and postprocess.get("visible_curve_abs_step_max_ns", np.inf)
                 <= postprocess.get("max_visible_step_tolerance_ns", 5.6) + 1e-6
             )
+        local_low = max(0.0, float(np.min(reference)) - 65.0)
+        local_high = min(700.0, float(np.max(reference)) + 65.0)
+        time_ns = load_array(labels, "time_501_ns.npy")
+        local_rows = (time_ns >= local_low) & (time_ns <= local_high)
+        raw_local = full[local_rows]
+        contrast_local = contrast[local_rows]
+        interior = slice(16, -16)
+        raw_limit = max(float(np.percentile(np.abs(raw_local[:, interior]), 99.0)), 1e-8)
+        contrast_limit = max(float(np.percentile(np.abs(contrast_local[:, interior]), 99.0)), 1e-8)
+        raw_panel = raster(raw_local, raw_limit)
+        raw_draw = ImageDraw.Draw(raw_panel)
+        raw_draw.line(
+            curve_points(visible, time_low_ns=local_low, time_high_ns=local_high),
+            fill=(255, 78, 78), width=3,
+        )
+        raw_draw.line(
+            curve_points(reference, time_low_ns=local_low, time_high_ns=local_high),
+            fill=(39, 218, 229), width=2,
+        )
+        title(raw_draw, f"Raw local {local_low:.0f}-{local_high:.0f} ns (no background subtraction)")
+        contrast_panel = raster(contrast_local, contrast_limit, diverging=True)
+        contrast_draw = ImageDraw.Draw(contrast_panel)
+        contrast_draw.line(
+            curve_points(visible, time_low_ns=local_low, time_high_ns=local_high),
+            fill=(20, 20, 20), width=3,
+        )
+        contrast_draw.line(
+            curve_points(reference, time_low_ns=local_low, time_high_ns=local_high),
+            fill=(40, 210, 220), width=2,
+        )
+        title(contrast_draw, "Matched contrast in the same local window")
+        zoom = Image.new("RGB", (PANEL_W * 2, PANEL_H + 44), (235, 239, 244))
+        zoom.paste(raw_panel, (0, 44))
+        zoom.paste(contrast_panel, (PANEL_W, 44))
+        zoom_draw = ImageDraw.Draw(zoom)
+        zoom_draw.rectangle((0, 0, zoom.width, 44), fill=(18, 27, 42))
+        zoom_draw.text(
+            (12, 14), f"{case_id} target-window review | red/black=visible; cyan=geometry",
+            fill=(245, 247, 250), font=ImageFont.load_default(),
+        )
+        zoom_path = report_dir / f"{case_id}_target_zoom.png"
+        zoom.save(zoom_path)
     else:
         difference, difference_limit = display_bscan(full - air)
         panel = raster(difference, difference_limit, diverging=True)
@@ -156,6 +204,7 @@ def save_case_figure(case_dir: Path, report_dir: Path) -> dict[str, Any]:
         "support_median": support_median,
         "target_mask_nonzero_count": target_nonzero,
         "phase_contract_ok": phase_contract_ok,
+        "target_zoom": str(zoom_path) if target_presence else "",
     }
 
 

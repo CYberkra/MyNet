@@ -12,7 +12,7 @@ representation. The visual pack is in `postrun_review/`.
 |---|---|---|
 | CTRL01 flat shallow positive | matched contrast, phase and exact flat-reference contract pass | review-ready |
 | CTRL02 flat deep positive | matched contrast, phase and exact flat-reference contract pass | review-ready |
-| CTRL03 smooth-interface positive | continuous-path extraction pass; curved geometry reference is explicitly non-exact | review-ready, retain for physical review |
+| CTRL03 smooth-interface positive | continuous-path extraction pass; curved geometry reference is explicitly non-exact | development-only; local phase branch needs rework |
 | CTRL04 matched background negative | confirmed target mask has zero nonzero pixels | review-ready negative |
 
 The positive controls all retain `formal_training_allowed=false`. Review-ready
@@ -37,9 +37,12 @@ FDTD. A regression test covers a single-trace stronger-lobe distractor.
 - CTRL01 and CTRL02 exhibit coherent flat target events at their extracted
   visible phases. CTRL02 has lower support than CTRL01, as expected for a
   deeper, more attenuated target, but remains well above the acceptance floor.
-- CTRL03 follows the curved event after continuous extraction. Its absolute
-  offset from the columnar geometry reference is not reported as an arrival
-  accuracy claim because that reference is deliberately non-specular.
+- CTRL03 follows the curved event after continuous extraction, but the local
+  target-window view shows a branch/phase ambiguity near the centre of the
+  line. Its absolute offset from the columnar geometry reference is not an
+  arrival accuracy claim because that reference is deliberately non-specular.
+  Keep CTRL03 as a development stress test, not as a template for promoted
+  visible-phase labels until this region is reworked.
 - CTRL04 has no target mask. Edge-dominated full-air residuals are retained as
   a boundary-effect observation, not relabelled as a target.
 
