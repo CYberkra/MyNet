@@ -1,0 +1,608 @@
+{
+  "ok": true,
+  "checked_at_utc": "2026-07-10T19:27:40.771327+00:00",
+  "protected_npz_count": 84,
+  "protected_npz_unchanged": 84,
+  "split_map": {
+    "LineL1": "train",
+    "Line3": "train",
+    "Line7": "train",
+    "Line6": "val",
+    "Line9": "test",
+    "LineX1": "exclude"
+  },
+  "line9_test_only": true,
+  "linex1_excluded": true,
+  "legacy_quarantine_count": 33,
+  "legacy_quarantine_intact": true,
+  "checks": [
+    {
+      "relative_path": "lines/Line3.npz",
+      "exists": true,
+      "expected_sha256": "03a7a807f9589d94f2df5412a039416b6400a649ea5da883f8cde291c7d6451e",
+      "actual_sha256": "03a7a807f9589d94f2df5412a039416b6400a649ea5da883f8cde291c7d6451e",
+      "unchanged": true
+    },
+    {
+      "relative_path": "lines/Line6.npz",
+      "exists": true,
+      "expected_sha256": "3bbf77b2a8ca0063d8985c7c82d86548f4454d08c089cfabd4b76137b3e00894",
+      "actual_sha256": "3bbf77b2a8ca0063d8985c7c82d86548f4454d08c089cfabd4b76137b3e00894",
+      "unchanged": true
+    },
+    {
+      "relative_path": "lines/Line7.npz",
+      "exists": true,
+      "expected_sha256": "ff4a2671ae8e2d54827f41460c50d051236e12ab31ba7fafe39c6a2c0820d5b8",
+      "actual_sha256": "ff4a2671ae8e2d54827f41460c50d051236e12ab31ba7fafe39c6a2c0820d5b8",
+      "unchanged": true
+    },
+    {
+      "relative_path": "lines/Line9.npz",
+      "exists": true,
+      "expected_sha256": "c1efacdcab0d16c7a164f6073dbeec79db95c40aaf6795d2c9c512a99da9b9f7",
+      "actual_sha256": "c1efacdcab0d16c7a164f6073dbeec79db95c40aaf6795d2c9c512a99da9b9f7",
+      "unchanged": true
+    },
+    {
+      "relative_path": "lines/LineL1.npz",
+      "exists": true,
+      "expected_sha256": "ea128382de68abe48c362811ce99ad35883592e123471c9058fefd086cc4228c",
+      "actual_sha256": "ea128382de68abe48c362811ce99ad35883592e123471c9058fefd086cc4228c",
+      "unchanged": true
+    },
+    {
+      "relative_path": "lines/LineX1.npz",
+      "exists": true,
+      "expected_sha256": "0541561cf49643188d9dd80c2a928da1f6fdd9f3972f8ed6ecb266ce9a5e342a",
+      "actual_sha256": "0541561cf49643188d9dd80c2a928da1f6fdd9f3972f8ed6ecb266ce9a5e342a",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "1082af1b86dc9a9f68debc7356a7c96f3ab152448fd36e233d64a5cc85678833",
+      "actual_sha256": "1082af1b86dc9a9f68debc7356a7c96f3ab152448fd36e233d64a5cc85678833",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "4d31973fc4fe72e7fa1bd5c3d10cc0772c65f8fb769b2cfdfcb2843ddf56f9c9",
+      "actual_sha256": "4d31973fc4fe72e7fa1bd5c3d10cc0772c65f8fb769b2cfdfcb2843ddf56f9c9",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "387f25371b7981c0d93bde92be6f8b9b9bf508d224583c321750a0c499839baf",
+      "actual_sha256": "387f25371b7981c0d93bde92be6f8b9b9bf508d224583c321750a0c499839baf",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "3322454e1291751b80d43a08269f40d5ff891358243c6d15cd24b6fff3e96ff0",
+      "actual_sha256": "3322454e1291751b80d43a08269f40d5ff891358243c6d15cd24b6fff3e96ff0",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "965b4ab6bd9647402fb16d40ff23637ca1435c13f1e5ea7f3bdb79f9c28153e3",
+      "actual_sha256": "965b4ab6bd9647402fb16d40ff23637ca1435c13f1e5ea7f3bdb79f9c28153e3",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "98cb766c9b57138fb3ef7b7a15107af2fe9f8756b102e2aea122f6a90b38196b",
+      "actual_sha256": "98cb766c9b57138fb3ef7b7a15107af2fe9f8756b102e2aea122f6a90b38196b",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0768_1023.npz",
+      "exists": true,
+      "expected_sha256": "7dd96496e661bddf2b16726eddd634d6b5c95c2f8578f67cfd5f95be257235d3",
+      "actual_sha256": "7dd96496e661bddf2b16726eddd634d6b5c95c2f8578f67cfd5f95be257235d3",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr0896_1151.npz",
+      "exists": true,
+      "expected_sha256": "65fbf7efaecac8fbc5e4a8d4334795ec07f673bcdca73ae8428e340fb6196ba4",
+      "actual_sha256": "65fbf7efaecac8fbc5e4a8d4334795ec07f673bcdca73ae8428e340fb6196ba4",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1024_1279.npz",
+      "exists": true,
+      "expected_sha256": "7cb5620df8bd843562e59360e88d2ad019da4ff792b28e332ac5a0693e20d4df",
+      "actual_sha256": "7cb5620df8bd843562e59360e88d2ad019da4ff792b28e332ac5a0693e20d4df",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1152_1407.npz",
+      "exists": true,
+      "expected_sha256": "8e545279a2541759c1d259f290cc176e629844cc24cb344f62e5bd60431b7b0c",
+      "actual_sha256": "8e545279a2541759c1d259f290cc176e629844cc24cb344f62e5bd60431b7b0c",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1280_1535.npz",
+      "exists": true,
+      "expected_sha256": "4a1a02269bfd10e91d4e56a2f654b6645834c06bdd5bd5449a0e0302cf18d290",
+      "actual_sha256": "4a1a02269bfd10e91d4e56a2f654b6645834c06bdd5bd5449a0e0302cf18d290",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1408_1663.npz",
+      "exists": true,
+      "expected_sha256": "0eb12ec77aae7549f400a7618abfb77c02a14e5102818e6a9c04f6dda335e2ae",
+      "actual_sha256": "0eb12ec77aae7549f400a7618abfb77c02a14e5102818e6a9c04f6dda335e2ae",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1536_1791.npz",
+      "exists": true,
+      "expected_sha256": "39d5b4be61fe3cacb668872ec1797cc86047802d601a34afbcb45f3ad486abe8",
+      "actual_sha256": "39d5b4be61fe3cacb668872ec1797cc86047802d601a34afbcb45f3ad486abe8",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line3_tr1557_1812.npz",
+      "exists": true,
+      "expected_sha256": "cdd68a1ead583fab8d5566a32fb0561eba4d0aaff0284402d86754b5a80a8169",
+      "actual_sha256": "cdd68a1ead583fab8d5566a32fb0561eba4d0aaff0284402d86754b5a80a8169",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "2fd7f628c9569b5fa03616ff7886aab44d7625654775cfe4d4542d6a7357bf1c",
+      "actual_sha256": "2fd7f628c9569b5fa03616ff7886aab44d7625654775cfe4d4542d6a7357bf1c",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "a0d6c0c0dd57e04ed94e8c5fd40c979a7268108cdd784e2259726fc532959d32",
+      "actual_sha256": "a0d6c0c0dd57e04ed94e8c5fd40c979a7268108cdd784e2259726fc532959d32",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "0b78ef82da5b640c812529e56ff81c726c450f7d95fe138f249c3d82b5719e70",
+      "actual_sha256": "0b78ef82da5b640c812529e56ff81c726c450f7d95fe138f249c3d82b5719e70",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "1f958c85abe7be7fe0d54e5a82af346854bd4d983bf034a7226d2b4299c73f33",
+      "actual_sha256": "1f958c85abe7be7fe0d54e5a82af346854bd4d983bf034a7226d2b4299c73f33",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "31d54b5c2fd68e6e3230afff557129758f667dd83849052a7a7fd6b33b399c26",
+      "actual_sha256": "31d54b5c2fd68e6e3230afff557129758f667dd83849052a7a7fd6b33b399c26",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "44b209f72eebcafa3b955d09f82d86fa73a665c5099a8880dea8d30791414a0c",
+      "actual_sha256": "44b209f72eebcafa3b955d09f82d86fa73a665c5099a8880dea8d30791414a0c",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0768_1023.npz",
+      "exists": true,
+      "expected_sha256": "ca687ca14974f97226b877ebc09ba1b647d13a028d22fd78eb1b6a86faeaec64",
+      "actual_sha256": "ca687ca14974f97226b877ebc09ba1b647d13a028d22fd78eb1b6a86faeaec64",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr0896_1151.npz",
+      "exists": true,
+      "expected_sha256": "cb8cc2aa16b918c2f45b67eff88a06036135ec09b8378cb2db33681959da65f4",
+      "actual_sha256": "cb8cc2aa16b918c2f45b67eff88a06036135ec09b8378cb2db33681959da65f4",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr1024_1279.npz",
+      "exists": true,
+      "expected_sha256": "e36a8ebfb49a7f5fe603333db240c10a69a0eae1dcb80a4ad4c9dd030e909e6a",
+      "actual_sha256": "e36a8ebfb49a7f5fe603333db240c10a69a0eae1dcb80a4ad4c9dd030e909e6a",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr1152_1407.npz",
+      "exists": true,
+      "expected_sha256": "9a5b75266e97d5ceb8089ed5128e524816492f5a43d056a50bba4237b7f9ec91",
+      "actual_sha256": "9a5b75266e97d5ceb8089ed5128e524816492f5a43d056a50bba4237b7f9ec91",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr1280_1535.npz",
+      "exists": true,
+      "expected_sha256": "b521af7aeeadebf1ff62af8dd155864e2fb0550f00d7cbfb4acdff28b9986573",
+      "actual_sha256": "b521af7aeeadebf1ff62af8dd155864e2fb0550f00d7cbfb4acdff28b9986573",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line6_tr1405_1660.npz",
+      "exists": true,
+      "expected_sha256": "aa6961fe9e780a3a51693a3b1920b88d44f22fdfd20d3d812e90ebc6c7a7ce7d",
+      "actual_sha256": "aa6961fe9e780a3a51693a3b1920b88d44f22fdfd20d3d812e90ebc6c7a7ce7d",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "40d34c41cc4889a47be7dbe274e7ac89fb1e110085cf8c296432e0cc5c1b7fed",
+      "actual_sha256": "40d34c41cc4889a47be7dbe274e7ac89fb1e110085cf8c296432e0cc5c1b7fed",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "99850b011a081adaa45a6572fa3f3c2c88b798719826cc17fe4fcb39293ebc92",
+      "actual_sha256": "99850b011a081adaa45a6572fa3f3c2c88b798719826cc17fe4fcb39293ebc92",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "a7e95080e8773c95638c03b68f3175df947ae2c2f63a402d09c0c4619a8d141e",
+      "actual_sha256": "a7e95080e8773c95638c03b68f3175df947ae2c2f63a402d09c0c4619a8d141e",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "cebb8b59d7e82a90f173e7dbe41c051f7871f89233f0db69a882b34dd8a3f32d",
+      "actual_sha256": "cebb8b59d7e82a90f173e7dbe41c051f7871f89233f0db69a882b34dd8a3f32d",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "504a36b85021927ff747f542ae0e7f7d273f767828f58d32ea52c546400b5af7",
+      "actual_sha256": "504a36b85021927ff747f542ae0e7f7d273f767828f58d32ea52c546400b5af7",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "5df333cab4c43a294111b325339916b165fcd3a709076d3814b17e27924d33ee",
+      "actual_sha256": "5df333cab4c43a294111b325339916b165fcd3a709076d3814b17e27924d33ee",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0768_1023.npz",
+      "exists": true,
+      "expected_sha256": "d38194845e3e163793fc0a615ad04af196788c5a8148810a5af5a31e18c12b55",
+      "actual_sha256": "d38194845e3e163793fc0a615ad04af196788c5a8148810a5af5a31e18c12b55",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr0896_1151.npz",
+      "exists": true,
+      "expected_sha256": "34ebe4a4e1fad19985f0e3d219ec81c54c85461fb2ef4985593ef0c19e16c3e1",
+      "actual_sha256": "34ebe4a4e1fad19985f0e3d219ec81c54c85461fb2ef4985593ef0c19e16c3e1",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr1024_1279.npz",
+      "exists": true,
+      "expected_sha256": "d12fa9734c672e17e03b2249512309c730a6086aba9f4124fe78d0c3f4ef4a0a",
+      "actual_sha256": "d12fa9734c672e17e03b2249512309c730a6086aba9f4124fe78d0c3f4ef4a0a",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr1152_1407.npz",
+      "exists": true,
+      "expected_sha256": "422cba4d697f27394dfc20aade513e4dd07ca8bc488e76b3b1daa49e4ec2e218",
+      "actual_sha256": "422cba4d697f27394dfc20aade513e4dd07ca8bc488e76b3b1daa49e4ec2e218",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr1280_1535.npz",
+      "exists": true,
+      "expected_sha256": "e9edf0da385b34fad3f2d8269feba713e34ed2de9d69fb78fa5bbef35137501d",
+      "actual_sha256": "e9edf0da385b34fad3f2d8269feba713e34ed2de9d69fb78fa5bbef35137501d",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line7_tr1398_1653.npz",
+      "exists": true,
+      "expected_sha256": "c7119d4460aff6cd2f6be58dfeb4002219269328356a5c7ebe88a5e65938774b",
+      "actual_sha256": "c7119d4460aff6cd2f6be58dfeb4002219269328356a5c7ebe88a5e65938774b",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "f28093147d5a2b031236b1973c78d50d6523c06bad66914cb5c79b664aab64a1",
+      "actual_sha256": "f28093147d5a2b031236b1973c78d50d6523c06bad66914cb5c79b664aab64a1",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "92f5226b6adf75ac034bdddd997b6d534b765b38e9a39949a577695bf819793c",
+      "actual_sha256": "92f5226b6adf75ac034bdddd997b6d534b765b38e9a39949a577695bf819793c",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "e6095870eeed7b34255376ba808381b7993d63404029a664465031dd7d3aceab",
+      "actual_sha256": "e6095870eeed7b34255376ba808381b7993d63404029a664465031dd7d3aceab",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "acb5dbf52f2505f903f73471c0ba6074a21e8d857ca025cbfa36784ed8acbfcc",
+      "actual_sha256": "acb5dbf52f2505f903f73471c0ba6074a21e8d857ca025cbfa36784ed8acbfcc",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "ab0a3738baae604683209e9ec46e7a647d005217fe9bd894fe8695ab94243aaf",
+      "actual_sha256": "ab0a3738baae604683209e9ec46e7a647d005217fe9bd894fe8695ab94243aaf",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "f96a7671775eb47bf00303be14061e4939d75d8036e543040f47d9ac5ea4d6bc",
+      "actual_sha256": "f96a7671775eb47bf00303be14061e4939d75d8036e543040f47d9ac5ea4d6bc",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0768_1023.npz",
+      "exists": true,
+      "expected_sha256": "4d071d3016ddc7bbce4a4ea48adcc951a318caa42ad7ef299de8d15b6f7e82e1",
+      "actual_sha256": "4d071d3016ddc7bbce4a4ea48adcc951a318caa42ad7ef299de8d15b6f7e82e1",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr0896_1151.npz",
+      "exists": true,
+      "expected_sha256": "2dc3adad9ca719923f8897f3b58445fbe2fca7e7f3543a4c02de3b338321a501",
+      "actual_sha256": "2dc3adad9ca719923f8897f3b58445fbe2fca7e7f3543a4c02de3b338321a501",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1024_1279.npz",
+      "exists": true,
+      "expected_sha256": "4ed176d7f976446553a4c609e91ddedd4b7d3397e39c4d11d0c4cf80012c2b94",
+      "actual_sha256": "4ed176d7f976446553a4c609e91ddedd4b7d3397e39c4d11d0c4cf80012c2b94",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1152_1407.npz",
+      "exists": true,
+      "expected_sha256": "6515d335316caf82003ccc10b851acc061f65d3e85d9d77729259a23908dfefc",
+      "actual_sha256": "6515d335316caf82003ccc10b851acc061f65d3e85d9d77729259a23908dfefc",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1280_1535.npz",
+      "exists": true,
+      "expected_sha256": "cc20e33bfffe47f4a2fd24b58e48195656f82c55cd0e8458efd79521a6ec50f1",
+      "actual_sha256": "cc20e33bfffe47f4a2fd24b58e48195656f82c55cd0e8458efd79521a6ec50f1",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1408_1663.npz",
+      "exists": true,
+      "expected_sha256": "b990e02242ecbe44568de0d035700672de4ea76ce577e889ad6f15ca732db431",
+      "actual_sha256": "b990e02242ecbe44568de0d035700672de4ea76ce577e889ad6f15ca732db431",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1536_1791.npz",
+      "exists": true,
+      "expected_sha256": "7776382c9bd4f2b0fc559019e6f36104b2f14f8ef4e23161eb2996997c28d42d",
+      "actual_sha256": "7776382c9bd4f2b0fc559019e6f36104b2f14f8ef4e23161eb2996997c28d42d",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1664_1919.npz",
+      "exists": true,
+      "expected_sha256": "b524c7873b3fefc5a952754bac6941de7b4d1ec1f188e6791b6e5b89c81ecd03",
+      "actual_sha256": "b524c7873b3fefc5a952754bac6941de7b4d1ec1f188e6791b6e5b89c81ecd03",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1792_2047.npz",
+      "exists": true,
+      "expected_sha256": "6491bca5116b9f92ac2a5558606eb096b32a03d38a09fe249a74888417bcb795",
+      "actual_sha256": "6491bca5116b9f92ac2a5558606eb096b32a03d38a09fe249a74888417bcb795",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr1920_2175.npz",
+      "exists": true,
+      "expected_sha256": "ddd5cbbba6f74e0212c5bdb7567ce30e84f6b6497445e12ee9663843f215e1c8",
+      "actual_sha256": "ddd5cbbba6f74e0212c5bdb7567ce30e84f6b6497445e12ee9663843f215e1c8",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr2048_2303.npz",
+      "exists": true,
+      "expected_sha256": "9133b301514961a5553a9efd97fd760cc69561afa0a33761c60adf19c0b02a36",
+      "actual_sha256": "9133b301514961a5553a9efd97fd760cc69561afa0a33761c60adf19c0b02a36",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/Line9_tr2122_2377.npz",
+      "exists": true,
+      "expected_sha256": "e4a7b733a8fea67dddd6f16fdce37a0660acf3bdb255fb2a902841a66578a870",
+      "actual_sha256": "e4a7b733a8fea67dddd6f16fdce37a0660acf3bdb255fb2a902841a66578a870",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "a0e7ed0350259d61d84b7e21427801657b0e79e15df3d9828d21fb5bec386b6a",
+      "actual_sha256": "a0e7ed0350259d61d84b7e21427801657b0e79e15df3d9828d21fb5bec386b6a",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "79a775135bf8fb91858fe68a91b5c77bd485c24a43860d67a31c6b50b3e9cdf2",
+      "actual_sha256": "79a775135bf8fb91858fe68a91b5c77bd485c24a43860d67a31c6b50b3e9cdf2",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "72eac3e62def7d626e976651ec1924e930db6f04f31e715d7b29f41b1cd41a8b",
+      "actual_sha256": "72eac3e62def7d626e976651ec1924e930db6f04f31e715d7b29f41b1cd41a8b",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "f0434c92f47547be579ecef4884808d199e4bd0deecbab1d1af1f572e07ddd8e",
+      "actual_sha256": "f0434c92f47547be579ecef4884808d199e4bd0deecbab1d1af1f572e07ddd8e",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "cebdfce279430534e727587eb44762f4ebb9f3c26123dc6541be8ac63a3fcd3f",
+      "actual_sha256": "cebdfce279430534e727587eb44762f4ebb9f3c26123dc6541be8ac63a3fcd3f",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "1da302fddc018cc63606ef9f9ecc310ed366bc5446e4f5cbdb6927d3cd13ada9",
+      "actual_sha256": "1da302fddc018cc63606ef9f9ecc310ed366bc5446e4f5cbdb6927d3cd13ada9",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0768_1023.npz",
+      "exists": true,
+      "expected_sha256": "71cc2fe4c1cb7118e321a736fe7918729fff38b65b2ad6a7aac3763dacab7239",
+      "actual_sha256": "71cc2fe4c1cb7118e321a736fe7918729fff38b65b2ad6a7aac3763dacab7239",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr0896_1151.npz",
+      "exists": true,
+      "expected_sha256": "b8c46f17ee0dac6f1763a09c7948b3c7dce93a49a802ab1229428cd7caf78e1e",
+      "actual_sha256": "b8c46f17ee0dac6f1763a09c7948b3c7dce93a49a802ab1229428cd7caf78e1e",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1024_1279.npz",
+      "exists": true,
+      "expected_sha256": "6e5ebcced0214c19d879ffa8ba0e06e0f48fa0e39beb917923d9a0eadf2c4ed6",
+      "actual_sha256": "6e5ebcced0214c19d879ffa8ba0e06e0f48fa0e39beb917923d9a0eadf2c4ed6",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1152_1407.npz",
+      "exists": true,
+      "expected_sha256": "999401bb75a47f40ab2e5f870b4b6e2c5c3e586bc39309460ef79f3b32f67430",
+      "actual_sha256": "999401bb75a47f40ab2e5f870b4b6e2c5c3e586bc39309460ef79f3b32f67430",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1280_1535.npz",
+      "exists": true,
+      "expected_sha256": "b89981b382e136b7fb976fe44e39245c3634c1088dc30db429c35465dd2ed792",
+      "actual_sha256": "b89981b382e136b7fb976fe44e39245c3634c1088dc30db429c35465dd2ed792",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1408_1663.npz",
+      "exists": true,
+      "expected_sha256": "7d1fee6029748ef83400780bbf952c824ab2c4f213abea7116460bf705c98fe4",
+      "actual_sha256": "7d1fee6029748ef83400780bbf952c824ab2c4f213abea7116460bf705c98fe4",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1536_1791.npz",
+      "exists": true,
+      "expected_sha256": "4df29fd8a0bbdce6f92811ab41fefe53a67d1675abbe1e07c70eb0720870a206",
+      "actual_sha256": "4df29fd8a0bbdce6f92811ab41fefe53a67d1675abbe1e07c70eb0720870a206",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1664_1919.npz",
+      "exists": true,
+      "expected_sha256": "d07d9d2938c4a9015a11536a9dd8b7d9754afed0ea60344eed7c8a70fe6b6888",
+      "actual_sha256": "d07d9d2938c4a9015a11536a9dd8b7d9754afed0ea60344eed7c8a70fe6b6888",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineL1_tr1694_1949.npz",
+      "exists": true,
+      "expected_sha256": "092bcf6e2df6ec5d7433535c3c524ed56e1016ab3df4575dc5cee9dcb97c5616",
+      "actual_sha256": "092bcf6e2df6ec5d7433535c3c524ed56e1016ab3df4575dc5cee9dcb97c5616",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0000_0255.npz",
+      "exists": true,
+      "expected_sha256": "56e1d020602397cb0ec8b739f7deaeb7c480d059cb8f57ccf130c401a0cd9639",
+      "actual_sha256": "56e1d020602397cb0ec8b739f7deaeb7c480d059cb8f57ccf130c401a0cd9639",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0128_0383.npz",
+      "exists": true,
+      "expected_sha256": "8ff993bcd1419fb8b36160acb4e31f891bc79904bc218747d26b0b017947f6d2",
+      "actual_sha256": "8ff993bcd1419fb8b36160acb4e31f891bc79904bc218747d26b0b017947f6d2",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0256_0511.npz",
+      "exists": true,
+      "expected_sha256": "cad516ab922129c361cce2ae8e09526b89b0ced893539b58bd1148ebef03cb54",
+      "actual_sha256": "cad516ab922129c361cce2ae8e09526b89b0ced893539b58bd1148ebef03cb54",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0384_0639.npz",
+      "exists": true,
+      "expected_sha256": "ff47645a52922285016422f516d559c4892f6d7f63604433f011717fbffe0f48",
+      "actual_sha256": "ff47645a52922285016422f516d559c4892f6d7f63604433f011717fbffe0f48",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0512_0767.npz",
+      "exists": true,
+      "expected_sha256": "ffb8b4f5c5ab175231744700c90c2b9edb93da8529411984d912387df94791d8",
+      "actual_sha256": "ffb8b4f5c5ab175231744700c90c2b9edb93da8529411984d912387df94791d8",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0640_0895.npz",
+      "exists": true,
+      "expected_sha256": "8d4a1e6d200c163fd8c9f3f885e04915311209f053b6c1006f23e40e99b6a129",
+      "actual_sha256": "8d4a1e6d200c163fd8c9f3f885e04915311209f053b6c1006f23e40e99b6a129",
+      "unchanged": true
+    },
+    {
+      "relative_path": "windows/LineX1_tr0682_0937.npz",
+      "exists": true,
+      "expected_sha256": "b0ea694798f0487667fb9b4b86ae77dce9202e9afa943a7451b5a661e8775d76",
+      "actual_sha256": "b0ea694798f0487667fb9b4b86ae77dce9202e9afa943a7451b5a661e8775d76",
+      "unchanged": true
+    }
+  ]
+}

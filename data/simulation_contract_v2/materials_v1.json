@@ -1,0 +1,22 @@
+{
+  "version": "materials_v1",
+  "frequency_context_hz": 100000000.0,
+  "model_scope": "Non-dispersive control materials for geometry/time-label validation. These are not final site-calibrated inversions.",
+  "sets": {
+    "low_loss_reference": {
+      "cover": {"name": "cover_low_loss", "epsilon_r": 9.0, "conductivity_s_per_m": 0.0010},
+      "weathered": {"name": "weathered_low_loss", "epsilon_r": 7.0, "conductivity_s_per_m": 0.0008},
+      "bedrock": {"name": "bedrock_low_loss", "epsilon_r": 5.0, "conductivity_s_per_m": 0.0004}
+    },
+    "moderate_loss_reference": {
+      "cover": {"name": "cover_moderate", "epsilon_r": 11.2, "conductivity_s_per_m": 0.0030},
+      "weathered": {"name": "weathered_moderate", "epsilon_r": 8.0, "conductivity_s_per_m": 0.0020},
+      "bedrock": {"name": "bedrock_moderate", "epsilon_r": 5.5, "conductivity_s_per_m": 0.0010}
+    }
+  },
+  "notes": [
+    "The measured wet-clay working value epsilon_r≈11.2 is retained in the moderate set.",
+    "The historical sigma=0.006 S/m value is deliberately reserved for a later deep-attenuation challenge family; using it in all controls would make a 14 m reflector nearly invisible and would confound geometry validation.",
+    "Each material must later be varied within independent scene families; no Line9 label geometry or time distribution is used here."
+  ]
+}

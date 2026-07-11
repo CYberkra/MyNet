@@ -12,3 +12,7 @@ data_yingshan_v15_final_20260710/lines/*.npz -filter -diff -merge -text
 data_yingshan_v15_final_20260710/windows/*.npz -filter -diff -merge -text
 data_yingshan_v15_final_20260710/terrain_features/*.npz -filter -diff -merge -text
 data_yingshan_v15_final_20260710/terrain_features_zero_material_v1/*.npz -filter -diff -merge -text
+
+# V2 control arrays are small, auditable static inputs. Keep them as ordinary
+# Git blobs so the engineering contract can be reviewed without an LFS remote.
+data/PGDA_SYNTH_DATASET_V2/**/*.npy -filter -diff -merge -text

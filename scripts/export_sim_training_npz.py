@@ -10,11 +10,16 @@ import csv
 import hashlib
 import json
 import shutil
+import sys
 from pathlib import Path
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from pgdacsnet.label_semantics import derive_supervision_state
+
 DEFAULT_MANIFEST = ROOT / "data" / "dataset_contract_v2" / "simulation_cases.csv"
 
 
@@ -31,17 +36,31 @@ def _resolve(path_text: str) -> Path:
     return path if path.is_absolute() else ROOT / path
 
 
-def _case_mask(case_dir: Path) -> Path:
-    candidates = [
-        case_dir / "label" / "y_soft_501x128.npy",
-        case_dir / "labels" / "y_soft_501x128.npy",
-        case_dir / "label" / "interface_mask_visible_phase_bscan.npy",
-        case_dir / "labels" / "interface_mask_visible_phase_bscan.npy",
-    ]
-    for path in candidates:
-        if path.is_file():
-            return path
-    raise FileNotFoundError(f"No visible-phase training mask in {case_dir}")
+def _case_mask(case_dir: Path, row: dict[str, str]) -> Path:
+    """Resolve the one manifest-approved training label for a simulation case.
+
+    Historical directories contain several geometry and soft-label artifacts.
+    File-order selection previously preferred legacy ``y_soft`` labels, which
+    are not uniformly visible-phase aligned.  A training-eligible case must
+    now name one label artifact in the contract.
+    """
+    label_path = str(row.get("label_path", "")).strip()
+    if not label_path:
+        raise RuntimeError(
+            f"{row.get('case_id', case_dir.name)}: label_path is required for training export; "
+            "automatic legacy label selection is forbidden"
+        )
+    path = _resolve(label_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Manifest-approved label is missing for {row.get('case_id', case_dir.name)}: {path}")
+    if str(row.get("contract_id", "")).strip() == "PGDA_SIMULATION_CONTRACT_V2":
+        expected = case_dir / "labels" / "target_mask_visible_phase_501x256.npy"
+        if path.resolve() != expected.resolve():
+            raise RuntimeError(
+                f"{row.get('case_id', case_dir.name)}: Simulation V2 must export the "
+                "postprocessed target_mask_visible_phase_501x256.npy label"
+            )
+    return path
 
 
 def _resample_time(raw: np.ndarray, target_h: int) -> np.ndarray:
@@ -56,6 +75,35 @@ def _resample_time(raw: np.ndarray, target_h: int) -> np.ndarray:
         out[:, trace] = np.interp(dst, src, raw[:, trace]).astype(np.float32)
     return out
 
+
+
+
+def _validate_v2_spatial_contract(row: dict[str, str], raw: np.ndarray, mask: np.ndarray) -> None:
+    """Reject image-resized or incompletely validated Simulation V2 cases."""
+    if str(row.get("contract_id", "")).strip() != "PGDA_SIMULATION_CONTRACT_V2":
+        return
+    if str(row.get("postprocess_validated", "")).strip().lower() != "true":
+        raise RuntimeError(f"{row.get('case_id')}: Simulation V2 postprocess_validated must be true")
+    if str(row.get("metadata_trusted", "")).strip().lower() != "true":
+        raise RuntimeError(f"{row.get('case_id')}: Simulation V2 metadata_trusted must be true")
+    if str(row.get("line9_conditioned", "")).strip().lower() != "false":
+        raise RuntimeError(f"{row.get('case_id')}: Simulation V2 must be non-Line9-conditioned")
+    if raw.shape != (501, 256) or mask.shape != (501, 256):
+        raise RuntimeError(
+            f"{row.get('case_id')}: Simulation V2 must already be canonical 501x256; "
+            f"got raw={raw.shape}, mask={mask.shape}. Width resize/padding is forbidden."
+        )
+    trace_count = int(row.get("trace_count", "0") or 0)
+    spacing = float(row.get("trace_spacing_m", "nan") or "nan")
+    span = float(row.get("physical_span_m", "nan") or "nan")
+    if trace_count != 256:
+        raise RuntimeError(f"{row.get('case_id')}: trace_count must be 256")
+    if not np.isclose(spacing, 0.09, atol=1e-9, rtol=0):
+        raise RuntimeError(f"{row.get('case_id')}: trace_spacing_m must be 0.09")
+    if not np.isclose(span, 22.95, atol=1e-6, rtol=0):
+        raise RuntimeError(f"{row.get('case_id')}: physical_span_m must be 22.95")
+    if not str(row.get("gprmax_version", "")).strip():
+        raise RuntimeError(f"{row.get('case_id')}: gprmax_version is required")
 
 def load_eligible_rows(manifest: Path, formal_test_line: str = "") -> list[dict[str, str]]:
     if not manifest.is_file():
@@ -97,7 +145,9 @@ def export(
     index_fields = [
         "sample_id", "line", "start", "end", "present", "weak", "no_pick",
         "source_case_id", "source_raw_sha256", "source_label_sha256",
-        "antenna_height_agl_m", "label_semantics",
+        "antenna_height_agl_m", "label_semantics", "target_presence",
+        "scene_family_id", "contract_id", "trace_count", "trace_spacing_m",
+        "physical_span_m", "gprmax_version", "postprocess_validated",
     ]
     index_rows: list[dict[str, object]] = []
     for row in eligible:
@@ -112,7 +162,7 @@ def export(
             raise RuntimeError(
                 f"Raw provenance hash mismatch for {case_id}: manifest={expected_raw_hash or '<missing>'}, actual={actual_raw_hash}"
             )
-        mask_path = _case_mask(case_dir)
+        mask_path = _case_mask(case_dir, row)
         expected_label_hash = str(row.get("label_sha256", "")).strip().lower()
         actual_label_hash = _sha256(mask_path)
         if expected_label_hash and expected_label_hash != actual_label_hash:
@@ -129,16 +179,31 @@ def export(
             raise ValueError(f"Raw/mask trace mismatch for {case_id}: {raw.shape} vs {mask.shape}")
         if not np.isfinite(raw).all() or not np.isfinite(mask).all():
             raise ValueError(f"NaN/Inf in {case_id}")
+        _validate_v2_spatial_contract(row, raw, mask)
         mask = np.clip(mask, 0.0, 1.0)
         trace_mass = mask.sum(axis=0)
         status = np.where(trace_mass > 1e-6, 1, 0).astype(np.int16)
         label_weight = np.where(status == 1, 1.0, 0.0).astype(np.float32)
+        ignore_mask = np.zeros_like(mask, dtype=np.float32)
+
+        declared_presence = str(row.get("target_presence", "")).strip().lower()
+        if declared_presence in {"false", "0", "no"} and np.any(status != 0):
+            raise RuntimeError(f"{case_id}: manifest declares target_presence=false but label mask is non-zero")
+        if declared_presence in {"true", "1", "yes"} and not np.any(status == 1):
+            raise RuntimeError(f"{case_id}: manifest declares target_presence=true but label mask is empty")
+
+        supervision_state = derive_supervision_state(status, label_weight, ignore_mask)
+        if declared_presence in {"false", "0", "no"} and not np.all(supervision_state == 0):
+            raise RuntimeError(f"{case_id}: background-only case failed confirmed-negative semantics")
+
         np.savez_compressed(
             windows / f"{case_id}.npz",
             x_raw=raw,
             y_mask=mask,
             status_code=status,
             label_weight=label_weight,
+            ignore_mask=ignore_mask,
+            supervision_state=supervision_state,
         )
         index_rows.append({
             "sample_id": case_id,
@@ -151,12 +216,22 @@ def export(
             "source_case_id": case_id,
             "source_raw_sha256": actual_raw_hash,
             "source_label_sha256": actual_label_hash,
-            "antenna_height_agl_m": "",
+            "antenna_height_agl_m": row.get("antenna_height_agl_m", ""),
             "label_semantics": row.get("label_semantics", "visible_phase"),
+            "target_presence": (
+                declared_presence if declared_presence else ("true" if np.any(status == 1) else "false")
+            ),
+            "scene_family_id": row.get("scene_family_id", row.get("family", case_id)),
+            "contract_id": row.get("contract_id", ""),
+            "trace_count": raw.shape[1],
+            "trace_spacing_m": row.get("trace_spacing_m", ""),
+            "physical_span_m": row.get("physical_span_m", ""),
+            "gprmax_version": row.get("gprmax_version", ""),
+            "postprocess_validated": row.get("postprocess_validated", ""),
         })
 
     with (out_root / "window_index.csv").open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=index_fields)
+        writer = csv.DictWriter(f, fieldnames=index_fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(index_rows)
     policy = {
@@ -169,7 +244,12 @@ def export(
             str(row.get("line9_conditioned", "")).lower() == "true" for row in eligible
         ),
         "exported_cases": len(eligible),
+        "confirmed_negative_cases": sum(
+            str(row.get("target_presence", "")).strip().lower() in {"false", "0", "no"}
+            for row in eligible
+        ),
         "label_semantics": "visible_phase",
+        "supervision_state_runtime": "derived from status_code + label_weight + ignore_mask",
     }
     (out_root / "dataset_policy.json").write_text(
         json.dumps(policy, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

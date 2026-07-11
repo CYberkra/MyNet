@@ -1,0 +1,74 @@
+{
+  "version": "control_cases_v1",
+  "cases": [
+    {
+      "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "family": "flat_shallow_reference",
+      "target_presence": true,
+      "material_set": "low_loss_reference",
+      "terrain": {
+        "kind": "flat"
+      },
+      "flight_height_agl_m": 2.0,
+      "interface": {
+        "kind": "flat",
+        "base_depth_m": 7.0
+      },
+      "cover_fraction": 0.52,
+      "purpose": "Coordinate, theoretical-arrival, phase and exporter reference"
+    },
+    {
+      "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "family": "flat_deep_reference",
+      "target_presence": true,
+      "material_set": "moderate_loss_reference",
+      "terrain": {
+        "kind": "flat"
+      },
+      "flight_height_agl_m": 8.0,
+      "interface": {
+        "kind": "flat",
+        "base_depth_m": 14.0
+      },
+      "cover_fraction": 0.55,
+      "purpose": "Main-depth attenuation and arrival-time reference",
+      "matched_negative_case_id": "CTRL04_MATCHED_BACKGROUND_NEG"
+    },
+    {
+      "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
+      "family": "smooth_interface_reference",
+      "target_presence": true,
+      "material_set": "low_loss_reference",
+      "terrain": {
+        "kind": "flat"
+      },
+      "flight_height_agl_m": 5.0,
+      "interface": {
+        "kind": "smooth",
+        "base_depth_m": 10.0,
+        "slope": 0.035,
+        "sinusoid_amplitude_m": 1.25,
+        "sinusoid_wavelength_m": 22.95
+      },
+      "cover_fraction": 0.5,
+      "purpose": "Per-trace geometry label and physical horizontal-scale reference"
+    },
+    {
+      "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
+      "family": "matched_background_negative",
+      "target_presence": false,
+      "material_set": "moderate_loss_reference",
+      "terrain": {
+        "kind": "flat"
+      },
+      "flight_height_agl_m": 8.0,
+      "interface": {
+        "kind": "flat",
+        "base_depth_m": 14.0
+      },
+      "cover_fraction": 0.55,
+      "matched_positive_case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "purpose": "Confirmed background-only negative with identical upper-layer geometry"
+    }
+  ]
+}

@@ -195,6 +195,11 @@ class TestGprMambaSepLoss:
             'valid_pix': torch.ones(2, 1, 64, 32),
             'valid_denom': torch.tensor(64 * 32.0),
             'X_clean': x.clone(),
+            # Arrival-time prior is defined only when measured per-trace AGL
+            # metadata is present. Keep this integration test physically valid
+            # rather than weakening the production contract.
+            'altitude': torch.full((2, 32), 8.0),
+            'altitude_valid': torch.ones(2, 32),
         }
         cfg = {
             'loss': {

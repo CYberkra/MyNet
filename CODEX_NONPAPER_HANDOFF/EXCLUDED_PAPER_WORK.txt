@@ -1,0 +1,7 @@
+Excluded from this engineering-only branch/package:
+pgdacsnet/models/experimental/__init__.py
+pgdacsnet/models/experimental/interface_query_net.py
+tests/test_interface_query_net.py
+reports/overnight_20260711/network_research/
+OVERNIGHT_FINAL_REPORT.md
+OVERNIGHT_PROGRESS.jsonl

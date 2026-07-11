@@ -1,0 +1,74 @@
+{
+  "checked_at_utc": "2026-07-10T19:29:52.421879+00:00",
+  "static_geometry_audit_ok": true,
+  "official_geometry_only_executed": false,
+  "official_geometry_only_blocker": "gprMax unavailable",
+  "case_count": 4,
+  "results": [
+    {
+      "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": 145.4892120361328,
+      "arrival_max_ns": 145.4892120361328,
+      "domain_x_m": 24.93,
+      "domain_y_m": 13.7925,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": 344.1167907714844,
+      "arrival_max_ns": 344.1167907714844,
+      "domain_x_m": 24.93,
+      "domain_y_m": 26.82,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "box_counts": {
+        "full_scene_geometry.inc": 579,
+        "no_basal_contrast_geometry.inc": 579
+      },
+      "arrival_min_ns": 194.3417205810547,
+      "arrival_max_ns": 248.97520446777344,
+      "domain_x_m": 24.93,
+      "domain_y_m": 21.2625,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 24.93,
+      "domain_y_m": 26.82,
+      "runtime_geometry": null
+    }
+  ],
+  "interpretation": "Generated geometry and array/manifest contracts passed static validation. This is not a substitute for gprMax --geometry-only output inspection."
+}

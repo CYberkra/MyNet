@@ -1,0 +1,97 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+  "family": "flat_shallow_reference",
+  "purpose": "Coordinate, theoretical-arrival, phase and exporter reference",
+  "target_presence": true,
+  "formal_training_allowed": false,
+  "training_block_reason": "control scene requires actual gprMax run and visible-phase postprocessing",
+  "line9_conditioned": false,
+  "reference_line": null,
+  "generator_path": "scripts/generate_physical_sim_v2.py",
+  "generator_sha256": "8d4dc5322e533c6a8828e4e0060cb10cab10b6c765a58c4b953e975a4bf5c1ac",
+  "generator_git_commit": "2f1ddb2fc83a524ee4699ba52626adfd61b04475",
+  "generator_worktree_dirty": false,
+  "deterministic_seed": 0,
+  "case_spec_sha256": "b041812db895f2e478e731cc6ea74a1f932835cc8a6ac8533401342bf282ee15",
+  "grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.0225,
+    "domain_x_m": 24.93,
+    "domain_y_m": 13.792499999999999,
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "guard_cells": 20,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "trace_midpoint_span_m": 22.95,
+    "trace_span_m": 22.95,
+    "tx_endpoint_span_m": 22.95,
+    "rx_endpoint_span_m": 22.949999999999996,
+    "solver_time_window_ns": 701.0,
+    "gprmax_time_window_ns": 701.0,
+    "canonical_time_window_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 100000000.0,
+    "tx_rx_offset_m": 0.18,
+    "assumption_status": "provisional_until_hardware_geometry_confirmed"
+  },
+  "materials": {
+    "set": "low_loss_reference",
+    "cover": {
+      "name": "cover_low_loss",
+      "epsilon_r": 9.0,
+      "conductivity_s_per_m": 0.001,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "weathered": {
+      "name": "weathered_low_loss",
+      "epsilon_r": 7.0,
+      "conductivity_s_per_m": 0.0008,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "bedrock": {
+      "name": "bedrock_low_loss",
+      "epsilon_r": 5.0,
+      "conductivity_s_per_m": 0.0004,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "full_scene_bedrock_material": "bedrock_low_loss",
+    "control_bedrock_material": "weathered_low_loss"
+  },
+  "geometry": {
+    "terrain_kind": "flat",
+    "nominal_interface": {
+      "kind": "flat",
+      "base_depth_m": 7.0
+    },
+    "cover_fraction": 0.52,
+    "bedrock_below_min_m": 3.0,
+    "arrival_model": "horizontal_layered_bistatic_exact",
+    "matched_positive_case_id": null,
+    "matched_negative_case_id": null,
+    "coordinate_convention": "x survey direction; y upward from lower-left origin; z invariant one cell"
+  },
+  "labels": {
+    "reference_arrival": "horizontal_layered_bistatic_exact",
+    "geometric_arrival": "compatibility alias; inspect geometry.arrival_model before interpretation",
+    "visible_phase": "pending full minus no-basal-control postprocess",
+    "geometric_prior_training_allowed": false,
+    "target_mask_training_allowed": false
+  }
+}

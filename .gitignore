@@ -40,3 +40,10 @@ logs/
 
 # Claude Code worktrees
 .claude/worktrees/
+# Simulation V2 contract, source controls, and quarantine metadata are small,
+# auditable source artifacts and must remain versioned.
+!data/simulation_contract_v2/
+!data/simulation_contract_v2/**
+!data/PGDA_SYNTH_DATASET_V2/
+!data/PGDA_SYNTH_DATASET_V2/**
+!data/PGDA_SYNTH_DATASET_V1/LEGACY_QUARANTINE.md

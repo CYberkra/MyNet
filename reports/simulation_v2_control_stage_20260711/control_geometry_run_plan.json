@@ -1,0 +1,109 @@
+{
+  "root": "/mnt/data/working_sim_v2/MyNet/data/PGDA_SYNTH_DATASET_V2/00_controls",
+  "execute": false,
+  "geometry_only": true,
+  "gpu": null,
+  "case_count": 4,
+  "formal_training_allowed": false,
+  "important": "Solver commands use --geometry-fixed only because scene geometry is static while simple source/receiver positions move.",
+  "cases": [
+    {
+      "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "case_dir": "/mnt/data/working_sim_v2/MyNet/data/PGDA_SYNTH_DATASET_V2/00_controls/CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "target_presence": true,
+      "commands": [
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_full.in",
+            "--geometry-only"
+          ]
+        },
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_control.in",
+            "--geometry-only"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "case_dir": "/mnt/data/working_sim_v2/MyNet/data/PGDA_SYNTH_DATASET_V2/00_controls/CTRL02_FLAT_DEEP_MODERATE_POS",
+      "target_presence": true,
+      "commands": [
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_full.in",
+            "--geometry-only"
+          ]
+        },
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_control.in",
+            "--geometry-only"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
+      "case_dir": "/mnt/data/working_sim_v2/MyNet/data/PGDA_SYNTH_DATASET_V2/00_controls/CTRL03_SMOOTH_INTERFACE_POS",
+      "target_presence": true,
+      "commands": [
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_full.in",
+            "--geometry-only"
+          ]
+        },
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_control.in",
+            "--geometry-only"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
+      "case_dir": "/mnt/data/working_sim_v2/MyNet/data/PGDA_SYNTH_DATASET_V2/00_controls/CTRL04_MATCHED_BACKGROUND_NEG",
+      "target_presence": false,
+      "commands": [
+        {
+          "stage": "geometry_only",
+          "command": [
+            "/opt/pyvenv/bin/python",
+            "-m",
+            "gprMax",
+            "geometry_check_full.in",
+            "--geometry-only"
+          ]
+        }
+      ]
+    }
+  ]
+}

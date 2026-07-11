@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-07-10T19:29:52.421879+00:00",
+  "smoke_test": "NOT_RUN",
+  "geometry_only": "NOT_RUN",
+  "ctrl01_single_or_small_run": "NOT_RUN",
+  "ctrl01_full_bscan": "NOT_RUN",
+  "ctrl02_to_ctrl04": "NOT_RUN",
+  "reason": "gprMax module and NVIDIA runtime unavailable in this execution environment",
+  "actual_gprmax_hdf5_outputs": [],
+  "claims_allowed": [
+    "static input generation passed",
+    "static preflight passed",
+    "runtime commands prepared"
+  ],
+  "claims_forbidden": [
+    "FDTD completed",
+    "visible phase validated",
+    "control promoted",
+    "formal training allowed"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "status": "control_stage_not_training_approved",
+  "line9_conditioned": false,
+  "formal_training_allowed": false,
+  "scope": {
+    "included": [
+      "air path and AGL",
+      "flat terrain controls",
+      "cover/weathered/bedrock layering",
+      "basal-interface geometry",
+      "matched no-basal-contrast control",
+      "air reference"
+    ],
+    "deferred": [
+      "power lines",
+      "trees",
+      "water",
+      "survey-edge clutter",
+      "anti-X modifications",
+      "stochastic external clutter"
+    ]
+  },
+  "canonical_training_grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "physical_span_m": 22.95,
+    "time_start_ns": 0.0,
+    "time_end_ns": 700.0,
+    "samples": 501,
+    "dt_ns": 1.4
+  },
+  "fdtd_reference_grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.0225,
+    "trace_step_cells": 4,
+    "tx_rx_offset_m": 0.18,
+    "tx_rx_offset_cells": 8,
+    "pml_cells_order": [
+      "x0",
+      "y0",
+      "z0",
+      "xmax",
+      "ymax",
+      "zmax"
+    ],
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "guard_cells": 20,
+    "important_note": "gprMax output uses the CFL time step and a 701 ns solver request, then postprocessing validates HDF5 coverage and resamples to the canonical 0–700 ns, 501-sample grid.",
+    "solver_time_window_ns": 701.0,
+    "canonical_resample_time_end_ns": 700.0
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 100000000.0,
+    "tx_rx_offset_m": 0.18,
+    "assumption_status": "provisional_until_hardware_geometry_confirmed"
+  },
+  "label_policy": {
+    "flat_reference_arrival_time_ns": "exact horizontal layered symmetric bistatic travel-time reference through air, cover and weathered layer",
+    "curved_reference_arrival_time_ns": "column-wise layered search reference only; not claimed to be an exact specular-ray arrival",
+    "visible_phase_time_ns": "must be extracted after simulation from full_scene minus matched no_basal_contrast_control",
+    "training_mask_before_postprocess": "forbidden",
+    "negative_semantics": "target_presence=false and zero target mask after output validation; weak/ignore measured labels are never converted into negatives"
+  },
+  "provenance_policy": {
+    "forbidden_sources": [
+      "Line9 labels",
+      "Line9 time curves",
+      "Line9 geometry templates",
+      "Line9-derived statistics"
+    ],
+    "required": [
+      "case-local manifest",
+      "generator commit or source hash",
+      "seed",
+      "materials",
+      "geometry hash",
+      "trace spacing and physical span",
+      "AGL array",
+      "gprMax version after run",
+      "output hashes"
+    ]
+  },
+  "solver_runtime": {
+    "audited_stable_gprmax_version": "3.1.7",
+    "version_policy": "Record exact installed version. A different version requires geometry-only and control-stage revalidation before any formal use.",
+    "moving_scan_policy": "Use -n 256 with --geometry-fixed only for static geometry and simple Hertzian source/receiver steps.",
+    "formal_solver_run_completed": false
+  }
+}

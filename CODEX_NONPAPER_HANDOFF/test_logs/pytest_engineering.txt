@@ -1,0 +1,9 @@
+Packaging-time rerun in the current container:
+
+- tests/test_simulation_v2.py: 11 passed in 12.08s
+- tests/test_simulation_v2_overnight_contract.py: 4 passed in 0.14s
+- tests/test_gprmambasep.py: 25 passed in 6.85s
+
+Total: 40 passed, 0 failed.
+
+Commands used OMP_NUM_THREADS=1, MKL_NUM_THREADS=1, OPENBLAS_NUM_THREADS=1.
