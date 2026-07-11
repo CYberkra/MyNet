@@ -1,0 +1,104 @@
+{
+  "audit_date": "2026-07-11",
+  "target_gprmax_release": "v.3.1.7",
+  "official_manual_static_compliance": true,
+  "runtime_geometry_only_executed": false,
+  "fdtd_executed": false,
+  "packaging_fix": "Converted CRLF text files to LF so FILE_SHA256.csv and control_index manifest hashes verify byte-for-byte.",
+  "cases": [
+    {
+      "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "target_presence": true,
+      "domain_cells": [
+        1108,
+        613,
+        1
+      ],
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "tx_rx_offset_m": 0.18,
+      "clearance_cells": {
+        "left_source_guard_cells": 20.000000000000004,
+        "right_receiver_guard_cells": 19.999999999999968,
+        "top_antenna_guard_cells": 19.999999999999968
+      },
+      "arrival_range_ns": [
+        145.4892120361328,
+        145.4892120361328
+      ],
+      "hash_manifest_verified": true
+    },
+    {
+      "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "target_presence": true,
+      "domain_cells": [
+        1108,
+        1192,
+        1
+      ],
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "tx_rx_offset_m": 0.18,
+      "clearance_cells": {
+        "left_source_guard_cells": 20.000000000000004,
+        "right_receiver_guard_cells": 19.999999999999968,
+        "top_antenna_guard_cells": 19.999999999999968
+      },
+      "arrival_range_ns": [
+        344.1167907714844,
+        344.1167907714844
+      ],
+      "hash_manifest_verified": true
+    },
+    {
+      "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
+      "target_presence": true,
+      "domain_cells": [
+        1108,
+        945,
+        1
+      ],
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "tx_rx_offset_m": 0.18,
+      "clearance_cells": {
+        "left_source_guard_cells": 20.000000000000004,
+        "right_receiver_guard_cells": 19.999999999999968,
+        "top_antenna_guard_cells": 19.999999999999968
+      },
+      "arrival_range_ns": [
+        194.3417205810547,
+        248.97520446777344
+      ],
+      "hash_manifest_verified": true
+    },
+    {
+      "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
+      "target_presence": false,
+      "domain_cells": [
+        1108,
+        1192,
+        1
+      ],
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "tx_rx_offset_m": 0.18,
+      "clearance_cells": {
+        "left_source_guard_cells": 20.000000000000004,
+        "right_receiver_guard_cells": 19.999999999999968,
+        "top_antenna_guard_cells": 19.999999999999968
+      },
+      "arrival_range_ns": [
+        null,
+        null
+      ],
+      "hash_manifest_verified": true
+    }
+  ],
+  "limitations": [
+    "2D z-invariant Hertzian dipole is a line source; absolute amplitude/SNR and deep detectability are not equivalent to 3D hardware.",
+    "reference_arrival_time_ns is propagation time only; the 100 MHz gprMax Ricker peak is delayed by sqrt(2)/f = 14.1421356 ns. visible_phase_time_ns must remain post-solver derived.",
+    "No geometry-only or FDTD run was possible in the audit environment because gprMax is not installed.",
+    "Controls remain formal_training_allowed=false."
+  ]
+}

@@ -45,7 +45,13 @@ logs/
 !data/simulation_contract_v2/
 !data/simulation_contract_v2/**
 !data/PGDA_SYNTH_DATASET_V2/
-!data/PGDA_SYNTH_DATASET_V2/**
+!data/PGDA_SYNTH_DATASET_V2/README.md
+!data/PGDA_SYNTH_DATASET_V2/00_controls/
+!data/PGDA_SYNTH_DATASET_V2/00_controls/**
+data/PGDA_SYNTH_DATASET_V2/_staging/
+data/PGDA_SYNTH_DATASET_V2/_superseded_*/
+data/PGDA_SYNTH_DATASET_V2/01_solver_runs/
+outputs/simulation_v2_controls/
 !data/PGDA_SYNTH_DATASET_V1/LEGACY_QUARANTINE.md
 # Dataset and legacy-simulation governance are compact manifests and label
 # overrides. They are source evidence, not disposable generated data.

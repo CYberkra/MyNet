@@ -207,6 +207,66 @@ def test_negative_postprocess_creates_confirmed_negative_mask(tmp_path: Path) ->
     assert result["formal_training_allowed"] is False
 
 
+def test_static_validator_accepts_successful_postprocessed_control(tmp_path: Path) -> None:
+    out = tmp_path / "controls"
+    env = os.environ.copy()
+    env["MPLBACKEND"] = "Agg"
+    generated = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "generate_physical_sim_v2.py"),
+            "--out-root",
+            str(out),
+            "--case-id",
+            "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+            "--overwrite",
+        ],
+        cwd=ROOT,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert generated.returncode == 0, generated.stdout
+    case = out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS"
+    labels = case / "labels"
+    shape = (501, 256)
+    np.save(labels / "visible_phase_time_ns.npy", np.full(256, 350.0, dtype=np.float32))
+    for name in (
+        "full_scene_501x256.npy",
+        "air_reference_501x256.npy",
+        "no_basal_contrast_501x256.npy",
+        "contrast_response_501x256.npy",
+        "target_mask_visible_phase_501x256.npy",
+    ):
+        np.save(labels / name, np.zeros(shape, dtype=np.float32))
+    np.save(labels / "visible_phase_support_ratio.npy", np.ones(256, dtype=np.float32))
+    (case / "postprocess_validation.json").write_text(
+        json.dumps(
+            {
+                "ok": True,
+                "postprocess_validated": True,
+                "formal_training_allowed": False,
+                "output_shape_canonical": list(shape),
+            }
+        ),
+        encoding="utf-8",
+    )
+    validated = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(out)],
+        cwd=ROOT,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert validated.returncode == 0, validated.stdout
+    report = json.loads((out / "preflight_validation.json").read_text(encoding="utf-8"))
+    assert report["results"][0]["lifecycle_state"] == "postprocessed"
+
+
 def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
     out = tmp_path / "controls"
     env = os.environ.copy()

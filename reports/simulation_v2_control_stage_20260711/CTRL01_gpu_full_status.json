@@ -1,0 +1,14 @@
+{
+  "pid": 304836,
+  "started_at": "2026-07-11T20:47:50.5478097+08:00",
+  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+  "variants": [
+    "full_scene",
+    "no_basal_contrast_control",
+    "air_reference"
+  ],
+  "device": "RTX 5070 GPU 0",
+  "status": "running",
+  "stdout_log": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\CTRL01_gpu_full.stdout.log",
+  "stderr_log": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\CTRL01_gpu_full.stderr.log"
+}

@@ -1,0 +1,7 @@
+{
+  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+  "mode": "gpu_one_trace_smoke_with_msvc",
+  "returncode": -1073740791,
+  "cuda_path": "F:\\codex\\envs\\psgn-csnet\\Library",
+  "msvc_dev_cmd": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\Tools\\LaunchDevCmd.bat"
+}

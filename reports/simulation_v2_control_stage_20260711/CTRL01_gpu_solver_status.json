@@ -1,0 +1,9 @@
+{
+  "pid": 291332,
+  "started_at": "2026-07-11T20:38:04.1071505+08:00",
+  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+  "stage": "gpu_fdtd_full_no_basal_air",
+  "stdout_log": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\CTRL01_gpu_solver.stdout.log",
+  "stderr_log": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\simulation_v2_control_stage_20260711\\CTRL01_gpu_solver.stderr.log",
+  "status": "running"
+}

@@ -1,6 +1,6 @@
 {
   "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
-  "root": "data\\PGDA_SYNTH_DATASET_V2\\00_controls",
+  "root": "data\\PGDA_SYNTH_DATASET_V2\\01_solver_runs\\official_audited_20260711",
   "ok": true,
   "formal_training_allowed": false,
   "case_count": 4,
@@ -11,6 +11,7 @@
       "target_presence": true,
       "errors": [],
       "warnings": [],
+      "lifecycle_state": "postprocessed",
       "box_counts": {
         "full_scene_geometry.inc": 3,
         "no_basal_contrast_geometry.inc": 3
@@ -27,6 +28,7 @@
       "target_presence": true,
       "errors": [],
       "warnings": [],
+      "lifecycle_state": "pre_solver",
       "box_counts": {
         "full_scene_geometry.inc": 3,
         "no_basal_contrast_geometry.inc": 3
@@ -43,6 +45,7 @@
       "target_presence": true,
       "errors": [],
       "warnings": [],
+      "lifecycle_state": "pre_solver",
       "box_counts": {
         "full_scene_geometry.inc": 579,
         "no_basal_contrast_geometry.inc": 579
@@ -59,6 +62,7 @@
       "target_presence": false,
       "errors": [],
       "warnings": [],
+      "lifecycle_state": "pre_solver",
       "box_counts": {
         "full_scene_geometry.inc": 3,
         "no_basal_contrast_geometry.inc": 3

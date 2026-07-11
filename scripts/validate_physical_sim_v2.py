@@ -21,6 +21,16 @@ sys.path.insert(0, str(ROOT))
 from pgdacsnet.simulation_v2 import GridSpec, SourceSpec, sha256_file  # noqa: E402
 
 DEFAULT_ROOT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+POSTPROCESS_MUTABLE_HASH_PATHS = {
+    "labels/visible_phase_time_ns.npy",
+    "labels/full_scene_501x256.npy",
+    "labels/no_basal_contrast_501x256.npy",
+    "labels/air_reference_501x256.npy",
+    "labels/contrast_response_501x256.npy",
+    "labels/target_mask_visible_phase_501x256.npy",
+    "labels/target_mask_confirmed_negative_501x256.npy",
+    "labels/visible_phase_support_ratio.npy",
+}
 BOX_RE = re.compile(
     r"^#box:\s+([\deE+\-.]+)\s+([\deE+\-.]+)\s+([\deE+\-.]+)\s+"
     r"([\deE+\-.]+)\s+([\deE+\-.]+)\s+([\deE+\-.]+)\s+(\S+)"
@@ -58,6 +68,65 @@ def _parse_input(path: Path) -> dict[str, Any]:
     return result
 
 
+def _load_postprocess_validation(case_dir: Path, errors: list[str]) -> dict[str, Any] | None:
+    """Return the completed solver state, while rejecting malformed state files."""
+
+    path = case_dir / "postprocess_validation.json"
+    if not path.is_file():
+        return None
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"invalid postprocess_validation.json: {exc}")
+        return None
+    if not isinstance(value, dict):
+        errors.append("postprocess_validation.json must contain an object")
+        return None
+    if value.get("postprocess_validated") is not True or value.get("ok") is not True:
+        errors.append("postprocess validation exists but is not successful")
+    if value.get("formal_training_allowed") is not False:
+        errors.append("postprocessed control must remain blocked from formal training")
+    return value
+
+
+def _validate_postprocessed_artifacts(
+    case_dir: Path,
+    *,
+    target_presence: bool,
+    postprocess: dict[str, Any],
+    errors: list[str],
+) -> None:
+    """Check generated labels without treating them as immutable source files."""
+
+    expected_shape = (501, 256)
+    output_shape = tuple(postprocess.get("output_shape_canonical", ()))
+    if output_shape != expected_shape:
+        errors.append(f"postprocess canonical output shape {output_shape} != {expected_shape}")
+    required = ["full_scene_501x256.npy", "air_reference_501x256.npy"]
+    if target_presence:
+        required.extend(
+            [
+                "no_basal_contrast_501x256.npy",
+                "contrast_response_501x256.npy",
+                "target_mask_visible_phase_501x256.npy",
+                "visible_phase_support_ratio.npy",
+            ]
+        )
+    else:
+        required.append("target_mask_confirmed_negative_501x256.npy")
+    for name in required:
+        try:
+            value = _load_npy(case_dir, name)
+        except FileNotFoundError:
+            errors.append(f"postprocess artifact missing: labels/{name}")
+            continue
+        if name == "visible_phase_support_ratio.npy":
+            if value.shape != (256,):
+                errors.append(f"postprocess artifact shape labels/{name} != (256,)")
+        elif value.shape != expected_shape:
+            errors.append(f"postprocess artifact shape labels/{name} != {expected_shape}")
+
+
 def _check_geometry(path: Path, domain: tuple[float, float, float]) -> tuple[int, list[str]]:
     errors: list[str] = []
     count = 0
@@ -89,6 +158,8 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     case_id = str(manifest.get("case_id", case_dir.name))
     target_presence = bool(manifest.get("target_presence"))
+    postprocess = _load_postprocess_validation(case_dir, errors)
+    postprocessed = postprocess is not None
 
     if manifest.get("contract_id") != "PGDA_SIMULATION_CONTRACT_V2":
         errors.append("wrong contract_id")
@@ -200,11 +271,15 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     right_inner = domain[0] - pml[3] * dl[0]
     top_inner = domain[1] - pml[4] * dl[1]
     min_clearance = 20 * dl[0]
-    if np.min(source_x) < left_inner + min_clearance - 1e-9:
+    # Labels are stored in float32 while the input deck is decimal text.  Use a
+    # sub-cell tolerance for that representation round-trip, never a broad
+    # geometric relaxation (1e-4 cell is 2.25e-6 m at the V2 grid).
+    coordinate_tol = max(1e-9, dl[0] * 1e-4)
+    if np.min(source_x) < left_inner + min_clearance - coordinate_tol:
         errors.append("first source lacks 20-cell clearance from inner left PML")
-    if np.max(receiver_x) > right_inner - min_clearance + 1e-9:
+    if np.max(receiver_x) > right_inner - min_clearance + coordinate_tol:
         errors.append("last receiver lacks 20-cell clearance from inner right PML")
-    if np.max(antenna) > top_inner - min_clearance + 1e-9:
+    if np.max(antenna) > top_inner - min_clearance + coordinate_tol:
         errors.append("antenna lacks 20-cell air clearance below inner top PML")
     if not np.allclose(reference, geometric, equal_nan=True):
         errors.append("reference_arrival and compatibility geometric_arrival arrays differ")
@@ -214,7 +289,7 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         errors.append("flat interface must use exact horizontal layered bistatic arrival model")
     if interface_kind != "flat" and arrival_model != "columnar_layered_reference_not_specular_exact":
         errors.append("non-flat interface must identify arrival as a non-exact columnar reference")
-    if not np.isnan(visible).all():
+    if not postprocessed and not np.isnan(visible).all():
         errors.append("visible phase must remain pending before solver run")
     if not np.allclose(pending_mask, 0):
         errors.append("training mask must be zero before postprocess")
@@ -233,6 +308,14 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         if not np.allclose(prior, 0):
             errors.append("negative case geometric prior must be zero")
 
+    if postprocess is not None:
+        _validate_postprocessed_artifacts(
+            case_dir,
+            target_presence=target_presence,
+            postprocess=postprocess,
+            errors=errors,
+        )
+
     box_counts: dict[str, int] = {}
     for name in ["full_scene_geometry.inc", "no_basal_contrast_geometry.inc"]:
         path = case_dir / name
@@ -248,11 +331,20 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     else:
         with hash_file.open(encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f):
-                path = case_dir / row["relative_path"]
+                relative_path = row["relative_path"].replace("\\", "/")
+                path = case_dir / Path(relative_path)
                 if not path.is_file():
-                    errors.append(f"hash manifest missing file: {row['relative_path']}")
+                    errors.append(f"hash manifest missing file: {relative_path}")
+                elif (
+                    postprocessed
+                    and relative_path in POSTPROCESS_MUTABLE_HASH_PATHS
+                ):
+                    # The control source manifest intentionally hashes its pending
+                    # label placeholder. Solver postprocessing replaces that one
+                    # lifecycle artifact with an evidence-backed visible phase.
+                    continue
                 elif sha256_file(path) != row["sha256"]:
-                    errors.append(f"hash mismatch: {row['relative_path']}")
+                    errors.append(f"hash mismatch: {relative_path}")
 
     geometry_runtime: dict[str, Any] | None = None
     if run_geometry_only:
@@ -282,6 +374,7 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         "target_presence": target_presence,
         "errors": errors,
         "warnings": warnings,
+        "lifecycle_state": "postprocessed" if postprocessed else "pre_solver",
         "box_counts": box_counts,
         "arrival_min_ns": float(np.nanmin(geometric)) if target_presence else None,
         "arrival_max_ns": float(np.nanmax(geometric)) if target_presence else None,

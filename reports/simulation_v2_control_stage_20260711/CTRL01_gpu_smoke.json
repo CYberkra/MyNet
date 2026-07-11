@@ -1,0 +1,7 @@
+{
+  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+  "mode": "gpu_one_trace_smoke",
+  "returncode": -1073740791,
+  "cuda_path": "F:\\codex\\envs\\psgn-csnet\\Library",
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:24:01_Pacific_Daylight_Time_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0"
+}

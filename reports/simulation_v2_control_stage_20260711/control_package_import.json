@@ -1,0 +1,11 @@
+{
+  "imported_at": "2026-07-11T20:36:05.8039712+08:00",
+  "source_archive": "E:\\临时文件夹\\00_controls_gprMax_official_audited_20260711.zip",
+  "archive_sha256": "8211e274e0a0314974459eae7a90228c31840df755579e2d8800190bbee8af6d",
+  "canonical_root": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls",
+  "superseded_backup": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\_superseded_pre_official_audited_20260711",
+  "staging_root": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\_staging\\00_controls_gprMax_official_audited_20260711\\00_controls",
+  "static_validation": "passed",
+  "case_count": 4,
+  "formal_training_allowed": false
+}

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shlex
 import subprocess
 import sys
@@ -19,7 +20,7 @@ def command_text(command: list[str]) -> str:
     return " ".join(shlex.quote(part) for part in command)
 
 
-def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool) -> dict[str, Any]:
+def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool, python_executable: str) -> dict[str, Any]:
     manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
     target_presence = bool(manifest["target_presence"])
     commands: list[dict[str, Any]] = []
@@ -28,7 +29,7 @@ def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool) -> dict[s
     if target_presence:
         geometry_inputs.append("geometry_check_control.in")
     for input_name in geometry_inputs:
-        cmd = [sys.executable, "-m", "gprMax", input_name, "--geometry-only"]
+        cmd = [python_executable, "-m", "gprMax", input_name, "--geometry-only"]
         commands.append({"stage": "geometry_only", "command": cmd})
 
     if not geometry_only:
@@ -38,14 +39,14 @@ def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool) -> dict[s
         run_inputs.append("air_reference.in")
         for input_name in run_inputs:
             stem = Path(input_name).stem
-            cmd = [sys.executable, "-m", "gprMax", input_name, "-n", "256", "--geometry-fixed"]
+            cmd = [python_executable, "-m", "gprMax", input_name, "-n", "256", "--geometry-fixed"]
             if gpu is not None:
                 cmd.extend(["-gpu", str(gpu)])
             commands.append({"stage": "solver", "command": cmd})
             commands.append(
                 {
                     "stage": "merge",
-                    "command": [sys.executable, "-m", "tools.outputfiles_merge", stem, "--remove-files"],
+                    "command": [python_executable, "-m", "tools.outputfiles_merge", stem, "--remove-files"],
                 }
             )
         if target_presence:
@@ -53,7 +54,7 @@ def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool) -> dict[s
                 {
                     "stage": "postprocess",
                     "command": [
-                        sys.executable,
+                        python_executable,
                         str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"),
                         str(case_dir),
                     ],
@@ -75,6 +76,8 @@ def main() -> int:
     parser.add_argument("--gpu", type=int)
     parser.add_argument("--geometry-only", action="store_true")
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--python-executable", default=sys.executable)
+    parser.add_argument("--gprmax-root", default="", help="Compiled gprMax source root injected into child PYTHONPATH.")
     parser.add_argument("--plan-output", default=str(DEFAULT_PLAN))
     args = parser.parse_args()
 
@@ -86,13 +89,19 @@ def main() -> int:
         missing = selected - {p.name for p in case_dirs}
         if missing:
             raise SystemExit(f"Unknown case IDs: {sorted(missing)}")
-    plans = [case_plan(p, gpu=args.gpu, geometry_only=args.geometry_only) for p in case_dirs]
+    python_executable = str(Path(args.python_executable).resolve())
+    gprmax_root = Path(args.gprmax_root).resolve() if args.gprmax_root else None
+    if gprmax_root and not (gprmax_root / "gprMax").is_dir():
+        raise SystemExit(f"--gprmax-root is not a gprMax source root: {gprmax_root}")
+    plans = [case_plan(p, gpu=args.gpu, geometry_only=args.geometry_only, python_executable=python_executable) for p in case_dirs]
 
     payload = {
         "root": str(root),
         "execute": args.execute,
         "geometry_only": args.geometry_only,
         "gpu": args.gpu,
+        "python_executable": python_executable,
+        "gprmax_root": str(gprmax_root) if gprmax_root else "",
         "case_count": len(plans),
         "formal_training_allowed": False,
         "important": "Solver commands use --geometry-fixed only because scene geometry is static while simple source/receiver positions move.",
@@ -107,7 +116,10 @@ def main() -> int:
         for entry in plan["commands"]:
             print(f"  {entry['stage']}: {command_text(entry['command'])}")
             if args.execute:
-                proc = subprocess.run(entry["command"], cwd=plan["case_dir"], check=False)
+                env = os.environ.copy()
+                if gprmax_root:
+                    env["PYTHONPATH"] = str(gprmax_root) + os.pathsep + env.get("PYTHONPATH", "")
+                proc = subprocess.run(entry["command"], cwd=plan["case_dir"], env=env, check=False)
                 if proc.returncode != 0:
                     print(f"FAILED: {plan['case_id']} stage={entry['stage']} returncode={proc.returncode}")
                     return proc.returncode
