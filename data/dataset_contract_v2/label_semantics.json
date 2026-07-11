@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "primary_curve_target": "visible_phase_time_ns",
+  "definitions": {
+    "geometry_time_ns": "Two-way geometric propagation-time estimate; not interchangeable with the visible waveform phase.",
+    "visible_phase_time_ns": "Consistently selected visible target phase or envelope feature in the B-scan.",
+    "label_center_ns": "Approved training curve after one visible-phase rule is applied to every source.",
+    "label_lower_ns": "Lower uncertainty/tolerance boundary.",
+    "label_upper_ns": "Upper uncertainty/tolerance boundary."
+  },
+  "forbidden_mixture": "Geometry-time and visible-phase labels must not be mixed without an explicit, auditable conversion.",
+  "v4_status": "superseded_by_v15_final_for_current_real_label_release",
+  "v15_status": "released_final_labels_not_formal_training_release",
+  "v15_version": "YINGSHAN_V15_FINAL_20260710",
+  "v15_policy": {
+    "primary_anchor": "Line9 at cross-line conflicts",
+    "accepted_weak_relabels": [
+      "Line3-Line9: Line3",
+      "LineL1-LineX1: LineX1"
+    ],
+    "explicit_ignores": [
+      "Line6-Line9: Line6",
+      "Line9-LineX1: LineX1"
+    ],
+    "unresolved_ambiguity_is_never_promoted_to_strong": true
+  }
+}
