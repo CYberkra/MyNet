@@ -179,10 +179,14 @@ class AeroPathOutput(PGDAOutput):
 
     def __init__(self, mask_logits, presence_logits, center_logits, *, curve_logits,
                  path_marginals, no_pick_logits, air_reduced_input,
+                 null_marginals=None, path_start_prob=None, path_end_prob=None,
                  uncertainty_logits=None):
         super().__init__(mask_logits, presence_logits, center_logits)
         self.curve_logits = curve_logits
         self.path_marginals = path_marginals
+        self.null_marginals = null_marginals
+        self.path_start_prob = path_start_prob
+        self.path_end_prob = path_end_prob
         self.no_pick_logits = no_pick_logits
         self.air_reduced_input = air_reduced_input
         # Log-variance map used only by the structured path uncertainty loss.
@@ -194,21 +198,24 @@ class AeroPathOutput(PGDAOutput):
     def __contains__(self, key):
         return key in {
             "mask_logits", "presence_logits", "center_logits", "curve_logits",
-            "path_marginals", "no_pick_logits", "air_reduced_input",
+            "path_marginals", "null_marginals", "path_start_prob", "path_end_prob",
+            "no_pick_logits", "air_reduced_input",
             "uncertainty_logits", "global_no_target_logits",
         }
 
     def keys(self):
         return [
             "mask_logits", "presence_logits", "center_logits", "curve_logits",
-            "path_marginals", "no_pick_logits", "air_reduced_input",
+            "path_marginals", "null_marginals", "path_start_prob", "path_end_prob",
+            "no_pick_logits", "air_reduced_input",
             "uncertainty_logits", "global_no_target_logits",
         ]
 
     def values(self):
         return [
             self.mask_logits, self.presence_logits, self.center_logits,
-            self.curve_logits, self.path_marginals, self.no_pick_logits,
+            self.curve_logits, self.path_marginals, self.null_marginals,
+            self.path_start_prob, self.path_end_prob, self.no_pick_logits,
             self.air_reduced_input, self.uncertainty_logits,
             self.global_no_target_logits,
         ]

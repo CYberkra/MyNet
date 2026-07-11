@@ -276,8 +276,14 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
             if values.size==e-s and np.isfinite(values).all() and np.all(values>0):
                 altitude=torch.from_numpy(values[None]).to(device=device,dtype=xrs.dtype)
                 altitude=F.interpolate(altitude[:,None],size=W,mode='linear',align_corners=False)[:,0]
+        chainage=None
+        if bool(getattr(model, 'accepts_altitude', False)) and 'gnss_cumulative_distance_m' in line.files:
+            values=np.asarray(line['gnss_cumulative_distance_m'][s:e],dtype=np.float32)
+            if values.size==e-s and np.isfinite(values).all() and np.all(np.diff(values)>=0):
+                chainage=torch.from_numpy(values[None]).to(device=device,dtype=xrs.dtype)
+                chainage=F.interpolate(chainage[:,None],size=W,mode='linear',align_corners=False)[:,0]
         with torch.no_grad():
-            out_obj=model(xrs,altitude=altitude) if bool(getattr(model, 'accepts_altitude', False)) else model(xrs)
+            out_obj=model(xrs,altitude=altitude,chainage_m=chainage) if bool(getattr(model, 'accepts_altitude', False)) else model(xrs)
             logits,pres_logits,center_logits=unpack_model_output(out_obj)
             curve_logits=getattr(out_obj,'curve_logits',None)
             path_marginals=getattr(out_obj,'path_marginals',None)
@@ -319,6 +325,7 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
         'uncertainty_log_variance': uncertainty_sum/np.maximum(uncertainty_wsum,1e-6) if uncertainty_wsum.max()>0 else None,
         'no_pick_prob': no_pick_sum/np.maximum(no_pick_wsum,1e-6) if no_pick_wsum.max()>0 else None,
         'altitude_conditioning_used': bool(getattr(model, 'accepts_altitude', False) and 'flight_height_agl_m' in line.files),
+        'chainage_conditioning_used': bool(getattr(model, 'accepts_altitude', False) and 'gnss_cumulative_distance_m' in line.files),
     }
     result=(pred, pres_sum/np.maximum(pres_wsum,1e-6), center_pred, curve_pred, cfg, data_root)
     return (*result,details) if return_details else result
@@ -384,7 +391,16 @@ def _uncertainty_metrics(path_log_variance, cdp, vdp, cgt, vgt, dt_ns):
     error=np.abs(np.asarray(cdp,dtype=np.float64)-np.asarray(cgt,dtype=np.float64))*float(dt_ns)
     result['uncertainty_available']=True
     result['uncertainty_valid_trace_count']=int(valid.sum())
-    result['uncertainty_error_spearman_proxy']=float(np.corrcoef(np.argsort(np.argsort(score[valid])),np.argsort(np.argsort(error[valid])))[0,1])
+    # Avoid np.corrcoef here: on the project Windows NumPy build this tiny
+    # operation can raise a native exception during otherwise pure-Python tests.
+    # The explicit Pearson correlation of ordinal ranks is the same Spearman
+    # proxy used previously, with a defined outcome for constant series.
+    score_rank=np.argsort(np.argsort(score[valid])).astype(np.float64)
+    error_rank=np.argsort(np.argsort(error[valid])).astype(np.float64)
+    score_centered=score_rank-score_rank.mean()
+    error_centered=error_rank-error_rank.mean()
+    rank_denom=np.sqrt(np.dot(score_centered,score_centered)*np.dot(error_centered,error_centered))
+    result['uncertainty_error_spearman_proxy']=float(np.dot(score_centered,error_centered)/rank_denom) if rank_denom>0 else float('nan')
     for coverage in (0.50,0.80,0.90):
         n=max(1,int(np.floor(valid.sum()*coverage)))
         keep=np.argsort(score[valid])[:n]

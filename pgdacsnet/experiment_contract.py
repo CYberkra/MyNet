@@ -161,6 +161,22 @@ def validate_experiment_config(
             errors.append("AeroPath-SSD must enable its structured-path loss outside debug runs")
         if run_type in FORMAL_RUN_TYPES and float((cfg.get("loss", {}) or {}).get("aeropath_path_nll_weight", 1.0) or 0.0) <= 0:
             errors.append("formal AeroPath-SSD runs require loss.aeropath_path_nll_weight > 0")
+        if backend == "official_mamba2":
+            base_ch = int(cfg.get("base_ch", 24))
+            expand = int(cfg.get("mamba_expand", 2))
+            headdim = int(cfg.get("mamba_headdim", 16))
+            if headdim <= 0:
+                errors.append("official_mamba2 requires mamba_headdim > 0")
+            else:
+                axial_channels = (base_ch * 2, base_ch * 4)
+                incompatible = [channels for channels in axial_channels if (channels * expand) % headdim != 0]
+                if incompatible:
+                    errors.append(
+                        "official_mamba2 requires every AeroPath axial d_model * mamba_expand "
+                        f"to be divisible by mamba_headdim; channels={incompatible}, expand={expand}, headdim={headdim}"
+                    )
+        if run_type in FORMAL_RUN_TYPES and not bool(cfg.get("aeropath_bidirectional_axial", True)):
+            errors.append("formal AeroPath-SSD runs require aeropath_bidirectional_axial=true")
 
     loss_cfg = cfg.get("loss", {}) or {}
     arrival_weight = max(

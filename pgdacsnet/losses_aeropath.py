@@ -28,10 +28,43 @@ def _trace_weights(batch: dict[str, torch.Tensor], valid: torch.Tensor) -> torch
     return (0.25 + weight[:, None, :]) * valid
 
 
+def _trace_state(batch: dict[str, torch.Tensor], path: torch.Tensor) -> torch.Tensor:
+    """Return 0=negative, 1=confirmed positive, 2=weak, 3=ignore.
+
+    Older debug fixtures do not carry ``trace_state``; derive the same contract
+    from presence validity there, but production datasets must provide it.
+    """
+    state = batch.get("trace_state")
+    if state is not None:
+        if state.ndim == 3:
+            state = state[:, 0]
+        return state.to(device=path.device, dtype=torch.long)
+    presence = batch["presence"].to(path.device)
+    presence_valid = batch["presence_valid"].to(path.device)
+    if presence.ndim == 3:
+        presence = presence[:, 0]
+    if presence_valid.ndim == 3:
+        presence_valid = presence_valid[:, 0]
+    return torch.where(
+        presence_valid > 0.5,
+        torch.where(presence > 0.05, torch.ones_like(presence, dtype=torch.long), torch.zeros_like(presence, dtype=torch.long)),
+        torch.full_like(presence, 2, dtype=torch.long),
+    )
+
+
 def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dict) -> dict[str, torch.Tensor]:
     """Supervise soft-DP marginals and calibrated path uncertainty."""
     path = output.path_marginals.clamp_min(1e-8)
+    state = _trace_state(batch, path)
+    trace_valid = batch.get("valid_trace_mask")
+    if trace_valid is None:
+        trace_valid = (state != 3).to(path.dtype)
+    elif trace_valid.ndim == 3:
+        trace_valid = trace_valid[:, 0]
+    trace_valid = trace_valid.to(device=path.device, dtype=path.dtype)
     target, valid = _normalise_target(batch["y"].to(path.dtype), batch["valid_pix"].to(path.dtype))
+    # A path label is meaningful only for confirmed or weak-positive traces.
+    valid = valid * (((state == 1) | (state == 2)).to(path.dtype) * trace_valid)[:, None, :]
     ignore = batch.get("ignore_mask")
     if ignore is not None:
         valid = valid * (ignore.to(path.dtype).mean(dim=2) < 0.5).to(path.dtype)
@@ -62,30 +95,55 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
         squared_error = (pred_center - target_center).square()
         uncertainty_nll = ((squared_error * torch.exp(-log_variance) + log_variance) * weights).sum() / denom
 
-    presence = batch["presence"].to(path.dtype)
-    presence_valid = batch["presence_valid"].to(path.dtype)
-    if presence.ndim == 3:
-        presence = presence[:, 0]
-    if presence_valid.ndim == 3:
-        presence_valid = presence_valid[:, 0]
-    confirmed = presence_valid > 0.5
-    # A window with only weak/unknown traces has no valid global target.
-    window_valid = confirmed.any(dim=-1)
+    null = getattr(output, "null_marginals", None)
+    hard_known = (state == 0) | (state == 1)
+    null_valid = hard_known & (trace_valid > 0.5)
+    if null is not None and null_valid.any():
+        null = null.squeeze(1).clamp(1e-8, 1.0 - 1e-8)
+        null_target = (state == 0).to(path.dtype)
+        null_nll = F.binary_cross_entropy(null[null_valid], null_target[null_valid])
+    else:
+        null_nll = path_nll * 0.0
+
+    # Do not turn weak positives into negatives, and do not claim a window-level
+    # no-pick target when any trace is weak or ignored.
+    window_valid = hard_known.all(dim=-1)
     no_pick_logits = output.no_pick_logits.reshape(-1)
     if window_valid.any():
-        has_target = ((presence > 0.05) & confirmed).any(dim=-1)
+        has_target = (state == 1).any(dim=-1)
         no_pick_target = (~has_target).to(path.dtype)
         no_pick_bce = F.binary_cross_entropy_with_logits(
             no_pick_logits[window_valid], no_pick_target[window_valid]
         )
     else:
         no_pick_bce = path_nll * 0.0
+
+    boundary_nll = path_nll * 0.0
+    starts = getattr(output, "path_start_prob", None)
+    ends = getattr(output, "path_end_prob", None)
+    if starts is not None and ends is not None:
+        starts, ends = starts.squeeze(1).clamp(1e-8, 1.0 - 1e-8), ends.squeeze(1).clamp(1e-8, 1.0 - 1e-8)
+        previous = F.pad(state[:, :-1], (1, 0), value=0)
+        following = F.pad(state[:, 1:], (0, 1), value=0)
+        start_known = hard_known & ((previous == 0) | (previous == 1))
+        end_known = hard_known & ((following == 0) | (following == 1))
+        start_target = ((state == 1) & (previous == 0)).to(path.dtype)
+        end_target = ((state == 1) & (following == 0)).to(path.dtype)
+        terms = []
+        if start_known.any():
+            terms.append(F.binary_cross_entropy(starts[start_known], start_target[start_known]))
+        if end_known.any():
+            terms.append(F.binary_cross_entropy(ends[end_known], end_target[end_known]))
+        if terms:
+            boundary_nll = torch.stack(terms).mean()
     return {
         "path_nll": path_nll,
         "path_center_l1": center_l1,
         "path_smooth": path_smooth,
         "path_uncertainty_nll": uncertainty_nll,
         "no_pick_bce": no_pick_bce,
+        "path_null_nll": null_nll,
+        "path_boundary_nll": boundary_nll,
         "path_supervised_trace_count": valid.sum(),
         "no_pick_supervised_window_count": window_valid.to(path.dtype).sum(),
     }
@@ -111,6 +169,8 @@ def compute_aeropath_loss(output: Any, batch: dict[str, torch.Tensor], cfg: dict
         + float(lp.get("aeropath_path_smooth_weight", 0.03)) * structured["path_smooth"]
         + float(lp.get("aeropath_uncertainty_weight", 0.05)) * structured["path_uncertainty_nll"]
         + float(lp.get("aeropath_no_pick_weight", 0.25)) * structured["no_pick_bce"]
+        + float(lp.get("aeropath_null_weight", 0.25)) * structured["path_null_nll"]
+        + float(lp.get("aeropath_boundary_weight", 0.1)) * structured["path_boundary_nll"]
     )
     parts = {f"seg_{key}": float(value.detach().cpu()) for key, value in seg.items()}
     parts.update({key: float(value.detach().cpu()) for key, value in structured.items()})

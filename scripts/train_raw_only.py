@@ -477,6 +477,7 @@ class DS(Dataset):
         # Cache measured per-trace AGL heights from canonical original-CSV line
         # archives. This avoids reopening large line NPZ files for every window.
         self.line_height_cache={}
+        self.line_chainage_cache={}
         for line_name in sorted({r.get('line','') for r in self.rows if r.get('line')}):
             line_path=self.data_root/'lines'/f'{line_name}.npz'
             if not line_path.is_file():
@@ -487,12 +488,16 @@ class DS(Dataset):
                         values=np.asarray(line_data['flight_height_agl_m'],dtype=np.float32)
                         if values.ndim==1 and np.isfinite(values).all() and np.all(values>0):
                             self.line_height_cache[line_name]=values.copy()
+                    if 'gnss_cumulative_distance_m' in line_data.files:
+                        values=np.asarray(line_data['gnss_cumulative_distance_m'],dtype=np.float32)
+                        if values.ndim==1 and np.isfinite(values).all() and np.all(np.diff(values)>=0):
+                            self.line_chainage_cache[line_name]=values.copy()
             except Exception:
                 # Formal dataset checks report malformed line metadata. Dataset
                 # construction keeps the explicit index fallback for smoke data.
                 continue
     def __len__(self): return len(self.rows)
-    def augment_train(self,x,y,pres,pres_valid,lw,ignore,component_tensors=None,y_full_component=None,altitude=None,altitude_valid=None):
+    def augment_train(self,x,y,pres,pres_valid,lw,ignore,component_tensors=None,y_full_component=None,altitude=None,altitude_valid=None,trace_state=None,chainage=None):
         """Apply train-time augmentation while keeping component supervision aligned.
 
         Geometry/gain/spectral transforms that change the physical B-scan are
@@ -502,7 +507,7 @@ class DS(Dataset):
         component_tensors = component_tensors or {}
         aug=self.cfg.get('augment',{})
         if self.split!='train' or not aug.get('enabled',False):
-            return x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid
+            return x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid,trace_state,chainage
         # Gain augmentation is covariant: scale input raw and component targets.
         if aug.get('amp_scale_min') is not None and aug.get('amp_scale_max') is not None:
             scale=random.uniform(float(aug.get('amp_scale_min',0.9)), float(aug.get('amp_scale_max',1.1)))
@@ -530,6 +535,9 @@ class DS(Dataset):
             component_tensors={k:torch.flip(v,dims=[-1]) for k,v in component_tensors.items()}
             if altitude is not None: altitude=torch.flip(altitude,dims=[-1])
             if altitude_valid is not None: altitude_valid=torch.flip(altitude_valid,dims=[-1])
+            if trace_state is not None: trace_state=torch.flip(trace_state,dims=[-1])
+            if chainage is not None:
+                chainage=chainage[-1]-torch.flip(chainage,dims=[-1])
         spec_aug_prob = float(aug.get('spectral_aug_prob', 0.0))
         if spec_aug_prob > 0 and random.random() < spec_aug_prob:
             cutoff = random.uniform(0.3, 0.7)
@@ -539,7 +547,7 @@ class DS(Dataset):
             if bool(aug.get('spectral_aug_sync_components', True)):
                 if y_full_component is not None: y_full_component = _fft_lowpass_2d(y_full_component, cutoff, rolloff, strength)
                 component_tensors={k:_fft_lowpass_2d(v, cutoff, rolloff, strength) for k,v in component_tensors.items()}
-        return x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid
+        return x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid,trace_state,chainage
     def __getitem__(self,i):
         r=self.rows[i]
         z=np.load(resolve_window_npz(self.data_root,r),allow_pickle=False)
@@ -590,6 +598,18 @@ class DS(Dataset):
         altitude=F.interpolate(altitude_orig[None,None],size=W,mode='linear',align_corners=False)[0,0]
         altitude_valid=F.interpolate(altitude_valid_orig[None,None],size=W,mode='nearest')[0,0]
         altitude_valid=altitude_valid*(torch.isfinite(altitude)&(altitude>0)).float()
+        chainage_orig=self.line_chainage_cache.get(r.get('line',''))
+        if chainage_orig is not None:
+            start_idx,end_idx=int(r.get('start',0)),int(r.get('end',-1))
+            values=chainage_orig[start_idx:end_idx+1] if 0<=start_idx<=end_idx<chainage_orig.size else None
+            if values is not None and values.size==status.numel():
+                chainage_orig=torch.from_numpy(values.copy()).float()
+            else:
+                chainage_orig=None
+        if chainage_orig is None:
+            interval=float(r.get('trace_interval_m', self.cfg.get('trace_interval_m', 1.0)) or 1.0)
+            chainage_orig=torch.arange(status.numel(),dtype=torch.float32)*max(interval,1e-6)
+        chainage=F.interpolate(chainage_orig[None,None],size=W,mode='linear',align_corners=False)[0,0]
 
         # Keep a linear reconstruction target for A/S/G when requested.  The
         # model input can still use compressed/robust-normalised raw.
@@ -605,6 +625,8 @@ class DS(Dataset):
         pres_valid=F.interpolate(pres_valid[None,None],(1,W),mode='nearest')[0,0]
         lw=F.interpolate(lw[None,None,None],(1,W),mode='nearest')[0,0,0]
         weak=F.interpolate(weak[None,None,None],(1,W),mode='nearest')[0,0,0]
+        raw_state=torch.where(status.eq(1),torch.ones_like(status),torch.where(status.eq(2),torch.full_like(status,2),torch.zeros_like(status)))
+        trace_state=F.interpolate(raw_state[None,None,None].float(),(1,W),mode='nearest')[0,0,0].long()
 
         component_tensors = {}
         component_valid = {}
@@ -630,9 +652,11 @@ class DS(Dataset):
         if weak_scale != 1.0:
             lw=lw*torch.where(weak>0.5,torch.full_like(lw,weak_scale),torch.ones_like(lw))
 
-        x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid=self.augment_train(
-            x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid
+        x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid,trace_state,chainage=self.augment_train(
+            x,y,pres,pres_valid,lw,ignore,component_tensors,y_full_component,altitude,altitude_valid,trace_state,chainage
         )
+        ignored_trace=(ignore.mean(dim=(0,1))>=0.5)
+        trace_state=torch.where(ignored_trace,torch.full_like(trace_state,3),trace_state)
         core_thr=float(self.cfg.get('loss',{}).get('core_threshold',0.55))
         y_core=(y>=core_thr).float()
         has_any=1.0 if any(float(v) > 0.5 for v in component_valid.values()) else 0.0
@@ -642,6 +666,9 @@ class DS(Dataset):
             'Y_full_component':y_full_component,
             'has_component_targets':torch.tensor(has_any,dtype=torch.float32),
             'is_sim':torch.tensor(float(self.cfg.get('is_sim_dataset', False)),dtype=torch.float32),
+            'trace_state':trace_state,
+            'valid_trace_mask':(trace_state!=3).float(),
+            'chainage_m':chainage.to(dtype=torch.float32),
         }
         # Measured AGL height is trace-aligned with the resized B-scan. The
         # loss supports both this vector form and legacy scalar metadata.
@@ -727,7 +754,9 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
     if bool(getattr(model, 'accepts_altitude', False)):
         altitude = b.get('altitude')
         altitude = altitude.to(device) if hasattr(altitude, 'to') else None
-        output = model(x, altitude=altitude)
+        chainage = b.get('chainage_m')
+        chainage = chainage.to(device) if hasattr(chainage, 'to') else None
+        output = model(x, altitude=altitude, chainage_m=chainage)
     else:
         output = model(x)
 
@@ -744,6 +773,8 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
             'valid_pix': valid_pix,
             'valid_denom': valid_denom,
             'ignore_mask': ignore,
+            'trace_state': b.get('trace_state').to(device) if hasattr(b.get('trace_state'), 'to') else None,
+            'valid_trace_mask': b.get('valid_trace_mask').to(device) if hasattr(b.get('valid_trace_mask'), 'to') else None,
         }
         for key in OPTIONAL_COMPONENT_ARRAY_ALIASES:
             if key in b:
@@ -1103,7 +1134,9 @@ def preview(model,loader,device,run_dir,prefix,max_items=4):
             if bool(getattr(model, 'accepts_altitude', False)):
                 altitude=b.get('altitude')
                 altitude=altitude.to(device) if hasattr(altitude, 'to') else None
-                out=model(x, altitude=altitude)
+                chainage=b.get('chainage_m')
+                chainage=chainage.to(device) if hasattr(chainage,'to') else None
+                out=model(x, altitude=altitude, chainage_m=chainage)
             else:
                 out=model(x)
             logits,pres,center=unpack_model_output(out); pred=torch.sigmoid(logits)[0,0].cpu().numpy()

@@ -2,8 +2,10 @@ import pytest
 import torch
 import csv
 import numpy as np
+import itertools
 
 from pgdacsnet.model_aeropath_ssd import AeroPathSSD, SoftPathInference
+from pgdacsnet.model_mamba import OfficialMamba2Sequence
 from pgdacsnet.model_raw_unet import build_model
 from pgdacsnet.losses_aeropath import compute_aeropath_loss
 from pgdacsnet.experiment_contract import ContractError, validate_experiment_config
@@ -28,7 +30,11 @@ def test_aeropath_ssd_smoke_shape_gradient_and_path_normalisation():
     assert output.presence_logits.shape == (1, 1, 32)
     assert output.no_pick_logits.shape == (1, 1)
     assert output.uncertainty_logits.shape == (1, 1, 64, 32)
-    assert torch.allclose(output.path_marginals.sum(dim=2), torch.ones((1, 1, 32)), atol=1e-5)
+    assert output.null_marginals.shape == (1, 1, 32)
+    assert torch.allclose(
+        output.path_marginals.sum(dim=2) + output.null_marginals,
+        torch.ones((1, 1, 32)), atol=1e-5,
+    )
     (output.mask_logits.mean() + output.path_marginals.mean()).backward()
     assert x.grad is not None and torch.isfinite(x.grad).all()
 
@@ -39,6 +45,51 @@ def test_aeropath_path_prefers_a_consistent_high_energy_track():
     unary[:, :, 11, :] = 7.0
     path = decoder(unary)
     assert torch.equal(path.argmax(dim=2).squeeze(), torch.full((16,), 11, dtype=torch.long))
+
+
+def test_soft_path_marginals_match_bruteforce_with_null_state():
+    """Regression for the alpha/beta emission accounting at path boundaries."""
+    decoder = SoftPathInference(max_step=1, initial_slope_penalty=0.7, temperature=1.0,
+                                initial_start_penalty=0.4, initial_end_penalty=0.6)
+    unary = torch.tensor([[[[0.3, -0.2, 0.1], [0.0, 0.7, -0.5]]]])
+    null_logits = torch.tensor([[[0.2, -0.1, 0.4]]])
+    result = decoder(unary, null_logits=null_logits, return_details=True)
+    score = unary[0, 0]
+    null_score = null_logits[0, 0]
+    slope = torch.nn.functional.softplus(decoder.log_slope_penalty).item()
+    start = torch.nn.functional.softplus(decoder.log_start_penalty).item()
+    end = torch.nn.functional.softplus(decoder.log_end_penalty).item()
+    paths, scores = [], []
+    for states in itertools.product(range(3), repeat=3):  # 0/1 physical, 2=NULL
+        total = null_score[0].item() if states[0] == 2 else score[states[0], 0].item() - start
+        valid = True
+        for col in range(1, 3):
+            prev, state = states[col - 1], states[col]
+            if prev < 2 and state < 2:
+                if abs(prev - state) > 1:
+                    valid = False; break
+                total += score[state, col].item() - slope * abs(prev - state)
+            elif prev == 2 and state < 2:
+                total += score[state, col].item() - start
+            elif prev < 2 and state == 2:
+                total += null_score[col].item() - end
+            else:
+                total += null_score[col].item()
+        if valid:
+            paths.append(states); scores.append(total)
+    scores = torch.tensor(scores)
+    probs = torch.softmax(scores, dim=0)
+    expected = torch.zeros(3, 3)
+    for states, probability in zip(paths, probs):
+        for col, state in enumerate(states):
+            expected[state, col] += probability
+    actual = torch.cat([result.path_marginals[0, 0], result.null_marginals[0]], dim=0)
+    assert torch.allclose(actual, expected, atol=1e-5)
+
+
+def test_official_mamba2_headdim_contract_fails_before_optional_import():
+    with pytest.raises(ValueError, match="divisible by headdim"):
+        OfficialMamba2Sequence(d_model=24, expand=2, headdim=64)
 
 
 def test_aeropath_build_dispatch_uses_explicit_ssm_backend():
@@ -85,6 +136,22 @@ def test_aeropath_structured_loss_supervises_path_and_abstention():
     assert parts["no_pick_supervised_window_count"] == 2.0
     loss.backward()
     assert model.energy_head.weight.grad is not None
+
+
+def test_aeropath_no_pick_skips_mixed_weak_and_negative_windows():
+    model = AeroPathSSD(base_ch=8, ssm_impl="ssm_lite", mamba_state_dim=8)
+    x = torch.randn(1, 1, 24, 4)
+    output = model(x, altitude=torch.full((1, 4), 8.0))
+    y = torch.zeros(1, 1, 24, 4)
+    batch = {
+        "x": x, "y": y, "y_core": y, "presence": torch.zeros(1, 4),
+        "presence_valid": torch.tensor([[1.0, 0.0, 1.0, 1.0]]), "weight": torch.ones(1, 4),
+        "valid_pix": torch.ones_like(y), "valid_denom": torch.tensor(float(y.numel())),
+        "ignore_mask": torch.zeros_like(y), "trace_state": torch.tensor([[0, 2, 0, 0]]),
+        "valid_trace_mask": torch.ones(1, 4),
+    }
+    _loss, parts = compute_aeropath_loss(output, batch, {"loss": {}})
+    assert parts["no_pick_supervised_window_count"] == 0.0
 
 
 def test_aeropath_missing_altitude_stays_finite():

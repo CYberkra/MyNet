@@ -288,7 +288,10 @@ def make_scene_arrays(
     if not 0.05 <= cover_fraction <= 0.95:
         raise ValueError("cover_fraction must be in [0.05, 0.95]")
 
-    left_margin = grid.pml_guard_m
+    # Keep one grid-cell slack beyond the nominal PML+guard distance.  Source
+    # coordinates are snapped to the FDTD grid, so an exact boundary value can
+    # round inside the validator's required clearance.
+    left_margin = grid.pml_guard_m + grid.dl_m
     half_offset = source.tx_rx_offset_m / 2.0
     first_mid = snap_to_grid(left_margin + half_offset, grid.dl_m)
     trace_mid = first_mid + np.arange(n, dtype=np.float64) * grid.trace_spacing_m

@@ -262,6 +262,7 @@ class AxialSSMLiteBlock(nn.Module):
         d_state: SSM state dimension (passed through to SelectiveSSMLite).
         d_conv: Depthwise convolution kernel in SelectiveSSMLite.
         expand: Channel expansion factor for SelectiveSSMLite.
+        bidirectional: Run independent forward and reverse sequence mixers.
     """
 
     def __init__(
@@ -270,21 +271,37 @@ class AxialSSMLiteBlock(nn.Module):
         d_state: int = 32,
         d_conv: int = 4,
         expand: int = 2,
+        bidirectional: bool = False,
     ):
         super().__init__()
         self.norm_h = nn.GroupNorm(1, channels)
         self.norm_v = nn.GroupNorm(1, channels)
+        self.bidirectional = bool(bidirectional)
         self.ssm_h = SelectiveSSMLite(
             d_model=channels, d_state=d_state, d_conv=d_conv, expand=expand,
         )
         self.ssm_v = SelectiveSSMLite(
             d_model=channels, d_state=d_state, d_conv=d_conv, expand=expand,
         )
+        self.ssm_h_reverse = SelectiveSSMLite(
+            d_model=channels, d_state=d_state, d_conv=d_conv, expand=expand,
+        ) if self.bidirectional else None
+        self.ssm_v_reverse = SelectiveSSMLite(
+            d_model=channels, d_state=d_state, d_conv=d_conv, expand=expand,
+        ) if self.bidirectional else None
         self.mix = nn.Sequential(
             nn.Conv2d(channels, channels, 1),
             nn.GroupNorm(1, channels),
             nn.GELU(),
         )
+
+    @staticmethod
+    def _mix_bidirectional(forward_mixer: nn.Module, reverse_mixer: nn.Module | None, sequence: torch.Tensor) -> torch.Tensor:
+        forward = forward_mixer(sequence)
+        if reverse_mixer is None:
+            return forward
+        reverse = torch.flip(reverse_mixer(torch.flip(sequence, dims=(-1,))), dims=(-1,))
+        return 0.5 * (forward + reverse)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass applies SSM along both spatial axes.
@@ -300,12 +317,12 @@ class AxialSSMLiteBlock(nn.Module):
         # Horizontal SSM: treat each row as a sequence of length W
         # (B, C, H, W) -> (B*H, C, W) -> SSM -> (B*H, C, W) -> (B, C, H, W)
         hx = self.norm_h(x).permute(0, 2, 1, 3).reshape(B * H, C, W)
-        hx = self.ssm_h(hx).reshape(B, H, C, W).permute(0, 2, 1, 3)
+        hx = self._mix_bidirectional(self.ssm_h, self.ssm_h_reverse, hx).reshape(B, H, C, W).permute(0, 2, 1, 3)
 
         # Vertical SSM: treat each column as a sequence of length H
         # (B, C, H, W) -> (B*W, C, H) -> SSM -> (B*W, C, H) -> (B, C, H, W)
         vx = self.norm_v(x).permute(0, 3, 1, 2).reshape(B * W, C, H)
-        vx = self.ssm_v(vx).reshape(B, W, C, H).permute(0, 2, 3, 1)
+        vx = self._mix_bidirectional(self.ssm_v, self.ssm_v_reverse, vx).reshape(B, W, C, H).permute(0, 2, 3, 1)
 
         # Merge and residual
         return x + self.mix(0.5 * (hx + vx))
@@ -322,8 +339,14 @@ class OfficialMamba2Sequence(nn.Module):
     the SSM-lite proxy.
     """
 
-    def __init__(self, d_model: int, d_state: int = 64, d_conv: int = 4, expand: int = 2):
+    def __init__(self, d_model: int, d_state: int = 64, d_conv: int = 4, expand: int = 2, headdim: int = 16):
         super().__init__()
+        d_model, expand, headdim = int(d_model), int(expand), int(headdim)
+        if headdim <= 0 or (d_model * expand) % headdim != 0:
+            raise ValueError(
+                "official_mamba2 requires d_model * expand to be divisible by headdim; "
+                f"got d_model={d_model}, expand={expand}, headdim={headdim}"
+            )
         try:
             from mamba_ssm import Mamba2  # type: ignore[import-untyped]
         except Exception as exc:  # pragma: no cover - dependency-specific
@@ -332,7 +355,10 @@ class OfficialMamba2Sequence(nn.Module):
                 "Install a CUDA/Linux-compatible mamba-ssm build, or use "
                 "ssm_impl='ssm_lite'."
             ) from exc
-        self.block = Mamba2(d_model=int(d_model), d_state=int(d_state), d_conv=int(d_conv), expand=int(expand))
+        self.block = Mamba2(
+            d_model=d_model, d_state=int(d_state), d_conv=int(d_conv),
+            expand=expand, headdim=headdim,
+        )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # mamba_ssm blocks use (B, L, C); project from/to the repository convention (B, C, L).
@@ -342,20 +368,32 @@ class OfficialMamba2Sequence(nn.Module):
 class AxialMamba2Block(nn.Module):
     """2D axial mixer using the official Mamba2 sequence block when available."""
 
-    def __init__(self, channels: int, d_state: int = 32, d_conv: int = 4, expand: int = 2):
+    def __init__(self, channels: int, d_state: int = 32, d_conv: int = 4, expand: int = 2,
+                 headdim: int = 16, bidirectional: bool = False):
         super().__init__()
         self.norm_h = nn.GroupNorm(1, channels)
         self.norm_v = nn.GroupNorm(1, channels)
-        self.ssm_h = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand)
-        self.ssm_v = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+        self.bidirectional = bool(bidirectional)
+        self.ssm_h = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand, headdim=headdim)
+        self.ssm_v = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand, headdim=headdim)
+        self.ssm_h_reverse = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand, headdim=headdim) if self.bidirectional else None
+        self.ssm_v_reverse = OfficialMamba2Sequence(channels, d_state=d_state, d_conv=d_conv, expand=expand, headdim=headdim) if self.bidirectional else None
         self.mix = nn.Sequential(nn.Conv2d(channels, channels, 1), nn.GroupNorm(1, channels), nn.GELU())
+
+    @staticmethod
+    def _mix_bidirectional(forward_mixer: nn.Module, reverse_mixer: nn.Module | None, sequence: torch.Tensor) -> torch.Tensor:
+        forward = forward_mixer(sequence)
+        if reverse_mixer is None:
+            return forward
+        reverse = torch.flip(reverse_mixer(torch.flip(sequence, dims=(-1,))), dims=(-1,))
+        return 0.5 * (forward + reverse)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         B, C, H, W = x.shape
         hx = self.norm_h(x).permute(0, 2, 1, 3).reshape(B * H, C, W)
-        hx = self.ssm_h(hx).reshape(B, H, C, W).permute(0, 2, 1, 3)
+        hx = self._mix_bidirectional(self.ssm_h, self.ssm_h_reverse, hx).reshape(B, H, C, W).permute(0, 2, 1, 3)
         vx = self.norm_v(x).permute(0, 3, 1, 2).reshape(B * W, C, H)
-        vx = self.ssm_v(vx).reshape(B, W, C, H).permute(0, 2, 3, 1)
+        vx = self._mix_bidirectional(self.ssm_v, self.ssm_v_reverse, vx).reshape(B, W, C, H).permute(0, 2, 3, 1)
         return x + self.mix(0.5 * (hx + vx))
 
 
@@ -365,6 +403,8 @@ def make_axial_sequence_block(
     d_state: int = 32,
     d_conv: int = 4,
     expand: int = 2,
+    headdim: int = 16,
+    bidirectional: bool = False,
 ) -> nn.Module:
     """Factory for the axial sequence mixer used by GprMambaSep.
 
@@ -373,9 +413,9 @@ def make_axial_sequence_block(
     """
     impl = str(impl or "ssm_lite").lower()
     if impl in ("ssm_lite", "lite", "axial_ssm_lite", "mamba_like"):
-        return AxialSSMLiteBlock(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+        return AxialSSMLiteBlock(channels, d_state=d_state, d_conv=d_conv, expand=expand, bidirectional=bidirectional)
     if impl in ("official_mamba2", "mamba2", "mamba-2"):
-        return AxialMamba2Block(channels, d_state=d_state, d_conv=d_conv, expand=expand)
+        return AxialMamba2Block(channels, d_state=d_state, d_conv=d_conv, expand=expand, headdim=headdim, bidirectional=bidirectional)
     raise ValueError(f"Unknown axial sequence mixer impl: {impl!r}")
 
 

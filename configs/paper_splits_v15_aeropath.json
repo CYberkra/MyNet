@@ -1,0 +1,20 @@
+{
+  "version": "yingshan_v15_aeropath_formal_split_v1",
+  "main_measured_lines": ["LineL1", "Line3", "Line6", "Line7", "Line9"],
+  "review_only_lines": ["LineX1"],
+  "formal_protocol": {
+    "train_lines": ["LineL1", "Line3", "Line7"],
+    "validation_lines": ["Line6"],
+    "test_lines": ["Line9"],
+    "unit_of_isolation": "entire_measurement_line",
+    "label_release": "YingShan V15 final"
+  },
+  "inner_validation_by_holdout": {
+    "Line9": "Line6"
+  },
+  "notes": [
+    "Line9 remains test-only and Line9-conditioned legacy simulations are forbidden from formal training.",
+    "LineX1 is review-only and may not enter train, validation, or test.",
+    "This split is disabled until the V2 data-release gate has approved true negatives and independent simulations."
+  ]
+}

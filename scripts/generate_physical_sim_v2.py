@@ -16,8 +16,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
-import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -159,6 +159,13 @@ def _render_preview(
     domain_y_m: float,
     target_presence: bool,
 ) -> None:
+    """Write a dependency-light geometry preview for control-case review.
+
+    This generator runs in the simulation environment, where importing the
+    project Matplotlib build may abort the process before any case is written.
+    Pillow is sufficient for an audit preview and keeps case generation usable
+    on both the solver machine and CI.
+    """
     x = arrays.trace_midpoint_x_m
     ground = arrays.ground_y_m
     cover_bottom = arrays.cover_bottom_y_m
@@ -166,36 +173,40 @@ def _render_preview(
     antenna = arrays.antenna_y_m
     geom_t = arrays.geometric_arrival_time_ns
 
-    fig, axes = plt.subplots(2, 1, figsize=(13, 8), constrained_layout=True)
-    ax = axes[0]
-    ax.plot(x, ground, label="ground")
-    ax.plot(x, cover_bottom, label="cover bottom")
-    ax.plot(x, basal, label="nominal basal interface")
-    ax.plot(x, antenna, label="antenna path")
-    ax.fill_between(x, 0, basal, alpha=0.16, label="bedrock region")
-    ax.fill_between(x, basal, cover_bottom, alpha=0.16, label="weathered layer")
-    ax.fill_between(x, cover_bottom, ground, alpha=0.16, label="cover layer")
-    ax.set_xlim(0, domain_x_m)
-    ax.set_ylim(0, domain_y_m)
-    ax.set_xlabel("gprMax x coordinate (m)")
-    ax.set_ylabel("gprMax y coordinate (m, upward)")
-    ax.set_title(f"{case['case_id']} geometry (target_presence={target_presence})")
-    ax.legend(ncol=4, fontsize=8)
+    canvas = Image.new("RGB", (1300, 800), "white")
+    draw = ImageDraw.Draw(canvas)
+    left, right = 85, 1240
+    top, split, bottom = 55, 440, 745
 
-    ax = axes[1]
+    def points(values: np.ndarray, y0: int, y1: int, lo: float, hi: float) -> list[tuple[int, int]]:
+        denom = max(hi - lo, 1e-9)
+        return [
+            (int(left + (float(xx) / max(domain_x_m, 1e-9)) * (right - left)),
+             int(y1 - ((float(yy) - lo) / denom) * (y1 - y0)))
+            for xx, yy in zip(x, values)
+        ]
+
+    draw.text((left, 18), f"{case['case_id']} geometry (target_presence={target_presence})", fill="black")
+    for label, values, colour in (
+        ("ground", ground, "black"), ("cover bottom", cover_bottom, "#c77c00"),
+        ("nominal basal", basal, "#d62728"), ("antenna", antenna, "#1f77b4"),
+    ):
+        draw.line(points(values, top, split - 25, 0.0, domain_y_m), fill=colour, width=2)
+        draw.text((left + 8, top + 18 * ("ground cover bottom nominal basal antenna".split().index(label.split()[0])),), label, fill=colour)
+    draw.rectangle((left, top, right, split - 25), outline="gray")
+    draw.text((left, split - 10), "gprMax y coordinate (m, upward)", fill="black")
+
+    draw.text((left, split + 12), f"Pre-solver arrival ({arrays.arrival_model}); visible phase pending", fill="black")
+    draw.rectangle((left, split + 42, right, bottom), outline="gray")
     if target_presence:
-        ax.plot(x, geom_t, label="layered reference arrival")
+        # Time increases downward in the lower panel.
+        arrival = [(int(left + (float(xx) / max(domain_x_m, 1e-9)) * (right - left)),
+                    int(split + 42 + (float(tt) / 700.0) * (bottom - (split + 42))))
+                   for xx, tt in zip(x, geom_t)]
+        draw.line(arrival, fill="#d62728", width=2)
     else:
-        ax.plot(x, np.full_like(x, np.nan), label="no target arrival")
-    ax.set_xlim(x.min(), x.max())
-    ax.set_ylim(0, 700)
-    ax.invert_yaxis()
-    ax.set_xlabel("trace midpoint x (m)")
-    ax.set_ylabel("time (ns)")
-    ax.set_title(f"Pre-solver arrival reference ({arrays.arrival_model}); visible phase pending")
-    ax.legend()
-    fig.savefig(case_dir / "preview_geometry_and_arrival.png", dpi=170)
-    plt.close(fig)
+        draw.text((left + 12, split + 60), "No target arrival", fill="gray")
+    canvas.save(case_dir / "preview_geometry_and_arrival.png")
 
 
 def generate_case(
@@ -255,7 +266,8 @@ def generate_case(
         ),
     )
 
-    domain_x = snap_to_grid(float(arrays.receiver_x_m[-1] + grid.pml_guard_m), grid.dl_m)
+    # Mirror the left one-cell snapping slack in the right domain extent.
+    domain_x = snap_to_grid(float(arrays.receiver_x_m[-1] + grid.pml_guard_m + grid.dl_m), grid.dl_m)
     domain_y = snap_to_grid(float(np.max(arrays.antenna_y_m) + grid.pml_guard_m), grid.dl_m)
     nx = int(round(domain_x / grid.dl_m))
     x_centers = (np.arange(nx, dtype=np.float64) + 0.5) * grid.dl_m

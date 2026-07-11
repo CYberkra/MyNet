@@ -296,7 +296,14 @@ def build_line_npz(
         raise RawImportError(f"{raw.line}: invalid P99 absolute normalization scale {scale}")
     normalised = (raw.raw_amplitude.astype(np.float64) / scale).astype(np.float32)
     old = labels["raw_full_normalized"].astype(np.float64)
-    corr = float(np.corrcoef(normalised.astype(np.float64).ravel(), old.ravel())[0, 1])
+    # Avoid np.corrcoef: the Windows NumPy runtime used for project validation
+    # can throw a native exception in this otherwise straightforward audit.
+    lhs = normalised.astype(np.float64).ravel()
+    rhs = old.ravel()
+    lhs_centered = lhs - lhs.mean()
+    rhs_centered = rhs - rhs.mean()
+    corr_denom = np.sqrt(np.dot(lhs_centered, lhs_centered) * np.dot(rhs_centered, rhs_centered))
+    corr = float(np.dot(lhs_centered, rhs_centered) / corr_denom) if corr_denom > 0 else float("nan")
     max_diff = float(np.max(np.abs(normalised.astype(np.float64) - old)))
     if corr < 0.99999 or max_diff > 5e-4:
         raise RawImportError(

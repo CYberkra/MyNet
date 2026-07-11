@@ -23,14 +23,14 @@ values or trigger a fabricated default height.
 
 ## Network
 
-1. Phase-aware anisotropic time/trace convolutional stem.
-2. Metadata FiLM conditioning in every mixer block.
+1. An anisotropic time/trace convolutional stem. It is not a phase/IQ encoder.
+2. Per-trace metadata FiLM conditioning in every mixer block.
 3. Local depthwise mixing plus bidirectional axial sequence mixing.
 4. U-shaped multiscale decoder.
-5. Unary interface-energy, band-mask, presence, no-pick, and log-variance
-   heads.
-6. A differentiable first-order soft dynamic-programming layer producing
-   `path_marginals = P(time | trace)`.
+5. Unary interface-energy, band-mask, presence, per-trace NULL, global no-pick,
+   and log-variance heads.
+6. A differentiable first-order soft dynamic-programming layer producing a
+   physical path posterior, NULL posterior, and path start/end probabilities.
 
 `ssm_impl="official_mamba2"` is required for every formal AeroPath result.
 `ssm_lite` exists solely for CPU/smoke development and must not be described
@@ -45,10 +45,13 @@ objective adds:
 - expected path-center L1;
 - adjacent-trace path smoothness;
 - heteroscedastic path uncertainty NLL using the log-variance field;
-- a window no-pick BCE that is supervised only when at least one trace has a
-  confirmed (non-weak) presence label.
+- a NULL-state loss supervised only on confirmed positive/negative traces;
+- start/end transition losses for confirmed transitions;
+- a window no-pick BCE supervised only when every trace is confirmed. Mixed
+  weak/negative windows are skipped rather than fabricated into a hard target.
 
-Weak or ignored labels do not create a hard no-pick target.  Formal training
+Weak or ignored labels do not create a hard no-pick target.  The path transition
+penalty is scaled from tracewise GNSS chainage when available. Formal training
 is still governed by the existing dataset contracts: confirmed negatives,
 non-Line9-conditioned approved simulation, split isolation, and label-release
 gates are all independent requirements.
@@ -71,7 +74,9 @@ candidate path using `--no-pick-thr`; it is never silently fused with the mask.
 
 ## Configuration
 
-Use `configs/aeropath_ssd_smoke.json` for implementation tests only.  It is
-disabled on purpose and uses `ssm_lite`.  A future formal configuration must
-explicitly select `official_mamba2`, enable structured loss, and pass the
-project's formal data-release gate before any paper experiment is started.
+Use `configs/aeropath_ssd_smoke.json` for implementation tests only. It is
+disabled on purpose and uses `ssm_lite`. The locked but disabled formal protocol
+is in `configs/aeropath_ssd_v15_formal_blocked.json`: 501x256,
+`official_mamba2`, `mamba_headdim=16`, bidirectional axial blocks, Train=L1/3/7,
+Validation=6, Test=9, Review=X1. It remains blocked until the project data gate
+passes.

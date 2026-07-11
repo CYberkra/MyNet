@@ -568,6 +568,9 @@ def build_model(cfg):
             ssm_impl=str(cfg.get("ssm_impl", "official_mamba2")),
             mamba_state_dim=int(cfg.get("mamba_state_dim", 64)),
             mamba_d_conv=int(cfg.get("mamba_d_conv", 4)),
+            mamba_expand=int(cfg.get("mamba_expand", 2)),
+            mamba_headdim=int(cfg.get("mamba_headdim", 16)),
+            bidirectional_axial=bool(cfg.get("aeropath_bidirectional_axial", True)),
             time_window_ns=float(cfg.get("time_window_ns", 700.0)),
             max_path_step=int(cfg.get("aeropath_max_path_step", 6)),
         )
