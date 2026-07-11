@@ -84,7 +84,10 @@ def _air_reduce(raw: torch.Tensor, altitude_m: torch.Tensor | None, time_window_
         raise ValueError(f"altitude must have shape (B,W), got {tuple(altitude_m.shape)}")
     b, _, h, w = raw.shape
     altitude = F.interpolate(altitude_m[:, None], size=w, mode="linear", align_corners=False).squeeze(1)
-    air_ns = 2.0 * altitude.clamp_min(0.0) / 299_792_458.0 * 1e9
+    # Missing AGL metadata is represented by NaN in canonical datasets.  It
+    # must leave only that trace unreduced, never turn the entire view into NaN.
+    altitude = torch.where(torch.isfinite(altitude) & (altitude > 0), altitude, torch.zeros_like(altitude))
+    air_ns = 2.0 * altitude / 299_792_458.0 * 1e9
     y = torch.linspace(-1.0, 1.0, h, device=raw.device, dtype=raw.dtype)[None, :, None]
     x = torch.linspace(-1.0, 1.0, w, device=raw.device, dtype=raw.dtype)[None, None, :]
     shift = 2.0 * air_ns[:, None, :] / max(float(time_window_ns), 1e-6)
@@ -160,6 +163,9 @@ class AeroPathSSD(nn.Module):
         self.band_head = nn.Conv2d(c, 1, 1)
         self.presence_head = nn.Conv2d(c, 1, 1)
         self.no_pick_head = nn.Sequential(nn.AdaptiveAvgPool2d(1), nn.Conv2d(c, 1, 1))
+        # This is a log-variance field, not a confidence mask.  Losses consume
+        # it only along the structured path distribution.
+        self.uncertainty_head = nn.Conv2d(c, 1, 1)
         self.path = SoftPathInference(max_step=max_path_step)
 
     def forward(self, x: torch.Tensor, altitude: torch.Tensor | None = None) -> AeroPathOutput:
@@ -179,4 +185,5 @@ class AeroPathSSD(nn.Module):
         return AeroPathOutput(
             self.band_head(d0), presence, energy, curve_logits=energy,
             path_marginals=marginals, no_pick_logits=no_pick, air_reduced_input=reduced,
+            uncertainty_logits=self.uncertainty_head(d0),
         )

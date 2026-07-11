@@ -9,6 +9,7 @@
   "mamba_state_dim": 8,
   "mamba_d_conv": 4,
   "aeropath_max_path_step": 3,
+  "aeropath_enable_structured_loss": true,
   "height_resize": 128,
   "width_resize": 128,
   "batch_size": 1,
@@ -26,6 +27,11 @@
     "outside_weight": 0.36,
     "dice_weight": 0.85,
     "presence_weight": 0.42,
-    "centerline_weight": 0.2
+    "centerline_weight": 0.2,
+    "aeropath_path_nll_weight": 1.0,
+    "aeropath_path_center_weight": 0.6,
+    "aeropath_path_smooth_weight": 0.03,
+    "aeropath_uncertainty_weight": 0.05,
+    "aeropath_no_pick_weight": 0.25
   }
 }

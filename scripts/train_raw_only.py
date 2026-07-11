@@ -761,6 +761,27 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
         )
         return total_loss, parts
 
+    # AeroPath-SSD is a structured path model.  Its dynamic-programming
+    # marginals, abstention head, and uncertainty field need dedicated losses;
+    # routing it through the legacy mask-only objective would leave its main
+    # research contribution effectively unsupervised.
+    if hasattr(output, 'path_marginals'):
+        from pgdacsnet.losses_aeropath import compute_aeropath_loss
+        if not bool(cfg.get('aeropath_enable_structured_loss', True)):
+            raise ContractError('AeroPath-SSD cannot run with aeropath_enable_structured_loss=false')
+        batch = {
+            'x': x,
+            'y': y,
+            'y_core': y_core,
+            'presence': pres,
+            'presence_valid': pres_valid,
+            'weight': lw,
+            'valid_pix': valid_pix,
+            'valid_denom': valid_denom,
+            'ignore_mask': ignore,
+        }
+        return compute_aeropath_loss(output, batch, cfg)
+
     # Standard model — original loss
     logits,pres_logits,center_logits=unpack_model_output(output); prob=torch.sigmoid(logits)
     pix_w=(float(lp.get('base_pixel_weight',0.10))+lw[:,None,None,:])*valid_pix
@@ -1079,7 +1100,13 @@ def preview(model,loader,device,run_dir,prefix,max_items=4):
         for k,b in enumerate(loader):
             if k>=max_items: break
             x=b['x'].to(device); y=b['y'][0,0].numpy(); core=b['y_core'][0,0].numpy(); raw=b['x'][0,0].numpy()
-            out=model(x); logits,pres,center=unpack_model_output(out); pred=torch.sigmoid(logits)[0,0].cpu().numpy()
+            if bool(getattr(model, 'accepts_altitude', False)):
+                altitude=b.get('altitude')
+                altitude=altitude.to(device) if hasattr(altitude, 'to') else None
+                out=model(x, altitude=altitude)
+            else:
+                out=model(x)
+            logits,pres,center=unpack_model_output(out); pred=torch.sigmoid(logits)[0,0].cpu().numpy()
             if hasattr(out,'A_hat') and out.A_hat is not None:
                 A=out.A_hat[0,0].detach().cpu().numpy(); S=out.S_hat[0,0].detach().cpu().numpy(); G=out.G_hat[0,0].detach().cpu().numpy()
                 recon=A+S+G

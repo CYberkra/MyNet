@@ -112,6 +112,12 @@ def compute_segmentation_losses(outputs: dict[str, torch.Tensor | None], batch: 
         hard_negative = prob.mean() * 0.0
     pres = batch['presence']
     pres_valid = batch['presence_valid']
+    # Dataset batches store trace labels as (B,W), while model heads expose
+    # (B,1,W). Accept both contracts at this shared boundary.
+    if pres.ndim == 2:
+        pres = pres[:, None, :]
+    if pres_valid.ndim == 2:
+        pres_valid = pres_valid[:, None, :]
     pres_bce = F.binary_cross_entropy_with_logits(outputs['presence_logits'], pres, reduction='none')
     neg_boost = float(lp.get('presence_negative_weight', 5.0))
     pres_class_w = torch.where(pres <= 0.05, torch.full_like(pres, neg_boost), torch.ones_like(pres))

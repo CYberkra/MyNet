@@ -150,6 +150,18 @@ def validate_experiment_config(
     if sim_ratio > 0 and not str(cfg.get("sim_data_root", "")).strip():
         errors.append("sim_batch_ratio > 0 requires sim_data_root")
 
+    arch = str(cfg.get("model_arch", "")).strip().lower()
+    if arch in {"aeropath_ssd", "aeropath", "v3_aeropath_ssd"}:
+        backend = str(cfg.get("ssm_impl", "official_mamba2")).strip().lower()
+        if backend not in {"official_mamba2", "ssm_lite"}:
+            errors.append(f"AeroPath-SSD requires ssm_impl=official_mamba2 or ssm_lite, got {backend!r}")
+        if run_type in FORMAL_RUN_TYPES and backend != "official_mamba2":
+            errors.append("formal AeroPath-SSD runs require ssm_impl=official_mamba2; ssm_lite is debug-only")
+        if run_type not in NO_VALIDATION_RUN_TYPES and not bool(cfg.get("aeropath_enable_structured_loss", True)):
+            errors.append("AeroPath-SSD must enable its structured-path loss outside debug runs")
+        if run_type in FORMAL_RUN_TYPES and float((cfg.get("loss", {}) or {}).get("aeropath_path_nll_weight", 1.0) or 0.0) <= 0:
+            errors.append("formal AeroPath-SSD runs require loss.aeropath_path_nll_weight > 0")
+
     loss_cfg = cfg.get("loss", {}) or {}
     arrival_weight = max(
         float(loss_cfg.get("arrival_prior_weight", 0.0) or 0.0),

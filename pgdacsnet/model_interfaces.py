@@ -178,30 +178,39 @@ class AeroPathOutput(PGDAOutput):
     """
 
     def __init__(self, mask_logits, presence_logits, center_logits, *, curve_logits,
-                 path_marginals, no_pick_logits, air_reduced_input):
+                 path_marginals, no_pick_logits, air_reduced_input,
+                 uncertainty_logits=None):
         super().__init__(mask_logits, presence_logits, center_logits)
         self.curve_logits = curve_logits
         self.path_marginals = path_marginals
         self.no_pick_logits = no_pick_logits
         self.air_reduced_input = air_reduced_input
+        # Log-variance map used only by the structured path uncertainty loss.
+        # It is deliberately separate from the mask and curve probabilities.
+        self.uncertainty_logits = uncertainty_logits
+        # Keep the established global-head spelling available to generic tooling.
+        self.global_no_target_logits = no_pick_logits
 
     def __contains__(self, key):
         return key in {
             "mask_logits", "presence_logits", "center_logits", "curve_logits",
             "path_marginals", "no_pick_logits", "air_reduced_input",
+            "uncertainty_logits", "global_no_target_logits",
         }
 
     def keys(self):
         return [
             "mask_logits", "presence_logits", "center_logits", "curve_logits",
             "path_marginals", "no_pick_logits", "air_reduced_input",
+            "uncertainty_logits", "global_no_target_logits",
         ]
 
     def values(self):
         return [
             self.mask_logits, self.presence_logits, self.center_logits,
             self.curve_logits, self.path_marginals, self.no_pick_logits,
-            self.air_reduced_input,
+            self.air_reduced_input, self.uncertainty_logits,
+            self.global_no_target_logits,
         ]
 
 

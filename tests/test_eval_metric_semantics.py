@@ -46,3 +46,20 @@ def test_distribution_path_metrics_exact_curve():
     assert metrics["path_expected_mae_ns"] == pytest.approx(0.0)
     assert metrics["path_hit_rate_le_5ns"] == pytest.approx(1.0)
     assert metrics["path_emd"] == pytest.approx(0.0)
+
+
+def test_uncertainty_and_no_pick_remain_separate_artifacts(tmp_path: Path):
+    h, w = 8, 4
+    gt = np.zeros((h, w), np.float32); gt[3, :] = 1.0
+    pred = gt.copy(); status = np.array([1, 1, 0, 0], np.int16)
+    metrics = write_metrics(
+        tmp_path, "LineA", pred, pred, np.ones(w, np.float32), gt, status,
+        np.ones(w, np.float32), 1.0,
+        cdp=np.full(w, 3.0, np.float32), vdp=np.ones(w, bool),
+        cgt=np.full(w, 3.0, np.float32), vgt=np.ones(w, bool),
+        path_log_variance=np.array([-2.0, -1.0, 0.0, 1.0], np.float32),
+        no_pick_prob=np.array([0.1, 0.2, 0.8, 0.9], np.float32), no_pick_thr=0.5,
+    )
+    assert metrics["uncertainty_available"] is True
+    assert metrics["no_pick_reject_rate"] == pytest.approx(0.5)
+    assert "mask_iou_thr_0.5" in metrics

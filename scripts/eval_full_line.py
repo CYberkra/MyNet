@@ -15,6 +15,20 @@ from pgdacsnet.spatial_orientation import (
 )
 FONT=get_chinese_font()
 
+
+def profile_display_flip_or_false(line_name):
+    """Return the survey display flip, with acquisition-order fallback.
+
+    Canonical YingShan lines must be registered.  Synthetic, smoke, and future
+    sites may legitimately have no survey-profile contract yet; evaluation of
+    their numeric outputs must not fail merely because a plot orientation is
+    unavailable.
+    """
+    try:
+        return bool(get_line_orientation(line_name).profile_display_flip)
+    except KeyError:
+        return False
+
 def add_terrain_channels(x, line_name, start, end, cfg, data_root):
     feature_names=cfg.get('terrain_feature_names', [])
     if not cfg.get('use_terrain_features', False) or not feature_names:
@@ -222,7 +236,7 @@ def curve_distribution_metrics(curve_prob, gt, label_w, dt_ns=1.0, eps=1e-8):
     mapped['curve_expected_center_mae_ns']=mapped['curve_expected_mae_ns']
     return mapped
 
-def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg_json='',prefer_curve_logits=True):
+def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg_json='',prefer_curve_logits=True,return_details=False):
     run_dir=ROOT/run_dir
 
     if checkpoint=='final':
@@ -243,7 +257,10 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
     pred_sum=np.zeros((H0,W0),np.float32); weight_sum=np.zeros((H0,W0),np.float32)
     curve_sum=np.zeros((H0,W0),np.float32); curve_wsum=np.zeros((H0,W0),np.float32)
     center_sum=np.zeros((H0,W0),np.float32); center_wsum=np.zeros((H0,W0),np.float32)
+    structured_sum=np.zeros((H0,W0),np.float32); structured_wsum=np.zeros((H0,W0),np.float32)
+    uncertainty_sum=np.zeros((H0,W0),np.float32); uncertainty_wsum=np.zeros((H0,W0),np.float32)
     pres_sum=np.zeros((W0,),np.float32); pres_wsum=np.zeros((W0,),np.float32)
+    no_pick_sum=np.zeros((W0,),np.float32); no_pick_wsum=np.zeros((W0,),np.float32)
     H,W=cfg['height_resize'],cfg['width_resize']
     rows=[r for r in csv.DictReader(open(data_root/'window_index.csv',encoding='utf-8')) if r['line']==line_name]
     for r in rows:
@@ -253,18 +270,31 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
         xrs=compress_raw(xrs, cfg.get('input_log_scale',1e-3))
         xrs=normalize_raw_channel_4d(xrs,cfg)
         xrs=add_terrain_channels(xrs,line_name,s,e,cfg,data_root)
+        altitude=None
+        if bool(getattr(model, 'accepts_altitude', False)) and 'flight_height_agl_m' in line.files:
+            values=np.asarray(line['flight_height_agl_m'][s:e],dtype=np.float32)
+            if values.size==e-s and np.isfinite(values).all() and np.all(values>0):
+                altitude=torch.from_numpy(values[None]).to(device=device,dtype=xrs.dtype)
+                altitude=F.interpolate(altitude[:,None],size=W,mode='linear',align_corners=False)[:,0]
         with torch.no_grad():
-            out_obj=model(xrs)
+            out_obj=model(xrs,altitude=altitude) if bool(getattr(model, 'accepts_altitude', False)) else model(xrs)
             logits,pres_logits,center_logits=unpack_model_output(out_obj)
             curve_logits=getattr(out_obj,'curve_logits',None)
+            path_marginals=getattr(out_obj,'path_marginals',None)
+            uncertainty_logits=getattr(out_obj,'uncertainty_logits',None)
+            no_pick_logits=getattr(out_obj,'no_pick_logits',None)
             mask_prob=torch.sigmoid(logits)
             curve_prob=torch.softmax(curve_logits,dim=2) if curve_logits is not None else None
+            structured_prob=path_marginals if path_marginals is not None else None
             pp=torch.sigmoid(pres_logits)
             cp=torch.sigmoid(center_logits) if center_logits is not None else None
+            no_pick_prob=torch.sigmoid(no_pick_logits).reshape(-1) if no_pick_logits is not None else None
         p0=F.interpolate(mask_prob,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy()
         pp0=F.interpolate(pp, size=e-s, mode='linear', align_corners=False)[0,0].detach().cpu().numpy()
         cp0=F.interpolate(cp,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if cp is not None else None
         curve0=F.interpolate(curve_prob,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if curve_prob is not None else None
+        structured0=F.interpolate(structured_prob,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if structured_prob is not None else None
+        uncertainty0=F.interpolate(uncertainty_logits,(H0,e-s),mode='bilinear',align_corners=False)[0,0].detach().cpu().numpy() if uncertainty_logits is not None else None
         ww=np.hanning(e-s).astype(np.float32)
         if ww.max()>0: ww=ww/ww.max()
         ww=0.15+0.85*ww
@@ -274,14 +304,27 @@ def stitch_one(run_dir,line_name,checkpoint,device,data_root_arg='',override_cfg
             curve_sum[:,s:e]+=curve0*w2; curve_wsum[:,s:e]+=w2
         if cp0 is not None:
             center_sum[:,s:e]+=cp0*w2; center_wsum[:,s:e]+=w2
+        if structured0 is not None:
+            structured_sum[:,s:e]+=structured0*w2; structured_wsum[:,s:e]+=w2
+        if uncertainty0 is not None:
+            uncertainty_sum[:,s:e]+=uncertainty0*w2; uncertainty_wsum[:,s:e]+=w2
         pres_sum[s:e]+=pp0*ww; pres_wsum[s:e]+=ww
+        if no_pick_prob is not None:
+            no_pick_sum[s:e]+=float(no_pick_prob[0])*ww; no_pick_wsum[s:e]+=ww
     pred=pred_sum/np.maximum(weight_sum,1e-6)
     curve_pred=curve_sum/np.maximum(curve_wsum,1e-6) if curve_wsum.max()>0 else None
     center_pred=center_sum/np.maximum(center_wsum,1e-6) if center_wsum.max()>0 else None
-    return pred, pres_sum/np.maximum(pres_wsum,1e-6), center_pred, curve_pred, cfg, data_root
+    details={
+        'structured_path_prob': structured_sum/np.maximum(structured_wsum,1e-6) if structured_wsum.max()>0 else None,
+        'uncertainty_log_variance': uncertainty_sum/np.maximum(uncertainty_wsum,1e-6) if uncertainty_wsum.max()>0 else None,
+        'no_pick_prob': no_pick_sum/np.maximum(no_pick_wsum,1e-6) if no_pick_wsum.max()>0 else None,
+        'altitude_conditioning_used': bool(getattr(model, 'accepts_altitude', False) and 'flight_height_agl_m' in line.files),
+    }
+    result=(pred, pres_sum/np.maximum(pres_wsum,1e-6), center_pred, curve_pred, cfg, data_root)
+    return (*result,details) if return_details else result
 
 
-def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=320.0, search_max_ns=560.0, presence_thr=0.45, path_prob_thr=0.20, trace_offset=0, dp_max_jump=8, dp_smooth_weight=0.08, dp_breakable=False, dp_min_segment=16, distance_m=None):
+def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=320.0, search_max_ns=560.0, presence_thr=0.45, path_prob_thr=0.20, trace_offset=0, dp_max_jump=8, dp_smooth_weight=0.08, dp_breakable=False, dp_min_segment=16, distance_m=None, no_pick_prob=None, no_pick_thr=0.5, path_uncertainty=None):
     cgt,vgt=centerline(gt,1e-3)
     cmean,vmean=centerline(pred*(pred>0.15),1e-3)
     search_min=int(round(float(search_min_ns)/dt_ns)); search_max=int(round(float(search_max_ns)/dt_ns))
@@ -290,15 +333,20 @@ def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=32
     else:
         cdp,vdp=dp_ridge_centerline(pred, max_jump=int(dp_max_jump), smooth_weight=float(dp_smooth_weight), min_presence=(pres_pred>=presence_thr), search_min_sample=search_min, search_max_sample=search_max)
     H,W=pred.shape
+    no_pick_prob=np.asarray(no_pick_prob,dtype=np.float32).reshape(-1) if no_pick_prob is not None else None
+    path_uncertainty=np.asarray(path_uncertainty,dtype=np.float32).reshape(-1) if path_uncertainty is not None else None
+    if no_pick_prob is not None and no_pick_prob.size!=W: raise ValueError('no_pick_prob must match prediction width')
+    if path_uncertainty is not None and path_uncertainty.size!=W: raise ValueError('path_uncertainty must match prediction width')
     path_prob=np.full(W,np.nan,np.float32)
     final_valid=np.zeros(W,dtype=bool)
     pick_status=[]
     for i in range(W):
         if bool(vdp[i]) and np.isfinite(cdp[i]):
             yi=int(np.clip(round(float(cdp[i])),0,H-1)); path_prob[i]=pred[yi,i]
-            final_valid[i]=(pres_pred[i]>=presence_thr) and (path_prob[i]>=path_prob_thr)
+            final_valid[i]=(pres_pred[i]>=presence_thr) and (path_prob[i]>=path_prob_thr) and (no_pick_prob is None or no_pick_prob[i]<no_pick_thr)
         if final_valid[i]: pick_status.append('pick')
         elif pres_pred[i] < presence_thr: pick_status.append('reject_presence')
+        elif no_pick_prob is not None and no_pick_prob[i]>=no_pick_thr: pick_status.append('reject_no_pick')
         else: pick_status.append('reject_low_path_prob')
     cdp_out=cdp.copy(); cdp_out[~final_valid]=np.nan
     if distance_m is None:
@@ -307,7 +355,7 @@ def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=32
     if distance_m.size!=W:
         raise ValueError(f'distance_m has {distance_m.size} values for prediction width {W}')
     with open(out/f'{line_name}_pred_centerline.csv','w',encoding='utf-8') as f:
-        f.write('trace_idx,distance_m,mean_valid,mean_center_sample,mean_time_ns,dp_valid,dp_center_sample,dp_time_ns,dp_path_prob,pick_status,gt_valid,gt_center_sample,gt_time_ns,presence_prob\n')
+        f.write('trace_idx,distance_m,mean_valid,mean_center_sample,mean_time_ns,dp_valid,dp_center_sample,dp_time_ns,dp_path_prob,path_uncertainty,no_pick_prob,pick_status,gt_valid,gt_center_sample,gt_time_ns,presence_prob\n')
         for i in range(W):
             mv=bool(vmean[i]); dv=bool(final_valid[i]); gv=bool(vgt[i])
             mcs='' if not mv else f'{float(cmean[i]):.4f}'
@@ -315,12 +363,36 @@ def write_centerline_csv(out,line_name,pred,pres_pred,gt,dt_ns, search_min_ns=32
             dcs='' if not dv or not np.isfinite(cdp_out[i]) else f'{float(cdp_out[i]):.4f}'
             dts='' if not dv or not np.isfinite(cdp_out[i]) else f'{float(cdp_out[i])*dt_ns:.4f}'
             dpp='' if not np.isfinite(path_prob[i]) else f'{float(path_prob[i]):.6f}'
+            pu='' if path_uncertainty is None or not np.isfinite(path_uncertainty[i]) else f'{float(path_uncertainty[i]):.6f}'
+            npp='' if no_pick_prob is None or not np.isfinite(no_pick_prob[i]) else f'{float(no_pick_prob[i]):.6f}'
             gcs='' if not gv else f'{float(cgt[i]):.4f}'
             gts='' if not gv else f'{float(cgt[i])*dt_ns:.4f}'
-            f.write(f'{i+trace_offset},{float(distance_m[i]):.6f},{int(mv)},{mcs},{mts},{int(dv)},{dcs},{dts},{dpp},{pick_status[i]},{int(gv)},{gcs},{gts},{float(pres_pred[i]):.6f}\n')
+            f.write(f'{i+trace_offset},{float(distance_m[i]):.6f},{int(mv)},{mcs},{mts},{int(dv)},{dcs},{dts},{dpp},{pu},{npp},{pick_status[i]},{int(gv)},{gcs},{gts},{float(pres_pred[i]):.6f}\n')
     return cmean,vmean,cdp_out,final_valid,cgt,vgt,path_prob
 
-def write_metrics(out,line_name,mask_pred,path_pred,pres_pred,gt,status,label_w,dt_ns, curve_prob=None, cmean=None, vmean=None, cdp=None, vdp=None, cgt=None, vgt=None, path_prob=None, presence_thr=0.45, path_prob_thr=0.20, trace_start=0, trace_end=None, dp_max_jump=8, dp_smooth_weight=0.08, curve_source='mask_dp', path_source=None, dp_breakable=False, dp_min_segment=16):
+def _uncertainty_metrics(path_log_variance, cdp, vdp, cgt, vgt, dt_ns):
+    result={'uncertainty_available':False}
+    if path_log_variance is None or cdp is None or vdp is None or cgt is None or vgt is None:
+        return result
+    score=np.asarray(path_log_variance,dtype=np.float64).reshape(-1)
+    valid=np.asarray(vdp,dtype=bool)&np.asarray(vgt,dtype=bool)&np.isfinite(cdp)&np.isfinite(cgt)&np.isfinite(score)
+    if valid.sum()<3:
+        return result
+    # The model exports log variance. Exponentiating gives a monotonic,
+    # positive uncertainty score while preserving a stable calibration scale.
+    score=np.exp(np.clip(score,-8.0,5.0))
+    error=np.abs(np.asarray(cdp,dtype=np.float64)-np.asarray(cgt,dtype=np.float64))*float(dt_ns)
+    result['uncertainty_available']=True
+    result['uncertainty_valid_trace_count']=int(valid.sum())
+    result['uncertainty_error_spearman_proxy']=float(np.corrcoef(np.argsort(np.argsort(score[valid])),np.argsort(np.argsort(error[valid])))[0,1])
+    for coverage in (0.50,0.80,0.90):
+        n=max(1,int(np.floor(valid.sum()*coverage)))
+        keep=np.argsort(score[valid])[:n]
+        result[f'uncertainty_risk_at_coverage_{int(coverage*100)}']=float(error[valid][keep].mean())
+    return result
+
+
+def write_metrics(out,line_name,mask_pred,path_pred,pres_pred,gt,status,label_w,dt_ns, curve_prob=None, cmean=None, vmean=None, cdp=None, vdp=None, cgt=None, vgt=None, path_prob=None, presence_thr=0.45, path_prob_thr=0.20, trace_start=0, trace_end=None, dp_max_jump=8, dp_smooth_weight=0.08, curve_source='mask_dp', path_source=None, dp_breakable=False, dp_min_segment=16, path_log_variance=None, no_pick_prob=None, no_pick_thr=0.5):
     """Write semantically separated mask, temporal-path, and presence metrics."""
     mask_pred=np.asarray(mask_pred,dtype=np.float32)
     path_pred=np.asarray(path_pred,dtype=np.float32)
@@ -386,6 +458,16 @@ def write_metrics(out,line_name,mask_pred,path_pred,pres_pred,gt,status,label_w,
         metrics['dp_smooth_weight']=float(dp_smooth_weight)
         metrics['dp_breakable']=int(bool(dp_breakable))
         metrics['dp_min_segment']=int(dp_min_segment)
+        metrics.update(_uncertainty_metrics(path_log_variance, cdp, vdp, cgt, vgt, dt_ns))
+    else:
+        metrics['uncertainty_available']=False
+    if no_pick_prob is not None:
+        no_pick_prob=np.asarray(no_pick_prob,dtype=np.float32).reshape(-1)
+        if no_pick_prob.size != status.size:
+            raise ValueError('no_pick_prob must match trace width')
+        metrics['no_pick_probability_mean']=float(np.nanmean(no_pick_prob))
+        metrics['no_pick_threshold']=float(no_pick_thr)
+        metrics['no_pick_reject_rate']=float((no_pick_prob>=float(no_pick_thr)).mean())
 
     # status 0/1 are confirmed negatives/positives. status 2 is weak/unknown
     # and must not enter hard rejection metrics.
@@ -424,6 +506,7 @@ def main():
     ap.add_argument('--search-max-ns',type=float,default=560.0)
     ap.add_argument('--presence-thr',type=float,default=0.45)
     ap.add_argument('--path-prob-thr',type=float,default=0.20)
+    ap.add_argument('--no-pick-thr',type=float,default=0.50,help='Reject structured-path picks when the no-pick probability reaches this threshold.')
     ap.add_argument('--dp-max-jump',type=int,default=8)
     ap.add_argument('--dp-smooth-weight',type=float,default=0.08)
     ap.add_argument('--dp-breakable',action='store_true',help='Run DP independently inside high-confidence segments instead of forcing one global ridge.')
@@ -446,22 +529,27 @@ def main():
         tj=json.load(open(ROOT/args.threshold_json if not Path(args.threshold_json).is_absolute() else args.threshold_json,encoding='utf-8'))
         args.presence_thr=float(tj.get('presence_thr',args.presence_thr))
         args.path_prob_thr=float(tj.get('path_prob_thr',args.path_prob_thr))
+        args.no_pick_thr=float(tj.get('no_pick_thr',args.no_pick_thr))
         args.search_min_ns=float(tj.get('search_min_ns',args.search_min_ns))
         args.search_max_ns=float(tj.get('search_max_ns',args.search_max_ns))
         args.dp_max_jump=int(tj.get('dp_max_jump',args.dp_max_jump))
         args.dp_smooth_weight=float(tj.get('dp_smooth_weight',args.dp_smooth_weight))
     torch.set_num_threads(max(1,min(4,torch.get_num_threads())))
     device=torch.device('cpu' if args.force_cpu else ('cuda' if torch.cuda.is_available() else 'cpu'))
-    preds=[]; presses=[]; centers=[]; curves=[]; data_roots=[]
+    preds=[]; presses=[]; centers=[]; curves=[]; structured_paths=[]; uncertainties=[]; no_picks=[]; data_roots=[]; altitude_conditioning=[]
     for rd in args.run_dirs:
         print(f'评估 {args.line}: {rd}',flush=True)
-        p,pp,cp,curve,cfg,data_root=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json,prefer_curve_logits=not args.disable_curve_logits); preds.append(p); presses.append(pp); centers.append(cp); curves.append(curve); data_roots.append(data_root)
+        p,pp,cp,curve,cfg,data_root,details=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json,prefer_curve_logits=not args.disable_curve_logits,return_details=True); preds.append(p); presses.append(pp); centers.append(cp); curves.append(curve); structured_paths.append(details['structured_path_prob']); uncertainties.append(details['uncertainty_log_variance']); no_picks.append(details['no_pick_prob']); altitude_conditioning.append(details['altitude_conditioning_used']); data_roots.append(data_root)
     mask_pred=np.mean(preds,axis=0).astype(np.float32); pres_pred=np.mean(presses,axis=0).astype(np.float32)
     center_pred=np.mean([cp for cp in centers if cp is not None],axis=0).astype(np.float32) if any(cp is not None for cp in centers) else None
     curve_pred=np.mean([cv for cv in curves if cv is not None],axis=0).astype(np.float32) if any(cv is not None for cv in curves) else None
+    structured_path_pred=np.mean([sp for sp in structured_paths if sp is not None],axis=0).astype(np.float32) if any(sp is not None for sp in structured_paths) else None
+    uncertainty_pred=np.mean([up for up in uncertainties if up is not None],axis=0).astype(np.float32) if any(up is not None for up in uncertainties) else None
+    no_pick_pred=np.mean([npred for npred in no_picks if npred is not None],axis=0).astype(np.float32) if any(npred is not None for npred in no_picks) else None
     if curve_pred is not None:
         curve_pred=normalise_time_distribution(curve_pred)
-    used_curve_logits = (curve_pred is not None) and (not args.disable_curve_logits)
+    used_structured_path = structured_path_pred is not None and (not args.disable_curve_logits)
+    used_curve_logits = (curve_pred is not None) and (not args.disable_curve_logits) and not used_structured_path
     data_root=data_roots[0] if data_roots else resolve_data_root(args.data_root)
     if any(dr!=data_root for dr in data_roots):
         raise ValueError('All run dirs must resolve to the same data root for one evaluation.')
@@ -477,13 +565,19 @@ def main():
     raw=raw[:,sl]; gt=gt[:,sl]; label_w=label_w[sl]; status=status[sl]; mask_pred=mask_pred[:,sl]; pres_pred=pres_pred[sl]; distance_m=distance_full[sl]
     if curve_pred is not None:
         curve_pred=curve_pred[:,sl]
+    if structured_path_pred is not None:
+        structured_path_pred=structured_path_pred[:,sl]
+    if uncertainty_pred is not None:
+        uncertainty_pred=uncertainty_pred[:,sl]
+    if no_pick_pred is not None:
+        no_pick_pred=no_pick_pred[sl]
     if center_pred is not None:
         center_pred=center_pred[:,sl]
     fusion_w=max(0.0,min(1.0,float(args.center_fusion_weight)))
     if fusion_w>0 and not args.allow_uncalibrated_center_fusion:
         raise ValueError('center fusion is uncalibrated; pass --allow-uncalibrated-center-fusion for an explicit ablation')
-    path_pred=curve_pred.copy() if used_curve_logits else mask_pred.copy()
-    curve_source='curve_distribution_dp' if used_curve_logits else 'mask_dp'
+    path_pred=structured_path_pred.copy() if used_structured_path else (curve_pred.copy() if used_curve_logits else mask_pred.copy())
+    curve_source='aeropath_soft_dp_marginals' if used_structured_path else ('curve_distribution_dp' if used_curve_logits else 'mask_dp')
     if center_pred is not None and fusion_w>0:
         center_dist=normalise_time_distribution(center_pred)
         path_pred=normalise_time_distribution((1.0-fusion_w)*path_pred+fusion_w*center_dist)
@@ -494,6 +588,12 @@ def main():
     np.save(out/f'{eval_name}_presence_prob.npy',pres_pred)
     if curve_pred is not None:
         np.save(out/f'{eval_name}_curve_prob.npy',curve_pred)
+    if structured_path_pred is not None:
+        np.save(out/f'{eval_name}_structured_path_prob.npy',structured_path_pred)
+    if uncertainty_pred is not None:
+        np.save(out/f'{eval_name}_path_log_variance.npy',uncertainty_pred)
+    if no_pick_pred is not None:
+        np.save(out/f'{eval_name}_no_pick_prob.npy',no_pick_pred)
     if center_pred is not None:
         np.save(out/f'{eval_name}_center_response_prob.npy',center_pred)
     np.save(out/f'{eval_name}_path_prob_image.npy',path_pred)
@@ -508,6 +608,10 @@ def main():
         'mask_prob_semantics':'sigmoid pixel-mask probability; only this artifact is used for Dice/IoU/BCE',
         'curve_prob_semantics':'time-normalised P(t|trace)' if curve_pred is not None else 'not available',
         'path_prob_image_semantics':curve_source,
+        'structured_path_prob_semantics':'soft-DP path marginal P(t|trace)' if structured_path_pred is not None else 'not available',
+        'path_log_variance_semantics':'pixelwise AeroPath log variance; per-trace summaries are weighted by structured path marginals' if uncertainty_pred is not None else 'not available',
+        'no_pick_prob_semantics':'stitched local no-interface probability' if no_pick_pred is not None else 'not available',
+        'altitude_conditioning_used':bool(any(altitude_conditioning)),
         'center_response_prob_semantics':'sigmoid center response (not a segmentation mask)' if center_pred is not None else 'not available',
         'legacy_aliases_written':bool(args.write_legacy_aliases),
         'center_fusion_weight':fusion_w,
@@ -515,16 +619,18 @@ def main():
         'canonical_prediction_order':'acquisition_csv',
         'display_orientation':args.display_orientation,
         'display_distance_axis':args.distance_axis,
-        'profile_display_flip':bool(get_line_orientation(args.line).profile_display_flip),
+        'profile_display_flip':profile_display_flip_or_false(args.line),
         'spatial_axis':'profile_chainage_m' if args.distance_axis=='profile' else ('gnss_cumulative_distance_m' if 'gnss_cumulative_distance_m' in line.files else 'trace_index_fallback'),
     }
     json.dump(artifact_contract,open(out/f'{eval_name}_artifact_contract.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
-    cmean,vmean,cdp,vdp,cgt,vgt,path_prob=write_centerline_csv(out,eval_name,path_pred,pres_pred,gt,float(line['dt_ns']),args.search_min_ns,args.search_max_ns,args.presence_thr,args.path_prob_thr,trace_start,args.dp_max_jump,args.dp_smooth_weight,args.dp_breakable,args.dp_min_segment,distance_m=distance_m)
-    write_metrics(out,eval_name,mask_pred,path_pred,pres_pred,gt,status,label_w,float(line['dt_ns']),curve_prob=curve_pred,cmean=cmean,vmean=vmean,cdp=cdp,vdp=vdp,cgt=cgt,vgt=vgt,path_prob=path_prob,presence_thr=args.presence_thr,path_prob_thr=args.path_prob_thr,trace_start=trace_start,trace_end=trace_end,dp_max_jump=args.dp_max_jump,dp_smooth_weight=args.dp_smooth_weight,curve_source=curve_source,dp_breakable=args.dp_breakable,dp_min_segment=args.dp_min_segment)
-    display_order=profile_index_order(mask_pred.shape[1],args.line) if args.display_orientation=='profile' else np.arange(mask_pred.shape[1],dtype=np.int64)
+    path_log_variance=(uncertainty_pred*path_pred).sum(axis=0) if uncertainty_pred is not None else None
+    path_uncertainty=np.exp(np.clip(path_log_variance,-8.0,5.0)) if path_log_variance is not None else None
+    cmean,vmean,cdp,vdp,cgt,vgt,path_prob=write_centerline_csv(out,eval_name,path_pred,pres_pred,gt,float(line['dt_ns']),args.search_min_ns,args.search_max_ns,args.presence_thr,args.path_prob_thr,trace_start,args.dp_max_jump,args.dp_smooth_weight,args.dp_breakable,args.dp_min_segment,distance_m=distance_m,no_pick_prob=no_pick_pred,no_pick_thr=args.no_pick_thr,path_uncertainty=path_uncertainty)
+    write_metrics(out,eval_name,mask_pred,path_pred,pres_pred,gt,status,label_w,float(line['dt_ns']),curve_prob=curve_pred,cmean=cmean,vmean=vmean,cdp=cdp,vdp=vdp,cgt=cgt,vgt=vgt,path_prob=path_prob,presence_thr=args.presence_thr,path_prob_thr=args.path_prob_thr,trace_start=trace_start,trace_end=trace_end,dp_max_jump=args.dp_max_jump,dp_smooth_weight=args.dp_smooth_weight,curve_source=curve_source,dp_breakable=args.dp_breakable,dp_min_segment=args.dp_min_segment,path_log_variance=path_log_variance,no_pick_prob=no_pick_pred,no_pick_thr=args.no_pick_thr)
+    display_order=(profile_index_order(mask_pred.shape[1],args.line) if profile_display_flip_or_false(args.line) else np.arange(mask_pred.shape[1],dtype=np.int64)) if args.display_orientation=='profile' else np.arange(mask_pred.shape[1],dtype=np.int64)
     display_base_full=profile_distance_full if args.distance_axis=='profile' else gnss_distance_full
     display_base_subset=display_base_full[sl]
-    if args.display_orientation=='profile' and get_line_orientation(args.line).profile_display_flip:
+    if args.display_orientation=='profile' and profile_display_flip_or_false(args.line):
         display_distance=display_base_full[-1]-display_base_subset[::-1]
     else:
         display_distance=display_base_subset.copy()
