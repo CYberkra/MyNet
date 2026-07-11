@@ -103,6 +103,28 @@ def test_visible_phase_extraction_tracks_matched_contrast() -> None:
     assert np.all(support > 1.0)
 
 
+def test_continuous_visible_phase_rejects_an_isolated_stronger_lobe() -> None:
+    time = np.linspace(0, 700, 501)
+    geom = np.full(9, 320.0)
+    full = np.zeros((501, 9), dtype=np.float32)
+    for j in range(full.shape[1]):
+        full[:, j] = np.exp(-0.5 * ((time - 320.0) / 4.0) ** 2)
+    # A single trace has a stronger but physically discontinuous distractor.
+    full[:, 4] += 3.0 * np.exp(-0.5 * ((time - 348.0) / 3.0) ** 2)
+    independent, _, _ = extract_visible_phase(full, np.zeros_like(full), time, geom)
+    continuous, _, _ = extract_visible_phase(
+        full,
+        np.zeros_like(full),
+        time,
+        geom,
+        enforce_continuity=True,
+        max_trace_step_ns=5.6,
+    )
+    assert independent[4] > 340.0
+    assert continuous[4] < 330.0
+    assert np.max(np.abs(np.diff(continuous))) <= 5.6
+
+
 def test_control_generator_and_static_validator(tmp_path: Path) -> None:
     out = tmp_path / "controls"
     env = os.environ.copy()

@@ -406,6 +406,9 @@ def extract_visible_phase(
     *,
     search_half_width_ns: float = 35.0,
     phase_half_width_ns: float = 8.0,
+    enforce_continuity: bool = False,
+    max_trace_step_ns: float = 5.6,
+    geometric_anchor_weight: float = 2.0,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Extract a visible target phase from a matched-contrast difference.
 
@@ -442,6 +445,51 @@ def extract_visible_phase(
         local_peak = float(np.max(envelope[search, j]))
         baseline = float(np.median(envelope[:, j])) + 1e-12
         support[j] = local_peak / baseline
+    if enforce_continuity:
+        dt_ns = float(np.median(np.diff(t)))
+        max_step_samples = max(1, int(np.floor(max_trace_step_ns / dt_ns + 1e-9)))
+        costs = np.full(full.shape, np.inf, dtype=np.float64)
+        back = np.full(full.shape, -1, dtype=np.int16)
+        for j, center in enumerate(geom):
+            if not np.isfinite(center):
+                continue
+            allowed = np.abs(t - center) <= search_half_width_ns
+            local = envelope[allowed, j]
+            local_max = float(np.max(local)) if local.size else 0.0
+            if local_max <= 0:
+                continue
+            amplitude_cost = -np.log(np.maximum(envelope[:, j] / local_max, 1e-12))
+            anchor_cost = geometric_anchor_weight * ((t - center) / search_half_width_ns) ** 2
+            unary = amplitude_cost + anchor_cost
+            unary[~allowed] = np.inf
+            if j == 0:
+                costs[:, j] = unary
+                continue
+            for sample in np.flatnonzero(allowed):
+                lo = max(0, sample - max_step_samples)
+                hi = min(t.size, sample + max_step_samples + 1)
+                previous = costs[lo:hi, j - 1]
+                if not np.isfinite(previous).any():
+                    continue
+                offsets = np.arange(lo, hi) - sample
+                candidate = previous + 0.05 * offsets.astype(np.float64) ** 2
+                choice = int(np.argmin(candidate))
+                costs[sample, j] = unary[sample] + candidate[choice]
+                back[sample, j] = np.int16(lo + choice)
+        end = int(np.argmin(costs[:, -1]))
+        if np.isfinite(costs[end, -1]):
+            path = np.empty(full.shape[1], dtype=np.int16)
+            path[-1] = end
+            for j in range(full.shape[1] - 1, 0, -1):
+                previous = int(back[path[j], j])
+                if previous < 0:
+                    path = np.empty(0, dtype=np.int16)
+                    break
+                path[j - 1] = previous
+            if path.size:
+                # The continuous path represents the wavelet envelope centre,
+                # avoiding a trace-wise signed-lobe switch in curved scenes.
+                visible = t[path]
     return visible, support, contrast.astype(np.float32)
 
 

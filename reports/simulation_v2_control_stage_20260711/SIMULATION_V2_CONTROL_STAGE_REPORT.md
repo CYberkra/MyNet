@@ -2,7 +2,7 @@
 
 日期：2026-07-11  
 工作基线：重建的 `d6f9108` 精简交付版  
-阶段状态：**静态生成与 preflight 已完成；gprMax 求解器尚未运行；正式训练仍禁止。**
+阶段状态：**四个 control 已完成 GPU 求解、后处理与自动审阅；正式训练仍禁止。**
 
 ## 1. 本轮目的
 
@@ -58,24 +58,25 @@
 ## 6. 已完成校验
 
 - 四个 control 静态 preflight：4/4 通过。
+- 四个 control 已在 RTX 5070 上使用 gprMax 3.1.7 完成求解、HDF5 合并和后处理。
+- CTRL04 已生成严格零目标掩码；CTRL01-03 均有 full/no-basal/air 匹配输出。
+- CTRL03 曾暴露 P95 连续性门禁遗漏，现已改为几何锚定连续路径与最大跳变联合检查。
 - 生成器、分层到时、CFL 后重采样、可见相位提取、负样本后处理、`--geometry-fixed` 运行计划测试：通过。
 - 权威 V15/canonical 数据已从交付包物化，78 个 canonical 窗口由全线数组重建用于验证。
-- 完整测试套件：138 passed，0 failed，0 errors（19.04 s，限制 CPU 线程避免容器过度订阅）。
+- 完整测试套件：138 passed，0 failed，0 errors。
 - 84/84 个 V15 受保护 NPZ SHA256 未变化。
 - `compileall`：通过。
 
 ## 7. 当前明确未完成
 
-当前环境没有安装 `gprMax`，也没有 NVIDIA runtime，因此：
+自动求解与后处理已完成，但仍未完成：
 
-- 未执行官方 `--geometry-only`；
-- 未运行 256 道 B-scan；
-- 未读取真实 HDF5 输出；
-- 未验证可见相位与几何到时误差；
-- 未做目标可见性和深层衰减人工审阅；
-- 未批准任何 case 用于正式训练。
+- 目标可见性、深层衰减和边缘暂态的人工物理审阅；
+- 实际硬件 Tx/Rx 几何的确认；
+- 人工审计 manifest 中的正式数据资格决策；
+- 任何 case 的正式训练批准。
 
-`reports/simulation_v2_control_stage_20260711/gprmax_runtime_check.json` 已如实记录该阻断。
+当前完整结果以 `POSTRUN_REVIEW.md` 与 `postrun_review/` 为准。
 
 ## 8. 下一运行门禁
 

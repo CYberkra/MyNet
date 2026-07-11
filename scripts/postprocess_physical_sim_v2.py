@@ -114,6 +114,7 @@ def main() -> int:
     parser.add_argument("--air", default="air_reference_merged.out")
     parser.add_argument("--component", default="Ez")
     parser.add_argument("--arrival-tolerance-ns", type=float, default=5.6)
+    parser.add_argument("--max-visible-step-ns", type=float, default=5.6)
     args = parser.parse_args()
 
     case_dir = Path(args.case_dir).resolve()
@@ -189,23 +190,40 @@ def main() -> int:
         if not reference_path.is_file():
             reference_path = labels / "geometric_arrival_time_ns.npy"
         reference = np.load(reference_path, allow_pickle=False)
-        visible, support, contrast = extract_visible_phase(full, control, time_ns, reference)
+        arrival_model = str(manifest.get("geometry", {}).get("arrival_model", ""))
+        exact_reference = arrival_model == "horizontal_layered_bistatic_exact"
+        visible, support, contrast = extract_visible_phase(
+            full,
+            control,
+            time_ns,
+            reference,
+            enforce_continuity=not exact_reference,
+            max_trace_step_ns=args.max_visible_step_ns,
+        )
         delta = visible - reference
         if not np.isfinite(delta).all():
             raise RuntimeError("visible phase extraction failed on one or more traces")
         phase_offset = float(np.median(delta))
         residual = delta - phase_offset
         max_abs_residual = float(np.max(np.abs(residual)))
-        arrival_model = str(manifest.get("geometry", {}).get("arrival_model", ""))
-        exact_reference = arrival_model == "horizontal_layered_bistatic_exact"
-        continuity_p95_ns = float(np.percentile(np.abs(np.diff(visible)), 95)) if visible.size > 1 else 0.0
+        visible_steps = np.abs(np.diff(visible))
+        continuity_p95_ns = float(np.percentile(visible_steps, 95)) if visible_steps.size else 0.0
+        continuity_max_ns = float(np.max(visible_steps)) if visible_steps.size else 0.0
         if exact_reference:
-            passed = max_abs_residual <= args.arrival_tolerance_ns
+            passed = bool(
+                max_abs_residual <= args.arrival_tolerance_ns
+                and continuity_max_ns <= args.max_visible_step_ns + 1e-6
+            )
         else:
             # A columnar layered time is a search reference for curved scenes,
-            # not an exact specular-ray truth. Gate on extraction support and
-            # continuity; do not report a geometric-arrival accuracy claim.
-            passed = bool(np.median(support) > 1.0 and continuity_p95_ns <= 14.0)
+            # not an exact specular-ray truth. Reject isolated phase switches
+            # as well as poor aggregate continuity; a P95-only gate can hide a
+            # small number of physically implausible large jumps.
+            passed = bool(
+                np.median(support) > 1.0
+                and continuity_p95_ns <= 14.0
+                and continuity_max_ns <= args.max_visible_step_ns + 1e-6
+            )
         target_mask = gaussian_curve_mask(time_ns, visible, sigma_ns=8.4)
 
         np.save(labels / "visible_phase_time_ns.npy", visible.astype(np.float32))
@@ -222,6 +240,8 @@ def main() -> int:
             "max_abs_trace_residual_after_phase_offset_ns": max_abs_residual,
             "arrival_tolerance_ns": args.arrival_tolerance_ns if exact_reference else None,
             "visible_curve_abs_step_p95_ns": continuity_p95_ns,
+            "visible_curve_abs_step_max_ns": continuity_max_ns,
+            "max_visible_step_tolerance_ns": args.max_visible_step_ns,
             "support_median": float(np.median(support)),
             "support_min": float(np.min(support)),
             "target_mask_path": "labels/target_mask_visible_phase_501x256.npy",

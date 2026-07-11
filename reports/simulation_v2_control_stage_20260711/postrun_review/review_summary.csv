@@ -1,0 +1,5 @@
+case_id,target_presence,postprocess_ok,gprmax_version,review_ready,formal_training_allowed,figure,support_median,target_mask_nonzero_count,phase_contract_ok
+CTRL01_FLAT_SHALLOW_LOWLOSS_POS,True,True,3.1.7,True,False,F:\codex\PSGN-CSNet\MyNet\reports\simulation_v2_control_stage_20260711\postrun_review\CTRL01_FLAT_SHALLOW_LOWLOSS_POS_review.png,61943.4140625,44288,True
+CTRL02_FLAT_DEEP_MODERATE_POS,True,True,3.1.7,True,False,F:\codex\PSGN-CSNet\MyNet\reports\simulation_v2_control_stage_20260711\postrun_review\CTRL02_FLAT_DEEP_MODERATE_POS_review.png,1442.43505859375,44288,True
+CTRL03_SMOOTH_INTERFACE_POS,True,True,3.1.7,True,False,F:\codex\PSGN-CSNet\MyNet\reports\simulation_v2_control_stage_20260711\postrun_review\CTRL03_SMOOTH_INTERFACE_POS_review.png,6315.9794921875,44288,True
+CTRL04_MATCHED_BACKGROUND_NEG,False,True,3.1.7,True,False,F:\codex\PSGN-CSNet\MyNet\reports\simulation_v2_control_stage_20260711\postrun_review\CTRL04_MATCHED_BACKGROUND_NEG_review.png,,0,True
