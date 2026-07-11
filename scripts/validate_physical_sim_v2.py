@@ -409,7 +409,7 @@ def main() -> int:
         comparable_fields = [
             ("material set", manifest["materials"]["set"], peer["materials"]["set"]),
             ("nominal interface", manifest["geometry"]["nominal_interface"], peer["geometry"]["nominal_interface"]),
-            ("cover fraction", manifest["geometry"]["cover_fraction"], peer["geometry"]["cover_fraction"]),
+            ("cover model", manifest["geometry"].get("cover_model"), peer["geometry"].get("cover_model")),
             ("trace spacing", manifest["grid"]["trace_spacing_m"], peer["grid"]["trace_spacing_m"]),
         ]
         for label, value, expected in comparable_fields:

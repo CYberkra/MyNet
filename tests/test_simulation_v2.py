@@ -18,6 +18,7 @@ from pgdacsnet.simulation_v2 import (  # noqa: E402
     Material,
     SourceSpec,
     assert_grid_multiple,
+    control_point_interface_depth,
     extract_visible_phase,
     layered_bistatic_twt_ns,
     make_scene_arrays,
@@ -77,6 +78,32 @@ def test_scene_arrays_enforce_antenna_agl_and_layer_order() -> None:
     assert np.all(arrays.ground_y_m > arrays.cover_bottom_y_m)
     assert np.all(arrays.cover_bottom_y_m > arrays.basal_interface_y_m)
     assert np.all(np.isfinite(arrays.geometric_arrival_time_ns))
+
+
+def test_control_point_basal_can_vary_independently_of_cover_boundary() -> None:
+    grid = GridSpec()
+    x = np.arange(grid.trace_count, dtype=np.float64) * grid.trace_spacing_m
+    basal = control_point_interface_depth(
+        x,
+        base_depth_m=9.4,
+        control_point_fractions=[0.0, 0.2, 0.45, 0.7, 1.0],
+        depth_offsets_m=[-0.4, -0.2, 0.3, 0.7, 0.25],
+        smoothing_length_m=1.2,
+    )
+    arrays = make_scene_arrays(
+        grid=grid,
+        source=SourceSpec(),
+        basal_depth_m=basal,
+        flight_height_agl_m=np.full(grid.trace_count, 5.0),
+        cover_thickness_m=3.2,
+        ground_y_m=15.0,
+        cover_material=Material("cover", 8.8, 0.0012),
+        weathered_material=Material("weathered", 8.4, 0.0010),
+        arrival_model="columnar_layered_reference_not_specular_exact",
+    )
+    assert np.ptp(arrays.basal_depth_m) > 0.5
+    assert np.ptp(arrays.cover_thickness_m) == pytest.approx(0.0)
+    assert np.all(arrays.weathered_thickness_m > 5.0)
 
 
 def test_resample_time_axis_uses_cfl_dt_not_assumed_501_solver_steps() -> None:
@@ -313,6 +340,43 @@ def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
     assert proc.returncode == 0, proc.stdout
     run_text = (out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS" / "RUN_COMMANDS.md").read_text()
     assert "-n 256 --geometry-fixed" in run_text
+
+
+def test_selected_control_regeneration_preserves_complete_index(tmp_path: Path) -> None:
+    out = tmp_path / "controls"
+    base_command = [
+        sys.executable,
+        str(ROOT / "scripts" / "generate_physical_sim_v2.py"),
+        "--out-root",
+        str(out),
+    ]
+    first = subprocess.run(
+        base_command,
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert first.returncode == 0, first.stdout
+    regenerated = subprocess.run(
+        base_command
+        + ["--case-id", "CTRL03_SMOOTH_INTERFACE_POS", "--overwrite"],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert regenerated.returncode == 0, regenerated.stdout
+    index = json.loads((out / "control_index.json").read_text(encoding="utf-8"))
+    assert index["case_count"] == 4
+    assert {entry["case_id"] for entry in index["cases"]} == {
+        "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+        "CTRL02_FLAT_DEEP_MODERATE_POS",
+        "CTRL03_SMOOTH_INTERFACE_POS",
+        "CTRL04_MATCHED_BACKGROUND_NEG",
+    }
 
 
 def test_negative_control_run_plan_includes_postprocess(tmp_path: Path) -> None:

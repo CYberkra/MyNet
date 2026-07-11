@@ -12,11 +12,17 @@
       "cover": {"name": "cover_moderate", "epsilon_r": 11.2, "conductivity_s_per_m": 0.0030},
       "weathered": {"name": "weathered_moderate", "epsilon_r": 8.0, "conductivity_s_per_m": 0.0020},
       "bedrock": {"name": "bedrock_moderate", "epsilon_r": 5.5, "conductivity_s_per_m": 0.0010}
+    },
+    "single_basal_reference": {
+      "cover": {"name": "cover_subtle", "epsilon_r": 8.8, "conductivity_s_per_m": 0.0012},
+      "weathered": {"name": "weathered_subtle", "epsilon_r": 8.4, "conductivity_s_per_m": 0.0010},
+      "bedrock": {"name": "bedrock_single_basal", "epsilon_r": 5.5, "conductivity_s_per_m": 0.0006}
     }
   },
   "notes": [
     "The measured wet-clay working value epsilon_r≈11.2 is retained in the moderate set.",
     "The historical sigma=0.006 S/m value is deliberately reserved for a later deep-attenuation challenge family; using it in all controls would make a 14 m reflector nearly invisible and would confound geometry validation.",
+    "The single_basal_reference set deliberately weakens the cover/weathered contrast so that the weathered/bedrock boundary remains the dominant reflector.",
     "Each material must later be varied within independent scene families; no Line9 label geometry or time distribution is used here."
   ]
 }

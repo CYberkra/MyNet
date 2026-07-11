@@ -28,6 +28,7 @@ from pgdacsnet.simulation_v2 import (  # noqa: E402
     SourceSpec,
     canonical_json_sha256,
     compress_column_boxes,
+    control_point_interface_depth,
     gaussian_curve_mask,
     make_scene_arrays,
     sha256_file,
@@ -237,13 +238,22 @@ def generate_case(
 
     x_local = np.arange(grid.trace_count, dtype=np.float64) * grid.trace_spacing_m
     interface = case["interface"]
-    basal_depth = smooth_interface_depth(
-        x_local,
-        base_depth_m=float(interface["base_depth_m"]),
-        slope=float(interface.get("slope", 0.0)),
-        sinusoid_amplitude_m=float(interface.get("sinusoid_amplitude_m", 0.0)),
-        sinusoid_wavelength_m=interface.get("sinusoid_wavelength_m"),
-    )
+    if interface.get("kind") == "control_points":
+        basal_depth = control_point_interface_depth(
+            x_local,
+            base_depth_m=float(interface["base_depth_m"]),
+            control_point_fractions=interface["control_point_fractions"],
+            depth_offsets_m=interface["depth_offsets_m"],
+            smoothing_length_m=float(interface.get("smoothing_length_m", 1.0)),
+        )
+    else:
+        basal_depth = smooth_interface_depth(
+            x_local,
+            base_depth_m=float(interface["base_depth_m"]),
+            slope=float(interface.get("slope", 0.0)),
+            sinusoid_amplitude_m=float(interface.get("sinusoid_amplitude_m", 0.0)),
+            sinusoid_wavelength_m=interface.get("sinusoid_wavelength_m"),
+        )
     agl = np.full(grid.trace_count, float(case["flight_height_agl_m"]), dtype=np.float64)
 
     bedrock_below_m = 3.0
@@ -255,7 +265,11 @@ def generate_case(
         source=source,
         basal_depth_m=basal_depth,
         flight_height_agl_m=agl,
-        cover_fraction=float(case["cover_fraction"]),
+        cover_fraction=float(case["cover_fraction"]) if "cover_fraction" in case else None,
+        cover_thickness_m=(
+            float(case["cover_boundary"]["base_depth_m"])
+            if "cover_boundary" in case else None
+        ),
         ground_y_m=ground_y,
         cover_material=cover,
         weathered_material=weathered,
@@ -467,7 +481,12 @@ def generate_case(
         "geometry": {
             "terrain_kind": case["terrain"]["kind"],
             "nominal_interface": case["interface"],
-            "cover_fraction": float(case["cover_fraction"]),
+            "cover_fraction": float(case["cover_fraction"]) if "cover_fraction" in case else None,
+            "cover_boundary": case.get("cover_boundary"),
+            "cover_model": (
+                {"kind": "fraction", "fraction": float(case["cover_fraction"])}
+                if "cover_fraction" in case else case["cover_boundary"]
+            ),
             "bedrock_below_min_m": bedrock_below_m,
             "arrival_model": arrays.arrival_model,
             "matched_positive_case_id": case.get("matched_positive_case_id"),
@@ -549,29 +568,36 @@ def main() -> int:
         missing = selected - {case["case_id"] for case in cases}
         if missing:
             raise SystemExit(f"Unknown case IDs: {sorted(missing)}")
-    out_root = Path(args.out_root)
+    out_root = Path(args.out_root).resolve()
     out_root.mkdir(parents=True, exist_ok=True)
     manifests = [generate_case(case, materials, out_root, overwrite=args.overwrite) for case in cases]
+    generated_entries = [
+        {
+            "case_id": m["case_id"],
+            "family": m["family"],
+            "target_presence": m["target_presence"],
+            "case_path": (
+                (out_root / m["case_id"]).relative_to(ROOT).as_posix()
+                if (out_root / m["case_id"]).is_relative_to(ROOT)
+                else str((out_root / m["case_id"]).resolve())
+            ),
+            "manifest_sha256": sha256_file(out_root / m["case_id"] / "scene_manifest.json"),
+            "train_allowed": False,
+        }
+        for m in manifests
+    ]
+    if selected and (out_root / "control_index.json").is_file():
+        previous = json.loads((out_root / "control_index.json").read_text(encoding="utf-8"))
+        entries_by_id = {entry["case_id"]: entry for entry in previous.get("cases", [])}
+        entries_by_id.update({entry["case_id"]: entry for entry in generated_entries})
+        ordered_ids = [case["case_id"] for case in _load_inputs(Path(args.cases), Path(args.materials))[0]]
+        generated_entries = [entries_by_id[case_id] for case_id in ordered_ids if case_id in entries_by_id]
     index = {
         "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
         "formal_training_allowed": False,
         "line9_conditioned": False,
-        "case_count": len(manifests),
-        "cases": [
-            {
-                "case_id": m["case_id"],
-                "family": m["family"],
-                "target_presence": m["target_presence"],
-                "case_path": (
-                    str((out_root / m["case_id"]).relative_to(ROOT))
-                    if (out_root / m["case_id"]).is_relative_to(ROOT)
-                    else str((out_root / m["case_id"]).resolve())
-                ),
-                "manifest_sha256": sha256_file(out_root / m["case_id"] / "scene_manifest.json"),
-                "train_allowed": False,
-            }
-            for m in manifests
-        ],
+        "case_count": len(generated_entries),
+        "cases": generated_entries,
     }
     write_json(out_root / "control_index.json", index)
     print(json.dumps(index, ensure_ascii=False, indent=2))

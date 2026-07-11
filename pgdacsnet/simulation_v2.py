@@ -265,13 +265,48 @@ def smooth_interface_depth(
     return out
 
 
+def control_point_interface_depth(
+    x_local_m: np.ndarray,
+    *,
+    base_depth_m: float,
+    control_point_fractions: Sequence[float],
+    depth_offsets_m: Sequence[float],
+    smoothing_length_m: float = 1.0,
+) -> np.ndarray:
+    """Build a deterministic, non-periodic, gently varying interface."""
+
+    x = np.asarray(x_local_m, dtype=np.float64)
+    fractions = np.asarray(control_point_fractions, dtype=np.float64)
+    offsets = np.asarray(depth_offsets_m, dtype=np.float64)
+    if fractions.ndim != 1 or fractions.size < 2 or fractions.shape != offsets.shape:
+        raise ValueError("control-point fractions and offsets must be matching 1-D arrays")
+    if not np.all(np.diff(fractions) > 0) or fractions[0] != 0.0 or fractions[-1] != 1.0:
+        raise ValueError("control-point fractions must increase strictly from 0 to 1")
+    if smoothing_length_m <= 0:
+        raise ValueError("smoothing_length_m must be positive")
+    anchors_x = x.min() + fractions * (x.max() - x.min())
+    linear = float(base_depth_m) + np.interp(x, anchors_x, offsets)
+    dx = float(np.median(np.diff(x)))
+    sigma = max(smoothing_length_m / max(dx, 1e-12), 1.0)
+    radius = max(2, int(np.ceil(3.0 * sigma)))
+    kernel_x = np.arange(-radius, radius + 1, dtype=np.float64)
+    kernel = np.exp(-0.5 * (kernel_x / sigma) ** 2)
+    kernel /= kernel.sum()
+    padded = np.pad(linear, radius, mode="edge")
+    smoothed = np.convolve(padded, kernel, mode="same")[radius:-radius]
+    if np.any(smoothed <= 0):
+        raise ValueError("control-point interface depth must remain positive")
+    return smoothed
+
+
 def make_scene_arrays(
     *,
     grid: GridSpec,
     source: SourceSpec,
     basal_depth_m: np.ndarray,
     flight_height_agl_m: np.ndarray,
-    cover_fraction: float,
+    cover_fraction: float | None = None,
+    cover_thickness_m: float | np.ndarray | None = None,
     ground_y_m: float | np.ndarray,
     cover_material: Material,
     weathered_material: Material,
@@ -285,7 +320,9 @@ def make_scene_arrays(
         raise ValueError(f"basal_depth_m and flight_height_agl_m must have shape ({n},)")
     if np.any(basal <= 0) or np.any(agl <= 0):
         raise ValueError("basal depth and flight height must be positive")
-    if not 0.05 <= cover_fraction <= 0.95:
+    if (cover_fraction is None) == (cover_thickness_m is None):
+        raise ValueError("provide exactly one of cover_fraction or cover_thickness_m")
+    if cover_fraction is not None and not 0.05 <= cover_fraction <= 0.95:
         raise ValueError("cover_fraction must be in [0.05, 0.95]")
 
     # Keep one grid-cell slack beyond the nominal PML+guard distance.  Source
@@ -302,7 +339,12 @@ def make_scene_arrays(
     ground = np.asarray(snap_to_grid(ground, grid.dl_m), dtype=np.float64)
     basal = np.asarray(snap_to_grid(basal, grid.dl_m), dtype=np.float64)
     agl = np.asarray(snap_to_grid(agl, grid.dl_m), dtype=np.float64)
-    cover = np.asarray(snap_to_grid(basal * cover_fraction, grid.dl_m), dtype=np.float64)
+    if cover_thickness_m is None:
+        assert cover_fraction is not None
+        cover_source = basal * cover_fraction
+    else:
+        cover_source = np.broadcast_to(np.asarray(cover_thickness_m, dtype=np.float64), (n,))
+    cover = np.asarray(snap_to_grid(cover_source, grid.dl_m), dtype=np.float64)
     weathered = basal - cover
     if np.any(cover < 0.30) or np.any(weathered < 0.30):
         raise ValueError("cover and weathered layers must each be at least 0.30 m")

@@ -36,22 +36,26 @@
     },
     {
       "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
-      "family": "smooth_interface_reference",
+      "family": "gentle_single_basal_reference",
       "target_presence": true,
-      "material_set": "low_loss_reference",
+      "material_set": "single_basal_reference",
       "terrain": {
         "kind": "flat"
       },
       "flight_height_agl_m": 5.0,
       "interface": {
-        "kind": "smooth",
-        "base_depth_m": 10.0,
-        "slope": 0.035,
-        "sinusoid_amplitude_m": 1.25,
-        "sinusoid_wavelength_m": 22.95
+        "kind": "control_points",
+        "base_depth_m": 9.4,
+        "control_point_fractions": [0.0, 0.18, 0.42, 0.66, 0.84, 1.0],
+        "depth_offsets_m": [-0.4, -0.25, 0.2, 0.65, 0.45, 0.15],
+        "smoothing_length_m": 1.35
       },
-      "cover_fraction": 0.5,
-      "purpose": "Per-trace geometry label and physical horizontal-scale reference"
+      "cover_boundary": {
+        "kind": "flat",
+        "base_depth_m": 3.2
+      },
+      "design_revision": "v2_single_dominant_nonperiodic_basal",
+      "purpose": "Single-dominant, non-periodic basal-interface visual and label reference"
     },
     {
       "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
