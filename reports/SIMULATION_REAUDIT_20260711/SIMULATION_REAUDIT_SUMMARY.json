@@ -1,0 +1,33 @@
+{
+  "audit_scope": "materialised_legacy_v1_simulation_cases",
+  "physical_case_copies": 45,
+  "unique_raw_visible_label_pairs": 33,
+  "exact_duplicate_copies": 12,
+  "signal_supported_count": 33,
+  "curve_visible_phase_semantic_ok_count": 20,
+  "line9_conditioned_count": 33,
+  "formal_training_allowed_count": 0,
+  "missing_case_local_gprmax_input_count": 33,
+  "missing_component_truth_count": 33,
+  "reproducibility_source_script": "reports\\SIMULATION_FULL_AUDIT_20260710\\audit_simulations.py",
+  "v2_controls": {
+    "control_case_count": 4,
+    "control_case_names": [
+      "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "CTRL03_SMOOTH_INTERFACE_POS",
+      "CTRL04_MATCHED_BACKGROUND_NEG"
+    ],
+    "official_fdtd_output_count": 0,
+    "materialised_bscan_array_count": 0,
+    "all_controls_line9_conditioned": false,
+    "all_controls_formal_training_allowed": false,
+    "control_decisions": {
+      "CTRL01_FLAT_SHALLOW_LOWLOSS_POS": "HOLD_FOR_OFFICIAL_RUNTIME",
+      "CTRL02_FLAT_DEEP_MODERATE_POS": "HOLD_FOR_OFFICIAL_RUNTIME",
+      "CTRL03_SMOOTH_INTERFACE_POS": "HOLD_FOR_OFFICIAL_RUNTIME",
+      "CTRL04_MATCHED_BACKGROUND_NEG": "HOLD_FOR_OFFICIAL_RUNTIME"
+    },
+    "decision": "CONTROL_STAGE_ONLY_NO_VISUAL_OR_TRAINING_RELEASE"
+  }
+}
