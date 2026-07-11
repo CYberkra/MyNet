@@ -558,6 +558,19 @@ class RawOnlyUNetV16Final(nn.Module):
 def build_model(cfg):
     arch = str(cfg.get("model_arch", "raw_unet")).lower()
     input_channels = int(cfg.get("input_channels", 1 + len(cfg.get("terrain_feature_names", [])) if cfg.get("use_terrain_features", False) else 1))
+    if arch in ("aeropath_ssd", "aeropath", "v3_aeropath_ssd"):
+        from pgdacsnet.model_aeropath_ssd import AeroPathSSD
+        metadata_channels = int(cfg.get("aeropath_metadata_channels", len(cfg.get("terrain_feature_names", []))))
+        return AeroPathSSD(
+            base_ch=int(cfg.get("base_ch", 24)),
+            input_channels=input_channels,
+            metadata_channels=metadata_channels,
+            ssm_impl=str(cfg.get("ssm_impl", "official_mamba2")),
+            mamba_state_dim=int(cfg.get("mamba_state_dim", 64)),
+            mamba_d_conv=int(cfg.get("mamba_d_conv", 4)),
+            time_window_ns=float(cfg.get("time_window_ns", 700.0)),
+            max_path_step=int(cfg.get("aeropath_max_path_step", 6)),
+        )
     if arch in ("raw_unet", "rawonlyunet", "v1_4"):
         return RawOnlyUNet(cfg["base_ch"], input_channels=input_channels)
     if arch in ("raw_unet_v15_light", "rawonlyunetv15light", "v1_5_light"):

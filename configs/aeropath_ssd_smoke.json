@@ -1,0 +1,31 @@
+{
+  "version": "aeropath_ssd_smoke_v0",
+  "run_type": "debug",
+  "enabled": false,
+  "training_block_reason": "AeroPath-SSD implementation smoke configuration. Formal training remains blocked until V2 simulations have completed gprMax postprocessing and the formal data gate passes.",
+  "model_arch": "aeropath_ssd",
+  "ssm_impl": "ssm_lite",
+  "base_ch": 8,
+  "mamba_state_dim": 8,
+  "mamba_d_conv": 4,
+  "aeropath_max_path_step": 3,
+  "height_resize": 128,
+  "width_resize": 128,
+  "batch_size": 1,
+  "epochs": 1,
+  "lr": 0.0003,
+  "num_workers": 0,
+  "input_log_scale": 0.001,
+  "data_root": "data/simulation_pretrain_v1",
+  "train_lines": [],
+  "val_lines": [],
+  "test_lines": [],
+  "review_lines": ["LineX1"],
+  "loss": {
+    "core_weight": 0.55,
+    "outside_weight": 0.36,
+    "dice_weight": 0.85,
+    "presence_weight": 0.42,
+    "centerline_weight": 0.2
+  }
+}

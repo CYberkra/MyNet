@@ -722,7 +722,14 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
     ignore=ignore.to(device) if ignore is not None else torch.zeros_like(y)
     valid_pix=(1.0-ignore).clamp(0.0,1.0)
     valid_denom=valid_pix.sum().clamp_min(1.0)
-    output = model(x)
+    # AeroPath-SSD consumes measured tracewise altitude to build its auxiliary
+    # reduced-time view. Legacy models retain their one-argument forward path.
+    if bool(getattr(model, 'accepts_altitude', False)):
+        altitude = b.get('altitude')
+        altitude = altitude.to(device) if hasattr(altitude, 'to') else None
+        output = model(x, altitude=altitude)
+    else:
+        output = model(x)
 
     # GprMambaSep model — use extended decomposition losses
     if hasattr(output, 'A_hat') and output.A_hat is not None:

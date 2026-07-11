@@ -169,6 +169,42 @@ class GprMambaSepOutput(PGDAOutput):
         )
 
 
+class AeroPathOutput(PGDAOutput):
+    """Structured interface-picking output for AeroPath-SSD.
+
+    The standard three logits preserve compatibility with the existing trainer.
+    ``curve_logits`` are unary interface energies and ``path_marginals`` are
+    the differentiable dynamic-programming path distribution over time.
+    """
+
+    def __init__(self, mask_logits, presence_logits, center_logits, *, curve_logits,
+                 path_marginals, no_pick_logits, air_reduced_input):
+        super().__init__(mask_logits, presence_logits, center_logits)
+        self.curve_logits = curve_logits
+        self.path_marginals = path_marginals
+        self.no_pick_logits = no_pick_logits
+        self.air_reduced_input = air_reduced_input
+
+    def __contains__(self, key):
+        return key in {
+            "mask_logits", "presence_logits", "center_logits", "curve_logits",
+            "path_marginals", "no_pick_logits", "air_reduced_input",
+        }
+
+    def keys(self):
+        return [
+            "mask_logits", "presence_logits", "center_logits", "curve_logits",
+            "path_marginals", "no_pick_logits", "air_reduced_input",
+        ]
+
+    def values(self):
+        return [
+            self.mask_logits, self.presence_logits, self.center_logits,
+            self.curve_logits, self.path_marginals, self.no_pick_logits,
+            self.air_reduced_input,
+        ]
+
+
 def make_gprmambasep_output(mask_logits, presence_logits, center_logits=None,
                              A_hat=None, S_hat=None, G_hat=None, component_gates=None,
                              curve_logits=None, global_no_target_logits=None,
