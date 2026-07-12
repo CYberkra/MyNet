@@ -810,6 +810,9 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
             'valid_pix': valid_pix,
             'valid_denom': valid_denom,
             'ignore_mask': ignore,
+            'trace_state': b.get('trace_state').to(device) if hasattr(b.get('trace_state'), 'to') else None,
+            'valid_trace_mask': b.get('valid_trace_mask').to(device) if hasattr(b.get('valid_trace_mask'), 'to') else None,
+            'chainage_m': b.get('chainage_m').to(device) if hasattr(b.get('chainage_m'), 'to') else None,
         }
         return compute_aeropath_loss(output, batch, cfg)
 

@@ -284,6 +284,14 @@ class AeroPathSSD(nn.Module):
 
     def forward(self, x: torch.Tensor, altitude: torch.Tensor | None = None,
                 chainage_m: torch.Tensor | None = None) -> AeroPathOutput:
+        if x.ndim != 4:
+            raise ValueError(f"AeroPath input must be (B,C,H,W), got {tuple(x.shape)}")
+        required_channels = 1 + self.metadata_channels
+        if x.shape[1] < required_channels:
+            raise ValueError(
+                f"AeroPath requires raw plus {self.metadata_channels} metadata channels "
+                f"({required_channels} total), got {x.shape[1]}"
+            )
         raw = x[:, :1]
         metadata = x[:, 1:1 + self.metadata_channels] if self.metadata_channels else None
         reduced = _air_reduce(raw, altitude, self.time_window_ns)

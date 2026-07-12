@@ -1,5 +1,5 @@
 {
-  "version": "aeropath_ssd_v15_formal_blocked_v1",
+  "version": "aeropath_ssd_v15_formal_blocked_v2",
   "run_type": "paper_train",
   "enabled": false,
   "config_status": "blocked",
@@ -19,6 +19,16 @@
   "aeropath_bidirectional_axial": true,
   "aeropath_max_path_step": 6,
   "aeropath_enable_structured_loss": true,
+  "use_terrain_features": true,
+  "terrain_feature_dir": "terrain_features",
+  "terrain_feature_names": [
+    "relative_height_z",
+    "ground_elevation_z",
+    "altitude_z",
+    "terrain_slope_z",
+    "trace_position"
+  ],
+  "aeropath_metadata_channels": 5,
   "height_resize": 501,
   "width_resize": 256,
   "batch_size": 1,

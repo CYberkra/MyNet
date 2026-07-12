@@ -52,6 +52,32 @@ def _trace_state(batch: dict[str, torch.Tensor], path: torch.Tensor) -> torch.Te
     )
 
 
+def _chainage_transition_scale(
+    chainage_m: torch.Tensor | None,
+    width: int,
+    reference: torch.Tensor,
+) -> torch.Tensor:
+    """Scale adjacent-trace penalties by their measured physical spacing."""
+    if width < 2:
+        return reference.new_ones((*reference.shape[:-1], 0))
+    if chainage_m is None:
+        return reference.new_ones((*reference.shape[:-1], width - 1))
+    if chainage_m.ndim == 3:
+        chainage_m = chainage_m[:, 0]
+    if chainage_m.ndim != 2 or chainage_m.shape[0] != reference.shape[0]:
+        raise ValueError(f"chainage_m must be (B,W), got {tuple(chainage_m.shape)}")
+    chainage_m = chainage_m.to(device=reference.device, dtype=reference.dtype)
+    if chainage_m.shape[-1] != width:
+        chainage_m = F.interpolate(
+            chainage_m[:, None], size=width, mode="linear", align_corners=False
+        )[:, 0]
+    delta = (chainage_m[:, 1:] - chainage_m[:, :-1]).abs()
+    finite = torch.isfinite(delta) & (delta > 1e-6)
+    delta = torch.where(finite, delta, torch.ones_like(delta))
+    median = delta.median(dim=1, keepdim=True).values.clamp_min(1e-6)
+    return (median / delta).clamp(0.25, 4.0)[:, None, :]
+
+
 def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dict) -> dict[str, torch.Tensor]:
     """Supervise soft-DP marginals and calibrated path uncertainty."""
     path = output.path_marginals.clamp_min(1e-8)
@@ -81,6 +107,9 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
     if path.shape[-1] > 1:
         pair_weight = weights[..., 1:] * (valid[..., :-1] > 0).to(path.dtype)
         smooth = (pred_center[..., 1:] - pred_center[..., :-1]).abs()
+        smooth = smooth * _chainage_transition_scale(
+            batch.get("chainage_m"), path.shape[-1], pred_center
+        )
         path_smooth = (smooth * pair_weight).sum() / pair_weight.sum().clamp_min(1e-6)
     else:
         path_smooth = path_nll * 0.0
@@ -107,7 +136,8 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
 
     # Do not turn weak positives into negatives, and do not claim a window-level
     # no-pick target when any trace is weak or ignored.
-    window_valid = hard_known.all(dim=-1)
+    known_and_valid = hard_known & (trace_valid > 0.5)
+    window_valid = known_and_valid.all(dim=-1)
     no_pick_logits = output.no_pick_logits.reshape(-1)
     if window_valid.any():
         has_target = (state == 1).any(dim=-1)
@@ -125,8 +155,10 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
         starts, ends = starts.squeeze(1).clamp(1e-8, 1.0 - 1e-8), ends.squeeze(1).clamp(1e-8, 1.0 - 1e-8)
         previous = F.pad(state[:, :-1], (1, 0), value=0)
         following = F.pad(state[:, 1:], (0, 1), value=0)
-        start_known = hard_known & ((previous == 0) | (previous == 1))
-        end_known = hard_known & ((following == 0) | (following == 1))
+        previous_known = F.pad(known_and_valid[:, :-1], (1, 0), value=True)
+        following_known = F.pad(known_and_valid[:, 1:], (0, 1), value=True)
+        start_known = known_and_valid & previous_known
+        end_known = known_and_valid & following_known
         start_target = ((state == 1) & (previous == 0)).to(path.dtype)
         end_target = ((state == 1) & (following == 0)).to(path.dtype)
         terms = []

@@ -177,6 +177,24 @@ def validate_experiment_config(
                     )
         if run_type in FORMAL_RUN_TYPES and not bool(cfg.get("aeropath_bidirectional_axial", True)):
             errors.append("formal AeroPath-SSD runs require aeropath_bidirectional_axial=true")
+        feature_names = list(cfg.get("terrain_feature_names", []) or [])
+        use_terrain = bool(cfg.get("use_terrain_features", False))
+        metadata_channels = int(cfg.get("aeropath_metadata_channels", len(feature_names)))
+        if use_terrain and not feature_names:
+            errors.append("AeroPath terrain conditioning requires non-empty terrain_feature_names")
+        if metadata_channels != (len(feature_names) if use_terrain else 0):
+            errors.append(
+                "aeropath_metadata_channels must equal the enabled terrain_feature_names count "
+                f"({len(feature_names) if use_terrain else 0}), got {metadata_channels}"
+            )
+        expected_input_channels = 1 + metadata_channels
+        if "input_channels" in cfg and int(cfg["input_channels"]) != expected_input_channels:
+            errors.append(
+                f"AeroPath input_channels must be raw plus metadata ({expected_input_channels}), "
+                f"got {cfg['input_channels']}"
+            )
+        if run_type in FORMAL_RUN_TYPES and metadata_channels <= 0:
+            errors.append("formal AeroPath-SSD runs require tracewise acquisition/terrain conditioning")
 
     loss_cfg = cfg.get("loss", {}) or {}
     arrival_weight = max(
