@@ -3,9 +3,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from scripts.generate_native_256_release_pilot import build
 from scripts.capture_gprmax_trace_contract import trace_filename, trace_index_for_path
 from scripts.run_native_256_release_pilot import stage_case
+from scripts.audit_native_256_spatial_pilot import _position_tolerance_m
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,3 +74,9 @@ def test_gprmax_single_trace_contract_uses_unnumbered_output_name() -> None:
     assert trace_index_for_path(Path("full_scene.out"), "full_scene", 1) == 1
     assert trace_index_for_path(Path("full_scene1.out"), "full_scene", 1) is None
     assert trace_filename("full_scene", 1, 2) == "full_scene1.out"
+
+
+def test_spatial_audit_position_tolerance_is_subcell() -> None:
+    tolerance = _position_tolerance_m(0.0225)
+    assert tolerance == pytest.approx(2.25e-5)
+    assert 3.7e-6 < tolerance < 0.001 * 0.0225 + 1e-12

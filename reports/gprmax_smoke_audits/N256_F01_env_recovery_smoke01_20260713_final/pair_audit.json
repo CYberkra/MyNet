@@ -1,0 +1,90 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v1",
+  "case_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/N256_F01_GENTLE_DEEP_MODERATE_POS/env_recovery_smoke01_20260713_final",
+  "source_case_dir": "data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/N256_F01_GENTLE_DEEP_MODERATE_POS",
+  "component": "Ez",
+  "trace_index": 0,
+  "reference_arrival_ns": 385.2997131347656,
+  "difference_envelope_pick_ns": 411.2372802481493,
+  "difference_pick_offset_ns": 25.937567113383693,
+  "target_window_ns": [
+    350.2997131347656,
+    420.2997131347656
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.0030058917606957387,
+  "pre_target_difference_rms": 1.4288688653757396e-05,
+  "target_to_pre_target_difference_db": 46.459619296266254,
+  "full_direct_rms": 31.455906382976817,
+  "control_direct_rms": 31.455906621902997,
+  "air_direct_rms": 31.377268730020948,
+  "metadata": {
+    "full_scene": {
+      "iterations": 13211,
+      "dt_s": 5.306972257686789e-11,
+      "grid_m": [
+        0.0225,
+        0.0225,
+        0.0225
+      ],
+      "source_position_m": [
+        110.0025,
+        28.035,
+        0.0
+      ],
+      "receiver_position_m": [
+        110.18249999999999,
+        28.035,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 13211,
+      "dt_s": 5.306972257686789e-11,
+      "grid_m": [
+        0.0225,
+        0.0225,
+        0.0225
+      ],
+      "source_position_m": [
+        110.0025,
+        28.035,
+        0.0
+      ],
+      "receiver_position_m": [
+        110.18249999999999,
+        28.035,
+        0.0
+      ]
+    },
+    "air_reference": {
+      "iterations": 13211,
+      "dt_s": 5.306972257686789e-11,
+      "grid_m": [
+        0.0225,
+        0.0225,
+        0.0225
+      ],
+      "source_position_m": [
+        110.0025,
+        28.035,
+        0.0
+      ],
+      "receiver_position_m": [
+        110.18249999999999,
+        28.035,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}
