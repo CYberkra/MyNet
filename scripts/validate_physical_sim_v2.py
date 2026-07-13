@@ -390,13 +390,31 @@ def main() -> int:
     parser.add_argument("--run-geometry-only", action="store_true")
     parser.add_argument("--report", default="")
     args = parser.parse_args()
+def validate_case_safe(case_dir: Path, *, run_geometry_only: bool = False) -> dict[str, Any]:
+    """Isolate malformed cases so a catalog audit can continue."""
+
+    try:
+        return validate_case(case_dir, run_geometry_only=run_geometry_only)
+    except (FileNotFoundError, json.JSONDecodeError, KeyError, OSError, ValueError) as exc:
+        return {
+            "case_id": case_dir.name,
+            "ok": False,
+            "errors": [f"case validation aborted: {exc}"],
+            "warnings": [],
+            "lifecycle_state": "invalid_or_incomplete",
+        }
+
+
     root = Path(args.root)
     cases = sorted(p for p in root.iterdir() if p.is_dir() and (p / "scene_manifest.json").is_file())
-    results = [validate_case(case, run_geometry_only=args.run_geometry_only) for case in cases]
+    results = [validate_case_safe(case, run_geometry_only=args.run_geometry_only) for case in cases]
     by_id = {p.name: p for p in cases}
     result_by_id = {r["case_id"]: r for r in results}
     for case in cases:
-        manifest = json.loads((case / "scene_manifest.json").read_text(encoding="utf-8"))
+        try:
+            manifest = json.loads((case / "scene_manifest.json").read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
         matched = manifest.get("geometry", {}).get("matched_positive_case_id")
         if not matched:
             continue
@@ -419,8 +437,15 @@ def main() -> int:
                 )
                 result_by_id[case.name]["ok"] = False
         for array_name in ("ground_y_m.npy", "flight_height_agl_m.npy", "cover_thickness_m.npy", "weathered_thickness_m.npy"):
-            a = np.load(case / "labels" / array_name, allow_pickle=False)
-            b = np.load(target / "labels" / array_name, allow_pickle=False)
+            try:
+                a = np.load(case / "labels" / array_name, allow_pickle=False)
+                b = np.load(target / "labels" / array_name, allow_pickle=False)
+            except (FileNotFoundError, OSError, ValueError) as exc:
+                result_by_id[case.name]["errors"].append(
+                    f"matched-pair array unavailable for {array_name}: {exc}"
+                )
+                result_by_id[case.name]["ok"] = False
+                continue
             if not np.array_equal(a, b):
                 result_by_id[case.name]["errors"].append(
                     f"matched negative differs from {matched}: {array_name}"

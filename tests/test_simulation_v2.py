@@ -340,6 +340,47 @@ def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
     assert proc.returncode == 0, proc.stdout
     run_text = (out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS" / "RUN_COMMANDS.md").read_text()
     assert "-n 256 --geometry-fixed" in run_text
+def test_static_validator_reports_incomplete_case_without_aborting_catalog(tmp_path: Path) -> None:
+    out = tmp_path / "controls"
+    env = os.environ.copy()
+    env["MPLBACKEND"] = "Agg"
+    generated = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "generate_physical_sim_v2.py"),
+            "--out-root",
+            str(out),
+            "--case-id",
+            "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+            "--overwrite",
+        ],
+        cwd=ROOT,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert generated.returncode == 0, generated.stdout
+    (out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS" / "labels" / "flight_height_agl_m.npy").unlink()
+
+    validated = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(out)],
+        cwd=ROOT,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert validated.returncode == 1
+    assert "Traceback" not in validated.stdout
+    report = json.loads((out / "preflight_validation.json").read_text(encoding="utf-8"))
+    assert report["ok"] is False
+    assert report["results"][0]["lifecycle_state"] == "invalid_or_incomplete"
+    assert "flight_height_agl_m.npy" in report["results"][0]["errors"][0]
+
+
 
 
 def test_selected_control_regeneration_preserves_complete_index(tmp_path: Path) -> None:

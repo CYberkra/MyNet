@@ -26,6 +26,13 @@ BATCH3_ROOT = (
 )
 CANONICAL_REAL_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
 V15_FINAL_ROOT = ROOT / "data_yingshan_v15_final_20260710"
+V2_RELEASE_GATE = (
+    ROOT
+    / "data"
+    / "simulation_governance_v2_20260713"
+    / "manifests"
+    / "simulation_release_gate.csv"
+)
 REAL_ROOT = V15_FINAL_ROOT if (V15_FINAL_ROOT / "manifests" / "v15_final_manifest.json").is_file() else CANONICAL_REAL_ROOT
 AUDIT_COMMIT = "799f229_source_candidate_plus_v15_final_release"
 
@@ -45,6 +52,11 @@ def rel(path: Path | None) -> str:
         return path.relative_to(ROOT).as_posix()
     except ValueError:
         return str(path)
+
+
+def resolve_contract_path(path_text: str) -> Path:
+    path = Path(path_text)
+    return path if path.is_absolute() else (ROOT / path).resolve()
 
 
 def load_recommendations() -> dict[str, dict[str, str]]:
@@ -287,6 +299,9 @@ def main() -> None:
         "label_origin", "label_semantics", "reference_line", "line9_conditioned",
         "automatic_qc_grade", "human_decision", "train_allowed", "line9_holdout_allowed",
         "negative_semantics", "exclusion_reason",
+        "contract_id", "target_presence", "trace_count", "trace_spacing_m",
+        "physical_span_m", "gprmax_version", "postprocess_validated",
+        "release_tier", "static_pair_topology_ok",
     ]
     audit_fields = ["case_id", "label", "auditor", "date", "method", "note", "source_sha256"]
     accepted_fields = [
@@ -396,6 +411,97 @@ def main() -> None:
             "note": note,
             "source_sha256": "",
         })
+
+    if V2_RELEASE_GATE.is_file():
+        with V2_RELEASE_GATE.open(encoding="utf-8-sig", newline="") as handle:
+            v2_rows = list(csv.DictReader(handle))
+        for release in v2_rows:
+            case_id = release["case_id"]
+            case_dir = resolve_contract_path(release["case_path"])
+            manifest_path = case_dir / "scene_manifest.json"
+            manifest = (
+                json.loads(manifest_path.read_text(encoding="utf-8"))
+                if manifest_path.is_file()
+                else {}
+            )
+            labels_dir = case_dir / "labels"
+            pair_dir = case_dir / "pair_audit"
+            trace_count = int(release.get("trace_count", "0") or 0)
+            target_presence = release.get("target_semantics") != "confirmed_negative_design"
+            raw = first_file(
+                labels_dir / f"full_scene_501x{trace_count}.npy",
+                pair_dir / f"full_501x{trace_count}.npy",
+            )
+            if target_presence:
+                label = first_file(
+                    labels_dir / "target_mask_visible_phase_501x256.npy",
+                    pair_dir / "visible_phase_time_ns.npy",
+                    labels_dir / "visible_phase_time_ns.npy",
+                )
+                label_semantics = "visible_phase_full_minus_no_basal"
+                negative_semantics = "not_a_negative_sample"
+            else:
+                label = first_file(labels_dir / "target_mask_confirmed_negative_501x256.npy")
+                label_semantics = "confirmed_negative_zero_target_mask"
+                negative_semantics = "true_negative_candidate_not_formally_promoted"
+            evidence = first_file(
+                pair_dir / "pair_audit_validation.json",
+                case_dir / "postprocess_validation.json",
+            )
+            grid = manifest.get("grid", {})
+            span = grid.get("trace_midpoint_span_m", grid.get("trace_span_m", ""))
+            source_hash = sha256(raw) if raw else ""
+            decision_reason = release.get("decision_basis", "")
+            sim_rows.append({
+                "case_id": case_id,
+                "source_group": "independent_simulation_v2_release_gate",
+                "case_path": release["case_path"],
+                "scene_family_id": release.get("family", case_id),
+                "raw_path": rel(raw),
+                "label_path": rel(label),
+                "raw_sha256": source_hash,
+                "label_sha256": sha256(label) if label else "",
+                "scene_world_path": rel(manifest_path) if manifest_path.is_file() else "",
+                "scene_world_sha256": sha256(manifest_path) if manifest_path.is_file() else "",
+                "design_metrics_path": rel(evidence),
+                "design_metrics_sha256": sha256(evidence) if evidence else "",
+                "metadata_trusted": release.get("metadata_trusted", "false"),
+                "label_origin": (
+                    "explicit_target_absence_design"
+                    if not target_presence
+                    else "strict_or_topology_matched_full_minus_no_basal"
+                ),
+                "label_semantics": label_semantics,
+                "reference_line": "",
+                "line9_conditioned": release.get("line9_conditioned", "false"),
+                "automatic_qc_grade": "V2_RELEASE_AUDIT",
+                "human_decision": release.get("release_tier", "unreviewed").upper(),
+                "train_allowed": "false",
+                "line9_holdout_allowed": "pending_explicit_promotion",
+                "negative_semantics": negative_semantics,
+                "exclusion_reason": decision_reason,
+                "contract_id": manifest.get("contract_id", "PGDA_SIMULATION_CONTRACT_V2"),
+                "target_presence": str(target_presence).lower(),
+                "trace_count": trace_count,
+                "trace_spacing_m": grid.get("trace_spacing_m", ""),
+                "physical_span_m": span,
+                "gprmax_version": (
+                    manifest.get("gprmax", {}).get("reviewed_version", "")
+                    or "3.1.7" if "complete" in release.get("solver_state", "") else ""
+                ),
+                "postprocess_validated": release.get("postprocess_validated", "false"),
+                "release_tier": release.get("release_tier", ""),
+                "static_pair_topology_ok": release.get("static_pair_topology_ok", "false"),
+            })
+            audit_rows.append({
+                "case_id": case_id,
+                "label": release.get("release_tier", "unreviewed"),
+                "auditor": "codex_physics_and_visual_audit_20260713",
+                "date": "2026-07-13",
+                "method": "gprMax_contract_pair_metrics_and_matched_scale_visual_review",
+                "note": decision_reason,
+                "source_sha256": source_hash,
+            })
 
     sim_rows.sort(key=lambda row: str(row["case_id"]))
     audit_rows.sort(key=lambda row: str(row["case_id"]))

@@ -54,11 +54,17 @@ def _case_mask(case_dir: Path, row: dict[str, str]) -> Path:
     if not path.is_file():
         raise FileNotFoundError(f"Manifest-approved label is missing for {row.get('case_id', case_dir.name)}: {path}")
     if str(row.get("contract_id", "")).strip() == "PGDA_SIMULATION_CONTRACT_V2":
-        expected = case_dir / "labels" / "target_mask_visible_phase_501x256.npy"
+        declared_presence = str(row.get("target_presence", "")).strip().lower()
+        label_name = (
+            "target_mask_confirmed_negative_501x256.npy"
+            if declared_presence in {"false", "0", "no"}
+            else "target_mask_visible_phase_501x256.npy"
+        )
+        expected = case_dir / "labels" / label_name
         if path.resolve() != expected.resolve():
             raise RuntimeError(
                 f"{row.get('case_id', case_dir.name)}: Simulation V2 must export the "
-                "postprocessed target_mask_visible_phase_501x256.npy label"
+                f"postprocessed {label_name} label"
             )
     return path
 

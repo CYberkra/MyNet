@@ -190,23 +190,27 @@ def main() -> int:
     contrast_endpoint_target_rms = float(np.sqrt(np.mean(contrast[endpoint_target_band] ** 2)))
     contrast_interior_target_rms = float(np.sqrt(np.mean(contrast[interior_target_band] ** 2)))
     strict_pair = manifest.get("strict_pair", {})
-    artifact_hash_contract = {
-        "geometry_index": {
-            "expected": strict_pair.get("shared_geometry_sha256"),
-            "actual": sha256_file(case_dir / "geology_indices.h5"),
-        },
-        "full_materials": {
-            "expected": strict_pair.get("full_materials_sha256"),
-            "actual": sha256_file(case_dir / "materials_full.txt"),
-        },
-        "control_materials": {
-            "expected": strict_pair.get("control_materials_sha256"),
-            "actual": sha256_file(case_dir / "materials_no_basal.txt"),
-        },
+    artifact_hash_contract = {}
+    strict_pair_files = {
+        "geometry_index": ("shared_geometry_sha256", "geology_indices.h5"),
+        "full_materials": ("full_materials_sha256", "materials_full.txt"),
+        "control_materials": ("control_materials_sha256", "materials_no_basal.txt"),
     }
+    for label, (manifest_key, filename) in strict_pair_files.items():
+        expected = strict_pair.get(manifest_key)
+        path = case_dir / filename
+        if expected is not None or path.is_file():
+            artifact_hash_contract[label] = {
+                "expected": expected,
+                "actual": sha256_file(path) if path.is_file() else None,
+            }
     for item in artifact_hash_contract.values():
         item["ok"] = bool(item["expected"] and item["actual"] == item["expected"])
-    artifact_hash_contract_ok = all(bool(item["ok"]) for item in artifact_hash_contract.values())
+    artifact_hash_contract_declared = bool(artifact_hash_contract)
+    artifact_hash_contract_ok = bool(
+        artifact_hash_contract_declared
+        and all(bool(item["ok"]) for item in artifact_hash_contract.values())
+    )
     control_trace_contract = evaluate_trace_contract(
         case_dir / "run_logs" / "control_trace_contract.json",
         manifest=manifest,
@@ -233,7 +237,10 @@ def main() -> int:
         and np.isclose(full_dt, control_dt)
         and full_attrs.get("gprMax") == control_attrs.get("gprMax")
     )
-    pair_physics_contract_ok = bool(numerical_pair_alignment_ok and artifact_hash_contract_ok)
+    pair_physics_contract_ok = bool(
+        numerical_pair_alignment_ok
+        and (artifact_hash_contract_ok if artifact_hash_contract_declared else True)
+    )
     formal_provenance_complete = bool(control_trace_contract.get("ok") and full_trace_contract.get("ok"))
     available_trace_contracts_ok = bool(
         control_trace_contract.get("ok")
@@ -297,20 +304,26 @@ def main() -> int:
             / max(np.sqrt(np.mean(contrast[comparison_background_band] ** 2)), 1e-30)
         ),
         "artifact_hash_contract": artifact_hash_contract,
+        "artifact_hash_contract_declared": artifact_hash_contract_declared,
         "artifact_hash_contract_ok": artifact_hash_contract_ok,
         "numerical_pair_alignment_ok": numerical_pair_alignment_ok,
         "pair_physics_contract_ok": pair_physics_contract_ok,
         "formal_provenance_complete": formal_provenance_complete,
         "control_per_trace_contract": control_trace_contract,
         "full_per_trace_contract": full_trace_contract,
-        "pair_contract_ok": bool(pair_physics_contract_ok and formal_provenance_complete),
+        "pair_contract_ok": bool(
+            pair_physics_contract_ok
+            and formal_provenance_complete
+            and artifact_hash_contract_ok
+        ),
         "quality_gate_decision": "manual_review_required_no_preregistered_promotion_threshold",
     }
     out = case_dir / "pair_audit"
     out.mkdir(exist_ok=True)
-    np.save(out / "full_501x128.npy", full.astype(np.float32))
-    np.save(out / "no_basal_501x128.npy", control.astype(np.float32))
-    np.save(out / "contrast_501x128.npy", contrast.astype(np.float32))
+    trace_count = full.shape[1]
+    np.save(out / f"full_501x{trace_count}.npy", full.astype(np.float32))
+    np.save(out / f"no_basal_501x{trace_count}.npy", control.astype(np.float32))
+    np.save(out / f"contrast_501x{trace_count}.npy", contrast.astype(np.float32))
     np.save(out / "visible_phase_time_ns.npy", visible.astype(np.float32))
     (out / "pair_audit_validation.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 

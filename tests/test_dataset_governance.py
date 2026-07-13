@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.export_sim_training_npz import load_eligible_rows
+from scripts.export_sim_training_npz import _case_mask, load_eligible_rows
 
 
 def _load_promotion_module():
@@ -40,6 +40,21 @@ def test_sim_export_blocks_line9_conditioned_formal_holdout(tmp_path: Path):
     _write_manifest(manifest, [{"case_id": "LEAKED", "train_allowed": "true", "line9_conditioned": "true"}])
     with pytest.raises(RuntimeError, match="Line9-conditioned"):
         load_eligible_rows(manifest, formal_test_line="Line9")
+
+
+def test_v2_negative_export_uses_confirmed_negative_mask(tmp_path: Path):
+    case = tmp_path / "CTRL_NEG"
+    labels = case / "labels"
+    labels.mkdir(parents=True)
+    negative = labels / "target_mask_confirmed_negative_501x256.npy"
+    negative.write_bytes(b"test")
+    row = {
+        "case_id": "CTRL_NEG",
+        "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+        "target_presence": "false",
+        "label_path": str(negative),
+    }
+    assert _case_mask(case, row) == negative
 
 
 def test_human_promotion_requires_matching_source_hash(tmp_path: Path):

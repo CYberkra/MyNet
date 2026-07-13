@@ -1,0 +1,154 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "root": "outputs\\simulation_v2_controls\\official_audited_20260711",
+  "ok": false,
+  "formal_training_allowed": false,
+  "case_count": 9,
+  "results": [
+    {
+      "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": 145.4892120361328,
+      "arrival_max_ns": 145.4892120361328,
+      "domain_x_m": 24.93,
+      "domain_y_m": 13.7925,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL02_FLAT_DEEP_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": 344.1167907714844,
+      "arrival_max_ns": 344.1167907714844,
+      "domain_x_m": 24.93,
+      "domain_y_m": 26.82,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL03_SMOOTH_INTERFACE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 125,
+        "no_basal_contrast_geometry.inc": 125
+      },
+      "arrival_min_ns": 209.2321014404297,
+      "arrival_max_ns": 227.93878173828125,
+      "domain_x_m": 24.975,
+      "domain_y_m": 19.7775,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL04_MATCHED_BACKGROUND_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 3,
+        "no_basal_contrast_geometry.inc": 3
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 24.93,
+      "domain_y_m": 26.82,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL05_GENTLE_TERRAIN_WEAK_LAYER_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 220,
+        "no_basal_contrast_geometry.inc": 220
+      },
+      "arrival_min_ns": 227.79251098632812,
+      "arrival_max_ns": 243.9844970703125,
+      "domain_x_m": 24.975,
+      "domain_y_m": 20.61,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "CTRL06_LATERAL_VARIATION_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 121,
+        "no_basal_contrast_geometry.inc": 121
+      },
+      "arrival_min_ns": 233.04397583007812,
+      "arrival_max_ns": 247.0478515625,
+      "domain_x_m": 24.975,
+      "domain_y_m": 20.655,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "MACRO01_GENTLE_LONG_LINE_DIAGNOSTIC",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "postprocessed",
+      "box_counts": {
+        "full_scene_geometry.inc": 156,
+        "no_basal_contrast_geometry.inc": 156
+      },
+      "arrival_min_ns": 317.1425476074219,
+      "arrival_max_ns": 339.5099182128906,
+      "domain_x_m": 480.1,
+      "domain_y_m": 29.85,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "MACRO02_MULTISCALE_LONG_LINE_DIAGNOSTIC",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 228,
+        "no_basal_contrast_geometry.inc": 228
+      },
+      "arrival_min_ns": 319.0875549316406,
+      "arrival_max_ns": 340.482421875,
+      "domain_x_m": 480.1,
+      "domain_y_m": 45.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "MACRO03_CORRELATED_VOXEL_LONG_LINE_DIAGNOSTIC",
+      "ok": false,
+      "errors": [
+        "case validation aborted: outputs\\simulation_v2_controls\\official_audited_20260711\\MACRO03_CORRELATED_VOXEL_LONG_LINE_DIAGNOSTIC\\labels\\flight_height_agl_m.npy"
+      ],
+      "warnings": [],
+      "lifecycle_state": "invalid_or_incomplete"
+    }
+  ]
+}

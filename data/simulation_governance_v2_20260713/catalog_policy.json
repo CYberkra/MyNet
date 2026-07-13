@@ -1,0 +1,18 @@
+{
+  "audit_id": "PGDA_SIMULATION_V2_RELEASE_AUDIT_20260713",
+  "case_count": 20,
+  "solved_case_count": 10,
+  "formal_training_allowed_count": 0,
+  "development_true_negative_candidate_count": 1,
+  "best_pair_pilot_candidate_count": 1,
+  "solver_run_required_count": 10,
+  "formal_blockers": [
+    "No case has explicit human promotion with trusted per-trace provenance.",
+    "The only confirmed-negative design is one idealised scene family.",
+    "MACRO04 is 128 traces wide and cannot enter the canonical 501x256 exporter.",
+    "MACRO05 families have not been solved."
+  ],
+  "authoritative_manifest": "manifests/simulation_release_gate.csv",
+  "raw_evidence_mutated": false,
+  "directory_name_grants_training_permission": false
+}
