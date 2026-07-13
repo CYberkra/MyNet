@@ -175,17 +175,20 @@ def main() -> int:
             "air": "air_reference_trace_contract.json",
         }.items()
     }
+    trace_stride = int(run_manifest.get("trace_stride", 1))
+    distributed_coverage_ok = bool(trace_stride > 1 and covered_span_m / max(declared_span_m, 1e-30) >= 0.95)
     result = {
         "schema": "native_256_spatial_pilot_audit_v1",
         "case_id": manifest["case_id"],
         "formal_training_allowed": False,
         "trace_count": trace_count,
-        "trace_stride": int(run_manifest.get("trace_stride", 1)),
+        "trace_stride": trace_stride,
         "selected_trace_indices_zero_based": selected_indices.tolist(),
         "declared_trace_count": declared_trace_count,
         "covered_scan_span_m": covered_span_m,
         "declared_scan_span_m": declared_span_m,
         "covered_scan_fraction": covered_span_m / max(declared_span_m, 1e-30),
+        "distributed_span_coverage_ok": distributed_coverage_ok,
         "raw_shape": list(raw_values[0].shape),
         "canonical_shape": list(full.shape),
         "three_way_alignment_ok": bool(aligned),
@@ -219,9 +222,13 @@ def main() -> int:
             and result["visible_step_max_ns"] <= 5.6
         ),
         "formal_promotion": False,
-        "scope": "distributed_full_span_subset" if int(run_manifest.get("trace_stride", 1)) > 1 else "contiguous_local_start_segment",
+        "scope": "distributed_full_span_subset" if trace_stride > 1 else "contiguous_local_start_segment",
         "full_span_morphology_validated": trace_count == declared_trace_count,
-        "note": "Local continuity gate only; distributed/full-span execution and human morphology review remain required.",
+        "note": (
+            "Distributed full-span sampling gate only; full-resolution 256-trace execution and human morphology review remain required."
+            if trace_stride > 1
+            else "Local continuity gate only; distributed/full-span execution and human morphology review remain required."
+        ),
     }
     (output_dir / "spatial_pilot_audit.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     np.save(output_dir / "visible_phase_time_ns.npy", visible.astype(np.float32))

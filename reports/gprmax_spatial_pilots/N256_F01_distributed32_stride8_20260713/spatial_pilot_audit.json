@@ -1,0 +1,124 @@
+{
+  "schema": "native_256_spatial_pilot_audit_v1",
+  "case_id": "N256_F01_GENTLE_DEEP_MODERATE_POS",
+  "formal_training_allowed": false,
+  "trace_count": 32,
+  "trace_stride": 8,
+  "selected_trace_indices_zero_based": [
+    0,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64,
+    72,
+    80,
+    88,
+    96,
+    104,
+    112,
+    120,
+    128,
+    136,
+    144,
+    152,
+    160,
+    168,
+    176,
+    184,
+    192,
+    200,
+    208,
+    216,
+    224,
+    232,
+    240,
+    248
+  ],
+  "declared_trace_count": 256,
+  "covered_scan_span_m": 22.32,
+  "declared_scan_span_m": 22.95,
+  "covered_scan_fraction": 0.9725490196078432,
+  "distributed_span_coverage_ok": true,
+  "raw_shape": [
+    13211,
+    32
+  ],
+  "canonical_shape": [
+    501,
+    32
+  ],
+  "three_way_alignment_ok": true,
+  "finite_ok": true,
+  "gprmax_versions": [
+    "3.1.7"
+  ],
+  "trace_contracts": {
+    "full": {
+      "complete": true,
+      "captured": 32,
+      "expected": 32,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 7.32421875682121e-06,
+      "max_receiver_x_error_m": 4.8828125045474735e-06,
+      "position_tolerance_m": 2.2499999999999998e-05,
+      "failures": [],
+      "ok": true
+    },
+    "control": {
+      "complete": true,
+      "captured": 32,
+      "expected": 32,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 7.32421875682121e-06,
+      "max_receiver_x_error_m": 4.8828125045474735e-06,
+      "position_tolerance_m": 2.2499999999999998e-05,
+      "failures": [],
+      "ok": true
+    },
+    "air": {
+      "complete": true,
+      "captured": 32,
+      "expected": 32,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 7.32421875682121e-06,
+      "max_receiver_x_error_m": 4.8828125045474735e-06,
+      "position_tolerance_m": 2.2499999999999998e-05,
+      "failures": [],
+      "ok": true
+    }
+  },
+  "visible_phase_semantics": "continuous_signed_lobe_within_continuous_matched-contrast_envelope",
+  "reference_range_ns": [
+    385.2997131347656,
+    401.5189514160156
+  ],
+  "visible_range_ns": [
+    410.2,
+    425.59999999999997
+  ],
+  "median_visible_minus_reference_ns": 23.220312499999977,
+  "visible_residual_p95_ns": 1.6628741455078113,
+  "visible_step_p95_ns": 1.400000000000034,
+  "visible_step_max_ns": 1.400000000000034,
+  "support_median": 1016.6470898996447,
+  "support_min": 834.6069386326659,
+  "signed_difference_target_rms": 0.0038763321936130524,
+  "signed_difference_background_rms": 2.6862808226724155e-05,
+  "signed_difference_target_to_background_rms": 144.30107831230868,
+  "target_amplitude_cv": 0.2281208485364914,
+  "target_dropout_fraction_below_25pct_median": 0.0,
+  "contrast_late_to_target_rms": 0.0014024922739931359,
+  "full_control_direct_rms_relative_error": 0.0,
+  "air_direct_rms_to_full": 0.9976158752510987,
+  "spatial_pilot_gate": {
+    "passed": true,
+    "formal_promotion": false,
+    "scope": "distributed_full_span_subset",
+    "full_span_morphology_validated": false,
+    "note": "Distributed full-span sampling gate only; full-resolution 256-trace execution and human morphology review remain required."
+  }
+}
