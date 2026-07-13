@@ -851,7 +851,7 @@ def reduce_parts(parts):
     if not parts: return {'loss':float('nan')}
     return {k:float(np.mean([p[k] for p in parts])) for k in parts[0]}
 
-def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,grl_layer=None):
+def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,grl_layer=None, max_steps=None):
     is_train=opt is not None
     model.train(is_train)
     if discriminator is not None:
@@ -861,7 +861,9 @@ def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,gr
     grad_accum_steps=max(1,int(cfg.get('grad_accum_steps',1))) if is_train else 1
     if is_train:
         opt.zero_grad(set_to_none=True)
+    max_steps = None if max_steps is None else max(1, int(max_steps))
     for step,b in enumerate(loader, start=1):
+        is_last_step = step == len(loader) or (max_steps is not None and step >= max_steps)
         with torch.set_grad_enabled(is_train):
             with torch.cuda.amp.autocast(enabled=amp_enabled):
                 loss,p=compute_loss(model,b,device,cfg,discriminator=discriminator,grl_layer=grl_layer)
@@ -869,7 +871,7 @@ def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,gr
             if is_train:
                 if scaler is not None and scaler.is_enabled():
                     scaler.scale(loss_for_backward).backward()
-                    if step % grad_accum_steps == 0 or step == len(loader):
+                    if step % grad_accum_steps == 0 or is_last_step:
                         scaler.unscale_(opt)
                         torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params'] if p.grad is not None],5.0)
                         scaler.step(opt)
@@ -877,13 +879,15 @@ def run_epoch(model,loader,device,cfg,opt=None,scaler=None,discriminator=None,gr
                         opt.zero_grad(set_to_none=True)
                 else:
                     loss_for_backward.backward()
-                    if step % grad_accum_steps == 0 or step == len(loader):
+                    if step % grad_accum_steps == 0 or is_last_step:
                         torch.nn.utils.clip_grad_norm_([p for g in opt.param_groups for p in g['params'] if p.grad is not None],5.0)
                         opt.step()
                         opt.zero_grad(set_to_none=True)
         p=dict(p)
         p.setdefault('grad_accum_steps', float(grad_accum_steps))
         parts.append(p)
+        if is_last_step:
+            break
     return reduce_parts(parts)
 
 def env_info(device):
@@ -1082,14 +1086,22 @@ def run(cfg_path):
         train = train_real
     min_component_cov = _min_component_target_coverage(cfg)
     for ep in range(1,cfg['epochs']+1):
-        tr=run_epoch(model,train,device,cfg,opt,scaler=scaler,discriminator=discriminator,grl_layer=grl_layer)
+        tr=run_epoch(
+            model, train, device, cfg, opt, scaler=scaler,
+            discriminator=discriminator, grl_layer=grl_layer,
+            max_steps=cfg.get('max_train_steps_per_epoch'),
+        )
         if min_component_cov > 0 and float(tr.get('component_has_any', 0.0)) < min_component_cov:
             raise RuntimeError(
                 f"Component supervision is enabled but train component coverage is "
                 f"{float(tr.get('component_has_any', 0.0)):.4f} < {min_component_cov:.4f}. "
                 "Check simulation .npz component arrays or set loss.min_component_target_coverage explicitly."
             )
-        va=run_epoch(model,val,device,cfg,None,scaler=None,discriminator=discriminator,grl_layer=grl_layer) if len(val_ds)>0 else {'loss': float('nan')}
+        va=run_epoch(
+            model, val, device, cfg, None, scaler=None,
+            discriminator=discriminator, grl_layer=grl_layer,
+            max_steps=cfg.get('max_val_steps_per_epoch'),
+        ) if len(val_ds)>0 else {'loss': float('nan')}
         rec={'epoch':ep,'device':str(device)}; rec.update({f'train_{k}':v for k,v in tr.items()}); rec.update({f'val_{k}':v for k,v in va.items()})
         hist.append(rec); print(rec,flush=True)
         torch.save(

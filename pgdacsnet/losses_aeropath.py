@@ -16,6 +16,18 @@ import torch.nn.functional as F
 from pgdacsnet.losses_pgda import combine_pgda_losses, compute_segmentation_losses
 
 
+def _probability_bce(prediction: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+    """Compute BCE on probabilities in FP32 under a mixed-precision caller.
+
+    ``binary_cross_entropy`` is intentionally rejected by CUDA autocast because
+    its backward pass can be numerically unsafe in half precision.  AeroPath's
+    NULL and boundary outputs are posterior probabilities rather than logits,
+    so BCE-with-logits is not applicable here.
+    """
+    with torch.autocast(device_type=prediction.device.type, enabled=False):
+        return F.binary_cross_entropy(prediction.float(), target.float())
+
+
 def _normalise_target(target: torch.Tensor, valid_pix: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
     target = target.clamp_min(0.0) * valid_pix
     mass = target.sum(dim=2, keepdim=True)
@@ -130,7 +142,7 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
     if null is not None and null_valid.any():
         null = null.squeeze(1).clamp(1e-8, 1.0 - 1e-8)
         null_target = (state == 0).to(path.dtype)
-        null_nll = F.binary_cross_entropy(null[null_valid], null_target[null_valid])
+        null_nll = _probability_bce(null[null_valid], null_target[null_valid])
     else:
         null_nll = path_nll * 0.0
 
@@ -163,9 +175,9 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
         end_target = ((state == 1) & (following == 0)).to(path.dtype)
         terms = []
         if start_known.any():
-            terms.append(F.binary_cross_entropy(starts[start_known], start_target[start_known]))
+            terms.append(_probability_bce(starts[start_known], start_target[start_known]))
         if end_known.any():
-            terms.append(F.binary_cross_entropy(ends[end_known], end_target[end_known]))
+            terms.append(_probability_bce(ends[end_known], end_target[end_known]))
         if terms:
             boundary_nll = torch.stack(terms).mean()
     return {

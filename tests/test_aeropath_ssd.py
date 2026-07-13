@@ -139,6 +139,27 @@ def test_aeropath_structured_loss_supervises_path_and_abstention():
     assert model.energy_head.weight.grad is not None
 
 
+def test_aeropath_probability_losses_are_autocast_safe():
+    """NULL/start/end posteriors are probabilities, so their BCE runs in FP32."""
+    model = AeroPathSSD(base_ch=8, ssm_impl="ssm_lite", mamba_state_dim=8, max_path_step=3)
+    x = torch.randn(1, 1, 24, 8)
+    y = torch.zeros(1, 1, 24, 8)
+    y[:, :, 12, :] = 1.0
+    batch = {
+        "x": x, "y": y, "y_core": y,
+        "presence": torch.ones(1, 8), "presence_valid": torch.ones(1, 8),
+        "weight": torch.ones(1, 8), "valid_pix": torch.ones_like(y),
+        "valid_denom": torch.tensor(float(y.numel())), "ignore_mask": torch.zeros_like(y),
+        "trace_state": torch.ones(1, 8, dtype=torch.long),
+        "valid_trace_mask": torch.ones(1, 8),
+    }
+    with torch.autocast(device_type="cpu", dtype=torch.bfloat16):
+        output = model(x, altitude=torch.full((1, 8), 8.0))
+        loss, _parts = compute_aeropath_loss(output, batch, {"loss": {}})
+    assert torch.isfinite(loss)
+    loss.backward()
+
+
 def test_aeropath_no_pick_skips_mixed_weak_and_negative_windows():
     model = AeroPathSSD(base_ch=8, ssm_impl="ssm_lite", mamba_state_dim=8)
     x = torch.randn(1, 1, 24, 4)
