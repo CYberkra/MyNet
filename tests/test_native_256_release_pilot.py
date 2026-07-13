@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from scripts.generate_native_256_release_pilot import build
+from scripts.run_native_256_release_pilot import stage_case
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,10 +44,20 @@ def test_native_pilot_generation_matches_static_contract(tmp_path: Path) -> None
         assert manifest["line9_conditioned"] is False
 
 
-def test_native_runner_captures_gprmax_trace_names_before_merge() -> None:
+def test_native_runner_stages_source_and_captures_trace_names_before_merge(tmp_path: Path) -> None:
     runner = (ROOT / "scripts" / "run_native_256_release_pilot.py").read_text(encoding="utf-8")
-    assert 'prefix = stem' in runner
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "scene_manifest.json").write_text(json.dumps({"grid": {"trace_count": 256}}), encoding="utf-8")
+    (source / "full_scene.in").write_text("#title: source deck\n", encoding="utf-8")
+    staged = stage_case(source, tmp_path / "solver_runs" / "case", requested_trace_count=32, geometry_only=False)
+    assert (staged / "full_scene.in").read_text(encoding="utf-8") == "#title: source deck\n"
+    provenance = json.loads((staged / "run_manifest.json").read_text(encoding="utf-8"))
+    assert provenance["source_deck_read_only"] is True
+    assert provenance["mode"] == "smoke_subset"
+    assert 'shutil.copytree' in runner
+    assert '"--trace-count"' in runner
     assert 'capture_gprmax_trace_contract.py' in runner
     assert 'tools.outputfiles_merge' in runner
-    assert '"--geometry-only"' in runner
+    assert "_geometry_input" in runner
     assert "_remove_geometry_views" in runner

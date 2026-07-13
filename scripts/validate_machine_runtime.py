@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -18,6 +19,11 @@ def main() -> int:
     parser.add_argument("--profile", type=Path)
     parser.add_argument("--require-training", action="store_true")
     parser.add_argument("--require-gprmax", action="store_true")
+    parser.add_argument(
+        "--require-gpu-compiler",
+        action="store_true",
+        help="Require nvcc.exe for gprMax GPU kernel compilation.",
+    )
     parser.add_argument("--json", type=Path)
     args = parser.parse_args()
     errors: list[str] = []
@@ -28,6 +34,11 @@ def main() -> int:
             errors.append(f"project Python does not exist: {profile.project_python}")
         if args.require_gprmax:
             require_gprmax(profile)
+        if args.require_gpu_compiler and not shutil.which("nvcc"):
+            errors.append(
+                "CUDA Toolkit compiler nvcc.exe is not available on PATH; "
+                "gprMax GPU runs cannot compile kernels."
+            )
     except RuntimeConfigError as exc:
         result = {"profile_path": str(args.profile) if args.profile else None}
         errors.append(str(exc))

@@ -11,7 +11,10 @@
 
 - 2D x-y model with one z cell and z-polarized line source.
 - Canonical output: 501 samples over 0-700 ns.
-- Long-line diagnostic target: 128 traces, approximately 1.7 m spacing, approximately 216 m scan span.
+- Active release target: native 256 traces at 0.09 m spacing, with a 55 MHz
+  Ricker source and a 0.0225 m grid. The release source decks are
+  `N256_F01-F04` and `N256_N01-N02` under
+  `data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/`.
 - Current provisional source: Ricker wavelet in the 50-65 MHz range, 0.2 m Tx/Rx separation. Choose the exact frequency together with the grid using the solver's dispersion report.
 - Domain margins must be much larger than the scan span and must include PML plus physical guards.
 
@@ -38,11 +41,12 @@ Runtime evidence on the reviewed RTX 5070 setup: MACRO04 at 480.1 x 45 m complet
 
 ## Strict Pair Contract
 
-For every positive case, create at minimum:
+For every positive release case, create all three required acquisitions:
 
 - `full_scene`: all geometry and basal contrast;
 - `no_basal_contrast`: same stochastic realization and acquisition with basal contrast removed;
-- optional `air_reference`: useful for direct-wave diagnostics, not required for initial pair acceptance.
+- `air_reference`: direct-wave and acquisition diagnostic; required for
+  release acceptance, but never a substitute for the no-basal control.
 
 Full and control must share the same geometry-index HDF5 and the same upper-material mapping. Only transition/basal material properties may differ. Hash all files.
 

@@ -1,18 +1,42 @@
 #!/usr/bin/env python3
-"""Run one native-256 pilot case with pre-merge per-trace provenance capture."""
+"""Run a native-256 source deck from a disposable, locally ignored work area.
+
+The versioned ``01_native_256_release_pilot`` directory is a source-deck
+registry, not a solver working directory.  This runner therefore copies a
+case into ``runtime.solver_run_root`` before invoking gprMax, captures the
+per-trace provenance before merging, and leaves all raw solver products out
+of Git.  Subset runs are explicitly smoke tests and are never postprocessed
+as 256-trace release candidates.
+"""
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from pgdacsnet.runtime import RuntimeConfigError, load_runtime, require_gprmax  # noqa: E402
+
+STATIC_AUDIT = ROOT / ".claude" / "skills" / "gprmax-physics-audit" / "scripts" / "audit_gprmax_input.py"
+SOLVER_ARTIFACT_PATTERNS = (
+    "*.out",
+    "*.h5",
+    "*.hdf5",
+    "*.vti",
+    "run_logs",
+    "preflight",
+    "run_manifest.json",
+    "run_state.json",
+    "postprocess_validation.json",
+)
 
 
 def _command_text(command: list[str]) -> str:
@@ -25,32 +49,100 @@ def _run(command: list[str], *, cwd: Path, env: dict[str, str], execute: bool) -
         subprocess.run(command, cwd=cwd, env=env, check=True)
 
 
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
 def _remove_geometry_views(case_dir: Path) -> None:
     for view in case_dir.glob("*.vti"):
         view.unlink()
 
 
+def _inside(child: Path, parent: Path) -> bool:
+    try:
+        child.relative_to(parent)
+    except ValueError:
+        return False
+    return True
+
+
+def stage_case(source_case_dir: Path, run_case_dir: Path, *, requested_trace_count: int, geometry_only: bool) -> Path:
+    """Copy a source deck to a fresh solver work directory with provenance."""
+    source_case_dir = source_case_dir.resolve()
+    run_case_dir = run_case_dir.resolve()
+    if source_case_dir == run_case_dir or _inside(run_case_dir, source_case_dir):
+        raise ValueError("solver run directory must not be the source deck or a child of it")
+    if run_case_dir.exists():
+        raise FileExistsError(f"refusing to reuse an existing solver run directory: {run_case_dir}")
+    manifest_path = source_case_dir / "scene_manifest.json"
+    if not manifest_path.is_file():
+        raise FileNotFoundError(f"missing scene manifest: {manifest_path}")
+    shutil.copytree(source_case_dir, run_case_dir, ignore=shutil.ignore_patterns(*SOLVER_ARTIFACT_PATTERNS))
+    provenance = {
+        "schema": "native_256_solver_run_v1",
+        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "source_case_dir": str(source_case_dir),
+        "source_scene_manifest_sha256": _sha256(manifest_path),
+        "requested_trace_count": requested_trace_count,
+        "declared_trace_count": json.loads(manifest_path.read_text(encoding="utf-8"))["grid"]["trace_count"],
+        "mode": "geometry_only" if geometry_only else ("full" if requested_trace_count == 256 else "smoke_subset"),
+        "source_deck_read_only": True,
+    }
+    (run_case_dir / "run_manifest.json").write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
+    return run_case_dir
+
+
+def _input_names(manifest: dict[str, object]) -> list[str]:
+    names = ["full_scene.in"]
+    if bool(manifest["target_presence"]):
+        names.append("no_basal_contrast_control.in")
+    names.append("air_reference.in")
+    return names
+
+
+def _geometry_input(input_name: str) -> str:
+    """Use the intentionally small geometry-check wrappers when supplied."""
+    mapping = {
+        "full_scene.in": "geometry_check_full.in",
+        "no_basal_contrast_control.in": "geometry_check_control.in",
+    }
+    return mapping.get(input_name, input_name)
+
+
+def _write_state(case_dir: Path, **state: object) -> None:
+    (case_dir / "run_state.json").write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("case_dir", type=Path)
+    parser.add_argument("case_dir", type=Path, help="Versioned pre-solver source deck.")
     parser.add_argument("--gprmax-python", help="Override gprmax_python from the local runtime profile.")
     parser.add_argument("--gprmax-root", type=Path, help="Override gprmax_source from the local runtime profile.")
     parser.add_argument("--gpu", type=int, help="Override gpu_index from the local runtime profile.")
-    parser.add_argument(
-        "--geometry-only",
-        action="store_true",
-        help="Check source-deck geometry only, then remove the disposable VTI view files.",
-    )
-    parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--cuda-bin", type=Path, help="Directory containing nvcc.exe; required for gprMax GPU kernel compilation.")
+    parser.add_argument("--run-dir", type=Path, help="Fresh disposable solver work directory.")
+    parser.add_argument("--run-id", help="Run identifier below runtime.solver_run_root (default: UTC timestamp).")
+    parser.add_argument("--trace-count", type=int, help="Run 1, 32, 64, or the full declared trace count.")
+    parser.add_argument("--geometry-only", action="store_true", help="Run geometry checks and remove VTI views afterwards.")
+    parser.add_argument("--execute", action="store_true", help="Stage the deck and execute the listed commands.")
     args = parser.parse_args()
 
-    case_dir = args.case_dir.resolve()
-    manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
+    source_case_dir = args.case_dir.resolve()
+    manifest_path = source_case_dir / "scene_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("formal_training_allowed") is not False:
         raise RuntimeError("native pilot runner only accepts blocked pre-promotion scenes")
-    trace_count = int(manifest["grid"]["trace_count"])
-    if trace_count != 256:
-        raise RuntimeError(f"native pilot requires 256 traces, got {trace_count}")
+    declared_trace_count = int(manifest["grid"]["trace_count"])
+    if declared_trace_count != 256:
+        raise RuntimeError(f"native pilot requires 256 traces, got {declared_trace_count}")
+    trace_count = args.trace_count or declared_trace_count
+    if not 1 <= trace_count <= declared_trace_count:
+        raise ValueError(f"trace count must be in [1, {declared_trace_count}], got {trace_count}")
+
     runtime = load_runtime()
     try:
         configured_python, configured_root = require_gprmax(runtime)
@@ -65,53 +157,68 @@ def main() -> int:
         raise FileNotFoundError(f"gprMax Python does not exist: {gprmax_python}")
     if not (root / "gprMax").is_dir():
         raise FileNotFoundError(f"not a gprMax source root: {root}")
+    if not STATIC_AUDIT.is_file():
+        raise FileNotFoundError(f"missing required static gprMax audit: {STATIC_AUDIT}")
     gpu = int(args.gpu) if args.gpu is not None else runtime.gpu_index
     env = os.environ.copy()
     env["PYTHONPATH"] = str(root) + os.pathsep + env.get("PYTHONPATH", "")
-    log_dir = case_dir / "run_logs"
-    log_dir.mkdir(exist_ok=True)
-    inputs = ["full_scene.in"]
-    if bool(manifest["target_presence"]):
-        inputs.append("no_basal_contrast_control.in")
-    inputs.append("air_reference.in")
-    for input_name in inputs:
-        stem = Path(input_name).stem
-        if args.geometry_only:
-            _run(
-                [str(gprmax_python), "-m", "gprMax", input_name, "--geometry-only"],
-                cwd=case_dir,
-                env=env,
-                execute=args.execute,
+    if args.execute:
+        cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else None
+        nvcc = (cuda_bin / "nvcc.exe") if cuda_bin else shutil.which("nvcc", path=env.get("PATH"))
+        if not nvcc or not Path(nvcc).is_file():
+            raise RuntimeError(
+                "gprMax GPU execution requires the CUDA Toolkit compiler nvcc.exe. "
+                "Install a compatible CUDA Toolkit outside the system drive, then pass --cuda-bin <toolkit>\\bin "
+                "or expose nvcc.exe on PATH."
             )
-            if args.execute:
-                _remove_geometry_views(case_dir)
-            continue
-        # gprMax names individual moving-source outputs ``<stem>1.out``;
-        # capture them before outputfiles_merge removes the evidence files.
-        prefix = stem
-        trace_contract = log_dir / f"{stem}_trace_contract.json"
-        _run(
-            [str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)],
-            cwd=case_dir,
-            env=env,
-            execute=args.execute,
-        )
-        _run(
-            [str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", prefix, "--expected", str(trace_count), "--output", str(trace_contract)],
-            cwd=case_dir,
-            env=env,
-            execute=args.execute,
-        )
-        _run(
-            [str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"],
-            cwd=case_dir,
-            env=env,
-            execute=args.execute,
-        )
-    if args.geometry_only:
+        nvcc_path = Path(nvcc).resolve()
+        env["CUDA_PATH"] = str(nvcc_path.parents[1])
+        env["PATH"] = str(nvcc_path.parent) + os.pathsep + env.get("PATH", "")
+
+    run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    run_case_dir = args.run_dir.resolve() if args.run_dir else (runtime.solver_run_root / source_case_dir.name / run_id).resolve()
+    inputs = _input_names(manifest)
+    if not args.execute:
+        print("PLAN ONLY: source deck will remain untouched. Add --execute to stage and run.")
+        print(f"source deck: {source_case_dir}")
+        print(f"solver run:  {run_case_dir}")
+        print(f"mode: {'geometry_only' if args.geometry_only else ('full' if trace_count == declared_trace_count else 'smoke_subset')}")
+        for input_name in inputs:
+            print(f"static audit: {input_name}")
+            if args.geometry_only:
+                _run([str(gprmax_python), "-m", "gprMax", _geometry_input(input_name), "--geometry-only"], cwd=run_case_dir, env=env, execute=False)
+            else:
+                _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=run_case_dir, env=env, execute=False)
         return 0
-    _run([str(gprmax_python), str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=args.execute)
-    _run([str(gprmax_python), str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
+
+    case_dir = stage_case(source_case_dir, run_case_dir, requested_trace_count=trace_count, geometry_only=args.geometry_only)
+    log_dir = case_dir / "run_logs"
+    preflight_dir = case_dir / "preflight"
+    log_dir.mkdir()
+    preflight_dir.mkdir()
+    for input_name in inputs:
+        input_path = case_dir / input_name
+        if not input_path.is_file():
+            raise FileNotFoundError(f"missing solver input in staged deck: {input_path}")
+        _run([str(gprmax_python), str(STATIC_AUDIT), str(input_path), "--json", str(preflight_dir / f"{input_path.stem}_static_audit.json")], cwd=case_dir, env=env, execute=True)
+        stem = input_path.stem
+        if args.geometry_only:
+            _run([str(gprmax_python), "-m", "gprMax", _geometry_input(input_name), "--geometry-only"], cwd=case_dir, env=env, execute=True)
+            _remove_geometry_views(case_dir)
+            continue
+        _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=case_dir, env=env, execute=True)
+        _run([str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", stem, "--expected", str(trace_count), "--output", str(log_dir / f"{stem}_trace_contract.json")], cwd=case_dir, env=env, execute=True)
+        _run([str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"], cwd=case_dir, env=env, execute=True)
+
+    if args.geometry_only:
+        _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="geometry_passed", declared_trace_count=declared_trace_count)
+        return 0
+    if trace_count != declared_trace_count:
+        _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="smoke_subset_complete", requested_trace_count=trace_count, declared_trace_count=declared_trace_count, release_eligible=False, note="Subset runs must not be postprocessed or promoted as canonical 256-trace data.")
+        return 0
+    _run([str(gprmax_python), str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=True)
+    _run([str(gprmax_python), str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=True)
+    _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="full_run_complete", requested_trace_count=trace_count, release_eligible=False, note="Promotion still requires an explicit independent audit and human decision.")
     return 0
 
 

@@ -45,11 +45,16 @@ axial blocks. It must remain disabled until the V2 data-release gate passes.
 
 ## Next Work
 
-1. Run and validate paired V2 controls (`full`, `no-basal`, `air`) for CTRL01,
-   then CTRL02-04.
-2. Verify visible-phase extraction and promote only audited independent scene
-   families.
-3. Create confirmed real negative windows and pass the V2 data gate.
-4. Run CUDA/VRAM validation for official Mamba-2 at 501x256.
-5. Only then run the locked multi-seed AeroPath formal protocol and compare it
+1. Stage and preflight the native `N256_F01_GENTLE_DEEP_MODERATE_POS` source
+   deck: static input audit, geometry-only check, then 1/32/64-trace smoke
+   runs before any full GPU execution.
+2. Audit the required `full_scene`, `no_basal_contrast_control`, and
+   `air_reference` outputs; only then progress through `N256_F02-F04` and
+   `N256_N01-N02`.
+3. Verify visible-phase extraction and promote only audited independent scene
+   families. Source decks remain read-only; raw solver products live only in
+   the ignored local solver-run root.
+4. Create confirmed real negative windows and pass the V2 data gate.
+5. Run CUDA/VRAM validation for official Mamba-2 at 501x256.
+6. Only then run the locked multi-seed AeroPath formal protocol and compare it
    with the frozen ConvNeXt curve and Route-2 baselines.
