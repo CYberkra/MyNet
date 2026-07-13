@@ -93,12 +93,13 @@ def _validate_postprocessed_artifacts(
     case_dir: Path,
     *,
     target_presence: bool,
+    trace_count: int,
     postprocess: dict[str, Any],
     errors: list[str],
 ) -> None:
     """Check generated labels without treating them as immutable source files."""
 
-    expected_shape = (501, 256)
+    expected_shape = (501, trace_count)
     output_shape = tuple(postprocess.get("output_shape_canonical", ()))
     if output_shape != expected_shape:
         errors.append(f"postprocess canonical output shape {output_shape} != {expected_shape}")
@@ -121,8 +122,8 @@ def _validate_postprocessed_artifacts(
             errors.append(f"postprocess artifact missing: labels/{name}")
             continue
         if name == "visible_phase_support_ratio.npy":
-            if value.shape != (256,):
-                errors.append(f"postprocess artifact shape labels/{name} != (256,)")
+            if value.shape != (trace_count,):
+                errors.append(f"postprocess artifact shape labels/{name} != ({trace_count},)")
         elif value.shape != expected_shape:
             errors.append(f"postprocess artifact shape labels/{name} != {expected_shape}")
 
@@ -196,7 +197,8 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         errors.append("spatial steps must be cubic")
     if not math.isclose(domain[2], dl[2], abs_tol=1e-12):
         errors.append("2-D invariant z domain must be exactly one cell")
-    if full_input["pml_cells"] != (20, 20, 0, 20, 20, 0):
+    expected_pml = tuple(int(value) for value in manifest["grid"]["pml_cells"])
+    if full_input["pml_cells"] != expected_pml:
         errors.append(f"unexpected PML order/value: {full_input['pml_cells']}")
     solver_window_ns = float(manifest["grid"].get("solver_time_window_ns", 701.0))
     if not math.isclose(full_input["time_window_s"], solver_window_ns * 1e-9, rel_tol=0, abs_tol=1e-15):
@@ -207,8 +209,9 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         errors.append("2-D control source must be z-polarized")
     if full_input["src_steps"] != full_input["rx_steps"]:
         errors.append("source and receiver steps differ")
-    if not math.isclose(full_input["src_steps"][0], 0.09, abs_tol=1e-12):
-        errors.append("trace step must be 0.09 m")
+    expected_spacing = float(manifest["grid"]["trace_spacing_m"])
+    if not math.isclose(full_input["src_steps"][0], expected_spacing, abs_tol=1e-12):
+        errors.append(f"trace step must be {expected_spacing} m")
     if any(abs(v) > 1e-12 for v in full_input["src_steps"][1:]):
         errors.append("flat controls must move only in x")
 
@@ -228,7 +231,7 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     pending_mask = _load_npy(case_dir, "target_mask_pending_postprocess_501x256.npy")
     time_ns = _load_npy(case_dir, "time_501_ns.npy")
 
-    expected_trace_shape = (256,)
+    expected_trace_shape = (int(manifest["grid"]["trace_count"]),)
     for name, arr in {
         "source_x": source_x,
         "receiver_x": receiver_x,
@@ -245,16 +248,18 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     }.items():
         if arr.shape != expected_trace_shape:
             errors.append(f"{name} shape {arr.shape} != {expected_trace_shape}")
-    if prior.shape != (501, 256) or pending_mask.shape != (501, 256):
-        errors.append("mask/prior shape must be 501x256")
+    expected_mask_shape = (501, expected_trace_shape[0])
+    if prior.shape != expected_mask_shape or pending_mask.shape != expected_mask_shape:
+        errors.append(f"mask/prior shape must be {expected_mask_shape}")
     if time_ns.shape != (501,) or not np.allclose(time_ns, np.linspace(0, 700, 501), atol=1e-5):
         errors.append("canonical time grid is not 0..700 ns with 501 samples")
-    if not np.allclose(np.diff(midpoint_x), 0.09, atol=1e-6):
-        errors.append("midpoint spacing is not 0.09 m")
+    if not np.allclose(np.diff(midpoint_x), expected_spacing, atol=1e-4):
+        errors.append(f"midpoint spacing is not {expected_spacing} m")
     if not np.allclose(midpoint_x, 0.5 * (source_x + receiver_x), atol=1e-6):
         errors.append("trace midpoint does not equal Tx/Rx midpoint")
-    if not np.allclose(receiver_x - source_x, 0.18, atol=1e-6):
-        errors.append("Tx/Rx offset is not 0.18 m")
+    expected_offset = float(manifest["source"]["tx_rx_offset_m"])
+    if not np.allclose(receiver_x - source_x, expected_offset, atol=1e-4):
+        errors.append(f"Tx/Rx offset is not {expected_offset} m")
     if not np.allclose(antenna - ground, agl, atol=1e-6):
         errors.append("antenna_y != ground_y + AGL")
     if np.any(antenna <= ground):
@@ -312,6 +317,7 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
         _validate_postprocessed_artifacts(
             case_dir,
             target_presence=target_presence,
+            trace_count=int(manifest["grid"]["trace_count"]),
             postprocess=postprocess,
             errors=errors,
         )
@@ -384,12 +390,6 @@ def validate_case(case_dir: Path, *, run_geometry_only: bool = False) -> dict[st
     }
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--root", default=str(DEFAULT_ROOT))
-    parser.add_argument("--run-geometry-only", action="store_true")
-    parser.add_argument("--report", default="")
-    args = parser.parse_args()
 def validate_case_safe(case_dir: Path, *, run_geometry_only: bool = False) -> dict[str, Any]:
     """Isolate malformed cases so a catalog audit can continue."""
 
@@ -405,6 +405,12 @@ def validate_case_safe(case_dir: Path, *, run_geometry_only: bool = False) -> di
         }
 
 
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default=str(DEFAULT_ROOT))
+    parser.add_argument("--run-geometry-only", action="store_true")
+    parser.add_argument("--report", default="")
+    args = parser.parse_args()
     root = Path(args.root)
     cases = sorted(p for p in root.iterdir() if p.is_dir() and (p / "scene_manifest.json").is_file())
     results = [validate_case_safe(case, run_geometry_only=args.run_geometry_only) for case in cases]
