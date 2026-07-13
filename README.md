@@ -53,6 +53,14 @@ ordinary `outputs/` are intentionally local. See
 [`environment/README.md`](environment/README.md) and
 [`data/simulation_contract_v2/SYNC_AND_RETENTION_POLICY.md`](data/simulation_contract_v2/SYNC_AND_RETENTION_POLICY.md).
 
+## Current Standard
+
+Read [`docs/PROJECT_STANDARD.md`](docs/PROJECT_STANDARD.md) before starting a
+new simulation, training run, data promotion, or work session on another
+computer. It consolidates the active AeroPath mainline, split policy,
+portable-runtime procedure, simulation controls, Git retention rules, and
+formal-training release gate.
+
 ## Tests
 
 ```bash
