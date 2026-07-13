@@ -1,0 +1,66 @@
+{
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "status": "recommended_pre_solver_pilot",
+  "formal_training_allowed": false,
+  "purpose": "Long-lived design and release contract for independent native 501x256 gprMax pilot families.",
+  "canonical_output": {
+    "time_samples": 501,
+    "time_start_ns": 0.0,
+    "time_end_ns": 700.0,
+    "time_step_ns": 1.4,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "horizontal_resize_or_padding": "forbidden"
+  },
+  "fdtd": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.0225,
+    "trace_step_cells": 4,
+    "pml_cells": [20, 20, 0, 20, 20, 0],
+    "guard_cells": 20,
+    "solver_time_window_ns": 701.0,
+    "minimum_side_guard_from_inner_pml_m": 109.5,
+    "minimum_free_space_side_roundtrip_ns": 730.0,
+    "minimum_cells_per_wavelength": 10.0
+  },
+  "acquisition": {
+    "source_model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 55000000.0,
+    "tx_rx_offset_m": 0.18,
+    "scan_execution": "-n 256 --geometry-fixed"
+  },
+  "pair_contract": {
+    "positive_runs": ["full_scene", "no_basal_contrast_control", "air_reference"],
+    "negative_runs": ["full_scene", "air_reference"],
+    "shared_geometry_requirement": "Positive full/control inputs must share domain, grid, PML, source, receiver, scan steps and upper-layer geometry; only basal contrast may differ.",
+    "capture_trace_metadata_before_merge": true,
+    "visible_phase_label": "Only signed full-minus-no-basal contrast after successful solver and postprocess validation.",
+    "geometric_reference": "Audit prior only; never curve supervision."
+  },
+  "provenance": {
+    "forbidden": [
+      "Line9 labels",
+      "Line9 timing curves",
+      "Line9 geometry templates",
+      "Line9-derived morphology statistics"
+    ],
+    "required_before_promotion": [
+      "case-local manifest and file hashes",
+      "generator commit and clean-baseline evidence",
+      "gprMax version and GPU/runtime evidence",
+      "per-trace pre-merge source/receiver metadata",
+      "paired-output hash and signed visible-phase audit",
+      "human release decision"
+    ]
+  },
+  "release_gates": [
+    "static geometry and sampling validation passes",
+    "full/control/air outputs pass runtime validation",
+    "target mask comes from signed matched-pair contrast",
+    "negative masks are confirmed zero from a true target-absent design",
+    "each scene family is split as an indivisible group",
+    "no output is formal-training eligible without explicit human promotion"
+  ]
+}

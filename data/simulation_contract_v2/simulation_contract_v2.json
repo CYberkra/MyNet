@@ -96,5 +96,20 @@
     "version_policy": "Record exact installed version. A different version requires geometry-only and control-stage revalidation before any formal use.",
     "moving_scan_policy": "Use -n 256 with --geometry-fixed only for static geometry and simple Hertzian source/receiver steps.",
     "formal_solver_run_completed": false
+  },
+  "recommended_profiles": {
+    "native_256_release_v1": {
+      "standard_path": "data/simulation_contract_v2/recommended_native_256_v1.json",
+      "case_catalog_path": "data/simulation_contract_v2/recommended_native_256_cases_v1.json",
+      "status": "recommended_pre_solver_pilot",
+      "supersedes_for_new_scene_design": [
+        "128-trace diagnostic macros",
+        "any workflow that horizontally resizes a simulation"
+      ],
+      "does_not_supersede": [
+        "V2 control-stage regression cases",
+        "legacy-quarantine provenance records"
+      ]
+    }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "version": "recommended_native_256_materials_v1",
+  "frequency_context_hz": 55000000.0,
+  "model_scope": "Independent non-dispersive pilot materials. These values are controlled sensitivity families, not a site-calibrated inversion.",
+  "sets": {
+    "native_deep_moderate": {
+      "cover": {"name": "cover_native_moderate", "epsilon_r": 11.8, "conductivity_s_per_m": 0.0028},
+      "weathered": {"name": "weathered_native_moderate", "epsilon_r": 10.1, "conductivity_s_per_m": 0.0020},
+      "bedrock": {"name": "bedrock_native_moderate", "epsilon_r": 8.1, "conductivity_s_per_m": 0.0009}
+    },
+    "native_deep_low_contrast": {
+      "cover": {"name": "cover_native_lowcontrast", "epsilon_r": 12.2, "conductivity_s_per_m": 0.0032},
+      "weathered": {"name": "weathered_native_lowcontrast", "epsilon_r": 10.8, "conductivity_s_per_m": 0.0024},
+      "bedrock": {"name": "bedrock_native_lowcontrast", "epsilon_r": 9.55, "conductivity_s_per_m": 0.0015}
+    },
+    "native_hard_negative_upper_reflector": {
+      "cover": {"name": "cover_native_hardnegative", "epsilon_r": 13.0, "conductivity_s_per_m": 0.0036},
+      "weathered": {"name": "weathered_native_hardnegative", "epsilon_r": 7.4, "conductivity_s_per_m": 0.0014},
+      "bedrock": {"name": "bedrock_native_hardnegative_unused", "epsilon_r": 7.4, "conductivity_s_per_m": 0.0014}
+    }
+  }
+}

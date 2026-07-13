@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+"""Run one native-256 pilot case with pre-merge per-trace provenance capture."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _command_text(command: list[str]) -> str:
+    return " ".join(f'"{part}"' if " " in part else part for part in command)
+
+
+def _run(command: list[str], *, cwd: Path, env: dict[str, str], execute: bool) -> None:
+    print(_command_text(command))
+    if execute:
+        subprocess.run(command, cwd=cwd, env=env, check=True)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("case_dir", type=Path)
+    parser.add_argument("--gprmax-python", required=True)
+    parser.add_argument("--gprmax-root", type=Path, required=True)
+    parser.add_argument("--gpu", type=int, default=0)
+    parser.add_argument("--execute", action="store_true")
+    args = parser.parse_args()
+
+    case_dir = args.case_dir.resolve()
+    manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
+    if manifest.get("formal_training_allowed") is not False:
+        raise RuntimeError("native pilot runner only accepts blocked pre-promotion scenes")
+    trace_count = int(manifest["grid"]["trace_count"])
+    if trace_count != 256:
+        raise RuntimeError(f"native pilot requires 256 traces, got {trace_count}")
+    root = args.gprmax_root.resolve()
+    if not (root / "gprMax").is_dir():
+        raise FileNotFoundError(f"not a gprMax source root: {root}")
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(root) + os.pathsep + env.get("PYTHONPATH", "")
+    log_dir = case_dir / "run_logs"
+    log_dir.mkdir(exist_ok=True)
+    inputs = ["full_scene.in"]
+    if bool(manifest["target_presence"]):
+        inputs.append("no_basal_contrast_control.in")
+    inputs.append("air_reference.in")
+    for input_name in inputs:
+        stem = Path(input_name).stem
+        # gprMax names individual moving-source outputs ``<stem>1.out``;
+        # capture them before outputfiles_merge removes the evidence files.
+        prefix = stem
+        trace_contract = log_dir / f"{stem}_trace_contract.json"
+        _run(
+            [args.gprmax_python, "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(args.gpu)],
+            cwd=case_dir,
+            env=env,
+            execute=args.execute,
+        )
+        _run(
+            [args.gprmax_python, str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", prefix, "--expected", str(trace_count), "--output", str(trace_contract)],
+            cwd=case_dir,
+            env=env,
+            execute=args.execute,
+        )
+        _run(
+            [args.gprmax_python, "-m", "tools.outputfiles_merge", stem, "--remove-files"],
+            cwd=case_dir,
+            env=env,
+            execute=args.execute,
+        )
+    _run([args.gprmax_python, str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=args.execute)
+    _run([sys.executable, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
