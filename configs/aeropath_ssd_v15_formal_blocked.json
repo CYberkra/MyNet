@@ -29,6 +29,7 @@
     "trace_position"
   ],
   "aeropath_metadata_channels": 5,
+  "input_channels": 6,
   "height_resize": 501,
   "width_resize": 256,
   "batch_size": 1,

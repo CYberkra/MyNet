@@ -42,7 +42,15 @@ def main() -> int:
     model = build_model(cfg).to(device).train(args.backward)
     b = int(args.batch_size)
     h, w = int(cfg["height_resize"]), int(cfg["width_resize"])
-    x = torch.randn(b, int(cfg.get("input_channels", 1)), h, w, device=device)
+    metadata_channels = int(cfg.get("aeropath_metadata_channels", 0))
+    input_channels = int(cfg.get("input_channels", 1 + metadata_channels))
+    expected_channels = 1 + metadata_channels
+    if input_channels != expected_channels:
+        raise SystemExit(
+            "AeroPath smoke input_channels must equal raw plus configured "
+            f"metadata channels ({expected_channels}), got {input_channels}."
+        )
+    x = torch.randn(b, input_channels, h, w, device=device)
     altitude = torch.full((b, w), 8.0, device=device)
     chainage = torch.linspace(0.0, float(w - 1), w, device=device)[None].expand(b, -1)
     with torch.autocast(device_type="cuda", enabled=True):
@@ -54,7 +62,7 @@ def main() -> int:
     report = {
         "config": str(path),
         "device": torch.cuda.get_device_name(device),
-        "shape": [b, int(cfg.get("input_channels", 1)), h, w],
+        "shape": [b, input_channels, h, w],
         "backward": bool(args.backward),
         "peak_memory_mib": round(torch.cuda.max_memory_allocated(device) / 1024 ** 2, 2),
         "path_mass_error": float((output.path_marginals.sum(dim=2) + output.null_marginals - 1.0).abs().max().detach().cpu()),
