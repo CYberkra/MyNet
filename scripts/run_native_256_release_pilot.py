@@ -6,7 +6,6 @@ import argparse
 import json
 import os
 import subprocess
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,12 +21,22 @@ def _run(command: list[str], *, cwd: Path, env: dict[str, str], execute: bool) -
         subprocess.run(command, cwd=cwd, env=env, check=True)
 
 
+def _remove_geometry_views(case_dir: Path) -> None:
+    for view in case_dir.glob("*.vti"):
+        view.unlink()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("case_dir", type=Path)
     parser.add_argument("--gprmax-python", required=True)
     parser.add_argument("--gprmax-root", type=Path, required=True)
     parser.add_argument("--gpu", type=int, default=0)
+    parser.add_argument(
+        "--geometry-only",
+        action="store_true",
+        help="Check source-deck geometry only, then remove the disposable VTI view files.",
+    )
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
 
@@ -51,6 +60,16 @@ def main() -> int:
     inputs.append("air_reference.in")
     for input_name in inputs:
         stem = Path(input_name).stem
+        if args.geometry_only:
+            _run(
+                [args.gprmax_python, "-m", "gprMax", input_name, "--geometry-only"],
+                cwd=case_dir,
+                env=env,
+                execute=args.execute,
+            )
+            if args.execute:
+                _remove_geometry_views(case_dir)
+            continue
         # gprMax names individual moving-source outputs ``<stem>1.out``;
         # capture them before outputfiles_merge removes the evidence files.
         prefix = stem
@@ -73,8 +92,10 @@ def main() -> int:
             env=env,
             execute=args.execute,
         )
+    if args.geometry_only:
+        return 0
     _run([args.gprmax_python, str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=args.execute)
-    _run([sys.executable, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
+    _run([args.gprmax_python, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
     return 0
 
 

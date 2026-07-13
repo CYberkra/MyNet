@@ -48,3 +48,5 @@ def test_native_runner_captures_gprmax_trace_names_before_merge() -> None:
     assert 'prefix = stem' in runner
     assert 'capture_gprmax_trace_contract.py' in runner
     assert 'tools.outputfiles_merge' in runner
+    assert '"--geometry-only"' in runner
+    assert "_remove_geometry_views" in runner

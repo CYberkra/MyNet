@@ -23,6 +23,7 @@ def command_text(command: list[str]) -> str:
 def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool, python_executable: str) -> dict[str, Any]:
     manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
     target_presence = bool(manifest["target_presence"])
+    trace_count = int(manifest["grid"]["trace_count"])
     commands: list[dict[str, Any]] = []
 
     geometry_inputs = ["geometry_check_full.in"]
@@ -39,7 +40,7 @@ def case_plan(case_dir: Path, *, gpu: int | None, geometry_only: bool, python_ex
         run_inputs.append("air_reference.in")
         for input_name in run_inputs:
             stem = Path(input_name).stem
-            cmd = [python_executable, "-m", "gprMax", input_name, "-n", "256", "--geometry-fixed"]
+            cmd = [python_executable, "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed"]
             if gpu is not None:
                 cmd.extend(["-gpu", str(gpu)])
             commands.append({"stage": "solver", "command": cmd})

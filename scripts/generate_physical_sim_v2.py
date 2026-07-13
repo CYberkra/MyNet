@@ -109,8 +109,8 @@ def _build_geometry_commands(
     cover_bottom_y_at_cells: np.ndarray,
     basal_y_at_cells: np.ndarray,
     cover_name: str,
-    weathered_name: str,
-    bedrock_name: str,
+    weathered_name: str | np.ndarray,
+    bedrock_name: str | np.ndarray,
 ) -> list[str]:
     nx = int(round(domain_x_m / grid.dl_m))
     if any(arr.shape != (nx,) for arr in (ground_y_at_cells, cover_bottom_y_at_cells, basal_y_at_cells)):
@@ -119,26 +119,22 @@ def _build_geometry_commands(
     commands: list[str] = []
     # Object commands are processed in order. Fill all bedrock first, then
     # overwrite its upper part with weathered material and cover.
-    commands.extend(
-        compress_column_boxes(
-            x0_m=0.0,
-            dl_m=grid.dl_m,
-            lower_y_m=bottom,
-            upper_y_m=basal_y_at_cells,
-            material_name=bedrock_name,
-            z_size_m=grid.dl_m,
-        )
-    )
-    commands.extend(
-        compress_column_boxes(
-            x0_m=0.0,
-            dl_m=grid.dl_m,
-            lower_y_m=basal_y_at_cells,
-            upper_y_m=cover_bottom_y_at_cells,
-            material_name=weathered_name,
-            z_size_m=grid.dl_m,
-        )
-    )
+    def append_layer(lower: np.ndarray, upper: np.ndarray, names: str | np.ndarray) -> None:
+        name_array = np.full(nx, names, dtype=object) if isinstance(names, str) else np.asarray(names, dtype=object)
+        if name_array.shape != (nx,):
+            raise ValueError("layer material names do not match domain x cells")
+        start = 0
+        for end in range(1, nx + 1):
+            if end == nx or name_array[end] != name_array[start]:
+                commands.extend(compress_column_boxes(
+                    x0_m=start * grid.dl_m, dl_m=grid.dl_m,
+                    lower_y_m=lower[start:end], upper_y_m=upper[start:end],
+                    material_name=str(name_array[start]), z_size_m=grid.dl_m,
+                ))
+                start = end
+
+    append_layer(bottom, basal_y_at_cells, bedrock_name)
+    append_layer(basal_y_at_cells, cover_bottom_y_at_cells, weathered_name)
     commands.extend(
         compress_column_boxes(
             x0_m=0.0,
@@ -225,13 +221,15 @@ def generate_case(
         shutil.rmtree(case_dir)
     case_dir.mkdir(parents=True)
 
-    grid = GridSpec()
-    source = SourceSpec()
+    grid = GridSpec(**case.get("grid", {}))
+    source = SourceSpec(**case.get("source", {}))
     material_payload = material_sets["sets"][case["material_set"]]
     cover = _material(material_payload["cover"])
     weathered = _material(material_payload["weathered"])
     bedrock = _material(material_payload["bedrock"])
-    materials = [cover, weathered, bedrock]
+    weathered_variants = [_material(item) for item in material_payload.get("weathered_variants", [])]
+    bedrock_variants = [_material(item) for item in material_payload.get("bedrock_variants", [])]
+    materials = [cover, weathered, bedrock, *weathered_variants, *bedrock_variants]
     max_er = max(m.epsilon_r for m in materials)
     grid.validate(max_er, source.center_frequency_hz)
     source.validate(grid)
@@ -257,9 +255,23 @@ def generate_case(
     agl = np.full(grid.trace_count, float(case["flight_height_agl_m"]), dtype=np.float64)
 
     bedrock_below_m = 3.0
-    ground_y = snap_to_grid(
+    ground_baseline = snap_to_grid(
         grid.pml_guard_m + bedrock_below_m + float(np.max(basal_depth)), grid.dl_m
     )
+    terrain = case["terrain"]
+    if terrain.get("kind", "flat") == "control_points":
+        terrain_offsets = control_point_interface_depth(
+            x_local,
+            base_depth_m=1.0,
+            control_point_fractions=terrain["control_point_fractions"],
+            depth_offsets_m=terrain["elevation_offsets_m"],
+            smoothing_length_m=float(terrain.get("smoothing_length_m", 1.0)),
+        ) - 1.0
+        ground_y = ground_baseline + terrain_offsets
+    elif terrain.get("kind", "flat") == "flat":
+        ground_y = ground_baseline
+    else:
+        raise ValueError(f"Unsupported terrain kind: {terrain.get('kind')!r}")
     arrays = make_scene_arrays(
         grid=grid,
         source=source,
@@ -278,11 +290,16 @@ def generate_case(
             if str(interface.get("kind", "flat")) == "flat"
             else "columnar_layered_reference_not_specular_exact"
         ),
+        scan_left_margin_m=case.get("scan_left_margin_m"),
     )
 
     # Mirror the left one-cell snapping slack in the right domain extent.
-    domain_x = snap_to_grid(float(arrays.receiver_x_m[-1] + grid.pml_guard_m + grid.dl_m), grid.dl_m)
-    domain_y = snap_to_grid(float(np.max(arrays.antenna_y_m) + grid.pml_guard_m), grid.dl_m)
+    right_margin = float(case.get("scan_right_margin_m", grid.pml_guard_m + grid.dl_m))
+    if right_margin < grid.pml_guard_m + grid.dl_m:
+        raise ValueError("scan_right_margin_m must preserve the PML/guard clearance")
+    domain_x = snap_to_grid(float(arrays.receiver_x_m[-1] + right_margin), grid.dl_m)
+    domain_y_required = float(np.max(arrays.antenna_y_m) + grid.pml_guard_m)
+    domain_y = snap_to_grid(max(domain_y_required, float(case.get("domain_min_y_m", 0.0))), grid.dl_m)
     nx = int(round(domain_x / grid.dl_m))
     x_centers = (np.arange(nx, dtype=np.float64) + 0.5) * grid.dl_m
     ground_cells = np.interp(
@@ -301,6 +318,26 @@ def generate_case(
     cover_bottom_cells = np.asarray(snap_to_grid(cover_bottom_cells, grid.dl_m))
     basal_cells = np.asarray(snap_to_grid(basal_cells, grid.dl_m))
 
+    def lateral_names(base: Material, variants: list[Material], key: str) -> str | np.ndarray:
+        zones = case.get("lateral_material_zones", [])
+        if not zones:
+            return base.name
+        available = {base.name: base, **{m.name: m for m in variants}}
+        selected = np.full(nx, base.name, dtype=object)
+        for zone in zones:
+            material_name = str(zone[key])
+            if material_name not in available:
+                raise ValueError(f"unknown {key} material: {material_name}")
+            lo, hi = float(zone["start_fraction"]), float(zone["end_fraction"])
+            if not 0.0 <= lo < hi <= 1.0:
+                raise ValueError("lateral material zones must be ordered fractions within [0, 1]")
+            mask = (x_centers / domain_x >= lo) & (x_centers / domain_x < hi)
+            selected[mask] = material_name
+        return selected
+
+    weathered_names = lateral_names(weathered, weathered_variants, "weathered_material")
+    bedrock_names = lateral_names(bedrock, bedrock_variants, "bedrock_material")
+
     target_presence = bool(case["target_presence"])
     full_bedrock_name = bedrock.name if target_presence else weathered.name
     full_commands = _build_geometry_commands(
@@ -310,8 +347,8 @@ def generate_case(
         cover_bottom_y_at_cells=cover_bottom_cells,
         basal_y_at_cells=basal_cells,
         cover_name=cover.name,
-        weathered_name=weathered.name,
-        bedrock_name=full_bedrock_name,
+        weathered_name=weathered_names,
+        bedrock_name=bedrock_names if target_presence else weathered_names,
     )
     control_commands = _build_geometry_commands(
         grid=grid,
@@ -320,8 +357,8 @@ def generate_case(
         cover_bottom_y_at_cells=cover_bottom_cells,
         basal_y_at_cells=basal_cells,
         cover_name=cover.name,
-        weathered_name=weathered.name,
-        bedrock_name=weathered.name,
+        weathered_name=weathered_names,
+        bedrock_name=weathered_names,
     )
 
     (case_dir / "full_scene_geometry.inc").write_text("\n".join(full_commands) + "\n", encoding="utf-8")

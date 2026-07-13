@@ -311,6 +311,7 @@ def make_scene_arrays(
     cover_material: Material,
     weathered_material: Material,
     arrival_model: str = "horizontal_layered_bistatic_exact",
+    scan_left_margin_m: float | None = None,
 ) -> SceneArrays:
     source.validate(grid)
     n = grid.trace_count
@@ -328,7 +329,9 @@ def make_scene_arrays(
     # Keep one grid-cell slack beyond the nominal PML+guard distance.  Source
     # coordinates are snapped to the FDTD grid, so an exact boundary value can
     # round inside the validator's required clearance.
-    left_margin = grid.pml_guard_m + grid.dl_m
+    left_margin = grid.pml_guard_m + grid.dl_m if scan_left_margin_m is None else float(scan_left_margin_m)
+    if left_margin < grid.pml_guard_m + grid.dl_m:
+        raise ValueError("scan_left_margin_m must preserve the PML/guard clearance")
     half_offset = source.tx_rx_offset_m / 2.0
     first_mid = snap_to_grid(left_margin + half_offset, grid.dl_m)
     trace_mid = first_mid + np.arange(n, dtype=np.float64) * grid.trace_spacing_m
@@ -491,7 +494,7 @@ def extract_visible_phase(
         dt_ns = float(np.median(np.diff(t)))
         max_step_samples = max(1, int(np.floor(max_trace_step_ns / dt_ns + 1e-9)))
         costs = np.full(full.shape, np.inf, dtype=np.float64)
-        back = np.full(full.shape, -1, dtype=np.int16)
+        back = np.full(full.shape, -1, dtype=np.int32)
         for j, center in enumerate(geom):
             if not np.isfinite(center):
                 continue
@@ -517,10 +520,10 @@ def extract_visible_phase(
                 candidate = previous + 0.05 * offsets.astype(np.float64) ** 2
                 choice = int(np.argmin(candidate))
                 costs[sample, j] = unary[sample] + candidate[choice]
-                back[sample, j] = np.int16(lo + choice)
+                back[sample, j] = np.int32(lo + choice)
         end = int(np.argmin(costs[:, -1]))
         if np.isfinite(costs[end, -1]):
-            path = np.empty(full.shape[1], dtype=np.int16)
+            path = np.empty(full.shape[1], dtype=np.int32)
             path[-1] = end
             for j in range(full.shape[1] - 1, 0, -1):
                 previous = int(back[path[j], j])
@@ -529,9 +532,50 @@ def extract_visible_phase(
                     break
                 path[j - 1] = previous
             if path.size:
-                # The continuous path represents the wavelet envelope centre,
-                # avoiding a trace-wise signed-lobe switch in curved scenes.
-                visible = t[path]
+                # First lock onto a continuous target wavelet, then select a
+                # continuous signed lobe inside that wavelet. Returning the
+                # envelope path itself would silently change visible-phase
+                # labels into envelope-centre labels.
+                envelope_center = t[path]
+                phase_signal = np.abs(contrast)
+                phase_costs = np.full(full.shape, np.inf, dtype=np.float64)
+                phase_back = np.full(full.shape, -1, dtype=np.int32)
+                for j, center in enumerate(envelope_center):
+                    allowed = np.abs(t - center) <= phase_half_width_ns
+                    local = phase_signal[allowed, j]
+                    local_max = float(np.max(local)) if local.size else 0.0
+                    if local_max <= 0:
+                        continue
+                    amplitude_cost = -np.log(np.maximum(phase_signal[:, j] / local_max, 1e-12))
+                    anchor_cost = 0.15 * ((t - center) / phase_half_width_ns) ** 2
+                    unary = amplitude_cost + anchor_cost
+                    unary[~allowed] = np.inf
+                    if j == 0:
+                        phase_costs[:, j] = unary
+                        continue
+                    for sample in np.flatnonzero(allowed):
+                        lo = max(0, sample - max_step_samples)
+                        hi = min(t.size, sample + max_step_samples + 1)
+                        previous = phase_costs[lo:hi, j - 1]
+                        if not np.isfinite(previous).any():
+                            continue
+                        offsets = np.arange(lo, hi) - sample
+                        candidate = previous + 0.05 * offsets.astype(np.float64) ** 2
+                        choice = int(np.argmin(candidate))
+                        phase_costs[sample, j] = unary[sample] + candidate[choice]
+                        phase_back[sample, j] = np.int32(lo + choice)
+                phase_end = int(np.argmin(phase_costs[:, -1]))
+                if np.isfinite(phase_costs[phase_end, -1]):
+                    phase_path = np.empty(full.shape[1], dtype=np.int32)
+                    phase_path[-1] = phase_end
+                    for j in range(full.shape[1] - 1, 0, -1):
+                        previous = int(phase_back[phase_path[j], j])
+                        if previous < 0:
+                            phase_path = np.empty(0, dtype=np.int32)
+                            break
+                        phase_path[j - 1] = previous
+                    if phase_path.size:
+                        visible = t[phase_path]
     return visible, support, contrast.astype(np.float32)
 
 

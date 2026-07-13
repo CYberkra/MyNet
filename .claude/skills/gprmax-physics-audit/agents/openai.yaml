@@ -1,0 +1,4 @@
+interface:
+  display_name: "gprMax Physics Audit"
+  short_description: "Auditable gprMax model design and simulation checks"
+  default_prompt: "Use $gprmax-physics-audit to design and audit a reproducible gprMax simulation case."

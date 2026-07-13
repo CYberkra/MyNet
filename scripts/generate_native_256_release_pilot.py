@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -56,6 +57,26 @@ def _assert_case_matches_standard(case: dict[str, Any], standard: dict[str, Any]
         raise ValueError(f"{case['case_id']}: target_presence must be boolean")
 
 
+def _generator_sources_dirty() -> bool:
+    """Return whether the inputs that define a generated source deck are edited."""
+    result = subprocess.run(
+        [
+            "git",
+            "status",
+            "--porcelain",
+            "--",
+            "pgdacsnet/simulation_v2.py",
+            "scripts/generate_physical_sim_v2.py",
+            "data/simulation_contract_v2",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return result.returncode == 0 and bool(result.stdout.strip())
+
+
 def build(
     *,
     cases_path: Path,
@@ -64,6 +85,7 @@ def build(
     out_root: Path,
     selected: set[str],
     overwrite: bool,
+    allow_dirty_generator: bool = True,
 ) -> dict[str, Any]:
     standard = _load(standard_path)
     cases_payload = _load(cases_path)
@@ -85,6 +107,11 @@ def build(
         raise ValueError("native pilot catalog contains duplicate case IDs")
     for case in cases:
         _assert_case_matches_standard(case, standard)
+    if not allow_dirty_generator and _generator_sources_dirty():
+        raise RuntimeError(
+            "Refusing to publish native source decks from edited generator or contract files. "
+            "Commit those inputs first, or pass --allow-dirty-generator for an explicitly experimental build."
+        )
 
     if out_root.exists() and overwrite:
         for case_id in ids:
@@ -131,6 +158,11 @@ def main() -> int:
     parser.add_argument("--out-root", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--case-id", action="append", default=[])
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--allow-dirty-generator",
+        action="store_true",
+        help="Permit an explicitly experimental build from uncommitted generator/contract inputs.",
+    )
     args = parser.parse_args()
     report = build(
         cases_path=args.cases.resolve(),
@@ -139,6 +171,7 @@ def main() -> int:
         out_root=args.out_root.resolve(),
         selected=set(args.case_id),
         overwrite=args.overwrite,
+        allow_dirty_generator=args.allow_dirty_generator,
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["static_validation_ok"] else 1

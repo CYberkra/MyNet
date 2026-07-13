@@ -152,6 +152,30 @@ def test_continuous_visible_phase_rejects_an_isolated_stronger_lobe() -> None:
     assert np.max(np.abs(np.diff(continuous))) <= 5.6
 
 
+def test_continuous_visible_phase_returns_signed_lobe_not_envelope_center() -> None:
+    time = np.linspace(0, 700, 501)
+    geom = np.full(9, 320.0)
+    full = np.zeros((501, 9), dtype=np.float32)
+    for j in range(full.shape[1]):
+        delta = time - (320.0 + 0.15 * j)
+        gaussian = np.exp(-0.5 * (delta / 5.6) ** 2)
+        # Asymmetric bipolar wavelet: its envelope centre and strongest signed
+        # lobe are deliberately different.
+        full[:, j] = (delta / 5.6) * gaussian + 0.18 * gaussian
+    independent, _, _ = extract_visible_phase(full, np.zeros_like(full), time, geom)
+    continuous, _, _ = extract_visible_phase(
+        full,
+        np.zeros_like(full),
+        time,
+        geom,
+        enforce_continuity=True,
+        max_trace_step_ns=5.6,
+    )
+    assert np.max(np.abs(continuous - independent)) <= 1.4 + 1e-9
+    assert np.median(np.abs(continuous - geom)) >= 4.2
+    assert np.max(np.abs(np.diff(continuous))) <= 5.6
+
+
 def test_control_generator_and_static_validator(tmp_path: Path) -> None:
     out = tmp_path / "controls"
     env = os.environ.copy()
@@ -316,30 +340,6 @@ def test_static_validator_accepts_successful_postprocessed_control(tmp_path: Pat
     assert report["results"][0]["lifecycle_state"] == "postprocessed"
 
 
-def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
-    out = tmp_path / "controls"
-    env = os.environ.copy()
-    env["MPLBACKEND"] = "Agg"
-    proc = subprocess.run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "generate_physical_sim_v2.py"),
-            "--out-root",
-            str(out),
-            "--case-id",
-            "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
-            "--overwrite",
-        ],
-        cwd=ROOT,
-        env=env,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
-    )
-    assert proc.returncode == 0, proc.stdout
-    run_text = (out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS" / "RUN_COMMANDS.md").read_text()
-    assert "-n 256 --geometry-fixed" in run_text
 def test_static_validator_reports_incomplete_case_without_aborting_catalog(tmp_path: Path) -> None:
     out = tmp_path / "controls"
     env = os.environ.copy()
@@ -381,6 +381,30 @@ def test_static_validator_reports_incomplete_case_without_aborting_catalog(tmp_p
     assert "flight_height_agl_m.npy" in report["results"][0]["errors"][0]
 
 
+def test_generated_run_commands_use_geometry_fixed(tmp_path: Path) -> None:
+    out = tmp_path / "controls"
+    env = os.environ.copy()
+    env["MPLBACKEND"] = "Agg"
+    proc = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "generate_physical_sim_v2.py"),
+            "--out-root",
+            str(out),
+            "--case-id",
+            "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
+            "--overwrite",
+        ],
+        cwd=ROOT,
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    assert proc.returncode == 0, proc.stdout
+    run_text = (out / "CTRL01_FLAT_SHALLOW_LOWLOSS_POS" / "RUN_COMMANDS.md").read_text()
+    assert "-n 256 --geometry-fixed" in run_text
 
 
 def test_selected_control_regeneration_preserves_complete_index(tmp_path: Path) -> None:
@@ -411,13 +435,12 @@ def test_selected_control_regeneration_preserves_complete_index(tmp_path: Path) 
     )
     assert regenerated.returncode == 0, regenerated.stdout
     index = json.loads((out / "control_index.json").read_text(encoding="utf-8"))
-    assert index["case_count"] == 4
-    assert {entry["case_id"] for entry in index["cases"]} == {
-        "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
-        "CTRL02_FLAT_DEEP_MODERATE_POS",
-        "CTRL03_SMOOTH_INTERFACE_POS",
-        "CTRL04_MATCHED_BACKGROUND_NEG",
-    }
+    contract = json.loads(
+        (ROOT / "data" / "simulation_contract_v2" / "control_cases_v1.json").read_text(encoding="utf-8")
+    )
+    expected = {entry["case_id"] for entry in contract["cases"]}
+    assert index["case_count"] == len(expected)
+    assert {entry["case_id"] for entry in index["cases"]} == expected
 
 
 def test_negative_control_run_plan_includes_postprocess(tmp_path: Path) -> None:
@@ -426,7 +449,8 @@ def test_negative_control_run_plan_includes_postprocess(tmp_path: Path) -> None:
     case = tmp_path / "CTRL04"
     case.mkdir()
     (case / "scene_manifest.json").write_text(
-        json.dumps({"case_id": "CTRL04", "target_presence": False}), encoding="utf-8"
+        json.dumps({"case_id": "CTRL04", "target_presence": False, "grid": {"trace_count": 256}}),
+        encoding="utf-8",
     )
     plan = case_plan(case, gpu=0, geometry_only=False, python_executable=sys.executable)
     assert [entry["stage"] for entry in plan["commands"]][-1] == "postprocess"

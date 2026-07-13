@@ -52,6 +52,12 @@ data/PGDA_SYNTH_DATASET_V2/_staging/
 data/PGDA_SYNTH_DATASET_V2/_superseded_*/
 data/PGDA_SYNTH_DATASET_V2/01_solver_runs/
 outputs/simulation_v2_controls/
+# Native 256 source decks and compact released canonical arrays are shared
+# through Git. Raw gprMax .out/.h5/.vti files remain globally ignored above.
+!data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/
+!data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/**
+!data/PGDA_SYNTH_DATASET_V2/02_released_canonical/
+!data/PGDA_SYNTH_DATASET_V2/02_released_canonical/**
 !data/PGDA_SYNTH_DATASET_V1/LEGACY_QUARANTINE.md
 # Dataset and legacy-simulation governance are compact manifests and label
 # overrides. They are source evidence, not disposable generated data.
