@@ -43,14 +43,14 @@ evidence, visible-phase review, and an explicit human promotion. See
 target-absent negative families. Generate and statically validate them with:
 
 ```powershell
-F:\codex\envs\psgn-csnet\python.exe scripts\generate_native_256_release_pilot.py
+python scripts\generate_native_256_release_pilot.py
 ```
 
 The command writes only a pre-solver package. Execute a reviewed case with the
 native runner after configuring the local gprMax runtime:
 
 ```powershell
-F:\codex\envs\psgn-csnet\python.exe scripts\run_native_256_release_pilot.py `
+python scripts\run_native_256_release_pilot.py `
   data\PGDA_SYNTH_DATASET_V2\01_native_256_release_pilot\N256_F01_GENTLE_DEEP_MODERATE_POS `
-  --gprmax-python F:\codex\envs\gprmax-3.1.7\python.exe --gprmax-root F:\codex\PSGN-CSNet\gprMax-master --gpu 0
+  --execute
 ```

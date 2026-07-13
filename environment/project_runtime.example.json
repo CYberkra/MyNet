@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "profile_name": "replace-with-machine-name",
+  "project_python": null,
+  "gprmax_python": null,
+  "gprmax_source": null,
+  "gprmax_vcvars": null,
+  "gpu_index": 0,
+  "cuda_visible_devices": null,
+  "output_root": "outputs",
+  "scratch_root": "workspace",
+  "solver_run_root": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs",
+  "notes": "This file is portable. Copy it to project_runtime.local.json and fill only machine-local executable paths. Relative roots resolve from the repository root."
+}

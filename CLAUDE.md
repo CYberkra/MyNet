@@ -1,5 +1,11 @@
 # CLAUDE.md
 
+> **Portability notice (2026-07-13):** Drive-letter paths later in this
+> historical guide document describe earlier machines. They are not active
+> instructions. Configure a new computer through
+> `environment/project_runtime.local.json` and validate it with
+> `scripts/validate_machine_runtime.py` before training or running gprMax.
+
 ## ⚠️ 致命铁律：汇报仿真结果必须附带三件套
 
 **任何仿真跑完后，汇报时必须同时包含：**

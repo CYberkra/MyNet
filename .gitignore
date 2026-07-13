@@ -6,6 +6,11 @@ __pycache__/
 .venv/
 venv/
 
+# Per-machine runtime configuration. Copy the committed example and fill this
+# file locally; paths to Python, CUDA, and gprMax must never be committed.
+environment/project_runtime.local.json
+environment/*.machine.json
+
 # IDE
 .vscode/
 .idea/
@@ -52,6 +57,7 @@ data/PGDA_SYNTH_DATASET_V2/_staging/
 data/PGDA_SYNTH_DATASET_V2/_superseded_*/
 data/PGDA_SYNTH_DATASET_V2/01_solver_runs/
 outputs/simulation_v2_controls/
+outputs/
 # Native 256 source decks and compact released canonical arrays are shared
 # through Git. Raw gprMax .out/.h5/.vti files remain globally ignored above.
 !data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/

@@ -1,6 +1,7 @@
 # PGDA-CSNet / MyNet
 
-UAV-GPR basal-interface picking and A/S/G decomposition research code.
+UAV-GPR basal-interface picking research. The active paper candidate is
+AeroPath-SSD; A/S/G decomposition remains a frozen development baseline.
 
 ## Current experiment status
 
@@ -32,6 +33,25 @@ python -m pip install -r requirements-dev.txt
 ```
 
 `requirements-lock-cpu.txt` records the CPU test environment used for this repair. It is not a substitute for selecting the correct CUDA-enabled PyTorch wheel on the RTX 5070 host.
+
+## Two-Computer Setup
+
+The checked-in source contains no required machine-specific drive paths. On
+each computer, after pulling `master`, create and validate a local profile:
+
+```powershell
+python scripts/init_machine_runtime.py
+# Edit environment/project_runtime.local.json once with local Python/gprMax paths.
+python scripts/validate_machine_runtime.py --require-training
+python scripts/validate_machine_runtime.py --require-gprmax
+```
+
+The local profile is ignored by Git. Project-relative data, source decks,
+compact validated arrays, manifests, skills, and source code are shared.
+Raw gprMax `.out`, `.h5`, and `.vti` files, logs, scratch directories, and
+ordinary `outputs/` are intentionally local. See
+[`environment/README.md`](environment/README.md) and
+[`data/simulation_contract_v2/SYNC_AND_RETENTION_POLICY.md`](data/simulation_contract_v2/SYNC_AND_RETENTION_POLICY.md).
 
 ## Tests
 

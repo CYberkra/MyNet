@@ -6,9 +6,13 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from pgdacsnet.runtime import RuntimeConfigError, load_runtime, require_gprmax  # noqa: E402
 
 
 def _command_text(command: list[str]) -> str:
@@ -29,9 +33,9 @@ def _remove_geometry_views(case_dir: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("case_dir", type=Path)
-    parser.add_argument("--gprmax-python", required=True)
-    parser.add_argument("--gprmax-root", type=Path, required=True)
-    parser.add_argument("--gpu", type=int, default=0)
+    parser.add_argument("--gprmax-python", help="Override gprmax_python from the local runtime profile.")
+    parser.add_argument("--gprmax-root", type=Path, help="Override gprmax_source from the local runtime profile.")
+    parser.add_argument("--gpu", type=int, help="Override gpu_index from the local runtime profile.")
     parser.add_argument(
         "--geometry-only",
         action="store_true",
@@ -47,9 +51,21 @@ def main() -> int:
     trace_count = int(manifest["grid"]["trace_count"])
     if trace_count != 256:
         raise RuntimeError(f"native pilot requires 256 traces, got {trace_count}")
-    root = args.gprmax_root.resolve()
+    runtime = load_runtime()
+    try:
+        configured_python, configured_root = require_gprmax(runtime)
+    except RuntimeConfigError as exc:
+        if args.gprmax_python and args.gprmax_root:
+            configured_python, configured_root = Path(args.gprmax_python), args.gprmax_root
+        else:
+            raise RuntimeError(str(exc)) from exc
+    gprmax_python = Path(args.gprmax_python).resolve() if args.gprmax_python else configured_python
+    root = args.gprmax_root.resolve() if args.gprmax_root else configured_root
+    if not gprmax_python.is_file():
+        raise FileNotFoundError(f"gprMax Python does not exist: {gprmax_python}")
     if not (root / "gprMax").is_dir():
         raise FileNotFoundError(f"not a gprMax source root: {root}")
+    gpu = int(args.gpu) if args.gpu is not None else runtime.gpu_index
     env = os.environ.copy()
     env["PYTHONPATH"] = str(root) + os.pathsep + env.get("PYTHONPATH", "")
     log_dir = case_dir / "run_logs"
@@ -62,7 +78,7 @@ def main() -> int:
         stem = Path(input_name).stem
         if args.geometry_only:
             _run(
-                [args.gprmax_python, "-m", "gprMax", input_name, "--geometry-only"],
+                [str(gprmax_python), "-m", "gprMax", input_name, "--geometry-only"],
                 cwd=case_dir,
                 env=env,
                 execute=args.execute,
@@ -75,27 +91,27 @@ def main() -> int:
         prefix = stem
         trace_contract = log_dir / f"{stem}_trace_contract.json"
         _run(
-            [args.gprmax_python, "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(args.gpu)],
+            [str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)],
             cwd=case_dir,
             env=env,
             execute=args.execute,
         )
         _run(
-            [args.gprmax_python, str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", prefix, "--expected", str(trace_count), "--output", str(trace_contract)],
+            [str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", prefix, "--expected", str(trace_count), "--output", str(trace_contract)],
             cwd=case_dir,
             env=env,
             execute=args.execute,
         )
         _run(
-            [args.gprmax_python, "-m", "tools.outputfiles_merge", stem, "--remove-files"],
+            [str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"],
             cwd=case_dir,
             env=env,
             execute=args.execute,
         )
     if args.geometry_only:
         return 0
-    _run([args.gprmax_python, str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=args.execute)
-    _run([args.gprmax_python, str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
+    _run([str(gprmax_python), str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=args.execute)
+    _run([str(gprmax_python), str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=args.execute)
     return 0
 
 

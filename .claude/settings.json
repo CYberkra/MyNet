@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/pgda_safety_guard.py\"",
+            "command": "python .claude/hooks/pgda_safety_guard.py",
             "timeout": 5
           }
         ]
@@ -19,12 +19,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/training_process_guard.py\"",
+            "command": "python .claude/hooks/training_process_guard.py",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/venv_python_guard.py\"",
+            "command": "python .claude/hooks/venv_python_guard.py",
             "timeout": 5
           }
         ]
@@ -36,12 +36,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/py_compile_on_edit.py\"",
+            "command": "python .claude/hooks/py_compile_on_edit.py",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/py_lint_on_edit.py\"",
+            "command": "python .claude/hooks/py_lint_on_edit.py",
             "timeout": 15
           }
         ]
@@ -51,7 +51,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/checkpoint_sanity.py\"",
+            "command": "python .claude/hooks/checkpoint_sanity.py",
             "timeout": 10
           }
         ]
@@ -61,7 +61,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/report_on_eval.py\"",
+            "command": "python .claude/hooks/report_on_eval.py",
             "timeout": 10
           }
         ]
@@ -71,7 +71,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"E:/gprMax/gprMax-v.3.1.7/.venv/Scripts/python.exe\" \"D:/Claude/PGDA-CSNet/.claude/hooks/npz_validation.py\"",
+            "command": "python .claude/hooks/npz_validation.py",
             "timeout": 10
           }
         ]

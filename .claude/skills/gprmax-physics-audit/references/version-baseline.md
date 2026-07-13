@@ -5,7 +5,9 @@
 - Review date: 2026-07-12
 - Local package version: gprMax 3.1.7
 - Codename: Big Smoke
-- Local source root at review: `F:\codex\PSGN-CSNet\gprMax-master`
+- The reviewed local source root was machine-specific. Resolve the active one
+  through `environment/project_runtime.local.json` or `PGDA_GPRMAX_ROOT`; do
+  not copy the old drive-letter path into commands.
 - Source provenance note: local archive has no `.git` metadata; use file hashes for traceability.
 - Official manual: https://docs.gprmax.com/en/latest/
 
