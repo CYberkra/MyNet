@@ -69,6 +69,30 @@ def test_native_runner_stages_source_and_captures_trace_names_before_merge(tmp_p
     assert "gprmax_vcvars" in runner
 
 
+def test_native_runner_stages_distributed_audit_subset(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    manifest = {
+        "target_presence": True,
+        "grid": {"trace_count": 256, "trace_spacing_m": 0.09},
+    }
+    (source / "scene_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    deck = "#src_steps: 0.09 0 0\n#rx_steps: 0.09 0 0\n"
+    for name in ("full_scene.in", "no_basal_contrast_control.in", "air_reference.in"):
+        (source / name).write_text(deck, encoding="utf-8")
+    staged = stage_case(
+        source,
+        tmp_path / "run",
+        requested_trace_count=32,
+        geometry_only=False,
+        trace_stride=8,
+    )
+    assert "#src_steps: 0.72 0 0" in (staged / "full_scene.in").read_text(encoding="utf-8")
+    provenance = json.loads((staged / "run_manifest.json").read_text(encoding="utf-8"))
+    assert provenance["mode"] == "distributed_smoke_subset"
+    assert provenance["selected_trace_indices_zero_based"] == list(range(0, 249, 8))
+
+
 def test_gprmax_single_trace_contract_uses_unnumbered_output_name() -> None:
     assert trace_filename("full_scene", 1, 1) == "full_scene.out"
     assert trace_index_for_path(Path("full_scene.out"), "full_scene", 1) == 1

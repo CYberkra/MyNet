@@ -101,6 +101,8 @@ def main() -> int:
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
+    run_manifest_path = case_dir / "run_manifest.json"
+    run_manifest = json.loads(run_manifest_path.read_text(encoding="utf-8")) if run_manifest_path.is_file() else {}
 
     paths = {
         "full": case_dir / "full_scene_merged.out",
@@ -122,12 +124,18 @@ def main() -> int:
     trace_count = full.shape[1]
     declared_trace_count = int(manifest["grid"]["trace_count"])
     trace_spacing_m = float(manifest["grid"]["trace_spacing_m"])
-    covered_span_m = trace_spacing_m * max(trace_count - 1, 0)
     declared_span_m = trace_spacing_m * max(declared_trace_count - 1, 0)
     labels = case_dir / "labels"
-    reference = np.load(labels / "reference_arrival_time_ns.npy")[:trace_count]
-    source_x = np.load(labels / "source_x_m.npy")[:trace_count]
-    receiver_x = np.load(labels / "receiver_x_m.npy")[:trace_count]
+    selected_indices = np.asarray(
+        run_manifest.get("selected_trace_indices_zero_based", list(range(trace_count))),
+        dtype=np.int64,
+    )
+    if selected_indices.shape != (trace_count,):
+        raise RuntimeError("run manifest trace selection does not match merged output")
+    covered_span_m = trace_spacing_m * int(selected_indices[-1] - selected_indices[0]) if trace_count > 1 else 0.0
+    reference = np.load(labels / "reference_arrival_time_ns.npy")[selected_indices]
+    source_x = np.load(labels / "source_x_m.npy")[selected_indices]
+    receiver_x = np.load(labels / "receiver_x_m.npy")[selected_indices]
     position_tolerance_m = _position_tolerance_m(float(manifest["grid"]["dl_m"]))
     label_contract = manifest.get("labels", {})
     search_half = float(label_contract.get("visible_phase_search_half_width_ns", 35.0))
@@ -172,6 +180,8 @@ def main() -> int:
         "case_id": manifest["case_id"],
         "formal_training_allowed": False,
         "trace_count": trace_count,
+        "trace_stride": int(run_manifest.get("trace_stride", 1)),
+        "selected_trace_indices_zero_based": selected_indices.tolist(),
         "declared_trace_count": declared_trace_count,
         "covered_scan_span_m": covered_span_m,
         "declared_scan_span_m": declared_span_m,
@@ -209,7 +219,7 @@ def main() -> int:
             and result["visible_step_max_ns"] <= 5.6
         ),
         "formal_promotion": False,
-        "scope": "contiguous_local_start_segment",
+        "scope": "distributed_full_span_subset" if int(run_manifest.get("trace_stride", 1)) > 1 else "contiguous_local_start_segment",
         "full_span_morphology_validated": trace_count == declared_trace_count,
         "note": "Local continuity gate only; distributed/full-span execution and human morphology review remain required.",
     }

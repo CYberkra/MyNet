@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -114,7 +115,24 @@ def _inside(child: Path, parent: Path) -> bool:
     return True
 
 
-def stage_case(source_case_dir: Path, run_case_dir: Path, *, requested_trace_count: int, geometry_only: bool) -> Path:
+def _set_spatial_step(input_path: Path, step_m: float) -> None:
+    text = input_path.read_text(encoding="utf-8")
+    replacement = f"{step_m:.12g} 0 0"
+    updated, source_count = re.subn(r"(?m)^(#src_steps:\s*)[^\r\n]+$", rf"\g<1>{replacement}", text)
+    updated, receiver_count = re.subn(r"(?m)^(#rx_steps:\s*)[^\r\n]+$", rf"\g<1>{replacement}", updated)
+    if source_count != 1 or receiver_count != 1:
+        raise RuntimeError(f"expected one source and receiver step declaration in {input_path}")
+    input_path.write_text(updated, encoding="utf-8")
+
+
+def stage_case(
+    source_case_dir: Path,
+    run_case_dir: Path,
+    *,
+    requested_trace_count: int,
+    geometry_only: bool,
+    trace_stride: int = 1,
+) -> Path:
     """Copy a source deck to a fresh solver work directory with provenance."""
     source_case_dir = source_case_dir.resolve()
     run_case_dir = run_case_dir.resolve()
@@ -125,15 +143,35 @@ def stage_case(source_case_dir: Path, run_case_dir: Path, *, requested_trace_cou
     manifest_path = source_case_dir / "scene_manifest.json"
     if not manifest_path.is_file():
         raise FileNotFoundError(f"missing scene manifest: {manifest_path}")
+    source_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    declared_trace_count = int(source_manifest["grid"]["trace_count"])
+    if trace_stride < 1:
+        raise ValueError("trace stride must be positive")
+    selected_indices = [index * trace_stride for index in range(requested_trace_count)]
+    if selected_indices and selected_indices[-1] >= declared_trace_count:
+        raise ValueError(
+            f"distributed subset ends at trace index {selected_indices[-1]}, "
+            f"outside declared range [0, {declared_trace_count - 1}]"
+        )
     shutil.copytree(source_case_dir, run_case_dir, ignore=shutil.ignore_patterns(*SOLVER_ARTIFACT_PATTERNS))
+    if trace_stride > 1:
+        step_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_stride
+        for input_name in _input_names(source_manifest):
+            _set_spatial_step(run_case_dir / input_name, step_m)
     provenance = {
         "schema": "native_256_solver_run_v1",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "source_case_dir": str(source_case_dir),
         "source_scene_manifest_sha256": _sha256(manifest_path),
         "requested_trace_count": requested_trace_count,
-        "declared_trace_count": json.loads(manifest_path.read_text(encoding="utf-8"))["grid"]["trace_count"],
-        "mode": "geometry_only" if geometry_only else ("full" if requested_trace_count == 256 else "smoke_subset"),
+        "declared_trace_count": declared_trace_count,
+        "trace_stride": trace_stride,
+        "selected_trace_indices_zero_based": selected_indices,
+        "mode": "geometry_only" if geometry_only else (
+            "full" if requested_trace_count == declared_trace_count and trace_stride == 1
+            else "distributed_smoke_subset" if trace_stride > 1
+            else "smoke_subset"
+        ),
         "source_deck_read_only": True,
     }
     (run_case_dir / "run_manifest.json").write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
@@ -171,6 +209,7 @@ def main() -> int:
     parser.add_argument("--run-dir", type=Path, help="Fresh disposable solver work directory.")
     parser.add_argument("--run-id", help="Run identifier below runtime.solver_run_root (default: UTC timestamp).")
     parser.add_argument("--trace-count", type=int, help="Run 1, 32, 64, or the full declared trace count.")
+    parser.add_argument("--trace-stride", type=int, default=1, help="Audit-only stride through canonical trace positions.")
     parser.add_argument("--geometry-only", action="store_true", help="Run geometry checks and remove VTI views afterwards.")
     parser.add_argument("--execute", action="store_true", help="Stage the deck and execute the listed commands.")
     args = parser.parse_args()
@@ -186,6 +225,10 @@ def main() -> int:
     trace_count = args.trace_count or declared_trace_count
     if not 1 <= trace_count <= declared_trace_count:
         raise ValueError(f"trace count must be in [1, {declared_trace_count}], got {trace_count}")
+    if args.trace_stride < 1 or (trace_count - 1) * args.trace_stride >= declared_trace_count:
+        raise ValueError("trace stride and count exceed the declared acquisition span")
+    if args.trace_stride > 1 and (args.geometry_only or trace_count == declared_trace_count):
+        raise ValueError("trace stride is only valid for non-full spatial audit subsets")
 
     runtime = load_runtime()
     try:
@@ -231,7 +274,13 @@ def main() -> int:
         print("PLAN ONLY: source deck will remain untouched. Add --execute to stage and run.")
         print(f"source deck: {source_case_dir}")
         print(f"solver run:  {run_case_dir}")
-        print(f"mode: {'geometry_only' if args.geometry_only else ('full' if trace_count == declared_trace_count else 'smoke_subset')}")
+        mode = "geometry_only" if args.geometry_only else (
+            "full" if trace_count == declared_trace_count
+            else "distributed_smoke_subset" if args.trace_stride > 1
+            else "smoke_subset"
+        )
+        print(f"mode: {mode}")
+        print(f"trace stride: {args.trace_stride}")
         for input_name in inputs:
             print(f"static audit: {input_name}")
             if args.geometry_only:
@@ -240,7 +289,13 @@ def main() -> int:
                 _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=run_case_dir, env=env, execute=False)
         return 0
 
-    case_dir = stage_case(source_case_dir, run_case_dir, requested_trace_count=trace_count, geometry_only=args.geometry_only)
+    case_dir = stage_case(
+        source_case_dir,
+        run_case_dir,
+        requested_trace_count=trace_count,
+        geometry_only=args.geometry_only,
+        trace_stride=args.trace_stride,
+    )
     log_dir = case_dir / "run_logs"
     preflight_dir = case_dir / "preflight"
     log_dir.mkdir()
