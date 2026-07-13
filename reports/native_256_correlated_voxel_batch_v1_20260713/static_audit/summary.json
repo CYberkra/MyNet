@@ -1,0 +1,90 @@
+[
+  {
+    "case": "N256_CV01_BALANCED_MULTISCALE_POS",
+    "input": "air_reference.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": null
+  },
+  {
+    "case": "N256_CV01_BALANCED_MULTISCALE_POS",
+    "input": "full_scene.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV01_BALANCED_MULTISCALE_POS",
+    "input": "no_basal_contrast_control.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+    "input": "air_reference.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": null
+  },
+  {
+    "case": "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+    "input": "full_scene.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+    "input": "no_basal_contrast_control.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV03_PATCHY_TRANSITION_POS",
+    "input": "air_reference.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": null
+  },
+  {
+    "case": "N256_CV03_PATCHY_TRANSITION_POS",
+    "input": "full_scene.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV03_PATCHY_TRANSITION_POS",
+    "input": "no_basal_contrast_control.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.800071972591805
+  },
+  {
+    "case": "N256_CV04_UPPER_CLUTTER_TRUE_NEG",
+    "input": "air_reference.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": null
+  },
+  {
+    "case": "N256_CV04_UPPER_CLUTTER_TRUE_NEG",
+    "input": "full_scene.in",
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "cells_per_lambda": 22.64336859008974
+  }
+]

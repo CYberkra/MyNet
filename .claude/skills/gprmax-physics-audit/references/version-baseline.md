@@ -31,6 +31,12 @@
 
 ## Maintenance Log
 
+### 2026-07-13
+
+- Added the native-window transfer contract after comparing a clean analytic native pilot with MACRO03 correlated-voxel geology. The maintained rule now generates independent multiscale fields across the full guarded domain and samples the native 22.95 m window without rescaling a long-line interface into it.
+- Added morphology gates for single-quadratic dominance, finite-lens tapering, true target-absent geometry, and strict full/control material-index differences.
+- Added compressed external-HDF5 source-deck staging to the portable native runner. Imported geometry is restored explicitly from the scene manifest even though raw solver HDF5 outputs remain globally ignored.
+
 ### 2026-07-12
 
 - Created skill from official manual, local documentation, and local source.

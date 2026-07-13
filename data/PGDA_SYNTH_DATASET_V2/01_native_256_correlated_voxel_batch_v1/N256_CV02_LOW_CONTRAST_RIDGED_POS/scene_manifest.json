@@ -1,0 +1,170 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "case_id": "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+  "scene_family_id": "native_cv_low_contrast_ridged_20260713",
+  "purpose": "Low-contrast positive with stronger meso-scale ridging and a thicker transition zone.",
+  "target_presence": true,
+  "formal_training_allowed": false,
+  "training_block_reason": "requires solver outputs, signed-pair label extraction, independent audit, and human promotion",
+  "line9_conditioned": false,
+  "reference_line": null,
+  "generator_path": "scripts/generate_native_256_correlated_voxel_batch.py",
+  "generator_sha256": "76af83eb0d3386e56df7e703fd9265641a072c836eb119815e279b39870cf659",
+  "catalog_path": "data/simulation_contract_v2/native_256_correlated_voxel_batch_v1.json",
+  "catalog_sha256": "f7a7a44e539bbf59fea78f14799fbff2c4a3f24c16744c763368f293701b1cbd",
+  "spec": {
+    "domain_x_m": 243.135,
+    "domain_y_m": 36.0,
+    "dl_m": 0.0225,
+    "pml_cells": 20,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 110.0025,
+    "source_y_m": 28.035,
+    "tx_rx_offset_m": 0.18,
+    "center_frequency_hz": 55000000.0,
+    "solver_time_window_s": 7.01e-07
+  },
+  "grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "nx_ny_nz": [
+      10806,
+      1600,
+      1
+    ],
+    "dl_m": 0.0225,
+    "domain_x_m": 243.135,
+    "domain_y_m": 36.0,
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "trace_midpoint_span_m": 22.95,
+    "solver_time_window_ns": 701.0,
+    "canonical_time_window_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4,
+    "cells_per_min_wavelength_at_2p8fc": 22.800071972591805,
+    "left_scan_margin_m": 110.0025,
+    "right_scan_margin_m": 110.0025
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 55000000.0,
+    "tx_rx_offset_m": 0.18
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "index_file_sha256": "da5aca3246d5390149c400d95673c10a7262ff3f38b9eb2680c4a526a98b2119",
+    "index_shape": [
+      10806,
+      1600,
+      1
+    ],
+    "index_min_max": [
+      -1,
+      30
+    ],
+    "field_seed": 2026071311,
+    "profile_seed": 2026071312,
+    "quantile_thresholds": [
+      -1.2805778980255127,
+      -0.5138972997665405,
+      0.5257614850997925,
+      1.2548251152038574
+    ],
+    "correlation_scales_m": {
+      "property_field_horizontal": [
+        8.64,
+        3.24,
+        1.08
+      ],
+      "property_field_vertical": [
+        1.44,
+        0.63,
+        0.234
+      ],
+      "interface_horizontal": [
+        42.0,
+        8.0,
+        1.6
+      ]
+    },
+    "dielectric_smoothing": "external field pre-smoothed before five-bin quantisation; gprMax import averaging remains off",
+    "scan_window_transfer": "native scan crop from full guarded-domain correlated fields; no long-profile rescaling",
+    "finite_tapered_lenses": [
+      {
+        "material": 0,
+        "x0": 110.97749999999999,
+        "x1": 119.47749999999999,
+        "depth": 6.1,
+        "thickness": 0.5
+      }
+    ],
+    "morphology_metrics": {
+      "target_presence": true,
+      "scan_depth_range_m": 1.6478099822998047,
+      "smoothed_extrema_count": 4,
+      "quadratic_fit_r2": 0.9040055405005278,
+      "single_quadratic_bowl_rejected": true,
+      "broad_morphology_gate_ok": true
+    }
+  },
+  "strict_pair": {
+    "required": true,
+    "shared_geometry_hdf5": true,
+    "shared_geometry_sha256": "da5aca3246d5390149c400d95673c10a7262ff3f38b9eb2680c4a526a98b2119",
+    "unchanged_material_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      30,
+      31,
+      32
+    ],
+    "changed_material_indices": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "only_transition_and_bedrock_changed": true
+  },
+  "labels": {
+    "geometric_reference": "columnar layered audit prior only",
+    "visible_phase": "pending continuous envelope support plus signed-lobe extraction from solved full-minus-control",
+    "target_mask_training_allowed": false
+  }
+}

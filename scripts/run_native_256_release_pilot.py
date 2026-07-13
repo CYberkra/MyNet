@@ -154,6 +154,14 @@ def stage_case(
             f"outside declared range [0, {declared_trace_count - 1}]"
         )
     shutil.copytree(source_case_dir, run_case_dir, ignore=shutil.ignore_patterns(*SOLVER_ARTIFACT_PATTERNS))
+    geometry_index = source_manifest.get("geometry", {}).get("index_file")
+    if geometry_index:
+        source_geometry = source_case_dir / str(geometry_index)
+        staged_geometry = run_case_dir / str(geometry_index)
+        if not source_geometry.is_file():
+            raise FileNotFoundError(f"manifest geometry index does not exist: {source_geometry}")
+        staged_geometry.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_geometry, staged_geometry)
     if trace_stride > 1:
         step_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_stride
         for input_name in _input_names(source_manifest):

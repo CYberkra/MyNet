@@ -1,0 +1,77 @@
+{
+  "version": "native_256_correlated_voxel_batch_v1",
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "status": "experimental_pre_solver_batch",
+  "formal_training_allowed": false,
+  "design_rule": "Generate independent long-, meso-, and local-scale correlated geology across the full guarded domain, then acquire the native 22.95 m scan window without rescaling a long-line profile into that window.",
+  "cases": [
+    {
+      "case_id": "N256_CV01_BALANCED_MULTISCALE_POS",
+      "scene_family_id": "native_cv_balanced_multiscale_20260713",
+      "target_presence": true,
+      "field_seed": 2026071301,
+      "profile_seed": 2026071302,
+      "material_family": "balanced",
+      "profile": {
+        "basal_depth_m": 14.8,
+        "basal_amplitudes_m": [0.85, 0.48, 0.20],
+        "topsoil_depth_m": 3.5,
+        "transition_thickness_m": 1.45,
+        "scan_crop_offset_m": 0.0
+      },
+      "lens_family": "balanced",
+      "purpose": "Primary MACRO03-inherited native-width positive with multiscale correlated geology and moderate basal contrast."
+    },
+    {
+      "case_id": "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+      "scene_family_id": "native_cv_low_contrast_ridged_20260713",
+      "target_presence": true,
+      "field_seed": 2026071311,
+      "profile_seed": 2026071312,
+      "material_family": "low_contrast",
+      "profile": {
+        "basal_depth_m": 15.7,
+        "basal_amplitudes_m": [0.68, 0.62, 0.24],
+        "topsoil_depth_m": 4.0,
+        "transition_thickness_m": 1.85,
+        "scan_crop_offset_m": 0.0
+      },
+      "lens_family": "sparse",
+      "purpose": "Low-contrast positive with stronger meso-scale ridging and a thicker transition zone."
+    },
+    {
+      "case_id": "N256_CV03_PATCHY_TRANSITION_POS",
+      "scene_family_id": "native_cv_patchy_transition_20260713",
+      "target_presence": true,
+      "field_seed": 2026071321,
+      "profile_seed": 2026071322,
+      "material_family": "patchy",
+      "profile": {
+        "basal_depth_m": 14.3,
+        "basal_amplitudes_m": [0.72, 0.55, 0.30],
+        "topsoil_depth_m": 3.2,
+        "transition_thickness_m": 1.55,
+        "scan_crop_offset_m": 0.0
+      },
+      "lens_family": "lens_rich",
+      "purpose": "Locally weakened positive with finite upper lenses and variable transition thickness; no disconnected basal target geometry."
+    },
+    {
+      "case_id": "N256_CV04_UPPER_CLUTTER_TRUE_NEG",
+      "scene_family_id": "native_cv_upper_clutter_negative_20260713",
+      "target_presence": false,
+      "field_seed": 2026071331,
+      "profile_seed": 2026071332,
+      "material_family": "upper_clutter_negative",
+      "profile": {
+        "basal_depth_m": null,
+        "basal_amplitudes_m": [0.0, 0.0, 0.0],
+        "topsoil_depth_m": 3.7,
+        "transition_thickness_m": 0.0,
+        "scan_crop_offset_m": 0.0
+      },
+      "lens_family": "lens_rich",
+      "purpose": "True target-absent hard negative with correlated cover heterogeneity and finite coherent upper clutter."
+    }
+  ]
+}

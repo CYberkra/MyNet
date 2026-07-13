@@ -1,0 +1,20 @@
+{
+  "schema": "native_256_correlated_voxel_preflight_v1",
+  "formal_training_allowed": false,
+  "catalog_sha256": "f7a7a44e539bbf59fea78f14799fbff2c4a3f24c16744c763368f293701b1cbd",
+  "case_count": 4,
+  "positive_case_count": 3,
+  "negative_case_count": 1,
+  "case_ids": [
+    "N256_CV01_BALANCED_MULTISCALE_POS",
+    "N256_CV02_LOW_CONTRAST_RIDGED_POS",
+    "N256_CV03_PATCHY_TRANSITION_POS",
+    "N256_CV04_UPPER_CLUTTER_TRUE_NEG"
+  ],
+  "morphology_gates_ok": true,
+  "promotion_blockers": [
+    "No complete 256-trace solver outputs exist.",
+    "No signed visible-phase labels exist.",
+    "No independent visual release decision exists."
+  ]
+}

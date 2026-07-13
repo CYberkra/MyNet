@@ -63,6 +63,16 @@ The real Line9 target is not a uniformly dominant reflector. Simulations should 
 
 Do not copy Line9 geometry to obtain visual similarity. Match broad physical statistics only after the formal split is locked.
 
+### Native-Window Transfer From Correlated Long-Scale Geology
+
+- Keep the canonical native acquisition at 256 traces x 0.09 m (22.95 m midpoint span). Do not stretch, resize, or pad the acquisition to imitate a legacy long-line preview.
+- Generate long-, meso-, and local-scale stochastic geology over the complete laterally guarded FDTD domain first. The native acquisition is a physical crop sampled at its own spacing from that field.
+- Never rescale an entire 100-200 m interface control-point profile into the 22.95 m native window. That operation turns slow geology into one artificial bowl or arch and changes its spatial spectrum.
+- Preserve at least three independent horizontal scales in the property field and basal profile. Finite clutter lenses must taper continuously to zero thickness at both ends; vertical partition walls are forbidden.
+- Clean analytic bowls remain useful calibration controls, but they must not dominate the training families or be presented as correlated geology.
+- Record scan-crop depth range, smoothed extrema count, and quadratic-fit R2. Reject a positive crop when one quadratic explains more than 98.5% of its variance and it has at most one extremum.
+- A 32-trace distributed pilot with stride 8 covers canonical indices 0 through 248 and is appropriate for spatial preflight. It is never a canonical release; promotion still requires the complete 256 traces.
+
 ## Acceptance Gates
 
 Before a case may train a formal model:

@@ -62,6 +62,8 @@ outputs/
 # through Git. Raw gprMax .out/.h5/.vti files remain globally ignored above.
 !data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/
 !data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/**
+!data/PGDA_SYNTH_DATASET_V2/01_native_256_correlated_voxel_batch_v1/
+!data/PGDA_SYNTH_DATASET_V2/01_native_256_correlated_voxel_batch_v1/**
 !data/PGDA_SYNTH_DATASET_V2/02_released_canonical/
 !data/PGDA_SYNTH_DATASET_V2/02_released_canonical/**
 !data/PGDA_SYNTH_DATASET_V1/LEGACY_QUARANTINE.md

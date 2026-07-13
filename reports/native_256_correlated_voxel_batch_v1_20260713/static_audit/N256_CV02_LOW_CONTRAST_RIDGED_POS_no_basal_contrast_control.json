@@ -1,0 +1,387 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      243.135,
+      36.0,
+      0.0225
+    ],
+    "grid_m": [
+      0.0225,
+      0.0225,
+      0.0225
+    ],
+    "time_window_s": 7.01e-07,
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 243.135,
+        "cells": 10806,
+        "realised_m": 243.135
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 36.0,
+        "cells": 1600,
+        "realised_m": 36.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.0225,
+        "cells": 1,
+        "realised_m": 0.0225
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 110.0025,
+        "cells": 4889,
+        "realised_m": 110.0025,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 28.035,
+        "cells": 1246,
+        "realised_m": 28.035,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 110.1825,
+        "cells": 4897,
+        "realised_m": 110.18249999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 28.035,
+        "cells": 1246,
+        "realised_m": 28.035,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 4,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 4,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\no_basal_contrast_control.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "native_cv_wavelet": 55000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt",
+        "material_count": 33,
+        "shape": [
+          10806,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 30,
+        "dx_dy_dz": [
+          0.0225,
+          0.0225,
+          0.0225
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.3,
+        "conductivity": 0.0039,
+        "id": "topsoil_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.75,
+        "conductivity": 0.00435,
+        "id": "topsoil_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.2,
+        "conductivity": 0.0048,
+        "id": "topsoil_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.65,
+        "conductivity": 0.00525,
+        "id": "topsoil_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 14.1,
+        "conductivity": 0.0057,
+        "id": "topsoil_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.4,
+        "conductivity": 0.0024,
+        "id": "deep_cover_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0027,
+        "id": "deep_cover_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.003,
+        "id": "deep_cover_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0033,
+        "id": "deep_cover_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0036,
+        "id": "deep_cover_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.4,
+        "conductivity": 0.0024,
+        "id": "transition_1_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0027,
+        "id": "transition_1_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.003,
+        "id": "transition_1_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0033,
+        "id": "transition_1_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0036,
+        "id": "transition_1_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.4,
+        "conductivity": 0.0024,
+        "id": "transition_2_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0027,
+        "id": "transition_2_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.003,
+        "id": "transition_2_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0033,
+        "id": "transition_2_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0036,
+        "id": "transition_2_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.4,
+        "conductivity": 0.0024,
+        "id": "transition_3_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0027,
+        "id": "transition_3_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.003,
+        "id": "transition_3_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0033,
+        "id": "transition_3_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0036,
+        "id": "transition_3_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.4,
+        "conductivity": 0.0024,
+        "id": "bedrock_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0027,
+        "id": "bedrock_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.003,
+        "id": "bedrock_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0033,
+        "id": "bedrock_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0036,
+        "id": "bedrock_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 14.4,
+        "conductivity": 0.0048,
+        "id": "moist_lens",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 9.7,
+        "conductivity": 0.0016,
+        "id": "dry_lens",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.5,
+        "conductivity": 0.0039,
+        "id": "mixed_lens",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV02_LOW_CONTRAST_RIDGED_POS\\materials_no_basal.txt"
+      }
+    ],
+    "max_material_epsilon_r": 14.4,
+    "lambda_min_m": 0.5130016193833156,
+    "cells_per_lambda_min": 22.800071972591805,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 12
+  }
+}

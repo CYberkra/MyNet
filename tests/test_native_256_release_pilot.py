@@ -93,6 +93,23 @@ def test_native_runner_stages_distributed_audit_subset(tmp_path: Path) -> None:
     assert provenance["selected_trace_indices_zero_based"] == list(range(0, 249, 8))
 
 
+def test_native_runner_restores_manifest_geometry_hdf5(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    manifest = {
+        "target_presence": False,
+        "grid": {"trace_count": 256, "trace_spacing_m": 0.09},
+        "geometry": {"index_file": "geology_indices.h5"},
+    }
+    (source / "scene_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    (source / "full_scene.in").write_text("#title: full\n", encoding="utf-8")
+    (source / "air_reference.in").write_text("#title: air\n", encoding="utf-8")
+    geometry = b"audited geometry source"
+    (source / "geology_indices.h5").write_bytes(geometry)
+    staged = stage_case(source, tmp_path / "run", requested_trace_count=1, geometry_only=False)
+    assert (staged / "geology_indices.h5").read_bytes() == geometry
+
+
 def test_gprmax_single_trace_contract_uses_unnumbered_output_name() -> None:
     assert trace_filename("full_scene", 1, 1) == "full_scene.out"
     assert trace_index_for_path(Path("full_scene.out"), "full_scene", 1) == 1

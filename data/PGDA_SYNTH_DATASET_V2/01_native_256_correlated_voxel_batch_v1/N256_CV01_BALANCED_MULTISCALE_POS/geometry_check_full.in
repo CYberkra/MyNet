@@ -1,0 +1,13 @@
+#title: N256_CV01_BALANCED_MULTISCALE_POS geometry full
+#domain: 243.135 36 0.0225
+#dx_dy_dz: 0.0225 0.0225 0.0225
+#time_window: 7.01e-07
+#pml_cells: 20 20 0 20 20 0
+#messages: y
+#waveform: ricker 1 55000000 native_cv_wavelet
+#hertzian_dipole: z 110.0025 28.035 0 native_cv_wavelet
+#rx: 110.1825 28.035 0 rx1 Ez
+#src_steps: 0.09 0 0
+#rx_steps: 0.09 0 0
+#geometry_objects_read: 0 0 0 geology_indices.h5 materials_full.txt
+#geometry_view: 0 0 0 243.135 36 0.0225 0.0225 0.0225 0.0225 geometry_full n

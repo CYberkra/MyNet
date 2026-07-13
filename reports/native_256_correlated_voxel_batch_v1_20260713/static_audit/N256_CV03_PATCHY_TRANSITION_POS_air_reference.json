@@ -1,0 +1,165 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      243.135,
+      36.0,
+      0.0225
+    ],
+    "grid_m": [
+      0.0225,
+      0.0225,
+      0.0225
+    ],
+    "time_window_s": 7.01e-07,
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 243.135,
+        "cells": 10806,
+        "realised_m": 243.135
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 36.0,
+        "cells": 1600,
+        "realised_m": 36.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.0225,
+        "cells": 1,
+        "realised_m": 0.0225
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 110.0025,
+        "cells": 4889,
+        "realised_m": 110.0025,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 28.035,
+        "cells": 1246,
+        "realised_m": 28.035,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 110.1825,
+        "cells": 4897,
+        "realised_m": 110.18249999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 28.035,
+        "cells": 1246,
+        "realised_m": 28.035,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 4,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 4,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_native_256_correlated_voxel_batch_v1\\N256_CV03_PATCHY_TRANSITION_POS\\air_reference.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "native_cv_wavelet": 55000000.0
+    },
+    "imported_geometry": [],
+    "imported_materials": [],
+    "command_count": 11
+  }
+}
