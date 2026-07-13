@@ -133,7 +133,10 @@ def main() -> int:
     if selected_indices.shape != (trace_count,):
         raise RuntimeError("run manifest trace selection does not match merged output")
     covered_span_m = trace_spacing_m * int(selected_indices[-1] - selected_indices[0]) if trace_count > 1 else 0.0
-    reference = np.load(labels / "reference_arrival_time_ns.npy")[selected_indices]
+    reference_path = labels / "reference_arrival_time_ns.npy"
+    if not reference_path.is_file():
+        reference_path = labels / "geometric_reference_arrival_time_ns.npy"
+    reference = np.load(reference_path)[selected_indices]
     source_x = np.load(labels / "source_x_m.npy")[selected_indices]
     receiver_x = np.load(labels / "receiver_x_m.npy")[selected_indices]
     position_tolerance_m = _position_tolerance_m(float(manifest["grid"]["dl_m"]))

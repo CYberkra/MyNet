@@ -544,6 +544,9 @@ def generate_case(
     )
     for name, values in arrays.items():
         np.save(labels_dir / f"{name}.npy", values)
+    if "geometric_reference_arrival_time_ns" in arrays:
+        np.save(labels_dir / "reference_arrival_time_ns.npy", arrays["geometric_reference_arrival_time_ns"])
+        np.save(labels_dir / "geometric_arrival_time_ns.npy", arrays["geometric_reference_arrival_time_ns"])
     for name, values in profiles.items():
         np.save(labels_dir / f"full_{name}.npy", values)
     np.save(labels_dir / "target_presence.npy", np.asarray(bool(case["target_presence"]), dtype=np.bool_))

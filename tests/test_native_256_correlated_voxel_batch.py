@@ -128,3 +128,18 @@ def test_tiny_negative_deck_writes_compressed_hdf5_and_no_control(tmp_path: Path
     assert not (case_dir / "no_basal_contrast_control.in").exists()
     assert manifest["formal_training_allowed"] is False
     assert manifest["line9_conditioned"] is False
+
+
+def test_tiny_positive_deck_writes_reference_compatibility_aliases(tmp_path: Path) -> None:
+    positive = next(case for case in _catalog_cases() if case["target_presence"])
+    generate_case(
+        tmp_path,
+        positive,
+        overwrite=False,
+        spec=_tiny_spec(),
+        catalog_path=DEFAULT_CATALOG,
+    )
+    labels = tmp_path / str(positive["case_id"]) / "labels"
+    canonical = np.load(labels / "geometric_reference_arrival_time_ns.npy")
+    assert np.array_equal(np.load(labels / "reference_arrival_time_ns.npy"), canonical)
+    assert np.array_equal(np.load(labels / "geometric_arrival_time_ns.npy"), canonical)

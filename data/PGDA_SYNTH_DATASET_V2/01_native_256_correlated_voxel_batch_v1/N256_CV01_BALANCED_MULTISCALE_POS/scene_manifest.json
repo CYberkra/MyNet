@@ -10,7 +10,7 @@
   "line9_conditioned": false,
   "reference_line": null,
   "generator_path": "scripts/generate_native_256_correlated_voxel_batch.py",
-  "generator_sha256": "76af83eb0d3386e56df7e703fd9265641a072c836eb119815e279b39870cf659",
+  "generator_sha256": "cd2a297a3140eeb0cbef4441e99e216fcab745e8d28f3f5c7336598a97bfe533",
   "catalog_path": "data/simulation_contract_v2/native_256_correlated_voxel_batch_v1.json",
   "catalog_sha256": "f7a7a44e539bbf59fea78f14799fbff2c4a3f24c16744c763368f293701b1cbd",
   "spec": {
