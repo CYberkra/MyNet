@@ -15,6 +15,10 @@ live outside the repository. Individual values can be overridden with
 `PGDA_PROJECT_PYTHON`, `PGDA_GPRMAX_PYTHON`, `PGDA_GPRMAX_ROOT`,
 `PGDA_GPU_INDEX`, `PGDA_OUTPUT_ROOT`, and `PGDA_SCRATCH_ROOT`.
 
+For Windows GPU gprMax runs, set `gprmax_vcvars` to the existing Visual Studio
+`vcvars64.bat` on that machine. The native pilot runner loads it only for the
+solver subprocess so `nvcc` can find `cl.exe`; no absolute path is committed.
+
 Commit source code, source decks, compact validated canonical arrays, manifests,
 and reports. Do not commit solver `.out`, `.h5`, `.vti`, logs, scratch data, or
 machine-local profiles.

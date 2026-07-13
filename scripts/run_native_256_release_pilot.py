@@ -17,6 +17,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -47,6 +48,49 @@ def _run(command: list[str], *, cwd: Path, env: dict[str, str], execute: bool) -
     print(_command_text(command))
     if execute:
         subprocess.run(command, cwd=cwd, env=env, check=True)
+
+
+def _load_vcvars_environment(env: dict[str, str], vcvars: Path | None) -> dict[str, str]:
+    """Return an environment initialised by an optional Windows MSVC script.
+
+    ``nvcc`` delegates host compilation to ``cl.exe`` on Windows.  A compiler
+    may be installed without being on the parent shell's PATH, so the local
+    runtime profile can name ``vcvars64.bat`` without committing a drive path.
+    """
+    if vcvars is None:
+        return env
+    if os.name != "nt":
+        raise RuntimeError("gprmax_vcvars is only supported on Windows")
+    if not vcvars.is_file():
+        raise FileNotFoundError(f"gprMax MSVC environment script does not exist: {vcvars}")
+    temp_root = Path(env.get("TEMP") or env.get("TMP") or tempfile.gettempdir())
+    temp_root.mkdir(parents=True, exist_ok=True)
+    descriptor, script_name = tempfile.mkstemp(prefix="pgda_vcvars_", suffix=".cmd", dir=temp_root)
+    os.close(descriptor)
+    script_path = Path(script_name)
+    script_path.write_text(f'@echo off\ncall "{vcvars}" >nul\nset\n', encoding="ascii")
+    try:
+        completed = subprocess.run(
+            ["cmd.exe", "/d", "/c", str(script_path)],
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    finally:
+        script_path.unlink(missing_ok=True)
+    if completed.returncode:
+        detail = completed.stderr.strip() or completed.stdout.strip()
+        raise RuntimeError(f"failed to initialise MSVC from {vcvars}: {detail}")
+    initialized = env.copy()
+    for line in completed.stdout.splitlines():
+        key, separator, value = line.partition("=")
+        if separator and key:
+            initialized[key] = value
+    if not shutil.which("cl.exe", path=initialized.get("PATH")):
+        raise RuntimeError(f"MSVC initialisation from {vcvars} did not expose cl.exe")
+    return initialized
 
 
 def _sha256(path: Path) -> str:
@@ -162,7 +206,12 @@ def main() -> int:
     gpu = int(args.gpu) if args.gpu is not None else runtime.gpu_index
     env = os.environ.copy()
     env["PYTHONPATH"] = str(root) + os.pathsep + env.get("PYTHONPATH", "")
+    toolchain_tmp = runtime.scratch_root / "toolchain_tmp"
+    toolchain_tmp.mkdir(parents=True, exist_ok=True)
+    env["TEMP"] = str(toolchain_tmp)
+    env["TMP"] = str(toolchain_tmp)
     if args.execute:
+        env = _load_vcvars_environment(env, runtime.gprmax_vcvars)
         cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else None
         nvcc = (cuda_bin / "nvcc.exe") if cuda_bin else shutil.which("nvcc", path=env.get("PATH"))
         if not nvcc or not Path(nvcc).is_file():
@@ -208,7 +257,8 @@ def main() -> int:
             continue
         _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=case_dir, env=env, execute=True)
         _run([str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", stem, "--expected", str(trace_count), "--output", str(log_dir / f"{stem}_trace_contract.json")], cwd=case_dir, env=env, execute=True)
-        _run([str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"], cwd=case_dir, env=env, execute=True)
+        if trace_count > 1:
+            _run([str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"], cwd=case_dir, env=env, execute=True)
 
     if args.geometry_only:
         _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="geometry_passed", declared_trace_count=declared_trace_count)

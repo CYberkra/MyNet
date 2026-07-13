@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from scripts.generate_native_256_release_pilot import build
+from scripts.capture_gprmax_trace_contract import trace_filename, trace_index_for_path
 from scripts.run_native_256_release_pilot import stage_case
 
 
@@ -61,3 +62,12 @@ def test_native_runner_stages_source_and_captures_trace_names_before_merge(tmp_p
     assert 'tools.outputfiles_merge' in runner
     assert "_geometry_input" in runner
     assert "_remove_geometry_views" in runner
+    assert "_load_vcvars_environment" in runner
+    assert "gprmax_vcvars" in runner
+
+
+def test_gprmax_single_trace_contract_uses_unnumbered_output_name() -> None:
+    assert trace_filename("full_scene", 1, 1) == "full_scene.out"
+    assert trace_index_for_path(Path("full_scene.out"), "full_scene", 1) == 1
+    assert trace_index_for_path(Path("full_scene1.out"), "full_scene", 1) is None
+    assert trace_filename("full_scene", 1, 2) == "full_scene1.out"

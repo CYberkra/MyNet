@@ -26,6 +26,18 @@ def serialise(value: object) -> object:
     return value.tolist() if hasattr(value, "tolist") else value
 
 
+def trace_filename(prefix: str, index: int, expected: int) -> str:
+    """Return the gprMax filename for a trace in a single or multi-run job."""
+    return f"{prefix}.out" if expected == 1 else f"{prefix}{index}.out"
+
+
+def trace_index_for_path(path: Path, prefix: str, expected: int) -> int | None:
+    if expected == 1:
+        return 1 if path.name == f"{prefix}.out" else None
+    match = re.fullmatch(rf"{re.escape(prefix)}(\d+)\.out", path.name)
+    return int(match.group(1)) if match else None
+
+
 def read_contract(path: Path, index: int) -> dict[str, object]:
     with h5py.File(path, "r") as handle:
         root = {key: serialise(value) for key, value in handle.attrs.items()}
@@ -93,7 +105,7 @@ def load_existing_report(
         if not isinstance(row, dict) or "trace_index" not in row:
             continue
         index = int(row["trace_index"])
-        expected_name = f"{prefix}{index}.out"
+        expected_name = trace_filename(prefix, index, expected)
         trace_path = case_dir / expected_name
         if row.get("filename") != expected_name or not trace_path.is_file():
             continue
@@ -119,7 +131,6 @@ def main() -> int:
 
     case_dir = args.case_dir.resolve()
     output = args.output.resolve()
-    pattern = re.compile(rf"^{re.escape(args.prefix)}(\d+)\.out$")
     captured, failures = load_existing_report(
         output,
         case_dir=case_dir,
@@ -129,10 +140,9 @@ def main() -> int:
     deadline = time.monotonic() + args.timeout_seconds
     while len(captured) < args.expected and time.monotonic() < deadline:
         for path in case_dir.glob(f"{args.prefix}*.out"):
-            match = pattern.match(path.name)
-            if not match:
+            index = trace_index_for_path(path, args.prefix, args.expected)
+            if index is None:
                 continue
-            index = int(match.group(1))
             if index in captured:
                 continue
             try:
