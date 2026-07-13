@@ -1,0 +1,122 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "case_id": "N256_F01_GENTLE_DEEP_MODERATE_POS",
+  "family": "native_gentle_deep_moderate",
+  "purpose": "Primary native-width positive with a single gently varying deep basal interface.",
+  "target_presence": true,
+  "formal_training_allowed": false,
+  "training_block_reason": "control scene requires actual gprMax run and visible-phase postprocessing",
+  "line9_conditioned": false,
+  "reference_line": null,
+  "generator_path": "scripts\\generate_physical_sim_v2.py",
+  "generator_sha256": "d4aac7badd34750896e306b6c3e03f229c2cf24b169ae8227155d0bb00a3cc4a",
+  "generator_git_commit": "994804dba0379c87b6934407501a8cfbcc721f8d",
+  "generator_worktree_dirty": true,
+  "deterministic_seed": 0,
+  "case_spec_sha256": "b9ce5a845c370a858fe907a7e96965b547cccae67da2b7c49fa4ab9fd2c15548",
+  "grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.0225,
+    "domain_x_m": 243.135,
+    "domain_y_m": 36.0,
+    "pml_cells": [
+      20,
+      20,
+      0,
+      20,
+      20,
+      0
+    ],
+    "guard_cells": 20,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "trace_midpoint_span_m": 22.95,
+    "trace_span_m": 22.95,
+    "tx_endpoint_span_m": 22.94999999999999,
+    "rx_endpoint_span_m": 22.94999999999999,
+    "solver_time_window_ns": 701.0,
+    "gprmax_time_window_ns": 701.0,
+    "canonical_time_window_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 55000000.0,
+    "tx_rx_offset_m": 0.18,
+    "assumption_status": "provisional_until_hardware_geometry_confirmed"
+  },
+  "materials": {
+    "set": "native_deep_moderate",
+    "cover": {
+      "name": "cover_native_moderate",
+      "epsilon_r": 11.8,
+      "conductivity_s_per_m": 0.0028,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "weathered": {
+      "name": "weathered_native_moderate",
+      "epsilon_r": 10.1,
+      "conductivity_s_per_m": 0.002,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "bedrock": {
+      "name": "bedrock_native_moderate",
+      "epsilon_r": 8.1,
+      "conductivity_s_per_m": 0.0009,
+      "mu_r": 1.0,
+      "magnetic_loss_ohm_per_m": 0.0
+    },
+    "full_scene_bedrock_material": "bedrock_native_moderate",
+    "control_bedrock_material": "weathered_native_moderate"
+  },
+  "geometry": {
+    "terrain_kind": "control_points",
+    "nominal_interface": {
+      "kind": "control_points",
+      "base_depth_m": 15.6,
+      "control_point_fractions": [
+        0.0,
+        0.18,
+        0.43,
+        0.68,
+        0.86,
+        1.0
+      ],
+      "depth_offsets_m": [
+        -0.3,
+        -0.08,
+        0.32,
+        0.58,
+        0.28,
+        0.1
+      ],
+      "smoothing_length_m": 1.65
+    },
+    "cover_fraction": null,
+    "cover_boundary": {
+      "kind": "flat",
+      "base_depth_m": 3.8
+    },
+    "cover_model": {
+      "kind": "flat",
+      "base_depth_m": 3.8
+    },
+    "bedrock_below_min_m": 3.0,
+    "arrival_model": "columnar_layered_reference_not_specular_exact",
+    "matched_positive_case_id": null,
+    "matched_negative_case_id": null,
+    "coordinate_convention": "x survey direction; y upward from lower-left origin; z invariant one cell"
+  },
+  "labels": {
+    "reference_arrival": "columnar_layered_reference_not_specular_exact",
+    "geometric_arrival": "compatibility alias; inspect geometry.arrival_model before interpretation",
+    "visible_phase": "pending full minus no-basal-control postprocess",
+    "geometric_prior_training_allowed": false,
+    "target_mask_training_allowed": false
+  }
+}

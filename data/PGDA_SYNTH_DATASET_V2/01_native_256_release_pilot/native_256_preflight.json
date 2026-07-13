@@ -1,0 +1,139 @@
+{
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "formal_training_allowed": false,
+  "pre_solver_only": true,
+  "standard_sha256": "88f6dec7fea968bf3315f51631c519fe8ec6c7b86b27e55b6e9e84c3de38900a",
+  "case_catalog_sha256": "9c7d2538ec7e51c1060e77b343c295f976f329d3ff83945b2bbdad7ec4dcf31a",
+  "materials_sha256": "6a313c82657deefa5b3df43c2b7364a51192c1c017febedb117ab83db0829edc",
+  "case_spec_sha256": "ae7cfa8863d2d18e91396e5e71daf6464564fc0edfc201069571e87b41365b74",
+  "case_count": 6,
+  "positive_case_count": 4,
+  "negative_case_count": 2,
+  "case_ids": [
+    "N256_F01_GENTLE_DEEP_MODERATE_POS",
+    "N256_F02_DEEP_LOW_CONTRAST_POS",
+    "N256_F03_THICK_WEATHERING_DROPOUT_POS",
+    "N256_F04_CURVED_MODERATE_POS",
+    "N256_N01_CLEAN_BACKGROUND_NEG",
+    "N256_N02_SHALLOW_COHERENT_HARD_NEG"
+  ],
+  "static_validation_ok": true,
+  "validations": [
+    {
+      "case_id": "N256_F01_GENTLE_DEEP_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 159,
+        "no_basal_contrast_geometry.inc": 159
+      },
+      "arrival_min_ns": 385.2997131347656,
+      "arrival_max_ns": 401.5189514160156,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F02_DEEP_LOW_CONTRAST_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 140,
+        "no_basal_contrast_geometry.inc": 140
+      },
+      "arrival_min_ns": 421.5034484863281,
+      "arrival_max_ns": 435.8088684082031,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F03_THICK_WEATHERING_DROPOUT_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 151,
+        "no_basal_contrast_geometry.inc": 151
+      },
+      "arrival_min_ns": 397.07843017578125,
+      "arrival_max_ns": 409.9584045410156,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F04_CURVED_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 188,
+        "no_basal_contrast_geometry.inc": 188
+      },
+      "arrival_min_ns": 365.1265563964844,
+      "arrival_max_ns": 380.8687438964844,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_N01_CLEAN_BACKGROUND_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 89,
+        "no_basal_contrast_geometry.inc": 89
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_N02_SHALLOW_COHERENT_HARD_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 124,
+        "no_basal_contrast_geometry.inc": 124
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    }
+  ],
+  "promotion_blockers": [
+    "No solver outputs exist yet.",
+    "No signed visible-phase labels exist yet.",
+    "No runtime gprMax and pre-merge trace evidence exists yet.",
+    "No human release decisions exist yet."
+  ],
+  "generated_manifest_hashes": {
+    "N256_F01_GENTLE_DEEP_MODERATE_POS": "7f9de49749eef09e8151f5411595f5b466c5367bee4673d2705393ecba32ca35",
+    "N256_F02_DEEP_LOW_CONTRAST_POS": "345cfeff8ce0da57444cec5f4c2a20292366192f9ad8bb12e9e6b71405121a77",
+    "N256_F03_THICK_WEATHERING_DROPOUT_POS": "97065378a92b1c43b78d4b92b7ac7cea3a67b6de8bb7c127c72299cfcf90f0c1",
+    "N256_F04_CURVED_MODERATE_POS": "169ef35d6c9342b86078fdec00ec96162e4fef69ee65a5005837a48ff06b9ee6",
+    "N256_N01_CLEAN_BACKGROUND_NEG": "56df4e15dcccf8d29330cc6d555e049880bdc1dbe8a972c41c9578236fbe2f50",
+    "N256_N02_SHALLOW_COHERENT_HARD_NEG": "d364ae89984bded495185665d3f73a92cbd35d850c385b150e4ae8103e79539d"
+  }
+}

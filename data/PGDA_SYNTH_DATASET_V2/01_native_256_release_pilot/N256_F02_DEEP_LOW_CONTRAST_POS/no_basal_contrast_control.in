@@ -1,0 +1,15 @@
+#title: PGDA SIM V2 N256_F02_DEEP_LOW_CONTRAST_POS no basal contrast control
+#domain: 243.135 36 0.0225
+#dx_dy_dz: 0.0225 0.0225 0.0225
+#time_window: 7.01e-07
+#pml_cells: 20 20 0 20 20 0
+#messages: y
+#material: 12.2 0.0032 1 0 cover_native_lowcontrast
+#material: 10.8 0.0024 1 0 weathered_native_lowcontrast
+#material: 9.55 0.0015 1 0 bedrock_native_lowcontrast
+#waveform: ricker 1 55000000 uavgpr_v2_wavelet
+#hertzian_dipole: z 110.0025 29.745 0 uavgpr_v2_wavelet
+#rx: 110.1825 29.745 0 rx1 Ez
+#src_steps: 0.09 0 0
+#rx_steps: 0.09 0 0
+#include_file: no_basal_contrast_geometry.inc

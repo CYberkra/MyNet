@@ -1,0 +1,111 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "root": "data\\PGDA_SYNTH_DATASET_V2\\01_native_256_release_pilot",
+  "ok": true,
+  "formal_training_allowed": false,
+  "case_count": 6,
+  "results": [
+    {
+      "case_id": "N256_F01_GENTLE_DEEP_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 159,
+        "no_basal_contrast_geometry.inc": 159
+      },
+      "arrival_min_ns": 385.2997131347656,
+      "arrival_max_ns": 401.5189514160156,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F02_DEEP_LOW_CONTRAST_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 140,
+        "no_basal_contrast_geometry.inc": 140
+      },
+      "arrival_min_ns": 421.5034484863281,
+      "arrival_max_ns": 435.8088684082031,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F03_THICK_WEATHERING_DROPOUT_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 151,
+        "no_basal_contrast_geometry.inc": 151
+      },
+      "arrival_min_ns": 397.07843017578125,
+      "arrival_max_ns": 409.9584045410156,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_F04_CURVED_MODERATE_POS",
+      "ok": true,
+      "target_presence": true,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 188,
+        "no_basal_contrast_geometry.inc": 188
+      },
+      "arrival_min_ns": 365.1265563964844,
+      "arrival_max_ns": 380.8687438964844,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_N01_CLEAN_BACKGROUND_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 89,
+        "no_basal_contrast_geometry.inc": 89
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    },
+    {
+      "case_id": "N256_N02_SHALLOW_COHERENT_HARD_NEG",
+      "ok": true,
+      "target_presence": false,
+      "errors": [],
+      "warnings": [],
+      "lifecycle_state": "pre_solver",
+      "box_counts": {
+        "full_scene_geometry.inc": 124,
+        "no_basal_contrast_geometry.inc": 124
+      },
+      "arrival_min_ns": null,
+      "arrival_max_ns": null,
+      "domain_x_m": 243.135,
+      "domain_y_m": 36.0,
+      "runtime_geometry": null
+    }
+  ]
+}
