@@ -125,6 +125,22 @@ Evidence:
 - `formal01_f1_smoke_continuity_audit.json`
 - `formal01_f1_smoke.png`
 
+## F2 Transition-Variation 32-Trace Smoke
+
+F2 changes the finite transition thickness while retaining the clean lateral
+cover contract. Its strict full/control pair passed with an early-window
+maximum difference RMS of `1.664e-05`, a target-window minimum difference RMS
+of `5.346e-03`, zero causal-path dropout, and median adjacent constrained-path
+correlation of `0.997`. It is therefore suitable as a controlled transition
+ablation. Its unusually regular visual response is intentional: F2 is not a
+standalone proxy for lateral field complexity and remains development-only.
+
+Evidence:
+
+- `formal01_f2_smoke_pair_audit.json`
+- `formal01_f2_smoke_continuity_audit.json`
+- `formal01_f2_smoke.png`
+
 ## Release Status
 
 F0 passes the *mechanism-baseline* gate, and F1 passes the correlated-cover
@@ -133,5 +149,6 @@ the cover-weathered-bedrock contrast and is continuous under a defined
 audit-time path constraint. Both remain **development-only and non-trainable**:
 source/guard convergence, a reviewed visible-phase extractor, and human
 acceptance still remain. F2–F3 have passed static input audit only. They are
-deliberately not queued until the quality of the correlated-cover random field
-is reviewed against these controlled references.
+deliberately not queued for a full run until the quality of the correlated-cover
+random field is reviewed against these controlled references. F2 has also
+passed its 32-trace transition-variation smoke; F3 remains static-audited only.

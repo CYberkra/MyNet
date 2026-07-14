@@ -1,0 +1,342 @@
+[
+  {
+    "case_id": "FORMAL01_BEDROCK_DENSE_WINDOW_F2_TRANSITION_VARIATION",
+    "development_only": true,
+    "formal_training_allowed": false,
+    "paired_trace_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "paired_trace_count": 32,
+    "full_stem": "full_scene",
+    "control_stem": "no_basal_contrast_control",
+    "arrival_label": "labels/geometric_reference_arrival_time_ns.npy",
+    "expected_trace_count": 32,
+    "trace_count_complete": true,
+    "dt_ns": 0.0589663584187421,
+    "iterations": 11025,
+    "early_difference_rms_max": 1.6642545483200013e-05,
+    "target_difference_rms_min": 0.005346108246517832,
+    "pair_causality_pass": true,
+    "per_trace": [
+      {
+        "trace_id": 1,
+        "reference_arrival_ns": 370.4035949707031,
+        "early_difference_rms": 1.5582317839698626e-05,
+        "pre_target_difference_rms": 8.413835420580352e-06,
+        "target_difference_rms": 0.007821513090247735,
+        "difference_peak_ns": 410.2879218776075,
+        "difference_peak_abs": 0.027725900717086915
+      },
+      {
+        "trace_id": 2,
+        "reference_arrival_ns": 369.0398864746094,
+        "early_difference_rms": 1.6642545483200013e-05,
+        "pre_target_difference_rms": 9.069299031502326e-06,
+        "target_difference_rms": 0.007784337142978806,
+        "difference_peak_ns": 410.5237873112825,
+        "difference_peak_abs": 0.02652708568757589
+      },
+      {
+        "trace_id": 3,
+        "reference_arrival_ns": 367.5495910644531,
+        "early_difference_rms": 1.2300893403128899e-05,
+        "pre_target_difference_rms": 1.178319853466374e-05,
+        "target_difference_rms": 0.007657525617924376,
+        "difference_peak_ns": 410.70068638653873,
+        "difference_peak_abs": 0.025164302790017246
+      },
+      {
+        "trace_id": 4,
+        "reference_arrival_ns": 366.0416259765625,
+        "early_difference_rms": 1.1948389519381596e-05,
+        "pre_target_difference_rms": 8.216589615221209e-06,
+        "target_difference_rms": 0.00745396188261204,
+        "difference_peak_ns": 410.877585461795,
+        "difference_peak_abs": 0.023837555727368454
+      },
+      {
+        "trace_id": 5,
+        "reference_arrival_ns": 364.6166076660156,
+        "early_difference_rms": 1.414229403432033e-05,
+        "pre_target_difference_rms": 8.70399562110317e-06,
+        "target_difference_rms": 0.007210432392426054,
+        "difference_peak_ns": 411.1134508954699,
+        "difference_peak_abs": 0.02270430332646356
+      },
+      {
+        "trace_id": 6,
+        "reference_arrival_ns": 363.3461608886719,
+        "early_difference_rms": 1.2720539850460423e-05,
+        "pre_target_difference_rms": 7.421552257900132e-06,
+        "target_difference_rms": 0.006960188047794928,
+        "difference_peak_ns": 411.34931632914487,
+        "difference_peak_abs": 0.021843301959961536
+      },
+      {
+        "trace_id": 7,
+        "reference_arrival_ns": 362.26361083984375,
+        "early_difference_rms": 1.348479536961676e-05,
+        "pre_target_difference_rms": 8.571086913664747e-06,
+        "target_difference_rms": 0.006715065401472325,
+        "difference_peak_ns": 411.58518176281984,
+        "difference_peak_abs": 0.021150656468307716
+      },
+      {
+        "trace_id": 8,
+        "reference_arrival_ns": 361.358154296875,
+        "early_difference_rms": 1.2854710837995922e-05,
+        "pre_target_difference_rms": 9.339146208705138e-06,
+        "target_difference_rms": 0.006489906679731595,
+        "difference_peak_ns": 411.88001355491355,
+        "difference_peak_abs": 0.020533622355287662
+      },
+      {
+        "trace_id": 9,
+        "reference_arrival_ns": 360.5821533203125,
+        "early_difference_rms": 1.1598832785675975e-05,
+        "pre_target_difference_rms": 7.3879856156254596e-06,
+        "target_difference_rms": 0.006185505473219844,
+        "difference_peak_ns": 412.0569126301698,
+        "difference_peak_abs": 0.019799151107690705
+      },
+      {
+        "trace_id": 10,
+        "reference_arrival_ns": 359.8685302734375,
+        "early_difference_rms": 1.2931178678392752e-05,
+        "pre_target_difference_rms": 7.894186792143245e-06,
+        "target_difference_rms": 0.005878555339435978,
+        "difference_peak_ns": 412.29277806384476,
+        "difference_peak_abs": 0.018809457938687046
+      },
+      {
+        "trace_id": 11,
+        "reference_arrival_ns": 359.1664733886719,
+        "early_difference_rms": 1.3818691991839988e-05,
+        "pre_target_difference_rms": 8.886073107903247e-06,
+        "target_difference_rms": 0.005708860786663773,
+        "difference_peak_ns": 412.52864349751974,
+        "difference_peak_abs": 0.017503144206784782
+      },
+      {
+        "trace_id": 12,
+        "reference_arrival_ns": 358.4757080078125,
+        "early_difference_rms": 1.4251951704939748e-05,
+        "pre_target_difference_rms": 9.098773518142405e-06,
+        "target_difference_rms": 0.0055434923415359225,
+        "difference_peak_ns": 349.13980819737196,
+        "difference_peak_abs": 0.01745615679783441
+      },
+      {
+        "trace_id": 13,
+        "reference_arrival_ns": 357.8599853515625,
+        "early_difference_rms": 1.5300587041529366e-05,
+        "pre_target_difference_rms": 8.629910552725398e-06,
+        "target_difference_rms": 0.005359635614634352,
+        "difference_peak_ns": 359.10512277013936,
+        "difference_peak_abs": 0.017522720312626916
+      },
+      {
+        "trace_id": 14,
+        "reference_arrival_ns": 357.41534423828125,
+        "early_difference_rms": 1.2686336822703316e-05,
+        "pre_target_difference_rms": 8.55855863964588e-06,
+        "target_difference_rms": 0.005346108246517832,
+        "difference_peak_ns": 359.04615641172063,
+        "difference_peak_abs": 0.01763098374613037
+      },
+      {
+        "trace_id": 15,
+        "reference_arrival_ns": 357.2231750488281,
+        "early_difference_rms": 1.2292999881048579e-05,
+        "pre_target_difference_rms": 6.8971974379885736e-06,
+        "target_difference_rms": 0.005483782198216246,
+        "difference_peak_ns": 359.04615641172063,
+        "difference_peak_abs": 0.017752456969901687
+      },
+      {
+        "trace_id": 16,
+        "reference_arrival_ns": 357.310546875,
+        "early_difference_rms": 1.2790866658322204e-05,
+        "pre_target_difference_rms": 8.129649138260852e-06,
+        "target_difference_rms": 0.00569402353507948,
+        "difference_peak_ns": 359.10512277013936,
+        "difference_peak_abs": 0.0178707894310719
+      },
+      {
+        "trace_id": 17,
+        "reference_arrival_ns": 357.6307678222656,
+        "early_difference_rms": 1.2560352691877241e-05,
+        "pre_target_difference_rms": 1.0049039217400848e-05,
+        "target_difference_rms": 0.005933666096532725,
+        "difference_peak_ns": 359.10512277013936,
+        "difference_peak_abs": 0.018012255697613
+      },
+      {
+        "trace_id": 18,
+        "reference_arrival_ns": 358.0907287597656,
+        "early_difference_rms": 1.1901986630276849e-05,
+        "pre_target_difference_rms": 8.126541789180973e-06,
+        "target_difference_rms": 0.006163225309644879,
+        "difference_peak_ns": 359.04615641172063,
+        "difference_peak_abs": 0.018171022931710468
+      },
+      {
+        "trace_id": 19,
+        "reference_arrival_ns": 358.596435546875,
+        "early_difference_rms": 1.2051472764721287e-05,
+        "pre_target_difference_rms": 6.669940341136692e-06,
+        "target_difference_rms": 0.006354578047287519,
+        "difference_peak_ns": 359.04615641172063,
+        "difference_peak_abs": 0.01833450778212864
+      },
+      {
+        "trace_id": 20,
+        "reference_arrival_ns": 359.0948791503906,
+        "early_difference_rms": 1.3446356508399941e-05,
+        "pre_target_difference_rms": 6.865947870518523e-06,
+        "target_difference_rms": 0.006498763835183862,
+        "difference_peak_ns": 359.04615641172063,
+        "difference_peak_abs": 0.018520522040489595
+      },
+      {
+        "trace_id": 21,
+        "reference_arrival_ns": 359.58172607421875,
+        "early_difference_rms": 1.064752591615976e-05,
+        "pre_target_difference_rms": 7.54736562466309e-06,
+        "target_difference_rms": 0.006593731424392308,
+        "difference_peak_ns": 359.10512277013936,
+        "difference_peak_abs": 0.01872483009537973
+      },
+      {
+        "trace_id": 22,
+        "reference_arrival_ns": 360.0819396972656,
+        "early_difference_rms": 1.3054246863447945e-05,
+        "pre_target_difference_rms": 8.224146298096755e-06,
+        "target_difference_rms": 0.006658914512573025,
+        "difference_peak_ns": 359.1640891285581,
+        "difference_peak_abs": 0.018948528624605387
+      },
+      {
+        "trace_id": 23,
+        "reference_arrival_ns": 360.61773681640625,
+        "early_difference_rms": 1.2206084733881042e-05,
+        "pre_target_difference_rms": 9.504253287691303e-06,
+        "target_difference_rms": 0.006726112390330956,
+        "difference_peak_ns": 359.1640891285581,
+        "difference_peak_abs": 0.019177959802618716
+      },
+      {
+        "trace_id": 24,
+        "reference_arrival_ns": 361.1925964355469,
+        "early_difference_rms": 1.1958295607151036e-05,
+        "pre_target_difference_rms": 6.8408535715487954e-06,
+        "target_difference_rms": 0.006823901924888931,
+        "difference_peak_ns": 359.2230554869768,
+        "difference_peak_abs": 0.019404488753934857
+      },
+      {
+        "trace_id": 25,
+        "reference_arrival_ns": 361.792724609375,
+        "early_difference_rms": 1.2311675826538925e-05,
+        "pre_target_difference_rms": 8.323086757624949e-06,
+        "target_difference_rms": 0.00696465242011004,
+        "difference_peak_ns": 359.2230554869768,
+        "difference_peak_abs": 0.019639064225884795
+      },
+      {
+        "trace_id": 26,
+        "reference_arrival_ns": 362.4104309082031,
+        "early_difference_rms": 1.1452698647210481e-05,
+        "pre_target_difference_rms": 9.988500308936017e-06,
+        "target_difference_rms": 0.007137668941228321,
+        "difference_peak_ns": 368.3628410418819,
+        "difference_peak_abs": 0.02020008897579828
+      },
+      {
+        "trace_id": 27,
+        "reference_arrival_ns": 363.06475830078125,
+        "early_difference_rms": 9.676971094462593e-06,
+        "pre_target_difference_rms": 8.071535854860385e-06,
+        "target_difference_rms": 0.007309998922064889,
+        "difference_peak_ns": 368.3628410418819,
+        "difference_peak_abs": 0.020626788455047063
+      },
+      {
+        "trace_id": 28,
+        "reference_arrival_ns": 363.80255126953125,
+        "early_difference_rms": 1.2196517880942198e-05,
+        "pre_target_difference_rms": 9.066168577880909e-06,
+        "target_difference_rms": 0.0074594226488576285,
+        "difference_peak_ns": 368.30387468346316,
+        "difference_peak_abs": 0.020764692588272737
+      },
+      {
+        "trace_id": 29,
+        "reference_arrival_ns": 364.6828918457031,
+        "early_difference_rms": 1.1521696616436473e-05,
+        "pre_target_difference_rms": 8.705758841158485e-06,
+        "target_difference_rms": 0.007606810363445649,
+        "difference_peak_ns": 368.24490832504443,
+        "difference_peak_abs": 0.020609993401194515
+      },
+      {
+        "trace_id": 30,
+        "reference_arrival_ns": 365.7501220703125,
+        "early_difference_rms": 1.2419037893841876e-05,
+        "pre_target_difference_rms": 9.130215365265458e-06,
+        "target_difference_rms": 0.007801272014453251,
+        "difference_peak_ns": 359.45892092065185,
+        "difference_peak_abs": 0.020336098431926075
+      },
+      {
+        "trace_id": 31,
+        "reference_arrival_ns": 367.0140075683594,
+        "early_difference_rms": 1.2257125977374647e-05,
+        "pre_target_difference_rms": 7.1621575386832e-06,
+        "target_difference_rms": 0.007911087217464113,
+        "difference_peak_ns": 359.5178872790706,
+        "difference_peak_abs": 0.020257470567230484
+      },
+      {
+        "trace_id": 32,
+        "reference_arrival_ns": 368.43365478515625,
+        "early_difference_rms": 1.1958706871945605e-05,
+        "pre_target_difference_rms": 8.860500980474251e-06,
+        "target_difference_rms": 0.008065954780124392,
+        "difference_peak_ns": 419.84047194144375,
+        "difference_peak_abs": 0.02185500153882458
+      }
+    ]
+  }
+]
