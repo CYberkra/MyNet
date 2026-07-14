@@ -1,0 +1,12 @@
+#title: FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE no-basal contrast control
+#domain: 40.2 50 0.025
+#dx_dy_dz: 0.025 0.025 0.025
+#time_window: 6.5e-07
+#pml_cells: 50 50 0 50 50 0
+#messages: y
+#waveform: ricker 1 1e+08 formal01_ricker100
+#hertzian_dipole: z 7.25 38 0 formal01_ricker100
+#rx: 7.45 38 0 rx1 Ez
+#src_steps: 0.1 0 0
+#rx_steps: 0.1 0 0
+#geometry_objects_read: 0 0 0 geology_indices.h5 materials_no_basal.txt

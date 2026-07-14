@@ -31,6 +31,25 @@
 
 ## Maintenance Log
 
+### 2026-07-14
+
+- Added a measured-line reproduction workflow that separates raw receiver time, processed time B-scan, migrated depth, elevation profile, and interpreted overlays. A migrated PDF figure can no longer be used as a direct raw-FDTD visual target.
+- Added the S0-S7 single-factor calibration ladder and made flat ground plus fixed flight height the preferred first-pass isolation model when terrain is not the scientific variable.
+- Audited the V15 Line9 development reference and created MACRO06 as a permanently Line9-conditioned flat-physics calibration pair. The model keeps the approximately 14 m depth anchor, uses bounded effective cover permittivity for timing, passes the 2.8fc grid audit at 11.14 cells per minimum wavelength, and records a 16.24 dB analytical two-way deep-cover field-loss budget.
+- Formal training eligibility is unchanged: MACRO06 and every Line9-calibrated derivative are development-only; formal families must be regenerated from non-Line9 priors.
+
+- Re-fingerprinted the active gprMax 3.1.7 source and manual; all reviewed hashes still match this baseline.
+- Added distributed-pilot continuity scaling: path-step limits must follow the actual sparse trace stride and also be reported per canonical trace spacing.
+- Split target-absent auditing into a solver-validity gate and a separate human hard-negative semantics gate. A true-negative full scene does not require a no-target control and must not receive an invented target path.
+- Completed 32-trace full-span audits for the exact 80 m guard CV02/CV03
+  positive pairs and the CV04 upper-clutter true negative. All solver contracts
+  passed; CV02 and CV03 preserved continuous causal basal responses, while
+  CV04 supplied strong upper distractors without a stable deep target event.
+- Confirmed that the 80 m guard is a 0-500 ns protected-window contract, not a
+  blanket 0-700 ns guarantee. CV04 shows pronounced late diagonal/X-shaped
+  artifacts in 500-700 ns, so target-negative acceptance must record an
+  explicit valid time window and exclude late diagnostics from supervision.
+
 ### 2026-07-13
 
 - Added the native-window transfer contract after comparing a clean analytic native pilot with MACRO03 correlated-voxel geology. The maintained rule now generates independent multiscale fields across the full guarded domain and samples the native 22.95 m window without rescaling a long-line interface into it.

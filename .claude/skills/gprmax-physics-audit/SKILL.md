@@ -13,9 +13,10 @@ Build simulations whose geometry, physics, controls, and provenance can survive 
 2. Read `references/source-and-manual-contract.md` before changing input commands or material models.
 3. Use `references/execution-flow.md` when debugging build, stepping, GPU, or output behavior.
 4. For MyNet/PGDA work, also read `references/mynet-simulation-contract.md`.
-5. Run `scripts/audit_gprmax_input.py MODEL.in --json REPORT.json` before geometry-only or GPU execution.
-6. For deep conductive media, run `scripts/attenuation_budget.py` before the paired smoke.
-7. Fix every error. Record justified warnings in the case manifest.
+5. Before tuning against measured imagery, read `references/measured-line-reproduction.md` and identify the signal domain.
+6. Run `scripts/audit_gprmax_input.py MODEL.in --json REPORT.json` before geometry-only or GPU execution.
+7. For deep conductive media, run `scripts/attenuation_budget.py` before the paired smoke.
+8. Fix every error. Record justified warnings in the case manifest.
 
 ## Evidence Precedence
 
@@ -109,9 +110,35 @@ Require:
 - comparison at identical gain, crop, distance axis, and color scale;
 - provenance hashes, commands, environment, GPU, and completion state.
 
+For a distributed sparse B-scan pilot, scale lateral continuity limits by the
+actual trace stride and report both the sparse-step change and its
+per-canonical-trace equivalent. A limit defined for 0.09 m traces cannot be
+applied unchanged to traces sampled every 0.72 m.
+
+For a designed true-negative scene, run and audit the target-absent full scene
+without inventing a target path or requiring a no-target control. Keep solver
+validity separate from human acceptance of the hard-negative semantics.
+
 Visual similarity is supporting evidence, not a physics proof. A visually strong interface can still be leakage, a boundary artifact, or an unrealistically easy target.
 
 Prefer a synchronous capture-and-validate step after gprMax returns and before the merge command. A resumable background watcher is useful for live progress and early-stop evidence, but it must not be the only barrier protecting per-trace provenance.
+
+### Broadband FDTD and SFCW-Band Proxies
+
+- A Ricker or Gaussian FDTD source is a broadband transient source, not a
+  stepped-frequency (SFCW) forward simulation.
+- A post-solver frequency window may be useful as a diagnostic band proxy,
+  provided it is applied identically to a strict full/control pair and is
+  labelled as a proxy in every artifact and report.
+- Do not call zero-padding a denser measured frequency grid. Record the
+  native time-derived spectral resolution separately from plotting-bin
+  spacing.
+- If the stated band, tone increment, and point count disagree arithmetically,
+  freeze the ambiguity in the manifest and obtain the exported tone table or
+  hardware-processing metadata before claiming an SFCW-equivalent dataset.
+- Compare weak full-minus-control responses with both common gain (honest
+  scale context) and difference-only gain (causal visibility). Neither view
+  alone is sufficient for promotion.
 
 ## Maintenance
 
@@ -127,11 +154,55 @@ Generate a fresh machine-readable fingerprint with `scripts/fingerprint_gprmax.p
 
 Update this skill whenever gprMax is upgraded, a source/manual discrepancy is found, a simulation failure reveals a missing guard, or the project measurement contract changes.
 
+## Dense Cover-Bedrock Release Pattern
+
+For a continuous cover-weathered-bedrock mechanism family, apply the following
+additional gates before adding stochastic complexity:
+
+1. Begin with a flat-ground, fixed-height, dense local window and no discrete
+   anomaly body. A clean baseline must show that the deep event is caused by
+   the basal contrast itself.
+2. Audit the Ricker high-frequency content, not merely its nominal centre
+   frequency. The project static gate evaluates wavelength resolution at
+   `2.8 * fc`; preserve at least ten cells per estimated shortest wavelength.
+   If this fails, reduce the grid step or change the source/grid contract
+   before any GPU run. Do not waive the warning because a geometry preview
+   looks smooth.
+3. Use a full/no-basal pair with shared indexed geometry and acquisition.
+   Capture all per-trace HDF5 contracts and SHA256 hashes immediately after the
+   solve, before any merge or cleanup.
+4. Keep the material-interface arrival and visible signed phase separate. A
+   finite weathered transition can shift the strongest causal wavelet lobe by
+   tens of nanoseconds relative to the geometric interface.
+5. Never choose a visible phase independently on every trace. First restrict
+   the signed full-control response to a declared geometric search window;
+   then select one globally continuous path. Its transition penalty must be
+   relative to the expected geometric/acquisition time increment (a
+   `delta_chainage`-style transition), not an absolute preference for a flat
+   time path. This is an audit candidate, not an automatic training label.
+6. Record both unconstrained peak behaviour and constrained-path behaviour.
+   A large reduction in side-lobe jumps is evidence of extraction quality only
+   when the resulting path remains inside the signed causal response and has
+   acceptable adjacent wavelet correlation.
+7. Before running a correlated-cover variant, audit its quantised field on
+   the actual cover voxels: used levels, horizontal/vertical neighbour-change
+   rates, correlation scales, and absence of artificial full-depth walls.
+   Do not use a resized preview alone to judge spatial texture.
+
+The FORMAL01 F0 baseline (2026-07-15) passed this mechanism gate with a
+100 MHz Ricker proxy, 0.025 m grid, 256 traces at 0.10 m spacing, and a
+continuous finite transition. The F1 correlated-cover variant subsequently
+passed the same strict-pair and continuous-path checks on a 32-trace smoke
+run. Both remain development-only: these results prove causal interface
+behaviour, not instrument-faithful SFCW fidelity or formal training
+eligibility.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.
 - `references/execution-flow.md`: reviewed 3.1.7 build, stepping, solve, and output call chain.
 - `references/mynet-simulation-contract.md`: project-specific dataset and paired-control rules.
+- `references/measured-line-reproduction.md`: raw/processed/migrated domain separation and staged measured-line calibration.
 - `references/version-baseline.md`: reviewed version, source fingerprints, and maintenance log.
 - `scripts/audit_gprmax_input.py`: reusable static audit utility.
 - `scripts/attenuation_budget.py`: exact nondispersive field-attenuation plausibility budget.

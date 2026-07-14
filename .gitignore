@@ -53,6 +53,11 @@ logs/
 !data/PGDA_SYNTH_DATASET_V2/README.md
 !data/PGDA_SYNTH_DATASET_V2/00_controls/
 !data/PGDA_SYNTH_DATASET_V2/00_controls/**
+# Keep reproducible control inputs, geometry indices, labels, and audits in Git,
+# but leave solver products and execution logs local.
+data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.out
+data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.log
+data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.vti
 data/PGDA_SYNTH_DATASET_V2/_staging/
 data/PGDA_SYNTH_DATASET_V2/_superseded_*/
 data/PGDA_SYNTH_DATASET_V2/01_solver_runs/

@@ -1,0 +1,441 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      40.2,
+      50.0,
+      0.025
+    ],
+    "grid_m": [
+      0.025,
+      0.025,
+      0.025
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      50,
+      50,
+      0,
+      50,
+      50,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 40.2,
+        "cells": 1608,
+        "realised_m": 40.2
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 50.0,
+        "cells": 2000,
+        "realised_m": 50.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.025,
+        "cells": 1,
+        "realised_m": 0.025
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 7.25,
+        "cells": 290,
+        "realised_m": 7.25,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 38.0,
+        "cells": 1520,
+        "realised_m": 38.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 7.45,
+        "cells": 298,
+        "realised_m": 7.45,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 38.0,
+        "cells": 1520,
+        "realised_m": 38.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.1,
+        "cells": 4,
+        "realised_m": 0.1,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.1,
+        "cells": 4,
+        "realised_m": 0.1,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "formal01_ricker100": 100000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt",
+        "material_count": 42,
+        "shape": [
+          1608,
+          2000,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 38,
+        "dx_dy_dz": [
+          0.025,
+          0.025,
+          0.025
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.8,
+        "conductivity": 0.0022,
+        "id": "topsoil_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.2,
+        "conductivity": 0.0024,
+        "id": "topsoil_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.6,
+        "conductivity": 0.0026,
+        "id": "topsoil_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.0,
+        "conductivity": 0.0028,
+        "id": "topsoil_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.4,
+        "conductivity": 0.003,
+        "id": "topsoil_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.8,
+        "conductivity": 0.0032,
+        "id": "topsoil_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 15.2,
+        "conductivity": 0.0034,
+        "id": "topsoil_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6,
+        "conductivity": 0.0012,
+        "id": "cover_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9,
+        "conductivity": 0.00133333,
+        "id": "cover_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2,
+        "conductivity": 0.00146667,
+        "id": "cover_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0016,
+        "id": "cover_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8,
+        "conductivity": 0.00173333,
+        "id": "cover_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1,
+        "conductivity": 0.00186667,
+        "id": "cover_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.4,
+        "conductivity": 0.002,
+        "id": "cover_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.35,
+        "conductivity": 0.0011,
+        "id": "transition_1_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5,
+        "conductivity": 0.0012,
+        "id": "transition_1_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.65,
+        "conductivity": 0.0013,
+        "id": "transition_1_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8,
+        "conductivity": 0.0014,
+        "id": "transition_1_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.95,
+        "conductivity": 0.0015,
+        "id": "transition_1_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1,
+        "conductivity": 0.0016,
+        "id": "transition_1_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.25,
+        "conductivity": 0.0017,
+        "id": "transition_1_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 8.6,
+        "conductivity": 0.0009,
+        "id": "transition_2_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 8.733333,
+        "conductivity": 0.00098333,
+        "id": "transition_2_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 8.866667,
+        "conductivity": 0.00106667,
+        "id": "transition_2_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.00115,
+        "id": "transition_2_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.133333,
+        "conductivity": 0.00123333,
+        "id": "transition_2_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.266667,
+        "conductivity": 0.00131667,
+        "id": "transition_2_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4,
+        "conductivity": 0.0014,
+        "id": "transition_2_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.15,
+        "conductivity": 0.00075,
+        "id": "transition_3_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.266667,
+        "conductivity": 0.00081667,
+        "id": "transition_3_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.383333,
+        "conductivity": 0.00088333,
+        "id": "transition_3_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.5,
+        "conductivity": 0.00095,
+        "id": "transition_3_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.616667,
+        "conductivity": 0.00101667,
+        "id": "transition_3_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.733333,
+        "conductivity": 0.00108333,
+        "id": "transition_3_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 7.85,
+        "conductivity": 0.00115,
+        "id": "transition_3_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 5.7,
+        "conductivity": 0.0006,
+        "id": "bedrock_q0",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 5.8,
+        "conductivity": 0.00065,
+        "id": "bedrock_q1",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 5.9,
+        "conductivity": 0.0007,
+        "id": "bedrock_q2",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 6.0,
+        "conductivity": 0.00075,
+        "id": "bedrock_q3",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 6.1,
+        "conductivity": 0.0008,
+        "id": "bedrock_q4",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 6.2,
+        "conductivity": 0.00085,
+        "id": "bedrock_q5",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 6.3,
+        "conductivity": 0.0009,
+        "id": "bedrock_q6",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE\\materials_full.txt"
+      }
+    ],
+    "max_material_epsilon_r": 15.2,
+    "lambda_min_m": 0.2746255107378552,
+    "cells_per_lambda_min": 10.985020429514206,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 12
+  }
+}

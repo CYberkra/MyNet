@@ -1,0 +1,125 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL01_BEDROCK_DENSE_WINDOW",
+  "case_id": "FORMAL01_BEDROCK_DENSE_WINDOW_F0_BASELINE",
+  "variant": {
+    "tag": "F0_BASELINE",
+    "description": "homogeneous cover and finite smooth transition",
+    "cover_heterogeneity": false,
+    "transition_variation": false
+  },
+  "purpose": "independent dense-window cover-weathered-bedrock mechanism family",
+  "generator_path": "scripts/generate_formal01_bedrock_dense_window.py",
+  "generator_sha256": "e92d9d1c484cac58f606b3abf4b1c537099cf4e3000c4203f197b58995b19a47",
+  "formal_training_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": false,
+  "training_block_reason": "requires runtime pairs, visible-phase extraction, source/guard convergence, and human review",
+  "parameter_provenance": "independent generic lithology priors plus project-wide borehole depth range; no Line9-derived geometry, labels, or statistics",
+  "source_proxy": "100 MHz Ricker pulse proxy; not an instrument-faithful SFCW synthesis",
+  "terrain_stage": "flat ground and fixed 8 m height while subsurface physics are isolated",
+  "spec": {
+    "domain_x_m": 40.2,
+    "domain_y_m": 50.0,
+    "dl_m": 0.025,
+    "pml_cells": 50,
+    "trace_count": 256,
+    "trace_spacing_m": 0.1,
+    "scan_start_x_m": 7.25,
+    "source_y_m": 38.0,
+    "ground_y_m": 30.0,
+    "tx_rx_offset_m": 0.2,
+    "center_frequency_hz": 100000000.0,
+    "solver_time_window_s": 6.5e-07,
+    "profile_seed": 2026071501,
+    "cover_seed": 2026071502
+  },
+  "acquisition": {
+    "trace_count": 256,
+    "spacing_m": 0.1,
+    "span_m": 25.5
+  },
+  "grid": {
+    "nx_ny_nz": [
+      1608,
+      2000,
+      1
+    ],
+    "pml_thickness_m": 1.25,
+    "left_physical_guard_m": 6.0,
+    "right_physical_guard_m": 6.0,
+    "cells_per_min_wavelength_at_2_8fc": 10.985020429514204
+  },
+  "geometry": {
+    "shared_index_file": "geology_indices.h5",
+    "shared_index_sha256": "8ef62eb24f0e13719220aa7e718973f3039dc3f1f563c300a5ae895279c46eac",
+    "index_shape": [
+      1608,
+      2000,
+      1
+    ],
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.0,
+    "discrete_anomaly_bodies": 0,
+    "cover_field_levels": 7,
+    "cover_field_thresholds": []
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "changed_material_indices": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "only_transition_and_bedrock_changed": true,
+    "full_materials_sha256": "73e237f93754199297562f8af8f2fe98f60dce7f6e657703665becda14dd72a3",
+    "control_materials_sha256": "a596a5e75ac84a7b4e4ac7e45d9cbfb98f8f5a6f97f9667de9d1f398757cbd20"
+  },
+  "reference_statistics": {
+    "basal_depth_m": {
+      "min": 12.939874649047852,
+      "median": 13.652782440185547,
+      "max": 14.433025360107422
+    },
+    "transition_thickness_m": {
+      "min": 0.8999999761581421,
+      "median": 0.8999999761581421,
+      "max": 0.8999999761581421
+    },
+    "geometric_arrival_time_ns": {
+      "min": 358.67047119140625,
+      "median": 375.4268798828125,
+      "max": 393.8777770996094
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only; not a visible-phase label",
+    "visible_phase": "must be extracted after a successful signed full-minus-control pair",
+    "training_allowed": false
+  }
+}
