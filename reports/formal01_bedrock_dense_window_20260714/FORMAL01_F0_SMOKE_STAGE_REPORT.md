@@ -141,6 +141,22 @@ Evidence:
 - `formal01_f2_smoke_continuity_audit.json`
 - `formal01_f2_smoke.png`
 
+## F3 Combined 32-Trace Smoke
+
+F3 combines F1's correlated cover with F2's transition variation. The strict
+pair passed with early-window maximum difference RMS `4.380e-05`, target-window
+minimum difference RMS `5.031e-03`, zero dropout, and median adjacent
+constrained-path correlation `0.981`. It preserves the causal deep event while
+retaining more lateral complexity than F2. F3 is the preferred candidate for a
+future 256-trace mechanism run, but remains development-only pending a reviewed
+visible-phase extractor and release decision.
+
+Evidence:
+
+- `formal01_f3_smoke_pair_audit.json`
+- `formal01_f3_smoke_continuity_audit.json`
+- `formal01_f3_smoke.png`
+
 ## Release Status
 
 F0 passes the *mechanism-baseline* gate, and F1 passes the correlated-cover
@@ -148,7 +164,5 @@ smoke gate: the deep response is causally tied to
 the cover-weathered-bedrock contrast and is continuous under a defined
 audit-time path constraint. Both remain **development-only and non-trainable**:
 source/guard convergence, a reviewed visible-phase extractor, and human
-acceptance still remain. F2–F3 have passed static input audit only. They are
-deliberately not queued for a full run until the quality of the correlated-cover
-random field is reviewed against these controlled references. F2 has also
-passed its 32-trace transition-variation smoke; F3 remains static-audited only.
+acceptance still remain. F2 and F3 have both passed their 32-trace smoke gates;
+only F3 is nominated for a future 256-trace mechanism run.
