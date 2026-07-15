@@ -146,10 +146,11 @@ Evidence:
 F3 combines F1's correlated cover with F2's transition variation. The strict
 pair passed with early-window maximum difference RMS `4.380e-05`, target-window
 minimum difference RMS `5.031e-03`, zero dropout, and median adjacent
-constrained-path correlation `0.981`. It preserves the causal deep event while
-retaining more lateral complexity than F2. F3 is the preferred candidate for a
-future 256-trace mechanism run, but remains development-only pending a reviewed
-visible-phase extractor and release decision.
+constrained-path correlation `0.981`. This establishes a valid causal-control
+regression case, but visual review found that it remains dominated by idealised
+layered wavelets and does not resemble the intended measured-line morphology.
+It must not be extended to a 256-trace realism run until the model family is
+redesigned.
 
 Evidence:
 
@@ -164,5 +165,7 @@ smoke gate: the deep response is causally tied to
 the cover-weathered-bedrock contrast and is continuous under a defined
 audit-time path constraint. Both remain **development-only and non-trainable**:
 source/guard convergence, a reviewed visible-phase extractor, and human
-acceptance still remain. F2 and F3 have both passed their 32-trace smoke gates;
-only F3 is nominated for a future 256-trace mechanism run.
+acceptance still remain. F2 and F3 have both passed their 32-trace smoke gates,
+but the complete F family is now retained only for causal-control regression.
+No F-series member is nominated for a 256-trace realism run or training-data
+promotion.

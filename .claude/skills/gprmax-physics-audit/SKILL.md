@@ -188,14 +188,24 @@ additional gates before adding stochastic complexity:
    the actual cover voxels: used levels, horizontal/vertical neighbour-change
    rates, correlation scales, and absence of artificial full-depth walls.
    Do not use a resized preview alone to judge spatial texture.
+8. A strict full/control pass proves causal attribution, not measured-line
+   realism. Before scaling a family, inspect raw and identically processed
+   B-scans for dominant direct/ground wavelets, repeated parallel layer bands,
+   ringing combs, and diffraction/X-shaped structures. A multi-step transition
+   encoded as several constant material layers can itself create coherent
+   reflectors; it is not a physically smooth transition merely because its
+   total thickness varies smoothly. Likewise, a quantised stochastic property
+   field must not substitute for a geologically plausible multiscale texture.
+   Keep such cases as regression controls if they fail the morphology review.
 
 The FORMAL01 F0 baseline (2026-07-15) passed this mechanism gate with a
 100 MHz Ricker proxy, 0.025 m grid, 256 traces at 0.10 m spacing, and a
 continuous finite transition. The F1 correlated-cover variant subsequently
 passed the same strict-pair and continuous-path checks on a 32-trace smoke
-run. Both remain development-only: these results prove causal interface
-behaviour, not instrument-faithful SFCW fidelity or formal training
-eligibility.
+run. Visual audit subsequently found that F0--F3 remain overly layered and
+wavelet-regular for the intended measured-line morphology. They are retained
+as causal-control regressions, not realism candidates, and must not be scaled
+to training data without a redesigned subsurface/source/processing contract.
 
 ## References
 
