@@ -11,6 +11,19 @@
 
 所有 control 默认 `formal_training_allowed=false`。只有真实 gprMax 输出、matched-control 可见相位、运行后物理验证和人工审阅全部通过后，才能进入 pilot 审批；control 本身不直接晋级正式训练。
 
+## Independent V2 Family 01
+
+`independent_v2_family01_pilot.json` freezes the first non-Line9-conditioned
+positive and exact matched true-negative family. Its generator reads only the
+contract and seeded generic priors. It does not read measured arrays or any
+FORMAL06/07 development geometry.
+
+As of 2026-07-15, the family has passed static and geometry checks, one-trace
+runtime equivalence, an 8-trace full/control causal pilot, and a 32-trace
+full-scene blind morphology review. It remains blocked from training until all
+native 256-trace required runs, immutable evidence packaging, and independent
+human release approval are complete.
+
 `legacy_quarantine.csv` 冻结旧合同中的全部仿真 case；这些 case 可保留作开发回归、smoke 或压力测试，但不能被 V2 exporter 晋级。
 
 旧 V1 case 的唯一去重、标签 override 与 trace-level ignore/weak 状态由

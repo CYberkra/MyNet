@@ -1,0 +1,45 @@
+{
+  "schema": "independent_v2_family01_pilot_decision_v1",
+  "date": "2026-07-15",
+  "scene_family_id": "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK",
+  "decision": "pilot_passed_pending_full256",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "positive_case": {
+    "case_id": "IV2_F01_GENTLE_APERIODIC_POS",
+    "human_morphology_decision": "accepted_independent_pilot_pending_full256",
+    "distributed8_pair_audit_sha256": "922bc3b3fb4f6eb08a9c772a811defdb4caf0a78fa3c032628ddc4ecbffd5561",
+    "distributed32_full_audit_sha256": "d33dbead3db6d5bc6af4547219d2c565e85f79b4bdb9a3e61ec940a418c8f363"
+  },
+  "negative_case": {
+    "case_id": "IV2_F01_MATCHED_BACKGROUND_NEG",
+    "semantics": "designed_true_negative_exactly_equal_to_positive_no_basal_physical_state",
+    "one_trace_runtime_equality": true,
+    "one_trace_max_abs_ez_difference": 0.0
+  },
+  "distributed32_metrics": {
+    "trace_count": 32,
+    "trace_stride": 8,
+    "effective_trace_spacing_m": 0.72,
+    "path_to_geometric_correlation": 0.9980928848018606,
+    "dynamic_range_retention": 1.0089606058374407,
+    "target_to_adjacent_background_rms": 7.21673727318854,
+    "target_dropout_fraction": 0.0,
+    "significant_signed_lobe_count": 4,
+    "aligned_peak_frequency_mhz": 44.091710758377424,
+    "aligned_spectral_centroid_mhz": 57.69792365963762
+  },
+  "claim_limits": [
+    "The 32-trace run is full-scene morphology evidence only.",
+    "No visible-phase training label may be released from the full-only run.",
+    "The family is not a formal training asset until complete native-256 causal runs and release review pass.",
+    "The current target-to-background balance is somewhat easy and must not be the only scaled family."
+  ],
+  "next_gates": [
+    "complete positive native-256 full/control/air",
+    "complete negative native-256 full/air",
+    "package immutable solver evidence",
+    "obtain independent human positive and true-negative approval",
+    "add harder independent families with stronger continuous non-target background"
+  ]
+}

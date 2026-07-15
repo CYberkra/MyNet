@@ -429,6 +429,35 @@ Keep these rules:
    must use physical priors that do not read held-out geometry, timing, labels,
    or morphology.
 
+### Independent V2 Pilot Lessons
+
+The first independent Family 01 pilot (2026-07-15) was deliberately generated
+without measured arrays, Line9 timing, or FORMAL06/07 geometry. Preserve these
+rules:
+
+1. Independence is a generator input contract, not a filename. Record an empty
+   measured-file input list, forbid development arrays, and keep positive and
+   target-absent cases in one indivisible scene-family split group.
+2. The cleanest designed true negative is the exact physical state of the
+   positive no-basal control. Share the HDF5 index array, make material decks
+   byte-identical, retain target-independent acquisition arrays, and create no
+   target path or visible-phase label for the negative.
+3. Stage runtime evidence: static and transient-VTI geometry checks, one-trace
+   positive pair plus negative equality, distributed full-span causal pair, then
+   a denser full-only morphology stop before the native run. Delete transient VTI
+   after hashing it.
+4. Never horizontally interpolate sparse traces. Resize vertically as needed,
+   then use horizontal nearest-neighbour display and disclose the effective trace
+   spacing. Family 01's 32 traces were 0.72 m apart, not native 0.09 m data.
+5. A full-only morphology path is never a training label. Family 01's 32-trace
+   path tracked independent geometry at 0.9981 correlation with no dropout, but
+   causal labels still require the complete matched full-minus-control pair.
+6. A physics pass is not a difficulty pass. Family 01 had four signed lobes and a
+   target/adjacent-background RMS ratio of 7.22, so it was accepted only as
+   `pilot_passed_pending_full256`. Scale multiple harder independent families
+   with stronger continuous non-target background; do not let the easy pilot
+   define the training domain.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

@@ -49,6 +49,28 @@
       "solver_evidence_released": false,
       "decision_report": "reports/formal07b_weak_aperiodic_background_20260715/FORMAL07B_RUNTIME_AND_MORPHOLOGY_AUDIT.md",
       "next_gate": "design independent non-Line9-conditioned V2 scene families; retain FORMAL07B as development evidence only"
+    },
+    {
+      "case_id": "IV2_F01_GENTLE_APERIODIC_POS",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK/IV2_F01_GENTLE_APERIODIC_POS",
+      "scene_family_id": "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK",
+      "status": "pilot_passed_pending_full256",
+      "formal_training_allowed": false,
+      "line9_conditioned": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family01_20260715/INDEPENDENT_V2_FAMILY01_PILOT_AUDIT.md",
+      "next_gate": "complete native-256 full/control/air, package immutable solver evidence, and obtain independent human release approval"
+    },
+    {
+      "case_id": "IV2_F01_MATCHED_BACKGROUND_NEG",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK/IV2_F01_MATCHED_BACKGROUND_NEG",
+      "scene_family_id": "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK",
+      "status": "exact_matched_true_negative_pilot_pending_full256",
+      "formal_training_allowed": false,
+      "line9_conditioned": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family01_20260715/INDEPENDENT_V2_FAMILY01_PILOT_AUDIT.md",
+      "next_gate": "complete native-256 negative full/air, package immutable solver evidence, and obtain independent human release approval"
     }
   ]
 }

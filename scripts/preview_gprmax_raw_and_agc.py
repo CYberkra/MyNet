@@ -50,12 +50,18 @@ def _font(size: int, bold: bool = False) -> ImageFont.ImageFont:
         return ImageFont.load_default()
 
 
+def _overlay_legend(visible_phase_overlay: bool) -> str:
+    if visible_phase_overlay:
+        return "Magenta: supplied visible-phase reference."
+    return "Blind view: no target or path overlay is shown."
+
+
 def _panel(values: np.ndarray, scale: float, width: int, height: int) -> Image.Image:
     clipped = np.clip(values / max(scale, 1e-30), -1.0, 1.0)
     gray = np.rint((clipped + 1.0) * 127.5).astype(np.uint8)
-    return Image.fromarray(np.repeat(gray[:, :, None], 3, axis=2), mode="RGB").resize(
-        (width, height), Image.Resampling.BILINEAR
-    )
+    image = Image.fromarray(np.repeat(gray[:, :, None], 3, axis=2), mode="RGB")
+    image = image.resize((image.width, height), Image.Resampling.BILINEAR)
+    return image.resize((width, height), Image.Resampling.NEAREST)
 
 
 def _overlay_curve(
@@ -91,8 +97,9 @@ def render_preview(
     scene = json.loads((run_dir / "scene_manifest.json").read_text(encoding="utf-8"))
     dt_s, raw, _ = read_merged_bscan(run_dir / "full_scene_merged.out", component=component)
     source_end_ns = (raw.shape[0] - 1) * dt_s * 1e9
+    grid = scene.get("grid", {})
     protected_end_ns = min(
-        float(scene.get("grid", {}).get("protected_window_end_ns", 500.0)),
+        float(grid.get("protected_window_end_ns", grid.get("protected_time_window_ns", 500.0))),
         source_end_ns,
     )
     output_samples = max(2, int(round(protected_end_ns / 1.4)) + 1)
@@ -151,7 +158,7 @@ def render_preview(
     draw.text(
         (70, 78),
         f"{raw.shape[1]}-trace {run_kind}; canonical indices {selected[0] if selected else '?'} to {selected[-1] if selected else '?'}; "
-        f"effective trace spacing {spacing * stride:.2f} m. Magenta: solved visible-phase reference.",
+        f"effective trace spacing {spacing * stride:.2f} m. {_overlay_legend(curve is not None)}",
         fill="black",
         font=body,
     )
@@ -170,7 +177,12 @@ def render_preview(
             max_time_ns=protected_end_ns,
         )
         draw.text((left + 8, top + 8), "0 ns", fill="white", font=body)
-        draw.text((left + 8, top + panel_h - 30), "500 ns", fill="white", font=body)
+        draw.text(
+            (left + 8, top + panel_h - 30),
+            f"{protected_end_ns:g} ns",
+            fill="white",
+            font=body,
+        )
         draw.text((left, top + panel_h + 12), f"P99.5 display gain = {scale:.3e}", fill="black", font=body)
     draw.text(
         (70, 800),

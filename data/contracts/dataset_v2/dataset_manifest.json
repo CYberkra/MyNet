@@ -21,7 +21,9 @@
     "Canonical arrays remain in acquisition order; engineering-profile reversal is display-only.",
     "FORMAL06C is accepted only as Line9-conditioned development evidence.",
     "FORMAL07A was rejected by strict common-trace blind review for an over-stratified background.",
-    "FORMAL07B passed controlled one-trace causal and distributed32 morphology review but remains Line9-conditioned development evidence."
+    "FORMAL07B passed controlled one-trace causal and distributed32 morphology review but remains Line9-conditioned development evidence.",
+    "Independent IV2 Family 01 passed static, geometry, one-trace causal, distributed8 causal, and distributed32 full-scene morphology pilot gates.",
+    "IV2 Family 01 remains non-trainable until complete native-256 required runs, release packaging, and independent human approval are complete."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -31,8 +33,8 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 5,
-    "human_audit_records": 5,
+    "simulation_cases_registered": 7,
+    "human_audit_records": 7,
     "accepted_quarantine_cases": 0,
     "line9_conditioned_cases": 5,
     "training_allowed_cases": 0,

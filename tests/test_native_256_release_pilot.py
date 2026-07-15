@@ -20,6 +20,7 @@ from scripts.audit_native_256_family_spatial_pilot import (
     _continuity_step_limit_ns,
     _full_scene_detectability_gate,
     _path_step_statistics,
+    _panel as _family_panel,
     _portable_path as _family_portable_path,
     _required_output_stems,
     _solver_output_path,
@@ -39,6 +40,12 @@ def test_recommended_standard_is_native_and_boundary_safe() -> None:
     assert standard["canonical_output"]["horizontal_resize_or_padding"] == "forbidden"
     assert standard["fdtd"]["minimum_side_guard_from_inner_pml_m"] >= 109.5
     assert standard["acquisition"]["waveform"] == "ricker"
+
+
+def test_sparse_family_panel_never_interpolates_between_trace_columns() -> None:
+    values = np.asarray([[-1.0, 1.0], [-1.0, 1.0]], dtype=np.float32)
+    panel = np.asarray(_family_panel(values, 1.0, (12, 8)))
+    assert set(np.unique(panel[..., 0])) == {0, 255}
 
 
 def test_native_pilot_generation_matches_static_contract(tmp_path: Path) -> None:

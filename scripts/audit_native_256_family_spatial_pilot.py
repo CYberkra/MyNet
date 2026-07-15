@@ -97,7 +97,9 @@ def _panel(values: np.ndarray, scale: float, size: tuple[int, int]) -> Image.Ima
     clipped = np.clip(values / max(scale, 1e-30), -1.0, 1.0)
     gray = np.rint((clipped + 1.0) * 127.5).astype(np.uint8)
     rgb = np.repeat(gray[:, :, None], 3, axis=2)
-    return Image.fromarray(rgb, mode="RGB").resize(size, Image.Resampling.BILINEAR)
+    image = Image.fromarray(rgb, mode="RGB")
+    image = image.resize((image.width, size[1]), Image.Resampling.BILINEAR)
+    return image.resize(size, Image.Resampling.NEAREST)
 
 
 def _draw_path(

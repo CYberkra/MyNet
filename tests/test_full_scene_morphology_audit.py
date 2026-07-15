@@ -58,6 +58,17 @@ def test_preview_uses_manifest_protected_window_without_extrapolation(tmp_path: 
     assert result["protected_end_ns"] == 500.0
 
 
+def test_sparse_preview_panel_never_interpolates_between_trace_columns() -> None:
+    values = np.asarray([[-1.0, 1.0], [-1.0, 1.0]], dtype=np.float32)
+    panel = np.asarray(preview._panel(values, 1.0, 12, 8))
+    assert set(np.unique(panel[..., 0])) == {0, 255}
+
+
+def test_preview_legend_discloses_whether_a_path_overlay_is_present() -> None:
+    assert "no target or path overlay" in preview._overlay_legend(False)
+    assert "Magenta" in preview._overlay_legend(True)
+
+
 def test_preview_selects_canonical_reference_for_sparse_subset(tmp_path: Path, monkeypatch) -> None:
     run_dir = tmp_path / "run"
     run_dir.mkdir()

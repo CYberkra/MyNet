@@ -87,7 +87,13 @@ def audit(
     dt_s, raw, _ = read_merged_bscan(run_dir / "full_scene_merged.out", component=component)
     raw = np.asarray(raw, dtype=np.float64)
     time_ns = np.arange(raw.shape[0], dtype=np.float64) * dt_s * 1e9
-    protected_end_ns = float(scene["grid"]["protected_window_end_ns"])
+    grid = scene["grid"]
+    protected_value = grid.get("protected_window_end_ns")
+    if protected_value is None:
+        protected_value = grid.get("protected_time_window_ns")
+    if protected_value is None:
+        raise KeyError("scene grid must declare a protected window end")
+    protected_end_ns = float(protected_value)
     protected = time_ns <= protected_end_ns
     protected_time = time_ns[protected]
     protected_raw = raw[protected]

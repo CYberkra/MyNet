@@ -1,0 +1,111 @@
+{
+  "contract_id": "PGDA_INDEPENDENT_V2_FAMILY01_PILOT_V1",
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "status": "pre_solver_blocked_pilot",
+  "formal_training_allowed": false,
+  "scene_family_id": "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK",
+  "split_group_policy": "positive and matched true-negative remain an indivisible scene-family group",
+  "purpose": "First independent non-Line9 positive/true-negative pilot for native 501x256 path learning.",
+  "provenance": {
+    "line9_conditioned": false,
+    "measured_files_read_by_generator": [],
+    "held_out_geometry_or_timing_used": false,
+    "development_case_arrays_reused": false,
+    "allowed_inputs": [
+      "published project-wide 50-65 MHz source band",
+      "project borehole/engineering cover-depth envelope",
+      "bounded non-dispersive material sensitivity priors",
+      "seeded generic correlated random fields"
+    ],
+    "forbidden_inputs": [
+      "Line9 labels or timing curves",
+      "Line9 geometry, terrain or waveform arrays",
+      "FORMAL06 or FORMAL07 profile and field arrays",
+      "held-out morphology-derived parameter fitting"
+    ]
+  },
+  "grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.03,
+    "domain_x_m": 242.73,
+    "domain_y_m": 48.0,
+    "pml_cells": 60,
+    "physical_side_guard_m": 108.0,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 109.8,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_ns": 750.0,
+    "protected_time_window_ns": 700.0,
+    "canonical_samples": 501,
+    "canonical_dt_ns": 1.4
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 55000000.0,
+    "reference_delay_formula": "sqrt(2)/center_frequency_hz",
+    "proxy_only": true,
+    "not_sfcw": true
+  },
+  "geology": {
+    "ground": "flat first-family control",
+    "discrete_anomaly_bodies": 0,
+    "sinusoidal_layers": 0,
+    "vertical_partitions": 0,
+    "cover_model": "seeded continuous three-scale two-dimensional latent field quantised only after spatial smoothing",
+    "cover_bins": 32,
+    "basal_model": "seeded generic multiscale one-dimensional depth field selected only by broad physical shape gates",
+    "basal_depth_bounds_m": [13.5, 17.5],
+    "transition_thickness_bounds_m": [0.9, 2.0],
+    "transition_levels": 8
+  },
+  "materials": {
+    "scope": "independent bounded sensitivity prior, not site inversion",
+    "cover_epsilon_r": [11.8, 12.6],
+    "cover_conductivity_s_per_m": [0.0018, 0.0028],
+    "weathered_cap_epsilon_r": 11.62,
+    "weathered_cap_conductivity_s_per_m": 0.0019,
+    "bedrock_epsilon_r": 11.32,
+    "bedrock_conductivity_s_per_m": 0.0012
+  },
+  "cases": [
+    {
+      "case_id": "IV2_F01_GENTLE_APERIODIC_POS",
+      "target_presence": true,
+      "negative_semantics": "not_a_negative_sample",
+      "profile_seed_base": 2026071501,
+      "field_seed": 2026071511,
+      "required_runs": ["full_scene", "no_basal_contrast_control", "air_reference"]
+    },
+    {
+      "case_id": "IV2_F01_MATCHED_BACKGROUND_NEG",
+      "target_presence": false,
+      "negative_semantics": "designed_true_negative_exactly_equal_to_positive_no_basal_physical_state",
+      "profile_seed_base": 2026071501,
+      "field_seed": 2026071511,
+      "required_runs": ["full_scene", "air_reference"]
+    }
+  ],
+  "pair_contract": {
+    "positive_full_and_control_share_index_array": true,
+    "positive_control_equals_negative_full_material_map": true,
+    "positive_and_negative_share_index_array": true,
+    "only_positive_full_has_basal_constitutive_contrast": true,
+    "negative_has_no_target_path_or_visible_phase_label": true,
+    "visible_phase_before_solver": "forbidden"
+  },
+  "promotion_gates": [
+    "contract and generator tests pass",
+    "static and geometry-only audits pass",
+    "one-trace positive pair and negative full smoke pass",
+    "distributed sparse morphology and continuity audit pass",
+    "complete 256-trace required runs pass",
+    "signed visible-phase extractor is validated for the positive",
+    "human positive and true-negative semantics are explicitly approved",
+    "dataset registries are updated with immutable hashes"
+  ]
+}
