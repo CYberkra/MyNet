@@ -29,6 +29,16 @@
       "release_spec": "data/simulations/v2/release_specs/FORMAL06C_DEVELOPMENT_EVIDENCE_V1.json",
       "release_dir": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1",
       "next_gate": "complete distributed matched pair, then independent training-data governance"
+    },
+    {
+      "case_id": "FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
+      "status": "pre_solver_review_passed",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/PRE_SOLVER_AUDIT.md",
+      "next_gate": "one-trace strict pair, then blind local full-scene morphology review"
     }
   ]
 }

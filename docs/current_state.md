@@ -30,7 +30,10 @@ ignore regions. Canonical arrays remain in acquisition order.
 - FORMAL06A: rejected because the interface response was overstrong.
 - FORMAL06B: rejected because the tempered response remained too dominant.
 - FORMAL06C: human-accepted development morphology with released evidence.
-- All three are Line9-conditioned and prohibited from formal training.
+- FORMAL07A: pre-solver successor with gentler basal relief and continuous
+  multiscale stratigraphy; static and attenuation gates pass, but no solver
+  evidence exists yet.
+- All four are Line9-conditioned and prohibited from formal training.
 - No independent V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -51,14 +54,16 @@ before changing the formal config.
 
 ## Next work
 
-1. Design independent V2 positive and true-negative scene families without
+1. Run the staged FORMAL07A development gates to test whether continuous
+   stratigraphy corrects FORMAL06C's overly clean non-target background.
+2. Design independent V2 positive and true-negative scene families without
    using Line9 labels, geometry, timing, or morphology as a generator prior.
-2. Solve matched positive controls and promote only cases passing numerical,
+3. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
-3. Audit candidate real true-negative intervals; ambiguous/failed-positive
+4. Audit candidate real true-negative intervals; ambiguous/failed-positive
    regions remain weak or ignored.
-4. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
-5. Pass the formal data gate, then run multi-seed AeroPath training and frozen
+5. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
+6. Pass the formal data gate, then run multi-seed AeroPath training and frozen
    baseline comparisons.
 
 ## Continuation contract

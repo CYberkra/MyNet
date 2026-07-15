@@ -17,6 +17,7 @@ import json
 import math
 from dataclasses import asdict, dataclass, replace
 from pathlib import Path
+from typing import Callable
 
 import h5py
 import numpy as np
@@ -213,6 +214,14 @@ def generate_case(
     changed_factors: list[str],
     generator_path: Path,
     preview_title: str,
+    profile_builder: Callable[
+        [formal03.Spec], tuple[dict[str, np.ndarray], dict[str, float | int]]
+    ] = formal03.build_profiles,
+    bulk_field_builder: Callable[
+        ..., tuple[np.ndarray, np.ndarray, dict]
+    ] = build_bulk_field,
+    locked_factors: list[str] | None = None,
+    geometry_description: str = "smooth weak two-dimensional bulk heterogeneity",
 ) -> Path:
     validate_spec(spec, design=design, source=source)
     output_root.mkdir(parents=True, exist_ok=True)
@@ -220,8 +229,8 @@ def generate_case(
     labels_dir = case_dir / "labels"
     labels_dir.mkdir(parents=True, exist_ok=True)
 
-    profile, crop_stats = formal03.build_profiles(spec)
-    _, cover_bins, field_stats = build_bulk_field(spec, design=design)
+    profile, crop_stats = profile_builder(spec)
+    _, cover_bins, field_stats = bulk_field_builder(spec, design=design)
     indices = formal03.build_indices(spec, profile, cover_bins)
     index_array_hash = _array_sha256(indices)
     geometry_path = case_dir / "geology_indices.h5"
@@ -321,7 +330,8 @@ def generate_case(
         },
         "ablation": {
             "predecessor_case_id": predecessor_case_id,
-            "locked": [
+            "locked": locked_factors
+            or [
                 "source waveform",
                 "grid and PML",
                 "acquisition and flight height",
@@ -349,6 +359,7 @@ def generate_case(
             "flat_ground": True,
             "fixed_flight_height_m": spec.flight_height_m,
             "discrete_anomaly_bodies": 0,
+            "description": geometry_description,
             "bulk_field_statistics": field_stats,
             "crop_shape_gate": crop_stats,
         },

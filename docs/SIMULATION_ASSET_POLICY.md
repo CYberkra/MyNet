@@ -124,3 +124,7 @@ python scripts/cleanup_gprmax_geometry_views.py `
   multi-cycle basal morphology on 2026-07-15.
 - FORMAL06C remains blocked from training until a complete distributed matched
   pair and the independent simulation-data contract pass.
+- FORMAL07A is a pre-solver development successor. It keeps FORMAL06C source,
+  materials, grid, and acquisition fixed while changing only the geology
+  morphology factor group. It remains blocked from training and from released
+  solver evidence until the staged one-trace and sparse morphology gates pass.

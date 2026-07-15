@@ -372,6 +372,18 @@ while reducing only the cap-to-bedrock contrast. Preserve these lessons:
    distributed full-only run have different clutter and gain domains. Human
    morphology acceptance can retain a development baseline while the strict
    matched-pair and independent-data gates remain closed.
+9. For a weak-contrast successor, retain two geometry previews: one with a
+   fixed physical scale for honest comparison and one explicitly labelled
+   enhanced scale for inspecting subtle continuous texture. A fixed broad
+   `full-control` colour range can make a valid weak interface look absent;
+   an adaptive preview must never be presented as amplitude evidence.
+10. Treat continuous stratigraphy as a factor-group hypothesis, not a solved
+    realism problem. Lock source, grid, acquisition, and constitutive values;
+    change the basal relief and non-target spatial organisation together;
+    record neighbour-change rates and forbid point targets, isolated
+    inclusions, and vertical partitions. Only a staged solver run can decide
+    whether the added layers improve background balance or become an overly
+    coherent horizontal comb.
 
 ### MyNet VTI Lifecycle
 
