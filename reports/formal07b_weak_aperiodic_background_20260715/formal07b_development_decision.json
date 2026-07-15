@@ -1,0 +1,28 @@
+{
+  "schema": "simulation_development_decision_v1",
+  "case_id": "FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+  "decision_date": "2026-07-15",
+  "decision": "agent_accepted_controlled_development_successor",
+  "predecessor": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "formal_training_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "solver_evidence_released": false,
+  "passed_gates": [
+    "predecessor_lock",
+    "weak_aperiodic_texture",
+    "static_input",
+    "geometry_runtime",
+    "one_trace_causal",
+    "blind8_morphology",
+    "distributed32_morphology"
+  ],
+  "claim_limits": [
+    "distributed32 is full-scene-only",
+    "no full-span causal visible-phase label claim",
+    "development mechanism is Line9-conditioned",
+    "not eligible for formal training"
+  ],
+  "decision_report": "reports/formal07b_weak_aperiodic_background_20260715/FORMAL07B_RUNTIME_AND_MORPHOLOGY_AUDIT.md",
+  "blind_comparison": "reports/formal07b_weak_aperiodic_background_20260715/formal06c_vs_formal07b_common32/blind_common32.png",
+  "next_gate": "design independent non-Line9-conditioned V2 scene families; retain FORMAL07B as development evidence only"
+}

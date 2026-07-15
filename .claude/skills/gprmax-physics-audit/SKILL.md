@@ -395,6 +395,40 @@ while reducing only the cap-to-bedrock contrast. Preserve these lessons:
     whether the added layers improve background balance or become an overly
     coherent horizontal comb.
 
+### FORMAL07 Controlled-Background Lessons
+
+The FORMAL07A/07B comparison (2026-07-15) tested two ways of increasing
+non-target background complexity after FORMAL06C had been visually accepted.
+Keep these rules:
+
+1. Preserve an accepted morphology with explicit predecessor locks. Compare
+   source waveform, material decks, basal profile, transition profile, grid,
+   PML, and acquisition before spending solver time. Store raw file hashes for
+   provenance, but use LF-normalised text-content hashes for cross-Windows/Linux
+   physics locks; CRLF conversion is not a source or material change.
+2. Reject background generators that improve an energy ratio by creating a
+   regular horizontal comb. Measure layer-coherent depth variance and vertical
+   spectral-peak concentration inside an acquisition-aligned cover crop before
+   runtime. A candidate may not increase either beyond a documented tolerance.
+3. Quantised-bin change fraction is not a strength metric by itself. FORMAL07B
+   changed about half of cover-bin assignments, yet 99% moved by at most two
+   0.025-epsilon bins. Always report perturbation RMS and bin-delta percentiles
+   with the changed fraction.
+4. A strict successor comparison uses identical canonical traces, time crop,
+   processing, and joint display scale. Do not horizontally interpolate sparse
+   traces. Review the no-overlay blind image first, then open the reference
+   overlay for timing interpretation.
+5. FORMAL07B showed the intended magnitude of a one-factor background change:
+   the 32-trace target/adjacent-background RMS decreased from about 17.29 to
+   16.74 while seven signed lobes and a 79.37 MHz peak were preserved. Treat a
+   small, controlled result as success when the purpose is to protect an
+   accepted basal packet; do not demand a dramatic visual change from a weak
+   ablation.
+6. Development morphology is not formal-data eligibility. FORMAL07B is still
+   Line9-conditioned and blocked from training. Independent scene generators
+   must use physical priors that do not read held-out geometry, timing, labels,
+   or morphology.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

@@ -20,7 +20,8 @@
     "Line7 retains measured flight heights above the planned 20 m range with an explicit QC flag.",
     "Canonical arrays remain in acquisition order; engineering-profile reversal is display-only.",
     "FORMAL06C is accepted only as Line9-conditioned development evidence.",
-    "FORMAL07A passed pre-solver geometry review only and has no solver evidence."
+    "FORMAL07A was rejected by strict common-trace blind review for an over-stratified background.",
+    "FORMAL07B passed controlled one-trace causal and distributed32 morphology review but remains Line9-conditioned development evidence."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -30,10 +31,10 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 4,
-    "human_audit_records": 4,
+    "simulation_cases_registered": 5,
+    "human_audit_records": 5,
     "accepted_quarantine_cases": 0,
-    "line9_conditioned_cases": 4,
+    "line9_conditioned_cases": 5,
     "training_allowed_cases": 0,
     "real_lines_registered": 6,
     "real_windows_registered": 78,

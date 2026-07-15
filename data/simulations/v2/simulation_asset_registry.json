@@ -39,6 +39,16 @@
       "solver_evidence_released": false,
       "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/FORMAL06C_VS_FORMAL07A_DECISION.md",
       "next_gate": "retain as causal regression only; design a FORMAL06C-derived weak-background ablation before any further solver run"
+    },
+    {
+      "case_id": "FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+      "status": "agent_accepted_controlled_development_successor",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal07b_weak_aperiodic_background_20260715/FORMAL07B_RUNTIME_AND_MORPHOLOGY_AUDIT.md",
+      "next_gate": "design independent non-Line9-conditioned V2 scene families; retain FORMAL07B as development evidence only"
     }
   ]
 }

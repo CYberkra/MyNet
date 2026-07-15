@@ -48,7 +48,10 @@ FORMAL06C is retained as development evidence only. FORMAL07A is its
 continuous-stratigraphy ablation: its causal checks pass, but a strict
 common-trace blind comparison rejects its over-stratified background and
 overly flat basal morphology. Neither is a training release. The
-authoritative state is
+FORMAL07B weak-aperiodic-background ablation preserves FORMAL06C's accepted
+basal packet and passes the exact 32-trace morphology comparison, but it also
+remains Line9-conditioned development evidence and is not a training release.
+The authoritative state is
 [`data/contracts/dataset_v2/dataset_manifest.json`](data/contracts/dataset_v2/dataset_manifest.json).
 
 ## Setup

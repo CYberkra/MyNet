@@ -153,6 +153,7 @@ def compare(
     output_samples: int,
     agc_window: int,
     time_power: float,
+    comparison_title: str | None = None,
 ) -> dict[str, object]:
     left_run = _load_run(
         left_output,
@@ -203,7 +204,10 @@ def compare(
     heading_font = _font(24, True)
     body_font = _font(19)
     mode = "EXPLANATION WITH MATERIAL REFERENCES" if overlay_enabled else "BLIND - NO LABEL OR REFERENCE OVERLAY"
-    draw.text((120, 28), "FORMAL06C versus FORMAL07A common-trace comparison", fill="black", font=title_font)
+    title = comparison_title or (
+        f"{left_run.case_id} versus {right_run.case_id} common-trace comparison"
+    )
+    draw.text((120, 28), title, fill="black", font=title_font)
     draw.text((120, 75), mode, fill=(150, 0, 0) if overlay_enabled else "black", font=heading_font)
     draw.text(
         (120, 115),
@@ -255,6 +259,7 @@ def compare(
         "component": component,
         "agc_window": agc_window,
         "time_power": time_power,
+        "comparison_title": title,
         "shared_p995_scales": scales,
         "reference_overlay": overlay_enabled,
         "horizontal_interpolation": "none; nearest-neighbour expansion of sparse trace columns",
@@ -281,6 +286,7 @@ def main() -> int:
     parser.add_argument("--output-samples", type=int, default=358)
     parser.add_argument("--agc-window", type=int, default=13)
     parser.add_argument("--time-power", type=float, default=1.5)
+    parser.add_argument("--title")
     args = parser.parse_args()
     result = compare(
         left_output=args.left_output,
@@ -298,6 +304,7 @@ def main() -> int:
         output_samples=args.output_samples,
         agc_window=args.agc_window,
         time_power=args.time_power,
+        comparison_title=args.title,
     )
     print(json.dumps(result, indent=2))
     return 0

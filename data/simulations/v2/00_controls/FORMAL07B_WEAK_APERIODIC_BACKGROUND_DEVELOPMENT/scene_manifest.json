@@ -1,0 +1,306 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+  "case_id": "FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "weak aperiodic non-target background development",
+  "generator_path": "scripts/generate_formal07b_weak_aperiodic_background_development.py",
+  "generator_sha256": "551e86839546ac825012a31564bbced75bc123be9af76d1a5ea19ef3060246ec",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": true,
+  "training_block_reason": "qualitative mechanism was selected after held-out morphology diagnosis; requires complete staged runtime and independent formal regeneration",
+  "parameter_provenance": "bounded custom materials and generic seeded profiles; no measured file is read, but the mechanism choice is development-only",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 32,
+    "transition_levels": 8,
+    "profile_seed": 2026071517,
+    "field_seed": 2026071526
+  },
+  "source": {
+    "case_id": "FORMAL04_SHARED_GABOR80",
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "reference_delay_ns": 50.0,
+    "custom_sigma_ns": 11.5,
+    "locked_from_formal03_source_ablation": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 4.3943970041879595e-25,
+      "peak_frequency_hz": 79377194.32147762,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "ablation": {
+    "predecessor_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+    "locked": [
+      "FORMAL06C basal path arrays",
+      "FORMAL06C transition-thickness arrays",
+      "GABOR80 source waveform",
+      "grid, PML, and acquisition",
+      "cover/cap/bedrock constitutive values",
+      "strict full/no-basal local-cover mapping"
+    ],
+    "changed": [
+      "non-target cover-field weak aperiodic texture only"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 12.374270920772078
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_array_sha256": "a802ca5008f2118019257525574b4bc194e42c9a926699bf68cc3d2f54174b90",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "description": "FORMAL06C basal morphology plus weak aperiodic two-dimensional non-target cover texture; no stratigraphic slabs or discrete bodies",
+    "bulk_field_statistics": {
+      "model": "formal06c_plus_weak_aperiodic_two_dimensional_texture",
+      "predecessor_model": "FORMAL06C smooth weak two-dimensional bulk field",
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.022613522537562606,
+      "vertical_neighbor_bin_change_rate": 0.04852640645354106,
+      "horizontal_latent_step_p95": 0.008973121643066406,
+      "vertical_latent_step_p95": 0.018923521041870117,
+      "latent_min": -2.5,
+      "latent_median": 0.007340325973927975,
+      "latent_max": 2.5,
+      "predecessor_statistics": {
+        "used_bins": 32,
+        "horizontal_neighbor_bin_change_rate": 0.021547161936560935,
+        "vertical_neighbor_bin_change_rate": 0.04745402448053986,
+        "horizontal_latent_step_p95": 0.008595585823059082,
+        "vertical_latent_step_p95": 0.01860841214656829,
+        "latent_min": -2.5,
+        "latent_median": -0.005680110305547714,
+        "latent_max": 2.5,
+        "correlation_design_m": {
+          "long_x": 6.7,
+          "long_y": 3.0,
+          "meso_x": 1.8,
+          "meso_y": 0.96
+        }
+      },
+      "component_weights": {
+        "weak_mesoscale_2d": 0.105,
+        "weak_fine_2d": 0.035
+      },
+      "component_correlation_scales_m": {
+        "mesoscale_xy": [
+          1.2,
+          0.9
+        ],
+        "fine_xy": [
+          0.54,
+          0.45
+        ]
+      },
+      "predecessor_latent_correlation": 0.9890322475251394,
+      "perturbation_rms": 0.1316694358479544,
+      "changed_cover_bin_fraction": 0.49825582123184775,
+      "cover_bin_delta_p99": 2.0,
+      "baseline_cover_texture_metrics": {
+        "laterally_coherent_depth_variance_ratio": 0.5454532429629505,
+        "vertical_spectral_peak_fraction": 0.9459421817825452
+      },
+      "candidate_cover_texture_metrics": {
+        "laterally_coherent_depth_variance_ratio": 0.5133158101425225,
+        "vertical_spectral_peak_fraction": 0.938865740304199
+      },
+      "gates": {
+        "predecessor_latent_correlation_min": 0.985,
+        "perturbation_rms_min": 0.07,
+        "perturbation_rms_max": 0.16,
+        "coherent_depth_variance_increase_max": 0.02,
+        "vertical_spectral_peak_increase_max": 0.04,
+        "bin_delta_p99_max": 3.0
+      },
+      "gate_results": {
+        "predecessor_latent_correlation": true,
+        "perturbation_rms": true,
+        "coherent_depth_variance": true,
+        "vertical_spectral_peak": true,
+        "bin_delta_p99": true
+      },
+      "sinusoidal_stratigraphy": false,
+      "isolated_inclusions": 0,
+      "point_targets": 0,
+      "vertical_partitions": 0
+    },
+    "crop_shape_gate": {
+      "min_m": 12.355183847483342,
+      "median_m": 13.27269848753622,
+      "max_m": 13.82939496684314,
+      "range_m": 1.474211119359797,
+      "smoothed_extrema_count": 2,
+      "quadratic_fit_r2": 0.9748824225012314,
+      "abs_slope_p95": 0.15205959593171198,
+      "accepted_seed": 2026071525,
+      "attempt": 8
+    }
+  },
+  "materials": {
+    "cover_epsilon_min": 12.0,
+    "cover_epsilon_max": 12.8,
+    "cover_conductivity_min_s_per_m": 0.0018,
+    "cover_conductivity_max_s_per_m": 0.0025,
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18,
+    "cover_bins": 32,
+    "weathered_cap_levels": 8,
+    "maximum_physical_epsilon_step": 0.44761352539062393,
+    "maximum_physical_conductivity_step_s_per_m": 0.000348754119873047,
+    "full_material_count": 320,
+    "basal_reflection_proxy": -0.008806945264739722
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_cap_and_bedrock_to_each_local_cover_bin": true,
+    "full_materials_sha256": "b50d6d616ab987600a91a3c226384aa8bbb7051ee9cb97087d1840e7d8a97ab8",
+    "control_materials_sha256": "3f5a5db1b4b82e661841927e181ea11cddd09014574d9fb92fb90da27a474f49"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 394.79339599609375,
+      "median": 417.3886413574219,
+      "max": 429.11724853515625
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus source delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a complete signed runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_local_background_rms_max": 5.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true
+  },
+  "next_gate": "static and geometry audit, then one-trace strict pair and blind common-trace sparse full-scene comparison against FORMAL06C",
+  "predecessor_lock": {
+    "predecessor_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+    "native_predecessor_assets_used": true,
+    "locked_files": {
+      "source_waveform.txt": {
+        "predecessor_sha256": "769dd19a68f8d8a2b19b732c134cb74f7ea9b1cad3b729d03d8d570aa51b71a8",
+        "candidate_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75",
+        "predecessor_normalised_text_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75",
+        "candidate_normalised_text_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75",
+        "exact": true,
+        "comparison_mode": "normalised_text_content"
+      },
+      "materials_full.txt": {
+        "predecessor_sha256": "b50d6d616ab987600a91a3c226384aa8bbb7051ee9cb97087d1840e7d8a97ab8",
+        "candidate_sha256": "b50d6d616ab987600a91a3c226384aa8bbb7051ee9cb97087d1840e7d8a97ab8",
+        "predecessor_normalised_text_sha256": "741f79f94ea884d7970f2232c15e4f594eddefbe2c9f68005e965d5eda38b0ba",
+        "candidate_normalised_text_sha256": "741f79f94ea884d7970f2232c15e4f594eddefbe2c9f68005e965d5eda38b0ba",
+        "exact": true,
+        "comparison_mode": "normalised_text_content"
+      },
+      "materials_no_basal.txt": {
+        "predecessor_sha256": "3f5a5db1b4b82e661841927e181ea11cddd09014574d9fb92fb90da27a474f49",
+        "candidate_sha256": "3f5a5db1b4b82e661841927e181ea11cddd09014574d9fb92fb90da27a474f49",
+        "predecessor_normalised_text_sha256": "c357ab1d516f2ce8d25455836c43eef7e47db5b78af79cd55248a05f3cd0ef95",
+        "candidate_normalised_text_sha256": "c357ab1d516f2ce8d25455836c43eef7e47db5b78af79cd55248a05f3cd0ef95",
+        "exact": true,
+        "comparison_mode": "normalised_text_content"
+      }
+    },
+    "locked_profile_arrays": {
+      "full_x_m.npy": {
+        "candidate_array_sha256": "6306789a413c709a9beee22a5b14f4bb4073fde76f1f548525d73746bfb076e3",
+        "reference_array_sha256": "6306789a413c709a9beee22a5b14f4bb4073fde76f1f548525d73746bfb076e3",
+        "exact": true
+      },
+      "full_ground_y_m.npy": {
+        "candidate_array_sha256": "eedb30c2b72315f107a825423fa47aeb41786b1a1627ec500b3a89929ada5134",
+        "reference_array_sha256": "eedb30c2b72315f107a825423fa47aeb41786b1a1627ec500b3a89929ada5134",
+        "exact": true
+      },
+      "full_basal_depth_m.npy": {
+        "candidate_array_sha256": "0060283ea973919f6bc575ee301f627e3ff37710728d23e7a2a6c08317a7dc88",
+        "reference_array_sha256": "0060283ea973919f6bc575ee301f627e3ff37710728d23e7a2a6c08317a7dc88",
+        "exact": true
+      },
+      "full_transition_thickness_m.npy": {
+        "candidate_array_sha256": "9e8c4e3a08049e0d36956b8faa46b47702211dba007c64bcbc4ae1efa04ee808",
+        "reference_array_sha256": "9e8c4e3a08049e0d36956b8faa46b47702211dba007c64bcbc4ae1efa04ee808",
+        "exact": true
+      },
+      "full_basal_y_m.npy": {
+        "candidate_array_sha256": "08e748fcb82bfc7db0cc76cda4737f03de1ba2d6bdf079dc1e6789302e4cbdaa",
+        "reference_array_sha256": "08e748fcb82bfc7db0cc76cda4737f03de1ba2d6bdf079dc1e6789302e4cbdaa",
+        "exact": true
+      },
+      "full_transition_top_y_m.npy": {
+        "candidate_array_sha256": "e055a1e68bc1a06cea5a24f225477046a2b4b1cd626deeec0f5d39a48679f84a",
+        "reference_array_sha256": "e055a1e68bc1a06cea5a24f225477046a2b4b1cd626deeec0f5d39a48679f84a",
+        "exact": true
+      }
+    },
+    "all_exact": true
+  },
+  "comparison_contract": {
+    "predecessor": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+    "identical_source": true,
+    "identical_material_design": true,
+    "identical_grid_and_acquisition": true,
+    "identical_basal_and_transition_profiles": true,
+    "changed_factor_group": "weak_aperiodic_non_target_background_only",
+    "pre_solver_preview": "preview_FORMAL06C_vs_FORMAL07B_geometry.png",
+    "common_trace_runtime_review_required": true
+  }
+}

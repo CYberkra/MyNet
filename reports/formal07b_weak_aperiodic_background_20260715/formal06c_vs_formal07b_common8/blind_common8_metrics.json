@@ -1,0 +1,32 @@
+{
+  "schema": "gprmax_common_trace_comparison_v1",
+  "left_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "right_case_id": "FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT",
+  "common_canonical_trace_indices": [
+    0,
+    32,
+    64,
+    96,
+    128,
+    160,
+    192,
+    224
+  ],
+  "common_trace_count": 8,
+  "time_window_ns": 500.0,
+  "output_samples": 358,
+  "component": "Ez",
+  "agc_window": 13,
+  "time_power": 1.5,
+  "comparison_title": "FORMAL06C versus FORMAL07B common-trace comparison",
+  "shared_p995_scales": {
+    "Raw full-scene Ez": 187.4777069091797,
+    "Background suppression + time^1.5": 0.0038210302079096344,
+    "Background suppression + AGC(13)": 1.732021435499191
+  },
+  "reference_overlay": false,
+  "horizontal_interpolation": "none; nearest-neighbour expansion of sparse trace columns",
+  "left_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "right_output": "data/simulations/v2/01_solver_runs/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT/formal07b_blind8_span_full_20260715/full_scene_merged.out",
+  "output": "reports/formal07b_weak_aperiodic_background_20260715/formal06c_vs_formal07b_common8/blind_common8.png"
+}

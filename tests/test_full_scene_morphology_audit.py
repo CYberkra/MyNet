@@ -99,6 +99,16 @@ def test_common_trace_comparison_uses_one_shared_scale() -> None:
     assert comparison.shared_quantile_scale(left, right, quantile=1.0) == 3.0
 
 
+def test_common_trace_comparison_script_has_no_case_specific_title() -> None:
+    source = (
+        comparison.ROOT / "scripts" / "compare_gprmax_common_traces.py"
+    ).read_text(
+        encoding="utf-8"
+    )
+    assert "FORMAL06C versus FORMAL07A" not in source
+    assert "comparison_title" in source
+
+
 def test_full_only_audit_records_partial_control_and_blocks_promotion(tmp_path: Path, monkeypatch) -> None:
     run_dir = tmp_path / "run"
     run_dir.mkdir()

@@ -34,7 +34,12 @@ ignore regions. Canonical arrays remain in acquisition order.
   comparison rejects it as FORMAL06C's successor. Its cover is too strongly
   and regularly stratified, while its basal path is too flat and repetitive.
   It remains an unreleased regression ablation only.
-- All four are Line9-conditioned and prohibited from formal training.
+- FORMAL07B: agent-accepted controlled development successor. It locks the
+  FORMAL06C basal packet and adds only weak aperiodic 2D cover texture. The
+  exact 32-trace comparison preserved seven signed lobes and 79.37 MHz peak
+  frequency while reducing target/adjacent-background RMS from 17.29 to 16.74.
+  It remains unreleased development evidence.
+- All five are Line9-conditioned and prohibited from formal training.
 - No independent V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -55,9 +60,8 @@ before changing the formal config.
 
 ## Next work
 
-1. Keep FORMAL06C as the accepted development morphology. Design the next
-   ablation from FORMAL06C, preserving its basal path and wavelet character
-   while adding only weak, aperiodic, non-slab-like background texture.
+1. Keep FORMAL06C as the project-owner accepted visual baseline and FORMAL07B
+   as its controlled weak-background successor. Neither is training data.
 2. Design independent V2 positive and true-negative scene families without
    using Line9 labels, geometry, timing, or morphology as a generator prior.
 3. Solve matched positive controls and promote only cases passing numerical,
