@@ -1,0 +1,21 @@
+{
+  "case_id": "formal07a_smoke1_20260715",
+  "trace_count": 1,
+  "time_samples": 9188,
+  "dt_ns": 0.07075963010249052,
+  "reference_arrival_ns": [
+    360.75604248046875
+  ],
+  "full_minus_control_peak_ns": [
+    410.54737385465
+  ],
+  "reference_to_peak_offset_ns": [
+    49.791331374181254
+  ],
+  "peak_source": "per-trace signed-pair peak",
+  "scales": {
+    "raw receiver field (late-window display scale)": 1.9474523359537126,
+    "background removed + t^1.5": 2.220446049250313e-16,
+    "signed full - no-basal": 0.004697077019700374
+  }
+}

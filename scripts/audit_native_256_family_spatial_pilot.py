@@ -159,6 +159,21 @@ def _common_output_end_ns(
     return float(min(ends))
 
 
+def _solver_output_path(case_dir: Path, stem: str, trace_count: int) -> Path:
+    """Resolve the runner's merged multi-trace or bare single-trace output."""
+
+    merged = case_dir / f"{stem}_merged.out"
+    if merged.is_file():
+        return merged
+    single = case_dir / f"{stem}.out"
+    if trace_count == 1 and single.is_file():
+        return single
+    raise FileNotFoundError(
+        f"Missing {stem} output: expected {merged.name}"
+        + (f" or {single.name}" if trace_count == 1 else "")
+    )
+
+
 def _load_common(case_dir: Path) -> dict[str, object]:
     manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
     run_manifest = json.loads((case_dir / "run_manifest.json").read_text(encoding="utf-8"))
@@ -169,7 +184,7 @@ def _load_common(case_dir: Path) -> dict[str, object]:
 
     loaded: dict[str, tuple[float, np.ndarray, dict[str, object]]] = {}
     for stem in _required_output_stems(manifest):
-        loaded[stem] = read_merged_bscan(case_dir / f"{stem}_merged.out")
+        loaded[stem] = read_merged_bscan(_solver_output_path(case_dir, stem, selected.size))
     shapes = {item[1].shape for item in loaded.values()}
     dts = [item[0] for item in loaded.values()]
     if len(shapes) != 1 or not np.allclose(dts, dts[0]):

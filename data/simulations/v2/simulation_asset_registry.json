@@ -33,12 +33,12 @@
     {
       "case_id": "FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
       "source_dir": "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
-      "status": "pre_solver_review_passed",
+      "status": "one_trace_causal_and_sparse_morphology_passed",
       "formal_training_allowed": false,
       "line9_conditioned": true,
       "solver_evidence_released": false,
-      "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/PRE_SOLVER_AUDIT.md",
-      "next_gate": "one-trace strict pair, then blind local full-scene morphology review"
+      "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/RUNTIME_GATE_AUDIT.md",
+      "next_gate": "32-trace distributed matched full/no-basal pair with continuity and blind morphology review"
     }
   ]
 }

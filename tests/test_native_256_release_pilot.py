@@ -22,7 +22,9 @@ from scripts.audit_native_256_family_spatial_pilot import (
     _path_step_statistics,
     _portable_path as _family_portable_path,
     _required_output_stems,
+    _solver_output_path,
 )
+from scripts.preview_full_control_smoke import collect as collect_smoke_outputs
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -238,6 +240,19 @@ def test_gprmax_single_trace_contract_uses_unnumbered_output_name() -> None:
     assert trace_index_for_path(Path("full_scene.out"), "full_scene", 1) == 1
     assert trace_index_for_path(Path("full_scene1.out"), "full_scene", 1) is None
     assert trace_filename("full_scene", 1, 2) == "full_scene1.out"
+
+
+def test_single_trace_audit_and_preview_resolve_unnumbered_output(tmp_path: Path) -> None:
+    output = tmp_path / "full_scene.out"
+    output.write_bytes(b"single trace")
+    assert _solver_output_path(tmp_path, "full_scene", 1) == output
+    assert collect_smoke_outputs(tmp_path, "full_scene", 1) == [output]
+
+
+def test_multi_trace_audit_prefers_merged_output(tmp_path: Path) -> None:
+    merged = tmp_path / "full_scene_merged.out"
+    merged.write_bytes(b"merged traces")
+    assert _solver_output_path(tmp_path, "full_scene", 32) == merged
 
 
 def test_spatial_audit_position_tolerance_is_subcell() -> None:

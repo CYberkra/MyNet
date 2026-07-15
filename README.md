@@ -44,8 +44,10 @@ Formal paper training remains intentionally disabled for two reasons:
 1. no confirmed real true-negative windows exist;
 2. no independent, non-Line9-conditioned V2 simulation family is approved.
 
-FORMAL06C is retained as development evidence only. FORMAL07A is its pre-solver
-continuous-stratigraphy successor. Neither is a training release. The
+FORMAL06C is retained as development evidence only. FORMAL07A is its
+continuous-stratigraphy successor; its one-trace causal and sparse scan-wide
+morphology gates pass, but it is not released solver evidence. Neither is a
+training release. The
 authoritative state is
 [`data/contracts/dataset_v2/dataset_manifest.json`](data/contracts/dataset_v2/dataset_manifest.json).
 

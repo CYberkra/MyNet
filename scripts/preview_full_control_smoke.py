@@ -22,6 +22,10 @@ def collect(case_dir: Path, stem: str, expected_trace_count: int) -> list[Path]:
             indexed.append((int(match.group(1)), path))
     indexed.sort()
     expected = list(range(1, expected_trace_count + 1))
+    if expected_trace_count == 1 and not indexed:
+        single = case_dir / f"{stem}.out"
+        if single.is_file():
+            return [single]
     if [index for index, _ in indexed] != expected:
         raise RuntimeError(f"Expected {stem} outputs {expected} in {case_dir}")
     return [path for _, path in indexed]
