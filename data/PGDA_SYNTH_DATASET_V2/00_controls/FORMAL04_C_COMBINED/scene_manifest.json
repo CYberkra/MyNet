@@ -1,0 +1,161 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL04_GEOLOGY_FACTORIAL_GABOR80",
+  "case_id": "FORMAL04_C_COMBINED",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "fixed-source geology factorial for basal strength and correlated cover texture",
+  "generator_path": "scripts/generate_formal04_geology_factorial.py",
+  "generator_sha256": "586344632105467e773e50a5d098ddba8dfb15289d4b6d18637427ccb2c79543",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": false,
+  "training_block_reason": "requires static, geometry, one-trace causal pair, sparse spatial, and human morphology gates",
+  "parameter_provenance": "FORMAL03 generic deterministic priors with declared constitutive factorial; no measured data are read",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 24,
+    "transition_levels": 20,
+    "profile_seed": 2026071517,
+    "field_seed": 2026071518
+  },
+  "source": {
+    "case_id": "FORMAL04_SHARED_GABOR80",
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "reference_delay_ns": 50.0,
+    "custom_sigma_ns": 11.5,
+    "shared_across_factorial": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 4.3943970041879595e-25,
+      "peak_frequency_hz": 79377194.32147762,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "ablation": {
+    "reference_case_id": "FORMAL03_CORRELATED_COVER_GABOR80",
+    "factorial_cell": {
+      "texture_level": "strong",
+      "basal_contrast_level": "weak"
+    },
+    "locked": [
+      "source waveform",
+      "grid and PML",
+      "acquisition and flight height",
+      "basal path and transition thickness",
+      "correlated latent field and material indices"
+    ],
+    "changed": "constitutive material mapping only"
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 11.485311761029669
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_file": "geology_indices.h5",
+    "shared_index_file_sha256": "bef159f06865688b96da0509a589cd492835ac8062836d940c6d5950ba7aea7d",
+    "shared_index_array_sha256": "0ac1118fed1be74ee66d75797c527b39e32dd00d8179bae5113798ec07e17fbd",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "cover_field_statistics": {
+      "used_bins": 24,
+      "horizontal_neighbor_bin_change_rate": 0.058152441569282134,
+      "vertical_neighbor_bin_change_rate": 0.17166441761871493,
+      "columns_with_near_zero_vertical_variation": 0,
+      "latent_min": -2.5999999046325684,
+      "latent_median": 0.0007419432513415813,
+      "latent_max": 2.5999999046325684
+    },
+    "crop_shape_gate": {
+      "min_m": 12.355183847483342,
+      "median_m": 13.27269848753622,
+      "max_m": 13.82939496684314,
+      "range_m": 1.474211119359797,
+      "smoothed_extrema_count": 2,
+      "quadratic_fit_r2": 0.9748824225012314,
+      "abs_slope_p95": 0.15205959593171198,
+      "accepted_seed": 2026071525,
+      "attempt": 8
+    }
+  },
+  "materials": {
+    "case_id": "FORMAL04_C_COMBINED",
+    "texture_level": "strong",
+    "basal_contrast_level": "weak",
+    "cover_epsilon_min": 9.8,
+    "cover_epsilon_max": 15.2,
+    "cover_conductivity_min_s_per_m": 0.0012,
+    "cover_conductivity_max_s_per_m": 0.0044,
+    "bedrock_epsilon_r": 11.2,
+    "bedrock_conductivity_s_per_m": 0.0023,
+    "cover_bins": 24,
+    "transition_levels": 20,
+    "normal_incidence_dielectric_reflection_proxy": {
+      "min": 0.001391210260804111,
+      "median": 0.030102372188271127,
+      "max": 0.07435074136534234
+    },
+    "maximum_physical_transition_epsilon_step": 0.19437500000000085,
+    "maximum_physical_transition_conductivity_step_s_per_m": 0.00010166666666666744,
+    "full_material_count": 528
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_each_target_voxel_to_its_local_cover_bin": true,
+    "full_materials_sha256": "1862bd2a48fd737fee38d950ce0d4db8339b600374a4731cec3001b25424bb44",
+    "control_materials_sha256": "46d24443357d21599c0b96f3b842269adc559a13f2fdd8c40b6a87669111bcde"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 395.0273742675781,
+      "median": 421.3335876464844,
+      "max": 431.0728454589844
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus explicit source peak delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a signed full-minus-control runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "next_gate": "static and geometry audits, then one-trace full/control smoke"
+}

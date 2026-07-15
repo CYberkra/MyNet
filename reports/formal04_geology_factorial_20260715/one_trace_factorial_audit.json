@@ -1,0 +1,87 @@
+{
+  "schema": "formal04_geology_factorial_one_trace_audit_v1",
+  "reference_case_id": "FORMAL03_CORRELATED_COVER_GABOR80",
+  "case_metrics": [
+    {
+      "case_id": "FORMAL03_CORRELATED_COVER_GABOR80",
+      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL03_CORRELATED_COVER_GABOR80/formal03_smoke1_20260715",
+      "pair_audit": "reports/formal03_source_ablation_20260715/smoke1_audit/FORMAL03_CORRELATED_COVER_GABOR80/pair_audit.json",
+      "reference_arrival_ns": 424.7647399902344,
+      "difference_pick_offset_ns": -21.29332914583341,
+      "target_difference_rms": 0.0004705953630178606,
+      "pre_target_difference_rms": 2.2686002690929632e-05,
+      "target_to_pre_target_difference_db": 26.337793286136687,
+      "target_full_rms": 0.0005811147241129298,
+      "target_control_rms": 0.0003638598915301659,
+      "adjacent_full_rms": 0.00041040114501723955,
+      "target_full_to_adjacent_full_rms": 1.4159675994288932,
+      "target_difference_to_full_rms": 0.8098149014142144,
+      "strict_pair_gate_passed": true
+    },
+    {
+      "case_id": "FORMAL04_A_WEAK_BASAL",
+      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_A_WEAK_BASAL/formal04_smoke1_20260715",
+      "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_A_WEAK_BASAL/pair_audit.json",
+      "reference_arrival_ns": 425.8526916503906,
+      "difference_pick_offset_ns": -19.197097451377545,
+      "target_difference_rms": 0.00026331082342298827,
+      "pre_target_difference_rms": 2.7019598339374144e-05,
+      "target_to_pre_target_difference_db": 19.775796449660604,
+      "target_full_rms": 0.0003943902006371544,
+      "target_control_rms": 0.0003601974209679437,
+      "adjacent_full_rms": 0.0004101631547868912,
+      "target_full_to_adjacent_full_rms": 0.9615446829739449,
+      "target_difference_to_full_rms": 0.6676403800033527,
+      "strict_pair_gate_passed": true
+    },
+    {
+      "case_id": "FORMAL04_B_STRONG_TEXTURE",
+      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_B_STRONG_TEXTURE/formal04_smoke1_20260715",
+      "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_B_STRONG_TEXTURE/pair_audit.json",
+      "reference_arrival_ns": 421.96063232421875,
+      "difference_pick_offset_ns": 3.2339849616467973,
+      "target_difference_rms": 0.000989204248812458,
+      "pre_target_difference_rms": 2.598708427108603e-05,
+      "target_to_pre_target_difference_db": 31.610568366139475,
+      "target_full_rms": 0.0009675664362931709,
+      "target_control_rms": 0.0004880781455218364,
+      "adjacent_full_rms": 0.0007142570857339488,
+      "target_full_to_adjacent_full_rms": 1.354647305037134,
+      "target_difference_to_full_rms": 1.0223631284712433,
+      "strict_pair_gate_passed": true
+    },
+    {
+      "case_id": "FORMAL04_C_COMBINED",
+      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_C_COMBINED/formal04_smoke1_20260715",
+      "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_C_COMBINED/pair_audit.json",
+      "reference_arrival_ns": 423.04693603515625,
+      "difference_pick_offset_ns": 4.978066454808925,
+      "target_difference_rms": 0.0003364317840421095,
+      "pre_target_difference_rms": 1.819128589054592e-05,
+      "target_to_pre_target_difference_db": 25.340672387710114,
+      "target_full_rms": 0.0005963642339737119,
+      "target_control_rms": 0.00048354897817208737,
+      "adjacent_full_rms": 0.0007134314033095372,
+      "target_full_to_adjacent_full_rms": 0.835909705133861,
+      "target_difference_to_full_rms": 0.5641380969485498,
+      "strict_pair_gate_passed": true
+    }
+  ],
+  "factor_effects": {
+    "weak_basal_at_baseline_texture_ratio_A_over_reference": 0.5595270249464714,
+    "strong_texture_at_strong_basal_ratio_B_over_reference": 2.102027190554605,
+    "weak_basal_at_strong_texture_ratio_C_over_B": 0.34010345633472217,
+    "strong_texture_at_weak_basal_ratio_C_over_A": 1.2776982718316068,
+    "multiplicative_interaction_C_times_reference_over_A_times_B": 0.6078409820638405
+  },
+  "recommendation": {
+    "one_trace_decision": "advance A and C to sparse paired morphology; do not advance B",
+    "rationale": [
+      "all cases pass strict-pair alignment and basal detectability",
+      "weak basal contrast reduces target difference under both texture levels",
+      "strong texture alone increases rather than suppresses the basal response",
+      "one trace cannot measure lateral clutter, coherence, or dropout"
+    ],
+    "training_allowed": false
+  }
+}

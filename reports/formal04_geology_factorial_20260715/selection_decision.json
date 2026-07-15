@@ -1,0 +1,70 @@
+{
+  "schema": "formal04_geology_factorial_selection_v1",
+  "formal_training_allowed": false,
+  "dense_256_case_selected": null,
+  "causal_anchor_case_id": "FORMAL04_A_WEAK_BASAL",
+  "texture_upper_bound_case_id": "FORMAL04_C_COMBINED",
+  "rejected_after_one_trace": [
+    "FORMAL04_B_STRONG_TEXTURE"
+  ],
+  "spatial_metrics": {
+    "FORMAL03_CORRELATED_COVER_GABOR80": {
+      "full_scene_target_to_local_background_rms": 5.220989943936952,
+      "target_amplitude_cv": 0.742064893245697,
+      "target_dropout_fraction_below_25pct_median": 0.0,
+      "visible_residual_step_per_canonical_trace_p95_ns": 0.09182408195519555
+    },
+    "FORMAL04_A_WEAK_BASAL": {
+      "full_scene_target_to_local_background_rms": 1.6957684978650014,
+      "target_amplitude_cv": 0.6600683331489563,
+      "target_dropout_fraction_below_25pct_median": 0.0,
+      "visible_residual_step_per_canonical_trace_p95_ns": 0.10001548407227918
+    },
+    "FORMAL04_C_COMBINED": {
+      "full_scene_target_to_local_background_rms": 1.1100459184875746,
+      "target_amplitude_cv": 0.4481804370880127,
+      "target_dropout_fraction_below_25pct_median": 0.0,
+      "visible_residual_step_per_canonical_trace_p95_ns": 0.050521705951340014
+    }
+  },
+  "development_only_measured_context": {
+    "source": "reports/line9_reproduction_program_20260714/line9_reproduction_contract.json",
+    "not_read_by_generator": true,
+    "target_to_adjacent_background_rms": 2.3485668444457377,
+    "target_envelope_cv": 0.46463303004466555
+  },
+  "decision": "FORMAL04 brackets the useful interval but neither A nor C advances to a dense run",
+  "reasoning": [
+    "A fixes the over-strong basal event but retains the comparatively clean FORMAL03 cover texture",
+    "C adds the desired cover complexity but suppresses the full-scene target/local-background ratio below the declared preferred range",
+    "B increases basal response and therefore fails the intended direction before a spatial run",
+    "all runtime results remain development-only and cannot be exported as training data"
+  ],
+  "next_family": {
+    "family_id": "FORMAL05_MODERATE_TEXTURE_BALANCED_BASAL",
+    "derivation": "interpolate only within the simulation-tested FORMAL04 constitutive bracket",
+    "locked_from_formal04": [
+      "GABOR80 source waveform",
+      "grid, PML, domain, acquisition, and flight height",
+      "basal path, transition thickness, stochastic latent field, and index geometry"
+    ],
+    "proposed_materials": {
+      "cover_epsilon_range": [
+        10.5,
+        14.5
+      ],
+      "cover_conductivity_s_per_m_range": [
+        0.0014,
+        0.004
+      ],
+      "bedrock_epsilon_r": 10.7,
+      "bedrock_conductivity_s_per_m": 0.0021
+    },
+    "required_gates": [
+      "static and geometry audit",
+      "one-trace strict full/control pair",
+      "eight-trace full-span strict pair",
+      "human morphology review before any dense run"
+    ]
+  }
+}

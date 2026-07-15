@@ -1,0 +1,3351 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      179.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 179.73,
+        "cells": 5991,
+        "realised_m": 179.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 78.3,
+        "cells": 2610,
+        "realised_m": 78.3,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 78.48,
+        "cells": 2616,
+        "realised_m": 78.48,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {},
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt",
+        "material_count": 528,
+        "shape": [
+          5991,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 527,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 9.9125,
+        "conductivity": 0.0012666667,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1375,
+        "conductivity": 0.0014,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3625,
+        "conductivity": 0.0015333333,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5875,
+        "conductivity": 0.0016666667,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8125,
+        "conductivity": 0.0018,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0375,
+        "conductivity": 0.0019333333,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2625,
+        "conductivity": 0.0020666667,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4875,
+        "conductivity": 0.0022,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7125,
+        "conductivity": 0.0023333333,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9375,
+        "conductivity": 0.0024666667,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1625,
+        "conductivity": 0.0026,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3875,
+        "conductivity": 0.0027333333,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6125,
+        "conductivity": 0.0028666667,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8375,
+        "conductivity": 0.003,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0625,
+        "conductivity": 0.0031333333,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.2875,
+        "conductivity": 0.0032666667,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.5125,
+        "conductivity": 0.0034,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.7375,
+        "conductivity": 0.0035333333,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.9625,
+        "conductivity": 0.0036666667,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.1875,
+        "conductivity": 0.0038,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.4125,
+        "conductivity": 0.0039333333,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.6375,
+        "conductivity": 0.0040666667,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.8625,
+        "conductivity": 0.0042,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 15.0875,
+        "conductivity": 0.0043333333,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8896875,
+        "conductivity": 0.00128,
+        "id": "transition_00_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1090625,
+        "conductivity": 0.00141,
+        "id": "transition_00_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3284375,
+        "conductivity": 0.00154,
+        "id": "transition_00_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5478125,
+        "conductivity": 0.00167,
+        "id": "transition_00_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7671875,
+        "conductivity": 0.0018,
+        "id": "transition_00_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9865625,
+        "conductivity": 0.00193,
+        "id": "transition_00_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2059375,
+        "conductivity": 0.00206,
+        "id": "transition_00_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4253125,
+        "conductivity": 0.00219,
+        "id": "transition_00_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6446875,
+        "conductivity": 0.00232,
+        "id": "transition_00_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8640625,
+        "conductivity": 0.00245,
+        "id": "transition_00_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0834375,
+        "conductivity": 0.00258,
+        "id": "transition_00_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3028125,
+        "conductivity": 0.00271,
+        "id": "transition_00_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5221875,
+        "conductivity": 0.00284,
+        "id": "transition_00_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7415625,
+        "conductivity": 0.00297,
+        "id": "transition_00_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9609375,
+        "conductivity": 0.0031,
+        "id": "transition_00_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1803125,
+        "conductivity": 0.00323,
+        "id": "transition_00_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.3996875,
+        "conductivity": 0.00336,
+        "id": "transition_00_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.6190625,
+        "conductivity": 0.00349,
+        "id": "transition_00_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.8384375,
+        "conductivity": 0.00362,
+        "id": "transition_00_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.0578125,
+        "conductivity": 0.00375,
+        "id": "transition_00_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.2771875,
+        "conductivity": 0.00388,
+        "id": "transition_00_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.4965625,
+        "conductivity": 0.00401,
+        "id": "transition_00_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.7159375,
+        "conductivity": 0.00414,
+        "id": "transition_00_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.9353125,
+        "conductivity": 0.00427,
+        "id": "transition_00_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8440625,
+        "conductivity": 0.0013066667,
+        "id": "transition_01_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0521875,
+        "conductivity": 0.00143,
+        "id": "transition_01_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2603125,
+        "conductivity": 0.0015533333,
+        "id": "transition_01_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4684375,
+        "conductivity": 0.0016766667,
+        "id": "transition_01_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6765625,
+        "conductivity": 0.0018,
+        "id": "transition_01_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8846875,
+        "conductivity": 0.0019233333,
+        "id": "transition_01_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0928125,
+        "conductivity": 0.0020466667,
+        "id": "transition_01_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3009375,
+        "conductivity": 0.00217,
+        "id": "transition_01_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5090625,
+        "conductivity": 0.0022933333,
+        "id": "transition_01_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7171875,
+        "conductivity": 0.0024166667,
+        "id": "transition_01_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9253125,
+        "conductivity": 0.00254,
+        "id": "transition_01_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1334375,
+        "conductivity": 0.0026633333,
+        "id": "transition_01_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3415625,
+        "conductivity": 0.0027866667,
+        "id": "transition_01_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5496875,
+        "conductivity": 0.00291,
+        "id": "transition_01_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7578125,
+        "conductivity": 0.0030333333,
+        "id": "transition_01_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9659375,
+        "conductivity": 0.0031566667,
+        "id": "transition_01_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1740625,
+        "conductivity": 0.00328,
+        "id": "transition_01_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.3821875,
+        "conductivity": 0.0034033333,
+        "id": "transition_01_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.5903125,
+        "conductivity": 0.0035266667,
+        "id": "transition_01_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.7984375,
+        "conductivity": 0.00365,
+        "id": "transition_01_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.0065625,
+        "conductivity": 0.0037733333,
+        "id": "transition_01_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.2146875,
+        "conductivity": 0.0038966667,
+        "id": "transition_01_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.4228125,
+        "conductivity": 0.00402,
+        "id": "transition_01_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.6309375,
+        "conductivity": 0.0041433333,
+        "id": "transition_01_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7984375,
+        "conductivity": 0.0013333333,
+        "id": "transition_02_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9953125,
+        "conductivity": 0.00145,
+        "id": "transition_02_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1921875,
+        "conductivity": 0.0015666667,
+        "id": "transition_02_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3890625,
+        "conductivity": 0.0016833333,
+        "id": "transition_02_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5859375,
+        "conductivity": 0.0018,
+        "id": "transition_02_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7828125,
+        "conductivity": 0.0019166667,
+        "id": "transition_02_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9796875,
+        "conductivity": 0.0020333333,
+        "id": "transition_02_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1765625,
+        "conductivity": 0.00215,
+        "id": "transition_02_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3734375,
+        "conductivity": 0.0022666667,
+        "id": "transition_02_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5703125,
+        "conductivity": 0.0023833333,
+        "id": "transition_02_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7671875,
+        "conductivity": 0.0025,
+        "id": "transition_02_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9640625,
+        "conductivity": 0.0026166667,
+        "id": "transition_02_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1609375,
+        "conductivity": 0.0027333333,
+        "id": "transition_02_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3578125,
+        "conductivity": 0.00285,
+        "id": "transition_02_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5546875,
+        "conductivity": 0.0029666667,
+        "id": "transition_02_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7515625,
+        "conductivity": 0.0030833333,
+        "id": "transition_02_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9484375,
+        "conductivity": 0.0032,
+        "id": "transition_02_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1453125,
+        "conductivity": 0.0033166667,
+        "id": "transition_02_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.3421875,
+        "conductivity": 0.0034333333,
+        "id": "transition_02_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.5390625,
+        "conductivity": 0.00355,
+        "id": "transition_02_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.7359375,
+        "conductivity": 0.0036666667,
+        "id": "transition_02_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.9328125,
+        "conductivity": 0.0037833333,
+        "id": "transition_02_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.1296875,
+        "conductivity": 0.0039,
+        "id": "transition_02_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.3265625,
+        "conductivity": 0.0040166667,
+        "id": "transition_02_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7528125,
+        "conductivity": 0.00136,
+        "id": "transition_03_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9384375,
+        "conductivity": 0.00147,
+        "id": "transition_03_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1240625,
+        "conductivity": 0.00158,
+        "id": "transition_03_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3096875,
+        "conductivity": 0.00169,
+        "id": "transition_03_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4953125,
+        "conductivity": 0.0018,
+        "id": "transition_03_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6809375,
+        "conductivity": 0.00191,
+        "id": "transition_03_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8665625,
+        "conductivity": 0.00202,
+        "id": "transition_03_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0521875,
+        "conductivity": 0.00213,
+        "id": "transition_03_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2378125,
+        "conductivity": 0.00224,
+        "id": "transition_03_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4234375,
+        "conductivity": 0.00235,
+        "id": "transition_03_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6090625,
+        "conductivity": 0.00246,
+        "id": "transition_03_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7946875,
+        "conductivity": 0.00257,
+        "id": "transition_03_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9803125,
+        "conductivity": 0.00268,
+        "id": "transition_03_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1659375,
+        "conductivity": 0.00279,
+        "id": "transition_03_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3515625,
+        "conductivity": 0.0029,
+        "id": "transition_03_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5371875,
+        "conductivity": 0.00301,
+        "id": "transition_03_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7228125,
+        "conductivity": 0.00312,
+        "id": "transition_03_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9084375,
+        "conductivity": 0.00323,
+        "id": "transition_03_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0940625,
+        "conductivity": 0.00334,
+        "id": "transition_03_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.2796875,
+        "conductivity": 0.00345,
+        "id": "transition_03_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.4653125,
+        "conductivity": 0.00356,
+        "id": "transition_03_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.6509375,
+        "conductivity": 0.00367,
+        "id": "transition_03_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.8365625,
+        "conductivity": 0.00378,
+        "id": "transition_03_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 14.0221875,
+        "conductivity": 0.00389,
+        "id": "transition_03_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7071875,
+        "conductivity": 0.0013866667,
+        "id": "transition_04_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8815625,
+        "conductivity": 0.00149,
+        "id": "transition_04_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0559375,
+        "conductivity": 0.0015933333,
+        "id": "transition_04_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2303125,
+        "conductivity": 0.0016966667,
+        "id": "transition_04_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4046875,
+        "conductivity": 0.0018,
+        "id": "transition_04_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5790625,
+        "conductivity": 0.0019033333,
+        "id": "transition_04_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7534375,
+        "conductivity": 0.0020066667,
+        "id": "transition_04_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9278125,
+        "conductivity": 0.00211,
+        "id": "transition_04_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1021875,
+        "conductivity": 0.0022133333,
+        "id": "transition_04_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2765625,
+        "conductivity": 0.0023166667,
+        "id": "transition_04_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4509375,
+        "conductivity": 0.00242,
+        "id": "transition_04_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6253125,
+        "conductivity": 0.0025233333,
+        "id": "transition_04_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7996875,
+        "conductivity": 0.0026266667,
+        "id": "transition_04_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9740625,
+        "conductivity": 0.00273,
+        "id": "transition_04_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1484375,
+        "conductivity": 0.0028333333,
+        "id": "transition_04_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3228125,
+        "conductivity": 0.0029366667,
+        "id": "transition_04_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4971875,
+        "conductivity": 0.00304,
+        "id": "transition_04_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6715625,
+        "conductivity": 0.0031433333,
+        "id": "transition_04_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8459375,
+        "conductivity": 0.0032466667,
+        "id": "transition_04_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0203125,
+        "conductivity": 0.00335,
+        "id": "transition_04_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1946875,
+        "conductivity": 0.0034533333,
+        "id": "transition_04_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.3690625,
+        "conductivity": 0.0035566667,
+        "id": "transition_04_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.5434375,
+        "conductivity": 0.00366,
+        "id": "transition_04_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.7178125,
+        "conductivity": 0.0037633333,
+        "id": "transition_04_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6615625,
+        "conductivity": 0.0014133333,
+        "id": "transition_05_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8246875,
+        "conductivity": 0.00151,
+        "id": "transition_05_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9878125,
+        "conductivity": 0.0016066667,
+        "id": "transition_05_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1509375,
+        "conductivity": 0.0017033333,
+        "id": "transition_05_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3140625,
+        "conductivity": 0.0018,
+        "id": "transition_05_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4771875,
+        "conductivity": 0.0018966667,
+        "id": "transition_05_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6403125,
+        "conductivity": 0.0019933333,
+        "id": "transition_05_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8034375,
+        "conductivity": 0.00209,
+        "id": "transition_05_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9665625,
+        "conductivity": 0.0021866667,
+        "id": "transition_05_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1296875,
+        "conductivity": 0.0022833333,
+        "id": "transition_05_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2928125,
+        "conductivity": 0.00238,
+        "id": "transition_05_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4559375,
+        "conductivity": 0.0024766667,
+        "id": "transition_05_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6190625,
+        "conductivity": 0.0025733333,
+        "id": "transition_05_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7821875,
+        "conductivity": 0.00267,
+        "id": "transition_05_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9453125,
+        "conductivity": 0.0027666667,
+        "id": "transition_05_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1084375,
+        "conductivity": 0.0028633333,
+        "id": "transition_05_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2715625,
+        "conductivity": 0.00296,
+        "id": "transition_05_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4346875,
+        "conductivity": 0.0030566667,
+        "id": "transition_05_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5978125,
+        "conductivity": 0.0031533333,
+        "id": "transition_05_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7609375,
+        "conductivity": 0.00325,
+        "id": "transition_05_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9240625,
+        "conductivity": 0.0033466667,
+        "id": "transition_05_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0871875,
+        "conductivity": 0.0034433333,
+        "id": "transition_05_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.2503125,
+        "conductivity": 0.00354,
+        "id": "transition_05_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.4134375,
+        "conductivity": 0.0036366667,
+        "id": "transition_05_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6159375,
+        "conductivity": 0.00144,
+        "id": "transition_06_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7678125,
+        "conductivity": 0.00153,
+        "id": "transition_06_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9196875,
+        "conductivity": 0.00162,
+        "id": "transition_06_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0715625,
+        "conductivity": 0.00171,
+        "id": "transition_06_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2234375,
+        "conductivity": 0.0018,
+        "id": "transition_06_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3753125,
+        "conductivity": 0.00189,
+        "id": "transition_06_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5271875,
+        "conductivity": 0.00198,
+        "id": "transition_06_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6790625,
+        "conductivity": 0.00207,
+        "id": "transition_06_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8309375,
+        "conductivity": 0.00216,
+        "id": "transition_06_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9828125,
+        "conductivity": 0.00225,
+        "id": "transition_06_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1346875,
+        "conductivity": 0.00234,
+        "id": "transition_06_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2865625,
+        "conductivity": 0.00243,
+        "id": "transition_06_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4384375,
+        "conductivity": 0.00252,
+        "id": "transition_06_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5903125,
+        "conductivity": 0.00261,
+        "id": "transition_06_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7421875,
+        "conductivity": 0.0027,
+        "id": "transition_06_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8940625,
+        "conductivity": 0.00279,
+        "id": "transition_06_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0459375,
+        "conductivity": 0.00288,
+        "id": "transition_06_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1978125,
+        "conductivity": 0.00297,
+        "id": "transition_06_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3496875,
+        "conductivity": 0.00306,
+        "id": "transition_06_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5015625,
+        "conductivity": 0.00315,
+        "id": "transition_06_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6534375,
+        "conductivity": 0.00324,
+        "id": "transition_06_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8053125,
+        "conductivity": 0.00333,
+        "id": "transition_06_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9571875,
+        "conductivity": 0.00342,
+        "id": "transition_06_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.1090625,
+        "conductivity": 0.00351,
+        "id": "transition_06_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5703125,
+        "conductivity": 0.0014666667,
+        "id": "transition_07_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7109375,
+        "conductivity": 0.00155,
+        "id": "transition_07_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8515625,
+        "conductivity": 0.0016333333,
+        "id": "transition_07_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9921875,
+        "conductivity": 0.0017166667,
+        "id": "transition_07_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1328125,
+        "conductivity": 0.0018,
+        "id": "transition_07_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2734375,
+        "conductivity": 0.0018833333,
+        "id": "transition_07_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4140625,
+        "conductivity": 0.0019666667,
+        "id": "transition_07_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5546875,
+        "conductivity": 0.00205,
+        "id": "transition_07_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6953125,
+        "conductivity": 0.0021333333,
+        "id": "transition_07_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8359375,
+        "conductivity": 0.0022166667,
+        "id": "transition_07_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9765625,
+        "conductivity": 0.0023,
+        "id": "transition_07_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1171875,
+        "conductivity": 0.0023833333,
+        "id": "transition_07_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2578125,
+        "conductivity": 0.0024666667,
+        "id": "transition_07_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3984375,
+        "conductivity": 0.00255,
+        "id": "transition_07_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5390625,
+        "conductivity": 0.0026333333,
+        "id": "transition_07_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6796875,
+        "conductivity": 0.0027166667,
+        "id": "transition_07_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8203125,
+        "conductivity": 0.0028,
+        "id": "transition_07_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9609375,
+        "conductivity": 0.0028833333,
+        "id": "transition_07_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1015625,
+        "conductivity": 0.0029666667,
+        "id": "transition_07_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2421875,
+        "conductivity": 0.00305,
+        "id": "transition_07_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3828125,
+        "conductivity": 0.0031333333,
+        "id": "transition_07_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5234375,
+        "conductivity": 0.0032166667,
+        "id": "transition_07_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6640625,
+        "conductivity": 0.0033,
+        "id": "transition_07_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8046875,
+        "conductivity": 0.0033833333,
+        "id": "transition_07_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5246875,
+        "conductivity": 0.0014933333,
+        "id": "transition_08_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6540625,
+        "conductivity": 0.00157,
+        "id": "transition_08_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7834375,
+        "conductivity": 0.0016466667,
+        "id": "transition_08_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9128125,
+        "conductivity": 0.0017233333,
+        "id": "transition_08_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0421875,
+        "conductivity": 0.0018,
+        "id": "transition_08_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1715625,
+        "conductivity": 0.0018766667,
+        "id": "transition_08_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3009375,
+        "conductivity": 0.0019533333,
+        "id": "transition_08_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4303125,
+        "conductivity": 0.00203,
+        "id": "transition_08_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5596875,
+        "conductivity": 0.0021066667,
+        "id": "transition_08_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6890625,
+        "conductivity": 0.0021833333,
+        "id": "transition_08_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8184375,
+        "conductivity": 0.00226,
+        "id": "transition_08_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9478125,
+        "conductivity": 0.0023366667,
+        "id": "transition_08_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0771875,
+        "conductivity": 0.0024133333,
+        "id": "transition_08_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2065625,
+        "conductivity": 0.00249,
+        "id": "transition_08_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3359375,
+        "conductivity": 0.0025666667,
+        "id": "transition_08_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4653125,
+        "conductivity": 0.0026433333,
+        "id": "transition_08_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5946875,
+        "conductivity": 0.00272,
+        "id": "transition_08_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7240625,
+        "conductivity": 0.0027966667,
+        "id": "transition_08_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8534375,
+        "conductivity": 0.0028733333,
+        "id": "transition_08_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9828125,
+        "conductivity": 0.00295,
+        "id": "transition_08_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1121875,
+        "conductivity": 0.0030266667,
+        "id": "transition_08_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2415625,
+        "conductivity": 0.0031033333,
+        "id": "transition_08_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3709375,
+        "conductivity": 0.00318,
+        "id": "transition_08_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5003125,
+        "conductivity": 0.0032566667,
+        "id": "transition_08_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4790625,
+        "conductivity": 0.00152,
+        "id": "transition_09_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5971875,
+        "conductivity": 0.00159,
+        "id": "transition_09_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7153125,
+        "conductivity": 0.00166,
+        "id": "transition_09_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8334375,
+        "conductivity": 0.00173,
+        "id": "transition_09_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9515625,
+        "conductivity": 0.0018,
+        "id": "transition_09_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0696875,
+        "conductivity": 0.00187,
+        "id": "transition_09_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1878125,
+        "conductivity": 0.00194,
+        "id": "transition_09_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3059375,
+        "conductivity": 0.00201,
+        "id": "transition_09_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4240625,
+        "conductivity": 0.00208,
+        "id": "transition_09_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5421875,
+        "conductivity": 0.00215,
+        "id": "transition_09_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6603125,
+        "conductivity": 0.00222,
+        "id": "transition_09_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7784375,
+        "conductivity": 0.00229,
+        "id": "transition_09_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8965625,
+        "conductivity": 0.00236,
+        "id": "transition_09_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0146875,
+        "conductivity": 0.00243,
+        "id": "transition_09_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1328125,
+        "conductivity": 0.0025,
+        "id": "transition_09_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2509375,
+        "conductivity": 0.00257,
+        "id": "transition_09_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3690625,
+        "conductivity": 0.00264,
+        "id": "transition_09_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4871875,
+        "conductivity": 0.00271,
+        "id": "transition_09_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6053125,
+        "conductivity": 0.00278,
+        "id": "transition_09_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7234375,
+        "conductivity": 0.00285,
+        "id": "transition_09_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8415625,
+        "conductivity": 0.00292,
+        "id": "transition_09_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9596875,
+        "conductivity": 0.00299,
+        "id": "transition_09_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0778125,
+        "conductivity": 0.00306,
+        "id": "transition_09_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1959375,
+        "conductivity": 0.00313,
+        "id": "transition_09_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4334375,
+        "conductivity": 0.0015466667,
+        "id": "transition_10_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5403125,
+        "conductivity": 0.00161,
+        "id": "transition_10_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6471875,
+        "conductivity": 0.0016733333,
+        "id": "transition_10_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7540625,
+        "conductivity": 0.0017366667,
+        "id": "transition_10_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8609375,
+        "conductivity": 0.0018,
+        "id": "transition_10_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9678125,
+        "conductivity": 0.0018633333,
+        "id": "transition_10_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0746875,
+        "conductivity": 0.0019266667,
+        "id": "transition_10_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1815625,
+        "conductivity": 0.00199,
+        "id": "transition_10_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2884375,
+        "conductivity": 0.0020533333,
+        "id": "transition_10_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3953125,
+        "conductivity": 0.0021166667,
+        "id": "transition_10_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5021875,
+        "conductivity": 0.00218,
+        "id": "transition_10_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6090625,
+        "conductivity": 0.0022433333,
+        "id": "transition_10_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7159375,
+        "conductivity": 0.0023066667,
+        "id": "transition_10_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8228125,
+        "conductivity": 0.00237,
+        "id": "transition_10_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9296875,
+        "conductivity": 0.0024333333,
+        "id": "transition_10_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0365625,
+        "conductivity": 0.0024966667,
+        "id": "transition_10_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1434375,
+        "conductivity": 0.00256,
+        "id": "transition_10_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2503125,
+        "conductivity": 0.0026233333,
+        "id": "transition_10_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3571875,
+        "conductivity": 0.0026866667,
+        "id": "transition_10_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4640625,
+        "conductivity": 0.00275,
+        "id": "transition_10_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5709375,
+        "conductivity": 0.0028133333,
+        "id": "transition_10_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6778125,
+        "conductivity": 0.0028766667,
+        "id": "transition_10_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7846875,
+        "conductivity": 0.00294,
+        "id": "transition_10_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8915625,
+        "conductivity": 0.0030033333,
+        "id": "transition_10_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3878125,
+        "conductivity": 0.0015733333,
+        "id": "transition_11_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4834375,
+        "conductivity": 0.00163,
+        "id": "transition_11_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5790625,
+        "conductivity": 0.0016866667,
+        "id": "transition_11_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6746875,
+        "conductivity": 0.0017433333,
+        "id": "transition_11_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7703125,
+        "conductivity": 0.0018,
+        "id": "transition_11_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8659375,
+        "conductivity": 0.0018566667,
+        "id": "transition_11_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9615625,
+        "conductivity": 0.0019133333,
+        "id": "transition_11_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0571875,
+        "conductivity": 0.00197,
+        "id": "transition_11_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1528125,
+        "conductivity": 0.0020266667,
+        "id": "transition_11_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2484375,
+        "conductivity": 0.0020833333,
+        "id": "transition_11_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3440625,
+        "conductivity": 0.00214,
+        "id": "transition_11_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4396875,
+        "conductivity": 0.0021966667,
+        "id": "transition_11_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5353125,
+        "conductivity": 0.0022533333,
+        "id": "transition_11_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6309375,
+        "conductivity": 0.00231,
+        "id": "transition_11_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7265625,
+        "conductivity": 0.0023666667,
+        "id": "transition_11_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8221875,
+        "conductivity": 0.0024233333,
+        "id": "transition_11_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9178125,
+        "conductivity": 0.00248,
+        "id": "transition_11_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0134375,
+        "conductivity": 0.0025366667,
+        "id": "transition_11_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1090625,
+        "conductivity": 0.0025933333,
+        "id": "transition_11_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2046875,
+        "conductivity": 0.00265,
+        "id": "transition_11_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3003125,
+        "conductivity": 0.0027066667,
+        "id": "transition_11_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3959375,
+        "conductivity": 0.0027633333,
+        "id": "transition_11_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.4915625,
+        "conductivity": 0.00282,
+        "id": "transition_11_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5871875,
+        "conductivity": 0.0028766667,
+        "id": "transition_11_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3421875,
+        "conductivity": 0.0016,
+        "id": "transition_12_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4265625,
+        "conductivity": 0.00165,
+        "id": "transition_12_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5109375,
+        "conductivity": 0.0017,
+        "id": "transition_12_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5953125,
+        "conductivity": 0.00175,
+        "id": "transition_12_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6796875,
+        "conductivity": 0.0018,
+        "id": "transition_12_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7640625,
+        "conductivity": 0.00185,
+        "id": "transition_12_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8484375,
+        "conductivity": 0.0019,
+        "id": "transition_12_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9328125,
+        "conductivity": 0.00195,
+        "id": "transition_12_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0171875,
+        "conductivity": 0.002,
+        "id": "transition_12_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1015625,
+        "conductivity": 0.00205,
+        "id": "transition_12_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1859375,
+        "conductivity": 0.0021,
+        "id": "transition_12_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2703125,
+        "conductivity": 0.00215,
+        "id": "transition_12_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3546875,
+        "conductivity": 0.0022,
+        "id": "transition_12_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4390625,
+        "conductivity": 0.00225,
+        "id": "transition_12_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5234375,
+        "conductivity": 0.0023,
+        "id": "transition_12_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6078125,
+        "conductivity": 0.00235,
+        "id": "transition_12_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6921875,
+        "conductivity": 0.0024,
+        "id": "transition_12_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7765625,
+        "conductivity": 0.00245,
+        "id": "transition_12_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8609375,
+        "conductivity": 0.0025,
+        "id": "transition_12_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9453125,
+        "conductivity": 0.00255,
+        "id": "transition_12_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.0296875,
+        "conductivity": 0.0026,
+        "id": "transition_12_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1140625,
+        "conductivity": 0.00265,
+        "id": "transition_12_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.1984375,
+        "conductivity": 0.0027,
+        "id": "transition_12_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2828125,
+        "conductivity": 0.00275,
+        "id": "transition_12_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2965625,
+        "conductivity": 0.0016266667,
+        "id": "transition_13_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3696875,
+        "conductivity": 0.00167,
+        "id": "transition_13_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4428125,
+        "conductivity": 0.0017133333,
+        "id": "transition_13_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5159375,
+        "conductivity": 0.0017566667,
+        "id": "transition_13_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5890625,
+        "conductivity": 0.0018,
+        "id": "transition_13_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6621875,
+        "conductivity": 0.0018433333,
+        "id": "transition_13_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7353125,
+        "conductivity": 0.0018866667,
+        "id": "transition_13_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8084375,
+        "conductivity": 0.00193,
+        "id": "transition_13_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8815625,
+        "conductivity": 0.0019733333,
+        "id": "transition_13_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9546875,
+        "conductivity": 0.0020166667,
+        "id": "transition_13_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0278125,
+        "conductivity": 0.00206,
+        "id": "transition_13_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1009375,
+        "conductivity": 0.0021033333,
+        "id": "transition_13_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1740625,
+        "conductivity": 0.0021466667,
+        "id": "transition_13_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2471875,
+        "conductivity": 0.00219,
+        "id": "transition_13_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3203125,
+        "conductivity": 0.0022333333,
+        "id": "transition_13_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3934375,
+        "conductivity": 0.0022766667,
+        "id": "transition_13_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4665625,
+        "conductivity": 0.00232,
+        "id": "transition_13_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5396875,
+        "conductivity": 0.0023633333,
+        "id": "transition_13_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6128125,
+        "conductivity": 0.0024066667,
+        "id": "transition_13_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6859375,
+        "conductivity": 0.00245,
+        "id": "transition_13_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.7590625,
+        "conductivity": 0.0024933333,
+        "id": "transition_13_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.8321875,
+        "conductivity": 0.0025366667,
+        "id": "transition_13_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9053125,
+        "conductivity": 0.00258,
+        "id": "transition_13_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.9784375,
+        "conductivity": 0.0026233333,
+        "id": "transition_13_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2509375,
+        "conductivity": 0.0016533333,
+        "id": "transition_14_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3128125,
+        "conductivity": 0.00169,
+        "id": "transition_14_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3746875,
+        "conductivity": 0.0017266667,
+        "id": "transition_14_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4365625,
+        "conductivity": 0.0017633333,
+        "id": "transition_14_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4984375,
+        "conductivity": 0.0018,
+        "id": "transition_14_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5603125,
+        "conductivity": 0.0018366667,
+        "id": "transition_14_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6221875,
+        "conductivity": 0.0018733333,
+        "id": "transition_14_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6840625,
+        "conductivity": 0.00191,
+        "id": "transition_14_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7459375,
+        "conductivity": 0.0019466667,
+        "id": "transition_14_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8078125,
+        "conductivity": 0.0019833333,
+        "id": "transition_14_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8696875,
+        "conductivity": 0.00202,
+        "id": "transition_14_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9315625,
+        "conductivity": 0.0020566667,
+        "id": "transition_14_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9934375,
+        "conductivity": 0.0020933333,
+        "id": "transition_14_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0553125,
+        "conductivity": 0.00213,
+        "id": "transition_14_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1171875,
+        "conductivity": 0.0021666667,
+        "id": "transition_14_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1790625,
+        "conductivity": 0.0022033333,
+        "id": "transition_14_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2409375,
+        "conductivity": 0.00224,
+        "id": "transition_14_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3028125,
+        "conductivity": 0.0022766667,
+        "id": "transition_14_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3646875,
+        "conductivity": 0.0023133333,
+        "id": "transition_14_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4265625,
+        "conductivity": 0.00235,
+        "id": "transition_14_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.4884375,
+        "conductivity": 0.0023866667,
+        "id": "transition_14_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.5503125,
+        "conductivity": 0.0024233333,
+        "id": "transition_14_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6121875,
+        "conductivity": 0.00246,
+        "id": "transition_14_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.6740625,
+        "conductivity": 0.0024966667,
+        "id": "transition_14_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2053125,
+        "conductivity": 0.00168,
+        "id": "transition_15_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2559375,
+        "conductivity": 0.00171,
+        "id": "transition_15_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3065625,
+        "conductivity": 0.00174,
+        "id": "transition_15_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3571875,
+        "conductivity": 0.00177,
+        "id": "transition_15_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4078125,
+        "conductivity": 0.0018,
+        "id": "transition_15_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4584375,
+        "conductivity": 0.00183,
+        "id": "transition_15_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5090625,
+        "conductivity": 0.00186,
+        "id": "transition_15_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5596875,
+        "conductivity": 0.00189,
+        "id": "transition_15_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6103125,
+        "conductivity": 0.00192,
+        "id": "transition_15_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6609375,
+        "conductivity": 0.00195,
+        "id": "transition_15_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7115625,
+        "conductivity": 0.00198,
+        "id": "transition_15_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7621875,
+        "conductivity": 0.00201,
+        "id": "transition_15_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8128125,
+        "conductivity": 0.00204,
+        "id": "transition_15_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8634375,
+        "conductivity": 0.00207,
+        "id": "transition_15_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9140625,
+        "conductivity": 0.0021,
+        "id": "transition_15_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9646875,
+        "conductivity": 0.00213,
+        "id": "transition_15_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0153125,
+        "conductivity": 0.00216,
+        "id": "transition_15_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0659375,
+        "conductivity": 0.00219,
+        "id": "transition_15_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1165625,
+        "conductivity": 0.00222,
+        "id": "transition_15_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.1671875,
+        "conductivity": 0.00225,
+        "id": "transition_15_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2178125,
+        "conductivity": 0.00228,
+        "id": "transition_15_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.2684375,
+        "conductivity": 0.00231,
+        "id": "transition_15_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3190625,
+        "conductivity": 0.00234,
+        "id": "transition_15_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.3696875,
+        "conductivity": 0.00237,
+        "id": "transition_15_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1596875,
+        "conductivity": 0.0017066667,
+        "id": "transition_16_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1990625,
+        "conductivity": 0.00173,
+        "id": "transition_16_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2384375,
+        "conductivity": 0.0017533333,
+        "id": "transition_16_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2778125,
+        "conductivity": 0.0017766667,
+        "id": "transition_16_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3171875,
+        "conductivity": 0.0018,
+        "id": "transition_16_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3565625,
+        "conductivity": 0.0018233333,
+        "id": "transition_16_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3959375,
+        "conductivity": 0.0018466667,
+        "id": "transition_16_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4353125,
+        "conductivity": 0.00187,
+        "id": "transition_16_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4746875,
+        "conductivity": 0.0018933333,
+        "id": "transition_16_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5140625,
+        "conductivity": 0.0019166667,
+        "id": "transition_16_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5534375,
+        "conductivity": 0.00194,
+        "id": "transition_16_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5928125,
+        "conductivity": 0.0019633333,
+        "id": "transition_16_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6321875,
+        "conductivity": 0.0019866667,
+        "id": "transition_16_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6715625,
+        "conductivity": 0.00201,
+        "id": "transition_16_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7109375,
+        "conductivity": 0.0020333333,
+        "id": "transition_16_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7503125,
+        "conductivity": 0.0020566667,
+        "id": "transition_16_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7896875,
+        "conductivity": 0.00208,
+        "id": "transition_16_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8290625,
+        "conductivity": 0.0021033333,
+        "id": "transition_16_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.8684375,
+        "conductivity": 0.0021266667,
+        "id": "transition_16_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9078125,
+        "conductivity": 0.00215,
+        "id": "transition_16_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9471875,
+        "conductivity": 0.0021733333,
+        "id": "transition_16_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.9865625,
+        "conductivity": 0.0021966667,
+        "id": "transition_16_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0259375,
+        "conductivity": 0.00222,
+        "id": "transition_16_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 10.0653125,
+        "conductivity": 0.0022433333,
+        "id": "transition_16_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1140625,
+        "conductivity": 0.0017333333,
+        "id": "transition_17_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1421875,
+        "conductivity": 0.00175,
+        "id": "transition_17_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1703125,
+        "conductivity": 0.0017666667,
+        "id": "transition_17_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1984375,
+        "conductivity": 0.0017833333,
+        "id": "transition_17_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2265625,
+        "conductivity": 0.0018,
+        "id": "transition_17_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2546875,
+        "conductivity": 0.0018166667,
+        "id": "transition_17_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2828125,
+        "conductivity": 0.0018333333,
+        "id": "transition_17_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3109375,
+        "conductivity": 0.00185,
+        "id": "transition_17_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3390625,
+        "conductivity": 0.0018666667,
+        "id": "transition_17_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3671875,
+        "conductivity": 0.0018833333,
+        "id": "transition_17_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3953125,
+        "conductivity": 0.0019,
+        "id": "transition_17_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4234375,
+        "conductivity": 0.0019166667,
+        "id": "transition_17_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4515625,
+        "conductivity": 0.0019333333,
+        "id": "transition_17_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4796875,
+        "conductivity": 0.00195,
+        "id": "transition_17_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5078125,
+        "conductivity": 0.0019666667,
+        "id": "transition_17_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5359375,
+        "conductivity": 0.0019833333,
+        "id": "transition_17_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5640625,
+        "conductivity": 0.002,
+        "id": "transition_17_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.5921875,
+        "conductivity": 0.0020166667,
+        "id": "transition_17_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6203125,
+        "conductivity": 0.0020333333,
+        "id": "transition_17_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6484375,
+        "conductivity": 0.00205,
+        "id": "transition_17_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.6765625,
+        "conductivity": 0.0020666667,
+        "id": "transition_17_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7046875,
+        "conductivity": 0.0020833333,
+        "id": "transition_17_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7328125,
+        "conductivity": 0.0021,
+        "id": "transition_17_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.7609375,
+        "conductivity": 0.0021166667,
+        "id": "transition_17_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0684375,
+        "conductivity": 0.00176,
+        "id": "transition_18_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0853125,
+        "conductivity": 0.00177,
+        "id": "transition_18_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1021875,
+        "conductivity": 0.00178,
+        "id": "transition_18_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1190625,
+        "conductivity": 0.00179,
+        "id": "transition_18_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1359375,
+        "conductivity": 0.0018,
+        "id": "transition_18_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1528125,
+        "conductivity": 0.00181,
+        "id": "transition_18_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1696875,
+        "conductivity": 0.00182,
+        "id": "transition_18_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1865625,
+        "conductivity": 0.00183,
+        "id": "transition_18_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2034375,
+        "conductivity": 0.00184,
+        "id": "transition_18_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2203125,
+        "conductivity": 0.00185,
+        "id": "transition_18_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2371875,
+        "conductivity": 0.00186,
+        "id": "transition_18_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2540625,
+        "conductivity": 0.00187,
+        "id": "transition_18_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2709375,
+        "conductivity": 0.00188,
+        "id": "transition_18_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.2878125,
+        "conductivity": 0.00189,
+        "id": "transition_18_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3046875,
+        "conductivity": 0.0019,
+        "id": "transition_18_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3215625,
+        "conductivity": 0.00191,
+        "id": "transition_18_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3384375,
+        "conductivity": 0.00192,
+        "id": "transition_18_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3553125,
+        "conductivity": 0.00193,
+        "id": "transition_18_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3721875,
+        "conductivity": 0.00194,
+        "id": "transition_18_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.3890625,
+        "conductivity": 0.00195,
+        "id": "transition_18_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4059375,
+        "conductivity": 0.00196,
+        "id": "transition_18_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4228125,
+        "conductivity": 0.00197,
+        "id": "transition_18_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4396875,
+        "conductivity": 0.00198,
+        "id": "transition_18_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.4565625,
+        "conductivity": 0.00199,
+        "id": "transition_18_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0228125,
+        "conductivity": 0.0017866667,
+        "id": "transition_19_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0284375,
+        "conductivity": 0.00179,
+        "id": "transition_19_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0340625,
+        "conductivity": 0.0017933333,
+        "id": "transition_19_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0396875,
+        "conductivity": 0.0017966667,
+        "id": "transition_19_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0453125,
+        "conductivity": 0.0018,
+        "id": "transition_19_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0509375,
+        "conductivity": 0.0018033333,
+        "id": "transition_19_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0565625,
+        "conductivity": 0.0018066667,
+        "id": "transition_19_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0621875,
+        "conductivity": 0.00181,
+        "id": "transition_19_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0678125,
+        "conductivity": 0.0018133333,
+        "id": "transition_19_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0734375,
+        "conductivity": 0.0018166667,
+        "id": "transition_19_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0790625,
+        "conductivity": 0.00182,
+        "id": "transition_19_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0846875,
+        "conductivity": 0.0018233333,
+        "id": "transition_19_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0903125,
+        "conductivity": 0.0018266667,
+        "id": "transition_19_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0959375,
+        "conductivity": 0.00183,
+        "id": "transition_19_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1015625,
+        "conductivity": 0.0018333333,
+        "id": "transition_19_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1071875,
+        "conductivity": 0.0018366667,
+        "id": "transition_19_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1128125,
+        "conductivity": 0.00184,
+        "id": "transition_19_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1184375,
+        "conductivity": 0.0018433333,
+        "id": "transition_19_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1240625,
+        "conductivity": 0.0018466667,
+        "id": "transition_19_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1296875,
+        "conductivity": 0.00185,
+        "id": "transition_19_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1353125,
+        "conductivity": 0.0018533333,
+        "id": "transition_19_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1409375,
+        "conductivity": 0.0018566667,
+        "id": "transition_19_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1465625,
+        "conductivity": 0.00186,
+        "id": "transition_19_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.1521875,
+        "conductivity": 0.0018633333,
+        "id": "transition_19_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 9.0,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_B_STRONG_TEXTURE\\materials_full.txt"
+      }
+    ],
+    "command_count": 12
+  }
+}

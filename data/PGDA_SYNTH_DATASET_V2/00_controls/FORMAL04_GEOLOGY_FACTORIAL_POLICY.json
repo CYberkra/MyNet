@@ -1,0 +1,33 @@
+{
+  "family_id": "FORMAL04_GEOLOGY_FACTORIAL_GABOR80",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "reference_case_id": "FORMAL03_CORRELATED_COVER_GABOR80",
+  "shared_index_array_sha256": "0ac1118fed1be74ee66d75797c527b39e32dd00d8179bae5113798ec07e17fbd",
+  "shared_source_waveform_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75",
+  "case_ids": [
+    "FORMAL04_A_WEAK_BASAL",
+    "FORMAL04_B_STRONG_TEXTURE",
+    "FORMAL04_C_COMBINED"
+  ],
+  "factorial_definition": {
+    "reference": "baseline texture, strong basal contrast",
+    "A": "baseline texture, weak basal contrast",
+    "B": "strong texture, strong basal contrast",
+    "C": "strong texture, weak basal contrast"
+  },
+  "selection_rule": "use one-trace pairs only for causal detectability; use a sparse paired B-scan to assess target/background balance and coherence",
+  "sparse_morphology_gates": {
+    "target_to_adjacent_background_rms_preferred_range": [
+      1.5,
+      4.5
+    ],
+    "path_envelope_cv_range": [
+      0.3,
+      0.85
+    ],
+    "path_dropout_fraction_max": 0.1,
+    "unexplained_periodic_or_crossing_branches_allowed": false
+  },
+  "no_full_256_before_pilot_pass": true
+}

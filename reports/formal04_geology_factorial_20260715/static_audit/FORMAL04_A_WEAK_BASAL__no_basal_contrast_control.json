@@ -1,0 +1,3351 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      179.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 179.73,
+        "cells": 5991,
+        "realised_m": 179.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 78.3,
+        "cells": 2610,
+        "realised_m": 78.3,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 78.48,
+        "cells": 2616,
+        "realised_m": 78.48,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\no_basal_contrast_control.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {},
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt",
+        "material_count": 528,
+        "shape": [
+          5991,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 527,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_00_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_00_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_00_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_00_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_00_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_00_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_00_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_00_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_00_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_00_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_00_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_00_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_00_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_00_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_00_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_00_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_00_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_00_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_00_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_00_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_00_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_00_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_00_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_00_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_01_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_01_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_01_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_01_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_01_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_01_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_01_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_01_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_01_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_01_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_01_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_01_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_01_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_01_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_01_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_01_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_01_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_01_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_01_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_01_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_01_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_01_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_01_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_01_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_02_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_02_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_02_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_02_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_02_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_02_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_02_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_02_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_02_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_02_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_02_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_02_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_02_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_02_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_02_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_02_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_02_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_02_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_02_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_02_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_02_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_02_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_02_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_02_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_03_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_03_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_03_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_03_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_03_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_03_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_03_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_03_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_03_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_03_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_03_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_03_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_03_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_03_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_03_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_03_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_03_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_03_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_03_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_03_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_03_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_03_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_03_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_03_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_04_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_04_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_04_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_04_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_04_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_04_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_04_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_04_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_04_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_04_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_04_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_04_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_04_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_04_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_04_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_04_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_04_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_04_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_04_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_04_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_04_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_04_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_04_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_04_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_05_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_05_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_05_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_05_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_05_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_05_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_05_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_05_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_05_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_05_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_05_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_05_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_05_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_05_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_05_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_05_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_05_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_05_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_05_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_05_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_05_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_05_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_05_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_05_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_06_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_06_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_06_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_06_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_06_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_06_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_06_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_06_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_06_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_06_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_06_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_06_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_06_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_06_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_06_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_06_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_06_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_06_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_06_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_06_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_06_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_06_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_06_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_06_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_07_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_07_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_07_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_07_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_07_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_07_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_07_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_07_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_07_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_07_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_07_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_07_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_07_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_07_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_07_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_07_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_07_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_07_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_07_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_07_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_07_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_07_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_07_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_07_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_08_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_08_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_08_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_08_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_08_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_08_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_08_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_08_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_08_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_08_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_08_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_08_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_08_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_08_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_08_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_08_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_08_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_08_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_08_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_08_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_08_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_08_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_08_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_08_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_09_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_09_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_09_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_09_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_09_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_09_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_09_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_09_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_09_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_09_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_09_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_09_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_09_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_09_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_09_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_09_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_09_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_09_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_09_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_09_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_09_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_09_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_09_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_09_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_10_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_10_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_10_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_10_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_10_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_10_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_10_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_10_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_10_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_10_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_10_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_10_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_10_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_10_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_10_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_10_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_10_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_10_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_10_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_10_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_10_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_10_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_10_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_10_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_11_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_11_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_11_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_11_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_11_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_11_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_11_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_11_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_11_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_11_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_11_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_11_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_11_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_11_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_11_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_11_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_11_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_11_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_11_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_11_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_11_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_11_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_11_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_11_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_12_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_12_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_12_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_12_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_12_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_12_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_12_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_12_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_12_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_12_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_12_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_12_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_12_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_12_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_12_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_12_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_12_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_12_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_12_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_12_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_12_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_12_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_12_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_12_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_13_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_13_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_13_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_13_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_13_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_13_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_13_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_13_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_13_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_13_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_13_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_13_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_13_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_13_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_13_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_13_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_13_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_13_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_13_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_13_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_13_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_13_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_13_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_13_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_14_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_14_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_14_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_14_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_14_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_14_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_14_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_14_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_14_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_14_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_14_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_14_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_14_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_14_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_14_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_14_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_14_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_14_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_14_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_14_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_14_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_14_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_14_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_14_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_15_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_15_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_15_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_15_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_15_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_15_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_15_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_15_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_15_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_15_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_15_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_15_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_15_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_15_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_15_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_15_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_15_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_15_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_15_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_15_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_15_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_15_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_15_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_15_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_16_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_16_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_16_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_16_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_16_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_16_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_16_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_16_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_16_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_16_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_16_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_16_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_16_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_16_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_16_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_16_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_16_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_16_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_16_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_16_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_16_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_16_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_16_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_16_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_17_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_17_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_17_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_17_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_17_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_17_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_17_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_17_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_17_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_17_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_17_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_17_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_17_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_17_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_17_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_17_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_17_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_17_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_17_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_17_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_17_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_17_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_17_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_17_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_18_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_18_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_18_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_18_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_18_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_18_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_18_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_18_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_18_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_18_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_18_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_18_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_18_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_18_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_18_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_18_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_18_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_18_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_18_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_18_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_18_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_18_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_18_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_18_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "transition_19_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "transition_19_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "transition_19_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "transition_19_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "transition_19_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "transition_19_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "transition_19_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "transition_19_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "transition_19_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "transition_19_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "transition_19_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "transition_19_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "transition_19_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "transition_19_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "transition_19_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "transition_19_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "transition_19_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "transition_19_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "transition_19_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "transition_19_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "transition_19_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "transition_19_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "transition_19_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "transition_19_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.25416667,
+        "conductivity": 0.0017333333,
+        "id": "bedrock_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.3625,
+        "conductivity": 0.0018,
+        "id": "bedrock_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.47083333,
+        "conductivity": 0.0018666667,
+        "id": "bedrock_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.57916667,
+        "conductivity": 0.0019333333,
+        "id": "bedrock_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.6875,
+        "conductivity": 0.002,
+        "id": "bedrock_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.79583333,
+        "conductivity": 0.0020666667,
+        "id": "bedrock_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 11.90416667,
+        "conductivity": 0.0021333333,
+        "id": "bedrock_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0022,
+        "id": "bedrock_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.12083333,
+        "conductivity": 0.0022666667,
+        "id": "bedrock_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.22916667,
+        "conductivity": 0.0023333333,
+        "id": "bedrock_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0024,
+        "id": "bedrock_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.44583333,
+        "conductivity": 0.0024666667,
+        "id": "bedrock_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.55416667,
+        "conductivity": 0.0025333333,
+        "id": "bedrock_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0026,
+        "id": "bedrock_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.77083333,
+        "conductivity": 0.0026666667,
+        "id": "bedrock_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.87916667,
+        "conductivity": 0.0027333333,
+        "id": "bedrock_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.9875,
+        "conductivity": 0.0028,
+        "id": "bedrock_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.09583333,
+        "conductivity": 0.0028666667,
+        "id": "bedrock_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.20416667,
+        "conductivity": 0.0029333333,
+        "id": "bedrock_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.3125,
+        "conductivity": 0.003,
+        "id": "bedrock_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.42083333,
+        "conductivity": 0.0030666667,
+        "id": "bedrock_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.52916667,
+        "conductivity": 0.0031333333,
+        "id": "bedrock_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.6375,
+        "conductivity": 0.0032,
+        "id": "bedrock_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.74583333,
+        "conductivity": 0.0032666667,
+        "id": "bedrock_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL04_A_WEAK_BASAL\\materials_no_basal.txt"
+      }
+    ],
+    "command_count": 12
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_B_STRONG_TEXTURE/formal04_smoke1_20260715",
+  "source_case_dir": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL04_B_STRONG_TEXTURE",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 0,
+  "reference_path": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL04_B_STRONG_TEXTURE/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 421.96063232421875,
+  "difference_envelope_pick_ns": 425.19461728586555,
+  "difference_pick_offset_ns": 3.2339849616467973,
+  "target_window_ns": [
+    386.96063232421875,
+    456.96063232421875
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.000989204248812458,
+  "pre_target_difference_rms": 2.598708427108603e-05,
+  "target_to_pre_target_difference_db": 31.610568366139475,
+  "full_direct_rms": 52.26939435655662,
+  "control_direct_rms": 52.269394342104846,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

@@ -296,6 +296,43 @@ for later dense-interface families:
    reduce basal contrast, and add geologically plausible non-target multiscale
    texture. Do not condition a formal generator on the held-out measured line.
 
+### FORMAL04 Constitutive-Factor Lessons
+
+The FORMAL04 geology factorial (2026-07-15) held the FORMAL03 GABOR80 source,
+grid, acquisition, basal path, transition thickness, latent stochastic field,
+and indexed geometry fixed. It changed only basal contrast and the amplitude
+of the correlated cover-material mapping. Preserve these lessons:
+
+1. Treat cover-texture strength and basal contrast as interacting factors. A
+   wider cover epsilon/conductivity range also changes every local
+   cover-to-transition-to-bedrock sequence; it does not add only harmless
+   background clutter. In FORMAL04, strong texture with the original strong
+   basal contrast increased the one-trace causal difference to about 2.10
+   times the FORMAL03 reference instead of making the target harder.
+2. Complete a small constitutive factorial on one exact shared index array
+   before changing spatial geometry. Record an array-content hash in addition
+   to the HDF5 file hash so equivalent voxel states remain provable when file
+   metadata differs.
+3. Use one-trace pairs only to reject non-causal, misaligned, undetectable, or
+   grossly over-strong material mappings. They cannot measure lateral clutter,
+   coherence, dropout, or realistic target/background balance.
+4. On sparse full-span pairs, report full-scene target/local-background energy
+   separately from signed-pair target/background energy. The pair ratio proves
+   causal localisation and is expected to be large; the full-scene ratio is
+   the relevant difficulty proxy. Never substitute one for the other.
+5. A material interval may be bracketed without selecting either endpoint.
+   FORMAL04 A reduced the full-scene target/local-background ratio from about
+   5.22 to 1.70 while retaining relatively clean cover texture; FORMAL04 C
+   reduced it to about 1.11 and gave a more plausible amplitude CV, but made
+   the target too weak in the full scene. Neither endpoint advanced to 256
+   traces. The successor must interpolate inside the simulation-tested
+   constitutive bracket and repeat static, one-trace, sparse-pair, and human
+   morphology gates.
+6. Measured-line statistics may be reported as development-only diagnostics,
+   but formal generator parameters must be derived from independent physical
+   bounds and simulation ablations. Do not read held-out arrays or labels in a
+   formal generator.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.

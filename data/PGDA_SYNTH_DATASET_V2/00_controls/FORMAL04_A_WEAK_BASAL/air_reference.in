@@ -1,0 +1,11 @@
+#title: FORMAL04_A_WEAK_BASAL air reference
+#domain: 179.73 48 0.03
+#dx_dy_dz: 0.03 0.03 0.03
+#time_window: 6.5e-07
+#pml_cells: 60 60 0 60 60 0
+#messages: y
+#excitation_file: source_waveform.txt
+#hertzian_dipole: z 78.3 36.51 0 formal04_shared_gabor80
+#rx: 78.48 36.51 0 rx1 Ez
+#src_steps: 0.09 0 0
+#rx_steps: 0.09 0 0
