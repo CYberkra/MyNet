@@ -41,6 +41,58 @@ def _rms(values: np.ndarray) -> float:
     return float(np.sqrt(np.mean(np.square(values)))) if values.size else float("nan")
 
 
+def _full_scene_detectability_gate(
+    metrics: dict[str, float],
+    manifest: dict[str, object],
+) -> dict[str, object]:
+    """Reject target energy that is only locally prominent or difference-visible."""
+
+    contract = manifest.get("visibility_gate", {})
+    if not isinstance(contract, dict):
+        contract = {}
+    thresholds = {
+        "full_scene_target_to_local_background_rms": float(
+            contract.get("full_scene_target_to_local_background_rms_min", 1.0)
+        ),
+        "full_scene_target_to_background_rms": float(
+            contract.get("full_scene_target_to_background_rms_min", 0.35)
+        ),
+    }
+    if "raw_target_to_early_rms_min" in contract:
+        thresholds["raw_target_to_early_rms"] = float(
+            contract["raw_target_to_early_rms_min"]
+        )
+    checks = {
+        name: bool(float(metrics[name]) >= threshold)
+        for name, threshold in thresholds.items()
+    }
+    local_max = contract.get("full_scene_target_to_local_background_rms_max")
+    if local_max is not None:
+        checks["full_scene_target_to_local_background_rms_max"] = bool(
+            float(metrics["full_scene_target_to_local_background_rms"]) <= float(local_max)
+        )
+    return {
+        "passed": bool(all(checks.values())),
+        "automatic_metrics_passed": bool(all(checks.values())),
+        "checks": checks,
+        "thresholds": thresholds,
+        "human_morphology_review": "pending",
+        "human_blind_review_required": bool(
+            contract.get("requires_human_visible_multicycle_interface", True)
+        ),
+        "difference_only_visibility_is_sufficient": bool(
+            contract.get("difference_only_visibility_is_sufficient", False)
+        ),
+        "raw_target_to_early_is_cross_domain_diagnostic_only": bool(
+            "raw_target_to_early_rms_min" not in contract
+        ),
+        "note": (
+            "Automatic metrics cannot promote a case. The unlabelled full-scene preview "
+            "must expose a distinct, laterally traceable multi-cycle interface."
+        ),
+    }
+
+
 def _panel(values: np.ndarray, scale: float, size: tuple[int, int]) -> Image.Image:
     clipped = np.clip(values / max(scale, 1e-30), -1.0, 1.0)
     gray = np.rint((clipped + 1.0) * 127.5).astype(np.uint8)
@@ -74,6 +126,23 @@ def _continuity_step_limit_ns(trace_stride: int, per_canonical_trace_ns: float =
     if trace_stride < 1:
         raise ValueError("trace stride must be positive")
     return float(trace_stride) * float(per_canonical_trace_ns)
+
+
+def _path_step_statistics(values: np.ndarray, trace_stride: int) -> dict[str, float]:
+    """Return defined zero step statistics for a one-trace causal smoke."""
+
+    steps = np.abs(np.diff(np.asarray(values, dtype=np.float64)))
+    if steps.size == 0:
+        p95 = maximum = 0.0
+    else:
+        p95 = float(np.percentile(steps, 95))
+        maximum = float(np.max(steps))
+    return {
+        "p95_ns": p95,
+        "max_ns": maximum,
+        "per_canonical_trace_p95_ns": p95 / trace_stride,
+        "per_canonical_trace_max_ns": maximum / trace_stride,
+    }
 
 
 def _common_output_end_ns(
@@ -246,32 +315,45 @@ def _positive_audit(data: dict[str, object], result: dict[str, object], output_d
     target_per_trace = np.sqrt(np.nanmean(np.where(target, contrast**2, np.nan), axis=0))
     target_rms = _rms(contrast[target])
     background_rms = _rms(contrast[background])
-    full_background_removed = full - np.median(full, axis=1, keepdims=True)
-    control_background_removed = control - np.median(control, axis=1, keepdims=True)
+    single_trace = full.shape[1] == 1
+    full_background_removed = (
+        full if single_trace else full - np.median(full, axis=1, keepdims=True)
+    )
+    control_background_removed = (
+        control if single_trace else control - np.median(control, axis=1, keepdims=True)
+    )
     full_target_rms = _rms(full_background_removed[target])
     full_background_rms = _rms(full_background_removed[background])
     full_local_background_rms = _rms(full_background_removed[local_background])
     control_target_rms = _rms(control_background_removed[target])
     control_background_rms = _rms(control_background_removed[background])
     control_local_background_rms = _rms(control_background_removed[local_background])
+    raw_target_rms = _rms(full[target])
+    raw_early_rms = _rms(full[time_ns <= 150.0])
     residual = visible - reference
-    steps = np.abs(np.diff(visible))
-    residual_steps = np.abs(np.diff(residual))
+    visible_steps = _path_step_statistics(visible, trace_stride)
+    residual_steps = _path_step_statistics(residual, trace_stride)
     metrics = {
         "reference_range_ns": [float(np.min(reference)), float(np.max(reference))],
         "visible_range_ns": [float(np.min(visible)), float(np.max(visible))],
         "median_visible_minus_reference_ns": float(np.median(residual)),
         "visible_residual_p95_ns": float(np.percentile(np.abs(residual - np.median(residual)), 95)),
-        "visible_step_p95_ns": float(np.percentile(steps, 95)),
-        "visible_step_max_ns": float(np.max(steps)),
-        "visible_step_per_canonical_trace_p95_ns": float(np.percentile(steps, 95) / trace_stride),
-        "visible_step_per_canonical_trace_max_ns": float(np.max(steps) / trace_stride),
-        "visible_residual_step_p95_ns": float(np.percentile(residual_steps, 95)),
-        "visible_residual_step_max_ns": float(np.max(residual_steps)),
-        "visible_residual_step_per_canonical_trace_p95_ns": float(
-            np.percentile(residual_steps, 95) / trace_stride
-        ),
-        "visible_residual_step_per_canonical_trace_max_ns": float(np.max(residual_steps) / trace_stride),
+        "visible_step_p95_ns": visible_steps["p95_ns"],
+        "visible_step_max_ns": visible_steps["max_ns"],
+        "visible_step_per_canonical_trace_p95_ns": visible_steps[
+            "per_canonical_trace_p95_ns"
+        ],
+        "visible_step_per_canonical_trace_max_ns": visible_steps[
+            "per_canonical_trace_max_ns"
+        ],
+        "visible_residual_step_p95_ns": residual_steps["p95_ns"],
+        "visible_residual_step_max_ns": residual_steps["max_ns"],
+        "visible_residual_step_per_canonical_trace_p95_ns": residual_steps[
+            "per_canonical_trace_p95_ns"
+        ],
+        "visible_residual_step_per_canonical_trace_max_ns": residual_steps[
+            "per_canonical_trace_max_ns"
+        ],
         "sparse_residual_step_limit_ns": step_limit_ns,
         "support_median": float(np.median(support)),
         "support_min": float(np.min(support)),
@@ -283,6 +365,9 @@ def _positive_audit(data: dict[str, object], result: dict[str, object], output_d
         "full_scene_target_to_background_rms": full_target_rms / max(full_background_rms, 1e-30),
         "full_scene_local_background_rms": full_local_background_rms,
         "full_scene_target_to_local_background_rms": full_target_rms / max(full_local_background_rms, 1e-30),
+        "raw_target_rms": raw_target_rms,
+        "raw_early_rms": raw_early_rms,
+        "raw_target_to_early_rms": raw_target_rms / max(raw_early_rms, 1e-30),
         "control_target_to_background_rms": control_target_rms / max(control_background_rms, 1e-30),
         "control_target_to_local_background_rms": control_target_rms / max(control_local_background_rms, 1e-30),
         "causal_contrast_to_full_scene_target_rms": target_rms / max(full_target_rms, 1e-30),
@@ -295,31 +380,35 @@ def _positive_audit(data: dict[str, object], result: dict[str, object], output_d
     }
     result["visible_phase_semantics"] = "continuous signed lobe from solved full-minus-control"
     result["signal_metrics"] = metrics
+    if single_trace:
+        detectability = {
+            "passed": True,
+            "evaluated": False,
+            "reason": (
+                "one trace can prove causal attribution but cannot evaluate "
+                "horizontal-background removal or blind B-scan morphology"
+            ),
+            "human_blind_review_required": True,
+        }
+    else:
+        detectability = _full_scene_detectability_gate(metrics, manifest)
     passed = bool(
         data["finite"]
-        and result["distributed_span_coverage_ok"]
+        and (single_trace or result["distributed_span_coverage_ok"])
         and all(item["ok"] for item in data["contracts"].values())
         and all(item["ok"] and not item["errors"] for item in data["static_audits"].values())
         and metrics["target_to_background_rms"] >= 1.5
+        and detectability["passed"]
         and metrics["visible_residual_step_max_ns"] <= step_limit_ns + 1e-6
         and metrics["target_dropout_fraction_below_25pct_median"] <= 0.10
     )
     result["family_spatial_gate"] = {
         "passed": passed,
         "formal_promotion": False,
-        "human_morphology_review": "pending",
-        "scope": "distributed full-span causal pair",
+        "human_morphology_review": "not_evaluated_single_trace" if single_trace else "pending",
+        "scope": "one_trace_causal_smoke" if single_trace else "distributed full-span causal pair",
     }
-    result["full_scene_detectability_gate"] = {
-        "passed": bool(metrics["full_scene_target_to_local_background_rms"] >= 1.0),
-        "threshold": 1.0,
-        "metric": "full_scene_target_to_local_background_rms",
-        "human_morphology_review": "pending",
-        "note": (
-            "Fixed-gain energy proxy only; lateral coherence and realistic difficulty "
-            "still require visual review."
-        ),
-    }
+    result["full_scene_detectability_gate"] = detectability
     np.save(output_dir / "visible_phase_time_ns.npy", visible.astype(np.float32))
     np.save(output_dir / "visible_phase_support_score.npy", support.astype(np.float32))
     _render_positive(

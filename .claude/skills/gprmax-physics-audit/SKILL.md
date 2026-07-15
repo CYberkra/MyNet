@@ -333,6 +333,63 @@ of the correlated cover-material mapping. Preserve these lessons:
    bounds and simulation ablations. Do not read held-out arrays or labels in a
    formal generator.
 
+### FORMAL06 Interface-Conditioning Lessons
+
+The FORMAL06 staged ablation (2026-07-15) kept one exact geometry and source
+while reducing only the cap-to-bedrock contrast. Preserve these lessons:
+
+1. Use a local blind checkpoint before a distributed morphology run. At eight
+   consecutive traces, FORMAL06A/B/C target-to-adjacent-background RMS was
+   about 25.23, 7.44, and 4.01 respectively. C entered the frozen 1-5 local
+   visibility interval; A and B were stopped as overexposed.
+2. A one-trace pair proves causal timing only. FORMAL06C produced a 1.21 ns
+   visible-phase offset, 0.001456 signed target RMS, and 3.89e-7 early leakage,
+   but none of those values establishes lateral coherence or realistic
+   target/background balance.
+3. Do not compare the local eight-trace background ratio with a distributed
+   full-span ratio as if they were the same statistic. The distributed
+   32-trace FORMAL06C run tracked geometry well (correlation 0.99993) but had a
+   target/background ratio of 17.29 versus 2.35 in the development-only Line9
+   diagnostic. This exposed a background deficit hidden by the local crop.
+4. When source peak frequency and aligned wavelet coherence already match the
+   measured diagnostic, do not keep weakening the basal contrast blindly.
+   FORMAL06C peak frequency was 79.37 MHz versus 79.69 MHz for Line9 and median
+   aligned correlation was 0.660 versus 0.646. The next factor is continuous
+   non-target geology and gentler long-wave relief, not another source change.
+5. Add background complexity as spatially continuous correlated or layered
+   structure. Do not use isolated inclusions merely to raise background RMS;
+   they create hyperbolas and solve the metric while worsening morphology.
+6. A full-only distributed run remains development evidence. It may reject or
+   select a successor for a matched pair, but it cannot release visible-phase
+   labels or support causal attribution at every trace.
+7. Project-owner blind visual review accepted FORMAL06C on 2026-07-15 as the
+   desired development morphology: a continuous, gently varying, multi-cycle
+   basal packet that is visible after background suppression and restrained
+   time-power gain, without a chain of isolated hyperbolas. Preserve it as the
+   morphology baseline even though it is not a training release.
+8. Cross-domain target/background ratios remain diagnostics, not automatic
+   visual-rejection rules. A measured line, a sparse simulated crop, and a
+   distributed full-only run have different clutter and gain domains. Human
+   morphology acceptance can retain a development baseline while the strict
+   matched-pair and independent-data gates remain closed.
+
+### MyNet VTI Lifecycle
+
+VTI is a geometry visualization export, not an FDTD solver input or a training
+artifact. Apply this project contract:
+
+1. Generate VTI only for a new domain/PML layout, source or receiver placement,
+   geometry topology, or voxel index array. It is an optional first-build
+   inspection, not a prerequisite for every run.
+2. If the locked index-array SHA256, domain, PML, and acquisition coordinates
+   are unchanged, material/source/trace-count ablations may skip VTI entirely.
+3. Keep `#geometry_view` out of production full/control/air decks. Put it only
+   in explicit `geometry_check_*` inputs.
+4. Use the project runner's transient lifecycle: generate, record filename,
+   byte size, and SHA256 in `run_logs/geometry_view_cleanup.json`, then delete.
+5. Never commit, LFS-track, release-package, or copy VTI between workstations.
+   Retain one locally only while resolving a documented geometry dispute.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.

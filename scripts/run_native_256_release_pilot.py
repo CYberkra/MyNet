@@ -102,9 +102,19 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _remove_geometry_views(case_dir: Path) -> None:
-    for view in case_dir.glob("*.vti"):
+def _remove_geometry_views(case_dir: Path) -> list[dict[str, object]]:
+    """Hash transient geometry views, then delete them from the run cache."""
+    records: list[dict[str, object]] = []
+    for view in sorted(case_dir.glob("*.vti")):
+        record: dict[str, object] = {
+            "name": view.name,
+            "bytes": view.stat().st_size,
+            "sha256": _sha256(view),
+        }
         view.unlink()
+        record["deleted"] = not view.exists()
+        records.append(record)
+    return records
 
 
 def _inside(child: Path, parent: Path) -> bool:
@@ -351,6 +361,7 @@ def main() -> int:
     preflight_dir = case_dir / "preflight"
     log_dir.mkdir()
     preflight_dir.mkdir()
+    geometry_view_cleanup: list[dict[str, object]] = []
     for input_name in inputs:
         input_path = case_dir / input_name
         if not input_path.is_file():
@@ -359,7 +370,10 @@ def main() -> int:
         stem = input_path.stem
         if args.geometry_only:
             _run([str(gprmax_python), "-m", "gprMax", _geometry_input(input_name), "--geometry-only"], cwd=case_dir, env=env, execute=True)
-            _remove_geometry_views(case_dir)
+            cleanup_records = _remove_geometry_views(case_dir)
+            for record in cleanup_records:
+                record["geometry_input"] = _geometry_input(input_name)
+            geometry_view_cleanup.extend(cleanup_records)
             continue
         _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=case_dir, env=env, execute=True)
         _run([str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", stem, "--expected", str(trace_count), "--output", str(log_dir / f"{stem}_trace_contract.json")], cwd=case_dir, env=env, execute=True)
@@ -367,6 +381,18 @@ def main() -> int:
             _run([str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"], cwd=case_dir, env=env, execute=True)
 
     if args.geometry_only:
+        cleanup_payload = {
+            "schema": "gprmax_geometry_view_cleanup_v1",
+            "policy": "transient_hash_then_delete",
+            "solver_or_training_input": False,
+            "generated_count": len(geometry_view_cleanup),
+            "total_bytes_deleted": sum(int(item["bytes"]) for item in geometry_view_cleanup),
+            "artifacts": geometry_view_cleanup,
+        }
+        (log_dir / "geometry_view_cleanup.json").write_text(
+            json.dumps(cleanup_payload, ensure_ascii=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
         _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="geometry_passed", declared_trace_count=declared_trace_count)
         return 0
     if trace_count != declared_trace_count:

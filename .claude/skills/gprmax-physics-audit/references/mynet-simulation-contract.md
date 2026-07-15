@@ -117,6 +117,20 @@ Before a case may train a formal model:
 
 Case count is not independent sample count. Split by `scene_family_id`, not exported windows.
 
+## Geometry-view/VTI contract
+
+- A VTI from `#geometry_view` is optional visualization evidence, never a
+  solver dependency, receiver product, canonical array, or training input.
+- Generate it once for new geometry topology, domain/PML changes, acquisition
+  placement changes, or a new voxel index array. The runner must hash and
+  record it before deleting it.
+- Skip it when the locked geometry SHA256 and all geometry/acquisition
+  coordinates are unchanged and the ablation changes only constitutive or
+  source parameters.
+- Production full/control/air decks must omit `#geometry_view`.
+- Never commit, LFS-track, package, or synchronize VTI files. A local VTI may
+  survive only for the duration of an active geometry dispute.
+
 For label generation, distinguish three objects explicitly:
 
 - geometric/reference arrival: ray/path estimate before waveform phase;

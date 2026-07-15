@@ -61,6 +61,12 @@ data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.vti
 data/PGDA_SYNTH_DATASET_V2/_staging/
 data/PGDA_SYNTH_DATASET_V2/_superseded_*/
 data/PGDA_SYNTH_DATASET_V2/01_solver_runs/
+# Audited, immutable solver evidence is the only exception to the local-run
+# rule. Files enter this directory exclusively through package_gprmax_release.py.
+!data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/
+!data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/**
+!data/PGDA_SYNTH_DATASET_V2/release_specs/
+!data/PGDA_SYNTH_DATASET_V2/release_specs/**
 outputs/simulation_v2_controls/
 outputs/
 # Native 256 source decks and compact released canonical arrays are shared

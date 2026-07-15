@@ -527,6 +527,7 @@ def preview_geometry(
     profile: dict[str, np.ndarray],
     full_rows: list[Material],
     control_rows: list[Material],
+    title: str | None = None,
 ) -> None:
     x = (np.arange(spec.nx, dtype=np.float64) + 0.5) * spec.dl_m
     y = (np.arange(spec.ny, dtype=np.float64) + 0.5) * spec.dl_m
@@ -570,7 +571,12 @@ def preview_geometry(
             for px, py in zip(profile["full_x_m"][profile_mask], profile[key][profile_mask])
         ]
         draw.line(points, fill=colour_name, width=3)
-    draw.text((70, 20), f"{FAMILY_ID}: shared generic geology; pre-solver only", fill="black", font=font)
+    draw.text(
+        (70, 20),
+        title or f"{FAMILY_ID}: shared generic geology; pre-solver only",
+        fill="black",
+        font=font,
+    )
     draw.text((70, 440), "Full epsilon: 2-D correlated cover; cyan transition top; yellow basal interface", fill="black", font=font)
     draw.text((70, 885), "Full minus strict local-cover control; no measured conditioning and no visible-phase label", fill="black", font=font)
     canvas.save(path)
