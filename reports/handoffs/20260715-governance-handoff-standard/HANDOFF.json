@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "task_id": "20260715-governance-handoff-standard",
+  "title": "Establish repository work and handoff standards",
+  "status": "complete",
+  "work_type": "governance",
+  "created_at": "2026-07-15T08:06:16+00:00",
+  "updated_at": "2026-07-15T08:06:16+00:00",
+  "implementation": {
+    "branch": "agent/handoff-standards-20260715",
+    "implementation_head": "932bb10ecc8be75f2b015f68b766e1445ebde4a4",
+    "base_branch": "master",
+    "base_commit": "9980b655e15d0c561f263be9248d82d511e08bb0",
+    "remote": "https://github.com/CYberkra/MyNet.git",
+    "worktree_dirty": false,
+    "changed_files": [
+      ".gitignore",
+      "CLAUDE.md",
+      "README.md",
+      "docs/HANDOFF_STANDARD.md",
+      "docs/PROJECT_STANDARD.md",
+      "docs/REPOSITORY_LAYOUT.md",
+      "docs/REPOSITORY_OPERATIONS.md",
+      "docs/contracts/HANDOFF_RECORD_V1.schema.json",
+      "docs/current_state.md",
+      "docs/templates/DECISION_RECORD_TEMPLATE.md",
+      "docs/templates/EXPERIMENT_RECORD_TEMPLATE.md",
+      "docs/templates/TASK_HANDOFF_TEMPLATE.md",
+      "environment/README.md",
+      "scripts/handoff_record.py",
+      "tests/test_handoff_record.py"
+    ]
+  },
+  "scope": {
+    "objective": "Make project continuation reproducible across people, agents, and computers without relying on chat history.",
+    "in_scope": [
+      "Define authority, lifecycle, Git, portability, validation, and acceptance rules.",
+      "Provide task, decision, and experiment templates plus a machine-readable schema.",
+      "Implement and test portable handoff draft generation and final validation.",
+      "Connect the contract to agent, repository, runtime, and current-state entry points."
+    ],
+    "out_of_scope": [
+      "Changing AeroPath architecture, measured labels, simulation physics, or experiment eligibility.",
+      "Installing optional development tools or changing either computer's local runtime profile."
+    ]
+  },
+  "changes": [
+    "Established docs/HANDOFF_STANDARD.md as the normative continuation contract.",
+    "Added task, research-decision, and experiment record templates.",
+    "Added HANDOFF_RECORD_V1 and a standard-library-only create/validate CLI.",
+    "Added six regression tests for final records, portability, blockers, and Git porcelain parsing.",
+    "Linked handoff requirements from README.md, CLAUDE.md, project standards, repository operations, layout, runtime guidance, and current state."
+  ],
+  "artifacts": [
+    {
+      "role": "normative_standard",
+      "path": "docs/HANDOFF_STANDARD.md",
+      "sha256": "98c72a7287ee723ba9e18b26068a1104444621cf5372a814aa91aa9e520305eb"
+    },
+    {
+      "role": "handoff_cli",
+      "path": "scripts/handoff_record.py",
+      "sha256": "260bbaadfd96f7e93d1f958733bae8eac4100d0ea8ef513b3f33a69f6a1ea018"
+    },
+    {
+      "role": "machine_readable_schema",
+      "path": "docs/contracts/HANDOFF_RECORD_V1.schema.json",
+      "sha256": "70301cc38a1ec3ad88a156f3376bdfb79338fa77a12eb14a3606fd1c1fc77d75"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python -m pytest -q",
+      "status": "passed",
+      "result": "225 tests passed in 17.70 seconds.",
+      "timestamp": "2026-07-15T08:06:16+00:00"
+    },
+    {
+      "command": "python -m compileall -q pgdacsnet scripts tests",
+      "status": "passed",
+      "result": "All active Python modules compiled.",
+      "timestamp": "2026-07-15T08:06:16+00:00"
+    },
+    {
+      "command": "python scripts/check_configs.py",
+      "status": "passed",
+      "result": "CONFIG_GUARDRAILS_OK; one expected helper-JSON warning.",
+      "timestamp": "2026-07-15T08:06:16+00:00"
+    },
+    {
+      "command": "python scripts/validate_project_contracts.py",
+      "status": "passed",
+      "result": "Project contracts valid; the existing formal-training data gate remains intentionally blocked.",
+      "timestamp": "2026-07-15T08:06:16+00:00"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DR-20260715-001",
+      "summary": "Versioned evidence and machine-readable contracts outrank chat history.",
+      "rationale": "A receiving person or agent must be able to reproduce project state from a fresh clone.",
+      "evidence": [
+        "docs/HANDOFF_STANDARD.md",
+        "docs/contracts/HANDOFF_RECORD_V1.schema.json"
+      ],
+      "reversible": true
+    },
+    {
+      "id": "DR-20260715-002",
+      "summary": "Implementation and handoff metadata use separate commits.",
+      "rationale": "A handoff cannot embed the hash of the same commit that contains it; it references the preceding clean implementation commit.",
+      "evidence": [
+        "docs/HANDOFF_STANDARD.md"
+      ],
+      "reversible": true
+    }
+  ],
+  "risks": [
+    "The current Python environment does not contain ruff, so no ruff result is claimed; compilation and the complete test suite passed.",
+    "The JSON schema is provided for external tooling, while scripts/handoff_record.py is the repository's authoritative strict validator."
+  ],
+  "blockers": [],
+  "next_actions": [
+    {
+      "priority": "P0",
+      "action": "Use this contract for the next independent V2 simulation or data-release milestone.",
+      "owner": "next task owner",
+      "done_when": "The next milestone has a final HANDOFF.json that passes artifact verification."
+    },
+    {
+      "priority": "P2",
+      "action": "Restore the optional ruff development tool when the managed environment is next updated.",
+      "owner": "environment maintainer",
+      "done_when": "python -m ruff check scripts tests runs in the documented development environment."
+    }
+  ],
+  "resume": {
+    "required_capabilities": [],
+    "entry_document": "docs/HANDOFF_STANDARD.md",
+    "command": "python scripts/handoff_record.py validate reports/handoffs/20260715-governance-handoff-standard/HANDOFF.json --final --verify-artifacts"
+  }
+}
