@@ -1,0 +1,87 @@
+{
+  "audit_type": "FULL_SCENE_MORPHOLOGY_ONLY_V1",
+  "case_id": "FORMAL02_GRADED_BEDROCK_G0_BASELINE",
+  "run_id": "formal02_full256_pair_20260715",
+  "component": "Ez",
+  "status": "development_only_full_complete_control_partial",
+  "claim_limits": {
+    "causal_attribution_allowed": false,
+    "formal_training_promotion_allowed": false,
+    "visible_phase_training_label_allowed": false,
+    "reason": "The full scene is complete, but the native-256 no-basal control was stopped after 26 traces."
+  },
+  "execution_state": {
+    "full_scene_merged": true,
+    "full_scene_trace_contract_complete": true,
+    "full_scene_captured_trace_count": 256,
+    "control_completed_trace_files": 26,
+    "control_merged": false,
+    "early_stop_reason": "User-approved stop after full-scene morphology became sufficient for the next design decision."
+  },
+  "solver_contract": {
+    "expected_trace_count": 256,
+    "actual_trace_count": 256,
+    "native_sample_count": 6126,
+    "dt_s": 1.0613944515373579e-10,
+    "actual_end_ns": 650.1041015666317,
+    "protected_end_ns": 500.0,
+    "finite": true,
+    "trace_contract_file": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_solver_runs\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\formal02_full256_pair_20260715\\run_logs\\full_scene_trace_contract.json"
+  },
+  "full_only_morphology": {
+    "semantics": "continuous signed phase in background-removed full scene; not a causal full-minus-control phase",
+    "path_range_ns": [
+      372.7617313799201,
+      381.88972366314135
+    ],
+    "geometric_range_ns": [
+      361.67071533203125,
+      382.33648681640625
+    ],
+    "path_to_geometric_correlation": 0.8608916753315441,
+    "dynamic_range_retention": 0.44169617815249546,
+    "median_path_minus_geometric_ns": 6.703393314444071,
+    "path_step_p95_ns": 0.21227889030745928,
+    "path_step_max_ns": 0.6368366709224347,
+    "target_to_adjacent_background_rms": 13.002811836154796,
+    "target_envelope_cv": 0.20434159956141745,
+    "target_dropout_fraction_below_25pct_median": 0.0,
+    "aligned_template_correlation_median": 0.2962186896154194,
+    "aligned_template_correlation_p10": -0.010610084305233625,
+    "significant_signed_lobe_count": 7,
+    "significant_lobe_signs": [
+      1,
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      -1
+    ],
+    "aligned_peak_frequency_mhz": 35.27336860670194,
+    "aligned_spectral_centroid_mhz": 100.75040627006786,
+    "support_score_median": 149.51372475053154
+  },
+  "gates": {
+    "full_output_contract_pass": true,
+    "full_only_geometry_tracking_pass": false,
+    "full_resolution_causal_pair_pass": false,
+    "formal_promotion_pass": false
+  },
+  "development_only_line9_comparison": {
+    "restriction": "diagnostic comparison only; must not condition a formal strict-holdout generator",
+    "contract": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\line9_reproduction_program_20260714\\line9_reproduction_contract.json",
+    "line9_signal": {
+      "target_to_adjacent_background_rms": 2.3485668444457377,
+      "target_envelope_cv": 0.46463303004466555,
+      "target_dropout_fraction_below_25pct_median": 0.018502943650126155,
+      "target_aligned_template_correlation_median": 0.6455217599868774,
+      "target_aligned_template_correlation_p10": -0.7662814915180206,
+      "target_aligned_peak_frequency_mhz": 79.69303423848906,
+      "target_aligned_spectral_centroid_mhz": 84.64329614377178,
+      "strong_trace_fraction": 0.3940285954583684,
+      "weak_trace_fraction": 0.6059714045416317
+    },
+    "interpretation": "Numerical proximity is descriptive only because measured and FDTD processing domains differ."
+  }
+}

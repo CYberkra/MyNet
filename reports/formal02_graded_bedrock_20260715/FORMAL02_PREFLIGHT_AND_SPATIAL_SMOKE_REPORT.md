@@ -136,3 +136,15 @@ families from one authoritative manifest or archive them, then remove retained
 VTI after preserving small audited previews and hashes. That cleanup is kept
 separate from this causal-baseline commit so that no user or historical work is
 silently deleted.
+
+## Full-Resolution Status Update
+
+The planned full-resolution run was started on 2026-07-15. All 256 full-scene
+traces completed and passed the capture contract. The no-basal control was
+stopped after 26 traces once the full-only morphology was sufficient to reject
+FORMAL02 as a measured-like training candidate. This is an intentional
+development early stop, not a completed causal-pair gate.
+
+The superseding audit is
+`full256_full_only_audit/FORMAL02_FULL256_FULL_ONLY_MORPHOLOGY_AUDIT.md`.
+FORMAL02 remains development-only and its promotion flags remain false.

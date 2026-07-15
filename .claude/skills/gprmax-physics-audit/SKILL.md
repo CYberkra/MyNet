@@ -247,6 +247,20 @@ and spatial gates before any realistic clutter is added.
 10. Passing the sparse pilot does not promote the case. Run the full native trace
     count, inspect raw/common-gain/difference-only views, and obtain a human
     morphology decision before adding heterogeneity or exporting training data.
+11. A completed full scene may be sufficient for an early morphology rejection,
+    but never for causal attribution. If the control is stopped, record the
+    exact completed control count, preserve the full capture contract, and mark
+    the run `full_complete/control_partial/development_only`.
+12. Do not create measured-like multi-cycle bands by inserting arbitrary thin
+    layers or coarse transition bins. Separate geology from the acquisition
+    response with a waveform ablation. A higher Ricker centre frequency narrows
+    the pulse but does not by itself create a longer multi-cycle instrument
+    response.
+13. Re-run the minimum-wavelength audit whenever source frequency changes. On
+    the FORMAL02 0.045 m grid, 65 MHz is approximately the highest Ricker centre
+    frequency that still passes the project 2.8-times-centre-frequency,
+    ten-cells-per-wavelength guard. An 80-100 MHz source requires a finer grid
+    or a separately validated reduced-domain equivalence model.
 
 ## References
 
