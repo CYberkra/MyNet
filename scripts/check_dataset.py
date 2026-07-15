@@ -206,7 +206,7 @@ def validate(data_root: Path, *, require_formal_ready: bool = False) -> dict[str
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default="data_corrected_v1_4_terrain_direction")
+    parser.add_argument("--data-root", default="data/measured/yingshan_v15")
     parser.add_argument("--require-formal-ready", action="store_true")
     args = parser.parse_args()
     report = validate(_resolve(args.data_root), require_formal_ready=args.require_formal_ready)

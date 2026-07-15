@@ -1,7 +1,7 @@
 {
   "schema": "native_gprmax_smoke_pair_audit_v2",
-  "case_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL02_GRADED_BEDROCK_G0_BASELINE/formal02_smoke1_20260715",
-  "source_case_dir": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL02_GRADED_BEDROCK_G0_BASELINE",
+  "case_dir": "data/simulations/v2/01_solver_runs/FORMAL02_GRADED_BEDROCK_G0_BASELINE/formal02_smoke1_20260715",
+  "source_case_dir": "data/simulations/v2/00_controls/FORMAL02_GRADED_BEDROCK_G0_BASELINE",
   "component": "Ez",
   "air_reference_included": false,
   "trace_index": 0,

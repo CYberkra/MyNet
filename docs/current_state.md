@@ -1,28 +1,17 @@
-# PGDA-CSNet Current State (2026-07-11)
+# PGDA-CSNet Current State (2026-07-15)
 
-## Research Direction
+## Active research line
 
-The active research line is **AeroPath-SSD**, an acquisition-conditioned
-structured interface-path model. It supersedes A/S/G decomposition as the paper
-candidate. Legacy GprMambaSep remains historical/development code only; its
-components are not established physical decompositions.
+**AeroPath-SSD** is the paper candidate. It combines an anisotropic radar stem,
+per-trace acquisition conditioning, bidirectional axial sequence mixing, and a
+structured interface-path objective with physical, NULL, start, and end
+states. The official Mamba-2 path has an explicit `headdim` contract; the
+formal config uses `headdim=16`.
 
-## What Is Implemented
+GprMambaSep/Route-2 and the ConvNeXt curve model are frozen comparison
+baselines. A/S/G decomposition is not established as a physical separation.
 
-- An anisotropic time/trace stem, not a claimed phase/IQ encoder.
-- Per-trace FiLM conditioning from terrain/acquisition metadata.
-- Explicit bidirectional axial sequence mixers for AeroPath.
-- Official Mamba-2 `headdim` contract; the formal default is `headdim=16`.
-- Soft forward/backward path inference with physical, NULL, path-start, and
-  path-end states. Its marginals are protected by a brute-force exact test.
-- GNSS chainage-aware slope transitions, trace-state supervision, and safe
-  weak/negative/ignore handling for no-pick losses.
-- Semantically separate mask, unary curve, structured-path, uncertainty, and
-  no-pick evaluation outputs.
-
-## Formal Protocol (Locked, Disabled)
-
-`configs/aeropath_ssd_v15_formal_blocked.json` encodes:
+## Locked measured protocol
 
 | Role | Lines |
 |---|---|
@@ -31,30 +20,43 @@ components are not established physical decompositions.
 | Test | Line9 |
 | Review only | LineX1 |
 
-It uses `501x256`, `official_mamba2`, structured loss, and true bidirectional
-axial blocks. It must remain disabled until the V2 data-release gate passes.
+The immutable measured release is `data/measured/yingshan_v15/`. It contains
+six full lines, 78 exact windows, source archives, GNSS, ground elevation,
+flight height, terrain features, V14 rollback fields, V15 labels, and explicit
+ignore regions. Canonical arrays remain in acquisition order.
 
-## Data Status
+## Simulation state
 
-- YingShan V15 labels are the current label release; high-risk crossing regions
-  are explicitly weakened or ignored.
-- Line9 remains test-only. Existing V1 legacy simulations are Line9-conditioned
-  and development-only; none may enter formal training.
-- Real confirmed negative windows and approved independent V2 simulation families
-  are still absent. This is the current formal-training blocker.
+- FORMAL06A: rejected because the interface response was overstrong.
+- FORMAL06B: rejected because the tempered response remained too dominant.
+- FORMAL06C: human-accepted development morphology with released evidence.
+- All three are Line9-conditioned and prohibited from formal training.
+- No independent V2 scene family is training-approved yet.
 
-## Next Work
+The source registry is `data/simulations/v2/simulation_asset_registry.json`;
+the training-governance view is
+`data/contracts/dataset_v2/simulation_cases.csv`.
 
-1. Stage and preflight the native `N256_F01_GENTLE_DEEP_MODERATE_POS` source
-   deck: static input audit, geometry-only check, then 1/32/64-trace smoke
-   runs before any full GPU execution.
-2. Audit the required `full_scene`, `no_basal_contrast_control`, and
-   `air_reference` outputs; only then progress through `N256_F02-F04` and
-   `N256_N01-N02`.
-3. Verify visible-phase extraction and promote only audited independent scene
-   families. Source decks remain read-only; raw solver products live only in
-   the ignored local solver-run root.
-4. Create confirmed real negative windows and pass the V2 data gate.
-5. Run CUDA/VRAM validation for official Mamba-2 at 501x256.
-6. Only then run the locked multi-seed AeroPath formal protocol and compare it
-   with the frozen ConvNeXt curve and Route-2 baselines.
+## Formal training gate
+
+`configs/aeropath_ssd_v15_formal_blocked.json` remains disabled. Only two
+dataset blockers remain:
+
+1. confirmed real true-negative windows are absent;
+2. approved non-Line9-conditioned simulation families are absent.
+
+The V15 release and the measured split are complete. They are not current
+blockers. Run `scripts/validate_project_contracts.py --require-formal-ready`
+before changing the formal config.
+
+## Next work
+
+1. Design independent V2 positive and true-negative scene families without
+   using Line9 labels, geometry, timing, or morphology as a generator prior.
+2. Solve matched positive controls and promote only cases passing numerical,
+   causal, visual, provenance, and human gates.
+3. Audit candidate real true-negative intervals; ambiguous/failed-positive
+   regions remain weak or ignored.
+4. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
+5. Pass the formal data gate, then run multi-seed AeroPath training and frozen
+   baseline comparisons.

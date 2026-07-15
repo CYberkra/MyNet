@@ -26,7 +26,7 @@ import generate_formal04_geology_factorial as formal04
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT"
 CASE_ID = "FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT"
 SOURCE = formal04.SOURCE
@@ -409,7 +409,7 @@ def generate_case(
 This case is development-only and blocked from training.
 
 ```powershell
-$case = "data/PGDA_SYNTH_DATASET_V2/00_controls/{case_id}"
+$case = "data/simulations/v2/00_controls/{case_id}"
 $cudaArgs = @()
 if ($env:PGDA_CUDA_BIN) {{ $cudaArgs = @("--cuda-bin", $env:PGDA_CUDA_BIN) }}
 

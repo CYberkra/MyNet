@@ -193,7 +193,7 @@ def _write_spatial_comparison(report_root: Path) -> None:
 def audit(report_root: Path) -> dict[str, object]:
     reference_run = (
         ROOT
-        / "data/PGDA_SYNTH_DATASET_V2/01_solver_runs"
+        / "data/simulations/v2/01_solver_runs"
         / REFERENCE_ID
         / "formal03_smoke1_20260715"
     )
@@ -209,7 +209,7 @@ def audit(report_root: Path) -> dict[str, object]:
             _case_metrics(
                 case_id,
                 ROOT
-                / "data/PGDA_SYNTH_DATASET_V2/01_solver_runs"
+                / "data/simulations/v2/01_solver_runs"
                 / case_id
                 / "formal04_smoke1_20260715",
                 report_root / "smoke1_audit" / case_id / "pair_audit.json",

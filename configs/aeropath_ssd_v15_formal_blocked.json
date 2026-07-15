@@ -3,7 +3,7 @@
   "run_type": "paper_train",
   "enabled": false,
   "config_status": "blocked",
-  "training_block_reason": "Formal training is disabled until the V2 dataset gate approves true negatives, non-Line9-conditioned simulations, and the visible-phase label release.",
+  "training_block_reason": "Formal training is disabled until the V2 dataset gate approves confirmed real true negatives and independent non-Line9-conditioned simulations.",
   "blocked_reasons": [
     "dataset_contract_v2.formal_training_allowed is false",
     "confirmed true-negative windows are not yet available",
@@ -37,7 +37,8 @@
   "lr": 0.0001,
   "num_workers": 0,
   "input_log_scale": 0.001,
-  "data_root": "data_yingshan_v15_final_20260710",
+  "data_root": "data/measured/yingshan_v15",
+  "run_dir": "outputs/run_aeropath_ssd_v15_formal",
   "paper_split_file": "configs/paper_splits_v15_aeropath.json",
   "train_lines": ["LineL1", "Line3", "Line7"],
   "val_lines": ["Line6"],

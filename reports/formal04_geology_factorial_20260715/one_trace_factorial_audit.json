@@ -4,7 +4,7 @@
   "case_metrics": [
     {
       "case_id": "FORMAL03_CORRELATED_COVER_GABOR80",
-      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL03_CORRELATED_COVER_GABOR80/formal03_smoke1_20260715",
+      "run_dir": "data/simulations/v2/01_solver_runs/FORMAL03_CORRELATED_COVER_GABOR80/formal03_smoke1_20260715",
       "pair_audit": "reports/formal03_source_ablation_20260715/smoke1_audit/FORMAL03_CORRELATED_COVER_GABOR80/pair_audit.json",
       "reference_arrival_ns": 424.7647399902344,
       "difference_pick_offset_ns": -21.29332914583341,
@@ -20,7 +20,7 @@
     },
     {
       "case_id": "FORMAL04_A_WEAK_BASAL",
-      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_A_WEAK_BASAL/formal04_smoke1_20260715",
+      "run_dir": "data/simulations/v2/01_solver_runs/FORMAL04_A_WEAK_BASAL/formal04_smoke1_20260715",
       "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_A_WEAK_BASAL/pair_audit.json",
       "reference_arrival_ns": 425.8526916503906,
       "difference_pick_offset_ns": -19.197097451377545,
@@ -36,7 +36,7 @@
     },
     {
       "case_id": "FORMAL04_B_STRONG_TEXTURE",
-      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_B_STRONG_TEXTURE/formal04_smoke1_20260715",
+      "run_dir": "data/simulations/v2/01_solver_runs/FORMAL04_B_STRONG_TEXTURE/formal04_smoke1_20260715",
       "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_B_STRONG_TEXTURE/pair_audit.json",
       "reference_arrival_ns": 421.96063232421875,
       "difference_pick_offset_ns": 3.2339849616467973,
@@ -52,7 +52,7 @@
     },
     {
       "case_id": "FORMAL04_C_COMBINED",
-      "run_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_C_COMBINED/formal04_smoke1_20260715",
+      "run_dir": "data/simulations/v2/01_solver_runs/FORMAL04_C_COMBINED/formal04_smoke1_20260715",
       "pair_audit": "reports/formal04_geology_factorial_20260715/smoke1_audit/FORMAL04_C_COMBINED/pair_audit.json",
       "reference_arrival_ns": 423.04693603515625,
       "difference_pick_offset_ns": 4.978066454808925,

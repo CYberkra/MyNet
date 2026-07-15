@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_ROOT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_ROOT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 DEFAULT_PLAN = ROOT / "reports" / "simulation_v2_control_stage_20260711" / "control_run_plan.json"
 
 

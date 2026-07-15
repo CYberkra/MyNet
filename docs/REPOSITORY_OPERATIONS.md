@@ -9,7 +9,9 @@ either computer.
 
 ## Archived Research
 
-The older mainline is retained as `archive/pre-aeropath-master-20260713`.
+The complete pre-cleanup mainline is retained as
+`archive/pre-master-cleanup-20260715`. The older AeroPath transition is also
+retained as `archive/pre-aeropath-master-20260713`.
 Earlier audited snapshots remain under `archive/master-1818b25-20260711` and
 the existing named archive branches. Historical GprMambaSep/A-S-G work stays in
 the tree only as a frozen baseline or compatibility code; it must not be
@@ -19,9 +21,9 @@ presented as the paper's active physical-decomposition model.
 
 | Tier | Location | Git policy |
 |---|---|---|
-| Contract and source specifications | `data/simulation_contract_v2/` | Versioned |
-| Source decks and pre-solver priors | `data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/` | Versioned, blocked from training |
-| Compact audited canonical arrays | `data/PGDA_SYNTH_DATASET_V2/02_released_canonical/` | Versioned after explicit promotion |
+| Contract and source specifications | `data/contracts/simulation_v2/` | Versioned |
+| Source decks and pre-solver priors | `data/simulations/v2/01_native_256_release_pilot/` | Versioned, blocked from training |
+| Compact audited canonical arrays | `data/simulations/v2/02_released_canonical/` | Versioned after explicit promotion |
 | Raw solver products | `01_solver_runs/`, case directories | Local and ignored |
 | Geometry views | `*.vti` | Disposable and ignored |
 | Training/evaluation outputs | `outputs/` | Local and ignored |

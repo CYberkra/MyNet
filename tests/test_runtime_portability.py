@@ -49,7 +49,7 @@ def test_active_runtime_entrypoints_have_no_machine_drive_paths() -> None:
         ROOT / ".claude" / "settings.json",
         ROOT / ".claude" / "hooks" / "venv_python_guard.py",
         ROOT / "scripts" / "run_native_256_release_pilot.py",
-        ROOT / "data" / "simulation_contract_v2" / "RECOMMENDED_NATIVE_256_V1.md",
+        ROOT / "data" / "contracts" / "simulation_v2" / "RECOMMENDED_NATIVE_256_V1.md",
         ROOT / ".claude" / "skills" / "gprmax-physics-audit" / "SKILL.md",
     ]
     for path in paths:

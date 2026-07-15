@@ -1,0 +1,17 @@
+{
+  "dataset_id": "YINGSHAN_V15_FINAL_20260710",
+  "label_version": "YINGSHAN_V15_FINAL_20260710",
+  "training_allowed": false,
+  "release_status": "final_label_release_not_formal_training_release",
+  "reason": "V15 labels and the line-level split are finalized, but formal training remains blocked by missing confirmed true negatives and approved independent simulations.",
+  "line9_split": "test",
+  "x1_split": "exclude",
+  "confirmed_true_negative_traces": 0,
+  "height_policy": {
+    "field": "flight_height_agl_m",
+    "source": "original_yingshan_csv_tracewise_measurement",
+    "arrival_prior_uses_tracewise_measured_height": true,
+    "window_median_is_legacy_fallback_only": true
+  },
+  "missing_required_artifacts": []
+}

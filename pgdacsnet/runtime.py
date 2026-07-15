@@ -94,7 +94,7 @@ def load_runtime(profile_path: Path | None = None) -> RuntimeProfile:
         cuda_visible_devices=(str(value("cuda_visible_devices", "CUDA_VISIBLE_DEVICES", "")).strip() or None),
         output_root=_optional_path(value("output_root", "PGDA_OUTPUT_ROOT", "outputs"), root=ROOT) or ROOT / "outputs",
         scratch_root=_optional_path(value("scratch_root", "PGDA_SCRATCH_ROOT", "workspace"), root=ROOT) or ROOT / "workspace",
-        solver_run_root=_optional_path(value("solver_run_root", "PGDA_SOLVER_RUN_ROOT", "data/PGDA_SYNTH_DATASET_V2/01_solver_runs"), root=ROOT)
+        solver_run_root=_optional_path(value("solver_run_root", "PGDA_SOLVER_RUN_ROOT", "data/simulations/v2/01_solver_runs"), root=ROOT)
         or ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "01_solver_runs",
     )
 

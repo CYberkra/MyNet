@@ -37,10 +37,10 @@ from pgdacsnet.simulation_v2 import (  # noqa: E402
     write_json,
 )
 
-CONTRACT_DIR = ROOT / "data" / "simulation_contract_v2"
+CONTRACT_DIR = ROOT / "data" / "contracts" / "simulation_v2"
 DEFAULT_CASES = CONTRACT_DIR / "control_cases_v1.json"
 DEFAULT_MATERIALS = CONTRACT_DIR / "materials_v1.json"
-DEFAULT_OUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 
 
 def _material(payload: dict[str, Any]) -> Material:
@@ -457,7 +457,7 @@ def generate_case(
         generator_worktree_dirty = bool(
             subprocess.check_output(
                 ["git", "status", "--porcelain", "--", str(Path(__file__).relative_to(ROOT)),
-                 "pgdacsnet/simulation_v2.py", "data/simulation_contract_v2"],
+                 "pgdacsnet/simulation_v2.py", "data/contracts/simulation_v2"],
                 cwd=ROOT, text=True, stderr=subprocess.DEVNULL,
             ).strip()
         )

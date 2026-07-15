@@ -32,7 +32,7 @@ You are a PGDA-CSNet experiment auditor. Your job is to independently assess whe
    - Line9 guard band
    - LineX1 exclusion
 3. Check data root and label policy:
-   - `data_corrected_v1_4_terrain_direction`
+   - `data/measured/yingshan_v15`
    - `data_audited_v16_20260627`
    - `data_audited_v17_line9_consistent`
 4. Compare against frozen v1.9D when possible.

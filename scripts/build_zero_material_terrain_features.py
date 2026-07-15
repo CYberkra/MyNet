@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
+DATA_ROOT = ROOT / "data" / "measured" / "yingshan_v15"
 IN_DIR = DATA_ROOT / "terrain_features"
 OUT_DIR = DATA_ROOT / "terrain_features_zero_material_v1"
 ALL_LINES = ["Line3", "Line6", "Line7", "Line9", "LineL1", "LineX1"]

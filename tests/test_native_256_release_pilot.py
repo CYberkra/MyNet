@@ -26,7 +26,7 @@ from scripts.audit_native_256_family_spatial_pilot import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACT = ROOT / "data" / "simulation_contract_v2"
+CONTRACT = ROOT / "data" / "contracts" / "simulation_v2"
 
 
 def test_recommended_standard_is_native_and_boundary_safe() -> None:
@@ -179,7 +179,8 @@ def test_cv01_domain_equivalence_is_an_exact_grid_crop(tmp_path: Path) -> None:
     source = (
         ROOT
         / "data"
-        / "PGDA_SYNTH_DATASET_V2"
+        / "simulations"
+        / "v2"
         / "01_native_256_correlated_voxel_batch_v1"
         / "N256_CV01_BALANCED_MULTISCALE_POS"
     )
@@ -197,7 +198,8 @@ def test_native_domain_crop_supports_true_negative_family(tmp_path: Path) -> Non
     source = (
         ROOT
         / "data"
-        / "PGDA_SYNTH_DATASET_V2"
+        / "simulations"
+        / "v2"
         / "01_native_256_correlated_voxel_batch_v1"
         / "N256_CV04_UPPER_CLUTTER_TRUE_NEG"
     )

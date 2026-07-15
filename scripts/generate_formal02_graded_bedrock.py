@@ -24,7 +24,7 @@ from scipy.ndimage import gaussian_filter1d
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL02_GRADED_BEDROCK"
 CASE_ID = f"{FAMILY_ID}_G0_BASELINE"
 C0 = 299_792_458.0
@@ -611,7 +611,7 @@ stop at the first failed gate. The runner stages a disposable solver copy;
 never execute gprMax inside this versioned source deck.
 
 ```powershell
-$case = "data/PGDA_SYNTH_DATASET_V2/00_controls/{CASE_ID}"
+$case = "data/simulations/v2/00_controls/{CASE_ID}"
 $cudaArgs = @()
 if ($env:PGDA_CUDA_BIN) {{ $cudaArgs = @("--cuda-bin", $env:PGDA_CUDA_BIN) }}
 

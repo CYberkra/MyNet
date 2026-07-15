@@ -1,8 +1,0 @@
-{
-  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
-  "mode": "gpu_one_trace_smoke_with_vcvars64",
-  "returncode": 0,
-  "cuda_path": "F:\\codex\\envs\\psgn-csnet\\Library",
-  "msvc_vcvars64": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat",
-  "path_expansion": "delayed"
-}

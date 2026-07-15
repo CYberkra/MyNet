@@ -1,0 +1,104 @@
+{
+  "schema": "gprmax_release_spec_v1",
+  "release_id": "FORMAL06C_DEVELOPMENT_EVIDENCE_V1",
+  "case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "release_class": "development_evidence",
+  "created_date": "2026-07-15",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "human_review": {
+    "decision": "accepted",
+    "reviewer": "project_owner",
+    "review_date": "2026-07-15",
+    "scope": "distributed32 background-suppressed time-power morphology",
+    "note": "Continuous multi-cycle basal response matches the intended project appearance."
+  },
+  "output_dir": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1",
+  "artifacts": [
+    {
+      "role": "source_scene_manifest",
+      "source": "data/simulations/v2/00_controls/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/scene_manifest.json",
+      "destination": "source/scene_manifest.json"
+    },
+    {
+      "role": "source_policy",
+      "source": "data/simulations/v2/00_controls/FORMAL06C_SUBTLE_INTERFACE_POLICY.json",
+      "destination": "source/FORMAL06C_SUBTLE_INTERFACE_POLICY.json"
+    },
+    {
+      "role": "source_checksums",
+      "source": "data/simulations/v2/00_controls/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/FILE_SHA256.csv",
+      "destination": "source/FILE_SHA256.csv"
+    },
+    {
+      "role": "one_trace_full_merged",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_smoke1_20260715/full_scene_merged.out",
+      "destination": "solver/one_trace/full_scene_merged.out"
+    },
+    {
+      "role": "one_trace_control_merged",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_smoke1_20260715/no_basal_contrast_control_merged.out",
+      "destination": "solver/one_trace/no_basal_contrast_control_merged.out"
+    },
+    {
+      "role": "one_trace_run_manifest",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_smoke1_20260715/run_manifest.json",
+      "destination": "solver/one_trace/run_manifest.json"
+    },
+    {
+      "role": "one_trace_full_contract",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_smoke1_20260715/run_logs/full_scene_trace_contract.json",
+      "destination": "solver/one_trace/full_scene_trace_contract.json"
+    },
+    {
+      "role": "one_trace_control_contract",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_smoke1_20260715/run_logs/no_basal_contrast_control_trace_contract.json",
+      "destination": "solver/one_trace/no_basal_contrast_control_trace_contract.json"
+    },
+    {
+      "role": "one_trace_audit",
+      "source": "reports/formal06c_subtle_interface_20260715/smoke1_audit/family_spatial_pilot_audit.json",
+      "destination": "audit/one_trace_causal_audit.json"
+    },
+    {
+      "role": "distributed_full_merged",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_distributed32_full_20260715/full_scene_merged.out",
+      "destination": "solver/distributed32_stride8/full_scene_merged.out"
+    },
+    {
+      "role": "distributed_run_manifest",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_distributed32_full_20260715/run_manifest.json",
+      "destination": "solver/distributed32_stride8/run_manifest.json"
+    },
+    {
+      "role": "distributed_trace_contract",
+      "source": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_distributed32_full_20260715/run_logs/full_scene_trace_contract.json",
+      "destination": "solver/distributed32_stride8/full_scene_trace_contract.json"
+    },
+    {
+      "role": "distributed_morphology_audit",
+      "source": "reports/formal06c_subtle_interface_20260715/distributed32/morphology_audit/full_only_morphology_audit.json",
+      "destination": "audit/distributed32_morphology_audit.json"
+    },
+    {
+      "role": "human_review_decision",
+      "source": "reports/formal06c_subtle_interface_20260715/formal06c_selection_decision.json",
+      "destination": "audit/human_review_decision.json"
+    },
+    {
+      "role": "human_review_report",
+      "source": "reports/formal06c_subtle_interface_20260715/FORMAL06C_DEVELOPMENT_AUDIT.md",
+      "destination": "audit/FORMAL06C_DEVELOPMENT_AUDIT.md"
+    },
+    {
+      "role": "human_preview",
+      "source": "reports/formal06c_subtle_interface_20260715/distributed32/FORMAL06C_distributed32_raw_tpower15.png",
+      "destination": "preview/FORMAL06C_distributed32_raw_tpower15.png"
+    },
+    {
+      "role": "agc_preview",
+      "source": "reports/formal06c_subtle_interface_20260715/distributed32/FORMAL06C_distributed32_raw_agc13.png",
+      "destination": "preview/FORMAL06C_distributed32_raw_agc13.png"
+    }
+  ]
+}

@@ -7,9 +7,9 @@
     "no confirmed status_code=0 traces; presence/no-target rejection supervision is not trainable"
   ],
   "facts": {
-    "data_root": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710",
+    "data_root": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15",
     "dataset_policy": {
-      "dataset_id": "data_yingshan_v15_final_20260710",
+      "dataset_id": "data/measured/yingshan_v15",
       "label_version": "YINGSHAN_V15_FINAL_20260710",
       "training_allowed": false,
       "release_status": "final_label_release_not_formal_training_release",
@@ -18,9 +18,9 @@
       "x1_split": "exclude",
       "confirmed_true_negative_traces": 0,
       "missing_required_artifacts": [],
-      "_path": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/dataset_policy.json"
+      "_path": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/dataset_policy.json"
     },
-    "window_index": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/window_index.csv",
+    "window_index": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/window_index.csv",
     "window_count": 78,
     "lines": [
       "Line3",
@@ -73,8 +73,8 @@
     "height_columns": [
       "antenna_height_agl_m"
     ],
-    "orientation_registry": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/trace_direction_registry.csv",
-    "orientation_contract": "/mnt/data/MyNet_work/MyNet/data_yingshan_v15_final_20260710/orientation_contract.json",
+    "orientation_registry": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/trace_direction_registry.csv",
+    "orientation_contract": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/orientation_contract.json",
     "status_code_counts": {
       "1": 10119,
       "2": 9849

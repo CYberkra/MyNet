@@ -16,7 +16,7 @@ from scripts.train_raw_only import flip_directional_terrain_channels
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
+DATA_ROOT = ROOT / "data/measured/yingshan_v15"
 
 
 def test_orientation_registry_has_all_survey_lines_and_expected_flips():

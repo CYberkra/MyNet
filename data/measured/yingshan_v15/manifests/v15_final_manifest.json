@@ -1,0 +1,80 @@
+{
+  "dataset": "data/measured/yingshan_v15",
+  "version": "YINGSHAN_V15_FINAL_20260710",
+  "release_status": "final_label_release_not_formal_training_release",
+  "source_dataset": "archive/pre-master-cleanup-20260715:data_corrected_v1_4_terrain_direction",
+  "source_archives": [
+    "data/measured/yingshan_v15/source/ying_shan_measurement_lines_original.zip",
+    "data/measured/yingshan_v15/source/ying_shan_profiles_and_boreholes.zip"
+  ],
+  "source_candidate_commit": "799f229",
+  "source_crossing_registry": "reports/yingshan_direction_profile_audit/line_intersections.csv",
+  "source_crossing_registry_sha256": "16d43214789049fd29b60885b5f04708b732f2756bcf6d05ab9d99e924cc69e3",
+  "decision_provenance": "Visual interpretation by the assistant, using Line9 as the user-confirmed highest-quality line; the user accepted the proposed decisions before finalization.",
+  "label_semantics": "visible-phase centerline",
+  "line9_policy": "Preserve Line9 labels; Line9 remains test-only and is the primary crossing anchor.",
+  "x1_policy": "X1 remains review-only/excluded from train, validation, and test.",
+  "crossing_supervision_resolved": true,
+  "formal_training_allowed": false,
+  "blockers": [
+    "Confirmed true-negative measured windows remain unavailable.",
+    "Formal non-Line9-conditioned simulations remain unavailable.",
+    "Formal training remains disabled until both data blockers are cleared."
+  ],
+  "relabel_rules": [
+    {
+      "crossing": "Line3-Line9",
+      "line": "Line3",
+      "center_trace": 167,
+      "radius_m": 6.0,
+      "core_radius_m": 4.0,
+      "target_time_ns": 453.013482,
+      "target_band_ns": 10.0,
+      "confidence_cap": 0.42,
+      "trusted_anchor": "Line9",
+      "decision_code": "RELABEL_WEAK_LINE9_ANCHORED",
+      "rationale": "Line9 is the highest-quality survey line. The deeper Line3 event near 450-455 ns is more laterally continuous and cross-line consistent than the prior ~396 ns weak label. The relabel remains weak; outer transition collars are ignored.",
+      "ignore_transition_collar": true
+    },
+    {
+      "crossing": "LineL1-LineX1",
+      "line": "LineX1",
+      "center_trace": 659,
+      "radius_m": 6.0,
+      "core_radius_m": 4.0,
+      "target_time_ns": 327.528667,
+      "target_band_ns": 10.0,
+      "confidence_cap": 0.48,
+      "trusted_anchor": "LineL1",
+      "decision_code": "RELABEL_WEAK_L1_ANCHORED",
+      "rationale": "The ~327-330 ns X1 event connects smoothly to adjacent labels and matches the strong L1 crossing anchor. X1 remains review-only and the relabel remains weak.",
+      "ignore_transition_collar": false
+    }
+  ],
+  "ignore_rules": [
+    {
+      "crossing": "Line6-Line9",
+      "line": "Line6",
+      "center_trace": 523,
+      "radius_m": 6.0,
+      "decision_code": "IGNORE_LINE6_AMBIGUOUS_KEEP_LINE9",
+      "rationale": "Line9 current label is visually the more reliable event. The Line6 crossing event may be a shallower interface or adjacent phase; no defensible replacement curve is available, so Line6 supervision is excluded locally."
+    },
+    {
+      "crossing": "Line9-LineX1",
+      "line": "LineX1",
+      "center_trace": 197,
+      "radius_m": 6.0,
+      "decision_code": "IGNORE_X1_AMBIGUOUS_KEEP_LINE9",
+      "rationale": "Line9 is retained as the trusted reference. X1 contains multiple plausible events and remains review-only; the crossing neighborhood is excluded from supervised losses."
+    }
+  ],
+  "outputs": {
+    "window_index": "data/measured/yingshan_v15/window_index.csv",
+    "line_summary": "data/measured/yingshan_v15/manifests/v15_final_line_summary.csv",
+    "crossing_decisions": "reports/yingshan_v15_final_20260710/v15_final_crossing_decisions.csv",
+    "segments": "reports/yingshan_v15_final_20260710/v15_final_segments.csv",
+    "trace_changes": "reports/yingshan_v15_final_20260710/v15_final_trace_changes.csv",
+    "preview": "reports/yingshan_v15_final_20260710/v15_final_crossing_preview.png"
+  }
+}

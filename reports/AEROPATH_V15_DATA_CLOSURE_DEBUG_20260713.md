@@ -39,7 +39,7 @@ probabilities is unsafe in half precision. They now run in FP32 through
 
 ## Formal-release status
 
-`scripts/check_dataset.py --data-root data_yingshan_v15_final_20260710` reports
+`scripts/check_dataset.py --data-root data/measured/yingshan_v15` reports
 structural success but `formal_ready=false`. The remaining blockers are still:
 
 1. zero confirmed `status_code=0` true-negative traces;

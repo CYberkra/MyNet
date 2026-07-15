@@ -1,0 +1,41 @@
+{
+  "schema_version": "dataset_contract_v2",
+  "updated_at": "2026-07-15",
+  "formal_training_allowed": false,
+  "label_semantics": "visible_phase_v15_final_with_weak_crossing_relabels_and_explicit_ignore",
+  "required_files": [
+    "real_lines.csv",
+    "real_windows.csv",
+    "simulation_cases.csv",
+    "human_audit_manifest.csv",
+    "split_manifest.csv",
+    "label_semantics.json"
+  ],
+  "blockers": [
+    "no confirmed true-negative real windows",
+    "no independent non-Line9-conditioned simulation family is approved for training"
+  ],
+  "observations": [
+    "The formal line split is locked in configs/paper_splits_v15_aeropath.json.",
+    "Line7 retains measured flight heights above the planned 20 m range with an explicit QC flag.",
+    "Canonical arrays remain in acquisition order; engineering-profile reversal is display-only.",
+    "FORMAL06C is accepted only as Line9-conditioned development evidence."
+  ],
+  "current_real_label_dataset": {
+    "path": "data/measured/yingshan_v15",
+    "version": "YINGSHAN_V15_FINAL_20260710",
+    "release_status": "final_label_release_not_formal_training_release",
+    "line9_policy": "test-only primary crossing anchor",
+    "x1_policy": "review-only and excluded"
+  },
+  "counts": {
+    "simulation_cases_registered": 3,
+    "human_audit_records": 3,
+    "accepted_quarantine_cases": 0,
+    "line9_conditioned_cases": 3,
+    "training_allowed_cases": 0,
+    "real_lines_registered": 6,
+    "real_windows_registered": 78,
+    "confirmed_true_negative_windows": 0
+  }
+}

@@ -6,11 +6,11 @@ This is the normative storage contract for gprMax work in MyNet.
 
 | Layer | Location | Versioned | Purpose |
 |---|---|---:|---|
-| Source | `data/PGDA_SYNTH_DATASET_V2/00_controls/` | Git | Decks, indexed geometry, labels, manifests, checksums, and pre-solver previews |
-| Release specification | `data/PGDA_SYNTH_DATASET_V2/release_specs/` | Git | Exact whitelist for building an immutable evidence package |
-| Released evidence | `data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/` | Git + LFS | Selected merged solver outputs, trace contracts, audits, and human-review evidence |
-| Training release | `data/PGDA_SYNTH_DATASET_V2/02_released_canonical/` | Git + LFS where configured | Canonical 501 x N arrays admitted by the training-data contract |
-| Runtime cache | `data/PGDA_SYNTH_DATASET_V2/01_solver_runs/` | Never | Staged decks, per-trace outputs, logs, resume state, and temporary merge products |
+| Source | `data/simulations/v2/00_controls/` | Git | Decks, indexed geometry, labels, manifests, checksums, and pre-solver previews |
+| Release specification | `data/simulations/v2/release_specs/` | Git | Exact whitelist for building an immutable evidence package |
+| Released evidence | `data/simulations/v2/02_released_solver_evidence/` | Git + LFS | Selected merged solver outputs, trace contracts, audits, and human-review evidence |
+| Training release | `data/simulations/v2/02_released_canonical/` | Git + LFS where configured | Canonical 501 x N arrays admitted by the training-data contract |
+| Runtime cache | `data/simulations/v2/01_solver_runs/` | Never | Staged decks, per-trace outputs, logs, resume state, and temporary merge products |
 
 ## Release classes
 
@@ -58,14 +58,14 @@ the official merge succeeds. Never delete the only copy of an unmerged run.
 5. Run:
 
 ```powershell
-python scripts/package_gprmax_release.py data/PGDA_SYNTH_DATASET_V2/release_specs/<spec>.json
-python scripts/package_gprmax_release.py data/PGDA_SYNTH_DATASET_V2/release_specs/<spec>.json --verify-only
+python scripts/package_gprmax_release.py data/simulations/v2/release_specs/<spec>.json
+python scripts/package_gprmax_release.py data/simulations/v2/release_specs/<spec>.json --verify-only
 ```
 
 6. Confirm released `.out` files are LFS objects before committing:
 
 ```powershell
-git check-attr filter -- data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/**/*.out
+git check-attr filter -- data/simulations/v2/02_released_solver_evidence/**/*.out
 git lfs status
 ```
 

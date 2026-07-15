@@ -45,7 +45,7 @@ def _spec(tmp_path: Path) -> Path:
         "formal_training_allowed": False,
         "line9_conditioned": True,
         "human_review": {"decision": "accepted", "reviewer": "test"},
-        "output_dir": "data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/test-release",
+        "output_dir": "data/simulations/v2/02_released_solver_evidence/test-release",
         "artifacts": [
             {
                 "role": role,
@@ -66,7 +66,7 @@ def test_package_and_verify_release(tmp_path: Path, monkeypatch: pytest.MonkeyPa
     monkeypatch.setattr(
         release,
         "RELEASE_ROOT",
-        (tmp_path / "data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence").resolve(),
+        (tmp_path / "data/simulations/v2/02_released_solver_evidence").resolve(),
     )
     spec = _spec(tmp_path)
     output = release.package(spec)
@@ -98,7 +98,7 @@ def test_development_release_requires_accepted_human_review(
     monkeypatch.setattr(
         release,
         "RELEASE_ROOT",
-        (tmp_path / "data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence").resolve(),
+        (tmp_path / "data/simulations/v2/02_released_solver_evidence").resolve(),
     )
     spec = _spec(tmp_path)
     payload = json.loads(spec.read_text(encoding="utf-8"))

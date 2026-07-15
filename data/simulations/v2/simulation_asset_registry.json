@@ -1,0 +1,34 @@
+{
+  "schema": "pgda_simulation_asset_registry_v1",
+  "updated_date": "2026-07-15",
+  "policy": "docs/SIMULATION_ASSET_POLICY.md",
+  "cases": [
+    {
+      "case_id": "FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT",
+      "status": "rejected_overstrong",
+      "formal_training_allowed": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal06_interface_conditioned_20260715/FORMAL06A_OVERSTRONG_AUDIT.md"
+    },
+    {
+      "case_id": "FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT",
+      "status": "rejected_still_dominant",
+      "formal_training_allowed": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal06b_tempered_interface_20260715/FORMAL06B_STILL_DOMINANT_AUDIT.md"
+    },
+    {
+      "case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+      "status": "human_accepted_development_baseline",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "solver_evidence_released": true,
+      "release_spec": "data/simulations/v2/release_specs/FORMAL06C_DEVELOPMENT_EVIDENCE_V1.json",
+      "release_dir": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1",
+      "next_gate": "complete distributed matched pair, then independent training-data governance"
+    }
+  ]
+}

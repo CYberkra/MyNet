@@ -16,7 +16,7 @@ import generate_formal06_interface_conditioned_development as formal06
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
 CASE_ID = "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
 SOURCE = formal06.SOURCE

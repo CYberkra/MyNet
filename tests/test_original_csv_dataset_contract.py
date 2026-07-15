@@ -8,7 +8,7 @@ import numpy as np
 from scripts.train_raw_only import DS
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
+DATA_ROOT = ROOT / "data/measured/yingshan_v15"
 
 
 def test_canonical_line_contains_original_spatial_metadata():

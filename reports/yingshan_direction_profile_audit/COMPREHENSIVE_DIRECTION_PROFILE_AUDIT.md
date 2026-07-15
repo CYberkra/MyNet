@@ -51,7 +51,7 @@
 
 ## 审计证据与可追溯性
 
-- 工程图源：`data_corrected_v1_4_terrain_direction/source/ying_shan_profiles_and_boreholes.zip`
+- 工程图源：`data/measured/yingshan_v15/source/ying_shan_profiles_and_boreholes.zip`
 - 工程图源 SHA256：`0e802c7d4ff7d64600fc3e97d6bdad394c13dabc22c09f60d9ecea5dc3f82a2a`
 - 内容：总平面图、3/6/7/9 号工程地质剖面、8 份钻孔柱状图。
 - L1 与 X1 没有独立工程剖面 PDF，因此它们的“剖面显示方向”只能由 GNSS 采集顺序、报告主迁移图和交叉点相对位置联合确定，置信度保持 medium，不能伪装成 high。

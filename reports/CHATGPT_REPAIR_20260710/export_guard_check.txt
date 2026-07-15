@@ -1,1 +1,0 @@
-ERROR: No simulation cases have train_allowed=true; human approval and data contract remain incomplete.

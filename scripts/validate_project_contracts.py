@@ -123,7 +123,7 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
 def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], list[str], dict[str, int]]:
     errors: list[str] = []
     warnings: list[str] = []
-    contract = ROOT / "data" / "dataset_contract_v2"
+    contract = ROOT / "data" / "contracts" / "dataset_v2"
     manifest_path = contract / "dataset_manifest.json"
     if not manifest_path.is_file():
         return [f"missing {manifest_path}"], warnings, {}
@@ -178,12 +178,24 @@ def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], li
         }:
             errors.append(f"{case_id}: true-negative semantics lack explicit human approval")
 
-    accepted_path = ROOT / "data" / "PGDA_SYNTH_DATASET_V1" / "05_accepted_dataset" / "accepted_manifest.csv"
-    accepted_rows = _read_csv(accepted_path) if accepted_path.is_file() else []
+    registry_path = ROOT / "data" / "simulations" / "v2" / "simulation_asset_registry.json"
+    if not registry_path.is_file():
+        errors.append("missing V2 simulation asset registry")
+        registry_cases: list[dict[str, object]] = []
+    else:
+        try:
+            registry_cases = json.loads(registry_path.read_text(encoding="utf-8")).get("cases", [])
+        except Exception as exc:
+            errors.append(f"invalid V2 simulation asset registry: {exc}")
+            registry_cases = []
+    registry_ids = {str(item.get("case_id", "")) for item in registry_cases}
+    contract_ids = {row.get("case_id", "") for row in sim_rows}
+    if registry_ids != contract_ids:
+        errors.append("dataset simulation cases do not match the V2 asset registry")
     real_lines = _read_csv(contract / "real_lines.csv") if (contract / "real_lines.csv").is_file() else []
     real_windows = _read_csv(contract / "real_windows.csv") if (contract / "real_windows.csv").is_file() else []
-    orientation_registry = ROOT / "data_corrected_v1_4_terrain_direction" / "trace_direction_registry.csv"
-    orientation_contract = ROOT / "data_corrected_v1_4_terrain_direction" / "orientation_contract.json"
+    orientation_registry = ROOT / "data/measured/yingshan_v15" / "trace_direction_registry.csv"
+    orientation_contract = ROOT / "data/measured/yingshan_v15" / "orientation_contract.json"
     if not orientation_registry.is_file():
         errors.append("canonical real dataset is missing trace_direction_registry.csv")
     if not orientation_contract.is_file():
@@ -254,15 +266,10 @@ def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], li
         if row.get("source_csv_sha256", "") == "":
             errors.append(f"{sample_id}: missing original CSV hash")
 
-    accepted_ids = [row.get("case_id", "") for row in accepted_rows]
-    if len(accepted_ids) != len(set(accepted_ids)):
-        errors.append("accepted_manifest.csv contains duplicate case_id rows")
-    if any(row.get("formal_training_allowed") == "true" for row in accepted_rows):
-        errors.append("historical accepted quarantine unexpectedly grants formal training")
     counts = {
         "registered_simulation_cases": len(sim_rows),
         "human_audit_records": len(human_rows),
-        "accepted_quarantine_cases": len(accepted_rows),
+        "accepted_quarantine_cases": 0,
         "registered_real_lines": len(real_lines),
         "registered_real_windows": len(real_windows),
         "train_allowed_simulation_cases": sum(row.get("train_allowed") == "true" for row in sim_rows),

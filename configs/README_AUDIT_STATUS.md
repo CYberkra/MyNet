@@ -1,19 +1,15 @@
-# Configuration audit status — 2026-07-10
+# Active configuration set
 
-All JSON configurations in this directory are intentionally frozen with
-`"enabled": false` until `data/dataset_contract_v2/dataset_manifest.json`
-reports `formal_training_allowed: true` and the selected configuration passes
-`scripts/validate_project_contracts.py --require-formal-ready`.
+Only the current AeroPath experiment contract is retained on `master`.
 
-The freeze prevents historical experiment files from being mistaken for valid
-paper-training contracts. The principal blockers are:
+| File | Purpose | Status |
+|---|---|---|
+| `aeropath_ssd_smoke.json` | CPU-friendly one-step implementation smoke | enabled, debug only |
+| `aeropath_ssd_v15_data_closure_debug.json` | Official-Mamba2 V15 one-step CUDA/data closure | enabled, debug only |
+| `aeropath_ssd_v15_formal_blocked.json` | Locked 501x256 paper protocol | disabled by data gate |
+| `paper_splits_v15_aeropath.json` | Authoritative whole-line measured split | locked |
 
-- missing canonical real `window_index.csv` and `lines/*.npz`;
-- no confirmed real negative traces (`status_code=0`);
-- Line9-conditioned simulation data quarantined from Line9 holdout training;
-- V4 visible-phase relabeling not completed;
-- Batch 3 case-wise geometry review not completed.
-
-Before re-enabling one configuration, update its paths and split lists, verify
-that it has a nonempty validation split, provide an explicit `run_type`, and
-remove its `training_block_reason` only after the validator succeeds.
+The formal config is blocked only by missing confirmed real negatives and
+missing approved independent V2 simulations. V15 labels and the split are
+complete. Historical GprMambaSep, LOO, and superseded pilot configs are
+available from `archive/pre-master-cleanup-20260715`.

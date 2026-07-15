@@ -1,7 +1,0 @@
-{
-  "case_id": "CTRL01_FLAT_SHALLOW_LOWLOSS_POS",
-  "mode": "cpu_one_trace_benchmark",
-  "returncode": 0,
-  "elapsed_seconds": 30.782,
-  "estimated_256_trace_minutes": 131.34
-}

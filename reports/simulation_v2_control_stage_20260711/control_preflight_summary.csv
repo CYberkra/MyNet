@@ -1,5 +1,0 @@
-﻿case_id,target_presence,static_preflight_ok,arrival_min_ns,arrival_max_ns,domain_x_m,domain_y_m,geometry_box_count_full,formal_training_allowed,solver_run_completed
-CTRL01_FLAT_SHALLOW_LOWLOSS_POS,True,True,145.4892120361328,145.4892120361328,24.48,13.3425,3,False,False
-CTRL02_FLAT_DEEP_MODERATE_POS,True,True,344.1167907714844,344.1167907714844,24.48,26.37,3,False,False
-CTRL03_SMOOTH_INTERFACE_POS,True,True,194.3417205810547,248.97520446777344,24.48,20.8125,579,False,False
-CTRL04_MATCHED_BACKGROUND_NEG,False,True,,,24.48,26.37,3,False,False

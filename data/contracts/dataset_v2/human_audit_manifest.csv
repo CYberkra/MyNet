@@ -1,0 +1,4 @@
+case_id,label,auditor,date,method,note,source_sha256
+FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT,rejected_overstrong,project_review,2026-07-15,paired_solver_visual_audit,Interface morphology was too dominant for the intended measured-data character,
+FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT,rejected_still_dominant,project_review,2026-07-15,paired_solver_visual_audit,Tempering helped but the target remained too dominant,
+FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT,accepted_development_only,project_owner,2026-07-15,distributed32_visual_audit,Accepted as a Line9-conditioned development morphology baseline; never formal training data,

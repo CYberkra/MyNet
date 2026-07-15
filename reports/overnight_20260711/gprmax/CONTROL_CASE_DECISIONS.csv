@@ -1,5 +1,0 @@
-﻿case_id,target_presence,static_preflight,geometry_only,fdtd,visible_phase_validation,metadata_trusted,formal_training_allowed,decision,next_gate
-CTRL01_FLAT_SHALLOW_LOWLOSS_POS,True,PASS,NOT_RUN,NOT_RUN,NOT_AVAILABLE,False,False,HOLD_FOR_OFFICIAL_RUNTIME,official gprMax 3.1.7 smoke + geometry-only; CTRL01 first
-CTRL02_FLAT_DEEP_MODERATE_POS,True,PASS,NOT_RUN,NOT_RUN,NOT_AVAILABLE,False,False,HOLD_FOR_OFFICIAL_RUNTIME,wait for CTRL01 runtime pass
-CTRL03_SMOOTH_INTERFACE_POS,True,PASS,NOT_RUN,NOT_RUN,NOT_AVAILABLE,False,False,HOLD_FOR_OFFICIAL_RUNTIME,wait for CTRL01 runtime pass
-CTRL04_MATCHED_BACKGROUND_NEG,False,PASS,NOT_RUN,NOT_RUN,NOT_AVAILABLE,False,False,HOLD_FOR_OFFICIAL_RUNTIME,wait for CTRL01 runtime pass

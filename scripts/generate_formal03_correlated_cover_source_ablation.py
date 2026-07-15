@@ -26,7 +26,7 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d, zoom
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL03_CORRELATED_COVER_SOURCE_ABLATION"
 C0 = 299_792_458.0
 
@@ -825,7 +825,7 @@ This source-ablation case is blocked from training. Run from the repository
 root and stop at the first failed gate.
 
 ```powershell
-$case = "data/PGDA_SYNTH_DATASET_V2/00_controls/{variant.case_id}"
+$case = "data/simulations/v2/00_controls/{variant.case_id}"
 $cudaArgs = @()
 if ($env:PGDA_CUDA_BIN) {{ $cudaArgs = @("--cuda-bin", $env:PGDA_CUDA_BIN) }}
 

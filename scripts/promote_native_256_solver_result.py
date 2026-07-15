@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "02_released_canonical"
+DEFAULT_OUT = ROOT / "data" / "simulations" / "v2" / "02_released_canonical"
 
 
 def sha256(path: Path) -> str:

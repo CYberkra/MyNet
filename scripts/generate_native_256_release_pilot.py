@@ -17,11 +17,11 @@ from pgdacsnet.simulation_v2 import canonical_json_sha256, sha256_file  # noqa: 
 from scripts.generate_physical_sim_v2 import generate_case  # noqa: E402
 from scripts.validate_physical_sim_v2 import validate_case_safe  # noqa: E402
 
-CONTRACT_DIR = ROOT / "data" / "simulation_contract_v2"
+CONTRACT_DIR = ROOT / "data" / "contracts" / "simulation_v2"
 DEFAULT_CASES = CONTRACT_DIR / "recommended_native_256_cases_v1.json"
 DEFAULT_MATERIALS = CONTRACT_DIR / "recommended_native_256_materials_v1.json"
 DEFAULT_STANDARD = CONTRACT_DIR / "recommended_native_256_v1.json"
-DEFAULT_OUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "01_native_256_release_pilot"
+DEFAULT_OUT = ROOT / "data" / "simulations" / "v2" / "01_native_256_release_pilot"
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -67,9 +67,9 @@ def _generator_sources_dirty() -> bool:
             "--",
             "pgdacsnet/simulation_v2.py",
             "scripts/generate_physical_sim_v2.py",
-            "data/simulation_contract_v2/recommended_native_256_v1.json",
-            "data/simulation_contract_v2/recommended_native_256_cases_v1.json",
-            "data/simulation_contract_v2/recommended_native_256_materials_v1.json",
+            "data/contracts/simulation_v2/recommended_native_256_v1.json",
+            "data/contracts/simulation_v2/recommended_native_256_cases_v1.json",
+            "data/contracts/simulation_v2/recommended_native_256_materials_v1.json",
         ],
         cwd=ROOT,
         capture_output=True,

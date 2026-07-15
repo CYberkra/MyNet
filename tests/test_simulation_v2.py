@@ -470,7 +470,7 @@ def test_selected_control_regeneration_preserves_complete_index(tmp_path: Path) 
     assert regenerated.returncode == 0, regenerated.stdout
     index = json.loads((out / "control_index.json").read_text(encoding="utf-8"))
     contract = json.loads(
-        (ROOT / "data" / "simulation_contract_v2" / "control_cases_v1.json").read_text(encoding="utf-8")
+        (ROOT / "data" / "contracts" / "simulation_v2" / "control_cases_v1.json").read_text(encoding="utf-8")
     )
     expected = {entry["case_id"] for entry in contract["cases"]}
     assert index["case_count"] == len(expected)

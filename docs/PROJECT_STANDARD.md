@@ -48,13 +48,13 @@ The portable template and supported environment variables are documented in
   `full - no_basal` visible-phase result. Geometric priors are audit evidence,
   not training labels.
 - New source decks belong in
-  `data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/`; only explicitly
+  `data/simulations/v2/01_native_256_release_pilot/`; only explicitly
   promoted compact canonical results belong in
-  `data/PGDA_SYNTH_DATASET_V2/02_released_canonical/`.
+  `data/simulations/v2/02_released_canonical/`.
 
-Use [RECOMMENDED_NATIVE_256_V1.md](../data/simulation_contract_v2/RECOMMENDED_NATIVE_256_V1.md)
+Use [RECOMMENDED_NATIVE_256_V1.md](../data/contracts/simulation_v2/RECOMMENDED_NATIVE_256_V1.md)
 for exact physical settings and
-[SYNC_AND_RETENTION_POLICY.md](../data/simulation_contract_v2/SYNC_AND_RETENTION_POLICY.md)
+[SYNC_AND_RETENTION_POLICY.md](../data/contracts/simulation_v2/SYNC_AND_RETENTION_POLICY.md)
 for promotion and retention rules.
 
 ## 4. Storage and Git Rules
@@ -81,7 +81,6 @@ Do not enable formal training until all are true:
 
 - confirmed real negative windows exist;
 - approved non-Line9-conditioned V2 simulations exist;
-- V15 label semantics and relevant manual reviews are complete;
 - no source-trace/split leakage exists;
 - the formal validation configuration is enabled deliberately;
 - `python scripts/validate_project_contracts.py --require-formal-ready` passes.

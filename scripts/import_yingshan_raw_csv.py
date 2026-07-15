@@ -37,7 +37,7 @@ sys.path.insert(0, str(ROOT))
 
 from pgdacsnet.spatial_orientation import orientation_metadata
 
-DEFAULT_DATASET_ROOT = ROOT / "data_corrected_v1_4_terrain_direction"
+DEFAULT_DATASET_ROOT = ROOT / "data" / "measured" / "yingshan_import_staging"
 LINE_NAME_RE = re.compile(r"(?P<line>Line(?:3|6|7|9|L1|X1))origin\(36\)\.csv$", re.IGNORECASE)
 HEADER_PATTERNS = {
     "samples": re.compile(r"Number of Samples\s*=\s*(\d+)", re.IGNORECASE),
@@ -524,7 +524,7 @@ def update_policy_and_manifest(dataset_root: Path, *, source_zip_path: Path, sou
     policy = json.loads(policy_path.read_text(encoding="utf-8")) if policy_path.is_file() else {}
     policy.update(
         {
-            "dataset_id": "data_corrected_v1_4_terrain_direction_canonical_from_original_csv",
+            "dataset_id": "data/measured/yingshan_v15_canonical_from_original_csv",
             "training_allowed": False,
             "reason": (
                 "Canonical full-line arrays now come from the original CSV archive with measured ground elevation and flight height. "
@@ -647,7 +647,11 @@ def import_dataset(raw_zip: Path, dataset_root: Path, *, copy_source: bool = Tru
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-zip", required=True)
-    parser.add_argument("--dataset-root", default=str(DEFAULT_DATASET_ROOT.relative_to(ROOT)))
+    parser.add_argument(
+        "--dataset-root",
+        default=str(DEFAULT_DATASET_ROOT.relative_to(ROOT)),
+        help="Staging output. Never point this at the immutable yingshan_v15 release.",
+    )
     parser.add_argument("--no-copy-source", action="store_true")
     parser.add_argument("--report-json", default="reports/yingshan_original_csv_import.json")
     args = parser.parse_args()

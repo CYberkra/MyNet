@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTROLS = ROOT / 'data' / 'PGDA_SYNTH_DATASET_V2' / '00_controls'
+CONTROLS = ROOT / 'data' / 'simulations' / 'v2' / '00_controls'
 
 
 def test_all_control_manifests_preserve_sampling_and_governance():
@@ -40,7 +40,7 @@ def test_all_control_manifests_preserve_sampling_and_governance():
 
 
 def test_legacy_quarantine_remains_non_trainable():
-    with (ROOT/'data'/'simulation_contract_v2'/'legacy_quarantine.csv').open(encoding='utf-8') as f:
+    with (ROOT/'data'/'contracts'/'simulation_v2'/'legacy_quarantine.csv').open(encoding='utf-8') as f:
         rows=list(csv.DictReader(f))
     assert rows
     assert all(r['legacy_status']=='legacy_quarantine' for r in rows)
@@ -73,7 +73,7 @@ def test_ctrl02_ctrl04_pair_is_reciprocal_and_upper_geometry_identical():
 
 
 def test_contract_json_matches_generated_grid_and_arrival_semantics():
-    contract = json.loads((ROOT / "data" / "simulation_contract_v2" / "simulation_contract_v2.json").read_text(encoding="utf-8"))
+    contract = json.loads((ROOT / "data" / "contracts" / "simulation_v2" / "simulation_contract_v2.json").read_text(encoding="utf-8"))
     grid = contract["fdtd_reference_grid"]
     assert grid["guard_cells"] == 20
     assert math.isclose(grid["solver_time_window_ns"], 701.0)

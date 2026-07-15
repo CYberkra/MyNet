@@ -7,9 +7,9 @@
     "no confirmed status_code=0 traces; presence/no-target rejection supervision is not trainable"
   ],
   "facts": {
-    "data_root": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction",
+    "data_root": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15",
     "dataset_policy": {
-      "dataset_id": "data_corrected_v1_4_terrain_direction_reconstructed_from_window_cache",
+      "dataset_id": "data/measured/yingshan_v15_reconstructed_from_window_cache",
       "training_allowed": false,
       "reason": "Full-line arrays and window_index.csv were reconstructed exactly from overlapping window caches, but true-negative supervision, original source provenance, unified label semantics, and height metadata remain incomplete.",
       "missing_required_artifacts": [],
@@ -21,9 +21,9 @@
         "original_full_line_sources_available": false,
         "inventory_path": "uavgpr_simlab/docs/real_data/YINGSHAN_REAL_DATA_AUDIT.json"
       },
-      "_path": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/dataset_policy.json"
+      "_path": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/dataset_policy.json"
     },
-    "window_index": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/window_index.csv",
+    "window_index": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/window_index.csv",
     "window_count": 78,
     "lines": [
       "Line3",

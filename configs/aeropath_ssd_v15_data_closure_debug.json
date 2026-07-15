@@ -37,7 +37,7 @@
   "num_workers": 0,
   "amp": true,
   "input_log_scale": 0.001,
-  "data_root": "data_yingshan_v15_final_20260710",
+  "data_root": "data/measured/yingshan_v15",
   "run_dir": "outputs/run_debug_aeropath_v15_data_closure",
   "train_lines": ["Line3"],
   "val_lines": ["Line6"],

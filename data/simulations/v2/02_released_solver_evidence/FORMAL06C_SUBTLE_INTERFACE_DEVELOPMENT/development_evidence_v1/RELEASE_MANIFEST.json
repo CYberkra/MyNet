@@ -1,0 +1,145 @@
+{
+  "schema": "gprmax_release_manifest_v1",
+  "release_id": "FORMAL06C_DEVELOPMENT_EVIDENCE_V1",
+  "case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "release_class": "development_evidence",
+  "created_date": "2026-07-15",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "human_review": {
+    "decision": "accepted",
+    "reviewer": "project_owner",
+    "review_date": "2026-07-15",
+    "scope": "distributed32 background-suppressed time-power morphology",
+    "note": "Continuous multi-cycle basal response matches the intended project appearance."
+  },
+  "source_spec": "data/simulations/v2/release_specs/FORMAL06C_DEVELOPMENT_EVIDENCE_V1.json",
+  "source_spec_sha256": "d335f73bcc96462a43f0cc19f61067f8b564a05d629b34418c6d52ebaba03fad",
+  "artifact_count": 17,
+  "total_bytes": 7962263,
+  "artifacts": [
+    {
+      "role": "source_scene_manifest",
+      "path": "source/scene_manifest.json",
+      "bytes": 6456,
+      "sha256": "0ac53f97776780bdcaa540a0c4cb82ed137a393ef0a797ff167a64c5eb077589"
+    },
+    {
+      "role": "source_policy",
+      "path": "source/FORMAL06C_SUBTLE_INTERFACE_POLICY.json",
+      "bytes": 1782,
+      "sha256": "4b2f3529e1297f09781ae25313b010b8f46eaf0b68b7766b8e9a9fba13235880"
+    },
+    {
+      "role": "source_checksums",
+      "path": "source/FILE_SHA256.csv",
+      "bytes": 2600,
+      "sha256": "b1223189325887eff7d1e74f64e9992f004bc94b3bc90ca2a689c309dc6f84ef"
+    },
+    {
+      "role": "one_trace_full_merged",
+      "path": "solver/one_trace/full_scene_merged.out",
+      "bytes": 232744,
+      "sha256": "cd3152edf3f73129893a8f68394c66856ca04601fc2ab57c94be18cfefd2746b",
+      "gprmax_output": {
+        "gprmax_version": "3.1.7",
+        "iterations": 9188,
+        "dt_s": 7.075963010249052e-11,
+        "receiver_array_count": 6,
+        "receiver_sample_count": 55128
+      }
+    },
+    {
+      "role": "one_trace_control_merged",
+      "path": "solver/one_trace/no_basal_contrast_control_merged.out",
+      "bytes": 232744,
+      "sha256": "da351e3a0b1081fde8e35571beb66dd81b7c3120561b3d93decf8351c880139b",
+      "gprmax_output": {
+        "gprmax_version": "3.1.7",
+        "iterations": 9188,
+        "dt_s": 7.075963010249052e-11,
+        "receiver_array_count": 6,
+        "receiver_sample_count": 55128
+      }
+    },
+    {
+      "role": "one_trace_run_manifest",
+      "path": "solver/one_trace/run_manifest.json",
+      "bytes": 652,
+      "sha256": "97db04e712d1c5ad19414f1eab52bb063672052b4e19175e1e84b2be50464327"
+    },
+    {
+      "role": "one_trace_full_contract",
+      "path": "solver/one_trace/full_scene_trace_contract.json",
+      "bytes": 1638,
+      "sha256": "c978acfab095b84a62a5c1d17650464645c09ecfa7be4d269b18971809e75bed"
+    },
+    {
+      "role": "one_trace_control_contract",
+      "path": "solver/one_trace/no_basal_contrast_control_trace_contract.json",
+      "bytes": 1683,
+      "sha256": "cb591dd142b4b0e912f15ff6ec81eba65719ae465242960b5c0c0b13126dac7c"
+    },
+    {
+      "role": "one_trace_audit",
+      "path": "audit/one_trace_causal_audit.json",
+      "bytes": 4240,
+      "sha256": "63f192d3ce45134e0f2ae8211528f6616784b09a2066ef74629681b928da27b6"
+    },
+    {
+      "role": "distributed_full_merged",
+      "path": "solver/distributed32_stride8/full_scene_merged.out",
+      "bytes": 7065688,
+      "sha256": "71a9b83fd7bd4c000aa51e443fe4b8cff06083d2a0b076a0c3f67593431e4e79",
+      "gprmax_output": {
+        "gprmax_version": "3.1.7",
+        "iterations": 9188,
+        "dt_s": 7.075963010249052e-11,
+        "receiver_array_count": 6,
+        "receiver_sample_count": 1764096
+      }
+    },
+    {
+      "role": "distributed_run_manifest",
+      "path": "solver/distributed32_stride8/run_manifest.json",
+      "bytes": 929,
+      "sha256": "2cf2d9c9b1920a60339847d4f9d8141a9fe724fb136f556f57dc72a762459c9f"
+    },
+    {
+      "role": "distributed_trace_contract",
+      "path": "solver/distributed32_stride8/full_scene_trace_contract.json",
+      "bytes": 42980,
+      "sha256": "d53a7406139a255a7a121339d489b9efbfce6dfa416e2cfed24126966fc7eb82"
+    },
+    {
+      "role": "distributed_morphology_audit",
+      "path": "audit/distributed32_morphology_audit.json",
+      "bytes": 3635,
+      "sha256": "c14da3e78470435db1916f9cf33f6091777b737da765a9cc2775a602dc808162"
+    },
+    {
+      "role": "human_review_decision",
+      "path": "audit/human_review_decision.json",
+      "bytes": 981,
+      "sha256": "3528c86bc4b8057fc0074e7d6bf893efbb4b8b7574b92e1a70458d9836e5eca8"
+    },
+    {
+      "role": "human_review_report",
+      "path": "audit/FORMAL06C_DEVELOPMENT_AUDIT.md",
+      "bytes": 3740,
+      "sha256": "9dce70f6d245bd6ddd30a9c7dfa4cb32ec154f1b4e2deff7f030beda7362b991"
+    },
+    {
+      "role": "human_preview",
+      "path": "preview/FORMAL06C_distributed32_raw_tpower15.png",
+      "bytes": 136687,
+      "sha256": "3ca743754c67666ef6fb9f082bef218d1f8c5167b98a98115c2bb9251c7ff66a"
+    },
+    {
+      "role": "agc_preview",
+      "path": "preview/FORMAL06C_distributed32_raw_agc13.png",
+      "bytes": 223084,
+      "sha256": "58278c5e726c4510524a188530d3f5d4ddde4827717e0ffb8696f14800e24553"
+    }
+  ]
+}

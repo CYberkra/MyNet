@@ -70,7 +70,7 @@
       "warnings": []
     }
   },
-  "reference_path": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL04_C_COMBINED/formal04_distributed8_stride36_20260715/labels/source_referenced_arrival_time_ns.npy",
+  "reference_path": "data/simulations/v2/01_solver_runs/FORMAL04_C_COMBINED/formal04_distributed8_stride36_20260715/labels/source_referenced_arrival_time_ns.npy",
   "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
   "visible_phase_semantics": "continuous signed lobe from solved full-minus-control",
   "signal_metrics": {

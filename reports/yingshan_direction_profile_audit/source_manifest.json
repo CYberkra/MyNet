@@ -1,5 +1,5 @@
 {
-  "profile_archive": "/mnt/data/MyNet_work/MyNet/data_corrected_v1_4_terrain_direction/source/ying_shan_profiles_and_boreholes.zip",
+  "profile_archive": "/mnt/data/MyNet_work/MyNet/data/measured/yingshan_v15/source/ying_shan_profiles_and_boreholes.zip",
   "profile_archive_sha256": "0e802c7d4ff7d64600fc3e97d6bdad394c13dabc22c09f60d9ecea5dc3f82a2a",
   "contains": "survey plan, engineering profiles 3/6/7/9, borehole logs",
   "standalone_profiles_available": [

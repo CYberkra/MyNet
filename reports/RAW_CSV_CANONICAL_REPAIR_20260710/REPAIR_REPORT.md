@@ -15,7 +15,7 @@
 
 原始 ZIP 已复制到：
 
-`data_corrected_v1_4_terrain_direction/source/ying_shan_measurement_lines_original.zip`
+`data/measured/yingshan_v15/source/ying_shan_measurement_lines_original.zip`
 
 SHA256：
 

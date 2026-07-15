@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ROOTS = [
-    ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "01_solver_runs",
+    ROOT / "data" / "simulations" / "v2" / "01_solver_runs",
     ROOT / "workspace",
 ]
 DISPOSABLE_SUFFIXES = {".out", ".h5", ".hdf5", ".vti", ".log"}

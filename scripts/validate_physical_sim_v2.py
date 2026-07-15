@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from pgdacsnet.simulation_v2 import GridSpec, SourceSpec, sha256_file  # noqa: E402
 
-DEFAULT_ROOT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_ROOT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 POSTPROCESS_MUTABLE_HASH_PATHS = {
     "labels/visible_phase_time_ns.npy",
     "labels/full_scene_501x256.npy",

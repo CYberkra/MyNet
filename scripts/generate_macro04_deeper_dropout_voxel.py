@@ -18,7 +18,7 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d, zoom
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 CASE_ID = "MACRO04_DEEPER_GENTLE_DROPOUT_DIAGNOSTIC"
 C0 = 299_792_458.0
 Q_OFFSETS = np.asarray([-1.0, -0.5, 0.0, 0.5, 1.0], dtype=np.float32)
@@ -776,10 +776,10 @@ def generate(output_root: Path) -> Path:
 Run from this case directory with `PYTHONPATH` pointing to the reviewed gprMax source.
 
 ```powershell
-F:\\codex\\envs\\psgn-csnet\\python.exe -m gprMax geometry_check_full.in --geometry-only
-F:\\codex\\envs\\psgn-csnet\\python.exe -m gprMax geometry_check_control.in --geometry-only
-F:\\codex\\envs\\psgn-csnet\\python.exe -m gprMax smoke_full_scene.in -n 1 --geometry-fixed -gpu 0
-F:\\codex\\envs\\psgn-csnet\\python.exe -m gprMax smoke_no_basal.in -n 1 --geometry-fixed -gpu 0
+python -m gprMax geometry_check_full.in --geometry-only
+python -m gprMax geometry_check_control.in --geometry-only
+python -m gprMax smoke_full_scene.in -n 1 --geometry-fixed -gpu 0
+python -m gprMax smoke_no_basal.in -n 1 --geometry-fixed -gpu 0
 ```
 
 Full GPU commands are intentionally omitted from this preview package. After approval, use a guarded runner that synchronously captures all per-trace metadata before merge. `air_reference` remains deferred until the pair passes.

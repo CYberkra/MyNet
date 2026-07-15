@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "dataset_root": "data_corrected_v1_4_terrain_direction",
-  "source_zip": "data_corrected_v1_4_terrain_direction/source/ying_shan_measurement_lines_original.zip",
+  "dataset_root": "data/measured/yingshan_v15",
+  "source_zip": "data/measured/yingshan_v15/source/ying_shan_measurement_lines_original.zip",
   "source_zip_sha256": "a147ea2e5b47da80dfafbea68ed6728823df45e0b00709846ef4144bc3ea04ad",
   "lines": [
     {
       "line": "Line3",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/Line3.npz",
+      "line_path": "data/measured/yingshan_v15/lines/Line3.npz",
       "trace_count": 1813,
       "sample_count": 501,
       "source_member": "营山测线数据/Line3origin(36).csv",
@@ -24,7 +24,7 @@
     },
     {
       "line": "Line6",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/Line6.npz",
+      "line_path": "data/measured/yingshan_v15/lines/Line6.npz",
       "trace_count": 1661,
       "sample_count": 501,
       "source_member": "营山测线数据/Line6origin(36).csv",
@@ -42,7 +42,7 @@
     },
     {
       "line": "Line7",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/Line7.npz",
+      "line_path": "data/measured/yingshan_v15/lines/Line7.npz",
       "trace_count": 1654,
       "sample_count": 501,
       "source_member": "营山测线数据/Line7origin(36).csv",
@@ -60,7 +60,7 @@
     },
     {
       "line": "Line9",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/Line9.npz",
+      "line_path": "data/measured/yingshan_v15/lines/Line9.npz",
       "trace_count": 2378,
       "sample_count": 501,
       "source_member": "营山测线数据/Line9origin(36).csv",
@@ -78,7 +78,7 @@
     },
     {
       "line": "LineL1",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/LineL1.npz",
+      "line_path": "data/measured/yingshan_v15/lines/LineL1.npz",
       "trace_count": 1950,
       "sample_count": 501,
       "source_member": "营山测线数据/LineL1origin(36).csv",
@@ -96,7 +96,7 @@
     },
     {
       "line": "LineX1",
-      "line_path": "data_corrected_v1_4_terrain_direction/lines/LineX1.npz",
+      "line_path": "data/measured/yingshan_v15/lines/LineX1.npz",
       "trace_count": 938,
       "sample_count": 501,
       "source_member": "营山测线数据/LineX1origin(36).csv",

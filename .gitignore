@@ -27,10 +27,16 @@ Thumbs.db
 *.hdf5
 *.vti
 
-# Large data directories NOT for git
+# Data is deny-by-default. Only governed measured releases, contracts, and V2
+# simulation assets are versioned.
 data/*
-!data/PGDA_SYNTH_DATASET_V1/05_accepted_dataset/
-!data/PGDA_SYNTH_DATASET_V1/DATA_QUALITY.md
+!data/measured/
+!data/measured/**
+!data/contracts/
+!data/contracts/**
+!data/simulations/
+!data/simulations/v2/
+!data/simulations/v2/**
 uavgpr_simlab/workspace/
 
 # Workspace (simulation runs)
@@ -45,42 +51,19 @@ logs/
 
 # Claude Code worktrees
 .claude/worktrees/
-# Simulation V2 contract, source controls, and quarantine metadata are small,
-# auditable source artifacts and must remain versioned.
-!data/simulation_contract_v2/
-!data/simulation_contract_v2/**
-!data/PGDA_SYNTH_DATASET_V2/
-!data/PGDA_SYNTH_DATASET_V2/README.md
-!data/PGDA_SYNTH_DATASET_V2/00_controls/
-!data/PGDA_SYNTH_DATASET_V2/00_controls/**
 # Keep reproducible control inputs, geometry indices, labels, and audits in Git,
 # but leave solver products and execution logs local.
-data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.out
-data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.log
-data/PGDA_SYNTH_DATASET_V2/00_controls/**/*.vti
-data/PGDA_SYNTH_DATASET_V2/_staging/
-data/PGDA_SYNTH_DATASET_V2/_superseded_*/
-data/PGDA_SYNTH_DATASET_V2/01_solver_runs/
+data/simulations/v2/00_controls/**/*.out
+data/simulations/v2/00_controls/**/*.log
+data/simulations/v2/00_controls/**/*.vti
+data/simulations/v2/_staging/
+data/simulations/v2/_superseded_*/
+data/simulations/v2/01_solver_runs/
 # Audited, immutable solver evidence is the only exception to the local-run
 # rule. Files enter this directory exclusively through package_gprmax_release.py.
-!data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/
-!data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/**
-!data/PGDA_SYNTH_DATASET_V2/release_specs/
-!data/PGDA_SYNTH_DATASET_V2/release_specs/**
+!data/simulations/v2/02_released_solver_evidence/
+!data/simulations/v2/02_released_solver_evidence/**
+!data/simulations/v2/release_specs/
+!data/simulations/v2/release_specs/**
 outputs/simulation_v2_controls/
 outputs/
-# Native 256 source decks and compact released canonical arrays are shared
-# through Git. Raw gprMax .out/.h5/.vti files remain globally ignored above.
-!data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/
-!data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/**
-!data/PGDA_SYNTH_DATASET_V2/01_native_256_correlated_voxel_batch_v1/
-!data/PGDA_SYNTH_DATASET_V2/01_native_256_correlated_voxel_batch_v1/**
-!data/PGDA_SYNTH_DATASET_V2/02_released_canonical/
-!data/PGDA_SYNTH_DATASET_V2/02_released_canonical/**
-!data/PGDA_SYNTH_DATASET_V1/LEGACY_QUARANTINE.md
-# Dataset and legacy-simulation governance are compact manifests and label
-# overrides. They are source evidence, not disposable generated data.
-!data/dataset_contract_v2/
-!data/dataset_contract_v2/**
-!data/simulation_governance_v1_20260711/
-!data/simulation_governance_v1_20260711/**

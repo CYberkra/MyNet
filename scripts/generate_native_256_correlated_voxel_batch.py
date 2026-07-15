@@ -26,9 +26,9 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d, zoom
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CATALOG = ROOT / "data" / "simulation_contract_v2" / "native_256_correlated_voxel_batch_v1.json"
+DEFAULT_CATALOG = ROOT / "data" / "contracts" / "simulation_v2" / "native_256_correlated_voxel_batch_v1.json"
 DEFAULT_OUTPUT = (
-    ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "01_native_256_correlated_voxel_batch_v1"
+    ROOT / "data" / "simulations" / "v2" / "01_native_256_correlated_voxel_batch_v1"
 )
 C0 = 299_792_458.0
 Q_OFFSETS = np.asarray([-1.0, -0.5, 0.0, 0.5, 1.0], dtype=np.float32)

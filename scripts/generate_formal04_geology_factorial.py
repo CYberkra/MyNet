@@ -27,7 +27,7 @@ import generate_formal03_correlated_cover_source_ablation as formal03
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL04_GEOLOGY_FACTORIAL_GABOR80"
 REFERENCE_CASE_ID = "FORMAL03_CORRELATED_COVER_GABOR80"
 SOURCE = formal03.SourceVariant(
@@ -428,7 +428,7 @@ def generate(
 This case is blocked from training. Run from the repository root.
 
 ```powershell
-$case = "data/PGDA_SYNTH_DATASET_V2/00_controls/{variant.case_id}"
+$case = "data/simulations/v2/00_controls/{variant.case_id}"
 $cudaArgs = @()
 if ($env:PGDA_CUDA_BIN) {{ $cudaArgs = @("--cuda-bin", $env:PGDA_CUDA_BIN) }}
 

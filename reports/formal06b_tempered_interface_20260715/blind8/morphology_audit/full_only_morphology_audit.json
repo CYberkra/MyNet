@@ -38,8 +38,8 @@
     "actual_end_ns": 650.0687217515805,
     "protected_end_ns": 500.0,
     "finite": true,
-    "trace_contract_file": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/run_logs/full_scene_trace_contract.json",
-    "reference_file": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/labels/source_referenced_arrival_time_ns.npy",
+    "trace_contract_file": "data/simulations/v2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/run_logs/full_scene_trace_contract.json",
+    "reference_file": "data/simulations/v2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/labels/source_referenced_arrival_time_ns.npy",
     "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay"
   },
   "full_only_morphology": {

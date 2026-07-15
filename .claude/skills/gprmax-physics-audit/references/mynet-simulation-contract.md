@@ -25,7 +25,7 @@
 - Active release target: native 256 traces at 0.09 m spacing, with a 55 MHz
   Ricker source and a 0.0225 m grid. The release source decks are
   `N256_F01-F04` and `N256_N01-N02` under
-  `data/PGDA_SYNTH_DATASET_V2/01_native_256_release_pilot/`.
+  `data/simulations/v2/01_native_256_release_pilot/`.
 - Current provisional source: Ricker wavelet in the 50-65 MHz range, 0.2 m Tx/Rx separation. Choose the exact frequency together with the grid using the solver's dispersion report.
 - Domain margins must be much larger than the scan span and must include PML plus physical guards.
 

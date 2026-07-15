@@ -1,25 +1,21 @@
 *.npy filter=lfs diff=lfs merge=lfs -text
 *.npz filter=lfs diff=lfs merge=lfs -text
-# Canonical measured-data bundle is kept as ordinary Git blobs so a source
-# checkout is self-contained even when git-lfs is unavailable. Each file is <100 MB.
-data_corrected_v1_4_terrain_direction/lines/*.npz -filter -diff -merge -text
-data_corrected_v1_4_terrain_direction/terrain_features/*.npz -filter -diff -merge -text
-data_corrected_v1_4_terrain_direction/terrain_features_zero_material_v1/*.npz -filter -diff -merge -text
-data_corrected_v1_4_terrain_direction/source/*.zip -filter -diff -merge -text
-# V15 final measured-data release is kept as ordinary Git blobs so the audited
-# label package remains self-contained without an external Git LFS server.
-data_yingshan_v15_final_20260710/lines/*.npz -filter -diff -merge -text
-data_yingshan_v15_final_20260710/windows/*.npz -filter -diff -merge -text
-data_yingshan_v15_final_20260710/terrain_features/*.npz -filter -diff -merge -text
-data_yingshan_v15_final_20260710/terrain_features_zero_material_v1/*.npz -filter -diff -merge -text
+# The canonical V15 measured release is intentionally self-contained without
+# requiring an LFS server. Every individual blob remains below GitHub's limit.
+data/measured/yingshan_v15/lines/*.npz -filter -diff -merge -text
+data/measured/yingshan_v15/windows/*.npz -filter -diff -merge -text
+data/measured/yingshan_v15/terrain_features/*.npz -filter -diff -merge -text
+data/measured/yingshan_v15/terrain_features_zero_material_v1/*.npz -filter -diff -merge -text
+data/measured/yingshan_v15/source/*.zip -filter -diff -merge -text
 
 # V2 control arrays are small, auditable static inputs. Keep them as ordinary
 # Git blobs so the engineering contract can be reviewed without an LFS remote.
-data/PGDA_SYNTH_DATASET_V2/**/*.npy -filter -diff -merge -text
+data/simulations/v2/**/*.npy -filter -diff -merge -text
 # Correlated-voxel source HDF5 files are deterministic source geometry, not
 # raw solver outputs. Share them through LFS so both workstations reproduce
 # identical full/control scenes without committing disposable .out files.
-data/PGDA_SYNTH_DATASET_V2/01_native_256_correlated_voxel_batch_v1/**/*.h5 filter=lfs diff=lfs merge=lfs -text
+data/simulations/v2/01_native_256_correlated_voxel_batch_v1/**/*.h5 filter=lfs diff=lfs merge=lfs -text
 # Only curated merged solver evidence is shared. Raw per-trace outputs remain
 # ignored and must never be force-added.
-data/PGDA_SYNTH_DATASET_V2/02_released_solver_evidence/**/*.out filter=lfs diff=lfs merge=lfs -text
+data/simulations/v2/02_released_solver_evidence/** binary
+data/simulations/v2/02_released_solver_evidence/**/*.out filter=lfs diff=lfs merge=lfs -text

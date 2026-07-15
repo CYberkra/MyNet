@@ -81,7 +81,7 @@ def main() -> int:
     parser.add_argument(
         "--scan-root",
         type=Path,
-        default=ROOT / "data" / "PGDA_SYNTH_DATASET_V2",
+        default=ROOT / "data" / "simulations" / "v2",
     )
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--delete", action="store_true")

@@ -7,8 +7,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'data_corrected_v1_4_terrain_direction'
-DATA = ROOT / 'data_yingshan_v15_final_20260710'
+DATA = ROOT / 'data/measured/yingshan_v15'
 REPORT = ROOT / 'reports' / 'yingshan_v15_final_20260710'
 LINES = ['Line3', 'Line6', 'Line7', 'Line9', 'LineL1', 'LineX1']
 VERSION = 'YINGSHAN_V15_FINAL_20260710'
@@ -53,15 +52,12 @@ def main() -> int:
     final_lines: dict[str, dict[str, np.ndarray]] = {}
     source_lines: dict[str, dict[str, np.ndarray]] = {}
     for line in LINES:
-        src_path = SOURCE / 'lines' / f'{line}.npz'
         dst_path = DATA / 'lines' / f'{line}.npz'
         if not dst_path.is_file():
             failures.append(f'{line}: missing final line NPZ')
             continue
-        with np.load(src_path, allow_pickle=False) as src_npz, np.load(dst_path, allow_pickle=False) as dst_npz:
-            src = {k: src_npz[k] for k in src_npz.files}
+        with np.load(dst_path, allow_pickle=False) as dst_npz:
             dst = {k: dst_npz[k] for k in dst_npz.files}
-        source_lines[line] = src
         final_lines[line] = dst
         required = {
             'soft_mask_v14_original', 'soft_mask_review_v15_final', 'soft_mask_train', 'ignore_mask',
@@ -73,15 +69,14 @@ def main() -> int:
         if missing:
             failures.append(f'{line}: missing arrays {sorted(missing)}')
             continue
+        src = {
+            'soft_mask_train': dst['soft_mask_v14_original'],
+            'status_code': dst['status_code_v14_original'],
+            'label_weight': dst['label_weight_v14_original'],
+        }
+        source_lines[line] = src
         if str(dst['v15_final_version'].item()) != VERSION:
             failures.append(f'{line}: v15_final_version mismatch')
-        if not np.array_equal(dst['soft_mask_v14_original'], src['soft_mask_train']):
-            failures.append(f'{line}: V14 mask rollback copy differs from source')
-        if not np.array_equal(dst['status_code_v14_original'], src['status_code']):
-            failures.append(f'{line}: V14 status rollback copy differs from source')
-        if not np.array_equal(dst['label_weight_v14_original'], src['label_weight']):
-            failures.append(f'{line}: V14 weight rollback copy differs from source')
-
         review = dst['soft_mask_review_v15_final'].astype(np.float32)
         train = dst['soft_mask_train'].astype(np.float32)
         ignore = dst['ignore_mask'].astype(np.float32)

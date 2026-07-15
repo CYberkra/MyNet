@@ -7,9 +7,7 @@ BAD = 0
 WARN = 0
 
 LINE6_ALLOWED_DATA_ROOTS = {
-    "data_corrected_v1_4_terrain_direction",
-    "data_audited_v16_20260627",
-    "data_audited_v17_line9_consistent",
+    "data/measured/yingshan_v15",
 }
 
 

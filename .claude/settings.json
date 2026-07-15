@@ -65,16 +65,6 @@
             "timeout": 10
           }
         ]
-      },
-      {
-        "matcher": "Bash(convert_pilot_to_training|convert_batch_v1_to_training)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/npz_validation.py",
-            "timeout": 10
-          }
-        ]
       }
     ]
   }

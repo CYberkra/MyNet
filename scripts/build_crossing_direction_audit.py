@@ -189,9 +189,9 @@ def corrected_subsurface_delay_ns(center_time_ns: float, flight_height_m: float)
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-root", default="data_corrected_v1_4_terrain_direction")
+    parser.add_argument("--data-root", default="data/measured/yingshan_v15")
     parser.add_argument("--out-dir", default="reports/yingshan_direction_profile_audit")
-    parser.add_argument("--profile-archive", default="data_corrected_v1_4_terrain_direction/source/ying_shan_profiles_and_boreholes.zip")
+    parser.add_argument("--profile-archive", default="data/measured/yingshan_v15/source/ying_shan_profiles_and_boreholes.zip")
     args = parser.parse_args()
     data_root = Path(args.data_root)
     if not data_root.is_absolute():

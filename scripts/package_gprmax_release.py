@@ -17,7 +17,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE_ROOT = (
-    ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "02_released_solver_evidence"
+    ROOT / "data" / "simulations" / "v2" / "02_released_solver_evidence"
 ).resolve()
 ALLOWED_CLASSES = {
     "source_only",

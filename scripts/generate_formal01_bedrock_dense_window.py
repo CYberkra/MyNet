@@ -24,7 +24,7 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
+DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
 FAMILY_ID = "FORMAL01_BEDROCK_DENSE_WINDOW"
 LIFECYCLE_STATE = "archived_causal_regression"
 C0 = 299_792_458.0
