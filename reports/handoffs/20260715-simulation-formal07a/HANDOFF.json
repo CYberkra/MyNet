@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "task_id": "20260715-simulation-formal07a",
+  "title": "FORMAL07A continuous stratigraphy pre-solver release",
+  "status": "complete",
+  "work_type": "simulation",
+  "created_at": "2026-07-15T08:43:24+00:00",
+  "updated_at": "2026-07-15T08:46:00+00:00",
+  "implementation": {
+    "branch": "agent/formal07a-continuous-stratigraphy-20260715",
+    "implementation_head": "9cff1a4a043586bc5f08fe1f80e02002b3a745ab",
+    "base_branch": "master",
+    "base_commit": "58755c32e3fdb014233d5ad1a5fd9297ad6e2d82",
+    "remote": "https://github.com/CYberkra/MyNet.git",
+    "worktree_dirty": false,
+    "changed_files": [
+      ".claude/skills/gprmax-physics-audit/SKILL.md",
+      "README.md",
+      "data/contracts/dataset_v2/dataset_manifest.json",
+      "data/contracts/dataset_v2/human_audit_manifest.csv",
+      "data/contracts/dataset_v2/simulation_cases.csv",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/FILE_SHA256.csv",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/RUN_COMMANDS.md",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/air_reference.in",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/full_scene.in",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/geology_indices.h5",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/geometry_check_control.in",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/geometry_check_full.in",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/basal_interface_depth_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/flight_height_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_basal_depth_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_basal_y_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_ground_y_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_transition_thickness_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_transition_top_y_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/full_x_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/geometric_reference_arrival_time_ns.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/receiver_x_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/source_referenced_arrival_time_ns.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/source_x_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/trace_midpoint_x_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/labels/transition_thickness_m.npy",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/materials_full.txt",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/materials_no_basal.txt",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/no_basal_contrast_control.in",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/preview_FORMAL06C_vs_FORMAL07A_geometry.png",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/preview_geometry_and_strict_pair_contrast.png",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/preview_model_structure_enhanced.png",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/scene_manifest.json",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/source_waveform.txt",
+      "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_POLICY.json",
+      "data/simulations/v2/simulation_asset_registry.json",
+      "docs/SIMULATION_ASSET_POLICY.md",
+      "docs/current_state.md",
+      "reports/formal07a_continuous_stratigraphy_20260715/PRE_SOLVER_AUDIT.md",
+      "reports/formal07a_continuous_stratigraphy_20260715/attenuation_budget.json",
+      "reports/formal07a_continuous_stratigraphy_20260715/static_audit/air_reference.json",
+      "reports/formal07a_continuous_stratigraphy_20260715/static_audit/full_scene.json",
+      "reports/formal07a_continuous_stratigraphy_20260715/static_audit/no_basal_contrast_control.json",
+      "scripts/generate_formal06_interface_conditioned_development.py",
+      "scripts/generate_formal07a_continuous_stratigraphy_development.py",
+      "tests/test_formal07a_continuous_stratigraphy_development.py"
+    ]
+  },
+  "scope": {
+    "objective": "Create and audit the FORMAL06C geology-morphology successor without starting a long solver run",
+    "in_scope": [
+      "Add a reproducible FORMAL07A source deck and strict full/no-basal/air controls",
+      "Replace only the geology morphology factor group while locking source, materials, grid, and acquisition",
+      "Generate fixed-scale and enhanced pre-solver previews",
+      "Run static input, attenuation, checksum, skill, unit-test, and project-contract validation",
+      "Register the development-only case in simulation and dataset governance"
+    ],
+    "out_of_scope": [
+      "Any gprMax solver execution",
+      "Visible-phase label extraction or training-data promotion",
+      "Independent non-Line9-conditioned formal family generation",
+      "Changes to AeroPath model or training configuration"
+    ]
+  },
+  "changes": [
+    "Added FORMAL07A with gentler non-periodic basal relief and continuous warped multiscale stratigraphy",
+    "Kept GABOR80, FORMAL06C constitutive values, native 256-trace acquisition, and strict local-cover control mapping fixed",
+    "Extended the FORMAL06 generator with injected profile and bulk-field builders without changing existing defaults",
+    "Added pre-solver reports, provenance hashes, governance entries, tests, and reusable skill guidance"
+  ],
+  "artifacts": [
+    {
+      "path": "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/scene_manifest.json",
+      "role": "authoritative source and governance manifest",
+      "sha256": "bb7fc4bde921f63633df5e40cff03e0fc94d5522281244415d449543bccde043"
+    },
+    {
+      "path": "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/preview_model_structure_enhanced.png",
+      "role": "human-readable enhanced geometry preview",
+      "sha256": "981d7a94c53e60c856158d2cb7fd2119b0eb24066639656275db57dac83d9f2c"
+    },
+    {
+      "path": "reports/formal07a_continuous_stratigraphy_20260715/PRE_SOLVER_AUDIT.md",
+      "role": "pre-solver decision and validation report",
+      "sha256": "ade8f32a16743f542ed86efb2a5f7bb6cc779f6df821ef70c145b2436bdc4aab"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python -m pytest -q tests/test_formal06_interface_conditioned_development.py tests/test_formal06b_tempered_interface_development.py tests/test_formal06c_subtle_interface_development.py tests/test_formal07a_continuous_stratigraphy_development.py tests/test_simulation_v2.py tests/test_simulation_v2_overnight_contract.py",
+      "status": "passed",
+      "result": "35 passed",
+      "timestamp": "2026-07-15T08:42:00+00:00"
+    },
+    {
+      "command": "python scripts/validate_project_contracts.py",
+      "status": "passed",
+      "result": "ok=true; four simulation cases and four human-audit records are consistent",
+      "timestamp": "2026-07-15T08:42:00+00:00"
+    },
+    {
+      "command": "python audit_gprmax_input.py full_scene.in/no_basal_contrast_control.in/air_reference.in",
+      "status": "passed",
+      "result": "all three decks passed with zero errors and zero warnings",
+      "timestamp": "2026-07-15T08:36:00+00:00"
+    },
+    {
+      "command": "python quick_validate.py .claude/skills/gprmax-physics-audit",
+      "status": "passed",
+      "result": "Skill is valid",
+      "timestamp": "2026-07-15T08:40:00+00:00"
+    }
+  ],
+  "decisions": [
+    "FORMAL07A remains permanently Line9-conditioned and forbidden from formal training",
+    "No long solver run starts before project-owner review of the geometry preview",
+    "Continuous stratigraphy is tested without point targets, isolated inclusions, or vertical partitions",
+    "The first runtime gate is a one-trace strict pair rather than a native 256-trace run"
+  ],
+  "risks": [
+    "The stronger vertical material organisation may produce an overly coherent horizontal comb; only a solver B-scan can resolve this",
+    "Geometry acceptance does not establish causal response, visible phase, measured realism, or training eligibility"
+  ],
+  "blockers": [],
+  "next_actions": [
+    {
+      "priority": "P0",
+      "action": "Run FORMAL07A one-trace full/no-basal causal smoke after project-owner preview acceptance",
+      "owner": "simulation agent",
+      "done_when": "full/control outputs align, early leakage is negligible, and the target-window signed difference is causal and finite"
+    },
+    {
+      "priority": "P1",
+      "action": "Run a blind local full-scene morphology checkpoint only after the one-trace pair passes",
+      "owner": "simulation agent and project owner",
+      "done_when": "the unlabelled B-scan is reviewed for useful background texture without a horizontal ringing comb"
+    }
+  ],
+  "resume": {
+    "required_capabilities": [
+      "gprmax_gpu"
+    ],
+    "entry_document": "reports/formal07a_continuous_stratigraphy_20260715/PRE_SOLVER_AUDIT.md",
+    "command": "python scripts/run_native_256_release_pilot.py data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT --run-id formal07a_smoke1 --trace-count 1 --skip-air-reference --execute"
+  }
+}
