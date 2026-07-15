@@ -30,10 +30,10 @@ ignore regions. Canonical arrays remain in acquisition order.
 - FORMAL06A: rejected because the interface response was overstrong.
 - FORMAL06B: rejected because the tempered response remained too dominant.
 - FORMAL06C: human-accepted development morphology with released evidence.
-- FORMAL07A: development successor with gentler basal relief and continuous
-  multiscale stratigraphy. Static/attenuation checks, the one-trace strict
-  full/no-basal causal smoke, and an eight-position scan-wide sparse morphology
-  check pass. It still has no released or training-eligible solver evidence.
+- FORMAL07A: causal/runtime checks pass, but the strict common-trace blind
+  comparison rejects it as FORMAL06C's successor. Its cover is too strongly
+  and regularly stratified, while its basal path is too flat and repetitive.
+  It remains an unreleased regression ablation only.
 - All four are Line9-conditioned and prohibited from formal training.
 - No independent V2 scene family is training-approved yet.
 
@@ -55,8 +55,9 @@ before changing the formal config.
 
 ## Next work
 
-1. Run the 32-position distributed FORMAL07A full/no-basal gate to test
-   continuity and causal visibility across the scan before any 256-trace run.
+1. Keep FORMAL06C as the accepted development morphology. Design the next
+   ablation from FORMAL06C, preserving its basal path and wavelet character
+   while adding only weak, aperiodic, non-slab-like background texture.
 2. Design independent V2 positive and true-negative scene families without
    using Line9 labels, geometry, timing, or morphology as a generator prior.
 3. Solve matched positive controls and promote only cases passing numerical,

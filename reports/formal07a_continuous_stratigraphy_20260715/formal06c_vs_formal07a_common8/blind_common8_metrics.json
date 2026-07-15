@@ -1,0 +1,31 @@
+{
+  "schema": "gprmax_common_trace_comparison_v1",
+  "left_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "right_case_id": "FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
+  "common_canonical_trace_indices": [
+    0,
+    32,
+    64,
+    96,
+    128,
+    160,
+    192,
+    224
+  ],
+  "common_trace_count": 8,
+  "time_window_ns": 500.0,
+  "output_samples": 358,
+  "component": "Ez",
+  "agc_window": 13,
+  "time_power": 1.5,
+  "shared_p995_scales": {
+    "Raw full-scene Ez": 187.47765144348145,
+    "Background suppression + time^1.5": 0.004004686404950916,
+    "Background suppression + AGC(13)": 1.7355635982751831
+  },
+  "reference_overlay": false,
+  "horizontal_interpolation": "none; nearest-neighbour expansion of sparse trace columns",
+  "left_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "right_output": "data/simulations/v2/01_solver_runs/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/formal07a_blind8_span_full_20260715/full_scene_merged.out",
+  "output": "reports/formal07a_continuous_stratigraphy_20260715/formal06c_vs_formal07a_common8/blind_common8.png"
+}

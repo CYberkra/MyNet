@@ -197,6 +197,16 @@ additional gates before adding stochastic complexity:
    total thickness varies smoothly. Likewise, a quantised stochastic property
    field must not substitute for a geologically plausible multiscale texture.
    Keep such cases as regression controls if they fail the morphology review.
+9. When an existing family has an accepted basal morphology, lock its basal
+   path, transition, source, materials, grid, and acquisition before changing
+   cover texture. Compare the predecessor and candidate at identical canonical
+   trace positions, time crop, processing, and joint display scale. Do not
+   horizontally interpolate a sparse comparison into apparent continuity.
+   Review a label-free image first, then open material references only to check
+   that the blind decision followed the intended event. Reject continuous
+   stratigraphy that creates strong regular layer stacks, excessive wavelet
+   repetition, or background energy that competes with the basal response,
+   even when its causal and path-tracking metrics pass.
 
 The FORMAL01 F0 baseline (2026-07-15) passed this mechanism gate with a
 100 MHz Ricker proxy, 0.025 m grid, 256 traces at 0.10 m spacing, and a

@@ -1,5 +1,10 @@
 # FORMAL07A Runtime Gate Audit
 
+> Subsequent decision: a strict common-trace blind comparison with FORMAL06C
+> rejected FORMAL07A as its visual successor. The causal/runtime passes below
+> remain valid, but the proposed 32-trace next gate is cancelled. See
+> `FORMAL06C_VS_FORMAL07A_DECISION.md`.
+
 Date: 2026-07-15
 
 Case: `FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT`
@@ -81,7 +86,6 @@ audits continue to prefer `stem_merged.out`. Regression tests cover both cases.
 - no visible-phase training label is released
 - no 256-trace run is authorized by this audit
 
-Next gate: solve a 32-position distributed matched `full_scene` and
-`no_basal_contrast_control` pair (stride 8), then run continuity, causal,
-detectability, and blind morphology review. Only a pass may authorize the
-full 256-trace matched pair.
+Historical proposed gate: a 32-position distributed matched pair. This gate
+was cancelled after the common-trace visual decision; no further FORMAL07A
+solver run is authorized.

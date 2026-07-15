@@ -33,12 +33,12 @@
     {
       "case_id": "FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
       "source_dir": "data/simulations/v2/00_controls/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT",
-      "status": "one_trace_causal_and_sparse_morphology_passed",
+      "status": "rejected_over_stratified_background",
       "formal_training_allowed": false,
       "line9_conditioned": true,
       "solver_evidence_released": false,
-      "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/RUNTIME_GATE_AUDIT.md",
-      "next_gate": "32-trace distributed matched full/no-basal pair with continuity and blind morphology review"
+      "decision_report": "reports/formal07a_continuous_stratigraphy_20260715/FORMAL06C_VS_FORMAL07A_DECISION.md",
+      "next_gate": "retain as causal regression only; design a FORMAL06C-derived weak-background ablation before any further solver run"
     }
   ]
 }

@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 
 import scripts.audit_full_scene_morphology as morphology
+import scripts.compare_gprmax_common_traces as comparison
 import scripts.preview_gprmax_raw_and_agc as preview
 
 
@@ -80,6 +81,22 @@ def test_preview_selects_canonical_reference_for_sparse_subset(tmp_path: Path, m
     )
 
     assert result["visible_phase_overlay"] is True
+
+
+def test_common_trace_comparison_matches_canonical_positions() -> None:
+    common, left_columns, right_columns = comparison.common_trace_columns(
+        np.arange(0, 256, 8),
+        np.arange(0, 256, 32),
+    )
+    assert common.tolist() == [0, 32, 64, 96, 128, 160, 192, 224]
+    assert left_columns.tolist() == [0, 4, 8, 12, 16, 20, 24, 28]
+    assert right_columns.tolist() == list(range(8))
+
+
+def test_common_trace_comparison_uses_one_shared_scale() -> None:
+    left = np.asarray([[-1.0, 0.5]])
+    right = np.asarray([[3.0, -2.0]])
+    assert comparison.shared_quantile_scale(left, right, quantile=1.0) == 3.0
 
 
 def test_full_only_audit_records_partial_control_and_blocks_promotion(tmp_path: Path, monkeypatch) -> None:
