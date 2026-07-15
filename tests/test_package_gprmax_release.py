@@ -86,6 +86,11 @@ def test_rejects_unmerged_trace_output(tmp_path: Path) -> None:
         release._validate_destination(path.name)
 
 
+def test_rejects_vti_geometry_view_from_release() -> None:
+    with pytest.raises(ValueError, match="forbidden release artifact"):
+        release._validate_destination("geometry/geometry_check_full.vti")
+
+
 def test_development_release_requires_accepted_human_review(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
