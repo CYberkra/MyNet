@@ -460,7 +460,10 @@ def extract_visible_phase(
     The control scene must be identical except that basal material contrast is
     removed. The envelope locates the target wavelet; the returned phase is the
     strongest signed sample near the envelope maximum. This is a post-solver
-    observable and is kept separate from the geometric arrival.
+    observable and is kept separate from the geometric arrival. When continuity
+    is enabled, ``max_trace_step_ns`` limits the change in path residual relative
+    to the supplied reference, not the absolute time change. A sloping physical
+    interface is therefore not penalised merely for following that slope.
     """
 
     from scipy.signal import hilbert
@@ -510,13 +513,17 @@ def extract_visible_phase(
             if j == 0:
                 costs[:, j] = unary
                 continue
+            reference_step_samples = (geom[j] - geom[j - 1]) / dt_ns
             for sample in np.flatnonzero(allowed):
-                lo = max(0, sample - max_step_samples)
-                hi = min(t.size, sample + max_step_samples + 1)
+                expected_previous = float(sample) - reference_step_samples
+                lo = max(0, int(np.ceil(expected_previous - max_step_samples)))
+                hi = min(t.size, int(np.floor(expected_previous + max_step_samples)) + 1)
+                if hi <= lo:
+                    continue
                 previous = costs[lo:hi, j - 1]
                 if not np.isfinite(previous).any():
                     continue
-                offsets = np.arange(lo, hi) - sample
+                offsets = np.arange(lo, hi, dtype=np.float64) - expected_previous
                 candidate = previous + 0.05 * offsets.astype(np.float64) ** 2
                 choice = int(np.argmin(candidate))
                 costs[sample, j] = unary[sample] + candidate[choice]
@@ -553,13 +560,17 @@ def extract_visible_phase(
                     if j == 0:
                         phase_costs[:, j] = unary
                         continue
+                    reference_step_samples = (envelope_center[j] - envelope_center[j - 1]) / dt_ns
                     for sample in np.flatnonzero(allowed):
-                        lo = max(0, sample - max_step_samples)
-                        hi = min(t.size, sample + max_step_samples + 1)
+                        expected_previous = float(sample) - reference_step_samples
+                        lo = max(0, int(np.ceil(expected_previous - max_step_samples)))
+                        hi = min(t.size, int(np.floor(expected_previous + max_step_samples)) + 1)
+                        if hi <= lo:
+                            continue
                         previous = phase_costs[lo:hi, j - 1]
                         if not np.isfinite(previous).any():
                             continue
-                        offsets = np.arange(lo, hi) - sample
+                        offsets = np.arange(lo, hi, dtype=np.float64) - expected_previous
                         candidate = previous + 0.05 * offsets.astype(np.float64) ** 2
                         choice = int(np.argmin(candidate))
                         phase_costs[sample, j] = unary[sample] + candidate[choice]

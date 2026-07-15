@@ -57,6 +57,31 @@ def test_preview_uses_manifest_protected_window_without_extrapolation(tmp_path: 
     assert result["protected_end_ns"] == 500.0
 
 
+def test_preview_selects_canonical_reference_for_sparse_subset(tmp_path: Path, monkeypatch) -> None:
+    run_dir = tmp_path / "run"
+    run_dir.mkdir()
+    _write_run_contract(run_dir, 4)
+    scene = json.loads((run_dir / "scene_manifest.json").read_text(encoding="utf-8"))
+    scene["grid"]["trace_count"] = 16
+    (run_dir / "scene_manifest.json").write_text(json.dumps(scene), encoding="utf-8")
+    run = json.loads((run_dir / "run_manifest.json").read_text(encoding="utf-8"))
+    run["selected_trace_indices_zero_based"] = [0, 5, 10, 15]
+    (run_dir / "run_manifest.json").write_text(json.dumps(run), encoding="utf-8")
+    raw = np.ones((651, 4), dtype=np.float32)
+    monkeypatch.setattr(preview, "read_merged_bscan", lambda *_args, **_kwargs: (1e-9, raw, {}))
+    reference = tmp_path / "reference.npy"
+    np.save(reference, np.linspace(300.0, 360.0, 16, dtype=np.float32))
+
+    result = preview.render_preview(
+        run_dir,
+        tmp_path / "preview.png",
+        visible_phase_path=reference,
+        processing="time-power",
+    )
+
+    assert result["visible_phase_overlay"] is True
+
+
 def test_full_only_audit_records_partial_control_and_blocks_promotion(tmp_path: Path, monkeypatch) -> None:
     run_dir = tmp_path / "run"
     run_dir.mkdir()
@@ -84,5 +109,8 @@ def test_full_only_audit_records_partial_control_and_blocks_promotion(tmp_path: 
     assert result["gates"]["full_output_contract_pass"] is True
     assert result["gates"]["full_resolution_causal_pair_pass"] is False
     assert result["gates"]["formal_promotion_pass"] is False
+    assert morphology._portable_path(
+        morphology.ROOT / "reports" / "audit.json"
+    ) == "reports/audit.json"
     assert (output_dir / "full_only_morphology_audit.json").is_file()
     assert (output_dir / "full_only_morphology_path_not_for_training.npy").is_file()

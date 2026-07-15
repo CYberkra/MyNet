@@ -1,0 +1,28 @@
+{
+  "schema": "formal03_source_selection_v1",
+  "date": "2026-07-15",
+  "selected_source": "FORMAL03_CORRELATED_COVER_GABOR80",
+  "selection_scope": "successor_geology_ablation_only",
+  "formal_training_allowed": false,
+  "formal_promotion_allowed": false,
+  "run_256_current_geometry": false,
+  "causal_evidence": "distributed_8_trace_full_control_pair",
+  "morphology_evidence": "24_trace_full_span_full_scene_only",
+  "full24_causal_pair_complete": false,
+  "reasons": [
+    "multi-cycle basal packet is closer to the development-only measured signal character",
+    "aligned peak frequency and spectral centroid are close to the Line9 diagnostic contract",
+    "corrected reference-relative extraction tracks the designed interface"
+  ],
+  "remaining_failures": [
+    "target_to_adjacent_background_rms_is_too_high",
+    "mid_depth_background_is_too_clean",
+    "target_dropout_is_too_low",
+    "dense_local_coherence_not_yet_tested"
+  ],
+  "next_ablation_axes": [
+    "weaker_basal_contrast",
+    "stronger_correlated_non_target_cover_texture",
+    "limited_local_coherence_or_attenuation_variation"
+  ]
+}

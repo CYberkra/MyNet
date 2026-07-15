@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL03_CORRELATED_COVER_GABOR80/formal03_smoke1_20260715",
+  "source_case_dir": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL03_CORRELATED_COVER_GABOR80",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 0,
+  "reference_path": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL03_CORRELATED_COVER_GABOR80/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 424.7647399902344,
+  "difference_envelope_pick_ns": 403.47141084440096,
+  "difference_pick_offset_ns": -21.29332914583341,
+  "target_window_ns": [
+    369.7647399902344,
+    479.7647399902344
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.0004705953630178606,
+  "pre_target_difference_rms": 2.2686002690929632e-05,
+  "target_to_pre_target_difference_db": 26.337793286136687,
+  "full_direct_rms": 52.27340513533041,
+  "control_direct_rms": 52.273405148321494,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 55.0
+    }
+  }
+}

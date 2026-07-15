@@ -18,6 +18,13 @@ from pgdacsnet.simulation_v2 import extract_visible_phase  # noqa: E402
 from scripts.postprocess_physical_sim_v2 import read_merged_bscan  # noqa: E402
 
 
+def _portable_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path.resolve())
+
+
 def _rms(values: np.ndarray) -> float:
     data = np.asarray(values, dtype=np.float64)
     return float(np.sqrt(np.mean(np.square(data)))) if data.size else 0.0
@@ -84,10 +91,22 @@ def audit(
     protected = time_ns <= protected_end_ns
     protected_time = time_ns[protected]
     protected_raw = raw[protected]
-    expected_traces = int(scene["grid"]["trace_count"])
+    declared_traces = int(scene["grid"]["trace_count"])
+    selected = np.asarray(run.get("selected_trace_indices_zero_based", []), dtype=np.int64)
+    expected_traces = int(run.get("requested_trace_count", selected.size or declared_traces))
+    trace_stride = int(run.get("trace_stride", 1))
     finite = bool(np.isfinite(raw).all())
 
-    reference = np.load(run_dir / "labels" / "geometric_reference_arrival_time_ns.npy").astype(np.float64)
+    reference_path = run_dir / "labels" / "source_referenced_arrival_time_ns.npy"
+    reference_semantics = "geometric_interface_plus_explicit_source_reference_delay"
+    if not reference_path.is_file():
+        reference_path = run_dir / "labels" / "geometric_reference_arrival_time_ns.npy"
+        reference_semantics = "geometric_interface_only"
+    reference = np.load(reference_path).astype(np.float64)
+    if reference.shape == (declared_traces,) and raw.shape[1] != declared_traces:
+        if selected.shape != (raw.shape[1],):
+            raise ValueError("run manifest selection does not match solved subset")
+        reference = reference[selected]
     if reference.shape != (raw.shape[1],):
         raise ValueError(f"reference shape {reference.shape} does not match {raw.shape[1]} traces")
     common_mode = np.median(protected_raw, axis=1, keepdims=True)
@@ -100,7 +119,7 @@ def audit(
         search_half_width_ns=35.0,
         phase_half_width_ns=8.0,
         enforce_continuity=True,
-        max_trace_step_ns=5.6,
+        max_trace_step_ns=5.6 * trace_stride,
         geometric_anchor_weight=2.0,
     )
     if not np.isfinite(morphology_path).all():
@@ -146,6 +165,7 @@ def audit(
     )
 
     steps = np.abs(np.diff(morphology_path))
+    residual_steps = np.abs(np.diff(morphology_path - reference))
     reference_range = float(np.ptp(reference))
     path_range = float(np.ptp(morphology_path))
     result: dict[str, object] = {
@@ -153,14 +173,14 @@ def audit(
         "case_id": scene["case_id"],
         "run_id": run.get("run_id") or run_dir.name,
         "component": component,
-        "status": "development_only_full_complete_control_partial",
+        "status": "development_only_full_scene_morphology",
         "claim_limits": {
             "causal_attribution_allowed": False,
             "formal_training_promotion_allowed": False,
             "visible_phase_training_label_allowed": False,
             "reason": (
-                "The full scene is complete, but the native-256 no-basal control was stopped "
-                f"after {control_trace_count} traces."
+                "This is a full-scene morphology audit only; a matched no-basal control is "
+                f"not complete ({control_trace_count} unmerged control traces found)."
             ),
         },
         "execution_state": {
@@ -173,13 +193,18 @@ def audit(
         },
         "solver_contract": {
             "expected_trace_count": expected_traces,
+            "declared_trace_count": declared_traces,
             "actual_trace_count": int(raw.shape[1]),
+            "trace_stride": trace_stride,
+            "selected_trace_indices_zero_based": selected.tolist(),
             "native_sample_count": int(raw.shape[0]),
             "dt_s": float(dt_s),
             "actual_end_ns": float(time_ns[-1]),
             "protected_end_ns": protected_end_ns,
             "finite": finite,
-            "trace_contract_file": str(trace_contract_path),
+            "trace_contract_file": _portable_path(trace_contract_path),
+            "reference_file": _portable_path(reference_path),
+            "reference_semantics": reference_semantics,
         },
         "full_only_morphology": {
             "semantics": "continuous signed phase in background-removed full scene; not a causal full-minus-control phase",
@@ -190,6 +215,9 @@ def audit(
             "median_path_minus_geometric_ns": float(np.median(morphology_path - reference)),
             "path_step_p95_ns": float(np.percentile(steps, 95)),
             "path_step_max_ns": float(np.max(steps)),
+            "path_residual_step_p95_ns": float(np.percentile(residual_steps, 95)),
+            "path_residual_step_max_ns": float(np.max(residual_steps)),
+            "path_residual_step_limit_ns": 5.6 * trace_stride,
             "target_to_adjacent_background_rms": target_to_background,
             "target_envelope_cv": float(np.std(target_amplitude) / max(np.mean(target_amplitude), 1e-30)),
             "target_dropout_fraction_below_25pct_median": dropout,
@@ -207,11 +235,13 @@ def audit(
         and raw.shape[1] == expected_traces
         and result["full_only_morphology"]["path_to_geometric_correlation"] >= 0.80
         and result["full_only_morphology"]["dynamic_range_retention"] >= 0.60
-        and result["full_only_morphology"]["path_step_max_ns"] <= 5.6
+        and result["full_only_morphology"]["path_residual_step_max_ns"] <= 5.6 * trace_stride
         and dropout <= 0.05
     )
     result["gates"] = {
-        "full_output_contract_pass": bool(finite and raw.shape[1] == expected_traces and time_ns[-1] >= protected_end_ns),
+        "full_output_contract_pass": bool(
+            finite and raw.shape[1] == expected_traces and time_ns[-1] >= protected_end_ns
+        ),
         "full_only_geometry_tracking_pass": morphology_gate,
         "full_resolution_causal_pair_pass": False,
         "formal_promotion_pass": False,
@@ -220,7 +250,7 @@ def audit(
         line9 = json.loads(line9_contract_path.resolve().read_text(encoding="utf-8"))
         result["development_only_line9_comparison"] = {
             "restriction": "diagnostic comparison only; must not condition a formal strict-holdout generator",
-            "contract": str(line9_contract_path.resolve()),
+            "contract": _portable_path(line9_contract_path),
             "line9_signal": line9["signal"],
             "interpretation": "Numerical proximity is descriptive only because measured and FDTD processing domains differ.",
         }

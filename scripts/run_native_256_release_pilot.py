@@ -139,6 +139,7 @@ def stage_case(
     geometry_only: bool,
     trace_stride: int = 1,
     include_air_reference: bool = True,
+    full_scene_only: bool = False,
 ) -> Path:
     """Copy a source deck to a fresh solver work directory with provenance."""
     source_case_dir = source_case_dir.resolve()
@@ -169,7 +170,11 @@ def stage_case(
             raise FileNotFoundError(f"manifest geometry index does not exist: {source_geometry}")
         staged_geometry.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source_geometry, staged_geometry)
-    input_names = _input_names(source_manifest, include_air_reference=include_air_reference)
+    input_names = _input_names(
+        source_manifest,
+        include_air_reference=include_air_reference,
+        full_scene_only=full_scene_only,
+    )
     if trace_stride > 1:
         step_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_stride
         for input_name in input_names:
@@ -190,16 +195,24 @@ def stage_case(
             else "smoke_subset"
         ),
         "source_deck_read_only": True,
+        "causal_pair_complete": bool(
+            not full_scene_only and bool(source_manifest.get("target_presence"))
+        ),
     }
     (run_case_dir / "run_manifest.json").write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
     return run_case_dir
 
 
-def _input_names(manifest: dict[str, object], *, include_air_reference: bool = True) -> list[str]:
+def _input_names(
+    manifest: dict[str, object],
+    *,
+    include_air_reference: bool = True,
+    full_scene_only: bool = False,
+) -> list[str]:
     names = ["full_scene.in"]
-    if bool(manifest.get("target_presence")):
+    if bool(manifest.get("target_presence")) and not full_scene_only:
         names.append("no_basal_contrast_control.in")
-    if include_air_reference:
+    if include_air_reference and not full_scene_only:
         names.append("air_reference.in")
     return names
 
@@ -232,6 +245,14 @@ def main() -> int:
         "--skip-air-reference",
         action="store_true",
         help="Run only the causal full/control pair. Air remains a separate diagnostic, not a control substitute.",
+    )
+    parser.add_argument(
+        "--full-scene-only",
+        action="store_true",
+        help=(
+            "Run only full_scene for an early morphology decision. This mode cannot prove "
+            "causal attribution and is never release eligible."
+        ),
     )
     parser.add_argument("--geometry-only", action="store_true", help="Run geometry checks and remove VTI views afterwards.")
     parser.add_argument("--execute", action="store_true", help="Stage the deck and execute the listed commands.")
@@ -292,8 +313,12 @@ def main() -> int:
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_case_dir = args.run_dir.resolve() if args.run_dir else (runtime.solver_run_root / source_case_dir.name / run_id).resolve()
-    include_air_reference = not args.skip_air_reference
-    inputs = _input_names(manifest, include_air_reference=include_air_reference)
+    include_air_reference = not args.skip_air_reference and not args.full_scene_only
+    inputs = _input_names(
+        manifest,
+        include_air_reference=include_air_reference,
+        full_scene_only=args.full_scene_only,
+    )
     if not args.execute:
         print("PLAN ONLY: source deck will remain untouched. Add --execute to stage and run.")
         print(f"source deck: {source_case_dir}")
@@ -320,6 +345,7 @@ def main() -> int:
         geometry_only=args.geometry_only,
         trace_stride=args.trace_stride,
         include_air_reference=include_air_reference,
+        full_scene_only=args.full_scene_only,
     )
     log_dir = case_dir / "run_logs"
     preflight_dir = case_dir / "preflight"
@@ -344,7 +370,31 @@ def main() -> int:
         _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="geometry_passed", declared_trace_count=declared_trace_count)
         return 0
     if trace_count != declared_trace_count:
-        _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="smoke_subset_complete", requested_trace_count=trace_count, declared_trace_count=declared_trace_count, release_eligible=False, note="Subset runs must not be postprocessed or promoted as canonical 256-trace data.")
+        note = "Subset runs must not be postprocessed or promoted as canonical 256-trace data."
+        if args.full_scene_only:
+            note += " Full-scene-only morphology runs do not establish causal attribution."
+        _write_state(
+            case_dir,
+            completed_utc=datetime.now(timezone.utc).isoformat(),
+            status="smoke_subset_complete",
+            requested_trace_count=trace_count,
+            declared_trace_count=declared_trace_count,
+            release_eligible=False,
+            causal_pair_complete=False if args.full_scene_only else bool(manifest.get("target_presence")),
+            note=note,
+        )
+        return 0
+    if args.full_scene_only:
+        _write_state(
+            case_dir,
+            completed_utc=datetime.now(timezone.utc).isoformat(),
+            status="full_scene_morphology_complete",
+            requested_trace_count=trace_count,
+            declared_trace_count=declared_trace_count,
+            release_eligible=False,
+            causal_pair_complete=False,
+            note="Full scene is complete for morphology review only; no causal control was run.",
+        )
         return 0
     if args.skip_air_reference:
         _write_state(

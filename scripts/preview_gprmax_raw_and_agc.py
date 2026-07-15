@@ -113,11 +113,16 @@ def render_preview(
         processing_note = "Time-power gain is monotone with time and is for structural display only, not physical-amplitude comparison."
     else:
         raise ValueError("processing must be 'agc' or 'time-power'")
+    declared_count = int(scene["grid"]["trace_count"])
     curve = None
     if visible_phase_path is not None:
         candidate = np.load(visible_phase_path)
         if candidate.shape == (raw.shape[1],):
             curve = candidate.astype(np.float64)
+        elif candidate.shape == (declared_count,):
+            indices = np.asarray(manifest.get("selected_trace_indices_zero_based", []), dtype=np.int64)
+            if indices.shape == (raw.shape[1],):
+                curve = candidate[indices].astype(np.float64)
     raw_scale = float(np.quantile(np.abs(raw), 0.995))
     processed_scale = float(np.quantile(np.abs(processed), 0.995))
     width, height = 1760, 850
@@ -136,7 +141,6 @@ def render_preview(
     selected = manifest.get("selected_trace_indices_zero_based", [])
     spacing = float(scene["grid"]["trace_spacing_m"])
     stride = int(manifest.get("trace_stride", 1))
-    declared_count = int(scene["grid"]["trace_count"])
     run_kind = "full run" if raw.shape[1] == declared_count and stride == 1 else "subset"
     draw.text(
         (70, 32),

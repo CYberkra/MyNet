@@ -1,0 +1,19 @@
+{
+  "family_id": "FORMAL03_CORRELATED_COVER_SOURCE_ABLATION",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "shared_geology_sha256": "4b76e99da9c5fc5990a112042779c19be10a6f350294ed21d09e4e0719ac76c9",
+  "case_ids": [
+    "FORMAL03_CORRELATED_COVER_RICKER65",
+    "FORMAL03_CORRELATED_COVER_RICKER80",
+    "FORMAL03_CORRELATED_COVER_GABOR80"
+  ],
+  "selection_rule": "compare one-trace causal validity, then 24 distributed full/control traces at source-delay-aligned time; reject over-strong, over-uniform, or branch-dominated morphology",
+  "rejection_gates": {
+    "target_to_adjacent_background_rms_max": 8.0,
+    "path_envelope_cv_min": 0.3,
+    "path_dynamic_range_retention_min": 0.6,
+    "unexplained_periodic_or_crossing_branches_allowed": false
+  },
+  "no_full_256_before_pilot_pass": true
+}

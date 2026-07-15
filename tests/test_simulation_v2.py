@@ -176,6 +176,40 @@ def test_continuous_visible_phase_returns_signed_lobe_not_envelope_center() -> N
     assert np.max(np.abs(np.diff(continuous))) <= 5.6
 
 
+def test_continuous_visible_phase_follows_reference_slope_not_flat_distractor() -> None:
+    time = np.linspace(0, 700, 501)
+    geom = np.linspace(270.0, 390.0, 9)
+    full = np.zeros((501, geom.size), dtype=np.float32)
+    expected = geom + 5.6
+    for j, center in enumerate(expected):
+        target_delta = time - center
+        target = (target_delta / 5.0) * np.exp(-0.5 * (target_delta / 5.0) ** 2)
+        distractor_delta = time - 330.0
+        distractor = 1.15 * (distractor_delta / 4.0) * np.exp(
+            -0.5 * (distractor_delta / 4.0) ** 2
+        )
+        full[:, j] = target + distractor
+
+    continuous, _, _ = extract_visible_phase(
+        full,
+        np.zeros_like(full),
+        time,
+        geom,
+        search_half_width_ns=38.0,
+        enforce_continuity=True,
+        max_trace_step_ns=5.6,
+        geometric_anchor_weight=0.05,
+    )
+
+    residual = continuous - geom
+    assert np.ptp(continuous) >= 100.0
+    assert np.max(np.abs(np.diff(residual))) <= 5.6 + 1e-9
+    # The extractor returns the strongest signed lobe, not the envelope
+    # centre at ``expected``. In this synthetic bipolar wavelet that lobe is
+    # deliberately about 5 ns earlier and therefore lies close to ``geom``.
+    assert np.median(np.abs(continuous - geom)) <= 2.8
+
+
 def test_control_generator_and_static_validator(tmp_path: Path) -> None:
     out = tmp_path / "controls"
     env = os.environ.copy()

@@ -262,6 +262,40 @@ and spatial gates before any realistic clutter is added.
     ten-cells-per-wavelength guard. An 80-100 MHz source requires a finer grid
     or a separately validated reduced-domain equivalence model.
 
+### FORMAL03 Source and Path Lessons
+
+The FORMAL03 source ablation (2026-07-15) used one exact shared correlated-cover
+geometry at 0.03 m resolution to compare 65 MHz Ricker, 80 MHz Ricker, and a
+finite-duration zero-mean 80 MHz Gaussian-modulated source. Keep these lessons
+for later dense-interface families:
+
+1. Store both the material-interface arrival and the source-referenced arrival.
+   A custom waveform does not share gprMax's internal Ricker peak delay, so a
+   geometric search window alone can be systematically mis-centred.
+2. In both envelope and signed-phase dynamic programming, penalise the change
+   in residual relative to the supplied reference increment. Penalising the
+   absolute sample-to-sample time change creates a hidden preference for a flat
+   sidelobe and can falsely reject a correctly sloping causal event.
+3. Report absolute path steps for interpretation, but gate continuity on
+   residual steps. For sparse full-span pilots, scale the residual-step allowance
+   by the canonical trace stride and retain the unscaled per-trace equivalent.
+4. A `full_scene_only` run is legitimate for an early morphology stop. Its run
+   manifest must contain only the full-scene input, set
+   `causal_pair_complete=false`, and block release, causal attribution, and
+   visible-phase labels. Existing short full/control pairs remain the causal
+   evidence for the unchanged geometry.
+5. Do not judge a sparse B-scan as though interpolated columns were canonical
+   dense traces. Use it to reject source character and gross morphology; a
+   dense run is still required for local coherence and diffraction structure.
+6. The 80 MHz Gaussian-modulated source matched the development-only Line9
+   spectral peak/centroid more closely than the narrow Ricker controls and
+   produced the intended multi-cycle basal packet. It did not solve geology:
+   the 24-trace full-scene target/adjacent-background ratio remained about 6.43
+   versus 2.35 in the diagnostic measured contract, and the synthetic mid-depth
+   field remained too clean. Preserve this source for the successor ablation,
+   reduce basal contrast, and add geologically plausible non-target multiscale
+   texture. Do not condition a formal generator on the held-out measured line.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.

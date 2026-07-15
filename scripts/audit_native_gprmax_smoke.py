@@ -21,6 +21,21 @@ def _portable_path(path: Path) -> str:
         return str(path.resolve())
 
 
+def select_arrival_reference(source_case: Path) -> tuple[Path, str]:
+    """Prefer a source-delay-aware audit reference when the case declares one."""
+
+    reference_candidates = (
+        ("source_referenced_arrival_time_ns.npy", "geometric_interface_plus_explicit_source_reference_delay"),
+        ("reference_arrival_time_ns.npy", "legacy_case_reference"),
+        ("geometric_reference_arrival_time_ns.npy", "geometric_interface_only"),
+    )
+    for filename, semantics in reference_candidates:
+        candidate = source_case / "labels" / filename
+        if candidate.is_file():
+            return candidate, semantics
+    raise FileNotFoundError(f"no supported arrival reference exists below {source_case / 'labels'}")
+
+
 def _read_trace(path: Path, component: str) -> tuple[np.ndarray, dict[str, object]]:
     with h5py.File(path, "r") as handle:
         rx = handle["rxs/rx1"]
@@ -144,9 +159,7 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     source_case = Path(json.loads((case_dir / "run_manifest.json").read_text(encoding="utf-8"))["source_case_dir"])
     source_x = np.load(source_case / "labels" / "source_x_m.npy")
-    reference_path = source_case / "labels" / "reference_arrival_time_ns.npy"
-    if not reference_path.is_file():
-        reference_path = source_case / "labels" / "geometric_reference_arrival_time_ns.npy"
+    reference_path, reference_semantics = select_arrival_reference(source_case)
     reference_arrival = np.load(reference_path)
 
     traces: dict[str, np.ndarray] = {}
@@ -188,6 +201,8 @@ def main() -> int:
         "component": args.component,
         "air_reference_included": "air_reference" in traces,
         "trace_index": trace_index,
+        "reference_path": _portable_path(reference_path),
+        "reference_semantics": reference_semantics,
         "reference_arrival_ns": reference_ns,
         "difference_envelope_pick_ns": pick_ns,
         "difference_pick_offset_ns": pick_offset_ns,
