@@ -118,8 +118,14 @@ def _inside(child: Path, parent: Path) -> bool:
 def _set_spatial_step(input_path: Path, step_m: float) -> None:
     text = input_path.read_text(encoding="utf-8")
     replacement = f"{step_m:.12g} 0 0"
-    updated, source_count = re.subn(r"(?m)^(#src_steps:\s*)[^\r\n]+$", rf"\g<1>{replacement}", text)
-    updated, receiver_count = re.subn(r"(?m)^(#rx_steps:\s*)[^\r\n]+$", rf"\g<1>{replacement}", updated)
+    source_label = re.escape("#src_steps:")
+    receiver_label = re.escape("#rx_steps:")
+    updated, source_count = re.subn(
+        rf"(?m)^({source_label}\s*)[^\r\n]+$", rf"\g<1>{replacement}", text
+    )
+    updated, receiver_count = re.subn(
+        rf"(?m)^({receiver_label}\s*)[^\r\n]+$", rf"\g<1>{replacement}", updated
+    )
     if source_count != 1 or receiver_count != 1:
         raise RuntimeError(f"expected one source and receiver step declaration in {input_path}")
     input_path.write_text(updated, encoding="utf-8")
@@ -132,6 +138,7 @@ def stage_case(
     requested_trace_count: int,
     geometry_only: bool,
     trace_stride: int = 1,
+    include_air_reference: bool = True,
 ) -> Path:
     """Copy a source deck to a fresh solver work directory with provenance."""
     source_case_dir = source_case_dir.resolve()
@@ -162,9 +169,10 @@ def stage_case(
             raise FileNotFoundError(f"manifest geometry index does not exist: {source_geometry}")
         staged_geometry.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source_geometry, staged_geometry)
+    input_names = _input_names(source_manifest, include_air_reference=include_air_reference)
     if trace_stride > 1:
         step_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_stride
-        for input_name in _input_names(source_manifest):
+        for input_name in input_names:
             _set_spatial_step(run_case_dir / input_name, step_m)
     provenance = {
         "schema": "native_256_solver_run_v1",
@@ -174,6 +182,7 @@ def stage_case(
         "requested_trace_count": requested_trace_count,
         "declared_trace_count": declared_trace_count,
         "trace_stride": trace_stride,
+        "input_groups": [Path(name).stem for name in input_names],
         "selected_trace_indices_zero_based": selected_indices,
         "mode": "geometry_only" if geometry_only else (
             "full" if requested_trace_count == declared_trace_count and trace_stride == 1
@@ -186,11 +195,12 @@ def stage_case(
     return run_case_dir
 
 
-def _input_names(manifest: dict[str, object]) -> list[str]:
+def _input_names(manifest: dict[str, object], *, include_air_reference: bool = True) -> list[str]:
     names = ["full_scene.in"]
-    if bool(manifest["target_presence"]):
+    if bool(manifest.get("target_presence")):
         names.append("no_basal_contrast_control.in")
-    names.append("air_reference.in")
+    if include_air_reference:
+        names.append("air_reference.in")
     return names
 
 
@@ -218,6 +228,11 @@ def main() -> int:
     parser.add_argument("--run-id", help="Run identifier below runtime.solver_run_root (default: UTC timestamp).")
     parser.add_argument("--trace-count", type=int, help="Run 1, 32, 64, or the full declared trace count.")
     parser.add_argument("--trace-stride", type=int, default=1, help="Audit-only stride through canonical trace positions.")
+    parser.add_argument(
+        "--skip-air-reference",
+        action="store_true",
+        help="Run only the causal full/control pair. Air remains a separate diagnostic, not a control substitute.",
+    )
     parser.add_argument("--geometry-only", action="store_true", help="Run geometry checks and remove VTI views afterwards.")
     parser.add_argument("--execute", action="store_true", help="Stage the deck and execute the listed commands.")
     args = parser.parse_args()
@@ -261,7 +276,7 @@ def main() -> int:
     toolchain_tmp.mkdir(parents=True, exist_ok=True)
     env["TEMP"] = str(toolchain_tmp)
     env["TMP"] = str(toolchain_tmp)
-    if args.execute:
+    if args.execute and not args.geometry_only:
         env = _load_vcvars_environment(env, runtime.gprmax_vcvars)
         cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else None
         nvcc = (cuda_bin / "nvcc.exe") if cuda_bin else shutil.which("nvcc", path=env.get("PATH"))
@@ -277,7 +292,8 @@ def main() -> int:
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_case_dir = args.run_dir.resolve() if args.run_dir else (runtime.solver_run_root / source_case_dir.name / run_id).resolve()
-    inputs = _input_names(manifest)
+    include_air_reference = not args.skip_air_reference
+    inputs = _input_names(manifest, include_air_reference=include_air_reference)
     if not args.execute:
         print("PLAN ONLY: source deck will remain untouched. Add --execute to stage and run.")
         print(f"source deck: {source_case_dir}")
@@ -303,6 +319,7 @@ def main() -> int:
         requested_trace_count=trace_count,
         geometry_only=args.geometry_only,
         trace_stride=args.trace_stride,
+        include_air_reference=include_air_reference,
     )
     log_dir = case_dir / "run_logs"
     preflight_dir = case_dir / "preflight"
@@ -328,6 +345,17 @@ def main() -> int:
         return 0
     if trace_count != declared_trace_count:
         _write_state(case_dir, completed_utc=datetime.now(timezone.utc).isoformat(), status="smoke_subset_complete", requested_trace_count=trace_count, declared_trace_count=declared_trace_count, release_eligible=False, note="Subset runs must not be postprocessed or promoted as canonical 256-trace data.")
+        return 0
+    if args.skip_air_reference:
+        _write_state(
+            case_dir,
+            completed_utc=datetime.now(timezone.utc).isoformat(),
+            status="full_causal_pair_complete",
+            requested_trace_count=trace_count,
+            declared_trace_count=declared_trace_count,
+            release_eligible=False,
+            note="Full/control causal pair is complete. Existing postprocessing requires air_reference and was intentionally skipped.",
+        )
         return 0
     _run([str(gprmax_python), str(ROOT / "scripts" / "postprocess_physical_sim_v2.py"), str(case_dir)], cwd=case_dir, env=env, execute=True)
     _run([str(gprmax_python), str(ROOT / "scripts" / "validate_physical_sim_v2.py"), "--root", str(case_dir.parent)], cwd=ROOT, env=env, execute=True)

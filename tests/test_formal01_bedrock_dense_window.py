@@ -57,6 +57,9 @@ def test_generated_cases_are_independent_and_strictly_paired(tmp_path: Path) -> 
         manifest = json.loads((case_dir / "scene_manifest.json").read_text(encoding="utf-8"))
         assert manifest["line9_conditioned"] is False
         assert manifest["formal_training_allowed"] is False
+        assert manifest["promotion_allowed"] is False
+        assert manifest["lifecycle_state"] == "archived_causal_regression"
+        assert manifest["morphology_review"]["decision"] == "rejected_for_realism_and_training"
         assert manifest["geometry"]["discrete_anomaly_bodies"] == 0
         assert manifest["acquisition"]["trace_count"] == 256
         assert manifest["acquisition"]["spacing_m"] == 0.10

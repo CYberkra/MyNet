@@ -1,0 +1,14 @@
+#material: 12.50000000 0.0024000000 1 0 cover
+#material: 12.25000000 0.0023500000 1 0 transition_00
+#material: 11.75000000 0.0022500000 1 0 transition_01
+#material: 11.25000000 0.0021500000 1 0 transition_02
+#material: 10.75000000 0.0020500000 1 0 transition_03
+#material: 10.25000000 0.0019500000 1 0 transition_04
+#material: 9.75000000 0.0018500000 1 0 transition_05
+#material: 9.25000000 0.0017500000 1 0 transition_06
+#material: 8.75000000 0.0016500000 1 0 transition_07
+#material: 8.25000000 0.0015500000 1 0 transition_08
+#material: 7.75000000 0.0014500000 1 0 transition_09
+#material: 7.25000000 0.0013500000 1 0 transition_10
+#material: 6.75000000 0.0012500000 1 0 transition_11
+#material: 6.50000000 0.0012000000 1 0 bedrock

@@ -1,0 +1,273 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      188.55,
+      49.95,
+      0.045
+    ],
+    "grid_m": [
+      0.045,
+      0.045,
+      0.045
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 188.55,
+        "cells": 4190,
+        "realised_m": 188.54999999999998
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 49.95,
+        "cells": 1110,
+        "realised_m": 49.949999999999996
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.045,
+        "cells": 1,
+        "realised_m": 0.045
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 82.71,
+        "cells": 1838,
+        "realised_m": 82.71,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 37.98,
+        "cells": 844,
+        "realised_m": 37.98,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 82.89,
+        "cells": 1842,
+        "realised_m": 82.89,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 37.98,
+        "cells": 844,
+        "realised_m": 37.98,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 2,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 2,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geometry_check_control.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "formal02_ricker55": 55000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt",
+        "material_count": 14,
+        "shape": [
+          4190,
+          1110,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 13,
+        "dx_dy_dz": [
+          0.045,
+          0.045,
+          0.045
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "cover",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "transition_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.5,
+        "conductivity": 0.0024,
+        "id": "bedrock",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\00_controls\\FORMAL02_GRADED_BEDROCK_G0_BASELINE\\materials_no_basal.txt"
+      }
+    ],
+    "max_material_epsilon_r": 12.5,
+    "lambda_min_m": 0.5506111168841124,
+    "cells_per_lambda_min": 12.235802597424719,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 13
+  }
+}

@@ -26,6 +26,7 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "PGDA_SYNTH_DATASET_V2" / "00_controls"
 FAMILY_ID = "FORMAL01_BEDROCK_DENSE_WINDOW"
+LIFECYCLE_STATE = "archived_causal_regression"
 C0 = 299_792_458.0
 REGIONS = ("topsoil", "cover", "transition_1", "transition_2", "transition_3", "bedrock")
 
@@ -362,13 +363,21 @@ def generate_variant(output_root: Path, spec: Spec, variant: Variant) -> Path:
         "family_id": FAMILY_ID,
         "case_id": variant.case_id,
         "variant": asdict(variant),
-        "purpose": "independent dense-window cover-weathered-bedrock mechanism family",
+        "purpose": "archived cover-weathered-bedrock causal-control regression family",
+        "lifecycle_state": LIFECYCLE_STATE,
+        "promotion_allowed": False,
+        "permitted_use": "strict-pair and audit-tool regression only",
         "generator_path": "scripts/generate_formal01_bedrock_dense_window.py",
         "generator_sha256": sha256(Path(__file__).resolve()),
         "formal_training_allowed": False,
         "strict_line9_holdout_allowed": False,
         "line9_conditioned": False,
-        "training_block_reason": "requires runtime pairs, visible-phase extraction, source/guard convergence, and human review",
+        "training_block_reason": "permanently blocked after morphology review: layered wavelet combs, over-regular target response, unresolved guard convergence, and invalid visible-phase candidates",
+        "morphology_review": {
+            "decision": "rejected_for_realism_and_training",
+            "family_scale_up_allowed": False,
+            "review_report": "reports/formal01_bedrock_dense_window_20260714/FORMAL01_F0_SMOKE_STAGE_REPORT.md",
+        },
         "parameter_provenance": "independent generic lithology priors plus project-wide borehole depth range; no Line9-derived geometry, labels, or statistics",
         "source_proxy": "100 MHz Ricker pulse proxy; not an instrument-faithful SFCW synthesis",
         "terrain_stage": "flat ground and fixed 8 m height while subsurface physics are isolated",
@@ -411,7 +420,7 @@ def generate_variant(output_root: Path, spec: Spec, variant: Variant) -> Path:
     }
     (case_dir / "scene_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     (case_dir / "RUN_COMMANDS.md").write_text(
-        f"""# {variant.case_id}\n\nThis case is not trainable until the release gates in `scene_manifest.json` pass.\n\n```powershell\npython -m gprMax geometry_check_full.in --geometry-only\npython -m gprMax geometry_check_control.in --geometry-only\npython -m gprMax full_scene.in -n 8 --geometry-fixed -gpu 0\npython -m gprMax no_basal_contrast_control.in -n 8 --geometry-fixed -gpu 0\npython -m gprMax full_scene.in -n {spec.trace_count} --geometry-fixed -gpu 0\npython -m gprMax no_basal_contrast_control.in -n {spec.trace_count} --geometry-fixed -gpu 0\n```\n\nRun `air_reference.in` only when validating or changing the source/antenna proxy.\n""",
+        f"""# {variant.case_id}\n\nThis family is permanently archived as a causal-control regression. It must not be promoted, scaled to training data, or used to generate visible-phase labels.\n\nAllowed regression checks:\n\n```powershell\npython -m gprMax geometry_check_full.in --geometry-only\npython -m gprMax geometry_check_control.in --geometry-only\npython -m gprMax full_scene.in -n 8 --geometry-fixed -gpu 0\npython -m gprMax no_basal_contrast_control.in -n 8 --geometry-fixed -gpu 0\n```\n\nDo not start another {spec.trace_count}-trace F-series run. New realism work belongs to FORMAL02 or a later family.\n""",
         encoding="utf-8",
     )
     preview(case_dir, spec, indices, profile, full_rows, control_rows, variant)

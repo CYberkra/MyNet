@@ -207,6 +207,47 @@ wavelet-regular for the intended measured-line morphology. They are retained
 as causal-control regressions, not realism candidates, and must not be scaled
 to training data without a redesigned subsurface/source/processing contract.
 
+### FORMAL02 Graded-Bedrock Successor
+
+FORMAL02 replaces the failed F-series morphology with a deliberately smaller
+claim: a non-periodic cover-to-weathered-bedrock baseline that must pass causal
+and spatial gates before any realistic clutter is added.
+
+1. Generate the basal path from seeded generic multiscale priors over the full
+   solver domain, then crop the acquisition window. Reject crops that are nearly
+   quadratic, lack multiple smooth extrema, exceed the slope budget, or have too
+   little/too much vertical range. Do not read a measured line, label, waveform,
+   or held-out statistic in the generator.
+2. Use one shared indexed HDF5 geometry for full and no-basal models. In the
+   control, map every transition and bedrock index back to the cover material;
+   do not alter geometry or introduce a replacement interface.
+3. Bound the number of transition material levels by the thinnest transition in
+   cells. More named materials do not create a smoother model when several bins
+   have no voxels. Record the maximum adjacent epsilon and conductivity step.
+4. Keep the protected supervision window separate from the solver window. Size
+   lateral guards so the earliest lateral boundary round trip occurs after the
+   protected window; reserve the remaining samples for boundary diagnostics.
+5. A generated source deck must satisfy the shared runner schema (`target_presence`,
+   `grid.trace_count`, `grid.trace_spacing_m`, `grid.dl_m`, and
+   `geometry.index_file`). Exercise staging in a test before spending GPU time.
+6. Do not create a visible-phase label before a successful runtime pair. Store
+   only an explicitly geometric reference, then extract a signed visible phase
+   from `full - control` inside a declared search window.
+7. A one-trace gate may omit air when it records `air_reference_included=false`.
+   Air remains a later source/decomposition diagnostic, not a prerequisite for
+   proving basal causality.
+8. For a distributed sparse pilot, require full/control trace contracts, broad
+   span coverage, target/background contrast, no dropout, low control spatial
+   residual, correlation with the independent geometric path, and retention of
+   its dynamic range. Read the analysis time limit from the output HDF5 rather
+   than padding a shorter solver window to a historical constant.
+9. Never draw the candidate target path over a no-basal control panel. Such an
+   overlay can be mistaken for a physical control response. Report the measured
+   control residual numerically and keep the control image unannotated.
+10. Passing the sparse pilot does not promote the case. Run the full native trace
+    count, inspect raw/common-gain/difference-only views, and obtain a human
+    morphology decision before adding heterogeneity or exporting training data.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.

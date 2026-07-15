@@ -11,7 +11,8 @@ def test_all_control_manifests_preserve_sampling_and_governance():
     index = json.loads((CONTROLS/'control_index.json').read_text(encoding='utf-8'))
     assert index['formal_training_allowed'] is False
     assert index['line9_conditioned'] is False
-    assert index['case_count'] == 4
+    assert index['case_count'] == len(index['cases'])
+    assert index['case_count'] >= 4
     for item in index['cases']:
         case = CONTROLS/item['case_id']
         m = json.loads((case/'scene_manifest.json').read_text(encoding='utf-8'))
@@ -19,6 +20,11 @@ def test_all_control_manifests_preserve_sampling_and_governance():
         assert m['formal_training_allowed'] is False
         assert m['line9_conditioned'] is False
         assert m['reference_line'] is None
+        if not item['case_id'].startswith('CTRL'):
+            assert item['family'].startswith('macro')
+            assert g['trace_count'] > 0
+            assert g['trace_spacing_m'] > 0
+            continue
         assert g['trace_count'] == 256
         assert math.isclose(g['trace_spacing_m'], 0.09)
         assert math.isclose(g['trace_span_m'], 22.95)

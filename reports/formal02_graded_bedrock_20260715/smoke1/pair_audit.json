@@ -1,0 +1,72 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL02_GRADED_BEDROCK_G0_BASELINE/formal02_smoke1_20260715",
+  "source_case_dir": "data/PGDA_SYNTH_DATASET_V2/00_controls/FORMAL02_GRADED_BEDROCK_G0_BASELINE",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 0,
+  "reference_arrival_ns": 367.0572204589844,
+  "difference_envelope_pick_ns": 394.095759855821,
+  "difference_pick_offset_ns": 27.038539396836597,
+  "target_window_ns": [
+    332.0572204589844,
+    402.0572204589844
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.007215088325921922,
+  "pre_target_difference_rms": 1.0760360059579074e-05,
+  "target_to_pre_target_difference_db": 56.52829696465822,
+  "full_direct_rms": 31.50894844172521,
+  "control_direct_rms": 31.50894844407673,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 6126,
+      "dt_s": 1.0613944515373579e-10,
+      "grid_m": [
+        0.045,
+        0.045,
+        0.045
+      ],
+      "source_position_m": [
+        82.71,
+        37.98,
+        0.0
+      ],
+      "receiver_position_m": [
+        82.89,
+        37.98,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 6126,
+      "dt_s": 1.0613944515373579e-10,
+      "grid_m": [
+        0.045,
+        0.045,
+        0.045
+      ],
+      "source_position_m": [
+        82.71,
+        37.98,
+        0.0
+      ],
+      "receiver_position_m": [
+        82.89,
+        37.98,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

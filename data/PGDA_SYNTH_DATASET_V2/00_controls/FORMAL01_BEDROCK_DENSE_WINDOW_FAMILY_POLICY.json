@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "family_id": "FORMAL01_BEDROCK_DENSE_WINDOW",
+  "lifecycle_state": "archived_causal_regression",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "full_scale_rerun_allowed": false,
+  "permitted_use": [
+    "strict full/no-basal pair regression",
+    "visible-phase extractor negative regression",
+    "audit and provenance tooling regression"
+  ],
+  "rejection_reasons": [
+    "three discrete transition sublayers create coherent parallel reflector packets",
+    "basal profile contains explicit periodic components",
+    "target continuity is substantially more regular than measured-line references",
+    "visible-phase candidates do not reliably follow the geometric reference",
+    "six-metre physical side guards have no accepted domain-equivalence proof"
+  ],
+  "authoritative_static_audits": {
+    "location": "each FORMAL01 case directory",
+    "required_signature": {
+      "domain_m": [
+        40.2,
+        50.0,
+        0.025
+      ],
+      "grid_m": [
+        0.025,
+        0.025,
+        0.025
+      ],
+      "trace_spacing_m": 0.1,
+      "minimum_cells_per_wavelength_at_2_8fc": 10.0
+    }
+  },
+  "superseded_evidence": {
+    "location": "reports/formal01_bedrock_dense_window_20260714/static_audit",
+    "reason": "these JSON files describe the earlier 0.04 m grid and 36.4 m domain and must not be cited for the current 0.025 m cases",
+    "retention": "preserved as failure history only"
+  },
+  "successor_family": "FORMAL02_GRADED_BEDROCK"
+}

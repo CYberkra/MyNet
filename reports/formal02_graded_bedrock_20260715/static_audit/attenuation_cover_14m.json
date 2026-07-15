@@ -1,0 +1,36 @@
+{
+  "model": "exact nondispersive lossy dielectric propagation constant",
+  "epsilon_r": 12.5,
+  "conductivity_s_m": 0.0024,
+  "center_frequency_mhz": 55.0,
+  "upper_significant_multiplier": 2.5,
+  "one_way_depth_m": 14.0,
+  "bands": {
+    "center": {
+      "frequency_hz": 55000000.0,
+      "loss_ratio_sigma_over_omega_epsilon": 0.06274945251324163,
+      "alpha_np_per_m": 0.12780368251174462,
+      "field_db_per_m": 1.1100886816353162,
+      "beta_rad_per_m": 4.077465550441567,
+      "wavelength_m": 1.5409536216680364,
+      "two_way_path_m": 28.0,
+      "two_way_field_amplitude_factor": 0.02791745634587147,
+      "two_way_field_loss_db": 31.08248308578885
+    },
+    "upper_significant": {
+      "frequency_hz": 137500000.0,
+      "loss_ratio_sigma_over_omega_epsilon": 0.025099781005296654,
+      "alpha_np_per_m": 0.12785644184943834,
+      "field_db_per_m": 1.1105469434199011,
+      "beta_rad_per_m": 10.189457510378611,
+      "wavelength_m": 0.616635900466709,
+      "two_way_path_m": 28.0,
+      "two_way_field_amplitude_factor": 0.027876245410835724,
+      "two_way_field_loss_db": 31.09531441575723
+    }
+  },
+  "limitations": [
+    "does not include geometric spreading, antenna response, interfaces, or dispersive poles",
+    "use as a pre-run plausibility gate, not as a substitute for a paired gprMax smoke run"
+  ]
+}

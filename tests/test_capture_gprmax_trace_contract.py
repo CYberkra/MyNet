@@ -49,7 +49,7 @@ def run_capture(tmp_path: Path, output: Path, expected: int, timeout: float = 2.
 
 
 def test_capture_trace_contract_preserves_positions_and_shapes(tmp_path: Path) -> None:
-    write_trace(tmp_path / "paired1.out", 120.0, 120.2)
+    write_trace(tmp_path / "paired.out", 120.0, 120.2)
     output = tmp_path / "contract.json"
     result = run_capture(tmp_path, output, expected=1)
     assert result.returncode == 0, result.stderr
@@ -83,7 +83,7 @@ def test_capture_trace_contract_resumes_partial_report(tmp_path: Path) -> None:
 
 
 def test_capture_trace_contract_reloads_changed_trace(tmp_path: Path) -> None:
-    trace = tmp_path / "paired1.out"
+    trace = tmp_path / "paired.out"
     write_trace(trace, 120.0, 120.2)
     output = tmp_path / "contract.json"
     first = run_capture(tmp_path, output, expected=1)

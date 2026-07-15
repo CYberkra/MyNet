@@ -1,0 +1,12 @@
+#title: FORMAL02_GRADED_BEDROCK_G0_BASELINE no-basal contrast control
+#domain: 188.55 49.95 0.045
+#dx_dy_dz: 0.045 0.045 0.045
+#time_window: 6.5e-07
+#pml_cells: 60 60 0 60 60 0
+#messages: y
+#waveform: ricker 1 5.5e+07 formal02_ricker55
+#hertzian_dipole: z 82.71 37.98 0 formal02_ricker55
+#rx: 82.89 37.98 0 rx1 Ez
+#src_steps: 0.09 0 0
+#rx_steps: 0.09 0 0
+#geometry_objects_read: 0 0 0 geology_indices.h5 materials_no_basal.txt

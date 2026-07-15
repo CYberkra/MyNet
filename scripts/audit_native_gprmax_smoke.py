@@ -112,7 +112,15 @@ def _write_preview(
     image = Image.new("RGB", (1500, 1050), "white")
     draw = ImageDraw.Draw(image)
     window = (reference_ns - half_window_ns, reference_ns + half_window_ns)
-    _draw_panel(draw, (70, 50, 1430, 350), time_ns, [(traces["full_scene"], "#1f77b4"), (traces["no_basal_contrast_control"], "#d62728"), (traces["air_reference"], "#777777")], x_range=(0, 700), title="Raw: full (blue), no-basal (red), air (gray)")
+    raw_curves = [
+        (traces["full_scene"], "#1f77b4"),
+        (traces["no_basal_contrast_control"], "#d62728"),
+    ]
+    raw_title = "Raw: full (blue), no-basal (red)"
+    if "air_reference" in traces:
+        raw_curves.append((traces["air_reference"], "#777777"))
+        raw_title += ", air (gray)"
+    _draw_panel(draw, (70, 50, 1430, 350), time_ns, raw_curves, x_range=(0, 700), title=raw_title)
     _draw_panel(draw, (70, 390, 1430, 690), time_ns, [(difference, "#2ca02c")], x_range=(max(0.0, reference_ns - 100), min(700.0, reference_ns + 100)), title=f"Signed full - no-basal difference, target/pre-target = {contrast_db:.1f} dB", target_window=window, reference_ns=reference_ns, pick_ns=pick_ns)
     _draw_panel(draw, (70, 730, 1430, 1030), time_ns, [(envelope, "#9467bd")], x_range=(max(0.0, reference_ns - 100), min(700.0, reference_ns + 100)), title="Difference analytic-signal envelope", target_window=window, reference_ns=reference_ns, pick_ns=pick_ns)
     image.save(output_path)
@@ -123,6 +131,11 @@ def main() -> int:
     parser.add_argument("case_dir", type=Path, help="Completed one-trace solver run directory.")
     parser.add_argument("--component", default="Ez")
     parser.add_argument("--target-half-window-ns", type=float, default=35.0)
+    parser.add_argument(
+        "--skip-air-reference",
+        action="store_true",
+        help="Audit only the causal full/control pair and record that air was intentionally omitted.",
+    )
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
 
@@ -131,11 +144,17 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     source_case = Path(json.loads((case_dir / "run_manifest.json").read_text(encoding="utf-8"))["source_case_dir"])
     source_x = np.load(source_case / "labels" / "source_x_m.npy")
-    reference_arrival = np.load(source_case / "labels" / "reference_arrival_time_ns.npy")
+    reference_path = source_case / "labels" / "reference_arrival_time_ns.npy"
+    if not reference_path.is_file():
+        reference_path = source_case / "labels" / "geometric_reference_arrival_time_ns.npy"
+    reference_arrival = np.load(reference_path)
 
     traces: dict[str, np.ndarray] = {}
     metadata: dict[str, dict[str, object]] = {}
-    for name in ("full_scene", "no_basal_contrast_control", "air_reference"):
+    names = ["full_scene", "no_basal_contrast_control"]
+    if not args.skip_air_reference:
+        names.append("air_reference")
+    for name in names:
         traces[name], metadata[name] = _read_trace(case_dir / f"{name}.out", args.component)
 
     full_meta = metadata["full_scene"]
@@ -163,10 +182,11 @@ def main() -> int:
     pick_ns = float(time_ns[target_indices[pick_index]])
     pick_offset_ns = pick_ns - reference_ns
     report = {
-        "schema": "native_gprmax_smoke_pair_audit_v1",
+        "schema": "native_gprmax_smoke_pair_audit_v2",
         "case_dir": _portable_path(case_dir),
         "source_case_dir": _portable_path(source_case),
         "component": args.component,
+        "air_reference_included": "air_reference" in traces,
         "trace_index": trace_index,
         "reference_arrival_ns": reference_ns,
         "difference_envelope_pick_ns": pick_ns,
@@ -179,7 +199,7 @@ def main() -> int:
         "target_to_pre_target_difference_db": contrast_db,
         "full_direct_rms": _rms(traces["full_scene"][direct]),
         "control_direct_rms": _rms(traces["no_basal_contrast_control"][direct]),
-        "air_direct_rms": _rms(traces["air_reference"][direct]),
+        "air_direct_rms": _rms(traces["air_reference"][direct]) if "air_reference" in traces else None,
         "metadata": metadata,
         "smoke_gate": {
             "passed": bool(alignment_ok and finite_ok and contrast_db >= 6.0 and abs(pick_offset_ns) <= args.target_half_window_ns),
