@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CYberkra/MyNet/docs/contracts/HANDOFF_RECORD_V1.schema.json",
+  "title": "PGDA-CSNet task handoff record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task_id",
+    "title",
+    "status",
+    "work_type",
+    "implementation",
+    "scope",
+    "changes",
+    "artifacts",
+    "validation",
+    "decisions",
+    "risks",
+    "blockers",
+    "next_actions",
+    "resume"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "task_id": {"type": "string", "pattern": "^[0-9]{8}-[a-z0-9]+-[a-z0-9-]+$"},
+    "title": {"type": "string", "minLength": 3},
+    "status": {"enum": ["in_progress", "complete", "blocked"]},
+    "work_type": {
+      "enum": ["code", "model", "data", "simulation", "training", "evaluation", "governance", "documentation", "mixed"]
+    },
+    "created_at": {"type": "string"},
+    "updated_at": {"type": "string"},
+    "implementation": {
+      "type": "object",
+      "required": ["branch", "implementation_head", "base_branch", "base_commit", "remote", "worktree_dirty", "changed_files"],
+      "properties": {
+        "implementation_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "worktree_dirty": {"type": "boolean"},
+        "changed_files": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": ["objective", "in_scope", "out_of_scope"]
+    },
+    "changes": {"type": "array", "items": {"type": "string"}},
+    "artifacts": {"type": "array", "items": {"type": "object"}},
+    "validation": {"type": "array", "items": {"type": "object"}},
+    "decisions": {"type": "array", "items": {"type": "object"}},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "blockers": {"type": "array", "items": {"type": "object"}},
+    "next_actions": {"type": "array", "items": {"type": "object"}},
+    "resume": {"type": "object"}
+  }
+}

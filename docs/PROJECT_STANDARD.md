@@ -98,10 +98,22 @@ intentionally blocked.
 5. Update the gprMax skill when source/manual behavior or the project
    measurement contract changes.
 
+## 7. Handoff Discipline
+
+Every milestone continuation must follow
+[`HANDOFF_STANDARD.md`](HANDOFF_STANDARD.md). The implementation commit is
+created first; the final handoff record then references that immutable commit.
+Local drafts stay ignored under `reports/handoffs/_drafts/`, while reviewed
+milestone records are committed under `reports/handoffs/<task_id>/`.
+
+No handoff may rely on chat alone, claim a timeout as a pass, contain a
+machine-specific absolute path, or omit blockers and next-entry conditions.
+
 ## Related Documents
 
 - [AeroPath architecture contract](AEROPATH_SSD.md)
 - [Current research state](current_state.md)
 - [Repository lifecycle](REPOSITORY_OPERATIONS.md)
 - [Research-line registry](RESEARCH_LINE_REGISTRY.md)
+- [Work and handoff standard](HANDOFF_STANDARD.md)
 - [gprMax physics-audit skill](../.claude/skills/gprmax-physics-audit/SKILL.md)

@@ -36,7 +36,10 @@ presented as the paper's active physical-decomposition model.
 4. Promote completed simulations with `promote_native_256_solver_result.py`.
 5. Commit source, manifest, compact canonical array, and release report in one
    focused change. Do not add raw solver outputs.
-6. Push `master`; the other computer then pulls the same commit.
+6. For a milestone, create and validate a handoff record according to
+   `docs/HANDOFF_STANDARD.md`.
+7. Push `master`; the other computer then pulls the same commit and starts from
+   the handoff record's entry document and command.
 
 ## Cleanup Rule
 

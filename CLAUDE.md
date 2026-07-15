@@ -6,9 +6,10 @@ changing code, data, simulations, or experiment status:
 1. `docs/PROJECT_STANDARD.md`
 2. `docs/current_state.md`
 3. `docs/REPOSITORY_LAYOUT.md`
-4. `docs/AEROPATH_SSD.md`
-5. `docs/SIMULATION_ASSET_POLICY.md`
-6. `.claude/skills/gprmax-physics-audit/SKILL.md` for gprMax work
+4. `docs/HANDOFF_STANDARD.md`
+5. `docs/AEROPATH_SSD.md`
+6. `docs/SIMULATION_ASSET_POLICY.md`
+7. `.claude/skills/gprmax-physics-audit/SKILL.md` for gprMax work
 
 ## Non-negotiable contracts
 
@@ -28,6 +29,9 @@ changing code, data, simulations, or experiment status:
 - Raw solver caches, VTI files, ordinary outputs, and Python environments are
   not committed.
 - Do not claim GprMambaSep A/S/G branches are physically identified.
+- A completed milestone must reference a clean implementation commit and pass
+  the final handoff-record validator. Chat is not an authoritative project
+  state record.
 
 ## Required checks
 
@@ -36,6 +40,7 @@ python scripts\check_configs.py
 python scripts\check_dataset.py --data-root data\measured\yingshan_v15
 python scripts\validate_yingshan_v15_final.py
 python scripts\validate_project_contracts.py
+python scripts\handoff_record.py --help
 python -m pytest -q tests
 ```
 

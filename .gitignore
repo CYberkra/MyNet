@@ -67,3 +67,7 @@ data/simulations/v2/01_solver_runs/
 !data/simulations/v2/release_specs/**
 outputs/simulation_v2_controls/
 outputs/
+
+# Handoff drafts are local working notes. Only reviewed milestone records under
+# reports/handoffs/<task_id>/ are committed.
+reports/handoffs/_drafts/

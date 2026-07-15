@@ -22,3 +22,8 @@ solver subprocess so `nvcc` can find `cl.exe`; no absolute path is committed.
 Commit source code, source decks, compact validated canonical arrays, manifests,
 and reports. Do not commit solver `.out`, `.h5`, `.vti`, logs, scratch data, or
 machine-local profiles.
+
+Handoff records name required capabilities such as `training`,
+`official_mamba2`, or `gprmax_gpu`. They must never copy executable paths from
+the local runtime profile. The receiving computer resolves those capabilities
+through its own ignored profile and validates them before resuming.

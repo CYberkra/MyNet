@@ -23,6 +23,11 @@ decompositions.
 See [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) for ownership and
 retention rules.
 
+All cross-person, cross-agent, and cross-computer continuation follows the
+versioned [`work and handoff standard`](docs/HANDOFF_STANDARD.md). Chat history
+is background only; commits, contracts, validation results, and accepted
+handoff records carry project state.
+
 ## Current status
 
 The V15 measured release and the formal line split are complete:
@@ -69,6 +74,7 @@ python scripts\check_configs.py
 python scripts\check_dataset.py --data-root data\measured\yingshan_v15
 python scripts\validate_yingshan_v15_final.py
 python scripts\validate_project_contracts.py
+python scripts\handoff_record.py --help
 python -m pytest -q tests
 ```
 

@@ -56,3 +56,7 @@ An asset becomes active only when all of the following agree:
 
 Old names such as `accepted`, `GREEN`, or `formal` are not permissions by
 themselves.
+
+Reviewed milestone handoffs are the only handoff packages retained on
+`master`. They live at `reports/handoffs/<task_id>/` and conform to
+`docs/contracts/HANDOFF_RECORD_V1.schema.json`; drafts are ignored.

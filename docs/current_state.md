@@ -60,3 +60,10 @@ before changing the formal config.
 4. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
 5. Pass the formal data gate, then run multi-seed AeroPath training and frozen
    baseline comparisons.
+
+## Continuation contract
+
+Milestone continuation follows `docs/HANDOFF_STANDARD.md`. Reviewed records are
+stored under `reports/handoffs/<task_id>/` and reference the clean
+implementation commit, real validation outcomes, artifacts, risks, and the
+exact next-entry condition. Conversation history is background only.
