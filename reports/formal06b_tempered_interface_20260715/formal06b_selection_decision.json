@@ -1,0 +1,18 @@
+{
+  "case_id": "FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT",
+  "decision": "CAUSAL_PASS_VISUAL_STILL_DOMINANT_STOP",
+  "formal_training_allowed": false,
+  "scale_to_32_trace_pair": false,
+  "one_trace": {
+    "visible_minus_reference_ns": 1.21363028182435,
+    "signed_difference_target_rms": 0.00286583811976016,
+    "signed_difference_target_to_background_rms": 279.28437551047,
+    "early_full_control_relative_difference": 4.08402116524069e-7
+  },
+  "blind_eight_trace": {
+    "target_to_adjacent_background_rms": 7.437055736615272,
+    "frozen_maximum": 5.0,
+    "human_decision": "still visually dominant"
+  },
+  "next_case": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
+}

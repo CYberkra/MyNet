@@ -1,0 +1,79 @@
+{
+  "case_dir": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_solver_runs\\FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT\\formal06c_smoke1_20260715",
+  "prefix": "no_basal_contrast_control",
+  "expected_trace_count": 1,
+  "captured_trace_count": 1,
+  "complete": true,
+  "failures_tail": [],
+  "traces": [
+    {
+      "trace_index": 1,
+      "filename": "no_basal_contrast_control.out",
+      "sha256": "da351e3a0b1081fde8e35571beb66dd81b7c3120561b3d93decf8351c880139b",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT no-basal contrast control",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          3,
+          0,
+          0
+        ],
+        "srcsteps": [
+          3,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          78.3,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          78.48,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    }
+  ]
+}

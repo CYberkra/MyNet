@@ -1,0 +1,23 @@
+{
+  "schema": "formal06_development_selection_v1",
+  "case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "decision": "HUMAN_MORPHOLOGY_ACCEPTED_DEVELOPMENT_BASELINE_PENDING_STRICT_PAIR",
+  "formal_training_allowed": false,
+  "one_trace_causal_pass": true,
+  "blind_local_8_trace_visibility_pass": true,
+  "distributed_32_trace_geometry_tracking_pass": true,
+  "distributed_32_trace_target_to_adjacent_background_rms": 17.290987413613838,
+  "development_line9_target_to_adjacent_background_rms": 2.3485668444457377,
+  "human_review": {
+    "decision": "accepted",
+    "reviewer": "project_owner",
+    "review_date": "2026-07-15",
+    "accepted_character": "continuous gently varying multi-cycle basal packet without joined-hyperbola morphology"
+  },
+  "next_design": [
+    "gentler long-wave basal relief",
+    "continuous multiscale non-target geology",
+    "no discrete point-target clutter",
+    "retain GABOR80 and FORMAL06C interface contrast for the first successor"
+  ]
+}

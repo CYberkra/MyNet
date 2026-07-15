@@ -1,0 +1,20 @@
+{
+  "schema": "pgda_formal_candidate_selection_v1",
+  "case_id": "FORMAL06_INTERFACE_CONDITIONED_DEVELOPMENT",
+  "decision": "CAUSAL_PASS_VISUAL_OVERSTRONG_STOP",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "expand_to_32_or_256_traces": false,
+  "one_trace_pair_complete": true,
+  "blind_full_scene_trace_count": 8,
+  "blind_full_scene_causal_pair_complete": false,
+  "signal_metrics": {
+    "difference_pick_offset_ns": 1.4989002787580716,
+    "target_to_pre_target_difference_db": 54.28682767247963,
+    "difference_target_rms": 0.011011573486030102,
+    "difference_to_full_target_ratio": 0.9908546386254395,
+    "full_target_to_pre_background_rms": 31.862749003535264,
+    "full_target_to_local_background_rms": 27.527013384645418
+  },
+  "next_action": "reduce only cap-to-bedrock contrast to an approximately -0.02 reflection proxy"
+}

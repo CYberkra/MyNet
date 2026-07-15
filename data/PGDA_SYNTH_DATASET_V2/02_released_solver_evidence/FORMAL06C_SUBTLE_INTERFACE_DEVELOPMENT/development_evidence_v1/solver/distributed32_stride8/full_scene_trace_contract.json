@@ -1,0 +1,2218 @@
+{
+  "case_dir": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_solver_runs\\FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT\\formal06c_distributed32_full_20260715",
+  "prefix": "full_scene",
+  "expected_trace_count": 32,
+  "captured_trace_count": 32,
+  "complete": true,
+  "failures_tail": [],
+  "traces": [
+    {
+      "trace_index": 1,
+      "filename": "full_scene1.out",
+      "sha256": "798ff7be99233b7a3dadf9ebf0c309ada7b1858f2b40b8864c65cafaf94a1e78",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          78.3,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          78.48,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 2,
+      "filename": "full_scene2.out",
+      "sha256": "9f4a7d61a029a63e23544f529094a73e09f86ae6e06b1f1ead23ef2347c736c0",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          79.02,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          79.2,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 3,
+      "filename": "full_scene3.out",
+      "sha256": "ef59cb883f7507ab55ee7bb7888e80bcc3d0b1933ae778a00f77ed6eeb7aaa2b",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          79.74,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          79.92,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 4,
+      "filename": "full_scene4.out",
+      "sha256": "0d36598aaba32be234671a9d44673c5c61aa004cb91489b6698ebf8756e73213",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          80.46,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          80.64,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 5,
+      "filename": "full_scene5.out",
+      "sha256": "c1837cf94731d3ba6c0c2bccd7abd5138fe891bb76957037e8c1898b42c8cb9c",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          81.17999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          81.36,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 6,
+      "filename": "full_scene6.out",
+      "sha256": "5ef9f1d3dffe19f45939a57b3546d6ea60e9525d52070d6ae9909b8db1df6ad4",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          81.89999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          82.08,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 7,
+      "filename": "full_scene7.out",
+      "sha256": "fc0100cd35333935794436626d892904bd89e232a639f575ded472b40937ab7f",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          82.61999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          82.8,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 8,
+      "filename": "full_scene8.out",
+      "sha256": "5ced945ed14dd3ef8be586bd50afa57da99944ce2df9ae356f365a168455102f",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          83.34,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          83.52,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 9,
+      "filename": "full_scene9.out",
+      "sha256": "c26ace63c1340122b379ba8e8f2ad9ebe6808f28d523e07e49375645747357fb",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          84.06,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          84.24,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 10,
+      "filename": "full_scene10.out",
+      "sha256": "f52d7fcedef716c8f021ee00a01c8cdb00ee14c0c437e3a9e8d8c00cc9b05a2a",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          84.78,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          84.96,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 11,
+      "filename": "full_scene11.out",
+      "sha256": "5759dfc0a08bf2b0e4b574dc103485c453f8660393eee6af305a039d7a961b49",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          85.5,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          85.67999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 12,
+      "filename": "full_scene12.out",
+      "sha256": "7e253efcbc7af8f3bef524dd878b95e2d78c9f8087ad30ed403023a53d47158f",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          86.22,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          86.39999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 13,
+      "filename": "full_scene13.out",
+      "sha256": "8663bfd6e571472d3fcf7bd78e8be402557fdc4aebc5150df68f934ef77223f4",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          86.94,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          87.11999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 14,
+      "filename": "full_scene14.out",
+      "sha256": "25c45ef69722cfdf0661a8cdd6ecfa81bacd318d961dff42503dff122c5eacc9",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          87.66,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          87.84,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 15,
+      "filename": "full_scene15.out",
+      "sha256": "a89ce8711bb9ab6c23a3a3f101dee2ac86ccb9f4c930f27a97b49cfc61ae9012",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          88.38,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          88.56,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 16,
+      "filename": "full_scene16.out",
+      "sha256": "6a89b8116f24ca68c7c4010bebf87bd0e9ccb45c000aa8ccd78c2a771775cfde",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          89.1,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          89.28,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 17,
+      "filename": "full_scene17.out",
+      "sha256": "122aac6232393c1e0c8864a10230966d20b2b1f0bc03fad1b2e0dabdf4e656fa",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          89.82,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          90.0,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 18,
+      "filename": "full_scene18.out",
+      "sha256": "f65f075a04de38f4eb12c8a066868afbaed821274a0726e8cb21df138b6d3d8d",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          90.53999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          90.72,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 19,
+      "filename": "full_scene19.out",
+      "sha256": "42062d26ef53a7dcf1b5ceef839cf185026d2bf939b55fcc351486dff65f91bb",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          91.25999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          91.44,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 20,
+      "filename": "full_scene20.out",
+      "sha256": "0f0aac39ba21b8ed9e309e553f9b73257099cbfa7e1b1c87aa47997b2a712e49",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          91.97999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          92.16,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 21,
+      "filename": "full_scene21.out",
+      "sha256": "aa4755fe720564da2d4c45782532c51c0bde4703d23d90e32fd6e785267dfcd4",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          92.7,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          92.88,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 22,
+      "filename": "full_scene22.out",
+      "sha256": "22901925a495ff89310af74ee57860bdd08287fd67328869ebd5cb07f5c322a0",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          93.42,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          93.6,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 23,
+      "filename": "full_scene23.out",
+      "sha256": "fd2c6473d728ab2b207ba2528f899f4eebab089fa218e0c877cfd9282939fe7b",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          94.14,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          94.32,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 24,
+      "filename": "full_scene24.out",
+      "sha256": "ea5d76a0f0a60b7f86893763841782ae37184c1cb3a418bbff2f33952efeceb4",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          94.86,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          95.03999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 25,
+      "filename": "full_scene25.out",
+      "sha256": "d8f7ef1d57c858556e6a5dcc7f5cf32d4033e22d3970ecda0fddf9f854f19157",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          95.58,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          95.75999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 26,
+      "filename": "full_scene26.out",
+      "sha256": "f5879c1b3cab94acb1040cd15d09ba29d5e616623e1c4353e974c5e418699dac",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          96.3,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          96.47999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 27,
+      "filename": "full_scene27.out",
+      "sha256": "ff95498c740dffe3c6e50f8acf1223d0920f5787b117ddd11eb58921989e2489",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          97.02,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          97.2,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 28,
+      "filename": "full_scene28.out",
+      "sha256": "933fbbf7f999f79c258ca5a6b75e9b00cde710affccd57ff5716bf7c208f40d7",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          97.74,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          97.92,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 29,
+      "filename": "full_scene29.out",
+      "sha256": "8a1c4311eb4b5b6166439ca0177d0e710965d60f2a6c21c68aa2c4b6c1a44254",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          98.46,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          98.64,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 30,
+      "filename": "full_scene30.out",
+      "sha256": "2fd94bc10e82bc3e013c57a7c31dee5d88d1d9af66ee7ec7d628d10d0abbd87c",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          99.17999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          99.36,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 31,
+      "filename": "full_scene31.out",
+      "sha256": "7ef13b08d06ed59159229c6bffdc7c2f1524931de376821820ab5bc1407220c2",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          99.89999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          100.08,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    },
+    {
+      "trace_index": 32,
+      "filename": "full_scene32.out",
+      "sha256": "ac6a2c8f7f12648b96b44bd4618d1ae46129625510c59d03dfdf665ad797e6dd",
+      "root_attributes": {
+        "Iterations": 9188,
+        "Title": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT full scene",
+        "dt": 7.075963010249052e-11,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "gprMax": "3.1.7",
+        "nrx": 1,
+        "nsrc": 1,
+        "nx_ny_nz": [
+          5991,
+          1600,
+          1
+        ],
+        "rxsteps": [
+          24,
+          0,
+          0
+        ],
+        "srcsteps": [
+          24,
+          0,
+          0
+        ]
+      },
+      "source_positions_m": [
+        [
+          100.61999999999999,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_positions_m": [
+        [
+          100.8,
+          36.51,
+          0.0
+        ]
+      ],
+      "receiver_shapes": {
+        "rx1": {
+          "Ex": [
+            9188
+          ],
+          "Ey": [
+            9188
+          ],
+          "Ez": [
+            9188
+          ],
+          "Hx": [
+            9188
+          ],
+          "Hy": [
+            9188
+          ],
+          "Hz": [
+            9188
+          ]
+        }
+      }
+    }
+  ]
+}

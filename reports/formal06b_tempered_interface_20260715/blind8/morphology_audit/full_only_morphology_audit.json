@@ -1,0 +1,96 @@
+{
+  "audit_type": "FULL_SCENE_MORPHOLOGY_ONLY_V1",
+  "case_id": "FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT",
+  "run_id": "formal06b_blind8_full_20260715",
+  "component": "Ez",
+  "status": "development_only_full_scene_morphology",
+  "claim_limits": {
+    "causal_attribution_allowed": false,
+    "formal_training_promotion_allowed": false,
+    "visible_phase_training_label_allowed": false,
+    "reason": "This is a full-scene morphology audit only; a matched no-basal control is not complete (0 unmerged control traces found)."
+  },
+  "execution_state": {
+    "full_scene_merged": true,
+    "full_scene_trace_contract_complete": true,
+    "full_scene_captured_trace_count": 8,
+    "control_completed_trace_files": 0,
+    "control_merged": false,
+    "early_stop_reason": "User-approved stop after full-scene morphology became sufficient for the next design decision."
+  },
+  "solver_contract": {
+    "expected_trace_count": 8,
+    "declared_trace_count": 256,
+    "actual_trace_count": 8,
+    "trace_stride": 1,
+    "selected_trace_indices_zero_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "native_sample_count": 9188,
+    "dt_s": 7.075963010249052e-11,
+    "actual_end_ns": 650.0687217515805,
+    "protected_end_ns": 500.0,
+    "finite": true,
+    "trace_contract_file": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/run_logs/full_scene_trace_contract.json",
+    "reference_file": "data/PGDA_SYNTH_DATASET_V2/01_solver_runs/FORMAL06B_TEMPERED_INTERFACE_DEVELOPMENT/formal06b_blind8_full_20260715/labels/source_referenced_arrival_time_ns.npy",
+    "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay"
+  },
+  "full_only_morphology": {
+    "semantics": "continuous signed phase in background-removed full scene; not a causal full-minus-control phase",
+    "path_range_ns": [
+      440.4786973880035,
+      440.549457018106
+    ],
+    "geometric_range_ns": [
+      427.83172607421875,
+      427.88812255859375
+    ],
+    "path_to_geometric_correlation": 0.7472224489581338,
+    "dynamic_range_retention": 1.2546815796527464,
+    "median_path_minus_geometric_ns": 12.665973131387261,
+    "path_step_p95_ns": 0.04953174107174045,
+    "path_step_max_ns": 0.07075963010248643,
+    "path_residual_step_p95_ns": 0.052055544782677966,
+    "path_residual_step_max_ns": 0.06532750119623643,
+    "path_residual_step_limit_ns": 5.6,
+    "target_to_adjacent_background_rms": 7.437055736615272,
+    "target_envelope_cv": 0.5061577803271904,
+    "target_dropout_fraction_below_25pct_median": 0.0,
+    "aligned_template_correlation_median": 0.01239140594000834,
+    "aligned_template_correlation_p10": -0.24548214925301887,
+    "significant_signed_lobe_count": 15,
+    "significant_lobe_signs": [
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      -1
+    ],
+    "aligned_peak_frequency_mhz": 264.55026455026456,
+    "aligned_spectral_centroid_mhz": 178.89890161531952,
+    "support_score_median": 6.4064529827298085
+  },
+  "gates": {
+    "full_output_contract_pass": true,
+    "full_only_geometry_tracking_pass": false,
+    "full_resolution_causal_pair_pass": false,
+    "formal_promotion_pass": false
+  }
+}
