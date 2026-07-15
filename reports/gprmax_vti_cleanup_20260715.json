@@ -1,0 +1,60 @@
+{
+  "schema": "gprmax_vti_cleanup_v1",
+  "created_utc": "2026-07-15T07:09:56.736273+00:00",
+  "scan_root": "data/PGDA_SYNTH_DATASET_V2",
+  "policy": "VTI is transient geometry visualization, not solver or training data",
+  "delete_requested": true,
+  "artifact_count": 8,
+  "total_bytes": 375845098,
+  "all_deleted": true,
+  "artifacts": [
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO01_GENTLE_LONG_LINE_DIAGNOSTIC/geometry_control.vti",
+      "bytes": 34395972,
+      "sha256": "d5afe6cdb2345cd914e2b44bb216fa956f4ce609b7a2e125f5732ab6fee23eed",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO01_GENTLE_LONG_LINE_DIAGNOSTIC/geometry_full.vti",
+      "bytes": 34396353,
+      "sha256": "cf8517a701247c91f57614a17c7baabfc57016e471dcfeeaeb0fc9eee4f32f78",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO02_MULTISCALE_LONG_LINE_DIAGNOSTIC/geometry_control.vti",
+      "bytes": 51852408,
+      "sha256": "04c01e4f46b86ce23931e51ceabeabc04c0923ea9c5c1e3aa35cbb1d81c5c0e5",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO02_MULTISCALE_LONG_LINE_DIAGNOSTIC/geometry_full.vti",
+      "bytes": 51852789,
+      "sha256": "b43c2a9872e28d9109f024d3adc2402a522557ca175c70964a1413192f631361",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO04_DEEPER_GENTLE_DROPOUT_DIAGNOSTIC/geometry_control.vti",
+      "bytes": 51853738,
+      "sha256": "eb33d665ea71df3348a4162287f8ab3c8d789ecaf579e9271f070d4b6c663bd9",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO04_DEEPER_GENTLE_DROPOUT_DIAGNOSTIC/geometry_full.vti",
+      "bytes": 51853606,
+      "sha256": "d535604171b6e51c256a036654e2ee03685058b39daaffb8804680e57bde4df5",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO06_LINE9_FLAT_PHYSICS_DEVELOPMENT/geometry_control.vti",
+      "bytes": 49820182,
+      "sha256": "f17597b3e6fc9fb81f37230489d4ee0d3fcc2f1e875a8311c0256500b1813fdf",
+      "deleted": true
+    },
+    {
+      "path": "data/PGDA_SYNTH_DATASET_V2/00_controls/MACRO06_LINE9_FLAT_PHYSICS_DEVELOPMENT/geometry_full.vti",
+      "bytes": 49820050,
+      "sha256": "63b1f75220e42f91d788a6afe23cd976f18298bcb78acd21011e69e2ad41bf3c",
+      "deleted": true
+    }
+  ]
+}

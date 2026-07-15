@@ -109,6 +109,13 @@ material values, waveform parameters, or trace count changed. Production
 must not contain `#geometry_view`. Keep a VTI locally only while investigating
 a concrete geometry dispute; delete it after the decision is recorded.
 
+Audit and clear legacy views with:
+
+```powershell
+python scripts/cleanup_gprmax_geometry_views.py `
+  --report reports/gprmax_vti_cleanup_YYYYMMDD.json --delete
+```
+
 ## FORMAL06 decision
 
 - FORMAL06A/B: retain source definitions and rejection audits only.

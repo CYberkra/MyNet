@@ -388,7 +388,9 @@ artifact. Apply this project contract:
 4. Use the project runner's transient lifecycle: generate, record filename,
    byte size, and SHA256 in `run_logs/geometry_view_cleanup.json`, then delete.
 5. Never commit, LFS-track, release-package, or copy VTI between workstations.
-   Retain one locally only while resolving a documented geometry dispute.
+   Retain one locally only while resolving a documented geometry dispute. Use
+   `scripts/cleanup_gprmax_geometry_views.py --report REPORT.json --delete` to
+   hash and clear legacy views under the project data tree.
 
 ## References
 
