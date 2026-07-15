@@ -1,0 +1,110 @@
+{
+  "contract_id": "PGDA_IV2_FAMILY02_FORMAL06C_MECHANISM_PILOT_V1",
+  "standard_id": "PGDA_NATIVE_256_RELEASE_STANDARD_V1",
+  "status": "pre_solver_development_pilot",
+  "formal_training_allowed": false,
+  "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+  "split_group_policy": "F01 and F02 share one independently generated geometry lineage and must never cross dataset splits",
+  "purpose": "Single-factor transfer of the human-accepted FORMAL06C source and weak-interface mechanism onto independently generated F01 geometry.",
+  "provenance": {
+    "line9_conditioned": true,
+    "conditioning_scope": "mechanism selection only; no measured or development arrays are read",
+    "measured_files_read_by_generator": [],
+    "held_out_geometry_or_timing_used": false,
+    "development_case_arrays_reused": false,
+    "independent_geometry_generator": "scripts/generate_independent_v2_family01.py",
+    "inherited_mechanism": [
+      "80 MHz zero-mean Gaussian-modulated source family",
+      "FORMAL06C cover, weathered-cap and bedrock constitutive endpoints",
+      "finite eight-level weathered transition",
+      "strict full/no-basal material-map control"
+    ],
+    "forbidden_inputs": [
+      "Line9 labels, timing, terrain or waveform arrays",
+      "FORMAL06C or FORMAL07 geometry, profile or field arrays",
+      "visible-phase labels before a solved signed pair"
+    ]
+  },
+  "grid": {
+    "dimension": "2D_x_y_with_one_z_cell",
+    "dl_m": 0.03,
+    "domain_x_m": 242.73,
+    "domain_y_m": 48.0,
+    "pml_cells": 60,
+    "physical_side_guard_m": 108.0,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 109.8,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_ns": 750.0,
+    "protected_time_window_ns": 700.0,
+    "canonical_samples": 501,
+    "canonical_dt_ns": 1.4
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "reference_delay_ns": 50.0,
+    "sigma_ns": 11.5,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "development_mechanism_inherited_from": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
+  },
+  "geology": {
+    "geometry_lineage_id": "IV2_GEOMETRY_G01",
+    "ground": "flat",
+    "cover_model": "F01 independent seeded continuous three-scale field regenerated from seed",
+    "basal_model": "F01 independent generic multiscale path regenerated from seed",
+    "cover_bins": 32,
+    "basal_depth_bounds_m": [13.5, 17.5],
+    "transition_thickness_bounds_m": [0.9, 2.0],
+    "transition_levels": 8,
+    "discrete_anomaly_bodies": 0
+  },
+  "materials": {
+    "cover_epsilon_r": [12.0, 12.8],
+    "cover_conductivity_s_per_m": [0.0018, 0.0025],
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "development_mechanism_inherited_from": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
+  },
+  "cases": [
+    {
+      "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+      "target_presence": true,
+      "negative_semantics": "not_a_negative_sample",
+      "profile_seed_base": 2026071501,
+      "field_seed": 2026071511,
+      "required_runs": ["full_scene", "no_basal_contrast_control", "air_reference"]
+    },
+    {
+      "case_id": "IV2_F02_MATCHED_BACKGROUND_NEG",
+      "target_presence": false,
+      "negative_semantics": "designed_true_negative_exactly_equal_to_positive_no_basal_physical_state",
+      "profile_seed_base": 2026071501,
+      "field_seed": 2026071511,
+      "required_runs": ["full_scene", "air_reference"]
+    }
+  ],
+  "pair_contract": {
+    "positive_full_and_control_share_index_array": true,
+    "positive_control_equals_negative_full_material_map": true,
+    "only_positive_full_has_basal_constitutive_contrast": true,
+    "negative_has_no_target_path_or_visible_phase_label": true,
+    "visible_phase_before_solver": "forbidden"
+  },
+  "promotion_gates": [
+    "contract and generator tests pass",
+    "static and geometry-only audits pass",
+    "one-trace positive pair and negative full smoke pass",
+    "blind common-geometry comparison against F01 and FORMAL06C passes",
+    "development-only human decision is recorded",
+    "formal successor later re-origins source and material ranges without Line9 conditioning"
+  ]
+}

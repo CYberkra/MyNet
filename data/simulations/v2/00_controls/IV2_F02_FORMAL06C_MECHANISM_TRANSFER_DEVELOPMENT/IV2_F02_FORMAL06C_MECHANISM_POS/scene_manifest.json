@@ -1,0 +1,200 @@
+{
+  "contract_id": "PGDA_IV2_FAMILY02_FORMAL06C_MECHANISM_PILOT_V1",
+  "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+  "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_development_pilot",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "negative_semantics": "not_a_negative_sample",
+  "line9_conditioned": true,
+  "conditioning_scope": "mechanism selection only; no measured or development arrays are read",
+  "strict_line9_holdout_allowed": false,
+  "generator_path": "scripts/generate_independent_v2_family02_formal06c_mechanism.py",
+  "generator_sha256": "c4750b65537e5cfcc80b975eec18dff5e4143b86aeb4e577e71e6c5f0018a80a",
+  "contract_path": "data/contracts/simulation_v2/independent_v2_family02_formal06c_mechanism_pilot.json",
+  "contract_sha256": "9a4478a71cadb1a53b1281ba8ef02cd69ab18e51de00e82cb43b4718de122ba0",
+  "training_block_reason": "FORMAL06C mechanism selection used Line9 development evidence; runtime gates are also pending",
+  "parameter_provenance": {
+    "line9_conditioned": true,
+    "conditioning_scope": "mechanism selection only; no measured or development arrays are read",
+    "measured_files_read_by_generator": [],
+    "held_out_geometry_or_timing_used": false,
+    "development_case_arrays_reused": false,
+    "independent_geometry_generator": "scripts/generate_independent_v2_family01.py",
+    "inherited_mechanism": [
+      "80 MHz zero-mean Gaussian-modulated source family",
+      "FORMAL06C cover, weathered-cap and bedrock constitutive endpoints",
+      "finite eight-level weathered transition",
+      "strict full/no-basal material-map control"
+    ],
+    "forbidden_inputs": [
+      "Line9 labels, timing, terrain or waveform arrays",
+      "FORMAL06C or FORMAL07 geometry, profile or field arrays",
+      "visible-phase labels before a solved signed pair"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "domain_x_m": 242.73,
+    "domain_y_m": 48.0,
+    "nx_ny_nz": [
+      8091,
+      1600,
+      1
+    ],
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "left_physical_guard_m": 108.0,
+    "right_physical_guard_m": 107.99999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 720.4984456280082,
+    "solver_time_window_ns": 750.0,
+    "protected_time_window_ns": 700.0,
+    "protected_window_end_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4,
+    "cells_per_min_wavelength_at_2_8fc": 12.374270920772078
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "reference_delay_ns": 50.0,
+    "sigma_ns": 11.5,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "development_mechanism_inherited_from": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 9.875276355918714e-25,
+      "peak_frequency_hz": 79459674.21533571,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "index_file_sha256": "2ca8e0df4e11972ec08712c0b215080b4f4435a32d73b475e845f5d16df76801",
+    "index_array_sha256": "f2c59754d6ea6f56ef9798da133b103ec7f2fb582f6625bea20b875f78249703",
+    "index_shape": [
+      8091,
+      1600,
+      1
+    ],
+    "geometry_lineage_id": "IV2_GEOMETRY_G01",
+    "profile_shape_gate": {
+      "accepted_seed": 2026071504,
+      "attempt": 3,
+      "scan_depth_min_m": 14.02506399154663,
+      "scan_depth_median_m": 14.469343662261963,
+      "scan_depth_max_m": 15.250253677368164,
+      "scan_depth_range_m": 1.2251896858215332,
+      "smoothed_extrema_count": 7,
+      "quadratic_fit_r2": 0.8719280513416123,
+      "abs_slope_p95": 0.14906942229661752,
+      "broad_shape_gate_ok": true
+    },
+    "cover_field_statistics": {
+      "seed": 2026071511,
+      "coarse_shape": [
+        1349,
+        267
+      ],
+      "correlation_scales_m": {
+        "long_xy": [
+          9.0,
+          3.0
+        ],
+        "meso_xy": [
+          2.4,
+          1.2
+        ],
+        "local_xy": [
+          0.75,
+          0.45
+        ]
+      },
+      "component_weights": [
+        0.55,
+        0.3,
+        0.15
+      ],
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.05937314585908529,
+      "vertical_neighbor_bin_change_rate": 0.10744054361624018,
+      "vertical_spectral_peak_fraction_in_scan_cover": 0.972493636697754,
+      "quantile_thresholds": [
+        -2.037782907485962,
+        -1.5862923860549927,
+        -1.3160549402236938,
+        -1.1296935081481934,
+        -0.9738144278526306,
+        -0.838457465171814,
+        -0.7189549207687378,
+        -0.612179696559906,
+        -0.5135366320610046,
+        -0.4211379885673523,
+        -0.3307464122772217,
+        -0.24520999193191528,
+        -0.1637047380208969,
+        -0.08699934184551239,
+        -0.01293877325952053,
+        0.060191117227077484,
+        0.13386353850364685,
+        0.20751029253005981,
+        0.2819293439388275,
+        0.3554540276527405,
+        0.43123772740364075,
+        0.5109686255455017,
+        0.5932262539863586,
+        0.6792747974395752,
+        0.7715920805931091,
+        0.8682642579078674,
+        0.9716324210166931,
+        1.092952013015747,
+        1.241297721862793,
+        1.435468316078186,
+        1.7230854034423828
+      ],
+      "sinusoidal_stratigraphy": false,
+      "isolated_inclusions": 0,
+      "point_targets": 0,
+      "vertical_partitions": 0
+    },
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "visible_phase_geometry_written": false,
+    "development_arrays_reused": false,
+    "geometry_regenerated_from_generic_seeds": true
+  },
+  "materials": {
+    "full_materials_sha256": "4eb45042742ae7fd1cba1b55ed1d1665df9f4b43f1117bf4f691d11f0988baa5",
+    "material_count": 320,
+    "cover_bins": 32,
+    "transition_levels": 8,
+    "only_positive_full_has_basal_contrast": true,
+    "no_basal_materials_sha256": "2de5eb14c9bb5b620076ae9b4db3666268d1f8f8530515d0e6d9e618b4753e91"
+  },
+  "strict_pair": {
+    "required": true,
+    "shared_geometry_hdf5": true,
+    "control_restores_transition_and_bedrock_to_each_local_cover_bin": true,
+    "positive_control_equals_family_negative_full": true
+  },
+  "labels": {
+    "geometric_reference": "audit prior only",
+    "source_referenced_arrival": "audit prior only",
+    "visible_phase": "absent until solved signed pair review",
+    "target_mask_training_allowed": false
+  },
+  "next_gate": "static and geometry-only audit, then one-trace positive pair and negative full smoke"
+}

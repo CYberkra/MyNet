@@ -39,8 +39,18 @@ ignore regions. Canonical arrays remain in acquisition order.
   exact 32-trace comparison preserved seven signed lobes and 79.37 MHz peak
   frequency while reducing target/adjacent-background RMS from 17.29 to 16.74.
   It remains unreleased development evidence.
-- All five are Line9-conditioned and prohibited from formal training.
-- No independent V2 scene family is training-approved yet.
+- Independent V2 Family 01: geometry/provenance-independent pilot. It passes
+  the staged physics checks but its four-lobe 44 MHz response does not inherit
+  FORMAL06C's accepted basal packet and remains somewhat easy.
+- Independent V2 Family 02: a controlled mechanism-transfer development case.
+  It regenerates Family 01 geometry from the same generic seeds, then applies
+  FORMAL06C's 80 MHz zero-mean Gaussian-modulated source and weak constitutive
+  mechanism. Blind 32-trace review recovered seven alternating lobes, a
+  79.37 MHz peak, 0.445 envelope CV, and a continuous non-hyperbolic path.
+  This proves mechanism transfer, but the mechanism-selection decision remains
+  Line9-conditioned; Family 02 is development-only and prohibited from formal
+  training.
+- No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
 the training-governance view is
@@ -62,8 +72,9 @@ before changing the formal config.
 
 1. Keep FORMAL06C as the project-owner accepted visual baseline and FORMAL07B
    as its controlled weak-background successor. Neither is training data.
-2. Design independent V2 positive and true-negative scene families without
-   using Line9 labels, geometry, timing, or morphology as a generator prior.
+2. Use Family 02 to lock the successful physical mechanism, then re-origin its
+   source and constitutive ranges from independent physical bounds for the
+   formal successor. Do not copy held-out arrays or promote Family 02 itself.
 3. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
 4. Audit candidate real true-negative intervals; ambiguous/failed-positive

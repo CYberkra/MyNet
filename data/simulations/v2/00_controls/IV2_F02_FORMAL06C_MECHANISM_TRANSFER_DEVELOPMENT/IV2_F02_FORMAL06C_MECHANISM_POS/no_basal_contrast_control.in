@@ -1,0 +1,12 @@
+#title: IV2_F02_FORMAL06C_MECHANISM_POS no basal
+#domain: 242.73 48 0.03
+#dx_dy_dz: 0.03 0.03 0.03
+#time_window: 7.5e-07
+#pml_cells: 60 60 0 60 60 0
+#messages: y
+#excitation_file: source_waveform.txt
+#hertzian_dipole: z 109.8 36.51 0 iv2_f02_gabor80
+#rx: 109.98 36.51 0 rx1 Ez
+#src_steps: 0.09 0 0
+#rx_steps: 0.09 0 0
+#geometry_objects_read: 0 0 0 geology_indices.h5 materials_no_basal.txt

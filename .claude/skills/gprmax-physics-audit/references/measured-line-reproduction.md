@@ -158,6 +158,13 @@ Passing similarity does not make a held-out-conditioned case formal data.
 Line9 is strict test-only. Line9-conditioned cases may be used to discover
 which physical factors are missing, but they are permanently development-only.
 
+Separate array independence from decision independence. A generator that reads
+no measured arrays may still be Line9-conditioned when its source, material,
+or transition mechanism was chosen from Line9 visual or numerical diagnostics.
+Such a case is useful as a development-only mechanism-transfer test. It becomes
+formal only after those parameter ranges are independently re-originated and
+all gates are repeated; changing the filename or geometry is not sufficient.
+
 For the current Line9 program:
 
 - the PDF page is migrated elevation-domain evidence;

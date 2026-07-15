@@ -1,0 +1,121 @@
+{
+  "schema": "native_256_family_spatial_pilot_audit_v1",
+  "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+  "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+  "audit_mode": "positive_pair",
+  "formal_training_allowed": false,
+  "trace_count": 1,
+  "trace_stride": 1,
+  "selected_trace_indices_zero_based": [
+    0
+  ],
+  "declared_trace_count": 256,
+  "covered_scan_span_m": 0.0,
+  "declared_scan_span_m": 22.95,
+  "covered_scan_fraction": 0.0,
+  "distributed_span_coverage_ok": false,
+  "raw_shape": [
+    10601,
+    1
+  ],
+  "canonical_shape": [
+    501,
+    1
+  ],
+  "finite_ok": true,
+  "gprmax_versions": [
+    "3.1.7"
+  ],
+  "analysis_window_end_ns": 750.0520790863995,
+  "trace_contracts": {
+    "full_scene": {
+      "complete": true,
+      "captured": 1,
+      "expected": 1,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 3.051757815342171e-06,
+      "max_receiver_x_error_m": 3.3569336039818154e-06,
+      "position_tolerance_m": 3e-05,
+      "failures": [],
+      "ok": true
+    },
+    "no_basal_contrast_control": {
+      "complete": true,
+      "captured": 1,
+      "expected": 1,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 3.051757815342171e-06,
+      "max_receiver_x_error_m": 3.3569336039818154e-06,
+      "position_tolerance_m": 3e-05,
+      "failures": [],
+      "ok": true
+    }
+  },
+  "static_audits": {
+    "full_scene": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "no_basal_contrast_control": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "reference_path": "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/f02_smoke1_pair_20260715/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "visible_phase_semantics": "continuous signed lobe from solved full-minus-control",
+  "signal_metrics": {
+    "reference_range_ns": [
+      462.1227722167969,
+      462.1227722167969
+    ],
+    "visible_range_ns": [
+      454.53155992635817,
+      454.53155992635817
+    ],
+    "median_visible_minus_reference_ns": -7.591212290438705,
+    "visible_residual_p95_ns": 0.0,
+    "visible_step_p95_ns": 0.0,
+    "visible_step_max_ns": 0.0,
+    "visible_step_per_canonical_trace_p95_ns": 0.0,
+    "visible_step_per_canonical_trace_max_ns": 0.0,
+    "visible_residual_step_p95_ns": 0.0,
+    "visible_residual_step_max_ns": 0.0,
+    "visible_residual_step_per_canonical_trace_p95_ns": 0.0,
+    "visible_residual_step_per_canonical_trace_max_ns": 0.0,
+    "sparse_residual_step_limit_ns": 5.6,
+    "support_median": 103.54718954740329,
+    "support_min": 103.54718954740329,
+    "signed_difference_target_rms": 0.0010206947335973382,
+    "signed_difference_background_rms": 1.567939943925012e-05,
+    "target_to_background_rms": 65.09782071386236,
+    "full_scene_target_rms": 0.0010502057848498225,
+    "full_scene_background_rms": 0.00046206804108805954,
+    "full_scene_target_to_background_rms": 2.2728379620820336,
+    "full_scene_local_background_rms": 0.00027672373107634485,
+    "full_scene_target_to_local_background_rms": 3.7951417493719863,
+    "raw_target_rms": 0.0010502057848498225,
+    "raw_early_rms": 52.26534652709961,
+    "raw_target_to_early_rms": 2.0093730447291502e-05,
+    "control_target_to_background_rms": 0.5496868538880723,
+    "control_target_to_local_background_rms": 0.946395635922548,
+    "causal_contrast_to_full_scene_target_rms": 0.9718997441470918,
+    "target_amplitude_cv": 0.0,
+    "target_dropout_fraction_below_25pct_median": 0.0,
+    "early_full_control_relative_difference": 4.7208703973593695e-07
+  },
+  "family_spatial_gate": {
+    "passed": true,
+    "formal_promotion": false,
+    "human_morphology_review": "not_evaluated_single_trace",
+    "scope": "one_trace_causal_smoke"
+  },
+  "full_scene_detectability_gate": {
+    "passed": true,
+    "evaluated": false,
+    "reason": "one trace can prove causal attribution but cannot evaluate horizontal-background removal or blind B-scan morphology",
+    "human_blind_review_required": true
+  }
+}

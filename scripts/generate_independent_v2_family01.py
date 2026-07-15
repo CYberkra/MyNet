@@ -392,6 +392,12 @@ def render_preview(
     full_rows: list[dict[str, Any]],
     control_rows: list[dict[str, Any]],
     shape_metrics: dict[str, Any],
+    *,
+    output_name: str = "IV2_F01_FAMILY_PRE_SOLVER_PREVIEW.png",
+    heading: str = "Independent V2 Family 01 pre-solver geometry audit",
+    positive_title: str = (
+        "Positive full: smooth aperiodic cover + finite weathered transition + weak bedrock contrast"
+    ),
 ) -> Path:
     full_map = _material_maps(data, full_rows)
     control_map = _material_maps(data, control_rows)
@@ -410,7 +416,7 @@ def render_preview(
     panels = ((80, 110, 1620, 445), (80, 535, 1620, 870), (80, 960, 1620, 1210))
     panel_arrays = (full_crop, control_crop, delta_crop)
     panel_titles = (
-        "Positive full: smooth aperiodic cover + finite weathered transition + weak bedrock contrast",
+        positive_title,
         "Matched background / positive control: exact target-absent physical state",
         "Constitutive difference: only transition and bedrock contrast",
     )
@@ -428,7 +434,7 @@ def render_preview(
         draw.rectangle(box, outline="black", width=2)
         draw.text((box[0], box[1] - 28), title, fill="black", font=font)
 
-    draw.text((80, 35), "Independent V2 Family 01 pre-solver geometry audit", fill="black", font=font)
+    draw.text((80, 35), heading, fill="black", font=font)
     draw.text(
         (80, 1240),
         f"depth range={shape_metrics['scan_depth_range_m']:.3f} m | extrema={shape_metrics['smoothed_extrema_count']} | "
@@ -437,7 +443,7 @@ def render_preview(
         font=font,
     )
     draw.text((80, 1270), "Geometry preview only. No visible-phase label exists before a solved signed pair.", fill="black", font=font)
-    preview_path = output_root / "IV2_F01_FAMILY_PRE_SOLVER_PREVIEW.png"
+    preview_path = output_root / output_name
     canvas.save(preview_path)
     return preview_path
 

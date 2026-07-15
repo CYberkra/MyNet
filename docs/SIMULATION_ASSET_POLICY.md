@@ -128,3 +128,21 @@ python scripts/cleanup_gprmax_geometry_views.py `
   materials, grid, and acquisition fixed while changing only the geology
   morphology factor group. It remains blocked from training and from released
   solver evidence until the staged one-trace and sparse morphology gates pass.
+
+## Independent V2 mechanism-transfer decision
+
+- Family 01 owns the independent geometry/provenance baseline and its exact
+  target-absent control.
+- Family 02 is a single-factor development comparison: it regenerates the
+  Family 01 geometry from generic seeds and transfers FORMAL06C's accepted
+  source/material mechanism without reading measured or development arrays.
+- Family 02 passed static checks, one-trace positive/control causality, exact
+  positive-control/negative-full equality, and a 32-trace blind morphology
+  review. It recovered the seven-lobe 79 MHz basal packet.
+- This is evidence that the FORMAL06C mechanism should be retained. It is not
+  evidence that Family 02 is strict-holdout data: the mechanism-selection
+  decision used Line9 diagnostics, so both Family 02 cases remain permanently
+  development-only and indivisible.
+- A formal successor may reuse the audited implementation pattern, but its
+  source and constitutive parameter ranges must be justified from independent
+  physical bounds or a predeclared non-held-out factorial.

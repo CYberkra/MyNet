@@ -11,6 +11,14 @@ data/measured/yingshan_v15/source/*.zip -filter -diff -merge -text
 # V2 control arrays are small, auditable static inputs. Keep them as ordinary
 # Git blobs so the engineering contract can be reviewed without an LFS remote.
 data/simulations/v2/**/*.npy -filter -diff -merge -text
+# Physics source decks and their manifests are byte-hashed. Keep deterministic
+# LF endings on every workstation so checkout does not invalidate provenance.
+data/simulations/v2/**/*.in text eol=lf
+data/simulations/v2/**/*.txt text eol=lf
+data/simulations/v2/**/*.json text eol=lf
+data/simulations/v2/**/*.csv text eol=lf
+data/simulations/v2/**/*.md text eol=lf
+data/contracts/simulation_v2/**/*.json text eol=lf
 # Correlated-voxel source HDF5 files are deterministic source geometry, not
 # raw solver outputs. Share them through LFS so both workstations reproduce
 # identical full/control scenes without committing disposable .out files.

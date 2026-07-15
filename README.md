@@ -51,6 +51,13 @@ overly flat basal morphology. Neither is a training release. The
 FORMAL07B weak-aperiodic-background ablation preserves FORMAL06C's accepted
 basal packet and passes the exact 32-trace morphology comparison, but it also
 remains Line9-conditioned development evidence and is not a training release.
+Independent Family 01 establishes the clean geometry/provenance contract.
+Family 02 combines that independently regenerated geometry with FORMAL06C's
+accepted source and weak-interface mechanism; its blind 32-trace audit
+recovers the seven-lobe 79 MHz packet. Family 02 is intentionally marked
+development-only because the mechanism-selection decision used Line9
+diagnostics. The formal successor must re-origin those parameter ranges from
+independent physical bounds rather than silently promoting Family 02.
 The authoritative state is
 [`data/contracts/dataset_v2/dataset_manifest.json`](data/contracts/dataset_v2/dataset_manifest.json).
 

@@ -1,0 +1,19 @@
+{
+  "schema": "pgda_independent_v2_family02_decision_v1",
+  "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+  "decision": "accepted_mechanism_transfer_development_only",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "conditioning_scope": "mechanism selection only; no measured or development arrays were read",
+  "result": {
+    "path_to_geometric_correlation": 0.9993078856161868,
+    "target_to_adjacent_background_rms": 14.960882076763147,
+    "target_envelope_cv": 0.4448669439171782,
+    "aligned_template_correlation_median": 0.6943031453655054,
+    "significant_signed_lobe_count": 7,
+    "aligned_peak_frequency_mhz": 79.36507936507937,
+    "aligned_spectral_centroid_mhz": 79.30161576063853,
+    "target_dropout_fraction": 0.0
+  },
+  "next_gate": "Re-origin source and constitutive ranges from independent physical bounds before creating a formal-data successor."
+}

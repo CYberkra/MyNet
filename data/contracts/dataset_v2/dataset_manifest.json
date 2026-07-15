@@ -23,7 +23,9 @@
     "FORMAL07A was rejected by strict common-trace blind review for an over-stratified background.",
     "FORMAL07B passed controlled one-trace causal and distributed32 morphology review but remains Line9-conditioned development evidence.",
     "Independent IV2 Family 01 passed static, geometry, one-trace causal, distributed8 causal, and distributed32 full-scene morphology pilot gates.",
-    "IV2 Family 01 remains non-trainable until complete native-256 required runs, release packaging, and independent human approval are complete."
+    "IV2 Family 01 remains non-trainable until complete native-256 required runs, release packaging, and independent human approval are complete.",
+    "IV2 Family 02 transferred the FORMAL06C source and weak-interface mechanism onto regenerated Family 01 geometry and recovered the accepted seven-lobe 79 MHz morphology.",
+    "IV2 Family 02 remains development-only because the mechanism-selection decision used Line9 diagnostics; its exact matched negative inherits the same family-level restriction."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -33,10 +35,10 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 7,
-    "human_audit_records": 7,
+    "simulation_cases_registered": 9,
+    "human_audit_records": 9,
     "accepted_quarantine_cases": 0,
-    "line9_conditioned_cases": 5,
+    "line9_conditioned_cases": 7,
     "training_allowed_cases": 0,
     "real_lines_registered": 6,
     "real_windows_registered": 78,

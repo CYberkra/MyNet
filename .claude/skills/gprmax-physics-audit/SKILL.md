@@ -458,6 +458,36 @@ rules:
    with stronger continuous non-target background; do not let the easy pilot
    define the training domain.
 
+### Mechanism Transfer Without False Independence
+
+The Family 01/Family 02 comparison (2026-07-15) separates geometry provenance
+from mechanism provenance. Apply these rules when an accepted development case
+was selected with held-out diagnostics:
+
+1. Do not throw away a physically successful mechanism merely because its
+   selection was held-out-conditioned. Transfer it onto independently generated
+   geometry as an explicitly development-only, single-factor experiment.
+2. Record conditioning scope precisely. `No measured arrays read` does not make
+   a case formal when source or material choices were selected using held-out
+   morphology or metrics. Mark that case `line9_conditioned=true` at the
+   mechanism-selection scope.
+3. Lock geometry, acquisition, grid, PML, seeds, and strict controls while
+   changing source/material mechanism. This makes the predecessor comparison
+   interpretable and prevents a geometry change from masquerading as a source
+   improvement.
+4. Family 02 showed why this distinction matters. On Family 01's regenerated
+   geometry, the FORMAL06C mechanism changed four significant lobes at 44.09 MHz
+   into seven alternating lobes at 79.37 MHz, while retaining a continuous
+   non-hyperbolic path. The accepted FORMAL06C morphology was therefore a
+   transferable physical mechanism, not an accidental copy of its geometry.
+5. Keep the positive and its exact target-absent control indivisible. A negative
+   does not become formal merely because it contains no target; its family-level
+   parameter provenance still governs eligibility.
+6. To create a formal successor, re-origin source and constitutive ranges from
+   independent physical measurements, literature bounds, or a predeclared
+   non-held-out factorial. Re-run static, causal-pair, sparse blind, dense, and
+   human gates. Never relabel the development transfer itself as independent.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

@@ -71,6 +71,30 @@
       "solver_evidence_released": false,
       "decision_report": "reports/independent_v2_family01_20260715/INDEPENDENT_V2_FAMILY01_PILOT_AUDIT.md",
       "next_gate": "complete native-256 negative full/air, package immutable solver evidence, and obtain independent human release approval"
+    },
+    {
+      "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT/IV2_F02_FORMAL06C_MECHANISM_POS",
+      "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+      "status": "mechanism_transfer_passed_development_only",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "conditioning_scope": "mechanism selection only; no measured or development arrays were read",
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family02_20260715/INDEPENDENT_V2_FAMILY02_MECHANISM_TRANSFER_AUDIT.md",
+      "next_gate": "re-origin source and constitutive ranges from independent physical bounds before creating a formal-data successor"
+    },
+    {
+      "case_id": "IV2_F02_MATCHED_BACKGROUND_NEG",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT/IV2_F02_MATCHED_BACKGROUND_NEG",
+      "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+      "status": "exact_matched_development_control",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "conditioning_scope": "mechanism selection only; no measured or development arrays were read",
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family02_20260715/INDEPENDENT_V2_FAMILY02_MECHANISM_TRANSFER_AUDIT.md",
+      "next_gate": "remain indivisible from the positive case; never promote this negative independently"
     }
   ]
 }
