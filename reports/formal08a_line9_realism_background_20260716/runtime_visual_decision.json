@@ -1,0 +1,32 @@
+{
+  "schema": "gprmax_runtime_visual_decision_v1",
+  "case_id": "FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+  "date": "2026-07-16",
+  "decision": "retain_as_background_ablation_not_successor",
+  "mother_model": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "line9_conditioned": true,
+  "formal_training_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "causal_pair_complete": false,
+  "runs": {
+    "consecutive8": "formal08a_blind8_full_20260716",
+    "distributed32": "formal08a_distributed32_full_20260716"
+  },
+  "distributed32_metrics": {
+    "path_to_geometric_correlation": 0.9998897575119802,
+    "target_to_adjacent_background_rms": 14.773761480382415,
+    "predecessor_target_to_adjacent_background_rms": 17.29,
+    "line9_diagnostic_target_to_adjacent_background_rms": 2.3485668444457377,
+    "significant_signed_lobe_count": 7,
+    "aligned_peak_frequency_mhz": 79.36507936507937,
+    "target_dropout_fraction": 0.0
+  },
+  "visual_findings": [
+    "FORMAL06C multi-cycle basal packet is preserved",
+    "no isolated-hyperbola chain or F03-like sharp fragmented packet",
+    "middle-time background is only slightly richer",
+    "no material blind visual improvement over FORMAL06C",
+    "synthetic background remains much cleaner and more regular than Line9"
+  ],
+  "next_action": "Keep FORMAL06C as the realism mother model and design a stronger but still continuous one-factor non-target geology ablation."
+}

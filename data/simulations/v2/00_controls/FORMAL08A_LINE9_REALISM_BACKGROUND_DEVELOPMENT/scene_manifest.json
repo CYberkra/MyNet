@@ -264,7 +264,24 @@
     "requires_human_visible_multicycle_interface": true,
     "requires_blind_review_before_label_overlay": true
   },
-  "next_gate": "static and geometry audit, then consecutive-eight full-only morphology checkpoint against FORMAL06C and Line9 before any distributed run",
+  "next_gate": "retain as a solved weak-background ablation; do not run the matched control or native-256 scene because blind full-span review did not improve on FORMAL06C",
+  "runtime_review": {
+    "date": "2026-07-16",
+    "consecutive_trace_run": "formal08a_blind8_full_20260716",
+    "distributed_trace_run": "formal08a_distributed32_full_20260716",
+    "distributed_trace_count": 32,
+    "distributed_trace_stride": 8,
+    "path_to_geometric_correlation": 0.9998897575119802,
+    "target_to_adjacent_background_rms": 14.773761480382415,
+    "predecessor_target_to_adjacent_background_rms": 17.29,
+    "significant_signed_lobe_count": 7,
+    "aligned_peak_frequency_mhz": 79.36507936507937,
+    "target_dropout_fraction": 0.0,
+    "visual_decision": "retain_as_background_ablation_not_successor",
+    "reason": "The basal packet and source character are preserved, but the added middle-cover texture produces only a weak background increase and no material blind visual improvement over FORMAL06C.",
+    "causal_pair_complete": false,
+    "training_allowed": false
+  },
   "predecessor_lock": {
     "predecessor_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
     "native_predecessor_assets_used": true,

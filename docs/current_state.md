@@ -61,13 +61,18 @@ ignore regions. Canonical arrays remain in acquisition order.
   target/adjacent-background RMS ratio fell to 9.65. Project-owner visual
   ranking is `FORMAL06C > Family 02 > Family 03`. Family 03 is retained only as
   a source-basis ablation and must not drive the immediate successor lineage.
-- FORMAL08A: pre-solver Line9-realism candidate built directly from FORMAL06C.
-  It locks source, materials, grid, acquisition, basal path, transition, and
-  protected interface-neighbour bins, and changes only depth-tapered continuous
-  middle-cover texture. Static, attenuation, source-fingerprint, and geometry
-  gates pass. Runtime has not started; the next gate is eight consecutive
-  full-scene traces reviewed against FORMAL06C and Line9. It is explicitly
-  `line9_conditioned=true` and cannot support an unseen-Line9 claim.
+- FORMAL08A: solved Line9-realism background ablation built directly from
+  FORMAL06C. It locks source, materials, grid, acquisition, basal path,
+  transition, and protected interface-neighbour bins, and changes only
+  depth-tapered continuous middle-cover texture. Eight consecutive traces and
+  32 full-span traces completed cleanly. The 32-trace path correlation is
+  0.99989 with seven signed lobes, 79.37 MHz peak frequency, and zero dropout.
+  Target/adjacent-background RMS decreased from FORMAL06C's 17.29 to 14.77,
+  but blind review found only a weak background increase and no material visual
+  improvement over FORMAL06C. It is retained as a background ablation, not a
+  successor; no matched control, visible-phase label, or training release is
+  authorised. It is explicitly `line9_conditioned=true` and cannot support an
+  unseen-Line9 claim.
 - No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -93,9 +98,9 @@ before changing the formal config.
 2. Use Line9 explicitly as the measured-realism calibration reference. Mark
    every resulting development case `line9_conditioned=true`; do not call its
    Line9 result a strict unseen holdout.
-3. Review FORMAL08A's pre-solver geometry, then run only its eight-consecutive-
-   trace full-scene checkpoint. Do not start a distributed solve until the
-   project-owner visual gate passes.
+3. Keep FORMAL08A as a completed weak-background ablation. Do not spend solver
+   time on its matched control or native-256 run because the full-span blind
+   comparison did not improve on FORMAL06C.
 4. Maintain a separate independent/formal generator track for strict holdout
    claims or use a held-out-line/leave-one-line-out evaluation contract.
 5. Solve matched positive controls and promote only cases passing numerical,

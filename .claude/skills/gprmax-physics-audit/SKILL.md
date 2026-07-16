@@ -537,6 +537,17 @@ These values permit an eight-trace checkpoint; they do not establish solved
 realism. Always review the short full-scene checkpoint before distributed or
 dense runs.
 
+The solved FORMAL08A result adds an important stop rule. Eight consecutive
+traces preserved the packet, and the exact common 32-trace run retained a
+0.99989 path correlation, seven signed lobes, 79.37 MHz peak frequency, and no
+dropout. The full-span target/adjacent-background RMS decreased from about
+17.29 to 14.77, but blind review found only a weak increase in middle-time
+background and no material visual improvement over FORMAL06C. A numerically
+effective one-factor ablation is not automatically a new realism baseline.
+Retain FORMAL06C as the mother model, archive FORMAL08A as a background
+ablation, and skip matched-control/native runs when the full-span blind gate
+does not produce a meaningful visual gain.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

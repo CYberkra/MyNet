@@ -72,6 +72,14 @@ the measured-domain gap, beginning with continuous non-target geology and only
 then broad basal relief. Compare every candidate directly with FORMAL06C and
 Line9 using identical crops, gain, and colour scales.
 
+FORMAL08A completed the first weak continuous-background ablation. Its exact
+32-trace blind comparison preserved the FORMAL06C packet and reduced the
+full-span target/adjacent-background RMS from about 17.29 to 14.77, but the
+visual background change was too small to justify promotion. Keep it as an
+ablation and do not run its matched control or native-256 scene. The next Phase
+A candidate must still inherit FORMAL06C directly and must show a materially
+visible improvement at the full-span blind gate before further solver work.
+
 Family 03 remains useful only as evidence that the project-wide amplitude-only
 100 MHz band proxy produces a narrower, sharper packet. Do not extend it into a
 source sweep until a measured complex system response is available.
