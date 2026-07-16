@@ -1,0 +1,35 @@
+{
+  "contract_id": "formal09a_visual_audit_v1",
+  "audit_date": "2026-07-16",
+  "candidate": "FORMAL09A_MULTILINE_ACQUISITION_REALISM",
+  "decision": "reject_as_final_candidate",
+  "physical_mother_model": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "retained_starting_variant": "balanced",
+  "retained_variant_is_training_eligible": false,
+  "causal_pair_complete": false,
+  "gprmax_solver_run_performed": false,
+  "blind_mapping": {
+    "A": "FORMAL06C baseline",
+    "B": "FORMAL09A mild",
+    "C": "FORMAL09A balanced",
+    "D": "FORMAL09A strong"
+  },
+  "visual_findings": [
+    "FORMAL06C preserves the preferred continuous multi-cycle basal packet but is too clean and target-dominant.",
+    "The balanced variant is the safest acquisition-domain perturbation but remains too stationary and amplitude-uniform.",
+    "The strong variant approaches measured scalar energy ratios but looks like globally added colored wave noise.",
+    "Measured lines contain stronger trace-local variation, multiple coherent events, and spatially changing background orientation."
+  ],
+  "next_stage": "FORMAL09B_EMPIRICAL_PAIRED_NUISANCE_TRANSFER",
+  "next_stage_ablation_order": [
+    "empirical_target_excluded_spectrum",
+    "lateral_cross_spectral_covariance_and_nonstationarity",
+    "metadata_conditioned_gain_and_bounded_timing"
+  ],
+  "release_blockers": [
+    "not_a_gprmax_scene",
+    "no_matched_full_control_transformation_evidence",
+    "visual_background_nonstationarity_not_reproduced",
+    "derived_development_evidence_only"
+  ]
+}

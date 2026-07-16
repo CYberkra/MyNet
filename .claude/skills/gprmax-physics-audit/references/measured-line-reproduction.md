@@ -153,6 +153,47 @@ A usable development model requires:
 
 Passing similarity does not make a held-out-conditioned case formal data.
 
+## 8.1 Multi-Line Paired Nuisance Transfer
+
+When a causal FDTD interface is visually accepted but its background remains
+too clean, separate the physical scene from the acquisition/system domain.
+Do not keep increasing transition-following geology merely to reproduce every
+field-data nuisance.
+
+Use this staged pattern:
+
+1. Estimate target-excluded noise spectra from several credible measured
+   lines. Prefer fixed-position noise recordings when available; otherwise
+   label the field-window estimate as a pseudo-noise model.
+2. Sample new complex spectral coefficients. Never paste measured traces into
+   synthetic cases.
+3. Model lateral cross-spectral covariance and a smooth non-stationary amplitude
+   envelope; white Gaussian noise and one stationary colored field are only
+   baselines.
+4. Apply the identical gain, timing, and additive-noise realization to a
+   strict full/control pair. The transformed signed difference must equal the
+   declared shared operator applied to the original signed difference.
+5. Keep canonical solver outputs immutable and store transformed arrays as a
+   separately versioned derived domain.
+6. Fit development parameters on a multi-line pool. Refit inside each
+   leave-one-line-out fold for a strict generalization claim.
+7. Review raw and identically processed blind panels. Reject a scalar metric
+   improvement when the result looks like uniform colored noise, regular
+   ripples, combing, or artificial dropout.
+
+FORMAL09A demonstrated the stop rule: reducing target/background RMS from
+17.29 to 2.50 with a stationary colored field brought scalar values closer to
+measured data but produced visually uniform wavelet-like clutter. The 4.50
+balanced variant preserved the packet and is a mechanism starting point, not a
+release. The next ablation should replace the hand-shaped spectrum with a
+multi-line empirical spectrum before adding lateral covariance, metadata
+conditioning, or stronger amplitudes.
+
+See Stephan, Allroggen, and Tronicke (2024),
+https://doi.org/10.1002/nsg.12273, for a convolution-based GPR noise model using
+measured noise spectra. Extend that idea only with explicit provenance,
+multi-line folds, and pair-preserving transformations.
+
 ## 9. MyNet / Line9 Special Rule
 
 Line9 is strict test-only. Line9-conditioned cases may be used to discover

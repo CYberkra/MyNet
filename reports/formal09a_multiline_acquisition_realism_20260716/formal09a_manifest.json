@@ -1,0 +1,145 @@
+{
+  "contract_id": "FORMAL09A_MULTILINE_ACQUISITION_REALISM_DEVELOPMENT_V1",
+  "status": "full_scene_visual_candidates_only",
+  "formal_training_allowed": false,
+  "causal_pair_complete": false,
+  "base_case": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "base_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "base_output_sha256": "71a9b83fd7bd4c000aa51e443fe4b8cff06083d2a0b076a0c3f67593431e4e79",
+  "seed": 2026071609,
+  "line9_conditioned": true,
+  "synthesis_reads_measured_arrays": false,
+  "measured_arrays_used_for_visual_comparison_only": true,
+  "shared_pair_policy": "future full/control transformation must share the same basis and gain realization",
+  "components": [
+    "smooth trace gain jitter",
+    "band-limited laterally correlated additive noise",
+    "low-rank coherent acquisition residue"
+  ],
+  "forbidden_components": [
+    "copied measured arrays",
+    "label-conditioned enhancement",
+    "point targets",
+    "synthetic hyperbola injection",
+    "hard dropout"
+  ],
+  "variants": [
+    {
+      "name": "mild",
+      "target_to_background": 8.0,
+      "gain_jitter_fraction": 0.06
+    },
+    {
+      "name": "balanced",
+      "target_to_background": 4.5,
+      "gain_jitter_fraction": 0.12
+    },
+    {
+      "name": "strong",
+      "target_to_background": 2.5,
+      "gain_jitter_fraction": 0.18
+    }
+  ],
+  "metrics": {
+    "baseline": {
+      "target_to_background": 17.290987413613838,
+      "target_envelope_cv": 0.3338804592447719,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6597814880620492,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 92.06742019239316
+    },
+    "mild": {
+      "noise_scale": 0.0002688711113143295,
+      "gain_min": 0.8925175267791439,
+      "gain_median": 1.0402463632739634,
+      "gain_max": 1.0628184613402447,
+      "achieved_target_to_background": 7.999999999743908,
+      "target_to_background": 7.999999999743908,
+      "target_envelope_cv": 0.3370801721009671,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6166785452700563,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 90.64819417248985
+    },
+    "balanced": {
+      "noise_scale": 0.0005239397851340462,
+      "gain_min": 0.7850350535582877,
+      "gain_median": 1.080492726547927,
+      "gain_max": 1.1256369226804894,
+      "achieved_target_to_background": 4.500000000071736,
+      "target_to_background": 4.500000000071736,
+      "target_envelope_cv": 0.33860073739160146,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.5582161260260703,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 91.66412086472081
+    },
+    "strong": {
+      "noise_scale": 0.0010026780207566155,
+      "gain_min": 0.6775525803374317,
+      "gain_median": 1.1207390898218903,
+      "gain_max": 1.188455384020734,
+      "achieved_target_to_background": 2.5000000000098384,
+      "target_to_background": 2.5000000000098384,
+      "target_envelope_cv": 0.3277980140073761,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.3709851323610345,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 98.86142457601413
+    }
+  },
+  "measured_reference_metrics": {
+    "Line3": {
+      "target_to_background": 1.2218037450641728,
+      "target_envelope_cv": 0.472023728581496,
+      "target_dropout_fraction": 0.004214963119072708,
+      "aligned_template_correlation_median": 0.1961033187048507,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 90.65292214797739
+    },
+    "Line6": {
+      "target_to_background": 1.3733725780370014,
+      "target_envelope_cv": 0.6005185123310707,
+      "target_dropout_fraction": 0.0737618545837724,
+      "aligned_template_correlation_median": 0.0989752899601178,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 117.44381713026719
+    },
+    "Line7": {
+      "target_to_background": 1.4044946861019454,
+      "target_envelope_cv": 1.0425719617583429,
+      "target_dropout_fraction": 0.003883495145631068,
+      "aligned_template_correlation_median": 0.0643317516172146,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 109.19772169835444
+    },
+    "Line9": {
+      "target_to_background": 2.889862794468638,
+      "target_envelope_cv": 0.38854716275538254,
+      "target_dropout_fraction": 0.0032017075773745998,
+      "aligned_template_correlation_median": 0.457965255746909,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 87.5522063417557
+    },
+    "LineL1": {
+      "target_to_background": 1.517428517837129,
+      "target_envelope_cv": 0.5881079357661235,
+      "target_dropout_fraction": 0.1728307254623044,
+      "aligned_template_correlation_median": 0.08885370397304043,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 89.53047810650709
+    }
+  },
+  "blind_mapping": {
+    "A": "baseline",
+    "B": "mild",
+    "C": "balanced",
+    "D": "strong"
+  },
+  "visual_outputs": [
+    "FORMAL09A_blind_variants.png",
+    "FORMAL09A_multiline_visual_comparison.png"
+  ],
+  "next_gate": "blind human visual audit before any matched-control or solver run"
+}
