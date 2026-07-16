@@ -42,14 +42,14 @@ ignore regions. Canonical arrays remain in acquisition order.
 - Independent V2 Family 01: geometry/provenance-independent pilot. It passes
   the staged physics checks but its four-lobe 44 MHz response does not inherit
   FORMAL06C's accepted basal packet and remains somewhat easy.
-- Independent V2 Family 02: a controlled mechanism-transfer development case.
+- Independent V2 Family 02: a controlled mechanism-transfer ablation.
   It regenerates Family 01 geometry from the same generic seeds, then applies
   FORMAL06C's 80 MHz zero-mean Gaussian-modulated source and weak constitutive
-  mechanism. Blind 32-trace review recovered seven alternating lobes, a
-  79.37 MHz peak, 0.445 envelope CV, and a continuous non-hyperbolic path.
-  This proves mechanism transfer, but the mechanism-selection decision remains
-  Line9-conditioned; Family 02 is development-only and prohibited from formal
-  training.
+  mechanism. It recovers seven alternating lobes and a 79.37 MHz peak, but
+  project-owner visual review ranks it below FORMAL06C. Its independently
+  regenerated basal relief is more segmented and the cover field is over twice
+  as change-prone in both axes. It proves that the wavelet/material mechanism
+  transfers, not that the resulting scene is the preferred realism successor.
 - Independent V2 Family 03: the first source-independent hardware-band pilot.
   It keeps the Family 01 geometry and weak-interface materials but replaces the
   Line9-conditioned 80 MHz source choice with a project-wide 100 MHz,
@@ -58,9 +58,9 @@ ignore regions. Canonical arrays remain in acquisition order.
   passed. The path/geometry correlation is 0.9983 with seven signed lobes and
   no dropout. Blind review found a narrower, sharper, less visible packet than
   Family 02/FORMAL06C; the solved spectral centroid rose to 116.20 MHz and the
-  target/adjacent-background RMS ratio fell to 9.65. Family 03 is retained as
-  an independent valid diversity candidate, not the preferred morphology and
-  not training-approved before a full causal release and source-family audit.
+  target/adjacent-background RMS ratio fell to 9.65. Project-owner visual
+  ranking is `FORMAL06C > Family 02 > Family 03`. Family 03 is retained only as
+  a source-basis ablation and must not drive the immediate successor lineage.
 - No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -81,18 +81,22 @@ before changing the formal config.
 
 ## Next work
 
-1. Keep FORMAL06C as the project-owner accepted visual baseline and FORMAL07B
-   as its controlled weak-background successor. Neither is training data.
-2. Use Family 02 to lock the successful physical mechanism. Use Family 03 as
-   the independent hardware-band anchor, then run a predeclared same-geometry,
-   same-material source-family ablation. Do not tune source parameters against
-   Line9 and do not promote Family 02 itself.
-3. Solve matched positive controls and promote only cases passing numerical,
+1. Keep FORMAL06C as the sole project-owner accepted visual inheritance
+   baseline. Family 02 and Family 03 remain ablations, not successors.
+2. Use Line9 explicitly as the measured-realism calibration reference. Mark
+   every resulting development case `line9_conditioned=true`; do not call its
+   Line9 result a strict unseen holdout.
+3. Build the next candidate directly from FORMAL06C, lock its source and basal
+   packet, and change only continuous non-target geology before altering the
+   interface shape or source.
+4. Maintain a separate independent/formal generator track for strict holdout
+   claims or use a held-out-line/leave-one-line-out evaluation contract.
+5. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
-4. Audit candidate real true-negative intervals; ambiguous/failed-positive
+6. Audit candidate real true-negative intervals; ambiguous/failed-positive
    regions remain weak or ignored.
-5. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
-6. Pass the formal data gate, then run multi-seed AeroPath training and frozen
+7. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
+8. Pass the formal data gate, then run multi-seed AeroPath training and frozen
    baseline comparisons.
 
 ## Continuation contract

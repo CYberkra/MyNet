@@ -2,10 +2,19 @@
 
 ## Objective
 
-Build a paper-auditable positive/negative simulation corpus for AeroPath-SSD
-without using Line9 labels, timing, geometry, waveform arrays, or morphology to
-select formal generator parameters. Development cases may diagnose mechanisms,
-but eligibility follows family-level provenance and solved evidence.
+Run two explicit simulation tracks instead of forcing one dataset to satisfy
+two incompatible claims:
+
+1. **Measured-realism calibration.** Use Line9 openly as a development
+   reference for wavelet character, continuity, target prominence, and
+   non-target texture. These cases are `line9_conditioned=true` and are not
+   eligible for a strict unseen-Line9 claim.
+2. **Formal generalisation.** Freeze or independently re-origin the accepted
+   mechanism, generate strict positive/control/negative families, and exclude
+   the held-out evaluation line from every parameter-selection decision.
+
+The immediate visual lineage is the first track. Formal eligibility remains a
+separate provenance and solved-evidence decision.
 
 ## Fixed Measurement Contract
 
@@ -24,27 +33,50 @@ but eligibility follows family-level provenance and solved evidence.
 
 | Class | Purpose | Training eligible |
 |---|---|---:|
+| Realism-calibration baseline | Match measured morphology and define the useful mechanism | No for strict Line9 holdout |
 | Development baseline | Discover and preserve useful mechanisms | No |
 | Independent pilot | Test a predeclared generator and strict controls | No |
 | Released family | Passed complete numerical, causal, visual, provenance, and human gates | Yes |
 | Regression control | Preserve a known failure or comparison | No |
 
-FORMAL06C and IV2 Family 02 are development baselines. Family 01 is the first
-independent pilot. Family 03 is the first instrument-contract-derived candidate
-and must earn release through runtime evidence; its pre-solver status is not an
-approval.
+FORMAL06C is the project-owner accepted realism-calibration baseline. Family 02
+is a geometry-transfer ablation whose morphology is visibly worse than
+FORMAL06C despite retaining its source and materials. Family 03 is an
+instrument-band source ablation and is visibly worse again. Neither Family 02
+nor Family 03 is the preferred visual successor. Family 01 remains the first
+independent pilot.
+
+## Calibration And Claim Contract
+
+- A Line9-calibrated generator may use Line9 raw/processed morphology and
+  aggregate diagnostics, but every artifact must declare
+  `line9_conditioned=true` and `strict_line9_holdout_allowed=false`.
+- Such a generator is scientifically useful for simulator realism, ablations,
+  pretraining development, and domain-gap analysis. Only the unseen-Line9 claim
+  is unavailable.
+- A strict Line9 experiment must use a generator selected without Line9. An
+  alternative paper experiment may use Line9 for calibration and evaluate a
+  separately held-out line or a leave-one-line-out protocol whose simulator is
+  recalibrated without the held-out fold.
+- Visual ranking is a required project-owner gate. Numerical physics checks do
+  not promote a case that is visibly less realistic than its locked
+  predecessor.
 
 ## Family Roadmap
 
-### Phase A: Instrument-Band Anchor
+### Phase A: FORMAL06C Realism Successor
 
-Family 03 uses independently generated G01 geometry and an amplitude-only,
-zero-phase pulse derived from the project-wide 20-170 MHz acquisition support,
-50-150 MHz nominal band, and 100 MHz antenna centre. Its role is to determine
-whether the accepted multi-cycle mechanism survives without Line9-conditioned
-source selection.
+Lock FORMAL06C's source, weak-interface materials, grid, acquisition, basal
+packet, and transition construction. Change one factor group at a time to close
+the measured-domain gap, beginning with continuous non-target geology and only
+then broad basal relief. Compare every candidate directly with FORMAL06C and
+Line9 using identical crops, gain, and colour scales.
 
-### Phase B: Constitutive Factorial
+Family 03 remains useful only as evidence that the project-wide amplitude-only
+100 MHz band proxy produces a narrower, sharper packet. Do not extend it into a
+source sweep until a measured complex system response is available.
+
+### Phase B: Realism-Calibrated Factorial
 
 Hold one geometry and source fixed. Test three predeclared interface classes:
 
@@ -56,7 +88,7 @@ Each positive owns an exact no-basal material control. Reject combinations
 that are undetectable, target-dominating, or dominated by transition-layer
 combs before changing geometry.
 
-### Phase C: Independent Geometry And Background Matrix
+### Phase C: Independent Formal Geometry And Background Matrix
 
 Scale only after Phases A and B pass. The planned 24-family pilot is:
 
@@ -66,7 +98,9 @@ Scale only after Phases A and B pass. The planned 24-family pilot is:
 - two continuous cover-background strengths.
 
 This yields 24 positives and 24 exact target-absent family controls. All
-variants from one latent geometry remain in one indivisible split group.
+variants from one latent geometry remain in one indivisible split group. This
+phase must not inherit Line9-selected parameter values unless the resulting
+paper experiment is explicitly reported as Line9-conditioned.
 
 ### Phase D: Acquisition Domain Randomisation
 

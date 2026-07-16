@@ -497,6 +497,32 @@ pulse as an explicit proxy, freeze geometry/materials during source ablations,
 and require blind raw, time-power, and AGC review. Hardware-band consistency is
 necessary but does not guarantee the preferred solved wavelet morphology.
 
+### Measured Realism Versus Strict Holdout
+
+Do not confuse a split-integrity rule with the simulator's visual objective.
+For MyNet, maintain two explicit contracts:
+
+1. A measured-realism calibration track may use Line9 morphology, spectrum,
+   target prominence, and continuous-background character to select a
+   development simulator. Mark every resulting family
+   `line9_conditioned=true` and never describe Line9 as unseen for that track.
+2. A strict-holdout track must select generator parameters without its held-out
+   line, or recalibrate the simulator independently inside each leave-one-line-
+   out fold. Formal eligibility is a claim boundary, not a reason to keep an
+   unrealistic simulator.
+
+Project-owner visual review is binding for lineage selection. On 2026-07-16,
+the corrected ranking was `FORMAL06C > Independent Family 02 > Independent
+Family 03`. Family 02 retained FORMAL06C's source and near-identical material
+values but replaced its basal profile and cover field; the new field had about
+2.75 times the horizontal and 2.26 times the vertical neighbour-bin change
+rates and the path had seven smoothed extrema instead of two. Family 03 then
+added a sharper 100 MHz amplitude-only zero-phase band proxy and shifted the
+solved centroid to about 116.2 MHz. Keep both as ablations. Do not extend the
+Family 03 frequency sweep, and build the next realism candidate directly from
+FORMAL06C with source, materials, grid, acquisition, basal packet, and
+transition locked before changing continuous non-target geology.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training
