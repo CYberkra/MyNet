@@ -1,0 +1,77 @@
+{
+  "contract_id": "PGDA_MULTILINE_MEASURED_REALISM_REFERENCE_V1",
+  "source_dataset": "YINGSHAN_V15_FINAL_20260710",
+  "source_lines_dir": "data/measured/yingshan_v15/lines",
+  "minimum_contiguous_segment_traces": 64,
+  "visual_ranking_lock": [
+    "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+    "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+    "IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT"
+  ],
+  "development_all_lines": {
+    "purpose": "measured-domain simulator development",
+    "reference_lines": [
+      "Line3",
+      "Line6",
+      "Line7",
+      "Line9",
+      "LineL1"
+    ],
+    "excluded_lines": [
+      "LineX1"
+    ],
+    "line9_conditioned": true,
+    "strict_unseen_line9_claim_allowed": false
+  },
+  "paper_line9_holdout": {
+    "fit_lines": [
+      "Line3",
+      "Line7",
+      "LineL1"
+    ],
+    "validation_lines": [
+      "Line6"
+    ],
+    "held_out_test_lines": [
+      "Line9"
+    ],
+    "review_only_lines": [
+      "LineX1"
+    ],
+    "line9_conditioned": false,
+    "selection_must_finish_before_line9_visual_or_metric_review": true
+  },
+  "usage_rules": {
+    "signal_style": "frequency, background, continuity and dynamic-range calibration only",
+    "interface_morphology": "basal-path and packet-morphology calibration",
+    "stress_only": "robustness audit only; cannot select the nominal simulator",
+    "review_only": "cannot tune or promote a simulator",
+    "measured_arrays_may_be_copied_into_simulation": false
+  },
+  "trace_counts_by_line_and_purpose": {
+    "Line3": {
+      "signal_style": 1771,
+      "interface_morphology": 949
+    },
+    "Line6": {
+      "signal_style": 1532,
+      "interface_morphology": 900
+    },
+    "Line7": {
+      "signal_style": 1420,
+      "interface_morphology": 515,
+      "stress_only": 234
+    },
+    "Line9": {
+      "signal_style": 2378,
+      "interface_morphology": 937
+    },
+    "LineL1": {
+      "signal_style": 1950,
+      "interface_morphology": 1406
+    },
+    "LineX1": {
+      "review_only": 799
+    }
+  }
+}

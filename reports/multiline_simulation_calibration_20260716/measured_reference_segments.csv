@@ -1,0 +1,21 @@
+segment_id,line,purpose,trace_start,trace_end,trace_count,development_all_lines_allowed,paper_line9_holdout_role,reason
+MR001,Line3,signal_style,0,104,105,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR002,Line3,signal_style,126,209,84,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR003,Line3,signal_style,231,1812,1582,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR004,Line3,interface_morphology,699,1120,422,true,fit,V15 strong label with positive weight and valid acquisition
+MR005,Line3,interface_morphology,1197,1723,527,true,fit,V15 strong label with positive weight and valid acquisition
+MR006,Line6,signal_style,0,458,459,true,validation,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR007,Line6,signal_style,588,1660,1073,true,validation,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR008,Line6,interface_morphology,588,1220,633,true,validation,V15 strong label with positive weight and valid acquisition
+MR009,Line6,interface_morphology,1319,1585,267,true,validation,V15 strong label with positive weight and valid acquisition
+MR010,Line7,signal_style,0,474,475,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR011,Line7,signal_style,709,1653,945,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR012,Line7,interface_morphology,1054,1568,515,true,fit,V15 strong label with positive weight and valid acquisition
+MR013,Line7,stress_only,475,708,234,false,stress_only,measured flight height outside planned 2-20 m range
+MR014,Line9,signal_style,0,2377,2378,true,held_out_test,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR015,Line9,interface_morphology,107,610,504,true,held_out_test,V15 strong label with positive weight and valid acquisition
+MR016,Line9,interface_morphology,1838,2270,433,true,held_out_test,V15 strong label with positive weight and valid acquisition
+MR017,LineL1,signal_style,0,1949,1950,true,fit,"valid acquisition, outside V15 ignore and planned-height exceptions"
+MR018,LineL1,interface_morphology,242,1647,1406,true,fit,V15 strong label with positive weight and valid acquisition
+MR019,LineX1,review_only,0,127,128,false,review_only,X1 is excluded from calibration and promotion decisions
+MR020,LineX1,review_only,267,937,671,false,review_only,X1 is excluded from calibration and promotion decisions

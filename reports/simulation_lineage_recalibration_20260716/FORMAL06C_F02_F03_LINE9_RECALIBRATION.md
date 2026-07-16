@@ -47,9 +47,10 @@ narrower, sharper packet and moved the solved spectral centroid to about
 numeric change did not improve the project-owner visual judgement. It is a
 source-basis diagnostic, not a successor.
 
-## Correct Use Of Line9
+## Correct Use Of Measured Lines
 
-Line9 is now an explicit measured-realism calibration reference. It may guide:
+Line9 is one high-quality measured-realism reference, not the only target.
+Line3, Line6, valid-height Line7 segments, and LineL1 must also guide:
 
 - signed-lobe count and packet thickness;
 - peak frequency and spectral centroid;
@@ -57,11 +58,12 @@ Line9 is now an explicit measured-realism calibration reference. It may guide:
 - target prominence after identical background suppression and gain;
 - continuous non-target texture and absence of joined-hyperbola morphology.
 
-Every simulator selected this way must be marked `line9_conditioned=true`.
-This prevents only the claim that Line9 is a completely unseen strict holdout;
-it does not make the simulator unusable. A strict experiment must use a
-separate independently selected generator, a different held-out line, or a
-leave-one-line-out simulator calibration protocol.
+Every simulator selected with Line9 visible must be marked
+`line9_conditioned=true`. This prevents only the claim that Line9 is a
+completely unseen strict holdout; it does not make the simulator unusable.
+The primary strict experiment fits simulator parameters on Line3, valid Line7
+segments, and LineL1, selects them on Line6, freezes them, and only then opens
+Line9. LineX1 remains review-only.
 
 ## Next Candidate Contract
 
