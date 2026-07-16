@@ -1,0 +1,305 @@
+{
+  "contract_id": "FORMAL09C_TARGET_EXCLUDED_EVENT_STATISTICS_V1",
+  "fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "validation_only_lines": [
+    "Line6"
+  ],
+  "held_out_lines": [
+    "Line9"
+  ],
+  "detection_time_ns": [
+    250.0,
+    500.0
+  ],
+  "target_guard_ns": 42.0,
+  "event_fit": {
+    "lines": [
+      "Line3",
+      "Line7",
+      "LineL1"
+    ],
+    "line_event_counts": {
+      "Line3": 44,
+      "Line7": 44,
+      "LineL1": 58
+    },
+    "line_lengths_m": {
+      "Line3": 167.1578880562014,
+      "Line7": 133.72654144591144,
+      "LineL1": 179.4295701334513
+    },
+    "events_per_25m": {
+      "Line3": 6.580604797005815,
+      "Line7": 8.225741786980398,
+      "LineL1": 8.08116521107172
+    },
+    "pooled_quantiles_q10_q50_q90": {
+      "length_m": [
+        1.7904300403592928,
+        2.97126647989365,
+        11.855676351563504
+      ],
+      "slope_ns_per_m": [
+        -5.494420731664983,
+        -0.21031678179812055,
+        5.280414975286209
+      ],
+      "curvature_ns_per_m2": [
+        -5.358994573497458,
+        -0.046892185664057826,
+        3.304688093383475
+      ],
+      "amplitude_p99_fraction": [
+        0.2666528228058461,
+        0.3173302974851574,
+        0.4005437692913765
+      ],
+      "center_time_ns": [
+        260.529300236819,
+        291.4219183953526,
+        436.6348198674765
+      ]
+    },
+    "pooled_events_per_25m": 8.08116521107172
+  },
+  "curvature_contract": {
+    "source": "conservative_zero_mean_geometry_prior",
+    "standard_deviation_ns_per_m2": 0.04,
+    "absolute_limit_ns_per_m2": 0.12,
+    "reason": "short connected components make measured second derivatives unstable"
+  },
+  "detected_event_records_saved": false,
+  "detected_event_records_reason": "quantiles retained; measured event coordinates are not copied into the synthetic contract",
+  "generated_events": {
+    "09C-light": [
+      {
+        "center_x_m": 10.134652216086103,
+        "center_time_ns": 271.4853653464345,
+        "length_m": 2.7726377294147087,
+        "slope_ns_per_m": -0.9091780038970514,
+        "curvature_ns_per_m2": -0.00853340310192388,
+        "amplitude_weight": 0.3185108869730704,
+        "phase_rad": 2.3859786484092442,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 8.151772491031474,
+        "center_time_ns": 282.0426747437209,
+        "length_m": 3.869415522534947,
+        "slope_ns_per_m": 2.975673673638142,
+        "curvature_ns_per_m2": -0.03003439818441866,
+        "amplitude_weight": 0.3853759444511323,
+        "phase_rad": 1.2271855737092654,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 6.302930973376826,
+        "center_time_ns": 316.6448107530726,
+        "length_m": 8.155051937355072,
+        "slope_ns_per_m": -1.5966383839454052,
+        "curvature_ns_per_m2": -0.003587835852707273,
+        "amplitude_weight": 0.2964347784468792,
+        "phase_rad": -3.112948805471932,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 14.492130446609227,
+        "center_time_ns": 286.99415306544546,
+        "length_m": 9.35224079665803,
+        "slope_ns_per_m": 1.5478449737627429,
+        "curvature_ns_per_m2": -0.02405840995555078,
+        "amplitude_weight": 0.3307059753991499,
+        "phase_rad": -0.13066799602881174,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 11.867506262743937,
+        "center_time_ns": 300.8806012931129,
+        "length_m": 8.793947217377003,
+        "slope_ns_per_m": 3.4060899146996,
+        "curvature_ns_per_m2": -0.007864624768119942,
+        "amplitude_weight": 0.3214413695660919,
+        "phase_rad": -1.401689107658581,
+        "target_overlap_fraction": 0.0
+      }
+    ],
+    "09C-balanced": [
+      {
+        "center_x_m": 10.792097411964338,
+        "center_time_ns": 283.50164190659547,
+        "length_m": 4.8018429986952125,
+        "slope_ns_per_m": 1.119570177935544,
+        "curvature_ns_per_m2": -0.035758472531169455,
+        "amplitude_weight": 0.390342320314551,
+        "phase_rad": -2.3356530948270957,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 13.800490583015552,
+        "center_time_ns": 353.2714811667177,
+        "length_m": 3.9768024803998765,
+        "slope_ns_per_m": -3.528122874645324,
+        "curvature_ns_per_m2": 0.06031547136646498,
+        "amplitude_weight": 0.3370975191765168,
+        "phase_rad": -2.0053960480012254,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 3.4639231403532573,
+        "center_time_ns": 284.3994887167064,
+        "length_m": 7.2341711333841525,
+        "slope_ns_per_m": 2.3570710608047567,
+        "curvature_ns_per_m2": 0.0024879451221574713,
+        "amplitude_weight": 0.3165621519919624,
+        "phase_rad": 0.24628720112371605,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 15.046374579160194,
+        "center_time_ns": 270.77263973136843,
+        "length_m": 6.289726431567136,
+        "slope_ns_per_m": -2.0206701655117927,
+        "curvature_ns_per_m2": 0.0303852278620385,
+        "amplitude_weight": 0.305190303802438,
+        "phase_rad": 0.8830961960834376,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 7.480692644518731,
+        "center_time_ns": 299.4997728053457,
+        "length_m": 7.747820006031522,
+        "slope_ns_per_m": -1.1378733192911792,
+        "curvature_ns_per_m2": -0.05787498925465756,
+        "amplitude_weight": 0.3369516548065097,
+        "phase_rad": -0.9186208673597647,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 15.201530925005098,
+        "center_time_ns": 276.5206250779063,
+        "length_m": 10.202215286346298,
+        "slope_ns_per_m": 1.6965615623004924,
+        "curvature_ns_per_m2": 0.0248824792679437,
+        "amplitude_weight": 0.3333741055560083,
+        "phase_rad": -1.225377087979301,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 4.548002478514336,
+        "center_time_ns": 275.5287449217568,
+        "length_m": 6.115703025189814,
+        "slope_ns_per_m": 1.2710010676602588,
+        "curvature_ns_per_m2": 0.02131433398892452,
+        "amplitude_weight": 0.3101734825556127,
+        "phase_rad": 1.6166521936104958,
+        "target_overlap_fraction": 0.0
+      }
+    ],
+    "09C-rich": [
+      {
+        "center_x_m": 5.406275925233568,
+        "center_time_ns": 274.1486589623434,
+        "length_m": 5.854885621703444,
+        "slope_ns_per_m": 0.9557905406245251,
+        "curvature_ns_per_m2": -0.09404485884800375,
+        "amplitude_weight": 0.37474798883839605,
+        "phase_rad": -0.8426559995316474,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 13.056721954924623,
+        "center_time_ns": 279.67475688296764,
+        "length_m": 4.293818900963464,
+        "slope_ns_per_m": 0.7097136399083857,
+        "curvature_ns_per_m2": -0.023046788956941497,
+        "amplitude_weight": 0.31533778817313707,
+        "phase_rad": -0.17535500435442142,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 7.779605497525498,
+        "center_time_ns": 270.3698968190618,
+        "length_m": 3.5830589135701523,
+        "slope_ns_per_m": 3.593267770870328,
+        "curvature_ns_per_m2": -0.029723980218466343,
+        "amplitude_weight": 0.3696572930720687,
+        "phase_rad": -0.37987860467399637,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 18.099443640931227,
+        "center_time_ns": 275.77105126418127,
+        "length_m": 10.423483836894706,
+        "slope_ns_per_m": 1.307531260074204,
+        "curvature_ns_per_m2": -0.00016126831457097135,
+        "amplitude_weight": 0.3418043429101518,
+        "phase_rad": -0.9632854232749017,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 9.520159798295794,
+        "center_time_ns": 321.8627900806072,
+        "length_m": 10.25338939186179,
+        "slope_ns_per_m": -0.30105841669654154,
+        "curvature_ns_per_m2": 0.008204618457226108,
+        "amplitude_weight": 0.3335975002352155,
+        "phase_rad": 1.0946552638774536,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 16.07608733479773,
+        "center_time_ns": 281.4354730028148,
+        "length_m": 4.772103311975317,
+        "slope_ns_per_m": -2.8686952516357995,
+        "curvature_ns_per_m2": 0.03247525844749824,
+        "amplitude_weight": 0.3234781828554824,
+        "phase_rad": -0.4324871777254313,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 18.113919827328083,
+        "center_time_ns": 280.38271268751726,
+        "length_m": 4.856941690270698,
+        "slope_ns_per_m": 2.252510983596772,
+        "curvature_ns_per_m2": 0.011538072686659998,
+        "amplitude_weight": 0.347687631381227,
+        "phase_rad": -2.508931379228028,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 17.504213989235765,
+        "center_time_ns": 276.353061960229,
+        "length_m": 7.903767593634797,
+        "slope_ns_per_m": 2.0995397654907015,
+        "curvature_ns_per_m2": -0.07753577797321075,
+        "amplitude_weight": 0.3566953698560891,
+        "phase_rad": 1.9909308002578365,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 6.193143645878579,
+        "center_time_ns": 282.9277245787661,
+        "length_m": 4.008777892060481,
+        "slope_ns_per_m": 1.1787800591399256,
+        "curvature_ns_per_m2": -0.00990245768751189,
+        "amplitude_weight": 0.36201294460331757,
+        "phase_rad": 0.5520180584607801,
+        "target_overlap_fraction": 0.0
+      },
+      {
+        "center_x_m": 17.30533263727486,
+        "center_time_ns": 276.0890077588903,
+        "length_m": 6.528629491608882,
+        "slope_ns_per_m": -1.2269484251984917,
+        "curvature_ns_per_m2": 0.027672507708825487,
+        "amplitude_weight": 0.31668426719714243,
+        "phase_rad": -3.0407841361843073,
+        "target_overlap_fraction": 0.0
+      }
+    ]
+  }
+}

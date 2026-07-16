@@ -561,6 +561,46 @@ amplitude budget, and vary broad orientation or local continuity without
 isolated bodies. Do not treat a stronger texture multiplier as a new geology
 mechanism.
 
+### Empirical Nuisance and Sparse-Event Lessons
+
+The FORMAL09A-09C sequence (2026-07-16) tested target-excluded measured-domain
+statistics around the released FORMAL06C solver output. Preserve these rules:
+
+1. Fit paper-fold nuisance statistics with equal line weighting. Remove a
+   stable common-mode trace and exclude the target corridor before estimating
+   spectra or event distributions. Keep a separate all-lines development fit
+   and never call it strict holdout.
+2. A matched temporal spectrum is useful only as a diffuse nuisance component.
+   Separable temporal/lateral covariance and a true joint 2D power spectrum
+   both failed to reproduce finite local event topology; second-order Gaussian
+   power is not a substitute for sparse coherent geology or acquisition events.
+3. Do not copy measured residual patches, waveform snippets, or event
+   coordinates. Save only fold-safe distributions and sample new locations,
+   phases, supports, slopes, and amplitudes. Exclude the synthetic target
+   corridor during both fitting and generation.
+4. Short connected components provide unstable second derivatives. Do not clip
+   noisy measured curvature estimates into a fixed bound, because this piles
+   samples onto the limits and creates artificial hyperbolas. Use a declared
+   conservative near-zero geometry prior until native-resolution evidence can
+   support curvature.
+5. Scale a sparse coherent field by a robust peak statistic before mixing it
+   with diffuse noise. Global standard-deviation normalisation can make a few
+   short events unrealistically bright.
+6. Never resize a sparse B-scan with horizontal bilinear interpolation. Resize
+   vertically as needed, then use horizontal nearest-neighbour display and
+   disclose the effective trace spacing. FORMAL09C's apparent visual gain
+   largely disappeared after this correction.
+7. A 32-trace stride-8 checkpoint cannot prove finite-event continuity when a
+   typical event occupies only a few observed traces. Use a native-spacing
+   consecutive checkpoint before promoting the topology. For a physical
+   successor, preserve the accepted basal mechanism and add only low-contrast,
+   finite, gently dipping mid-cover laminae/lenses; forbid point targets,
+   vertical partitions, and periodic slabs.
+8. FORMAL09C light/balanced/rich were all rejected for promotion. They remain
+   deterministic mechanism evidence only, with no training eligibility or
+   gprMax causal claim. The next gate is a native-spacing 64-trace physical
+   ablation before any strict pair or 256-trace run.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

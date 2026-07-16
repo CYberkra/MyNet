@@ -1,0 +1,117 @@
+{
+  "contract_id": "FORMAL09C_SPARSE_COHERENT_EVENT_FIELD_DEVELOPMENT_V1",
+  "status": "visual_candidates_only",
+  "formal_training_allowed": false,
+  "causal_pair_complete": false,
+  "gprmax_solver_run_performed": false,
+  "base_case": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "base_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "base_output_sha256": "71a9b83fd7bd4c000aa51e443fe4b8cff06083d2a0b076a0c3f67593431e4e79",
+  "seed": 2026071613,
+  "synthetic_trace_spacing_m": 0.72,
+  "retained_component": "FORMAL09B-1 paper-fold diffuse temporal spectrum",
+  "single_factor_group": "finite sparse coherent-event topology",
+  "measured_trace_patch_waveform_or_coordinate_copying": false,
+  "target_corridor_excluded_from_fit_and_generation": true,
+  "variants": [
+    {
+      "name": "light",
+      "coherent_fraction": 0.2,
+      "count_multiplier": 0.65
+    },
+    {
+      "name": "balanced",
+      "coherent_fraction": 0.35,
+      "count_multiplier": 1.0
+    },
+    {
+      "name": "rich",
+      "coherent_fraction": 0.5,
+      "count_multiplier": 1.35
+    }
+  ],
+  "metrics": {
+    "09B1-paper": {
+      "noise_scale": 0.0005600905755219323,
+      "gain_min": 0.7173213224874061,
+      "gain_median": 1.0349430817616274,
+      "gain_max": 1.1285882628149206,
+      "achieved_target_to_background": 4.500000000095055,
+      "target_to_background": 4.500000000095055,
+      "target_envelope_cv": 0.42076636187468736,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6028741715955062,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 83.09659323954722,
+      "background_envelope_cv": 0.2021716738087989,
+      "background_adjacent_envelope_correlation": 0.4238693748117485,
+      "background_coherence_length_m": 1.44
+    },
+    "09C-light": {
+      "noise_scale": 0.0005642072886441734,
+      "gain_min": 0.7173213224874061,
+      "gain_median": 1.0349430817616274,
+      "gain_max": 1.1285882628149206,
+      "achieved_target_to_background": 4.49999999980946,
+      "target_to_background": 4.49999999980946,
+      "target_envelope_cv": 0.42077283558429884,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6029135785897719,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 83.09592098232012,
+      "background_envelope_cv": 0.2011389359696354,
+      "background_adjacent_envelope_correlation": 0.41694287246871414,
+      "background_coherence_length_m": 1.44
+    },
+    "09C-balanced": {
+      "noise_scale": 0.0005662445174682492,
+      "gain_min": 0.7173213224874061,
+      "gain_median": 1.0349430817616274,
+      "gain_max": 1.1285882628149206,
+      "achieved_target_to_background": 4.499999999974473,
+      "target_to_background": 4.499999999974473,
+      "target_envelope_cv": 0.4202057037230542,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6012335370946139,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 83.25519311100544,
+      "background_envelope_cv": 0.2148123804653382,
+      "background_adjacent_envelope_correlation": 0.443041380296821,
+      "background_coherence_length_m": 1.44
+    },
+    "09C-rich": {
+      "noise_scale": 0.0005955675151287055,
+      "gain_min": 0.7173213224874061,
+      "gain_median": 1.0349430817616274,
+      "gain_max": 1.1285882628149206,
+      "achieved_target_to_background": 4.500000000101679,
+      "target_to_background": 4.500000000101679,
+      "target_envelope_cv": 0.4192875864194426,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6005140364951143,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 83.3844473168101,
+      "background_envelope_cv": 0.19935950259624935,
+      "background_adjacent_envelope_correlation": 0.4397432602229934,
+      "background_coherence_length_m": 1.44
+    }
+  },
+  "blind_mapping": {
+    "A": "09C-rich",
+    "B": "09C-light",
+    "C": "09B1-paper",
+    "D": "09C-balanced"
+  },
+  "visual_outputs": [
+    "FORMAL09C_blind_sparse_events.png",
+    "FORMAL09C_multiline_visual_comparison.png",
+    "FORMAL09C_event_geometry_audit.png"
+  ],
+  "sparse_display_contract": {
+    "vertical_resize": "bilinear",
+    "horizontal_resize": "nearest_neighbour",
+    "horizontal_interpolation_forbidden": true
+  },
+  "event_contract": "FORMAL09C_event_contract.json",
+  "next_gate": "blind human visual audit before any metadata conditioning or pair export"
+}

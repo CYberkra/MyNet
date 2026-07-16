@@ -58,6 +58,24 @@ events. Metadata conditioning is therefore deferred. FORMAL09C must model a
 sparse coherent-event topology explicitly before gain or timing factors are
 introduced.
 
+## FORMAL09C outcome
+
+FORMAL09C detected target-excluded finite events on the paper-fold fit lines
+and generated new sparse events without copying measured coordinates or
+patches. The mechanism worked technically, but no candidate passed the visual
+promotion gate. Once the 32 sparse traces were displayed with horizontal
+nearest-neighbour resizing, the apparent gain over FORMAL09B-1 became small
+and short events were under-resolved. `light` was nearly unchanged,
+`balanced` contained an isolated block-like event, and `rich` remained too
+regular and too clean relative to the multi-line references.
+
+The next stage is therefore not a larger post-solver event weight. Build
+`FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE` directly from FORMAL06C with the
+accepted source and basal mechanism locked. Introduce only finite,
+low-contrast, gently dipping mid-cover laminae/lenses, then inspect a
+native-spacing consecutive 64-trace full-scene checkpoint. Run a strict pair
+and native 256 traces only after that blind morphology gate passes.
+
 ## Formal evaluation
 
 Maintain two parameter sets:

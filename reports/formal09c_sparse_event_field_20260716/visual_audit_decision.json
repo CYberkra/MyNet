@@ -1,0 +1,21 @@
+{
+  "contract_id": "FORMAL09C_VISUAL_AUDIT_DECISION_V1",
+  "date": "2026-07-16",
+  "decision": "REJECT_FOR_PROMOTION_RETAIN_MECHANISM_SANDBOX",
+  "formal_training_allowed": false,
+  "gprmax_causal_claim_allowed": false,
+  "mother_morphology": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "variant_decisions": {
+    "09C-light": "NO_MEANINGFUL_VISUAL_GAIN",
+    "09C-balanced": "FINITE_EVENTS_PRESENT_BUT_SPARSE_TOPOLOGY_UNRESOLVED",
+    "09C-rich": "EVENTS_VISIBLE_BUT_TOO_REGULAR_AND_NOT_MEASURED_LIKE"
+  },
+  "critical_display_correction": {
+    "previous_horizontal_resize": "bilinear",
+    "audited_horizontal_resize": "nearest_neighbour",
+    "synthetic_trace_spacing_m": 0.72,
+    "conclusion": "sparse traces cannot establish native finite-event continuity"
+  },
+  "next_case": "FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE",
+  "next_gate": "native-spacing consecutive 64-trace full-scene blind morphology"
+}
