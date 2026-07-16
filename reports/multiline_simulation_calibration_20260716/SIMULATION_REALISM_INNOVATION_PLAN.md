@@ -38,12 +38,25 @@ hallucinate the basal label.
 | 09B-1 | Empirical per-line noise spectrum | No | Better frequency texture without target loss |
 | 09B-2 | Cross-spectral lateral covariance and non-stationarity | No | Irregular measured-like background, no uniform ripple |
 | 09B-3 | Height/slope-conditioned gain and <=2 ns smooth timing jitter | No | Higher envelope CV without packet fracture |
+| 09C | Sparse finite coherent-event field from target-excluded event statistics | No | Local slopes/curvature and finite support without copied patches |
 | 10A | Bounded dispersive material family | Yes | Natural attenuation/wavelet change under strict pair |
 | 10B | Independent basal/cover morphology families | Yes | Multi-line range coverage without copied geometry |
 | 11A | Sparse 3D correction patches | Yes, limited | Quantified 2D/3D residual benefit |
 
 Every stage must provide raw, identically processed, target-crop, and blind
 multi-line panels before the next factor is added.
+
+## FORMAL09B outcome
+
+FORMAL09B-1 passed as a temporal-spectrum component, but not as a complete
+realism candidate. Its paper-fold fit remained stable without Line9.
+
+FORMAL09B-2 separable covariance and FORMAL09B-2R1 joint 2D Gaussian sampling
+were both visually rejected. They preserved marginal or joint second-order
+power but continued to produce long regular ripples instead of finite local
+events. Metadata conditioning is therefore deferred. FORMAL09C must model a
+sparse coherent-event topology explicitly before gain or timing factors are
+introduced.
 
 ## Formal evaluation
 

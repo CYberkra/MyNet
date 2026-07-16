@@ -222,6 +222,31 @@ calibration fixed. Preserve these lessons:
    and spatial non-stationarity. Keep the fold-local spectrum fixed and defer
    metadata-conditioned gain or timing until the lateral visual gate passes.
 
+### 8.3 FORMAL09B-2 Covariance Stop Rule
+
+The 2026-07-16 lateral-covariance experiments add a strict stop rule:
+
+1. A product of temporal and spatial marginal spectra is not a cross-spectral
+   model. FORMAL09B-2 preserved the packet but produced no visual improvement,
+   and adjacent background-envelope correlation decreased rather than matching
+   the measured event field.
+2. A joint temporal-frequency/spatial-frequency power spectrum is still only a
+   second-order statistic. FORMAL09B-2R1 used target-excluded time-by-distance
+   patches, physical MHz and cycles/m axes, equal-line pooling, acquisition-
+   direction symmetrisation, and new random phases. Its Gaussian samples still
+   looked like long regular ripples.
+3. Random-phase synthesis can preserve power while destroying finite event
+   topology: local start/end points, slope changes, curvature, packet changes,
+   and discontinuities. Do not call a 2D-spectrum match a morphology match.
+4. Retain FORMAL09B-1 as the diffuse spectral component. Do not increase
+   covariance strength or add metadata-conditioned gain to compensate for the
+   wrong topology.
+5. The successor must be a sparse coherent-event field. Fit target-excluded
+   distributions of event slope, physical length, curvature, amplitude, and
+   dropout; then sample new parametric paths and new empirical wavelets without
+   copying measured patches. Mix only a bounded number of finite events with
+   the diffuse field and apply the identical realisation to full/control.
+
 ## 9. MyNet / Line9 Special Rule
 
 Line9 is strict test-only. Line9-conditioned cases may be used to discover

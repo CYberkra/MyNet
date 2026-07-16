@@ -1,0 +1,15 @@
+{
+  "contract_id": "formal09b2_separable_visual_audit_v1",
+  "audit_date": "2026-07-16",
+  "decision": "reject_separable_lateral_covariance",
+  "promote_as_training_data": false,
+  "proceed_to_metadata_conditioning": false,
+  "root_cause": "separable temporal and spatial filters discard joint frequency-wavenumber orientation structure",
+  "blind_mapping": {
+    "A": "09B2 paper-fold nonstationary",
+    "B": "09B1 paper-fold spectrum",
+    "C": "09B2 all-lines nonstationary",
+    "D": "09B2 paper-fold covariance-only"
+  },
+  "next_stage": "FORMAL09B-2R1_JOINT_2D_SPECTRUM"
+}

@@ -1,0 +1,112 @@
+{
+  "contract_id": "FORMAL09B2_LATERAL_COVARIANCE_DEVELOPMENT_V1",
+  "status": "visual_candidates_only",
+  "formal_training_allowed": false,
+  "causal_pair_complete": false,
+  "gprmax_solver_run_performed": false,
+  "base_case": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "base_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "base_output_sha256": "71a9b83fd7bd4c000aa51e443fe4b8cff06083d2a0b076a0c3f67593431e4e79",
+  "seed": 2026071611,
+  "synthetic_trace_spacing_m": 0.72,
+  "single_factor_group": "target-excluded lateral spectrum and optional nonstationary amplitude envelope",
+  "locked_factors": [
+    "FORMAL06C solved full scene",
+    "FORMAL09B-1 paper-fold temporal spectrum",
+    "FORMAL09A depth envelope",
+    "FORMAL09A balanced gain budget",
+    "target/background calibration target 4.5"
+  ],
+  "measured_trace_copying": false,
+  "target_corridor_excluded": true,
+  "paper_fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "held_out_lines": [
+    "Line9"
+  ],
+  "validation_only_lines": [
+    "Line6"
+  ],
+  "metrics": {
+    "09B1-paper": {
+      "noise_scale": 0.0005781904838238534,
+      "gain_min": 0.8506393965370442,
+      "gain_median": 0.9400340851721419,
+      "gain_max": 1.2224501027451242,
+      "achieved_target_to_background": 4.499999999876936,
+      "target_to_background": 4.499999999876936,
+      "target_envelope_cv": 0.419030900575987,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.5967038555032242,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 85.87960653525866,
+      "background_envelope_cv": 0.26007897165593313,
+      "background_adjacent_envelope_correlation": 0.2609028460790862,
+      "background_coherence_length_m": 0.72
+    },
+    "09B2-paper-covariance": {
+      "noise_scale": 0.0005372987035947844,
+      "gain_min": 0.8506393965370442,
+      "gain_median": 0.9400340851721419,
+      "gain_max": 1.2224501027451242,
+      "achieved_target_to_background": 4.5000000000433085,
+      "target_to_background": 4.5000000000433085,
+      "target_envelope_cv": 0.3996564837397044,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.48010616290517705,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 86.83111677873399,
+      "background_envelope_cv": 0.22461442681742647,
+      "background_adjacent_envelope_correlation": 0.06927996075211092,
+      "background_coherence_length_m": 0.72
+    },
+    "09B2-paper-nonstationary": {
+      "noise_scale": 0.0005282073458382459,
+      "gain_min": 0.8506393965370442,
+      "gain_median": 0.9400340851721419,
+      "gain_max": 1.2224501027451242,
+      "achieved_target_to_background": 4.499999999865757,
+      "target_to_background": 4.499999999865757,
+      "target_envelope_cv": 0.39202278055953405,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.4277741817368862,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 86.51154670175256,
+      "background_envelope_cv": 0.28862201487133576,
+      "background_adjacent_envelope_correlation": 0.13520303982040396,
+      "background_coherence_length_m": 0.72
+    },
+    "09B2-all-lines-nonstationary": {
+      "noise_scale": 0.0005269012236899783,
+      "gain_min": 0.8506393965370442,
+      "gain_median": 0.9400340851721419,
+      "gain_max": 1.2224501027451242,
+      "achieved_target_to_background": 4.49999999973437,
+      "target_to_background": 4.49999999973437,
+      "target_envelope_cv": 0.3890487067763368,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.41439521080515557,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 86.37994299029879,
+      "background_envelope_cv": 0.31188287340993776,
+      "background_adjacent_envelope_correlation": 0.16199237167792452,
+      "background_coherence_length_m": 0.72
+    }
+  },
+  "blind_mapping": {
+    "A": "09B2-paper-nonstationary",
+    "B": "09B1-paper",
+    "C": "09B2-all-lines-nonstationary",
+    "D": "09B2-paper-covariance"
+  },
+  "visual_outputs": [
+    "FORMAL09B2_blind_lateral_covariance.png",
+    "FORMAL09B2_multiline_visual_comparison.png",
+    "FORMAL09B2_spatial_spectrum_audit.png"
+  ],
+  "spatial_contract": "FORMAL09B2_spatial_statistics.json",
+  "next_gate": "blind human visual audit before metadata-conditioned FORMAL09B-3"
+}

@@ -1,0 +1,16 @@
+{
+  "contract_id": "formal09b2r1_joint_visual_audit_v1",
+  "audit_date": "2026-07-16",
+  "decision": "reject_joint_gaussian_nuisance_field",
+  "promote_as_training_data": false,
+  "proceed_to_metadata_conditioning": false,
+  "retained_component": "FORMAL09B-1 paper-fold diffuse temporal spectrum",
+  "root_cause": "random-phase second-order spectra do not preserve sparse finite coherent event topology",
+  "blind_mapping": {
+    "A": "09B1 paper-fold spectrum",
+    "B": "09B2R1 joint stationary",
+    "C": "09B2R1 joint nonstationary",
+    "D": "09B2 separable nonstationary rejected control"
+  },
+  "next_stage": "FORMAL09C_SPARSE_COHERENT_EVENT_FIELD"
+}
