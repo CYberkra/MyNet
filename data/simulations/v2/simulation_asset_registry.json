@@ -1,6 +1,6 @@
 {
   "schema": "pgda_simulation_asset_registry_v1",
-  "updated_date": "2026-07-15",
+  "updated_date": "2026-07-16",
   "policy": "docs/SIMULATION_ASSET_POLICY.md",
   "cases": [
     {
@@ -95,6 +95,28 @@
       "solver_evidence_released": false,
       "decision_report": "reports/independent_v2_family02_20260715/INDEPENDENT_V2_FAMILY02_MECHANISM_TRANSFER_AUDIT.md",
       "next_gate": "remain indivisible from the positive case; never promote this negative independently"
+    },
+    {
+      "case_id": "IV2_F03_INSTRUMENT_BAND_POS",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT/IV2_F03_INSTRUMENT_BAND_POS",
+      "scene_family_id": "IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT",
+      "status": "independent_physics_pass_morphology_secondary",
+      "formal_training_allowed": false,
+      "line9_conditioned": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family03_20260716/INDEPENDENT_V2_FAMILY03_INSTRUMENT_BAND_AUDIT.md",
+      "next_gate": "complete a predeclared independent source-family ablation before native-256 causal release"
+    },
+    {
+      "case_id": "IV2_F03_MATCHED_BACKGROUND_NEG",
+      "source_dir": "data/simulations/v2/00_controls/IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT/IV2_F03_MATCHED_BACKGROUND_NEG",
+      "scene_family_id": "IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT",
+      "status": "exact_matched_true_negative_pilot",
+      "formal_training_allowed": false,
+      "line9_conditioned": false,
+      "solver_evidence_released": false,
+      "decision_report": "reports/independent_v2_family03_20260716/INDEPENDENT_V2_FAMILY03_INSTRUMENT_BAND_AUDIT.md",
+      "next_gate": "remain indivisible from the positive case and complete native-256 negative evidence only after source-family selection"
     }
   ]
 }

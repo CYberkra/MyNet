@@ -1,4 +1,4 @@
-# PGDA-CSNet Current State (2026-07-15)
+# PGDA-CSNet Current State (2026-07-16)
 
 ## Active research line
 
@@ -50,6 +50,17 @@ ignore regions. Canonical arrays remain in acquisition order.
   This proves mechanism transfer, but the mechanism-selection decision remains
   Line9-conditioned; Family 02 is development-only and prohibited from formal
   training.
+- Independent V2 Family 03: the first source-independent hardware-band pilot.
+  It keeps the Family 01 geometry and weak-interface materials but replaces the
+  Line9-conditioned 80 MHz source choice with a project-wide 100 MHz,
+  20-170 MHz amplitude-only pulse proxy. Static geometry, the one-trace causal
+  pair, exact negative equivalence, and distributed32 full-scene morphology
+  passed. The path/geometry correlation is 0.9983 with seven signed lobes and
+  no dropout. Blind review found a narrower, sharper, less visible packet than
+  Family 02/FORMAL06C; the solved spectral centroid rose to 116.20 MHz and the
+  target/adjacent-background RMS ratio fell to 9.65. Family 03 is retained as
+  an independent valid diversity candidate, not the preferred morphology and
+  not training-approved before a full causal release and source-family audit.
 - No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -72,9 +83,10 @@ before changing the formal config.
 
 1. Keep FORMAL06C as the project-owner accepted visual baseline and FORMAL07B
    as its controlled weak-background successor. Neither is training data.
-2. Use Family 02 to lock the successful physical mechanism, then re-origin its
-   source and constitutive ranges from independent physical bounds for the
-   formal successor. Do not copy held-out arrays or promote Family 02 itself.
+2. Use Family 02 to lock the successful physical mechanism. Use Family 03 as
+   the independent hardware-band anchor, then run a predeclared same-geometry,
+   same-material source-family ablation. Do not tune source parameters against
+   Line9 and do not promote Family 02 itself.
 3. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
 4. Audit candidate real true-negative intervals; ambiguous/failed-positive

@@ -1,6 +1,6 @@
 {
   "schema_version": "dataset_contract_v2",
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-16",
   "formal_training_allowed": false,
   "label_semantics": "visible_phase_v15_final_with_weak_crossing_relabels_and_explicit_ignore",
   "required_files": [
@@ -25,7 +25,9 @@
     "Independent IV2 Family 01 passed static, geometry, one-trace causal, distributed8 causal, and distributed32 full-scene morphology pilot gates.",
     "IV2 Family 01 remains non-trainable until complete native-256 required runs, release packaging, and independent human approval are complete.",
     "IV2 Family 02 transferred the FORMAL06C source and weak-interface mechanism onto regenerated Family 01 geometry and recovered the accepted seven-lobe 79 MHz morphology.",
-    "IV2 Family 02 remains development-only because the mechanism-selection decision used Line9 diagnostics; its exact matched negative inherits the same family-level restriction."
+    "IV2 Family 02 remains development-only because the mechanism-selection decision used Line9 diagnostics; its exact matched negative inherits the same family-level restriction.",
+    "IV2 Family 03 re-originated the source from project-wide hardware bandwidth evidence and passed static, one-trace causal, exact-negative, and distributed32 morphology gates.",
+    "IV2 Family 03 remains non-trainable: its 100 MHz zero-phase band proxy produced a sharper 116 MHz-centroid packet than the accepted development morphology, and native-256 causal and human release gates remain incomplete."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -35,8 +37,8 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 9,
-    "human_audit_records": 9,
+    "simulation_cases_registered": 11,
+    "human_audit_records": 11,
     "accepted_quarantine_cases": 0,
     "line9_conditioned_cases": 7,
     "training_allowed_cases": 0,

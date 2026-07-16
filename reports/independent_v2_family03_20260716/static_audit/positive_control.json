@@ -1,0 +1,2103 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      242.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 7.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 242.73,
+        "cells": 8091,
+        "realised_m": 242.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 109.8,
+        "cells": 3660,
+        "realised_m": 109.8,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 109.98,
+        "cells": 3666,
+        "realised_m": 109.97999999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\no_basal_contrast_control.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {},
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt",
+        "material_count": 320,
+        "shape": [
+          8091,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 319,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_1_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_1_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_1_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_1_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_1_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_1_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_1_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_1_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_1_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_1_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_1_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_1_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_1_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_1_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_1_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_1_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_1_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_1_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_1_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_1_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_1_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_1_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_1_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_1_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_1_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_1_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_1_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_1_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_1_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_1_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_1_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_1_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_2_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_2_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_2_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_2_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_2_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_2_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_2_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_2_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_2_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_2_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_2_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_2_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_2_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_2_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_2_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_2_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_2_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_2_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_2_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_2_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_2_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_2_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_2_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_2_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_2_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_2_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_2_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_2_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_2_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_2_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_2_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_2_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_3_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_3_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_3_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_3_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_3_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_3_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_3_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_3_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_3_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_3_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_3_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_3_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_3_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_3_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_3_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_3_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_3_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_3_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_3_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_3_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_3_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_3_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_3_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_3_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_3_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_3_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_3_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_3_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_3_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_3_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_3_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_3_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_4_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_4_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_4_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_4_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_4_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_4_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_4_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_4_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_4_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_4_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_4_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_4_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_4_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_4_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_4_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_4_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_4_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_4_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_4_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_4_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_4_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_4_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_4_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_4_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_4_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_4_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_4_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_4_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_4_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_4_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_4_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_4_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_5_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_5_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_5_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_5_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_5_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_5_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_5_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_5_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_5_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_5_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_5_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_5_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_5_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_5_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_5_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_5_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_5_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_5_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_5_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_5_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_5_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_5_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_5_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_5_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_5_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_5_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_5_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_5_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_5_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_5_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_5_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_5_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_6_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_6_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_6_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_6_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_6_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_6_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_6_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_6_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_6_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_6_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_6_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_6_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_6_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_6_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_6_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_6_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_6_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_6_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_6_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_6_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_6_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_6_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_6_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_6_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_6_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_6_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_6_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_6_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_6_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_6_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_6_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_6_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_7_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_7_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_7_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_7_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_7_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_7_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_7_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_7_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_7_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_7_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_7_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_7_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_7_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_7_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_7_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_7_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_7_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_7_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_7_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_7_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_7_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_7_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_7_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_7_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_7_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_7_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_7_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_7_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_7_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_7_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_7_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_7_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "transition_8_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "transition_8_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "transition_8_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "transition_8_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "transition_8_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "transition_8_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "transition_8_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "transition_8_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "transition_8_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "transition_8_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "transition_8_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "transition_8_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "transition_8_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "transition_8_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "transition_8_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "transition_8_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "transition_8_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "transition_8_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "transition_8_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "transition_8_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "transition_8_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "transition_8_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "transition_8_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "transition_8_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "transition_8_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "transition_8_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "transition_8_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "transition_8_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "transition_8_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "transition_8_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "transition_8_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "transition_8_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.01875,
+        "conductivity": 0.001825,
+        "id": "bedrock_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.05625,
+        "conductivity": 0.001875,
+        "id": "bedrock_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.09375,
+        "conductivity": 0.001925,
+        "id": "bedrock_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.13125,
+        "conductivity": 0.001975,
+        "id": "bedrock_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.16875,
+        "conductivity": 0.002025,
+        "id": "bedrock_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.20625,
+        "conductivity": 0.002075,
+        "id": "bedrock_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.24375,
+        "conductivity": 0.002125,
+        "id": "bedrock_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.28125,
+        "conductivity": 0.002175,
+        "id": "bedrock_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.31875,
+        "conductivity": 0.002225,
+        "id": "bedrock_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.35625,
+        "conductivity": 0.002275,
+        "id": "bedrock_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.39375,
+        "conductivity": 0.002325,
+        "id": "bedrock_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.43125,
+        "conductivity": 0.002375,
+        "id": "bedrock_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.46875,
+        "conductivity": 0.002425,
+        "id": "bedrock_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.50625,
+        "conductivity": 0.002475,
+        "id": "bedrock_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.54375,
+        "conductivity": 0.002525,
+        "id": "bedrock_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.58125,
+        "conductivity": 0.002575,
+        "id": "bedrock_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.61875,
+        "conductivity": 0.002625,
+        "id": "bedrock_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.65625,
+        "conductivity": 0.002675,
+        "id": "bedrock_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.69375,
+        "conductivity": 0.002725,
+        "id": "bedrock_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.73125,
+        "conductivity": 0.002775,
+        "id": "bedrock_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.76875,
+        "conductivity": 0.002825,
+        "id": "bedrock_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.80625,
+        "conductivity": 0.002875,
+        "id": "bedrock_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.84375,
+        "conductivity": 0.002925,
+        "id": "bedrock_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.88125,
+        "conductivity": 0.002975,
+        "id": "bedrock_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.91875,
+        "conductivity": 0.003025,
+        "id": "bedrock_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.95625,
+        "conductivity": 0.003075,
+        "id": "bedrock_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 12.99375,
+        "conductivity": 0.003125,
+        "id": "bedrock_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.03125,
+        "conductivity": 0.003175,
+        "id": "bedrock_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.06875,
+        "conductivity": 0.003225,
+        "id": "bedrock_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.10625,
+        "conductivity": 0.003275,
+        "id": "bedrock_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.14375,
+        "conductivity": 0.003325,
+        "id": "bedrock_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      },
+      {
+        "epsilon_r": 13.18125,
+        "conductivity": 0.003375,
+        "id": "bedrock_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT\\IV2_F03_INSTRUMENT_BAND_POS\\materials_no_basal.txt"
+      }
+    ],
+    "command_count": 12
+  }
+}

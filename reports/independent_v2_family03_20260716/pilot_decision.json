@@ -1,0 +1,42 @@
+{
+  "schema": "independent_v2_family03_pilot_decision_v1",
+  "case_id": "IV2_F03_INSTRUMENT_BAND_POS",
+  "scene_family_id": "IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT",
+  "decision": "retain_as_independent_physics_candidate_not_preferred_morphology",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "passed_gates": [
+    "static_input_audit",
+    "geometry_only_runtime",
+    "one_trace_full_control_causal_pair",
+    "exact_target_absent_runtime_equivalence",
+    "distributed32_full_span_output_contract",
+    "distributed32_geometry_tracking",
+    "distributed32_blind_visual_review"
+  ],
+  "incomplete_gates": [
+    "distributed32_or_native256_matched_control",
+    "native256_full_control_air_release",
+    "independent_human_release_review"
+  ],
+  "metrics": {
+    "one_trace_pair_target_to_background_rms": 71.17340666394787,
+    "one_trace_early_full_control_relative_difference": 3.1556931363380046e-7,
+    "negative_runtime_max_abs_difference": 0.0,
+    "distributed32_path_to_geometry_correlation": 0.9983061161875056,
+    "distributed32_target_to_adjacent_background_rms": 9.645348959674294,
+    "distributed32_target_envelope_cv": 0.3569522526382728,
+    "distributed32_dropout_fraction": 0.0,
+    "distributed32_significant_lobe_count": 7,
+    "distributed32_aligned_peak_frequency_mhz": 132.27513227513228,
+    "distributed32_aligned_spectral_centroid_mhz": 116.20106697389582
+  },
+  "visual_review": {
+    "continuous_interface_packet": true,
+    "hyperbola_chain": false,
+    "vertical_partition_artifact": false,
+    "comparison_to_family02": "narrower, sharper and lower visibility on shared scales",
+    "comparison_to_formal06c": "preserves the broad path concept but does not reproduce the preferred thick packet as closely as Family 02"
+  },
+  "next_action": "run a predeclared same-geometry same-material source-family ablation using only project-wide hardware and literature constraints; do not tune against Line9"
+}

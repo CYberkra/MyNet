@@ -488,6 +488,15 @@ was selected with held-out diagnostics:
    non-held-out factorial. Re-run static, causal-pair, sparse blind, dense, and
    human gates. Never relabel the development transfer itself as independent.
 
+### Instrument-Band Source Proxies
+
+When approximating a stepped-frequency or wideband instrument without measured
+complex system phase, read
+`references/instrument-band-source.md`. Treat a magnitude-derived zero-phase
+pulse as an explicit proxy, freeze geometry/materials during source ablations,
+and require blind raw, time-power, and AGC review. Hardware-band consistency is
+necessary but does not guarantee the preferred solved wavelet morphology.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training
