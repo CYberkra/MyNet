@@ -1,0 +1,37 @@
+{
+  "schema": "gprmax_runtime_visual_decision_v1",
+  "case_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+  "date": "2026-07-16",
+  "decision": "retain_as_failed_stronger_deep_background_ablation",
+  "mother_model": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "line9_conditioned": true,
+  "formal_training_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "causal_pair_complete": false,
+  "runs": {
+    "consecutive8": "formal08b_blind8_full_20260716_retry",
+    "distributed32": "formal08b_distributed32_full_20260716"
+  },
+  "distributed32_metrics": {
+    "path_to_geometric_correlation": 0.9999481829032817,
+    "target_to_adjacent_background_rms": 21.329851214861762,
+    "predecessor_target_to_adjacent_background_rms": 17.29,
+    "line9_diagnostic_target_to_adjacent_background_rms": 2.3485668444457377,
+    "significant_signed_lobe_count": 7,
+    "aligned_peak_frequency_mhz": 79.36507936507937,
+    "aligned_spectral_centroid_mhz": 91.06540007051258,
+    "target_dropout_fraction": 0.0
+  },
+  "visual_findings": [
+    "FORMAL06C multi-cycle basal packet is preserved",
+    "no isolated-hyperbola chain or packet dropout",
+    "no useful blind background gain over FORMAL06C",
+    "target dominance worsened rather than approaching Line9",
+    "synthetic background remains cleaner and more regular than Line9"
+  ],
+  "stopped_runs": [
+    "matched no-basal control",
+    "native 256"
+  ],
+  "next_action": "Keep FORMAL06C as mother model and decouple the next non-target structure factor from the protected basal corridor."
+}

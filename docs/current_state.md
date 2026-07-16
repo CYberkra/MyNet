@@ -73,6 +73,21 @@ ignore regions. Canonical arrays remain in acquisition order.
   successor; no matched control, visible-phase label, or training release is
   authorised. It is explicitly `line9_conditioned=true` and cannot support an
   unseen-Line9 claim.
+- FORMAL08B: solved direct FORMAL06C stronger-deep-background ablation. It keeps
+  the accepted source, materials, grid, acquisition, basal path, transition,
+  and protected interface-neighbour bins exact while strengthening only the
+  transition-following continuous deep-cover field. The full-domain candidate
+  has predecessor latent correlation 0.84656, perturbation RMS 0.51900,
+  changed cover-bin fraction 0.22021, and bin-delta P99 of 7. The blind geometry
+  preview shows a materially stronger continuous material field without
+  isolated bodies or vertical partitions. Eight consecutive and full-span 32
+  full-scene traces completed without dropout. The 32-trace path correlation
+  is 0.99995 with seven signed lobes and a 79.37 MHz peak, but the
+  target/adjacent-background RMS increased from FORMAL06C's 17.29 to 21.33.
+  Blind review shows almost no useful background improvement and a cleaner,
+  more dominant target than desired. It is retained as a failed factor
+  ablation; matched control and native 256 are stopped. It remains
+  `line9_conditioned=true`, development-only, and blocked from training.
 - No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -101,14 +116,17 @@ before changing the formal config.
 3. Keep FORMAL08A as a completed weak-background ablation. Do not spend solver
    time on its matched control or native-256 run because the full-span blind
    comparison did not improve on FORMAL06C.
-4. Maintain a separate independent/formal generator track for strict holdout
+4. Keep FORMAL08B as a completed failed stronger-deep-background ablation. Do
+   not run its matched control or native 256: target dominance worsened and the
+   full-span blind image did not improve on FORMAL06C.
+5. Maintain a separate independent/formal generator track for strict holdout
    claims or use a held-out-line/leave-one-line-out evaluation contract.
-5. Solve matched positive controls and promote only cases passing numerical,
+6. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
-6. Audit candidate real true-negative intervals; ambiguous/failed-positive
+7. Audit candidate real true-negative intervals; ambiguous/failed-positive
    regions remain weak or ignored.
-7. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
-8. Pass the formal data gate, then run multi-seed AeroPath training and frozen
+8. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
+9. Pass the formal data gate, then run multi-seed AeroPath training and frozen
    baseline comparisons.
 
 ## Continuation contract

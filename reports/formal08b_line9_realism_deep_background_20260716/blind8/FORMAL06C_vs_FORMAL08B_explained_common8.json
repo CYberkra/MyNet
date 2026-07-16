@@ -1,0 +1,32 @@
+{
+  "schema": "gprmax_common_trace_comparison_v1",
+  "left_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "right_case_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+  "common_canonical_trace_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "common_trace_count": 8,
+  "time_window_ns": 500.0,
+  "output_samples": 358,
+  "component": "Ez",
+  "agc_window": 13,
+  "time_power": 1.5,
+  "comparison_title": "FORMAL06C vs FORMAL08B exact common-trace explained checkpoint",
+  "shared_p995_scales": {
+    "Raw full-scene Ez": 187.4777069091797,
+    "Background suppression + time^1.5": 0.0004464074532734229,
+    "Background suppression + AGC(13)": 1.638698721528052
+  },
+  "reference_overlay": true,
+  "horizontal_interpolation": "none; nearest-neighbour expansion of sparse trace columns",
+  "left_output": "F:\\codex\\PSGN-CSNet\\MyNet\\data\\PGDA_SYNTH_DATASET_V2\\01_solver_runs\\FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT\\formal06c_blind8_full_20260715\\full_scene_merged.out",
+  "right_output": "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_blind8_full_20260716_retry/full_scene_merged.out",
+  "output": "reports/formal08b_line9_realism_deep_background_20260716/blind8/FORMAL06C_vs_FORMAL08B_explained_common8.png"
+}

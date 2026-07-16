@@ -548,6 +548,19 @@ Retain FORMAL06C as the mother model, archive FORMAL08A as a background
 ablation, and skip matched-control/native runs when the full-span blind gate
 does not produce a meaningful visual gain.
 
+FORMAL08B adds a second stop rule. Increasing a transition-following continuous
+deep-cover field is not equivalent to adding harmless background clutter. The
+candidate preserved FORMAL06C's basal geometry, seven signed lobes, 79.37 MHz
+peak, and zero dropout, but its full-span target/adjacent-background RMS rose
+from about 17.29 to 21.33 and the blind background did not improve. A cover
+field close enough to the protected transition can reshape illumination and
+the interface packet even when the material deck and basal geometry are locked.
+Stop such a factor before matched controls or native 256. The next non-target
+factor should be spatially separated from the basal corridor, use a predeclared
+amplitude budget, and vary broad orientation or local continuity without
+isolated bodies. Do not treat a stronger texture multiplier as a new geology
+mechanism.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

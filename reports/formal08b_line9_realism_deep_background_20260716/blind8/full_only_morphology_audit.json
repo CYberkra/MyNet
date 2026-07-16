@@ -1,0 +1,114 @@
+{
+  "audit_type": "FULL_SCENE_MORPHOLOGY_ONLY_V1",
+  "case_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+  "run_id": "formal08b_blind8_full_20260716_retry",
+  "component": "Ez",
+  "status": "development_only_full_scene_morphology",
+  "claim_limits": {
+    "causal_attribution_allowed": false,
+    "formal_training_promotion_allowed": false,
+    "visible_phase_training_label_allowed": false,
+    "reason": "This is a full-scene morphology audit only; a matched no-basal control is not complete (0 unmerged control traces found)."
+  },
+  "execution_state": {
+    "full_scene_merged": true,
+    "full_scene_trace_contract_complete": true,
+    "full_scene_captured_trace_count": 8,
+    "control_completed_trace_files": 0,
+    "control_merged": false,
+    "early_stop_reason": "User-approved stop after full-scene morphology became sufficient for the next design decision."
+  },
+  "solver_contract": {
+    "expected_trace_count": 8,
+    "declared_trace_count": 256,
+    "actual_trace_count": 8,
+    "trace_stride": 1,
+    "selected_trace_indices_zero_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "native_sample_count": 9188,
+    "dt_s": 7.075963010249052e-11,
+    "actual_end_ns": 650.0687217515805,
+    "protected_end_ns": 500.0,
+    "finite": true,
+    "trace_contract_file": "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_blind8_full_20260716_retry/run_logs/full_scene_trace_contract.json",
+    "reference_file": "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_blind8_full_20260716_retry/labels/source_referenced_arrival_time_ns.npy",
+    "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay"
+  },
+  "full_only_morphology": {
+    "semantics": "continuous signed phase in background-removed full scene; not a causal full-minus-control phase",
+    "path_range_ns": [
+      440.690976278311,
+      441.0447744288234
+    ],
+    "geometric_range_ns": [
+      428.3255615234375,
+      428.58917236328125
+    ],
+    "path_to_geometric_correlation": 0.9648112950143524,
+    "dynamic_range_retention": 1.3421229215086103,
+    "median_path_minus_geometric_ns": 12.369457642410026,
+    "path_step_p95_ns": 0.07075963010248643,
+    "path_step_max_ns": 0.07075963010248643,
+    "path_residual_step_p95_ns": 0.04851231564936142,
+    "path_residual_step_max_ns": 0.051716661352486426,
+    "path_residual_step_limit_ns": 5.6,
+    "target_to_adjacent_background_rms": 4.254613244042221,
+    "target_envelope_cv": 0.5084235814855032,
+    "target_dropout_fraction_below_25pct_median": 0.0,
+    "aligned_template_correlation_median": 0.06001255030722921,
+    "aligned_template_correlation_p10": -0.25791239910082564,
+    "significant_signed_lobe_count": 17,
+    "significant_lobe_signs": [
+      -1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1
+    ],
+    "aligned_peak_frequency_mhz": 88.18342151675485,
+    "aligned_spectral_centroid_mhz": 173.5012489423639,
+    "support_score_median": 3.062647081752055
+  },
+  "gates": {
+    "full_output_contract_pass": true,
+    "full_only_geometry_tracking_pass": true,
+    "full_resolution_causal_pair_pass": false,
+    "formal_promotion_pass": false
+  },
+  "development_only_line9_comparison": {
+    "restriction": "diagnostic comparison only; must not condition a formal strict-holdout generator",
+    "contract": "F:\\codex\\PSGN-CSNet\\MyNet\\reports\\line9_reproduction_program_20260714\\line9_reproduction_contract.json",
+    "line9_signal": {
+      "target_to_adjacent_background_rms": 2.3485668444457377,
+      "target_envelope_cv": 0.46463303004466555,
+      "target_dropout_fraction_below_25pct_median": 0.018502943650126155,
+      "target_aligned_template_correlation_median": 0.6455217599868774,
+      "target_aligned_template_correlation_p10": -0.7662814915180206,
+      "target_aligned_peak_frequency_mhz": 79.69303423848906,
+      "target_aligned_spectral_centroid_mhz": 84.64329614377178,
+      "strong_trace_fraction": 0.3940285954583684,
+      "weak_trace_fraction": 0.6059714045416317
+    },
+    "interpretation": "Numerical proximity is descriptive only because measured and FDTD processing domains differ."
+  }
+}

@@ -28,7 +28,8 @@
     "IV2 Family 02 remains development-only because the mechanism-selection decision used Line9 diagnostics; its exact matched negative inherits the same family-level restriction.",
     "IV2 Family 03 re-originated the source from project-wide hardware bandwidth evidence and passed static, one-trace causal, exact-negative, and distributed32 morphology gates.",
     "IV2 Family 03 remains non-trainable: its 100 MHz zero-phase band proxy produced a sharper 116 MHz-centroid packet than the accepted development morphology, and native-256 causal and human release gates remain incomplete.",
-    "FORMAL08A directly locks FORMAL06C physics and changes only depth-tapered continuous middle-cover texture; its pre-solver audit passes, but runtime and project-owner visual approval remain pending."
+    "FORMAL08A directly locked FORMAL06C physics and changed only depth-tapered continuous middle-cover texture; runtime passed but blind full-span review found insufficient visual gain, so it remains an ablation rather than a successor.",
+    "FORMAL08B directly locked FORMAL06C physics and strengthened only transition-following continuous deep-cover texture; 8 and full-span 32 full-scene runs passed execution, but blind review found no useful background gain and target dominance increased, so the case was not promoted."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -38,10 +39,10 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 12,
-    "human_audit_records": 12,
+    "simulation_cases_registered": 13,
+    "human_audit_records": 13,
     "accepted_quarantine_cases": 0,
-    "line9_conditioned_cases": 8,
+    "line9_conditioned_cases": 9,
     "training_allowed_cases": 0,
     "real_lines_registered": 6,
     "real_windows_registered": 78,

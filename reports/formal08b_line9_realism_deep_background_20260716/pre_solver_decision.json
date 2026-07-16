@@ -1,0 +1,25 @@
+{
+  "case_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+  "date": "2026-07-16",
+  "state": "pre_solver_pass_pending_consecutive8_visual_gate",
+  "line9_conditioned": true,
+  "formal_training_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "authorised_next_run": "eight_consecutive_full_scene_only",
+  "distributed32_authorised": false,
+  "matched_pair_authorised": false,
+  "native256_authorised": false,
+  "geometry_gates_passed": true,
+  "static_input_errors": 0,
+  "static_input_warnings": 0,
+  "file_hash_rows": 27,
+  "file_hash_mismatches": 0,
+  "focused_tests_passed": 6,
+  "visual_risk": "quantised continuous contours may solve into an overly coherent parallel comb",
+  "stop_conditions": [
+    "regular horizontal comb",
+    "hyperbola-like or fragmented background",
+    "accepted basal packet loss or dropout",
+    "no meaningful blind visual gain over FORMAL06C"
+  ]
+}

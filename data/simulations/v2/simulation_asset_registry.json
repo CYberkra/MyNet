@@ -129,6 +129,18 @@
       "solver_evidence_released": false,
       "decision_report": "reports/formal08a_line9_realism_background_20260716/RUNTIME_VISUAL_DECISION.md",
       "next_gate": "retain as a Line9-conditioned weak-background ablation; FORMAL06C remains the realism mother model"
+    },
+    {
+      "case_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+      "scene_family_id": "FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT",
+      "status": "runtime_passed_but_target_dominance_worsened_not_promoted",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "conditioning_scope": "Line9 is the explicit visual realism reference; FORMAL06C source, materials, acquisition, basal path, and transition remain locked",
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal08b_line9_realism_deep_background_20260716/RUNTIME_VISUAL_DECISION.md",
+      "next_gate": "retain as a failed stronger-deep-background ablation; do not run matched control or native 256, and keep FORMAL06C as the realism mother model"
     }
   ]
 }

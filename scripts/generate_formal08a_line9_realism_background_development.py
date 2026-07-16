@@ -263,6 +263,15 @@ def preview_predecessor_comparison(
     path: Path,
     spec: formal03.Spec,
     candidate_indices: np.ndarray,
+    *,
+    candidate_label: str = (
+        "B. FORMAL08A: same basal packet + moderate continuous cover texture"
+    ),
+    title: str = "FORMAL06C -> FORMAL08A one-factor pre-solver comparison",
+    subtitle: str = (
+        "Source, materials, grid, acquisition, basal path and transition are "
+        "locked; only middle-cover texture changes"
+    ),
 ) -> None:
     with h5py.File(PREDECESSOR_DIR / "geology_indices.h5", "r") as handle:
         predecessor_indices = handle["data"][:]
@@ -310,7 +319,7 @@ def preview_predecessor_comparison(
             1830,
             935,
             colour(candidate),
-            "B. FORMAL08A: same basal packet + moderate continuous cover texture",
+            candidate_label,
         ),
         (
             70,
@@ -330,13 +339,13 @@ def preview_predecessor_comparison(
         draw.text((left, top - 24), label, fill="black", font=font)
     draw.text(
         (70, 25),
-        "FORMAL06C -> FORMAL08A one-factor pre-solver comparison",
+        title,
         fill="black",
         font=font,
     )
     draw.text(
         (70, 52),
-        "Source, materials, grid, acquisition, basal path and transition are locked; only middle-cover texture changes",
+        subtitle,
         fill="black",
         font=font,
     )

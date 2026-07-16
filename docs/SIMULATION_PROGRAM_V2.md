@@ -80,6 +80,23 @@ ablation and do not run its matched control or native-256 scene. The next Phase
 A candidate must still inherit FORMAL06C directly and must show a materially
 visible improvement at the full-span blind gate before further solver work.
 
+FORMAL08B completed the next staged candidate. It changed only the continuous
+transition-following deep-cover field and preserves FORMAL06C's accepted basal
+packet exactly. Its geometry gate passes with correlation 0.84656,
+perturbation RMS 0.51900, changed-bin fraction 0.22021, bin-delta P99 7, and
+exact protected bins. Eight consecutive and full-span 32 full-scene runs
+completed. The 32-trace result preserved a 0.99995 path correlation, seven
+signed lobes, and a 79.37 MHz peak, but target/adjacent-background RMS increased
+from about 17.29 to 21.33. The blind image showed no useful background gain.
+Stop before matched controls and native 256, retain FORMAL06C as the mother
+model, and do not continue by merely increasing transition-following texture.
+
+The next realism factor must decouple non-target structure from the basal
+neighbourhood. Prefer broad, oblique or locally discontinuous but non-point
+background organisation placed away from the protected interface corridor,
+with a predeclared amplitude budget. Do not add isolated bodies or tune another
+uniform texture-strength multiplier.
+
 Family 03 remains useful only as evidence that the project-wide amplitude-only
 100 MHz band proxy produces a narrower, sharper packet. Do not extend it into a
 source sweep until a measured complex system response is available.
