@@ -1,0 +1,51 @@
+{
+  "family_id": "FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE",
+  "case_id": "FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "development_only": true,
+  "locked_source_waveform_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75",
+  "locked_index_array_sha256": "15dfb280dd945d24b3afc2b925606c0f0fe9cac251815355694b7fe5d8b87009",
+  "material_design": {
+    "cover_epsilon_min": 12.0,
+    "cover_epsilon_max": 12.8,
+    "cover_conductivity_min_s_per_m": 0.0018,
+    "cover_conductivity_max_s_per_m": 0.0025,
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18
+  },
+  "release_order": [
+    "static_geometry_attenuation_completed",
+    "one_trace_strict_pair_completed",
+    "native_spacing_consecutive_64_trace_full_scene_completed",
+    "exact_predecessor_common_trace_comparison_completed",
+    "equal_width_multiline_visual_audit_completed",
+    "stop_p2_solver_expansion_and_port_factor_to_independent_family"
+  ],
+  "full_scene_visibility_gate": {
+    "predecessor_target_to_adjacent_background_rms": 10.40292561943288,
+    "candidate_target_to_adjacent_background_rms": 10.319641622502436,
+    "minimum_predecessor_ratio_retention": 0.85,
+    "actual_predecessor_ratio_retention": 0.991994175487051,
+    "target_dropout_fraction_max": 0.05,
+    "actual_target_dropout_fraction": 0.0,
+    "requires_finite_midcover_perturbation_at_shared_scale": true,
+    "finite_midcover_perturbation_observed": true,
+    "forbids_p1_style_long_crossing_wave_groups": true,
+    "p1_style_long_crossing_wave_groups_observed": false,
+    "requires_blind_review_before_label_overlay": true,
+    "measured_realism_baseline_promotion": false
+  },
+  "runtime_state": "native64_full_completed_and_visually_audited",
+  "strict_line9_holdout_allowed": false,
+  "source_case_id": "FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE",
+  "predecessor_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "next_gate": "reimplement sparse-lamina factor in a fold-safe independent family and add acquisition nuisance as a separate auditable factor"
+}

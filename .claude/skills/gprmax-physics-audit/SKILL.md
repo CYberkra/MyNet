@@ -600,6 +600,43 @@ statistics around the released FORMAL06C solver output. Preserve these rules:
    deterministic mechanism evidence only, with no training eligibility or
    gprMax causal claim. The next gate is a native-spacing 64-trace physical
    ablation before any strict pair or 256-trace run.
+9. Do not map a detected signed-event count one-to-one onto a physical lamina
+   count. A single thin lamina has two boundaries and its response is convolved
+   with a multi-lobe source wavelet, so it can create roughly three to five
+   connected signed events. Record the assumed lobe multiplicity and treat the
+   resulting physical density as a conservative prior, not measured geology.
+10. Compare a physical clutter ablation against its exact predecessor at the
+    same canonical native traces before attributing any visible wave group to
+    the new geometry. FORMAL09C-P1 preserved the basal path and seven-lobe
+    79.37 MHz packet, but its dense laminae reduced target/adjacent-background
+    RMS from 10.40 to 5.61 and introduced over-coherent crossing mid-cover
+    wave groups. It is a mechanism/stress regression, not a realism baseline.
+11. A fair measured visual check must also match physical aperture. Do not
+    compare a 5.7 m synthetic subset only against a whole 150-220 m measured
+    line compressed to the same panel width. Use equal trace count and similar
+    native spacing, disclose independent display scaling, and keep held-out
+    lines diagnostic-only.
+12. For a sparse physical successor, taper both contrast and thickness to zero
+    at finite endpoints, require at least one endpoint inside the native pilot,
+    add bounded correlated centreline roughness, impose a non-crossing minimum
+    separation, and keep acquisition nuisance as a separate auditable factor.
+13. FORMAL09C-P2 demonstrates the conservative lower bound: changing only
+    0.0157% of cover cells with a P99 cover-bin delta of three preserved 99.2%
+    of the FORMAL06C basal target/background ratio (10.32 versus 10.40), kept
+    zero dropout, and produced a weak finite endpoint without P1-style crossing
+    stacks. Retain this topology as an optional physical factor, not a complete
+    measured-realism baseline.
+14. Weak finite factors can be hidden in a 0-500 ns panel. After the full-window
+    blind gate, inspect a disclosed cropped blind view at the exact same traces
+    and shared scale as the predecessor. A difference-only response is not
+    sufficient: the factor must be faintly readable in the full-scene crop and
+    must not damage the target packet.
+15. If a sparse physical factor preserves the target but the equal-aperture
+    synthetic panel remains much smoother than measured data, do not add more
+    coherent layers. Split the successor into independent geology and a
+    separately auditable acquisition/processing nuisance factor. Calibrate
+    nuisance only on fit lines, validate on the validation line, and keep the
+    held-out line diagnostic-only.
 
 ### MyNet VTI Lifecycle
 

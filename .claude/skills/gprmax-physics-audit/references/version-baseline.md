@@ -31,6 +31,28 @@
 
 ## Maintenance Log
 
+### 2026-07-16
+
+- Added the FORMAL09A-09C empirical nuisance workflow and corrected sparse
+  horizontal visualisation to nearest-neighbour expansion at the disclosed
+  trace spacing.
+- Completed exact native-64 FORMAL06C/FORMAL09C-P1 common-trace comparison.
+  P1 passed solver and basal-path gates but failed the realism gate because a
+  one-to-one signed-event-to-lamina mapping created excessive coherent clutter.
+- Added equal-physical-aperture measured visual comparison and the requirement
+  to deconvolve signed-lobe multiplicity before choosing physical lamina density.
+- Started FORMAL09C-P2 as a sparse, endpoint-visible, non-crossing, irregular
+  finite-lamina successor while keeping source, materials, basal path,
+  transition, grid, and acquisition exactly locked to FORMAL06C.
+- Completed the native-64 FORMAL09C-P2 visual gate. P2 preserved 99.2% of the
+  FORMAL06C basal target/background ratio, kept zero dropout, and avoided the
+  P1 long crossing stacks. It is accepted as a conservative sparse-lamina
+  factor but not as a measured-realism baseline because equal-width measured
+  windows remain substantially more interrupted and heterogeneous.
+- Locked the next realism stage to separate fold-safe geology from an
+  acquisition/processing nuisance factor calibrated on Line3, Line7, and
+  LineL1, validated on Line6, with Line9 held out.
+
 ### 2026-07-14
 
 - Added a measured-line reproduction workflow that separates raw receiver time, processed time B-scan, migrated depth, elevation profile, and interpreted overlays. A migrated PDF figure can no longer be used as a direct raw-FDTD visual target.

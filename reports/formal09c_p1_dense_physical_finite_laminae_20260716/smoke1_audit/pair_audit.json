@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE/formal09c_p1_smoke1_pair_20260716_r1",
+  "source_case_dir": "data/simulations/v2/00_controls/FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 0,
+  "reference_path": "data/simulations/v2/00_controls/FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 427.83172607421875,
+  "difference_envelope_pick_ns": 428.5910795307851,
+  "difference_pick_offset_ns": 0.7593534565663731,
+  "target_window_ns": [
+    392.83172607421875,
+    462.83172607421875
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.0012716954949331168,
+  "pre_target_difference_rms": 1.9035428177265646e-05,
+  "target_to_pre_target_difference_db": 36.4964096524376,
+  "full_direct_rms": 52.27565826219397,
+  "control_direct_rms": 52.275658272767025,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 9188,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        78.3,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        78.48,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "audit_type": "NATIVE_WIDTH_MEASURED_MORPHOLOGY_COMPARISON_V1",
+  "run": "data/simulations/v2/01_solver_runs/FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE/formal09c_p1_native64_full_20260716",
+  "case_id": "FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE",
+  "selected_trace_indices_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "trace_count": 64,
+  "time_crop_ns": [
+    120.0,
+    500.0
+  ],
+  "processing": {
+    "common_mode_suppression": true,
+    "time_power": 1.5
+  },
+  "display_scale": "independent absolute-value P99.5 per panel; morphology only",
+  "heldout_restriction": "Line9 is diagnostic only and must not condition the generator",
+  "measured_selections": [
+    {
+      "line": "Line3",
+      "split": "unassigned",
+      "source": "data/measured/yingshan_v15/lines/Line3.npz",
+      "selection_rule": "centered in longest contiguous strong-positive non-ignore run",
+      "eligible_run": [
+        1197,
+        1724
+      ],
+      "selected_trace_range_half_open": [
+        1428,
+        1492
+      ],
+      "trace_count": 64,
+      "nominal_width_m": 5.378309793770313
+    },
+    {
+      "line": "Line6",
+      "split": "unassigned",
+      "source": "data/measured/yingshan_v15/lines/Line6.npz",
+      "selection_rule": "centered in longest contiguous strong-positive non-ignore run",
+      "eligible_run": [
+        588,
+        1221
+      ],
+      "selected_trace_range_half_open": [
+        872,
+        936
+      ],
+      "trace_count": 64,
+      "nominal_width_m": 5.888609983026981
+    },
+    {
+      "line": "Line7",
+      "split": "unassigned",
+      "source": "data/measured/yingshan_v15/lines/Line7.npz",
+      "selection_rule": "centered in longest contiguous strong-positive non-ignore run",
+      "eligible_run": [
+        1054,
+        1569
+      ],
+      "selected_trace_range_half_open": [
+        1279,
+        1343
+      ],
+      "trace_count": 64,
+      "nominal_width_m": 5.93900989741087
+    },
+    {
+      "line": "Line9",
+      "split": "test",
+      "source": "data/measured/yingshan_v15/lines/Line9.npz",
+      "selection_rule": "centered in longest contiguous strong-positive non-ignore run",
+      "eligible_run": [
+        107,
+        611
+      ],
+      "selected_trace_range_half_open": [
+        327,
+        391
+      ],
+      "trace_count": 64,
+      "nominal_width_m": 5.7285899966955185
+    },
+    {
+      "line": "LineL1",
+      "split": "unassigned",
+      "source": "data/measured/yingshan_v15/lines/LineL1.npz",
+      "selection_rule": "centered in longest contiguous strong-positive non-ignore run",
+      "eligible_run": [
+        242,
+        1648
+      ],
+      "selected_trace_range_half_open": [
+        913,
+        977
+      ],
+      "trace_count": 64,
+      "nominal_width_m": 6.001380108296871
+    }
+  ],
+  "output": "reports/formal09c_p1_dense_physical_finite_laminae_20260716/FORMAL09C_P1_native64_equal_width_multiline.png"
+}

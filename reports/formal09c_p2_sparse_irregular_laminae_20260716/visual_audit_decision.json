@@ -1,0 +1,28 @@
+{
+  "case_id": "FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE",
+  "decision": "accept_as_conservative_sparse_lamina_factor_not_realism_baseline",
+  "formal_training_allowed": false,
+  "retain_as": [
+    "sparse_physical_lamina_factor_regression",
+    "basal_preservation_lower_bound",
+    "independent_family_factor_design_reference"
+  ],
+  "native_trace_count": 64,
+  "exact_predecessor": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "metrics": {
+    "formal06c_target_to_adjacent_background_rms": 10.40292561943288,
+    "formal09c_p1_target_to_adjacent_background_rms": 5.610613278693401,
+    "formal09c_p2_target_to_adjacent_background_rms": 10.319641622502436,
+    "formal09c_p2_over_formal06c_target_ratio": 0.991994175487051,
+    "formal06c_path_to_geometric_correlation": 0.8485996269562911,
+    "formal09c_p2_path_to_geometric_correlation": 0.8442951722668881,
+    "formal09c_p2_dropout_fraction": 0.0
+  },
+  "visual_findings": [
+    "finite weak perturbation is visible in the cropped 0-350 ns shared-scale blind comparison",
+    "P2 does not create the long crossing coherent wave groups that invalidated P1",
+    "basal visibility is effectively restored to the FORMAL06C level",
+    "P2 alone remains too smooth and clean relative to equal-width measured windows"
+  ],
+  "successor": "fold_safe_independent_geology_plus_separate_acquisition_nuisance_factor"
+}

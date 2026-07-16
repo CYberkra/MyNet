@@ -1,0 +1,24 @@
+{
+  "case_id": "FORMAL09C_P1_DENSE_PHYSICAL_FINITE_LAMINAE",
+  "decision": "reject_as_realism_baseline",
+  "formal_training_allowed": false,
+  "retain_as": [
+    "deterministic_physical_mechanism_regression",
+    "strong_coherent_clutter_stress_case"
+  ],
+  "native_trace_count": 64,
+  "exact_predecessor": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "metrics": {
+    "formal06c_target_to_adjacent_background_rms": 10.40292561943288,
+    "formal09c_p1_target_to_adjacent_background_rms": 5.610613278693401,
+    "formal06c_path_to_geometric_correlation": 0.8485996269562911,
+    "formal09c_p1_path_to_geometric_correlation": 0.8452668670405488,
+    "formal09c_p1_dropout_fraction": 0.0
+  },
+  "failure_reasons": [
+    "physical lamina density was mapped one-to-one from signed event density",
+    "added middle-time wave groups are too coherent and idealised",
+    "added background competes excessively with the basal packet"
+  ],
+  "successor": "FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE"
+}
