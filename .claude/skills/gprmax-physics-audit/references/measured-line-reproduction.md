@@ -194,6 +194,34 @@ https://doi.org/10.1002/nsg.12273, for a convolution-based GPR noise model using
 measured noise spectra. Extend that idea only with explicit provenance,
 multi-line folds, and pair-preserving transformations.
 
+### 8.2 FORMAL09B-1 Empirical Spectrum Gate
+
+The 2026-07-16 FORMAL09B-1 ablation replaced only the hand-shaped 09A
+Gaussian temporal band while keeping the FORMAL06C solved field, 09A
+lateral mixture, depth envelope, gain budget, random seed, and target/background
+calibration fixed. Preserve these lessons:
+
+1. Remove each line's stable median trace before fitting nuisance spectra and
+   exclude a declared corridor around the V15 interface. A spectrum fitted to
+   the unmasked radargram can encode the target packet as acquisition noise.
+2. Normalise each line spectrum independently and pool the line spectra with
+   equal weight. Never let a longer line dominate merely because it contributes
+   more traces or Welch frames.
+3. Maintain two fits: a broad development fit and a strict fold-local fit. In
+   the Line9 holdout fold, fit Line3/Line7/LineL1, use Line6 only for validation,
+   and keep Line9 closed until selection is frozen.
+4. Compare the fold-local and all-line spectra before proceeding. FORMAL09B-1
+   differed by only about 1.02 dB RMS over 20-250 MHz, with pooled peaks near
+   103-105 MHz and centroids near 94 MHz. This showed that Line9 did not control
+   the selected temporal spectrum.
+5. A temporal-spectrum pass is not a realism pass. FORMAL09B-1 preserved the
+   accepted basal packet and moved the solved centroid closer to the measured
+   pool, but still produced long, spatially uniform ripples. Record the outcome
+   as `spectral mechanism only`, never as released synthetic data.
+6. The next single factor is target-excluded lateral cross-spectral covariance
+   and spatial non-stationarity. Keep the fold-local spectrum fixed and defer
+   metadata-conditioned gain or timing until the lateral visual gate passes.
+
 ## 9. MyNet / Line9 Special Rule
 
 Line9 is strict test-only. Line9-conditioned cases may be used to discover

@@ -1,0 +1,29 @@
+{
+  "contract_id": "formal09b1_visual_audit_v1",
+  "audit_date": "2026-07-16",
+  "decision": "pass_spectral_mechanism_only",
+  "promote_as_final_realism_candidate": false,
+  "promote_as_training_data": false,
+  "physical_mother_model": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "preferred_fit_for_next_stage": "paper_line9_holdout_fit",
+  "blind_mapping": {
+    "A": "FORMAL06C baseline",
+    "B": "FORMAL09B-1 paper Line9-holdout fit",
+    "C": "FORMAL09A balanced",
+    "D": "FORMAL09B-1 development all-lines fit"
+  },
+  "passed": [
+    "target corridor excluded from spectral fit",
+    "equal weight per measured line",
+    "accepted basal packet preserved",
+    "measured-like temporal band recovered",
+    "paper fit visually stable without Line9"
+  ],
+  "failed": [
+    "measured lateral nonstationarity not reproduced",
+    "trace-local amplitude variation remains too weak",
+    "multiple oriented coherent events not reproduced",
+    "background still contains long uniform ripples"
+  ],
+  "next_stage": "FORMAL09B-2_LATERAL_CROSS_SPECTRAL_COVARIANCE"
+}

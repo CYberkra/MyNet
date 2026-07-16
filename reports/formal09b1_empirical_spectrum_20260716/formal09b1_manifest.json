@@ -1,0 +1,117 @@
+{
+  "contract_id": "FORMAL09B1_EMPIRICAL_SPECTRUM_DEVELOPMENT_V1",
+  "status": "visual_candidates_only",
+  "formal_training_allowed": false,
+  "causal_pair_complete": false,
+  "gprmax_solver_run_performed": false,
+  "base_case": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "base_output": "data/simulations/v2/02_released_solver_evidence/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/development_evidence_v1/solver/distributed32_stride8/full_scene_merged.out",
+  "base_output_sha256": "71a9b83fd7bd4c000aa51e443fe4b8cff06083d2a0b076a0c3f67593431e4e79",
+  "seed": 2026071610,
+  "single_factor_change": "09A temporal Gaussian band replaced by target-excluded empirical residual spectrum",
+  "locked_factors": [
+    "FORMAL06C solved full scene",
+    "09A diffuse/low-rank mixture",
+    "09A lateral smoothing",
+    "09A depth envelope",
+    "09A balanced gain jitter",
+    "target/background calibration target 4.5"
+  ],
+  "measured_trace_copying": false,
+  "label_conditioned_enhancement": false,
+  "target_corridor_excluded_from_spectrum_fit": true,
+  "fits": [
+    {
+      "name": "development_all_lines",
+      "lines": [
+        "Line3",
+        "Line6",
+        "Line7",
+        "Line9",
+        "LineL1"
+      ],
+      "line9_conditioned": true,
+      "peak_frequency_mhz": 103.23705722070845,
+      "spectral_centroid_mhz": 93.95482851916427
+    },
+    {
+      "name": "paper_line9_holdout_fit",
+      "lines": [
+        "Line3",
+        "Line7",
+        "LineL1"
+      ],
+      "line9_conditioned": false,
+      "peak_frequency_mhz": 104.63215258855585,
+      "spectral_centroid_mhz": 94.52830432258668
+    }
+  ],
+  "all_lines_vs_paper_fold_log_spectrum_rmse_db_20_250mhz": 1.016626439282421,
+  "variant": {
+    "name": "balanced",
+    "target_to_background": 4.5,
+    "gain_jitter_fraction": 0.12
+  },
+  "metrics": {
+    "baseline": {
+      "target_to_background": 17.290987413613838,
+      "target_envelope_cv": 0.3338804592447719,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.6597814880620492,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 92.06742019239316
+    },
+    "09A-balanced": {
+      "noise_scale": 0.0005659882664621603,
+      "gain_min": 0.6764020690070776,
+      "gain_median": 1.0541341464971459,
+      "gain_max": 1.090237374817999,
+      "achieved_target_to_background": 4.499999999692706,
+      "target_to_background": 4.499999999692706,
+      "target_envelope_cv": 0.44697815732384427,
+      "target_dropout_fraction": 0.03125,
+      "aligned_template_correlation_median": 0.4579230038637382,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 105.27239525593714
+    },
+    "development_all_lines": {
+      "noise_scale": 0.0005973016639460882,
+      "gain_min": 0.6764020690070776,
+      "gain_median": 1.0541341464971459,
+      "gain_max": 1.090237374817999,
+      "achieved_target_to_background": 4.4999999997430855,
+      "target_to_background": 4.4999999997430855,
+      "target_envelope_cv": 0.44623905590618573,
+      "target_dropout_fraction": 0.03125,
+      "aligned_template_correlation_median": 0.4247261510779955,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 97.68121608433653
+    },
+    "paper_line9_holdout_fit": {
+      "noise_scale": 0.000599147011475705,
+      "gain_min": 0.6764020690070776,
+      "gain_median": 1.0541341464971459,
+      "gain_max": 1.090237374817999,
+      "achieved_target_to_background": 4.499999999923062,
+      "target_to_background": 4.499999999923062,
+      "target_envelope_cv": 0.4449601983838954,
+      "target_dropout_fraction": 0.03125,
+      "aligned_template_correlation_median": 0.4308175802053247,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 97.67934712215443
+    }
+  },
+  "blind_mapping": {
+    "A": "baseline",
+    "B": "paper_line9_holdout_fit",
+    "C": "09A-balanced",
+    "D": "development_all_lines"
+  },
+  "visual_outputs": [
+    "FORMAL09B1_blind_empirical_spectrum.png",
+    "FORMAL09B1_multiline_visual_comparison.png",
+    "FORMAL09B1_spectrum_audit.png"
+  ],
+  "spectrum_contract": "FORMAL09B1_fitted_spectra.json",
+  "next_gate": "blind human visual audit before any 09B-2 covariance modelling"
+}
