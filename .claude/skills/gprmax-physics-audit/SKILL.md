@@ -523,6 +523,20 @@ Family 03 frequency sweep, and build the next realism candidate directly from
 FORMAL06C with source, materials, grid, acquisition, basal packet, and
 transition locked before changing continuous non-target geology.
 
+FORMAL08A records the corresponding pre-solver pattern. Add non-target
+complexity with a smooth depth envelope: protect the near-surface and
+basal-neighbour bins exactly, apply aperiodic multiscale 2D texture only in the
+middle cover, and forbid isolated bodies, point targets, vertical partitions,
+and sinusoidal slabs. Gate a full-domain candidate with absolute cross-domain
+limits (predecessor correlation, perturbation RMS, spectral concentration, bin
+delta, and protected-bin equality). Do not require a relative increase over a
+mini-test domain because that ratio is domain-size sensitive. For FORMAL08A,
+the full-domain pre-solver values were correlation 0.9204, perturbation RMS
+0.3396, changed-bin fraction 0.1524, bin-delta P99 3, and exact protected bins.
+These values permit an eight-trace checkpoint; they do not establish solved
+realism. Always review the short full-scene checkpoint before distributed or
+dense runs.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

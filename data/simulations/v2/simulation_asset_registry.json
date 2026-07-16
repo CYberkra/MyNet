@@ -117,6 +117,18 @@
       "solver_evidence_released": false,
       "decision_report": "reports/independent_v2_family03_20260716/INDEPENDENT_V2_FAMILY03_INSTRUMENT_BAND_AUDIT.md",
       "next_gate": "remain indivisible from the positive case and complete native-256 negative evidence only after source-family selection"
+    },
+    {
+      "case_id": "FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+      "source_dir": "data/simulations/v2/00_controls/FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+      "scene_family_id": "FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+      "status": "pre_solver_geometry_passed_runtime_pending",
+      "formal_training_allowed": false,
+      "line9_conditioned": true,
+      "conditioning_scope": "Line9 is the explicit visual and spectral realism reference; no measured array is read by the generator",
+      "solver_evidence_released": false,
+      "decision_report": "reports/formal08a_line9_realism_background_20260716/PRE_SOLVER_AUDIT.md",
+      "next_gate": "obtain project-owner pre-solver visual decision, then solve eight consecutive full-scene traces only"
     }
   ]
 }

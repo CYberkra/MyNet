@@ -61,6 +61,13 @@ ignore regions. Canonical arrays remain in acquisition order.
   target/adjacent-background RMS ratio fell to 9.65. Project-owner visual
   ranking is `FORMAL06C > Family 02 > Family 03`. Family 03 is retained only as
   a source-basis ablation and must not drive the immediate successor lineage.
+- FORMAL08A: pre-solver Line9-realism candidate built directly from FORMAL06C.
+  It locks source, materials, grid, acquisition, basal path, transition, and
+  protected interface-neighbour bins, and changes only depth-tapered continuous
+  middle-cover texture. Static, attenuation, source-fingerprint, and geometry
+  gates pass. Runtime has not started; the next gate is eight consecutive
+  full-scene traces reviewed against FORMAL06C and Line9. It is explicitly
+  `line9_conditioned=true` and cannot support an unseen-Line9 claim.
 - No V2 scene family is training-approved yet.
 
 The source registry is `data/simulations/v2/simulation_asset_registry.json`;
@@ -86,9 +93,9 @@ before changing the formal config.
 2. Use Line9 explicitly as the measured-realism calibration reference. Mark
    every resulting development case `line9_conditioned=true`; do not call its
    Line9 result a strict unseen holdout.
-3. Build the next candidate directly from FORMAL06C, lock its source and basal
-   packet, and change only continuous non-target geology before altering the
-   interface shape or source.
+3. Review FORMAL08A's pre-solver geometry, then run only its eight-consecutive-
+   trace full-scene checkpoint. Do not start a distributed solve until the
+   project-owner visual gate passes.
 4. Maintain a separate independent/formal generator track for strict holdout
    claims or use a held-out-line/leave-one-line-out evaluation contract.
 5. Solve matched positive controls and promote only cases passing numerical,

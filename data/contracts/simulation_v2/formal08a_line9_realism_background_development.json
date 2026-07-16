@@ -1,0 +1,45 @@
+{
+  "contract_id": "PGDA_FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT_V1",
+  "status": "pre_solver_review_passed_runtime_pending",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "strict_line9_holdout_allowed": false,
+  "scene_family_id": "FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+  "purpose": "Single-factor Line9 realism calibration starting from the project-owner accepted FORMAL06C morphology.",
+  "provenance": {
+    "line9_conditioned": true,
+    "conditioning_scope": "Visual and spectral realism target only; no measured array is read by the generator.",
+    "measured_files_read_by_generator": [],
+    "predecessor_case_id": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT"
+  },
+  "locked_factor_groups": [
+    "80 MHz zero-mean Gaussian-modulated source waveform",
+    "cover, weathered-cap, and bedrock material deck",
+    "grid, PML, acquisition, and solver time window",
+    "basal path arrays and transition-thickness arrays",
+    "surface and basal-neighbour cover bins"
+  ],
+  "changed_factor_group": "Depth-tapered multiscale aperiodic non-target middle-cover texture only.",
+  "geometry_constraints": {
+    "sinusoidal_stratigraphy": false,
+    "isolated_inclusions": 0,
+    "point_targets": 0,
+    "vertical_partitions": 0,
+    "protected_surface_and_basal_bins_exact": true
+  },
+  "runtime_release_order": [
+    "static_geometry_attenuation",
+    "consecutive_eight_full_scene_blind_checkpoint",
+    "distributed_span_32_full_scene_only_after_visual_pass",
+    "distributed_span_32_strict_pair_only_after_morphology_pass",
+    "dense_256_pair_only_after_sparse_pair_pass"
+  ],
+  "visual_gate": [
+    "Use identical crop, colour scale, and processing for FORMAL06C, FORMAL08A, and Line9.",
+    "Review raw, restrained time-power gain, and background-suppressed views.",
+    "Require a laterally continuous multicycle basal packet in full_scene, not only in full-minus-control.",
+    "Reject new hyperbola-like fragments, regular slabs, interface dropout, or a blank non-target background.",
+    "Record project-owner decision before any distributed or dense solve."
+  ],
+  "claim_boundary": "Useful for measured-realism development and ablation. It is permanently ineligible for an unseen-Line9 claim."
+}

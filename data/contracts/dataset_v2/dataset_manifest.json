@@ -27,7 +27,8 @@
     "IV2 Family 02 transferred the FORMAL06C source and weak-interface mechanism onto regenerated Family 01 geometry and recovered the accepted seven-lobe 79 MHz morphology.",
     "IV2 Family 02 remains development-only because the mechanism-selection decision used Line9 diagnostics; its exact matched negative inherits the same family-level restriction.",
     "IV2 Family 03 re-originated the source from project-wide hardware bandwidth evidence and passed static, one-trace causal, exact-negative, and distributed32 morphology gates.",
-    "IV2 Family 03 remains non-trainable: its 100 MHz zero-phase band proxy produced a sharper 116 MHz-centroid packet than the accepted development morphology, and native-256 causal and human release gates remain incomplete."
+    "IV2 Family 03 remains non-trainable: its 100 MHz zero-phase band proxy produced a sharper 116 MHz-centroid packet than the accepted development morphology, and native-256 causal and human release gates remain incomplete.",
+    "FORMAL08A directly locks FORMAL06C physics and changes only depth-tapered continuous middle-cover texture; its pre-solver audit passes, but runtime and project-owner visual approval remain pending."
   ],
   "current_real_label_dataset": {
     "path": "data/measured/yingshan_v15",
@@ -37,10 +38,10 @@
     "x1_policy": "review-only and excluded"
   },
   "counts": {
-    "simulation_cases_registered": 11,
-    "human_audit_records": 11,
+    "simulation_cases_registered": 12,
+    "human_audit_records": 12,
     "accepted_quarantine_cases": 0,
-    "line9_conditioned_cases": 7,
+    "line9_conditioned_cases": 8,
     "training_allowed_cases": 0,
     "real_lines_registered": 6,
     "real_windows_registered": 78,
