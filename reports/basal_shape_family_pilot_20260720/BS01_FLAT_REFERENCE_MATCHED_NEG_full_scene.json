@@ -1,0 +1,2109 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      242.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 7.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 242.73,
+        "cells": 8091,
+        "realised_m": 242.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 109.8,
+        "cells": 3660,
+        "realised_m": 109.8,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 109.98,
+        "cells": 3666,
+        "realised_m": 109.97999999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "iv2_f01_ricker55": 55000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt",
+        "material_count": 320,
+        "shape": [
+          8091,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 319,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_1_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_1_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_1_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_1_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_1_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_1_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_1_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_1_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_1_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_1_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_1_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_1_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_1_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_1_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_1_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_1_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_1_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_1_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_1_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_1_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_1_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_1_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_1_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_1_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_1_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_1_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_1_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_1_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_1_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_1_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_1_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_1_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_2_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_2_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_2_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_2_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_2_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_2_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_2_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_2_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_2_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_2_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_2_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_2_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_2_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_2_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_2_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_2_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_2_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_2_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_2_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_2_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_2_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_2_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_2_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_2_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_2_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_2_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_2_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_2_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_2_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_2_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_2_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_2_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_3_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_3_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_3_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_3_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_3_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_3_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_3_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_3_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_3_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_3_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_3_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_3_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_3_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_3_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_3_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_3_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_3_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_3_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_3_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_3_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_3_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_3_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_3_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_3_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_3_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_3_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_3_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_3_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_3_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_3_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_3_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_3_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_4_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_4_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_4_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_4_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_4_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_4_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_4_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_4_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_4_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_4_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_4_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_4_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_4_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_4_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_4_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_4_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_4_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_4_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_4_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_4_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_4_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_4_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_4_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_4_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_4_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_4_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_4_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_4_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_4_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_4_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_4_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_4_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_5_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_5_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_5_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_5_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_5_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_5_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_5_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_5_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_5_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_5_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_5_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_5_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_5_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_5_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_5_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_5_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_5_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_5_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_5_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_5_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_5_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_5_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_5_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_5_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_5_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_5_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_5_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_5_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_5_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_5_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_5_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_5_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_6_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_6_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_6_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_6_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_6_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_6_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_6_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_6_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_6_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_6_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_6_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_6_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_6_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_6_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_6_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_6_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_6_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_6_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_6_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_6_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_6_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_6_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_6_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_6_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_6_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_6_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_6_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_6_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_6_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_6_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_6_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_6_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_7_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_7_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_7_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_7_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_7_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_7_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_7_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_7_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_7_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_7_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_7_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_7_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_7_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_7_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_7_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_7_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_7_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_7_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_7_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_7_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_7_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_7_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_7_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_7_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_7_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_7_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_7_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_7_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_7_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_7_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_7_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_7_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "transition_8_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "transition_8_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "transition_8_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "transition_8_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "transition_8_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "transition_8_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "transition_8_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "transition_8_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "transition_8_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "transition_8_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "transition_8_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "transition_8_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "transition_8_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "transition_8_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "transition_8_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "transition_8_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "transition_8_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "transition_8_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "transition_8_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "transition_8_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "transition_8_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "transition_8_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "transition_8_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "transition_8_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "transition_8_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "transition_8_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "transition_8_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "transition_8_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "transition_8_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "transition_8_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "transition_8_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "transition_8_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "bedrock_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "bedrock_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "bedrock_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "bedrock_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "bedrock_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "bedrock_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "bedrock_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "bedrock_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "bedrock_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "bedrock_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "bedrock_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "bedrock_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "bedrock_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "bedrock_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "bedrock_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "bedrock_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "bedrock_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "bedrock_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "bedrock_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "bedrock_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "bedrock_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "bedrock_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "bedrock_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "bedrock_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "bedrock_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "bedrock_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "bedrock_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "bedrock_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "bedrock_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "bedrock_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "bedrock_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "bedrock_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS01_FLAT_REFERENCE\\BS01_FLAT_REFERENCE_MATCHED_NEG\\materials_full.txt"
+      }
+    ],
+    "max_material_epsilon_r": 12.6,
+    "lambda_min_m": 0.548421799597879,
+    "cells_per_lambda_min": 18.280726653262633,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 12
+  }
+}

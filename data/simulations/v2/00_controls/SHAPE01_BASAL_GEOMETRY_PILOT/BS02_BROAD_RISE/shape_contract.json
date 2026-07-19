@@ -1,0 +1,36 @@
+{
+  "contract_id": "PGDA_BASAL_SHAPE_FAMILY_PILOT_V1",
+  "scene_family_id": "BS02_BROAD_RISE",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "line9_conditioned": false,
+  "provenance": {
+    "line9_conditioned": false,
+    "measured_files_read_by_generator": [],
+    "shape_prior": "generic analytic and seeded multiscale geometry only",
+    "shape_name": "broad_rise",
+    "profile_seed": 2026072011
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "waveform": "55 MHz Ricker pulse proxy",
+    "proxy_only": true,
+    "not_sfcw": true
+  },
+  "cases": [
+    {
+      "case_id": "BS02_BROAD_RISE_POS",
+      "target_presence": true,
+      "negative_semantics": "not_a_negative_sample",
+      "profile_seed_base": 2026072011,
+      "field_seed": 2026072001
+    },
+    {
+      "case_id": "BS02_BROAD_RISE_MATCHED_NEG",
+      "target_presence": false,
+      "negative_semantics": "designed_true_negative_exactly_equal_to_positive_no_basal_physical_state",
+      "profile_seed_base": 2026072011,
+      "field_seed": 2026072001
+    }
+  ]
+}

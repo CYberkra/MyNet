@@ -1,0 +1,165 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      242.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 7.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 242.73,
+        "cells": 8091,
+        "realised_m": 242.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 109.8,
+        "cells": 3660,
+        "realised_m": 109.8,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 109.98,
+        "cells": 3666,
+        "realised_m": 109.97999999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE01_BASAL_GEOMETRY_PILOT\\BS04_GENTLE_MULTISCALE\\BS04_GENTLE_MULTISCALE_MATCHED_NEG\\air_reference.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "iv2_f01_ricker55": 55000000.0
+    },
+    "imported_geometry": [],
+    "imported_materials": [],
+    "command_count": 11
+  }
+}
