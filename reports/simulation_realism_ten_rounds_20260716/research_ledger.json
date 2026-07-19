@@ -1,0 +1,379 @@
+{
+  "contract_id": "PGDA_SIMULATION_REALISM_TEN_ROUND_RESEARCH_V1",
+  "created_date": "2026-07-16",
+  "baseline_commit": "a5f91a1",
+  "physical_mother_model": "FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT",
+  "formal_fold": {
+    "fit": [
+      "Line3",
+      "Line7",
+      "LineL1"
+    ],
+    "validation": [
+      "Line6"
+    ],
+    "heldout_diagnostic": [
+      "Line9"
+    ],
+    "review_only": [
+      "LineX1"
+    ]
+  },
+  "minimum_rounds": 10,
+  "continue_until_usable": true,
+  "rounds": [
+    {
+      "round": 1,
+      "factor": "bounded_zero_phase_effective_system_response",
+      "hypothesis": "part of the measured packet gap is caused by the point-source proxy and SFCW imaging-chain response",
+      "fit_lines": [
+        "Line3",
+        "Line7",
+        "LineL1"
+      ],
+      "validation_lines": [
+        "Line6"
+      ],
+      "heldout_opened_after_freeze": [
+        "Line9"
+      ],
+      "selected_variant": "strength_1.00",
+      "decision": "pass_as_optional_component_only",
+      "standalone_realism_candidate": false,
+      "key_result": {
+        "fit_spectrum_rmse_db_before": 4.404477297906679,
+        "fit_spectrum_rmse_db_after": 2.9686520169008306,
+        "validation_spectrum_rmse_db_before": 5.595674827036271,
+        "validation_spectrum_rmse_db_after": 3.7744895877170794,
+        "heldout_spectrum_rmse_db_before": 4.582688783410341,
+        "heldout_spectrum_rmse_db_after": 3.4710110752399777,
+        "dropout_after": 0.0
+      },
+      "report": "round01_system_response/ROUND_DECISION.md"
+    },
+    {
+      "round": 2,
+      "factor": "smooth_trace_gain_and_posthoc_delay_probe",
+      "hypothesis": "small acquisition gain and timing drift can add measured local instability without moving the basal event",
+      "fit_lines": [
+        "Line3",
+        "Line7",
+        "LineL1"
+      ],
+      "validation_lines": [
+        "Line6"
+      ],
+      "heldout_opened_after_freeze": [
+        "Line9"
+      ],
+      "selected_variant": "gain_0.08",
+      "decision": "gain_optional_only_posthoc_delay_rejected",
+      "standalone_realism_candidate": false,
+      "key_result": {
+        "parent_target_to_background": 9.978667808330762,
+        "selected_target_to_background": 1.1541944791112222,
+        "validation_target_to_background": 1.3733725780370014,
+        "selected_target_envelope_cv": 0.3188864963544969,
+        "validation_target_envelope_cv": 0.6005185123310707,
+        "posthoc_delay_probe_p95_ns": 0.0006189727831321352,
+        "posthoc_delay_probe_target_to_background": 0.07996304095274949
+      },
+      "report": "round02_gain_delay/ROUND_DECISION.md"
+    },
+    {
+      "round": 3,
+      "factor": "target_excluded_low_rank_coherent_residual",
+      "hypothesis": "target-excluded coherent residual modes can reproduce measured acquisition clutter without copying paths or patches",
+      "fit_lines": [
+        "Line3",
+        "Line7",
+        "LineL1"
+      ],
+      "validation_lines": [
+        "Line6"
+      ],
+      "heldout_opened_after_freeze": [
+        "Line9"
+      ],
+      "selected_variant": "rank_6",
+      "decision": "rejected_regular_low_rank_banding",
+      "standalone_realism_candidate": false,
+      "key_result": {
+        "selected_target_to_background": 1.4602348195023627,
+        "validation_target_to_background": 1.3733725780370014,
+        "selected_rank6_energy_fraction": 0.9955594853164902,
+        "validation_rank6_energy_fraction": 0.6268879549327114,
+        "heldout_rank6_energy_fraction": 0.6333576927160244
+      },
+      "report": "round03_coherent_residual/ROUND_DECISION.md"
+    },
+    {
+      "round": 4,
+      "factor": "target_excluded_non_gaussian_finite_event_nuisance",
+      "hypothesis": "finite, tapered, non-Gaussian event topology can improve measured-like background texture without a low-rank band or copied measured patch",
+      "fit_lines": [
+        "Line3",
+        "Line7",
+        "LineL1"
+      ],
+      "validation_lines": [
+        "Line6"
+      ],
+      "heldout_opened_after_freeze": [
+        "Line9"
+      ],
+      "selected_variant": "sparse",
+      "decision": "rejected_isolated_postsolve_event_topology",
+      "standalone_realism_candidate": false,
+      "key_result": {
+        "target_to_background": 1.3900240312716459,
+        "target_envelope_cv": 0.46861130826842784,
+        "target_dropout_fraction": 0.0,
+        "aligned_template_correlation_median": 0.8936249810307015,
+        "significant_lobe_count": 8,
+        "aligned_peak_frequency_mhz": 88.18342151675485,
+        "aligned_spectral_centroid_mhz": 114.82422447294783,
+        "shape_spectrum_rmse_db": 2.9687625869808705,
+        "event_scale": 0.04894885479924466,
+        "event_count": 1.0,
+        "mean_native_support_traces": 35.0,
+        "selection_score": 0.012051585152222828
+      },
+      "report": "round04_finite_event_nuisance/ROUND_DECISION.md"
+    },
+    {
+      "round": 5,
+      "factor": "physical_source_receiver_height",
+      "decision": "physical_height_accepted_postsolve_delay_rejected",
+      "standalone_realism_candidate": false,
+      "formal_training_allowed": false,
+      "key_result": {
+        "residual_peak_shift_ns": [
+          -3.11342372450963,
+          0.0,
+          3.042664094407087
+        ],
+        "requested_vs_grid_realised_height_m": [
+          [
+            7.5,
+            7.5
+          ],
+          [
+            8.01,
+            8.009999999999998
+          ],
+          [
+            8.5,
+            8.490000000000002
+          ]
+        ]
+      },
+      "report": "round05_height_probe/ROUND_DECISION.md"
+    },
+    {
+      "round": 6,
+      "factor": "continuous_interface_roughness_and_lateral_coherence",
+      "evidence_runs": [
+        "data/simulations/v2/01_solver_runs/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/formal07a_blind8_span_full_20260715",
+        "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716"
+      ],
+      "decision_reports": [
+        "reports/formal07a_continuous_stratigraphy_20260715/FORMAL06C_VS_FORMAL07A_DECISION.md",
+        "reports/formal09c_p2_sparse_irregular_laminae_20260716/VISUAL_AUDIT_DECISION.md"
+      ],
+      "decision": "continuous_stack_rejected_sparse_lamina_optional_lower_bound",
+      "conclusion": "Regular full-width stratigraphy reads as constructed layering; sparse finite laminae preserve the basal packet but do not close the real-data texture gap.",
+      "formal_training_allowed": false,
+      "audited_runs": [
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/formal07a_blind8_span_full_20260715",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 8,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716",
+          "run_mode": "smoke_subset",
+          "requested_trace_count": 64,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        }
+      ],
+      "registered_utc": "2026-07-19T15:37:04.556571+00:00"
+    },
+    {
+      "round": 7,
+      "factor": "volumetric_multiscale_cover_background",
+      "evidence_runs": [
+        "data/simulations/v2/01_solver_runs/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT/formal07b_distributed32_full_20260715",
+        "data/simulations/v2/01_solver_runs/FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT/formal08a_distributed32_full_20260716",
+        "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_distributed32_full_20260716"
+      ],
+      "decision_reports": [
+        "reports/formal08a_line9_realism_background_20260716/RUNTIME_VISUAL_DECISION.md",
+        "reports/formal08b_line9_realism_deep_background_20260716/RUNTIME_VISUAL_DECISION.md"
+      ],
+      "decision": "rejected_single_factor_cover_texture_insufficient_or_competing",
+      "conclusion": "Weak texture is visually too small to justify promotion; stronger transition-following texture changes target conditioning instead of producing measured-like clutter.",
+      "formal_training_allowed": false,
+      "audited_runs": [
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT/formal07b_distributed32_full_20260715",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT/formal08a_distributed32_full_20260716",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_distributed32_full_20260716",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        }
+      ],
+      "registered_utc": "2026-07-19T15:37:04.569664+00:00"
+    },
+    {
+      "round": 8,
+      "factor": "finite_facies_and_lamina_topology",
+      "evidence_runs": [
+        "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_smoke1_pair_20260716",
+        "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716"
+      ],
+      "decision_reports": [
+        "reports/formal09c_p1_dense_physical_finite_laminae_20260716/VISUAL_AUDIT_DECISION.md",
+        "reports/formal09c_p2_sparse_irregular_laminae_20260716/VISUAL_AUDIT_DECISION.md"
+      ],
+      "decision": "dense_facies_rejected_sparse_factor_optional_only",
+      "conclusion": "Finite topology is safer than full-width layering, but a physical facies factor must remain weak, causal, and outside the protected basal corridor.",
+      "formal_training_allowed": false,
+      "audited_runs": [
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_smoke1_pair_20260716",
+          "run_mode": "smoke_subset",
+          "requested_trace_count": 1,
+          "causal_pair_complete": true,
+          "solver_outputs": [
+            "full_scene.out",
+            "no_basal_contrast_control.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716",
+          "run_mode": "smoke_subset",
+          "requested_trace_count": 64,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        }
+      ],
+      "registered_utc": "2026-07-19T15:37:04.574661+00:00"
+    },
+    {
+      "round": 9,
+      "factor": "source_band_and_instrument_proxy",
+      "evidence_runs": [
+        "data/simulations/v2/01_solver_runs/IV2_F01_GENTLE_APERIODIC_POS/distributed32_stride8_full_20260715",
+        "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/f02_distributed32_stride8_full_20260715",
+        "data/simulations/v2/01_solver_runs/IV2_F03_INSTRUMENT_BAND_POS/f03_distributed32_stride8_full_20260716"
+      ],
+      "decision_reports": [
+        "reports/formal08a_line9_realism_background_20260716/RUNTIME_VISUAL_DECISION.md"
+      ],
+      "decision": "retain_source_ablation_tracks_no_sfcw_claim_from_amplitude_proxy",
+      "conclusion": "F01 is the independent 55 MHz Ricker baseline; F02 retains a development-only zero-mean mechanism; F03 is an amplitude-only instrument-band proxy and must never be called SFCW.",
+      "formal_training_allowed": false,
+      "audited_runs": [
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/IV2_F01_GENTLE_APERIODIC_POS/distributed32_stride8_full_20260715",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/f02_distributed32_stride8_full_20260715",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        },
+        {
+          "run_dir": "data/simulations/v2/01_solver_runs/IV2_F03_INSTRUMENT_BAND_POS/f03_distributed32_stride8_full_20260716",
+          "run_mode": "distributed_smoke_subset",
+          "requested_trace_count": 32,
+          "causal_pair_complete": false,
+          "solver_outputs": [
+            "full_scene_merged.out"
+          ]
+        }
+      ],
+      "registered_utc": "2026-07-19T15:37:04.587726+00:00"
+    },
+    {
+      "round": 10,
+      "factor": "minimum_causal_physics_to_measurement_combination",
+      "decision": "two_track_architecture_selected_no_training_promotion",
+      "formal_training_allowed": false,
+      "development_track": {
+        "purpose": "qualitative morphology calibration only",
+        "permitted_reference": "FORMAL06C and IV2_F02 may be inspected with Line9 explicitly labelled as development-only",
+        "forbidden_claim": "unseen Line9 generalisation or formal training eligibility"
+      },
+      "formal_track": {
+        "physics": [
+          "independent or fold-only basal geometry and cover property fields",
+          "same-geometry full/no-basal causal control",
+          "per-trace physical source/receiver height after metadata semantics validation",
+          "weak P2-like finite lamina factor only outside the protected basal corridor",
+          "no full-width periodic stratigraphy, point-target chains, or post-solve event injection"
+        ],
+        "measurement": [
+          "bounded zero-phase effective response fit only on Line3, Line7, LineL1 and validated on Line6",
+          "no measured phase transfer, copied patches, post-solve trace timing warp, or low-rank band injection",
+          "explicit source-band ablation; amplitude-only proxy must never be described as SFCW"
+        ],
+        "labels_and_contract": [
+          "retain geometry and visible-phase labels separately",
+          "derive visible phase only after signed full/control review",
+          "record source, control, material, and processing hashes",
+          "keep Line9 test-only and LineX1 review-only"
+        ]
+      },
+      "release_gates": [
+        "independent non-Line9 scene family approved",
+        "full/no-basal pair complete for every positive family",
+        "true measured negative windows available",
+        "V15 split and label semantics validation pass",
+        "measurement-response fit excludes Line9",
+        "human visual audit confirms no constructed layering or isolated hyperbola chain"
+      ],
+      "created_utc": "2026-07-19T15:45:59.085593+00:00"
+    }
+  ],
+  "round10_status": "complete_architecture_synthesis"
+}

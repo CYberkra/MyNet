@@ -1,0 +1,40 @@
+{
+  "round": 10,
+  "factor": "minimum_causal_physics_to_measurement_combination",
+  "decision": "two_track_architecture_selected_no_training_promotion",
+  "formal_training_allowed": false,
+  "development_track": {
+    "purpose": "qualitative morphology calibration only",
+    "permitted_reference": "FORMAL06C and IV2_F02 may be inspected with Line9 explicitly labelled as development-only",
+    "forbidden_claim": "unseen Line9 generalisation or formal training eligibility"
+  },
+  "formal_track": {
+    "physics": [
+      "independent or fold-only basal geometry and cover property fields",
+      "same-geometry full/no-basal causal control",
+      "per-trace physical source/receiver height after metadata semantics validation",
+      "weak P2-like finite lamina factor only outside the protected basal corridor",
+      "no full-width periodic stratigraphy, point-target chains, or post-solve event injection"
+    ],
+    "measurement": [
+      "bounded zero-phase effective response fit only on Line3, Line7, LineL1 and validated on Line6",
+      "no measured phase transfer, copied patches, post-solve trace timing warp, or low-rank band injection",
+      "explicit source-band ablation; amplitude-only proxy must never be described as SFCW"
+    ],
+    "labels_and_contract": [
+      "retain geometry and visible-phase labels separately",
+      "derive visible phase only after signed full/control review",
+      "record source, control, material, and processing hashes",
+      "keep Line9 test-only and LineX1 review-only"
+    ]
+  },
+  "release_gates": [
+    "independent non-Line9 scene family approved",
+    "full/no-basal pair complete for every positive family",
+    "true measured negative windows available",
+    "V15 split and label semantics validation pass",
+    "measurement-response fit excludes Line9",
+    "human visual audit confirms no constructed layering or isolated hyperbola chain"
+  ],
+  "created_utc": "2026-07-19T15:45:59.085593+00:00"
+}

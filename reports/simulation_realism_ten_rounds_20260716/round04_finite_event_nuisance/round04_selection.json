@@ -1,0 +1,178 @@
+{
+  "round": 4,
+  "factor": "target_excluded_non_gaussian_finite_event_nuisance",
+  "hypothesis": "finite, tapered, non-Gaussian event topology can improve measured-like background texture without a low-rank band or copied measured patch",
+  "fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "validation_lines": [
+    "Line6"
+  ],
+  "heldout_opened_after_freeze": [
+    "Line9"
+  ],
+  "selected_candidate": "sparse",
+  "selection_metrics": {
+    "target_to_background": 1.3900240312716459,
+    "target_envelope_cv": 0.46861130826842784,
+    "target_dropout_fraction": 0.0,
+    "aligned_template_correlation_median": 0.8936249810307015,
+    "significant_lobe_count": 8,
+    "aligned_peak_frequency_mhz": 88.18342151675485,
+    "aligned_spectral_centroid_mhz": 114.82422447294783,
+    "shape_spectrum_rmse_db": 2.9687625869808705,
+    "event_scale": 0.04894885479924466,
+    "event_count": 1.0,
+    "mean_native_support_traces": 35.0,
+    "selection_score": 0.012051585152222828
+  },
+  "variants": [
+    {
+      "name": "none",
+      "density_multiplier": 0.0,
+      "amplitude_multiplier": 0.0
+    },
+    {
+      "name": "sparse",
+      "density_multiplier": 0.35,
+      "amplitude_multiplier": 0.55
+    },
+    {
+      "name": "moderate",
+      "density_multiplier": 0.65,
+      "amplitude_multiplier": 0.75
+    },
+    {
+      "name": "dense",
+      "density_multiplier": 1.0,
+      "amplitude_multiplier": 0.95
+    }
+  ],
+  "event_fit": {
+    "events_per_25m": {
+      "Line3": 6.580604797005815,
+      "Line7": 8.225741786980398,
+      "LineL1": 8.08116521107172
+    },
+    "pooled_events_per_25m": 8.08116521107172,
+    "pooled_quantiles_q10_q50_q90": {
+      "length_m": [
+        1.7904300403592928,
+        2.97126647989365,
+        11.855676351563504
+      ],
+      "slope_ns_per_m": [
+        -5.494420731664983,
+        -0.21031678179812055,
+        5.280414975286209
+      ],
+      "curvature_ns_per_m2": [
+        -5.358994573497458,
+        -0.046892185664057826,
+        3.304688093383475
+      ],
+      "amplitude_p99_fraction": [
+        0.2666528228058461,
+        0.3173302974851574,
+        0.4005437692913765
+      ],
+      "center_time_ns": [
+        260.529300236819,
+        291.4219183953526,
+        436.6348198674765
+      ]
+    }
+  },
+  "source_run": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_native64_full_20260716",
+  "native_trace_spacing_m": 0.09,
+  "event_records": {
+    "none": [],
+    "sparse": [
+      {
+        "center_x_m": 0.8331889175845394,
+        "center_time_ns": 319.6703509673696,
+        "length_m": 4.5360000000000005,
+        "slope_ns_per_m": -1.2250005202467076,
+        "curvature_ns_per_m2": -0.007647332034578608,
+        "amplitude_weight": 0.1960064882136058,
+        "phase_rad": 0.3829045009930181,
+        "target_overlap_fraction": 0.0,
+        "support_trace_count": 35
+      }
+    ],
+    "moderate": [
+      {
+        "center_x_m": 3.4783727609396182,
+        "center_time_ns": 337.1852336467649,
+        "length_m": 4.5360000000000005,
+        "slope_ns_per_m": 2.9407057028488928,
+        "curvature_ns_per_m2": -0.010273270846511192,
+        "amplitude_weight": 0.2490628930243196,
+        "phase_rad": 1.7793794119083977,
+        "target_overlap_fraction": 0.0,
+        "support_trace_count": 50
+      }
+    ],
+    "dense": [
+      {
+        "center_x_m": 4.5101353352474325,
+        "center_time_ns": 279.3841620302,
+        "length_m": 4.5360000000000005,
+        "slope_ns_per_m": -0.5794712536616471,
+        "curvature_ns_per_m2": -0.04301283172520988,
+        "amplitude_weight": 0.2761638271578742,
+        "phase_rad": 0.7634908153242281,
+        "target_overlap_fraction": 0.0,
+        "support_trace_count": 39
+      },
+      {
+        "center_x_m": 1.9983002771731013,
+        "center_time_ns": 380.3507323493281,
+        "length_m": 3.777491931833957,
+        "slope_ns_per_m": -1.6794045636992192,
+        "curvature_ns_per_m2": 0.0074766682984777596,
+        "amplitude_weight": 0.3589521657568393,
+        "phase_rad": 2.6291705391160534,
+        "target_overlap_fraction": 0.0,
+        "support_trace_count": 42
+      }
+    ]
+  },
+  "blind_mapping": {
+    "A": "event_sparse",
+    "B": "event_moderate",
+    "C": "event_dense",
+    "D": "event_none"
+  },
+  "visuals": [
+    "round04_blind_candidates.png",
+    "round04_fold_only_multiline.png",
+    "round04_native_event_geometry.png"
+  ],
+  "status": "fold_selection_complete",
+  "formal_training_allowed": false,
+  "causal_pair_complete": false,
+  "gprmax_solver_run_performed": false,
+  "next_gate": "frozen held-out diagnostic and visual audit; reject if the local topology reads as synthetic or competes with the target",
+  "heldout_diagnostic": {
+    "opened_after_freeze": true,
+    "lines": [
+      "Line9"
+    ],
+    "metrics": {
+      "Line9": {
+        "target_to_background": 1.3900240312716459,
+        "target_envelope_cv": 0.46861130826842784,
+        "target_dropout_fraction": 0.0,
+        "aligned_template_correlation_median": 0.8936249810307015,
+        "significant_lobe_count": 8,
+        "aligned_peak_frequency_mhz": 88.18342151675485,
+        "aligned_spectral_centroid_mhz": 114.82422447294783,
+        "shape_spectrum_rmse_db": 3.4710054964516055
+      }
+    },
+    "visual": "round04_frozen_plus_heldout.png"
+  }
+}

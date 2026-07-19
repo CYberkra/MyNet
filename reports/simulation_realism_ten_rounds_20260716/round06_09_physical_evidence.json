@@ -1,0 +1,166 @@
+[
+  {
+    "round": 6,
+    "factor": "continuous_interface_roughness_and_lateral_coherence",
+    "evidence_runs": [
+      "data/simulations/v2/01_solver_runs/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/formal07a_blind8_span_full_20260715",
+      "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716"
+    ],
+    "decision_reports": [
+      "reports/formal07a_continuous_stratigraphy_20260715/FORMAL06C_VS_FORMAL07A_DECISION.md",
+      "reports/formal09c_p2_sparse_irregular_laminae_20260716/VISUAL_AUDIT_DECISION.md"
+    ],
+    "decision": "continuous_stack_rejected_sparse_lamina_optional_lower_bound",
+    "conclusion": "Regular full-width stratigraphy reads as constructed layering; sparse finite laminae preserve the basal packet but do not close the real-data texture gap.",
+    "formal_training_allowed": false,
+    "audited_runs": [
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL07A_CONTINUOUS_STRATIGRAPHY_DEVELOPMENT/formal07a_blind8_span_full_20260715",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 8,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716",
+        "run_mode": "smoke_subset",
+        "requested_trace_count": 64,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      }
+    ],
+    "registered_utc": "2026-07-19T15:37:04.556571+00:00"
+  },
+  {
+    "round": 7,
+    "factor": "volumetric_multiscale_cover_background",
+    "evidence_runs": [
+      "data/simulations/v2/01_solver_runs/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT/formal07b_distributed32_full_20260715",
+      "data/simulations/v2/01_solver_runs/FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT/formal08a_distributed32_full_20260716",
+      "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_distributed32_full_20260716"
+    ],
+    "decision_reports": [
+      "reports/formal08a_line9_realism_background_20260716/RUNTIME_VISUAL_DECISION.md",
+      "reports/formal08b_line9_realism_deep_background_20260716/RUNTIME_VISUAL_DECISION.md"
+    ],
+    "decision": "rejected_single_factor_cover_texture_insufficient_or_competing",
+    "conclusion": "Weak texture is visually too small to justify promotion; stronger transition-following texture changes target conditioning instead of producing measured-like clutter.",
+    "formal_training_allowed": false,
+    "audited_runs": [
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL07B_WEAK_APERIODIC_BACKGROUND_DEVELOPMENT/formal07b_distributed32_full_20260715",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT/formal08a_distributed32_full_20260716",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL08B_LINE9_REALISM_DEEP_BACKGROUND_DEVELOPMENT/formal08b_distributed32_full_20260716",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      }
+    ],
+    "registered_utc": "2026-07-19T15:37:04.569664+00:00"
+  },
+  {
+    "round": 8,
+    "factor": "finite_facies_and_lamina_topology",
+    "evidence_runs": [
+      "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_smoke1_pair_20260716",
+      "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716"
+    ],
+    "decision_reports": [
+      "reports/formal09c_p1_dense_physical_finite_laminae_20260716/VISUAL_AUDIT_DECISION.md",
+      "reports/formal09c_p2_sparse_irregular_laminae_20260716/VISUAL_AUDIT_DECISION.md"
+    ],
+    "decision": "dense_facies_rejected_sparse_factor_optional_only",
+    "conclusion": "Finite topology is safer than full-width layering, but a physical facies factor must remain weak, causal, and outside the protected basal corridor.",
+    "formal_training_allowed": false,
+    "audited_runs": [
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_smoke1_pair_20260716",
+        "run_mode": "smoke_subset",
+        "requested_trace_count": 1,
+        "causal_pair_complete": true,
+        "solver_outputs": [
+          "full_scene.out",
+          "no_basal_contrast_control.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/FORMAL09C_P2_SPARSE_IRREGULAR_FINITE_LAMINAE/formal09c_p2_native64_full_20260716",
+        "run_mode": "smoke_subset",
+        "requested_trace_count": 64,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      }
+    ],
+    "registered_utc": "2026-07-19T15:37:04.574661+00:00"
+  },
+  {
+    "round": 9,
+    "factor": "source_band_and_instrument_proxy",
+    "evidence_runs": [
+      "data/simulations/v2/01_solver_runs/IV2_F01_GENTLE_APERIODIC_POS/distributed32_stride8_full_20260715",
+      "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/f02_distributed32_stride8_full_20260715",
+      "data/simulations/v2/01_solver_runs/IV2_F03_INSTRUMENT_BAND_POS/f03_distributed32_stride8_full_20260716"
+    ],
+    "decision_reports": [
+      "reports/formal08a_line9_realism_background_20260716/RUNTIME_VISUAL_DECISION.md"
+    ],
+    "decision": "retain_source_ablation_tracks_no_sfcw_claim_from_amplitude_proxy",
+    "conclusion": "F01 is the independent 55 MHz Ricker baseline; F02 retains a development-only zero-mean mechanism; F03 is an amplitude-only instrument-band proxy and must never be called SFCW.",
+    "formal_training_allowed": false,
+    "audited_runs": [
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/IV2_F01_GENTLE_APERIODIC_POS/distributed32_stride8_full_20260715",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/f02_distributed32_stride8_full_20260715",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      },
+      {
+        "run_dir": "data/simulations/v2/01_solver_runs/IV2_F03_INSTRUMENT_BAND_POS/f03_distributed32_stride8_full_20260716",
+        "run_mode": "distributed_smoke_subset",
+        "requested_trace_count": 32,
+        "causal_pair_complete": false,
+        "solver_outputs": [
+          "full_scene_merged.out"
+        ]
+      }
+    ],
+    "registered_utc": "2026-07-19T15:37:04.587726+00:00"
+  }
+]

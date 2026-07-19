@@ -1,0 +1,189 @@
+{
+  "round": 1,
+  "factor": "bounded zero-phase effective system response",
+  "status": "heldout_diagnostic_complete",
+  "formal_training_allowed": false,
+  "fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "validation_lines": [
+    "Line6"
+  ],
+  "heldout_lines_opened": [
+    "Line9"
+  ],
+  "source_run": "data/simulations/v2/01_solver_runs/FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT/formal06c_native64_full_20260716",
+  "source_output_sha256": "5f1c4e9b5deffd1956c6cec56d4b013511b212de647dccf83218f962f60e34b0",
+  "selected_trace_indices_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "response_contract": {
+    "phase": "zero; measured phase is never imported",
+    "maximum_absolute_gain_db": 6.0,
+    "passband_mhz": [
+      20.0,
+      180.0
+    ],
+    "global_rms_preserved": true,
+    "same_operator_required_for_future_full_control_pair": true
+  },
+  "candidate_strengths": [
+    0.0,
+    0.35,
+    0.65,
+    1.0
+  ],
+  "metrics": {
+    "strength_0.00": {
+      "target_to_background": 10.300327743183344,
+      "target_envelope_cv": 0.46880748940470024,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8858346426267785,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 113.47664419589998,
+      "shape_spectrum_rmse_db": 4.404477297906679,
+      "fit_shape_spectrum_rmse_db": 4.404477297906679,
+      "validation_shape_spectrum_rmse_db": 5.595674827036271,
+      "selection_score": 7.137241881303609
+    },
+    "strength_0.35": {
+      "target_to_background": 10.157333548770593,
+      "target_envelope_cv": 0.46527815722122096,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8845060299640914,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 113.95259925159336,
+      "shape_spectrum_rmse_db": 3.55082787525914,
+      "fit_shape_spectrum_rmse_db": 3.55082787525914,
+      "validation_shape_spectrum_rmse_db": 4.700711236952619,
+      "selection_score": 5.943500993293318
+    },
+    "strength_0.65": {
+      "target_to_background": 10.073513855685603,
+      "target_envelope_cv": 0.4635654307707862,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8890025027574076,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 115.08660128354914,
+      "shape_spectrum_rmse_db": 3.1070690170460646,
+      "fit_shape_spectrum_rmse_db": 3.1070690170460646,
+      "validation_shape_spectrum_rmse_db": 4.15968852652804,
+      "selection_score": 5.247162682494162
+    },
+    "strength_1.00": {
+      "target_to_background": 9.978667808330762,
+      "target_envelope_cv": 0.46860565106609786,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8935938346630643,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 114.82389533783493,
+      "shape_spectrum_rmse_db": 2.9686520169008306,
+      "fit_shape_spectrum_rmse_db": 2.9686520169008306,
+      "validation_shape_spectrum_rmse_db": 3.7744895877170794,
+      "selection_score": 4.81351779363237
+    }
+  },
+  "selected_candidate": "strength_1.00",
+  "blind_mapping": {
+    "A": "strength_0.65",
+    "B": "strength_0.35",
+    "C": "strength_1.00",
+    "D": "strength_0.00"
+  },
+  "visuals": [
+    "round01_blind_candidates.png",
+    "round01_fold_only_multiline.png",
+    "round01_spectrum_audit.png"
+  ],
+  "next_gate": "human blind visual audit before heldout diagnostic",
+  "heldout_diagnostic": {
+    "opened_after_freeze": true,
+    "lines": [
+      "Line9"
+    ],
+    "candidate_shape_spectrum_rmse_db": {
+      "strength_0.00": {
+        "Line9": 4.582688783410341
+      },
+      "strength_0.35": {
+        "Line9": 4.011569621976419
+      },
+      "strength_0.65": {
+        "Line9": 3.4910785899053005
+      },
+      "strength_1.00": {
+        "Line9": 3.4710110752399777
+      }
+    },
+    "visual": "round01_frozen_plus_heldout.png"
+  }
+}

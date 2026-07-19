@@ -1,0 +1,237 @@
+{
+  "round": 3,
+  "factor": "target-excluded low-rank coherent residual clutter",
+  "status": "heldout_diagnostic_complete",
+  "formal_training_allowed": false,
+  "fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "validation_lines": [
+    "Line6"
+  ],
+  "heldout_lines_opened": [
+    "Line9"
+  ],
+  "round01_parent": "strength_1.00",
+  "target_exclusion_half_width_ns": 35.0,
+  "spatial_correlation_m": [
+    0.55,
+    1.4,
+    3.2,
+    0.9,
+    2.1,
+    4.8
+  ],
+  "fit_target_to_background": 1.4044946861019456,
+  "fit_line_statistics": {
+    "Line3": {
+      "target_to_background": 1.2218037450641728,
+      "target_envelope_cv": 0.472023728581496,
+      "target_dropout_fraction": 0.004214963119072708,
+      "aligned_template_correlation_median": 0.1961033187048507,
+      "significant_lobe_count": 17,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 98.70249368558699,
+      "rank_1_energy_fraction": 0.5041153294649069,
+      "rank_3_energy_fraction": 0.6566177410719817,
+      "rank_6_energy_fraction": 0.7605476936231594,
+      "rank_12_energy_fraction": 0.867839480537615,
+      "trace_count": 949,
+      "trace_spacing_m": 0.08725145510582877
+    },
+    "Line7": {
+      "target_to_background": 1.4044946861019456,
+      "target_envelope_cv": 1.0425719617583429,
+      "target_dropout_fraction": 0.003883495145631068,
+      "aligned_template_correlation_median": 0.0643317516172146,
+      "significant_lobe_count": 23,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 95.12540349474533,
+      "rank_1_energy_fraction": 0.18910821875286904,
+      "rank_3_energy_fraction": 0.4907289860030973,
+      "rank_6_energy_fraction": 0.712300043262966,
+      "rank_12_energy_fraction": 0.8707071884044708,
+      "trace_count": 515,
+      "trace_spacing_m": 0.09515624666062905
+    },
+    "LineL1": {
+      "target_to_background": 1.517428517837129,
+      "target_envelope_cv": 0.5881079357661235,
+      "target_dropout_fraction": 0.1728307254623044,
+      "aligned_template_correlation_median": 0.08885370397304043,
+      "significant_lobe_count": 20,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 88.9479007741929,
+      "rank_1_energy_fraction": 0.14474765241170975,
+      "rank_3_energy_fraction": 0.35927190377542173,
+      "rank_6_energy_fraction": 0.5839111012349603,
+      "rank_12_energy_fraction": 0.820513447214493,
+      "trace_count": 1406,
+      "trace_spacing_m": 0.09528548184620433
+    }
+  },
+  "validation_line_statistics": {
+    "Line6": {
+      "target_to_background": 1.3733725780370014,
+      "target_envelope_cv": 0.6005185123310707,
+      "target_dropout_fraction": 0.0737618545837724,
+      "aligned_template_correlation_median": 0.0989752899601178,
+      "significant_lobe_count": 23,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 93.2987244475513,
+      "rank_1_energy_fraction": 0.18335625958726431,
+      "rank_3_energy_fraction": 0.43830751953191227,
+      "rank_6_energy_fraction": 0.6268879549327114,
+      "rank_12_energy_fraction": 0.8036517669852269,
+      "trace_count": 949,
+      "trace_spacing_m": 0.09278009299069367
+    }
+  },
+  "mode_provenance": [
+    {
+      "source_line": "Line3",
+      "source_mode": 1,
+      "relative_energy": 0.5893578002870313
+    },
+    {
+      "source_line": "Line7",
+      "source_mode": 1,
+      "relative_energy": 0.5435783651714943
+    },
+    {
+      "source_line": "LineL1",
+      "source_mode": 1,
+      "relative_energy": 0.5202468326454804
+    },
+    {
+      "source_line": "LineL1",
+      "source_mode": 2,
+      "relative_energy": 0.2523121760202732
+    },
+    {
+      "source_line": "Line7",
+      "source_mode": 2,
+      "relative_energy": 0.24968071323720156
+    },
+    {
+      "source_line": "Line3",
+      "source_mode": 2,
+      "relative_energy": 0.2132202181467007
+    }
+  ],
+  "candidate_ranks": [
+    0,
+    1,
+    3,
+    6
+  ],
+  "candidate_scales": {
+    "rank_0": 0.0,
+    "rank_1": 0.04900997920638321,
+    "rank_3": 0.01328947199392331,
+    "rank_6": 0.010555730469230185
+  },
+  "metrics": {
+    "rank_0": {
+      "target_to_background": 9.978667808330762,
+      "target_envelope_cv": 0.46860565106609786,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8935938346630643,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 114.82389533783493,
+      "shape_spectrum_rmse_db": 2.9686520169008306,
+      "rank_1_energy_fraction": 0.4881544393189904,
+      "rank_3_energy_fraction": 0.9143731863034781,
+      "rank_6_energy_fraction": 0.9915658450496336,
+      "rank_12_energy_fraction": 0.9999296121281029,
+      "selection_score": 4.666819308274716,
+      "added_residual_scale": 0.0
+    },
+    "rank_1": {
+      "target_to_background": 1.397266014963452,
+      "target_envelope_cv": 0.4603051305458001,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8529718366068733,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 118.17955235775916,
+      "shape_spectrum_rmse_db": 3.2845787664084107,
+      "rank_1_energy_fraction": 0.9945561704543742,
+      "rank_3_energy_fraction": 0.9988595720785849,
+      "rank_6_energy_fraction": 0.9999047574105625,
+      "rank_12_energy_fraction": 0.9999993342164187,
+      "selection_score": 3.8994806965958753,
+      "added_residual_scale": 0.04900997920638321
+    },
+    "rank_3": {
+      "target_to_background": 1.3637681234853543,
+      "target_envelope_cv": 0.48440969670923517,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.7416765145974867,
+      "significant_lobe_count": 12,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 116.29391837165946,
+      "shape_spectrum_rmse_db": 4.235533250331937,
+      "rank_1_energy_fraction": 0.6374288237815955,
+      "rank_3_energy_fraction": 0.9622576221002316,
+      "rank_6_energy_fraction": 0.9970741325447391,
+      "rank_12_energy_fraction": 0.9999832548098451,
+      "selection_score": 3.0960985673988484,
+      "added_residual_scale": 0.01328947199392331
+    },
+    "rank_6": {
+      "target_to_background": 1.4602348195023627,
+      "target_envelope_cv": 0.4717508846466296,
+      "target_dropout_fraction": 0.03125,
+      "aligned_template_correlation_median": 0.8393551706679483,
+      "significant_lobe_count": 12,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 113.28050291678979,
+      "shape_spectrum_rmse_db": 5.640357728172716,
+      "rank_1_energy_fraction": 0.5373541710298899,
+      "rank_3_energy_fraction": 0.9435051716509049,
+      "rank_6_energy_fraction": 0.9955594853164902,
+      "rank_12_energy_fraction": 0.9999726884634709,
+      "selection_score": 2.9347038383849444,
+      "added_residual_scale": 0.010555730469230185
+    }
+  },
+  "selected_candidate": "rank_6",
+  "blind_mapping": {
+    "A": "rank_6",
+    "B": "rank_1",
+    "C": "rank_0",
+    "D": "rank_3"
+  },
+  "visuals": [
+    "round03_blind_candidates.png",
+    "round03_fold_only_multiline.png",
+    "round03_basis_audit.png"
+  ],
+  "leakage_guard": "fit-line target corridors were removed before temporal SVD; only temporal atoms are reused and all spatial coefficients are newly sampled",
+  "next_gate": "human blind visual audit before heldout diagnostic",
+  "heldout_diagnostic": {
+    "opened_after_freeze": true,
+    "line_statistics": {
+      "Line9": {
+        "target_to_background": 2.889862794468638,
+        "target_envelope_cv": 0.38854716275538254,
+        "target_dropout_fraction": 0.0032017075773745998,
+        "aligned_template_correlation_median": 0.457965255746909,
+        "significant_lobe_count": 9,
+        "aligned_peak_frequency_mhz": 79.36507936507937,
+        "aligned_spectral_centroid_mhz": 100.11775473602479,
+        "rank_1_energy_fraction": 0.17038610038389715,
+        "rank_3_energy_fraction": 0.40853136580760857,
+        "rank_6_energy_fraction": 0.6333576927160244,
+        "rank_12_energy_fraction": 0.8598144082241668,
+        "trace_count": 937,
+        "trace_spacing_m": 0.09528517354698351
+      }
+    },
+    "visual": "round03_frozen_plus_heldout.png"
+  }
+}

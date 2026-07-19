@@ -638,6 +638,63 @@ statistics around the released FORMAL06C solver output. Preserve these rules:
     nuisance only on fit lines, validate on the validation line, and keep the
     held-out line diagnostic-only.
 
+### Ten-Round Realism Research Contract
+
+The MyNet simulator-realism study (Rounds 01-10, 2026-07-16 to 2026-07-19)
+is a maintained negative-and-positive evidence base.  Do not reintroduce a
+rejected shortcut merely because it improves a display statistic.
+
+1. Use two explicitly named tracks. `development_realism` may inspect a
+   Line9-conditioned morphology reference, but is never eligible for an
+   unseen-Line9 claim. `formal_fold_safe` may fit only Line3, Line7 and LineL1,
+   validate on Line6, keep Line9 held out, and keep LineX1 review-only.
+2. The accepted simulator shape is **causal physics to measurement**:
+   independent/fold-only geology; an identical-geometry `full/no-basal`
+   control; separately declared measurement response; and separate geometric
+   versus visible-phase labels.  The measurement layer may not move labels.
+3. A bounded, zero-phase effective system response can reduce packet-spectrum
+   mismatch. Fit it with equal line weighting on the formal fit lines and
+   validate before opening Line9. It is a limited measurement component, not a
+   complete realism solution and never an SFCW phase model.
+4. Do not use post-solve trace delay to emulate UAV height. The physical
+   height probe showed a 7.50 m to 8.01 m change shifts the causal basal
+   residual by about -3.11 ns, while common Tx/Rx elevation leaves the direct
+   pulse peak essentially fixed. Change source and receiver coordinates in
+   gprMax, record both requested and grid-realised positions, and retain the
+   same full/control geology.
+5. Reject post-solve low-rank bands, finite event stamps, copied residual
+   patches, Gaussian field samples used as a proxy for finite topology, and
+   arbitrary trace gain/delay mixtures. They may improve a ratio while still
+   look like isolated packets, stripes, or labels contaminated by augmentation.
+6. Reject full-width periodic or nearly periodic physical stratigraphy. It
+   creates a constructed layer stack and regular repeating wavelets. Dense
+   finite laminae are likewise a stress regression when they compete with the
+   protected basal corridor.
+7. A weak, sparse, finite, tapered P2-like lamina factor is an optional
+   physical lower bound only. Place it away from the basal corridor, preserve
+   the signed target packet in an exact predecessor comparison, and do not
+   promote it merely because it is physically causal. It is not sufficient to
+   reproduce measured multiscale texture alone.
+8. Treat source variants as ablations, not marketing labels. An independent
+   55 MHz Ricker case is a valid baseline; a development zero-mean packet may
+   be visually useful but must retain its provenance; an amplitude-only
+   instrument-band proxy is not SFCW and must never be described as such.
+9. Every new positive family needs: source-deck hash, material and index hash,
+   full/no-basal pair, target-presence contract, transient-VTI cleanup record,
+   geometric and visible-phase label provenance, exact native-spacing visual
+   checkpoint, and an explicit `formal_training_allowed` decision. Run
+   `air_reference` only when it answers a source/air-path question; it does
+   not replace `no-basal` attribution.
+10. Before generating a native-256 family, pass this release gate: independent
+    non-Line9 geometry, no constructed layer stack or point-target chain,
+    accepted visible-phase extraction from signed pairs, measured true-negative
+    policy, V15 split validation, and a response fit that never read Line9.
+
+The evidence index is kept at
+`reports/simulation_realism_ten_rounds_20260716/research_ledger.json`. Update
+it and this section together whenever a new physical factor is accepted,
+rejected, or given a narrower role.
+
 ### MyNet VTI Lifecycle
 
 VTI is a geometry visualization export, not an FDTD solver input or a training

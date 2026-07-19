@@ -1,0 +1,51 @@
+{
+  "round": 5,
+  "factor": "physical_source_receiver_height",
+  "source_case": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK\\IV2_F01_GENTLE_APERIODIC_POS",
+  "source_case_line9_conditioned": false,
+  "strict_pair_complete": true,
+  "air_reference_intentionally_omitted": true,
+  "air_reference_reason": "height comparison needs full/no-basal attribution; the air-only solve cannot substitute for the control",
+  "fixed_ground_y_m": 28.5,
+  "base_height_m": 8.009999999999998,
+  "solver_time_window_ns": 550.0,
+  "records": [
+    {
+      "requested_height_m": 7.5,
+      "height_m": 7.5,
+      "run_dir": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\01_solver_runs\\SIMR05_F01_HEIGHT_PHYSICAL_PROBE\\simr05_height_7p50m",
+      "direct_peak_ns": 26.605620918536435,
+      "residual_peak_ns": 422.8595494924833,
+      "residual_rms": 0.00013109229559926563,
+      "expected_air_round_trip_delta_ns": -3.4023537710211373,
+      "observed_direct_peak_delta_ns": 0.0,
+      "observed_residual_peak_delta_ns": -3.11342372450963
+    },
+    {
+      "requested_height_m": 8.01,
+      "height_m": 8.009999999999998,
+      "run_dir": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\01_solver_runs\\SIMR05_F01_HEIGHT_PHYSICAL_PROBE\\simr05_height_8p01m",
+      "direct_peak_ns": 26.605620918536435,
+      "residual_peak_ns": 425.97297321699295,
+      "residual_rms": 0.00014411013324095503,
+      "expected_air_round_trip_delta_ns": 0.0,
+      "observed_direct_peak_delta_ns": 0.0,
+      "observed_residual_peak_delta_ns": 0.0
+    },
+    {
+      "requested_height_m": 8.5,
+      "height_m": 8.490000000000002,
+      "run_dir": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\01_solver_runs\\SIMR05_F01_HEIGHT_PHYSICAL_PROBE\\simr05_height_8p50m",
+      "direct_peak_ns": 26.605620918536435,
+      "residual_peak_ns": 429.01563731140004,
+      "residual_rms": 0.00013772190348688212,
+      "expected_air_round_trip_delta_ns": 3.202215313902286,
+      "observed_direct_peak_delta_ns": 0.0,
+      "observed_residual_peak_delta_ns": 3.042664094407087
+    }
+  ],
+  "status": "physical_probe_complete",
+  "formal_training_allowed": false,
+  "next_gate": "use measured per-trace height only after validating its physical semantics; do not emulate height with post-solve delays",
+  "created_utc": "2026-07-19T15:45:58.931725+00:00"
+}

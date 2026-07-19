@@ -1,0 +1,185 @@
+{
+  "round": 2,
+  "factor": "smooth trace gain; posthoc delay audited as a rejected probe",
+  "status": "heldout_diagnostic_complete",
+  "formal_training_allowed": false,
+  "fit_lines": [
+    "Line3",
+    "Line7",
+    "LineL1"
+  ],
+  "validation_lines": [
+    "Line6"
+  ],
+  "heldout_lines_opened": [
+    "Line9"
+  ],
+  "round01_parent": "strength_1.00",
+  "fitted_parameters": {
+    "local_log_gain_sigma": 0.26657643090378963,
+    "local_height_sigma_m": 0.05232909973485975,
+    "early_wave_jitter_sigma_ns": 0.08338878305629797,
+    "fit_target_envelope_cv": 0.5881079357661235,
+    "validation_target_envelope_cv": 0.6005185123310707,
+    "fit_target_to_background": 1.4044946861019456,
+    "validation_target_to_background": 1.3733725780370014
+  },
+  "fit_line_statistics": {
+    "Line3": {
+      "trace_count": 949,
+      "trace_spacing_m": 0.08725145510582877,
+      "target_to_background": 1.2218037450641728,
+      "target_envelope_cv": 0.472023728581496,
+      "aligned_template_correlation_median": 0.1961033187048507,
+      "significant_lobe_count": 17,
+      "local_log_gain_sigma": 0.26657643090378963,
+      "local_height_sigma_m": 0.0696447780291844,
+      "early_wave_jitter_sigma_ns": 0.1813381667209077
+    },
+    "Line7": {
+      "trace_count": 515,
+      "trace_spacing_m": 0.09515624666062905,
+      "target_to_background": 1.4044946861019456,
+      "target_envelope_cv": 1.0425719617583429,
+      "aligned_template_correlation_median": 0.0643317516172146,
+      "significant_lobe_count": 23,
+      "local_log_gain_sigma": 0.3074407011597751,
+      "local_height_sigma_m": 0.025100089373182935,
+      "early_wave_jitter_sigma_ns": 0.07308598872461301
+    },
+    "LineL1": {
+      "trace_count": 1406,
+      "trace_spacing_m": 0.09528548184620433,
+      "target_to_background": 1.517428517837129,
+      "target_envelope_cv": 0.5881079357661235,
+      "aligned_template_correlation_median": 0.08885370397304043,
+      "significant_lobe_count": 20,
+      "local_log_gain_sigma": 0.20652948157000717,
+      "local_height_sigma_m": 0.05232909973485975,
+      "early_wave_jitter_sigma_ns": 0.08338878305629797
+    }
+  },
+  "validation_line_statistics": {
+    "Line6": {
+      "trace_count": 949,
+      "trace_spacing_m": 0.09278009299069367,
+      "target_to_background": 1.3733725780370014,
+      "target_envelope_cv": 0.6005185123310707,
+      "aligned_template_correlation_median": 0.0989752899601178,
+      "significant_lobe_count": 23,
+      "local_log_gain_sigma": 0.22005303713738453,
+      "local_height_sigma_m": 0.1124939829957394,
+      "early_wave_jitter_sigma_ns": 0.08162067643023976
+    }
+  },
+  "candidate_gain_scales": [
+    0.0,
+    0.03,
+    0.05,
+    0.08
+  ],
+  "metrics": {
+    "gain_0.00": {
+      "target_to_background": 9.978667808330762,
+      "target_envelope_cv": 0.46860565106609786,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.8935938346630643,
+      "significant_lobe_count": 8,
+      "aligned_peak_frequency_mhz": 88.18342151675485,
+      "aligned_spectral_centroid_mhz": 114.82389533783493,
+      "shape_spectrum_rmse_db": 2.9686520169008306,
+      "selection_score": 2.948788794297499,
+      "log_gain_sigma": 0.0,
+      "gain_min": 1.0,
+      "gain_max": 1.0,
+      "relative_height_sigma_m": 0.0,
+      "delay_p95_ns": 0.0
+    },
+    "gain_0.03": {
+      "target_to_background": 2.6876584588279986,
+      "target_envelope_cv": 0.36591484571772986,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.7222695675966462,
+      "significant_lobe_count": 14,
+      "aligned_peak_frequency_mhz": 97.00176366843033,
+      "aligned_spectral_centroid_mhz": 113.31523072244059,
+      "shape_spectrum_rmse_db": 5.5737888392129005,
+      "selection_score": 1.1134579166794838,
+      "log_gain_sigma": 0.00799729292711369,
+      "gain_min": 0.9884821756209318,
+      "gain_max": 1.0134678125491876,
+      "relative_height_sigma_m": 0.0,
+      "delay_p95_ns": 0.0
+    },
+    "gain_0.05": {
+      "target_to_background": 1.638193606139795,
+      "target_envelope_cv": 0.2797457372351324,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.683150694102199,
+      "significant_lobe_count": 16,
+      "aligned_peak_frequency_mhz": 97.00176366843033,
+      "aligned_spectral_centroid_mhz": 110.00679128036172,
+      "shape_spectrum_rmse_db": 6.040929773429867,
+      "selection_score": 0.4516073790536559,
+      "log_gain_sigma": 0.013328821545189481,
+      "gain_min": 0.980877420872023,
+      "gain_max": 1.0225469718939155,
+      "relative_height_sigma_m": 0.0,
+      "delay_p95_ns": 0.0
+    },
+    "gain_0.08": {
+      "target_to_background": 1.1541944791112222,
+      "target_envelope_cv": 0.3188864963544969,
+      "target_dropout_fraction": 0.0,
+      "aligned_template_correlation_median": 0.783258973709977,
+      "significant_lobe_count": 15,
+      "aligned_peak_frequency_mhz": 79.36507936507937,
+      "aligned_spectral_centroid_mhz": 105.30273959248612,
+      "shape_spectrum_rmse_db": 4.404419747496016,
+      "selection_score": 0.44276917246012915,
+      "log_gain_sigma": 0.021326114472303172,
+      "gain_min": 0.9695798470010256,
+      "gain_max": 1.0363184428341223,
+      "relative_height_sigma_m": 0.0,
+      "delay_p95_ns": 0.0
+    }
+  },
+  "posthoc_delay_probe": {
+    "target_to_background": 0.07996304095274949,
+    "target_envelope_cv": 0.46895827492227005,
+    "target_dropout_fraction": 0.0,
+    "aligned_template_correlation_median": 0.891663127615901,
+    "significant_lobe_count": 9,
+    "aligned_peak_frequency_mhz": 88.18342151675485,
+    "aligned_spectral_centroid_mhz": 114.7902281787466,
+    "shape_spectrum_rmse_db": 2.972535456956845,
+    "probe_scale": 0.001,
+    "delay_p95_ns": 0.0006189727831321352,
+    "decision": "rejected_posthoc_approximation"
+  },
+  "selected_candidate": "gain_0.08",
+  "blind_mapping": {
+    "A": "gain_0.08",
+    "B": "gain_0.00",
+    "C": "gain_0.05",
+    "D": "gain_0.03"
+  },
+  "visuals": [
+    "round02_blind_candidates.png",
+    "round02_fold_only_multiline.png",
+    "round02_trajectory_audit.png"
+  ],
+  "next_gate": "human blind visual audit before heldout diagnostic",
+  "interpretation_guard": "posthoc trace shifting is not a flight-height model; physical height variation is deferred to the Round 05 FDTD experiment",
+  "heldout_diagnostic": {
+    "opened_after_freeze": true,
+    "target_to_background": {
+      "Line9": 2.889862794468638
+    },
+    "target_envelope_cv": {
+      "Line9": 0.38854716275538254
+    },
+    "selected_candidate_target_envelope_cv": 0.3188864963544969,
+    "visual": "round02_frozen_plus_heldout.png"
+  }
+}

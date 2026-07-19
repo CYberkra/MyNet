@@ -307,6 +307,10 @@ def main() -> int:
     toolchain_tmp.mkdir(parents=True, exist_ok=True)
     env["TEMP"] = str(toolchain_tmp)
     env["TMP"] = str(toolchain_tmp)
+    pycuda_cache = toolchain_tmp / "pycuda_cache"
+    pycuda_cache.mkdir(parents=True, exist_ok=True)
+    # Keep generated CUDA cubins in the project runtime area, never in C:\\Users.
+    env["PYCUDA_CACHE_DIR"] = str(pycuda_cache)
     if args.execute and not args.geometry_only:
         env = _load_vcvars_environment(env, runtime.gprmax_vcvars)
         cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else None
