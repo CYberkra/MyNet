@@ -5,7 +5,7 @@ import numpy as np
 import itertools
 from types import SimpleNamespace
 
-from pgdacsnet.model_aeropath_ssd import AeroPathSSD, SoftPathInference
+from pgdacsnet.model_aeropath_ssd import AeroPathSSD, SoftPathInference, _air_reduce
 from pgdacsnet.model_mamba import OfficialMamba2Sequence
 from pgdacsnet.model_raw_unet import build_model
 from pgdacsnet.losses_aeropath import compute_aeropath_loss, structured_path_losses
@@ -181,6 +181,32 @@ def test_aeropath_missing_altitude_stays_finite():
     output = model(torch.randn(1, 1, 32, 16), altitude=torch.tensor([[8.0, float("nan")] + [8.0] * 14]))
     assert torch.isfinite(output.air_reduced_input).all()
     assert torch.isfinite(output.path_marginals).all()
+
+
+def test_aeropath_weighted_altitude_interpolation_does_not_spread_nan():
+    raw = torch.arange(8, dtype=torch.float32)[None, None, :, None].expand(1, 1, 8, 8)
+    altitude = torch.tensor([[8.0, 8.0, float("nan"), 8.0]])
+    reduced = _air_reduce(raw, altitude, 700.0)
+    # The interpolation support remains positive across the resampled span,
+    # so no interior trace is treated as a zero-height (unreduced) fallback.
+    assert torch.isfinite(reduced).all()
+    expected = _air_reduce(raw, torch.full((1, 8), 8.0), 700.0)
+    assert torch.allclose(reduced, expected, atol=1e-5)
+
+
+def test_soft_path_single_trace_chainage_supports_forward_and_backward():
+    inference = SoftPathInference(max_step=3)
+    logits = torch.randn(2, 1, 8, 1, requires_grad=True)
+    details = inference(
+        logits,
+        null_logits=torch.zeros(2, 1, 1),
+        chainage_m=torch.tensor([[0.0], [12.0]]),
+        return_details=True,
+    )
+    loss = details.path_marginals.sum() + details.null_marginals.sum()
+    loss.backward()
+    assert torch.isfinite(details.path_marginals).all()
+    assert logits.grad is not None and torch.isfinite(logits.grad).all()
 
 
 def test_aeropath_rejects_missing_metadata_channels():
