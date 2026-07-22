@@ -1,0 +1,51 @@
+{
+  "schema": "independent_v2_promotion_audit_v1",
+  "formal_training_allowed": false,
+  "promotion_decision": "blocked_pending_new_independent_native256_release",
+  "families": [
+    {
+      "family": "F01",
+      "scene_family_id": "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK",
+      "line9_conditioned": false,
+      "recorded_decision": "pilot_passed_pending_full256",
+      "disposition": "blocked_integrity_mismatch",
+      "formal_training_allowed": false,
+      "errors": [
+        "hash mismatch: positive control materials",
+        "hash mismatch: negative full materials"
+      ],
+      "warnings": [
+        "Pilot evidence exists, but native-256 paired solver evidence and human release remain missing."
+      ]
+    },
+    {
+      "family": "F02",
+      "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+      "line9_conditioned": true,
+      "recorded_decision": "accepted_mechanism_transfer_development_only",
+      "disposition": "blocked_integrity_mismatch",
+      "formal_training_allowed": false,
+      "errors": [
+        "hash mismatch: positive control materials",
+        "hash mismatch: negative full materials"
+      ],
+      "warnings": []
+    },
+    {
+      "family": "F03",
+      "scene_family_id": "IV2_F03_INSTRUMENT_BAND_WEAK_INTERFACE_PILOT",
+      "line9_conditioned": false,
+      "recorded_decision": "retain_as_independent_physics_candidate_not_preferred_morphology",
+      "disposition": "blocked_integrity_mismatch",
+      "formal_training_allowed": false,
+      "errors": [
+        "hash mismatch: positive control materials",
+        "hash mismatch: negative full materials"
+      ],
+      "warnings": [
+        "Independent provenance passes, but the recorded visual review is not preferred."
+      ]
+    }
+  ],
+  "next_required_run": "F01 positive full/control/air and matched negative full at native 256 traces"
+}
