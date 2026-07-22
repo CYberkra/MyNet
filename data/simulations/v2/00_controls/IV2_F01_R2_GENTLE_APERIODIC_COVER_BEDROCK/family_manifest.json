@@ -1,0 +1,100 @@
+{
+  "contract_id": "PGDA_INDEPENDENT_V2_FAMILY01_R2_PILOT_V1",
+  "scene_family_id": "IV2_F01_R2_GENTLE_APERIODIC_COVER_BEDROCK",
+  "lifecycle_state": "pre_solver_blocked_pilot",
+  "formal_training_allowed": false,
+  "split_group_indivisible": true,
+  "line9_conditioned": false,
+  "case_ids": [
+    "IV2_F01_R2_GENTLE_APERIODIC_POS",
+    "IV2_F01_R2_MATCHED_BACKGROUND_NEG"
+  ],
+  "positive_case_id": "IV2_F01_R2_GENTLE_APERIODIC_POS",
+  "true_negative_case_id": "IV2_F01_R2_MATCHED_BACKGROUND_NEG",
+  "shared_geometry_sha256": "5efe60364808d4c43889f537babee159ddfb887ddb6b6856178e3cefb348332b",
+  "shared_geometry_array_sha256": "f2c59754d6ea6f56ef9798da133b103ec7f2fb582f6625bea20b875f78249703",
+  "positive_control_materials_sha256": "a6d3210d49edbb8a0be8b1f7d00865148886c22e771076322a083fa29f4e094a",
+  "negative_full_materials_sha256": "a6d3210d49edbb8a0be8b1f7d00865148886c22e771076322a083fa29f4e094a",
+  "exact_negative_equivalence": true,
+  "profile_shape_gate": {
+    "accepted_seed": 2026071504,
+    "attempt": 3,
+    "scan_depth_min_m": 14.02506399154663,
+    "scan_depth_median_m": 14.469343662261963,
+    "scan_depth_max_m": 15.250253677368164,
+    "scan_depth_range_m": 1.2251896858215332,
+    "smoothed_extrema_count": 7,
+    "quadratic_fit_r2": 0.8719280513416123,
+    "abs_slope_p95": 0.14906942229661752,
+    "broad_shape_gate_ok": true
+  },
+  "cover_field_statistics": {
+    "seed": 2026071511,
+    "coarse_shape": [
+      1349,
+      267
+    ],
+    "correlation_scales_m": {
+      "long_xy": [
+        9.0,
+        3.0
+      ],
+      "meso_xy": [
+        2.4,
+        1.2
+      ],
+      "local_xy": [
+        0.75,
+        0.45
+      ]
+    },
+    "component_weights": [
+      0.55,
+      0.3,
+      0.15
+    ],
+    "used_bins": 32,
+    "horizontal_neighbor_bin_change_rate": 0.05937314585908529,
+    "vertical_neighbor_bin_change_rate": 0.10744054361624018,
+    "vertical_spectral_peak_fraction_in_scan_cover": 0.972493636697754,
+    "quantile_thresholds": [
+      -2.037782907485962,
+      -1.5862923860549927,
+      -1.3160549402236938,
+      -1.1296935081481934,
+      -0.9738144278526306,
+      -0.838457465171814,
+      -0.7189549207687378,
+      -0.612179696559906,
+      -0.5135366320610046,
+      -0.4211379885673523,
+      -0.3307464122772217,
+      -0.24520999193191528,
+      -0.1637047380208969,
+      -0.08699934184551239,
+      -0.01293877325952053,
+      0.060191117227077484,
+      0.13386353850364685,
+      0.20751029253005981,
+      0.2819293439388275,
+      0.3554540276527405,
+      0.43123772740364075,
+      0.5109686255455017,
+      0.5932262539863586,
+      0.6792747974395752,
+      0.7715920805931091,
+      0.8682642579078674,
+      0.9716324210166931,
+      1.092952013015747,
+      1.241297721862793,
+      1.435468316078186,
+      1.7230854034423828
+    ],
+    "sinusoidal_stratigraphy": false,
+    "isolated_inclusions": 0,
+    "point_targets": 0,
+    "vertical_partitions": 0
+  },
+  "preview": "IV2_F01_FAMILY_PRE_SOLVER_PREVIEW.png",
+  "next_gate": "static, geometry-only, one-trace and sparse runtime audits; no training export"
+}

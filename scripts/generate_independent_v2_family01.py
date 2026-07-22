@@ -27,6 +27,10 @@ from scipy.ndimage import gaussian_filter, gaussian_filter1d, zoom
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTRACT = ROOT / "data" / "contracts" / "simulation_v2" / "independent_v2_family01_pilot.json"
 DEFAULT_OUTPUT = ROOT / "data" / "simulations" / "v2" / "00_controls"
+SUPPORTED_CONTRACT_IDS = {
+    "PGDA_INDEPENDENT_V2_FAMILY01_PILOT_V1",
+    "PGDA_INDEPENDENT_V2_FAMILY01_R2_PILOT_V1",
+}
 C0 = 299_792_458.0
 COVER_BINS = 32
 TRANSITION_LEVELS = 8
@@ -75,6 +79,11 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def write_canonical_text(path: Path, text: str, *, encoding: str) -> None:
+    """Write hash-protected generated text with platform-independent LF bytes."""
+    path.write_text(text, encoding=encoding, newline="\n")
 
 
 def array_sha256(values: np.ndarray) -> str:
@@ -301,7 +310,8 @@ def material_rows(*, control: bool) -> list[dict[str, Any]]:
 
 
 def write_materials(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.write_text(
+    write_canonical_text(
+        path,
         "\n".join(
             f"#material: {row['epsilon_r']:.9g} {row['conductivity_s_per_m']:.9g} 1 0 {row['id']}"
             for row in rows
@@ -452,8 +462,8 @@ def write_checksums(case_dir: Path) -> None:
     rows = []
     for path in sorted(item for item in case_dir.rglob("*") if item.is_file() and item.name != "FILE_SHA256.csv"):
         rows.append((path.relative_to(case_dir).as_posix(), sha256(path), path.stat().st_size))
-    with (case_dir / "FILE_SHA256.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+    with (case_dir / "FILE_SHA256.csv").open("w", newline="\n", encoding="utf-8") as handle:
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(("relative_path", "sha256", "size_bytes"))
         writer.writerows(rows)
 
@@ -480,21 +490,31 @@ def _write_case(
     target_presence = bool(case["target_presence"])
     physical_rows = full_rows if target_presence else control_rows
     write_materials(case_dir / "materials_full.txt", physical_rows)
-    (case_dir / "full_scene.in").write_text(
-        input_text(spec, f"{case['case_id']} full", "materials_full.txt"), encoding="ascii"
+    write_canonical_text(
+        case_dir / "full_scene.in",
+        input_text(spec, f"{case['case_id']} full", "materials_full.txt"),
+        encoding="ascii",
     )
-    (case_dir / "geometry_check_full.in").write_text(
-        input_text(spec, f"{case['case_id']} geometry", "materials_full.txt", geometry_view="geometry_full"), encoding="ascii"
+    write_canonical_text(
+        case_dir / "geometry_check_full.in",
+        input_text(spec, f"{case['case_id']} geometry", "materials_full.txt", geometry_view="geometry_full"),
+        encoding="ascii",
     )
     if target_presence:
         write_materials(case_dir / "materials_no_basal.txt", control_rows)
-        (case_dir / "no_basal_contrast_control.in").write_text(
-            input_text(spec, f"{case['case_id']} no basal", "materials_no_basal.txt"), encoding="ascii"
+        write_canonical_text(
+            case_dir / "no_basal_contrast_control.in",
+            input_text(spec, f"{case['case_id']} no basal", "materials_no_basal.txt"),
+            encoding="ascii",
         )
-        (case_dir / "geometry_check_control.in").write_text(
-            input_text(spec, f"{case['case_id']} control geometry", "materials_no_basal.txt", geometry_view="geometry_control"), encoding="ascii"
+        write_canonical_text(
+            case_dir / "geometry_check_control.in",
+            input_text(spec, f"{case['case_id']} control geometry", "materials_no_basal.txt", geometry_view="geometry_control"),
+            encoding="ascii",
         )
-    (case_dir / "air_reference.in").write_text(input_text(spec, f"{case['case_id']} air", None), encoding="ascii")
+    write_canonical_text(
+        case_dir / "air_reference.in", input_text(spec, f"{case['case_id']} air", None), encoding="ascii"
+    )
 
     np.save(labels_dir / "target_presence.npy", np.asarray(target_presence, dtype=np.bool_))
     np.save(labels_dir / "valid_trace_mask.npy", np.ones(spec.trace_count, dtype=np.bool_))
@@ -592,8 +612,11 @@ def _write_case(
     }
     if target_presence:
         manifest["materials"]["no_basal_materials_sha256"] = sha256(case_dir / "materials_no_basal.txt")
-    (case_dir / "scene_manifest.json").write_text(json.dumps(manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8")
-    (case_dir / "RUN_COMMANDS.md").write_text(
+    write_canonical_text(
+        case_dir / "scene_manifest.json", json.dumps(manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
+    )
+    write_canonical_text(
+        case_dir / "RUN_COMMANDS.md",
         "# Runtime commands\n\n"
         "Run through `scripts/run_native_256_release_pilot.py`; never execute or overwrite this source deck in place.\n",
         encoding="utf-8",
@@ -604,7 +627,7 @@ def _write_case(
 
 def generate_family(contract_path: Path, output_root: Path, *, overwrite: bool, spec: Spec | None = None) -> dict[str, Any]:
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
-    if contract.get("contract_id") != "PGDA_INDEPENDENT_V2_FAMILY01_PILOT_V1":
+    if contract.get("contract_id") not in SUPPORTED_CONTRACT_IDS:
         raise ValueError("unexpected independent family contract")
     if contract.get("formal_training_allowed") is not False:
         raise ValueError("pre-solver family must remain blocked")
@@ -693,7 +716,9 @@ def generate_family(contract_path: Path, output_root: Path, *, overwrite: bool, 
         "preview": preview_path.name,
         "next_gate": "static, geometry-only, one-trace and sparse runtime audits; no training export",
     }
-    (family_dir / "family_manifest.json").write_text(json.dumps(family_manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8")
+    write_canonical_text(
+        family_dir / "family_manifest.json", json.dumps(family_manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
+    )
     write_checksums(family_dir)
     return family_manifest
 

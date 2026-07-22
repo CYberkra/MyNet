@@ -1,0 +1,190 @@
+{
+  "contract_id": "PGDA_INDEPENDENT_V2_FAMILY01_R2_PILOT_V1",
+  "case_id": "IV2_F01_R2_MATCHED_BACKGROUND_NEG",
+  "scene_family_id": "IV2_F01_R2_GENTLE_APERIODIC_COVER_BEDROCK",
+  "lifecycle_state": "pre_solver_blocked_pilot",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": false,
+  "negative_semantics": "designed_true_negative_exactly_equal_to_positive_no_basal_physical_state",
+  "line9_conditioned": false,
+  "strict_line9_holdout_allowed": true,
+  "generator_path": "scripts/generate_independent_v2_family01.py",
+  "generator_sha256": "47b47e0b211805746f5c14a6bc6ec3210e2d861fdc90790b6a323cd371e3b6f2",
+  "contract_path": "data/contracts/simulation_v2/independent_v2_family01_r2_pilot.json",
+  "contract_sha256": "2e76731587e232cfa6a08297ad8e6a4a846a14b09cb5e714530e180e18415bc6",
+  "training_block_reason": "pre-solver pilot; complete runtime, human semantics, and registry promotion gates remain pending",
+  "parameter_provenance": {
+    "line9_conditioned": false,
+    "measured_files_read_by_generator": [],
+    "held_out_geometry_or_timing_used": false,
+    "development_case_arrays_reused": false,
+    "allowed_inputs": [
+      "published project-wide 50-65 MHz source band",
+      "project borehole/engineering cover-depth envelope",
+      "bounded non-dispersive material sensitivity priors",
+      "seeded generic correlated random fields"
+    ],
+    "forbidden_inputs": [
+      "Line9 labels or timing curves",
+      "Line9 geometry, terrain or waveform arrays",
+      "FORMAL06 or FORMAL07 profile and field arrays",
+      "held-out morphology-derived parameter fitting"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "domain_x_m": 242.73,
+    "domain_y_m": 48.0,
+    "nx_ny_nz": [
+      8091,
+      1600,
+      1
+    ],
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "left_physical_guard_m": 108.0,
+    "right_physical_guard_m": 107.99999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 720.4984456280082,
+    "solver_time_window_ns": 750.0,
+    "protected_time_window_ns": 700.0,
+    "protected_window_end_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4,
+    "cells_per_min_wavelength_at_2_8fc": 18.280726653262633
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "polarization": "z",
+    "waveform": "ricker",
+    "center_frequency_hz": 55000000.0,
+    "reference_delay_formula": "sqrt(2)/center_frequency_hz",
+    "proxy_only": true,
+    "not_sfcw": true,
+    "reference_delay_ns": 25.712973861329
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "index_file_sha256": "5efe60364808d4c43889f537babee159ddfb887ddb6b6856178e3cefb348332b",
+    "index_array_sha256": "f2c59754d6ea6f56ef9798da133b103ec7f2fb582f6625bea20b875f78249703",
+    "index_shape": [
+      8091,
+      1600,
+      1
+    ],
+    "profile_shape_gate": {
+      "accepted_seed": 2026071504,
+      "attempt": 3,
+      "scan_depth_min_m": 14.02506399154663,
+      "scan_depth_median_m": 14.469343662261963,
+      "scan_depth_max_m": 15.250253677368164,
+      "scan_depth_range_m": 1.2251896858215332,
+      "smoothed_extrema_count": 7,
+      "quadratic_fit_r2": 0.8719280513416123,
+      "abs_slope_p95": 0.14906942229661752,
+      "broad_shape_gate_ok": true
+    },
+    "cover_field_statistics": {
+      "seed": 2026071511,
+      "coarse_shape": [
+        1349,
+        267
+      ],
+      "correlation_scales_m": {
+        "long_xy": [
+          9.0,
+          3.0
+        ],
+        "meso_xy": [
+          2.4,
+          1.2
+        ],
+        "local_xy": [
+          0.75,
+          0.45
+        ]
+      },
+      "component_weights": [
+        0.55,
+        0.3,
+        0.15
+      ],
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.05937314585908529,
+      "vertical_neighbor_bin_change_rate": 0.10744054361624018,
+      "vertical_spectral_peak_fraction_in_scan_cover": 0.972493636697754,
+      "quantile_thresholds": [
+        -2.037782907485962,
+        -1.5862923860549927,
+        -1.3160549402236938,
+        -1.1296935081481934,
+        -0.9738144278526306,
+        -0.838457465171814,
+        -0.7189549207687378,
+        -0.612179696559906,
+        -0.5135366320610046,
+        -0.4211379885673523,
+        -0.3307464122772217,
+        -0.24520999193191528,
+        -0.1637047380208969,
+        -0.08699934184551239,
+        -0.01293877325952053,
+        0.060191117227077484,
+        0.13386353850364685,
+        0.20751029253005981,
+        0.2819293439388275,
+        0.3554540276527405,
+        0.43123772740364075,
+        0.5109686255455017,
+        0.5932262539863586,
+        0.6792747974395752,
+        0.7715920805931091,
+        0.8682642579078674,
+        0.9716324210166931,
+        1.092952013015747,
+        1.241297721862793,
+        1.435468316078186,
+        1.7230854034423828
+      ],
+      "sinusoidal_stratigraphy": false,
+      "isolated_inclusions": 0,
+      "point_targets": 0,
+      "vertical_partitions": 0
+    },
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "visible_phase_geometry_written": false,
+    "latent_target_partition_constitutively_neutral": true
+  },
+  "materials": {
+    "full_materials_sha256": "a6d3210d49edbb8a0be8b1f7d00865148886c22e771076322a083fa29f4e094a",
+    "material_count": 320,
+    "cover_bins": 32,
+    "transition_levels": 8,
+    "only_positive_full_has_basal_contrast": true
+  },
+  "strict_pair": {
+    "required": false,
+    "shared_geometry_hdf5": false,
+    "control_restores_transition_and_bedrock_to_each_local_cover_bin": true,
+    "positive_control_equals_family_negative_full": true
+  },
+  "labels": {
+    "geometric_reference": "absent for true negative",
+    "source_referenced_arrival": "absent for true negative",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase_phase_half_width_ns": 10.0,
+    "visible_phase": "absent until solved signed pair review",
+    "target_mask_training_allowed": false
+  },
+  "next_gate": "static and geometry-only audit, then positive one-trace pair plus negative one-trace full smoke"
+}

@@ -21,6 +21,14 @@ from scripts.generate_independent_v2_family01 import (
 )
 
 
+R2_CONTRACT = DEFAULT_CONTRACT.with_name("independent_v2_family01_r2_pilot.json")
+
+
+def _assert_lf_only(path: Path) -> None:
+    content = path.read_bytes()
+    assert b"\r" not in content, path
+
+
 def _tiny_spec() -> Spec:
     return Spec(
         domain_x_m=18.0,
@@ -46,6 +54,15 @@ def test_contract_is_independent_and_blocked() -> None:
     assert contract["provenance"]["measured_files_read_by_generator"] == []
     assert contract["pair_contract"]["positive_control_equals_negative_full_material_map"] is True
     assert {case["target_presence"] for case in contract["cases"]} == {True, False}
+
+
+def test_r2_contract_has_a_new_immutable_lineage() -> None:
+    contract = json.loads(R2_CONTRACT.read_text(encoding="utf-8"))
+    assert contract["formal_training_allowed"] is False
+    assert contract["supersedes"] == "PGDA_INDEPENDENT_V2_FAMILY01_PILOT_V1"
+    assert contract["provenance"]["line9_conditioned"] is False
+    assert contract["provenance"]["measured_files_read_by_generator"] == []
+    assert contract["scene_family_id"] != "IV2_F01_GENTLE_APERIODIC_COVER_BEDROCK"
 
 
 def test_default_grid_passes_resolution_and_boundary_contract() -> None:
@@ -101,6 +118,21 @@ def test_tiny_family_has_exact_positive_control_negative_equivalence(tmp_path: P
         data = handle["data"]
         assert data.compression == "gzip"
         assert tuple(handle.attrs["dx_dy_dz"]) == (_tiny_spec().dl_m,) * 3
+
+
+def test_generated_hash_protected_text_is_canonical_lf(tmp_path: Path) -> None:
+    manifest = generate_family(DEFAULT_CONTRACT, tmp_path, overwrite=False, spec=_tiny_spec())
+    family = tmp_path / manifest["scene_family_id"]
+    for text_path in family.rglob("*"):
+        if text_path.suffix in {".csv", ".in", ".json", ".md", ".txt"}:
+            _assert_lf_only(text_path)
+
+
+def test_r2_tiny_family_is_generated_under_the_new_contract(tmp_path: Path) -> None:
+    manifest = generate_family(R2_CONTRACT, tmp_path, overwrite=False, spec=_tiny_spec())
+    assert manifest["contract_id"] == "PGDA_INDEPENDENT_V2_FAMILY01_R2_PILOT_V1"
+    assert manifest["formal_training_allowed"] is False
+    assert (tmp_path / manifest["scene_family_id"] / "family_manifest.json").is_file()
 
 
 def test_index_geometry_contains_cover_transition_and_bedrock() -> None:
