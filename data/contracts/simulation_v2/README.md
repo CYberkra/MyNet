@@ -3,6 +3,8 @@
 本目录是旧 Line9-conditioned 仿真的替代设计入口。
 
 - `simulation_contract_v2.json`：不可绕过的物理、标签和 provenance 合同。
+- `hardware_measurement_contract_v1.json`：有限天线 3D 局部验证的硬件证据门禁；未采集字段时会明确阻断运行。
+- `HARDWARE_MEASUREMENT_AND_3D_PREFLIGHT.md`：现场脉冲采集与首个 3D 局部对照协议。
 - `materials_v1.json`：用于 control 阶段的非色散材料集合。
 - `control_cases_v1.json`：4 个解析/匹配控制场景。
 - 生成命令：`python scripts/generate_physical_sim_v2.py --overwrite`

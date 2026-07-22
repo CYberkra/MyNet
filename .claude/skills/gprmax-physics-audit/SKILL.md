@@ -1003,6 +1003,27 @@ full-window parallel lobe train under both AGC and restrained time-power gain.
    reduced-order equivalent. Do not scale a bundled high-frequency antenna by
    intuition.
 
+### Hardware Evidence Gate For 3D (2026-07-22)
+
+Use `data/contracts/simulation_v2/hardware_measurement_contract_v1.json` and
+`scripts/validate_hardware_measurement_contract.py` before creating any 3D
+finite-antenna deck. The initial contract is deliberately
+`blocked_pending_measurement`: it documents the next experiment without
+inventing dimensions, feed layout, or source phase.
+
+1. A ready contract must identify the system and antenna, describe element
+   dimensions, Tx/Rx separation, polarization, boresight and mounting, and
+   provide a raw direct-wave or free-space air-reference trace with sample
+   interval, time-zero definition, preprocessing record, and SHA256.
+2. The first accepted 3D study is a bounded local mechanism window of at most
+   16 native traces. It needs exact full/no-basal/air acquisitions and is not
+   a training-data run. Capture source/receiver positions, geometry hashes,
+   early full/control equality, and signed basal response before visual review.
+3. A source pulse or Gabor/Ricker proxy is not an antenna geometry. When feed
+   details remain unknown, call the model a reduced-order proxy and state the
+   missing physical claim. Never turn an unverified bundled high-frequency
+   antenna into an 80 MHz UAV antenna by scaling alone.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.
