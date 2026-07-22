@@ -67,6 +67,17 @@ def resolve_data_root(data_root=None, cfg=None):
     p=Path(value)
     return p if p.is_absolute() else ROOT/p
 
+
+def real_nopick_reporting_policy(configs):
+    """Return whether measured no-pick artifacts may be emitted for an ensemble."""
+    policies={str(item.get('real_nopick_metric_reporting','allowed')).strip().lower() for item in configs}
+    if len(policies)>1:
+        raise ValueError('All run dirs must agree on real_nopick_metric_reporting for one evaluation.')
+    policy=next(iter(policies), 'allowed')
+    if policy not in {'allowed','forbidden'}:
+        raise ValueError(f'Unsupported real_nopick_metric_reporting={policy!r}')
+    return policy
+
 def centerline(arr,min_sum=1e-4):
     H,W=arr.shape; ys=np.arange(H,dtype=np.float32)[:,None]; s=arr.sum(axis=0); c=(arr*ys).sum(axis=0)/np.maximum(s,1e-6); valid=s>min_sum; c[~valid]=np.nan; return c,valid
 
@@ -552,16 +563,22 @@ def main():
         args.dp_smooth_weight=float(tj.get('dp_smooth_weight',args.dp_smooth_weight))
     torch.set_num_threads(max(1,min(4,torch.get_num_threads())))
     device=torch.device('cpu' if args.force_cpu else ('cuda' if torch.cuda.is_available() else 'cpu'))
-    preds=[]; presses=[]; centers=[]; curves=[]; structured_paths=[]; uncertainties=[]; no_picks=[]; data_roots=[]; altitude_conditioning=[]
+    preds=[]; presses=[]; centers=[]; curves=[]; structured_paths=[]; uncertainties=[]; no_picks=[]; data_roots=[]; altitude_conditioning=[]; run_cfgs=[]
     for rd in args.run_dirs:
         print(f'评估 {args.line}: {rd}',flush=True)
-        p,pp,cp,curve,cfg,data_root,details=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json,prefer_curve_logits=not args.disable_curve_logits,return_details=True); preds.append(p); presses.append(pp); centers.append(cp); curves.append(curve); structured_paths.append(details['structured_path_prob']); uncertainties.append(details['uncertainty_log_variance']); no_picks.append(details['no_pick_prob']); altitude_conditioning.append(details['altitude_conditioning_used']); data_roots.append(data_root)
+        p,pp,cp,curve,cfg,data_root,details=stitch_one(Path(rd),args.line,args.checkpoint,device,args.data_root,args.override_cfg_json,prefer_curve_logits=not args.disable_curve_logits,return_details=True); preds.append(p); presses.append(pp); centers.append(cp); curves.append(curve); structured_paths.append(details['structured_path_prob']); uncertainties.append(details['uncertainty_log_variance']); no_picks.append(details['no_pick_prob']); altitude_conditioning.append(details['altitude_conditioning_used']); data_roots.append(data_root); run_cfgs.append(cfg)
     mask_pred=np.mean(preds,axis=0).astype(np.float32); pres_pred=np.mean(presses,axis=0).astype(np.float32)
     center_pred=np.mean([cp for cp in centers if cp is not None],axis=0).astype(np.float32) if any(cp is not None for cp in centers) else None
     curve_pred=np.mean([cv for cv in curves if cv is not None],axis=0).astype(np.float32) if any(cv is not None for cv in curves) else None
     structured_path_pred=np.mean([sp for sp in structured_paths if sp is not None],axis=0).astype(np.float32) if any(sp is not None for sp in structured_paths) else None
     uncertainty_pred=np.mean([up for up in uncertainties if up is not None],axis=0).astype(np.float32) if any(up is not None for up in uncertainties) else None
     no_pick_pred=np.mean([npred for npred in no_picks if npred is not None],axis=0).astype(np.float32) if any(npred is not None for npred in no_picks) else None
+    real_nopick_reporting=real_nopick_reporting_policy(run_cfgs)
+    # V15 is an interface-following survey, not a measured rejection set. A
+    # formal conditional-path run may retain the head for controlled-simulation
+    # training, but cannot apply it or report it on measured full lines.
+    if real_nopick_reporting=='forbidden':
+        no_pick_pred=None
     if curve_pred is not None:
         curve_pred=normalise_time_distribution(curve_pred)
     used_structured_path = structured_path_pred is not None and (not args.disable_curve_logits)
@@ -627,6 +644,7 @@ def main():
         'structured_path_prob_semantics':'soft-DP path marginal P(t|trace)' if structured_path_pred is not None else 'not available',
         'path_log_variance_semantics':'pixelwise AeroPath log variance; per-trace summaries are weighted by structured path marginals' if uncertainty_pred is not None else 'not available',
         'no_pick_prob_semantics':'stitched local no-interface probability' if no_pick_pred is not None else 'not available',
+        'real_nopick_metric_reporting':real_nopick_reporting,
         'altitude_conditioning_used':bool(any(altitude_conditioning)),
         'center_response_prob_semantics':'sigmoid center response (not a segmentation mask)' if center_pred is not None else 'not available',
         'legacy_aliases_written':bool(args.write_legacy_aliases),

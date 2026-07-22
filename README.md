@@ -39,10 +39,13 @@ Test:       Line9
 Review:     LineX1
 ```
 
-Formal paper training remains intentionally disabled for two reasons:
-
-1. no confirmed real true-negative windows exist;
-2. no independent, non-Line9-conditioned V2 simulation family is approved.
+Formal paper training remains intentionally disabled because no independent,
+non-Line9-conditioned V2 simulation family is approved. The six V15 survey
+lines were acquired to trace a basal interface, so their lack of confirmed real
+true-negative windows does not block the primary conditional path-picking task.
+It does prohibit any measured no-pick/rejection claim. Until an external
+measured rejection set exists, abstention is controlled-simulation evidence
+only.
 
 FORMAL06C is retained as development evidence only. FORMAL07A is its
 continuous-stratigraphy ablation: its causal checks pass, but a strict

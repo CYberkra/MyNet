@@ -6,7 +6,12 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from scripts.eval_full_line import distribution_path_metrics, normalise_trace_distribution, write_metrics
+from scripts.eval_full_line import (
+    distribution_path_metrics,
+    normalise_trace_distribution,
+    real_nopick_reporting_policy,
+    write_metrics,
+)
 
 
 def test_trace_distribution_normalisation():
@@ -63,3 +68,17 @@ def test_uncertainty_and_no_pick_remain_separate_artifacts(tmp_path: Path):
     assert metrics["uncertainty_available"] is True
     assert metrics["no_pick_reject_rate"] == pytest.approx(0.5)
     assert "mask_iou_thr_0.5" in metrics
+
+
+def test_formal_conditional_path_config_suppresses_measured_nopick_reporting():
+    assert real_nopick_reporting_policy([
+        {"real_nopick_metric_reporting": "forbidden"},
+    ]) == "forbidden"
+
+
+def test_ensemble_rejects_mixed_measured_nopick_reporting_policies():
+    with pytest.raises(ValueError, match="must agree"):
+        real_nopick_reporting_policy([
+            {"real_nopick_metric_reporting": "allowed"},
+            {"real_nopick_metric_reporting": "forbidden"},
+        ])

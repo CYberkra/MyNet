@@ -50,11 +50,16 @@ objective adds:
 - a window no-pick BCE supervised only when every trace is confirmed. Mixed
   weak/negative windows are skipped rather than fabricated into a hard target.
 
-Weak or ignored labels do not create a hard no-pick target.  The path transition
-penalty is scaled from tracewise GNSS chainage when available. Formal training
-is still governed by the existing dataset contracts: confirmed negatives,
-non-Line9-conditioned approved simulation, split isolation, and label-release
-gates are all independent requirements.
+Weak or ignored labels do not create a hard no-pick target. The path transition
+penalty is scaled from tracewise GNSS chainage when available. The V15 survey
+lines intentionally follow a basal interface: they validate conditional path
+picking, not measured no-pick performance. A NULL state means that the model
+cannot make a reliable automatic pick in the current trace/window; it does not
+mean geological bedrock is absent. Until an external measured rejection set is
+released, NULL/no-pick training and evaluation are restricted to approved,
+strictly paired controlled simulations. Formal training is still governed by
+the independent non-Line9-conditioned simulation, split-isolation, and
+label-release gates.
 
 ## Inference Contract
 

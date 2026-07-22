@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 FORMAL = {"lolo_eval", "holdout_eval", "baseline_eval", "paper_eval", "paper_train"}
 KNOWN_RUN_TYPES = FORMAL | {"pretrain_sim_only", "development", "debug", "final_train", "exploratory"}
 REVIEW_ONLY = {"x1", "linex1"}
+CONDITIONAL_PATH_SCOPE = "measured_conditional_path_picking"
+CONTROLLED_SIMULATION_ABSTENTION_SCOPE = "controlled_simulation_only"
 
 
 def norm_line(value: object) -> str:
@@ -97,6 +99,22 @@ def validate_configs() -> tuple[list[str], list[str], dict[str, int]]:
         if float(cfg.get("sim_batch_ratio", 0.0) or 0.0) > 0 and not cfg.get("sim_data_root"):
             errors.append(f"{path}: sim_batch_ratio>0 without sim_data_root")
 
+        # V15 was acquired to trace a basal interface. AeroPath's primary
+        # formal task is therefore conditional path picking, while abstention
+        # claims remain confined to approved controlled simulations.
+        if run_type in FORMAL and cfg.get("model_arch") == "aeropath_ssd":
+            if cfg.get("task_scope") != CONDITIONAL_PATH_SCOPE:
+                errors.append(f"{path}: AeroPath formal config must declare task_scope={CONDITIONAL_PATH_SCOPE!r}")
+            if cfg.get("abstention_claim_scope") != CONTROLLED_SIMULATION_ABSTENTION_SCOPE:
+                errors.append(
+                    f"{path}: AeroPath formal config must restrict abstention_claim_scope="
+                    f"{CONTROLLED_SIMULATION_ABSTENTION_SCOPE!r} until a measured rejection set exists"
+                )
+            if cfg.get("real_nopick_evaluation_allowed") is not False:
+                errors.append(f"{path}: AeroPath formal config must disable real no-pick evaluation")
+            if cfg.get("real_nopick_metric_reporting") != "forbidden":
+                errors.append(f"{path}: AeroPath formal config must forbid real no-pick metric reporting")
+
         loss = cfg.get("loss") or {}
         arrival = max(
             float(loss.get("arrival_prior_weight", 0.0) or 0.0),
@@ -120,6 +138,58 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def validate_task_eligibility(manifest: dict[str, object]) -> tuple[list[str], list[str], dict[str, bool]]:
+    """Validate the evidence boundary between path picking and abstention."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    eligibility = manifest.get("task_eligibility")
+    if not isinstance(eligibility, dict):
+        return ["dataset contract lacks task_eligibility"], warnings, {}
+
+    measured_path = eligibility.get("measured_conditional_path")
+    simulated_abstention = eligibility.get("simulated_abstention")
+    measured_abstention = eligibility.get("measured_abstention")
+    if not isinstance(measured_path, dict):
+        errors.append("dataset contract lacks measured_conditional_path eligibility")
+    else:
+        if measured_path.get("training_evidence_available") is not True:
+            errors.append("measured conditional-path training evidence must be explicitly available")
+        if measured_path.get("evaluation_evidence_available") is not True:
+            errors.append("measured conditional-path evaluation evidence must be explicitly available")
+        if measured_path.get("requires_confirmed_real_negative") is not False:
+            errors.append("conditional path task must not require a real negative window")
+
+    if not isinstance(simulated_abstention, dict):
+        errors.append("dataset contract lacks simulated_abstention eligibility")
+    else:
+        if simulated_abstention.get("requires_approved_independent_simulation") is not True:
+            errors.append("simulated abstention must require an approved independent simulation family")
+        if simulated_abstention.get("training_evidence_available") is not True:
+            warnings.append("simulated abstention training remains blocked pending an approved independent family")
+        if simulated_abstention.get("evaluation_evidence_available") is not True:
+            warnings.append("simulated abstention evaluation remains blocked pending an approved independent family")
+
+    if not isinstance(measured_abstention, dict):
+        errors.append("dataset contract lacks measured_abstention eligibility")
+    else:
+        if measured_abstention.get("evaluation_evidence_available") is not False:
+            errors.append("measured abstention evaluation cannot be enabled without a measured rejection set")
+        if measured_abstention.get("requires_confirmed_real_negative") is not True:
+            errors.append("measured abstention evaluation must require confirmed real negatives")
+
+    return errors, warnings, {
+        "measured_conditional_path_training_allowed": bool(
+            isinstance(measured_path, dict) and measured_path.get("training_evidence_available") is True
+        ),
+        "measured_abstention_evaluation_allowed": bool(
+            isinstance(measured_abstention, dict) and measured_abstention.get("evaluation_evidence_available") is True
+        ),
+        "simulated_abstention_training_allowed": bool(
+            isinstance(simulated_abstention, dict) and simulated_abstention.get("training_evidence_available") is True
+        ),
+    }
+
+
 def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], list[str], dict[str, int]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -133,6 +203,9 @@ def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], li
         return [f"invalid {manifest_path}: {exc}"], warnings, {}
     if manifest.get("schema_version") != "dataset_contract_v2":
         errors.append(f"unexpected dataset schema: {manifest.get('schema_version')!r}")
+    eligibility_errors, eligibility_warnings, eligibility_counts = validate_task_eligibility(manifest)
+    errors.extend(eligibility_errors)
+    warnings.extend(eligibility_warnings)
     for name in manifest.get("required_files", []):
         if not (contract / name).is_file():
             errors.append(f"dataset contract missing required file: {name}")
@@ -274,12 +347,20 @@ def validate_dataset_contract(require_formal_ready: bool) -> tuple[list[str], li
         "registered_real_windows": len(real_windows),
         "train_allowed_simulation_cases": sum(row.get("train_allowed") == "true" for row in sim_rows),
         "line9_conditioned_cases": sum(row.get("line9_conditioned") == "true" for row in sim_rows),
+        **eligibility_counts,
     }
     expected = manifest.get("counts", {})
     if expected.get("simulation_cases_registered") not in (None, counts["registered_simulation_cases"]):
         errors.append("dataset_manifest simulation case count does not match simulation_cases.csv")
     if expected.get("human_audit_records") not in (None, counts["human_audit_records"]):
         errors.append("dataset_manifest human audit count does not match human_audit_manifest.csv")
+    for key in (
+        "measured_conditional_path_training_allowed",
+        "measured_abstention_evaluation_allowed",
+        "simulated_abstention_training_allowed",
+    ):
+        if expected.get(key) not in (None, counts[key]):
+            errors.append(f"dataset_manifest {key} does not match task_eligibility")
     return errors, warnings, counts
 
 
