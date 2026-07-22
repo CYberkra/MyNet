@@ -2,10 +2,10 @@
 
 ## Active Mainline
 
-`master` is the active **AeroPath-SSD** research line. It owns the portable
-runtime layer, V15 data contracts, independent V2 simulations, and the native
-`501x256` release standard. It is the only branch intended for normal work on
-either computer.
+`master` is the protected, long-lived **AeroPath-SSD** research line. It owns
+the portable runtime layer, V15 data contracts, independent V2 simulations,
+and the native `501x256` release standard. Both computers consume this branch,
+but non-trivial changes are made on short-lived task branches and merged by PR.
 
 ## Archived Research
 
@@ -31,15 +31,17 @@ presented as the paper's active physical-decomposition model.
 ## Daily Workflow
 
 1. `git pull --ff-only origin master`.
-2. Validate the local profile before training or simulation.
-3. Generate or run only from committed source decks.
-4. Promote completed simulations with `promote_native_256_solver_result.py`.
-5. Commit source, manifest, compact canonical array, and release report in one
+2. Create `agent/<purpose>-YYYYMMDD` for every non-trivial change.
+3. Validate the local runtime profile before training or simulation.
+4. Generate or run only from committed source decks.
+5. Promote completed simulations with `promote_native_256_solver_result.py`.
+6. Commit source, manifest, compact canonical array, and release report in one
    focused change. Do not add raw solver outputs.
-6. For a milestone, create and validate a handoff record according to
-   `docs/HANDOFF_STANDARD.md`.
-7. Push `master`; the other computer then pulls the same commit and starts from
-   the handoff record's entry document and command.
+7. Run the PR validation commands in `CONTRIBUTING.md`, open a PR, and merge
+   only after the required CI checks pass.
+8. For a milestone, create and validate a handoff record according to
+   `docs/HANDOFF_STANDARD.md`. The other computer then pulls the merge commit
+   from `master` and starts from that handoff record.
 
 ## Cleanup Rule
 
