@@ -259,9 +259,11 @@ def generate_case(
     control_rows = material_rows_builder(spec, control=True, design=design)
     formal03.write_materials(case_dir / "materials_full.txt", full_rows)
     formal03.write_materials(case_dir / "materials_no_basal.txt", control_rows)
-    waveform_stats = formal03.write_custom_waveform(
-        case_dir / "source_waveform.txt", source, spec
-    )
+    waveform_stats: dict[str, float] | None = None
+    if source.kind != "ricker":
+        waveform_stats = formal03.write_custom_waveform(
+            case_dir / "source_waveform.txt", source, spec
+        )
     for filename, title, materials, view in (
         ("full_scene.in", "full scene", "materials_full.txt", None),
         (
@@ -469,9 +471,16 @@ unlabelled full-scene preview is reviewed before any target path is overlaid.
         "formal_training_allowed": False,
         "line9_conditioned": True,
         "development_only": True,
-        "locked_source_waveform_sha256": formal03.sha256(
-            case_dir / "source_waveform.txt"
-        ),
+        "locked_source": {
+            "kind": source.kind,
+            "center_frequency_hz": source.center_frequency_hz,
+            "waveform_id": source.waveform_id,
+            "custom_waveform_sha256": (
+                formal03.sha256(case_dir / "source_waveform.txt")
+                if (case_dir / "source_waveform.txt").is_file()
+                else None
+            ),
+        },
         "locked_index_array_sha256": index_array_hash,
         "material_design": asdict(design),
         "release_order": [
