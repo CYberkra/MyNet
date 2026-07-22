@@ -5,7 +5,7 @@ import numpy as np
 import itertools
 from types import SimpleNamespace
 
-from pgdacsnet.model_aeropath_ssd import AeroPathSSD, SoftPathInference
+from pgdacsnet.model_aeropath_ssd import AeroPathSSD, SoftPathInference, _air_reduce
 from pgdacsnet.model_mamba import OfficialMamba2Sequence
 from pgdacsnet.model_raw_unet import build_model
 from pgdacsnet.losses_aeropath import compute_aeropath_loss, structured_path_losses
@@ -183,6 +183,32 @@ def test_aeropath_missing_altitude_stays_finite():
     assert torch.isfinite(output.path_marginals).all()
 
 
+def test_aeropath_weighted_altitude_interpolation_does_not_spread_nan():
+    raw = torch.arange(8, dtype=torch.float32)[None, None, :, None].expand(1, 1, 8, 8)
+    altitude = torch.tensor([[8.0, 8.0, float("nan"), 8.0]])
+    reduced = _air_reduce(raw, altitude, 700.0)
+    # The interpolation support remains positive across the resampled span,
+    # so no interior trace is treated as a zero-height (unreduced) fallback.
+    assert torch.isfinite(reduced).all()
+    expected = _air_reduce(raw, torch.full((1, 8), 8.0), 700.0)
+    assert torch.allclose(reduced, expected, atol=1e-5)
+
+
+def test_soft_path_single_trace_chainage_supports_forward_and_backward():
+    inference = SoftPathInference(max_step=3)
+    logits = torch.randn(2, 1, 8, 1, requires_grad=True)
+    details = inference(
+        logits,
+        null_logits=torch.zeros(2, 1, 1),
+        chainage_m=torch.tensor([[0.0], [12.0]]),
+        return_details=True,
+    )
+    loss = details.path_marginals.sum() + details.null_marginals.sum()
+    loss.backward()
+    assert torch.isfinite(details.path_marginals).all()
+    assert logits.grad is not None and torch.isfinite(logits.grad).all()
+
+
 def test_aeropath_rejects_missing_metadata_channels():
     model = AeroPathSSD(
         base_ch=8,
@@ -286,6 +312,36 @@ def test_aeropath_smoothness_uses_physical_trace_spacing():
         output, {**common, "chainage_m": torch.tensor([[0.0, 1.0, 11.0, 12.0]])}, {}
     )
     assert physical_gap["path_smooth"] < uniform["path_smooth"] * 0.5
+
+
+def test_aeropath_position_losses_condition_on_non_null_path_mass():
+    # A NULL probability must affect abstention supervision, not shrink a
+    # correctly localized physical path toward time zero.
+    path = torch.zeros(1, 1, 5, 1)
+    path[0, 0, 4, 0] = 0.25
+    target = torch.zeros_like(path)
+    target[0, 0, 4, 0] = 1.0
+    output = SimpleNamespace(
+        path_marginals=path,
+        uncertainty_logits=torch.zeros_like(path),
+        null_marginals=torch.tensor([[[0.75]]]),
+        path_start_prob=None,
+        path_end_prob=None,
+        no_pick_logits=torch.zeros(1, 1),
+    )
+    batch = {
+        "y": target,
+        "valid_pix": torch.ones_like(target),
+        "weight": torch.ones(1, 1),
+        "presence": torch.ones(1, 1),
+        "presence_valid": torch.ones(1, 1),
+        "trace_state": torch.ones(1, 1, dtype=torch.long),
+        "valid_trace_mask": torch.ones(1, 1),
+        "ignore_mask": torch.zeros_like(target),
+    }
+    losses = structured_path_losses(output, batch, {})
+    assert losses["path_center_l1"].item() == pytest.approx(0.0)
+    assert losses["path_uncertainty_nll"].item() == pytest.approx(0.0)
 
 
 def test_no_pick_skips_windows_with_invalid_trace_padding():

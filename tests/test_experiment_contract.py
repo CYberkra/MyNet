@@ -21,7 +21,13 @@ def _write_index(root: Path, rows):
         writer.writeheader()
         writer.writerows(rows)
     for row in rows:
-        np.savez(root / "windows" / f"{row['sample_id']}.npz", x=np.zeros((2, 2), np.float32))
+        np.savez(
+            root / "windows" / f"{row['sample_id']}.npz",
+            x_raw=np.zeros((2, 2), np.float32),
+            y_mask=np.zeros((2, 2), np.float32),
+            status_code=np.ones(2, np.int16),
+            label_weight=np.ones(2, np.float32),
+        )
 
 
 def test_mixed_dataset_contract_rejects_missing_index(tmp_path):
@@ -37,6 +43,32 @@ def test_window_dataset_contract_accepts_resolved_samples(tmp_path):
     summary = inspect_window_dataset(root, required_lines=["sim_a"])
     assert summary.row_count == 1
     assert summary.lines == ("sim_a",)
+
+
+def test_window_dataset_contract_rejects_path_outside_root(tmp_path):
+    root = tmp_path / "sim"
+    _write_index(root, [{"sample_id": "a", "line": "sim_a", "start": 0, "end": 1, "present": 1, "weak": 0, "no_pick": 0}])
+    (root / "window_index.csv").write_text(
+        "sample_id,line,start,end,present,weak,no_pick,path\n"
+        "a,sim_a,0,1,1,0,0,../outside.npz\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ContractError, match="escapes dataset root"):
+        inspect_window_dataset(root)
+
+
+def test_window_dataset_contract_rejects_nonfinite_required_array(tmp_path):
+    root = tmp_path / "sim"
+    _write_index(root, [{"sample_id": "a", "line": "sim_a", "start": 0, "end": 1, "present": 1, "weak": 0, "no_pick": 0}])
+    np.savez(
+        root / "windows" / "a.npz",
+        x_raw=np.array([[np.nan, 0.0], [0.0, 0.0]], np.float32),
+        y_mask=np.zeros((2, 2), np.float32),
+        status_code=np.ones(2, np.int16),
+        label_weight=np.ones(2, np.float32),
+    )
+    with pytest.raises(ContractError, match="non-finite"):
+        inspect_window_dataset(root)
 
 
 def test_full_line_contract_requires_canonical_arrays(tmp_path):
@@ -72,6 +104,17 @@ def test_config_contract_rejects_review_only_validation(tmp_path):
 def test_config_contract_requires_run_type(tmp_path):
     cfg = {"train_lines": ["Line3"], "val_lines": ["Line7"], "test_lines": ["Line9"]}
     with pytest.raises(ContractError, match="run_type"):
+        validate_experiment_config(cfg, tmp_path)
+
+
+def test_config_contract_rejects_line_alias_overlap(tmp_path):
+    cfg = {
+        "run_type": "paper_train",
+        "train_lines": ["line-9"],
+        "val_lines": ["Line3"],
+        "test_lines": ["Line9"],
+    }
+    with pytest.raises(ContractError, match="train/test line overlap"):
         validate_experiment_config(cfg, tmp_path)
 
 

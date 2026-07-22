@@ -113,7 +113,13 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
 
     h = path.shape[2]
     ys = torch.linspace(0.0, 1.0, h, device=path.device, dtype=path.dtype)[None, None, :, None]
-    pred_center = (path * ys).sum(dim=2)
+    # Path marginals retain the probability of the explicit NULL state, so
+    # their mass over physical time samples can be below one.  Position and
+    # uncertainty are meaningful *given that a path exists*; otherwise a
+    # higher NULL probability incorrectly pulls a deep interface toward zero.
+    physical_mass = path.sum(dim=2, keepdim=True)
+    conditional_path = path / physical_mass.clamp_min(1e-8)
+    pred_center = (conditional_path * ys).sum(dim=2)
     target_center = (target * ys).sum(dim=2)
     center_l1 = (pred_center.sub(target_center).abs() * weights).sum() / denom
     if path.shape[-1] > 1:
@@ -132,7 +138,7 @@ def structured_path_losses(output: Any, batch: dict[str, torch.Tensor], cfg: dic
     else:
         if uncertainty.shape[-2:] != path.shape[-2:]:
             uncertainty = F.interpolate(uncertainty, size=path.shape[-2:], mode="bilinear", align_corners=False)
-        log_variance = (path.detach() * uncertainty.clamp(-6.0, 3.0)).sum(dim=2)
+        log_variance = (conditional_path.detach() * uncertainty.clamp(-6.0, 3.0)).sum(dim=2)
         squared_error = (pred_center - target_center).square()
         uncertainty_nll = ((squared_error * torch.exp(-log_variance) + log_variance) * weights).sum() / denom
 

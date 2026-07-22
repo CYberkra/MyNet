@@ -200,7 +200,7 @@ OPTIONAL_COMPONENT_ARRAY_ALIASES = {
 def _finite_array(a, *, name='array'):
     arr = np.asarray(a, dtype=np.float32)
     if not np.isfinite(arr).all():
-        arr = np.nan_to_num(arr, nan=0.0, posinf=0.0, neginf=0.0).astype(np.float32)
+        raise ContractError(f'{name} contains NaN/Inf; refusing to silently replace corrupted training data')
     return arr
 
 
@@ -555,7 +555,10 @@ class DS(Dataset):
         y=torch.from_numpy(_finite_array(z['y_mask'], name='y_mask')[None]).float().clamp(0.0, 1.0)
         ignore_arr=_finite_array(z['ignore_mask'], name='ignore_mask') if 'ignore_mask' in z.files else np.zeros_like(z['y_mask'],dtype=np.float32)
         ignore=torch.from_numpy(ignore_arr[None]).float()
-        status=torch.from_numpy(np.nan_to_num(z['status_code'], nan=0).astype(np.int64)).long()
+        status_values=np.asarray(z['status_code'])
+        if not np.issubdtype(status_values.dtype, np.integer) or not np.isin(status_values, (0, 1, 2)).all():
+            raise ContractError(f'status_code must be integer values 0, 1, or 2: {resolve_window_npz(self.data_root,r)}')
+        status=torch.from_numpy(status_values.astype(np.int64)).long()
         lw=torch.from_numpy(_finite_array(z['label_weight'], name='label_weight')).float().clamp(0.0, 1.0)
         weak=status.eq(2).float()
         weak_target=float(self.cfg.get('loss',{}).get('weak_presence_target',0.5))
@@ -681,8 +684,9 @@ class DS(Dataset):
 
 
 def dice_loss_from_prob(pred,target,weight):
-    eps=1e-6; inter=(pred*target*weight).sum((1,2,3)); den=((pred+target)*weight).sum((1,2,3))+eps
-    return (1-2*inter/den).mean()
+    # Symmetric smoothing preserves a false-positive gradient for empty masks.
+    eps=1.0; inter=(pred*target*weight).sum((1,2,3)); den=((pred+target)*weight).sum((1,2,3))
+    return (1-(2*inter+eps)/(den+eps)).mean()
 
 def unpack_model_output(out):
     from pgdacsnet.model_interfaces import unpack_pgda_output
@@ -839,7 +843,9 @@ def compute_loss(model,b,device,cfg,discriminator=None,grl_layer=None):
     pres_bce=F.binary_cross_entropy_with_logits(pres_logits,pres,reduction='none')
     neg_boost=float(lp.get('presence_negative_weight',5.0))
     pres_class_w=torch.where(pres<=0.05,torch.full_like(pres,neg_boost),torch.ones_like(pres))
-    pres_w=(0.25+lw[:,None,:])*pres_class_w*pres_valid[:,None,:]
+    # ``pres_valid`` was normalized to (B,1,W) above; do not add a second
+    # singleton dimension, which broadcasts validity masks across batches.
+    pres_w=(0.25+lw[:,None,:])*pres_class_w*pres_valid
     pres_loss=(pres_bce*pres_w).sum()/pres_w.sum().clamp_min(1e-6)
     center_l1, continuity = centerline_aux_losses(center_logits, y, lw, cfg, ignore)
     spec_loss = spectral_consistency_loss(prob, y, cfg)
@@ -939,9 +945,14 @@ def run(cfg_path):
     cfg_audit=audit_config(cfg, cfg_path)
     data_root=resolve_data_root(cfg)
     real_index_rows, real_dataset_summary = _read_index_rows(data_root)
-    real_dataset_policy = load_dataset_usage_policy(data_root) or {}
+    real_dataset_policy = load_dataset_usage_policy(data_root)
+    if real_dataset_policy is None:
+        raise ContractError(
+            f'real dataset has no explicit training-use policy: {data_root}; '
+            'refusing to train without dataset_policy.json or DATA_USAGE_POLICY.json'
+        )
     real_training_allowed = real_dataset_policy.get(
-        'training_allowed', real_dataset_policy.get('train_allowed', True)
+        'training_allowed', real_dataset_policy.get('train_allowed', False)
     )
     if real_training_allowed is False and not bool(cfg.get('allow_incomplete_dataset', False)):
         raise ContractError(

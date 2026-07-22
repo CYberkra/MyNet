@@ -93,10 +93,20 @@ def _air_reduce(raw: torch.Tensor, altitude_m: torch.Tensor | None, time_window_
     if altitude_m.dim() != 2 or altitude_m.shape[0] != raw.shape[0]:
         raise ValueError(f"altitude must have shape (B,W), got {tuple(altitude_m.shape)}")
     b, _, h, w = raw.shape
-    altitude = F.interpolate(altitude_m[:, None], size=w, mode="linear", align_corners=False).squeeze(1)
-    # Missing AGL metadata is represented by NaN in canonical datasets.  It
-    # must leave only that trace unreduced, never turn the entire view into NaN.
-    altitude = torch.where(torch.isfinite(altitude) & (altitude > 0), altitude, torch.zeros_like(altitude))
+    # Resample valid heights and their support separately.  Interpolating a
+    # NaN first propagates it into neighboring traces; cleaning afterward
+    # would therefore erase valid local air-path corrections.
+    altitude_m = altitude_m.to(device=raw.device, dtype=raw.dtype)
+    valid_height = torch.isfinite(altitude_m) & (altitude_m > 0)
+    clean_height = torch.where(valid_height, altitude_m, torch.zeros_like(altitude_m))
+    support = valid_height.to(dtype=raw.dtype)
+    numerator = F.interpolate(clean_height[:, None], size=w, mode="linear", align_corners=False)
+    denominator = F.interpolate(support[:, None], size=w, mode="linear", align_corners=False)
+    altitude = torch.where(
+        denominator > 1e-6,
+        numerator / denominator.clamp_min(1e-6),
+        torch.zeros_like(numerator),
+    ).squeeze(1)
     air_ns = 2.0 * altitude / 299_792_458.0 * 1e9
     y = torch.linspace(-1.0, 1.0, h, device=raw.device, dtype=raw.dtype)[None, :, None]
     x = torch.linspace(-1.0, 1.0, w, device=raw.device, dtype=raw.dtype)[None, None, :]
@@ -144,8 +154,10 @@ class SoftPathInference(nn.Module):
 
     @staticmethod
     def _transition_scale(chainage_m: torch.Tensor | None, width: int, reference: torch.Tensor) -> torch.Tensor:
+        if width < 2:
+            return torch.ones((reference.shape[0], 0), device=reference.device, dtype=reference.dtype)
         if chainage_m is None:
-            return torch.ones((reference.shape[0], max(width - 1, 0)), device=reference.device, dtype=reference.dtype)
+            return torch.ones((reference.shape[0], width - 1), device=reference.device, dtype=reference.dtype)
         if chainage_m.dim() == 3:
             chainage_m = chainage_m.squeeze(1)
         if chainage_m.dim() != 2 or chainage_m.shape[0] != reference.shape[0]:
