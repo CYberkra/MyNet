@@ -1,0 +1,203 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT",
+  "case_id": "FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "isolated 2-D source-temporal diagnostic of native wavelet coherence",
+  "generator_path": "scripts/generate_formal06h_source_temporal_development.py",
+  "generator_sha256": "d1237def9de337993885d13fe721c434f590f00ef6ba06310e27e7d50ace1b5c",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": true,
+  "training_block_reason": "qualitative mechanism was selected after held-out morphology diagnosis; requires complete staged runtime and independent formal regeneration",
+  "parameter_provenance": "bounded custom materials and generic seeded profiles; no measured file is read, but the mechanism choice is development-only",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 32,
+    "transition_levels": 8,
+    "profile_seed": 2026072211,
+    "field_seed": 2026072212
+  },
+  "source": {
+    "case_id": "FORMAL06H_RICKER80",
+    "kind": "ricker",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal06h_ricker80",
+    "reference_delay_ns": 17.67766952966369,
+    "custom_sigma_ns": null,
+    "locked_from_formal03_source_ablation": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": null
+  },
+  "ablation": {
+    "predecessor_case_id": "FORMAL06D_INDEPENDENT_MECHANISM_DEVELOPMENT",
+    "locked": [
+      "FORMAL06D generic basal profile and cover-field seeds",
+      "FORMAL06D cover covariance, material endpoints, and eight-level transition",
+      "0.03 m grid, 256 native traces, 0.09 m trace spacing, PML, and domain",
+      "flat ground, 8.01 m flight height, Tx/Rx geometry, and acquisition positions",
+      "strict full/no-basal shared indexed geometry and local-cover control mapping",
+      "all processing and blind morphology gates"
+    ],
+    "changed": [
+      "temporal source excitation: 80 MHz zero-mean Gabor to 80 MHz Ricker"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 12.374270920772078
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_array_sha256": "1da6c206193e9845c821919fce0e667b3087930ea6e7598ffbe518969a6d9d3f",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": true,
+    "terrain_stage": "flat ground and fixed height",
+    "fixed_source_elevation_m": 36.51,
+    "flight_height_agl_m": {
+      "min": 8.009999999999998,
+      "median": 8.009999999999998,
+      "max": 8.009999999999998
+    },
+    "discrete_anomaly_bodies": 0,
+    "description": "exactly reproducible FORMAL06D flat-ground geometry and material mapping; only the temporal line-source excitation differs",
+    "bulk_field_statistics": {
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.019796744574290485,
+      "vertical_neighbor_bin_change_rate": 0.04294903894302993,
+      "horizontal_latent_step_p95": 0.007785291597247099,
+      "vertical_latent_step_p95": 0.016656935214996338,
+      "latent_min": -2.5,
+      "latent_median": 0.015196556225419044,
+      "latent_max": 2.5,
+      "correlation_design_m": {
+        "long_x": 6.7,
+        "long_y": 3.0,
+        "meso_x": 1.8,
+        "meso_y": 0.96
+      }
+    },
+    "crop_shape_gate": {
+      "min_m": 12.852036616500037,
+      "median_m": 13.164843711168338,
+      "max_m": 13.984333868268779,
+      "range_m": 1.1322972517687422,
+      "smoothed_extrema_count": 4,
+      "quadratic_fit_r2": 0.9420293253878299,
+      "abs_slope_p95": 0.16502724748557396,
+      "accepted_seed": 2026072211,
+      "attempt": 0
+    }
+  },
+  "materials": {
+    "cover_epsilon_min": 12.0,
+    "cover_epsilon_max": 12.8,
+    "cover_conductivity_min_s_per_m": 0.0018,
+    "cover_conductivity_max_s_per_m": 0.0025,
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18,
+    "cover_bins": 32,
+    "weathered_cap_levels": 8,
+    "maximum_physical_epsilon_step": 0.44761352539062393,
+    "maximum_physical_conductivity_step_s_per_m": 0.000348754119873047,
+    "full_material_count": 320,
+    "basal_reflection_proxy": -0.008806945264739722
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_cap_and_bedrock_to_each_local_cover_bin": true,
+    "full_materials_sha256": "b50d6d616ab987600a91a3c226384aa8bbb7051ee9cb97087d1840e7d8a97ab8",
+    "control_materials_sha256": "3f5a5db1b4b82e661841927e181ea11cddd09014574d9fb92fb90da27a474f49"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 373.97711181640625,
+      "median": 382.75933837890625,
+      "max": 401.3670349121094
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus source delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a complete signed runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_local_background_rms_max": 5.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true
+  },
+  "next_gate": "static, geometry, attenuation, then one-trace full/control smoke",
+  "development_scope": {
+    "line9_conditioned": true,
+    "conditioning_scope": "mechanism diagnosis only",
+    "strict_line9_holdout_allowed": false,
+    "formal_training_allowed": false
+  },
+  "source_abstraction_diagnosis": {
+    "installed_gprmax_2d_source": "Hertzian dipole line source",
+    "tested_scope": "temporal support and phase only",
+    "not_tested": [
+      "finite antenna directivity",
+      "feed coupling",
+      "3-D radiation pattern"
+    ],
+    "predecessor_source": {
+      "kind": "gaussian_modulated_zero_mean",
+      "center_frequency_hz": 80000000.0,
+      "custom_sigma_ns": 11.5
+    },
+    "candidate_source": {
+      "kind": "ricker",
+      "center_frequency_hz": 80000000.0,
+      "reference_delay_ns": 17.67766952966369
+    },
+    "hypothesis": "the ideal 2-D line source's finite Gabor temporal support contributes to the full-window repeated lobe train"
+  }
+}

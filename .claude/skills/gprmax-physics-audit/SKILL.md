@@ -978,6 +978,31 @@ example by intuition and call it hardware-realistic.
 but it cannot supply missing finite-antenna directivity or coupling. Keep a
 waveform-only ablation separate from an antenna-geometry ablation.
 
+### Temporal Waveform Is Not a Comb Cure (FORMAL06H, 2026-07-22)
+
+FORMAL06H isolated the final low-cost source factor that can be tested without
+pretending to model an antenna: it replaced only FORMAL06D's 80 MHz zero-mean
+Gabor source with an 80 MHz Ricker source. Geometry indices, materials, basal
+interface, transition, grid, acquisition, and trace positions were identical.
+The static input audit and a strict one-trace full/control pair passed; the
+pair retained a strong signed basal residual. A blind consecutive native
+64-trace full-scene image nevertheless retained the same dense, regular,
+full-window parallel lobe train under both AGC and restrained time-power gain.
+
+1. Treat Gabor-to-Ricker as a causal exclusion for this model family: temporal
+   source support alone is not sufficient to remove the native comb. Do not
+   spend GPU time on further generic 2D waveform sweeps in an attempt to make
+   the B-scan look measured-realistic.
+2. A Ricker pulse may still be justified later by a measured transmit/receive
+   pulse or a documented spectrum, but it is not evidence of finite-antenna
+   realism and cannot repair directivity or coupling artifacts.
+3. After FORMAL06E/F/G/H, stop changing 2D cover statistics, transition
+   staging, terrain/AGL, or temporal wavelets as the primary remedy. The next
+   valid work is a hardware measurement contract followed by a bounded 3D
+   finite-antenna local-window experiment, or a rigorously documented
+   reduced-order equivalent. Do not scale a bundled high-frequency antenna by
+   intuition.
+
 ## References
 
 - `references/source-and-manual-contract.md`: official rules and installed-source behavior.

@@ -1,0 +1,2109 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      179.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 179.73,
+        "cells": 5991,
+        "realised_m": 179.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 78.3,
+        "cells": 2610,
+        "realised_m": 78.3,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 78.48,
+        "cells": 2616,
+        "realised_m": 78.48,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "formal06h_ricker80": 80000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt",
+        "material_count": 320,
+        "shape": [
+          5991,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 319,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0018109375,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0375,
+        "conductivity": 0.0018328125,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0625,
+        "conductivity": 0.0018546875,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0875,
+        "conductivity": 0.0018765625,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1125,
+        "conductivity": 0.0018984375,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1375,
+        "conductivity": 0.0019203125,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1625,
+        "conductivity": 0.0019421875,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1875,
+        "conductivity": 0.0019640625,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2125,
+        "conductivity": 0.0019859375,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2375,
+        "conductivity": 0.0020078125,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2625,
+        "conductivity": 0.0020296875,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2875,
+        "conductivity": 0.0020515625,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3125,
+        "conductivity": 0.0020734375,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0020953125,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3625,
+        "conductivity": 0.0021171875,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3875,
+        "conductivity": 0.0021390625,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4125,
+        "conductivity": 0.0021609375,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4375,
+        "conductivity": 0.0021828125,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4625,
+        "conductivity": 0.0022046875,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4875,
+        "conductivity": 0.0022265625,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5125,
+        "conductivity": 0.0022484375,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5375,
+        "conductivity": 0.0022703125,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5625,
+        "conductivity": 0.0022921875,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5875,
+        "conductivity": 0.0023140625,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6125,
+        "conductivity": 0.0023359375,
+        "id": "cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6375,
+        "conductivity": 0.0023578125,
+        "id": "cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0023796875,
+        "id": "cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6875,
+        "conductivity": 0.0024015625,
+        "id": "cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7125,
+        "conductivity": 0.0024234375,
+        "id": "cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7375,
+        "conductivity": 0.0024453125,
+        "id": "cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7625,
+        "conductivity": 0.0024671875,
+        "id": "cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7875,
+        "conductivity": 0.0024890625,
+        "id": "cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.02359009,
+        "conductivity": 0.001819799,
+        "id": "weathered_cap_00_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.04830933,
+        "conductivity": 0.0018414284,
+        "id": "weathered_cap_00_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.07302856,
+        "conductivity": 0.0018630577,
+        "id": "weathered_cap_00_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0977478,
+        "conductivity": 0.001884687,
+        "id": "weathered_cap_00_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.12246704,
+        "conductivity": 0.0019063164,
+        "id": "weathered_cap_00_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.14718628,
+        "conductivity": 0.0019279457,
+        "id": "weathered_cap_00_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.17190552,
+        "conductivity": 0.001949575,
+        "id": "weathered_cap_00_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.19662476,
+        "conductivity": 0.0019712044,
+        "id": "weathered_cap_00_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.22134399,
+        "conductivity": 0.0019928337,
+        "id": "weathered_cap_00_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.24606323,
+        "conductivity": 0.002014463,
+        "id": "weathered_cap_00_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.27078247,
+        "conductivity": 0.0020360924,
+        "id": "weathered_cap_00_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.29550171,
+        "conductivity": 0.0020577217,
+        "id": "weathered_cap_00_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.32022095,
+        "conductivity": 0.002079351,
+        "id": "weathered_cap_00_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.34494019,
+        "conductivity": 0.0021009804,
+        "id": "weathered_cap_00_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.36965942,
+        "conductivity": 0.0021226097,
+        "id": "weathered_cap_00_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.39437866,
+        "conductivity": 0.002144239,
+        "id": "weathered_cap_00_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4190979,
+        "conductivity": 0.0021658684,
+        "id": "weathered_cap_00_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.44381714,
+        "conductivity": 0.0021874977,
+        "id": "weathered_cap_00_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.46853638,
+        "conductivity": 0.002209127,
+        "id": "weathered_cap_00_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.49325562,
+        "conductivity": 0.0022307564,
+        "id": "weathered_cap_00_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.51797485,
+        "conductivity": 0.0022523857,
+        "id": "weathered_cap_00_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.54269409,
+        "conductivity": 0.002274015,
+        "id": "weathered_cap_00_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.56741333,
+        "conductivity": 0.0022956444,
+        "id": "weathered_cap_00_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.59213257,
+        "conductivity": 0.0023172737,
+        "id": "weathered_cap_00_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.61685181,
+        "conductivity": 0.002338903,
+        "id": "weathered_cap_00_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.64157104,
+        "conductivity": 0.0023605324,
+        "id": "weathered_cap_00_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.66629028,
+        "conductivity": 0.0023821617,
+        "id": "weathered_cap_00_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.69100952,
+        "conductivity": 0.002403791,
+        "id": "weathered_cap_00_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.71572876,
+        "conductivity": 0.0024254204,
+        "id": "weathered_cap_00_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.740448,
+        "conductivity": 0.0024470497,
+        "id": "weathered_cap_00_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.76516724,
+        "conductivity": 0.002468679,
+        "id": "weathered_cap_00_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.78988647,
+        "conductivity": 0.0024903084,
+        "id": "weathered_cap_00_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.10363159,
+        "conductivity": 0.0018837563,
+        "id": "weathered_cap_01_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.12632446,
+        "conductivity": 0.0019036125,
+        "id": "weathered_cap_01_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.14901733,
+        "conductivity": 0.0019234688,
+        "id": "weathered_cap_01_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.17171021,
+        "conductivity": 0.001943325,
+        "id": "weathered_cap_01_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.19440308,
+        "conductivity": 0.0019631813,
+        "id": "weathered_cap_01_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.21709595,
+        "conductivity": 0.0019830376,
+        "id": "weathered_cap_01_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.23978882,
+        "conductivity": 0.0020028938,
+        "id": "weathered_cap_01_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.26248169,
+        "conductivity": 0.0020227501,
+        "id": "weathered_cap_01_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.28517456,
+        "conductivity": 0.0020426064,
+        "id": "weathered_cap_01_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.30786743,
+        "conductivity": 0.0020624626,
+        "id": "weathered_cap_01_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3305603,
+        "conductivity": 0.0020823189,
+        "id": "weathered_cap_01_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.35325317,
+        "conductivity": 0.0021021751,
+        "id": "weathered_cap_01_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.37594604,
+        "conductivity": 0.0021220314,
+        "id": "weathered_cap_01_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.39863892,
+        "conductivity": 0.0021418877,
+        "id": "weathered_cap_01_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.42133179,
+        "conductivity": 0.0021617439,
+        "id": "weathered_cap_01_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.44402466,
+        "conductivity": 0.0021816002,
+        "id": "weathered_cap_01_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.46671753,
+        "conductivity": 0.0022014565,
+        "id": "weathered_cap_01_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4894104,
+        "conductivity": 0.0022213127,
+        "id": "weathered_cap_01_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.51210327,
+        "conductivity": 0.002241169,
+        "id": "weathered_cap_01_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.53479614,
+        "conductivity": 0.0022610252,
+        "id": "weathered_cap_01_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55748901,
+        "conductivity": 0.0022808815,
+        "id": "weathered_cap_01_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.58018188,
+        "conductivity": 0.0023007378,
+        "id": "weathered_cap_01_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.60287476,
+        "conductivity": 0.002320594,
+        "id": "weathered_cap_01_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.62556763,
+        "conductivity": 0.0023404503,
+        "id": "weathered_cap_01_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6482605,
+        "conductivity": 0.0023603065,
+        "id": "weathered_cap_01_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.67095337,
+        "conductivity": 0.0023801628,
+        "id": "weathered_cap_01_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.69364624,
+        "conductivity": 0.0024000191,
+        "id": "weathered_cap_01_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.71633911,
+        "conductivity": 0.0024198753,
+        "id": "weathered_cap_01_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.73903198,
+        "conductivity": 0.0024397316,
+        "id": "weathered_cap_01_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.76172485,
+        "conductivity": 0.0024595879,
+        "id": "weathered_cap_01_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.78441772,
+        "conductivity": 0.0024794441,
+        "id": "weathered_cap_01_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8071106,
+        "conductivity": 0.0024993004,
+        "id": "weathered_cap_01_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.24153442,
+        "conductivity": 0.0019939476,
+        "id": "weathered_cap_02_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.26073608,
+        "conductivity": 0.0020107491,
+        "id": "weathered_cap_02_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.27993774,
+        "conductivity": 0.0020275505,
+        "id": "weathered_cap_02_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2991394,
+        "conductivity": 0.002044352,
+        "id": "weathered_cap_02_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.31834106,
+        "conductivity": 0.0020611534,
+        "id": "weathered_cap_02_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.33754272,
+        "conductivity": 0.0020779549,
+        "id": "weathered_cap_02_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.35674438,
+        "conductivity": 0.0020947563,
+        "id": "weathered_cap_02_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.37594604,
+        "conductivity": 0.0021115578,
+        "id": "weathered_cap_02_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.39514771,
+        "conductivity": 0.0021283592,
+        "id": "weathered_cap_02_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.41434937,
+        "conductivity": 0.0021451607,
+        "id": "weathered_cap_02_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.43355103,
+        "conductivity": 0.0021619621,
+        "id": "weathered_cap_02_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.45275269,
+        "conductivity": 0.0021787636,
+        "id": "weathered_cap_02_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.47195435,
+        "conductivity": 0.002195565,
+        "id": "weathered_cap_02_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.49115601,
+        "conductivity": 0.0022123665,
+        "id": "weathered_cap_02_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.51035767,
+        "conductivity": 0.0022291679,
+        "id": "weathered_cap_02_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.52955933,
+        "conductivity": 0.0022459694,
+        "id": "weathered_cap_02_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.54876099,
+        "conductivity": 0.0022627708,
+        "id": "weathered_cap_02_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.56796265,
+        "conductivity": 0.0022795723,
+        "id": "weathered_cap_02_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.58716431,
+        "conductivity": 0.0022963737,
+        "id": "weathered_cap_02_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.60636597,
+        "conductivity": 0.0023131752,
+        "id": "weathered_cap_02_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.62556763,
+        "conductivity": 0.0023299767,
+        "id": "weathered_cap_02_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.64476929,
+        "conductivity": 0.0023467781,
+        "id": "weathered_cap_02_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.66397095,
+        "conductivity": 0.0023635796,
+        "id": "weathered_cap_02_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.68317261,
+        "conductivity": 0.002380381,
+        "id": "weathered_cap_02_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.70237427,
+        "conductivity": 0.0023971825,
+        "id": "weathered_cap_02_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.72157593,
+        "conductivity": 0.0024139839,
+        "id": "weathered_cap_02_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.74077759,
+        "conductivity": 0.0024307854,
+        "id": "weathered_cap_02_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.75997925,
+        "conductivity": 0.0024475868,
+        "id": "weathered_cap_02_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.77918091,
+        "conductivity": 0.0024643883,
+        "id": "weathered_cap_02_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.79838257,
+        "conductivity": 0.0024811897,
+        "id": "weathered_cap_02_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.81758423,
+        "conductivity": 0.0024979912,
+        "id": "weathered_cap_02_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.83678589,
+        "conductivity": 0.0025147926,
+        "id": "weathered_cap_02_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.41415405,
+        "conductivity": 0.0021318794,
+        "id": "weathered_cap_03_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4289856,
+        "conductivity": 0.002144857,
+        "id": "weathered_cap_03_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.44381714,
+        "conductivity": 0.0021578346,
+        "id": "weathered_cap_03_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.45864868,
+        "conductivity": 0.0021708122,
+        "id": "weathered_cap_03_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.47348022,
+        "conductivity": 0.0021837898,
+        "id": "weathered_cap_03_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.48831177,
+        "conductivity": 0.0021967674,
+        "id": "weathered_cap_03_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.50314331,
+        "conductivity": 0.002209745,
+        "id": "weathered_cap_03_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.51797485,
+        "conductivity": 0.0022227226,
+        "id": "weathered_cap_03_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5328064,
+        "conductivity": 0.0022357002,
+        "id": "weathered_cap_03_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.54763794,
+        "conductivity": 0.0022486778,
+        "id": "weathered_cap_03_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.56246948,
+        "conductivity": 0.0022616554,
+        "id": "weathered_cap_03_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.57730103,
+        "conductivity": 0.002274633,
+        "id": "weathered_cap_03_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.59213257,
+        "conductivity": 0.0022876106,
+        "id": "weathered_cap_03_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.60696411,
+        "conductivity": 0.0023005882,
+        "id": "weathered_cap_03_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.62179565,
+        "conductivity": 0.0023135658,
+        "id": "weathered_cap_03_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6366272,
+        "conductivity": 0.0023265434,
+        "id": "weathered_cap_03_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.65145874,
+        "conductivity": 0.002339521,
+        "id": "weathered_cap_03_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.66629028,
+        "conductivity": 0.0023524986,
+        "id": "weathered_cap_03_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.68112183,
+        "conductivity": 0.0023654762,
+        "id": "weathered_cap_03_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.69595337,
+        "conductivity": 0.0023784538,
+        "id": "weathered_cap_03_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.71078491,
+        "conductivity": 0.0023914314,
+        "id": "weathered_cap_03_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.72561646,
+        "conductivity": 0.002404409,
+        "id": "weathered_cap_03_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.740448,
+        "conductivity": 0.0024173866,
+        "id": "weathered_cap_03_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.75527954,
+        "conductivity": 0.0024303642,
+        "id": "weathered_cap_03_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.77011108,
+        "conductivity": 0.0024433418,
+        "id": "weathered_cap_03_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.78494263,
+        "conductivity": 0.0024563194,
+        "id": "weathered_cap_03_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.79977417,
+        "conductivity": 0.002469297,
+        "id": "weathered_cap_03_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.81460571,
+        "conductivity": 0.0024822746,
+        "id": "weathered_cap_03_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.82943726,
+        "conductivity": 0.0024952522,
+        "id": "weathered_cap_03_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8442688,
+        "conductivity": 0.0025082298,
+        "id": "weathered_cap_03_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.85910034,
+        "conductivity": 0.0025212074,
+        "id": "weathered_cap_03_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.87393188,
+        "conductivity": 0.002534185,
+        "id": "weathered_cap_03_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.59834595,
+        "conductivity": 0.0022790581,
+        "id": "weathered_cap_04_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6085144,
+        "conductivity": 0.0022879555,
+        "id": "weathered_cap_04_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.61868286,
+        "conductivity": 0.0022968529,
+        "id": "weathered_cap_04_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.62885132,
+        "conductivity": 0.0023057503,
+        "id": "weathered_cap_04_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.63901978,
+        "conductivity": 0.0023146477,
+        "id": "weathered_cap_04_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.64918823,
+        "conductivity": 0.0023235451,
+        "id": "weathered_cap_04_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.65935669,
+        "conductivity": 0.0023324425,
+        "id": "weathered_cap_04_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.66952515,
+        "conductivity": 0.0023413399,
+        "id": "weathered_cap_04_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6796936,
+        "conductivity": 0.0023502373,
+        "id": "weathered_cap_04_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.68986206,
+        "conductivity": 0.0023591347,
+        "id": "weathered_cap_04_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.70003052,
+        "conductivity": 0.0023680321,
+        "id": "weathered_cap_04_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.71019897,
+        "conductivity": 0.0023769295,
+        "id": "weathered_cap_04_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.72036743,
+        "conductivity": 0.0023858269,
+        "id": "weathered_cap_04_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.73053589,
+        "conductivity": 0.0023947243,
+        "id": "weathered_cap_04_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.74070435,
+        "conductivity": 0.0024036217,
+        "id": "weathered_cap_04_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7508728,
+        "conductivity": 0.0024125191,
+        "id": "weathered_cap_04_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.76104126,
+        "conductivity": 0.0024214165,
+        "id": "weathered_cap_04_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.77120972,
+        "conductivity": 0.0024303139,
+        "id": "weathered_cap_04_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.78137817,
+        "conductivity": 0.0024392113,
+        "id": "weathered_cap_04_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.79154663,
+        "conductivity": 0.0024481087,
+        "id": "weathered_cap_04_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.80171509,
+        "conductivity": 0.0024570061,
+        "id": "weathered_cap_04_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.81188354,
+        "conductivity": 0.0024659035,
+        "id": "weathered_cap_04_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.822052,
+        "conductivity": 0.0024748009,
+        "id": "weathered_cap_04_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.83222046,
+        "conductivity": 0.0024836983,
+        "id": "weathered_cap_04_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.84238892,
+        "conductivity": 0.0024925957,
+        "id": "weathered_cap_04_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.85255737,
+        "conductivity": 0.0025014931,
+        "id": "weathered_cap_04_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.86272583,
+        "conductivity": 0.0025103905,
+        "id": "weathered_cap_04_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.87289429,
+        "conductivity": 0.0025192879,
+        "id": "weathered_cap_04_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.88306274,
+        "conductivity": 0.0025281853,
+        "id": "weathered_cap_04_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.8932312,
+        "conductivity": 0.0025370827,
+        "id": "weathered_cap_04_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.90339966,
+        "conductivity": 0.0025459801,
+        "id": "weathered_cap_04_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91356812,
+        "conductivity": 0.0025548775,
+        "id": "weathered_cap_04_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.77096558,
+        "conductivity": 0.0024169899,
+        "id": "weathered_cap_05_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.77676392,
+        "conductivity": 0.0024220634,
+        "id": "weathered_cap_05_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.78256226,
+        "conductivity": 0.002427137,
+        "id": "weathered_cap_05_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7883606,
+        "conductivity": 0.0024322105,
+        "id": "weathered_cap_05_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.79415894,
+        "conductivity": 0.0024372841,
+        "id": "weathered_cap_05_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.79995728,
+        "conductivity": 0.0024423576,
+        "id": "weathered_cap_05_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.80575562,
+        "conductivity": 0.0024474312,
+        "id": "weathered_cap_05_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.81155396,
+        "conductivity": 0.0024525047,
+        "id": "weathered_cap_05_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.81735229,
+        "conductivity": 0.0024575783,
+        "id": "weathered_cap_05_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.82315063,
+        "conductivity": 0.0024626518,
+        "id": "weathered_cap_05_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.82894897,
+        "conductivity": 0.0024677254,
+        "id": "weathered_cap_05_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.83474731,
+        "conductivity": 0.0024727989,
+        "id": "weathered_cap_05_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.84054565,
+        "conductivity": 0.0024778725,
+        "id": "weathered_cap_05_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.84634399,
+        "conductivity": 0.002482946,
+        "id": "weathered_cap_05_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.85214233,
+        "conductivity": 0.0024880196,
+        "id": "weathered_cap_05_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.85794067,
+        "conductivity": 0.0024930931,
+        "id": "weathered_cap_05_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.86373901,
+        "conductivity": 0.0024981667,
+        "id": "weathered_cap_05_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.86953735,
+        "conductivity": 0.0025032402,
+        "id": "weathered_cap_05_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.87533569,
+        "conductivity": 0.0025083138,
+        "id": "weathered_cap_05_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.88113403,
+        "conductivity": 0.0025133873,
+        "id": "weathered_cap_05_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.88693237,
+        "conductivity": 0.0025184608,
+        "id": "weathered_cap_05_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.89273071,
+        "conductivity": 0.0025235344,
+        "id": "weathered_cap_05_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.89852905,
+        "conductivity": 0.0025286079,
+        "id": "weathered_cap_05_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.90432739,
+        "conductivity": 0.0025336815,
+        "id": "weathered_cap_05_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91012573,
+        "conductivity": 0.002538755,
+        "id": "weathered_cap_05_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91592407,
+        "conductivity": 0.0025438286,
+        "id": "weathered_cap_05_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92172241,
+        "conductivity": 0.0025489021,
+        "id": "weathered_cap_05_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92752075,
+        "conductivity": 0.0025539757,
+        "id": "weathered_cap_05_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.93331909,
+        "conductivity": 0.0025590492,
+        "id": "weathered_cap_05_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.93911743,
+        "conductivity": 0.0025641228,
+        "id": "weathered_cap_05_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.94491577,
+        "conductivity": 0.0025691963,
+        "id": "weathered_cap_05_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95071411,
+        "conductivity": 0.0025742699,
+        "id": "weathered_cap_05_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.90886841,
+        "conductivity": 0.0025271812,
+        "id": "weathered_cap_06_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91117554,
+        "conductivity": 0.0025292,
+        "id": "weathered_cap_06_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91348267,
+        "conductivity": 0.0025312187,
+        "id": "weathered_cap_06_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91578979,
+        "conductivity": 0.0025332375,
+        "id": "weathered_cap_06_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.91809692,
+        "conductivity": 0.0025352562,
+        "id": "weathered_cap_06_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92040405,
+        "conductivity": 0.0025372749,
+        "id": "weathered_cap_06_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92271118,
+        "conductivity": 0.0025392937,
+        "id": "weathered_cap_06_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92501831,
+        "conductivity": 0.0025413124,
+        "id": "weathered_cap_06_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92732544,
+        "conductivity": 0.0025433311,
+        "id": "weathered_cap_06_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.92963257,
+        "conductivity": 0.0025453499,
+        "id": "weathered_cap_06_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9319397,
+        "conductivity": 0.0025473686,
+        "id": "weathered_cap_06_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.93424683,
+        "conductivity": 0.0025493874,
+        "id": "weathered_cap_06_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.93655396,
+        "conductivity": 0.0025514061,
+        "id": "weathered_cap_06_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.93886108,
+        "conductivity": 0.0025534248,
+        "id": "weathered_cap_06_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.94116821,
+        "conductivity": 0.0025554436,
+        "id": "weathered_cap_06_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.94347534,
+        "conductivity": 0.0025574623,
+        "id": "weathered_cap_06_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.94578247,
+        "conductivity": 0.002559481,
+        "id": "weathered_cap_06_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9480896,
+        "conductivity": 0.0025614998,
+        "id": "weathered_cap_06_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95039673,
+        "conductivity": 0.0025635185,
+        "id": "weathered_cap_06_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95270386,
+        "conductivity": 0.0025655373,
+        "id": "weathered_cap_06_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95501099,
+        "conductivity": 0.002567556,
+        "id": "weathered_cap_06_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95731812,
+        "conductivity": 0.0025695747,
+        "id": "weathered_cap_06_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.95962524,
+        "conductivity": 0.0025715935,
+        "id": "weathered_cap_06_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.96193237,
+        "conductivity": 0.0025736122,
+        "id": "weathered_cap_06_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9642395,
+        "conductivity": 0.002575631,
+        "id": "weathered_cap_06_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.96654663,
+        "conductivity": 0.0025776497,
+        "id": "weathered_cap_06_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.96885376,
+        "conductivity": 0.0025796684,
+        "id": "weathered_cap_06_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.97116089,
+        "conductivity": 0.0025816872,
+        "id": "weathered_cap_06_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.97346802,
+        "conductivity": 0.0025837059,
+        "id": "weathered_cap_06_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.97577515,
+        "conductivity": 0.0025857246,
+        "id": "weathered_cap_06_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.97808228,
+        "conductivity": 0.0025877434,
+        "id": "weathered_cap_06_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9803894,
+        "conductivity": 0.0025897621,
+        "id": "weathered_cap_06_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.98890991,
+        "conductivity": 0.0025911385,
+        "id": "weathered_cap_07_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.98919067,
+        "conductivity": 0.0025913841,
+        "id": "weathered_cap_07_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.98947144,
+        "conductivity": 0.0025916298,
+        "id": "weathered_cap_07_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9897522,
+        "conductivity": 0.0025918755,
+        "id": "weathered_cap_07_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99003296,
+        "conductivity": 0.0025921211,
+        "id": "weathered_cap_07_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99031372,
+        "conductivity": 0.0025923668,
+        "id": "weathered_cap_07_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99059448,
+        "conductivity": 0.0025926125,
+        "id": "weathered_cap_07_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99087524,
+        "conductivity": 0.0025928581,
+        "id": "weathered_cap_07_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99115601,
+        "conductivity": 0.0025931038,
+        "id": "weathered_cap_07_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99143677,
+        "conductivity": 0.0025933495,
+        "id": "weathered_cap_07_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99171753,
+        "conductivity": 0.0025935951,
+        "id": "weathered_cap_07_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99199829,
+        "conductivity": 0.0025938408,
+        "id": "weathered_cap_07_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99227905,
+        "conductivity": 0.0025940865,
+        "id": "weathered_cap_07_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99255981,
+        "conductivity": 0.0025943321,
+        "id": "weathered_cap_07_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99284058,
+        "conductivity": 0.0025945778,
+        "id": "weathered_cap_07_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99312134,
+        "conductivity": 0.0025948235,
+        "id": "weathered_cap_07_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.9934021,
+        "conductivity": 0.0025950691,
+        "id": "weathered_cap_07_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99368286,
+        "conductivity": 0.0025953148,
+        "id": "weathered_cap_07_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99396362,
+        "conductivity": 0.0025955605,
+        "id": "weathered_cap_07_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99424438,
+        "conductivity": 0.0025958061,
+        "id": "weathered_cap_07_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99452515,
+        "conductivity": 0.0025960518,
+        "id": "weathered_cap_07_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99480591,
+        "conductivity": 0.0025962975,
+        "id": "weathered_cap_07_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99508667,
+        "conductivity": 0.0025965431,
+        "id": "weathered_cap_07_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99536743,
+        "conductivity": 0.0025967888,
+        "id": "weathered_cap_07_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99564819,
+        "conductivity": 0.0025970345,
+        "id": "weathered_cap_07_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99592896,
+        "conductivity": 0.0025972801,
+        "id": "weathered_cap_07_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99620972,
+        "conductivity": 0.0025975258,
+        "id": "weathered_cap_07_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99649048,
+        "conductivity": 0.0025977715,
+        "id": "weathered_cap_07_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99677124,
+        "conductivity": 0.0025980171,
+        "id": "weathered_cap_07_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.997052,
+        "conductivity": 0.0025982628,
+        "id": "weathered_cap_07_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99733276,
+        "conductivity": 0.0025985085,
+        "id": "weathered_cap_07_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.99761353,
+        "conductivity": 0.0025987541,
+        "id": "weathered_cap_07_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06H_SOURCE_TEMPORAL_DEVELOPMENT\\materials_full.txt"
+      }
+    ],
+    "max_material_epsilon_r": 12.99761353,
+    "lambda_min_m": 0.3712281275573376,
+    "cells_per_lambda_min": 12.37427091857792,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 12
+  }
+}
