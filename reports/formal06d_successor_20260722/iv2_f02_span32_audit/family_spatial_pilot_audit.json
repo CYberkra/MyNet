@@ -1,0 +1,163 @@
+{
+  "schema": "native_256_family_spatial_pilot_audit_v1",
+  "case_id": "IV2_F02_FORMAL06C_MECHANISM_POS",
+  "scene_family_id": "IV2_F02_FORMAL06C_MECHANISM_TRANSFER_DEVELOPMENT",
+  "audit_mode": "positive_pair",
+  "formal_training_allowed": false,
+  "trace_count": 32,
+  "trace_stride": 8,
+  "selected_trace_indices_zero_based": [
+    0,
+    8,
+    16,
+    24,
+    32,
+    40,
+    48,
+    56,
+    64,
+    72,
+    80,
+    88,
+    96,
+    104,
+    112,
+    120,
+    128,
+    136,
+    144,
+    152,
+    160,
+    168,
+    176,
+    184,
+    192,
+    200,
+    208,
+    216,
+    224,
+    232,
+    240,
+    248
+  ],
+  "declared_trace_count": 256,
+  "covered_scan_span_m": 22.32,
+  "declared_scan_span_m": 22.95,
+  "covered_scan_fraction": 0.9725490196078432,
+  "distributed_span_coverage_ok": true,
+  "raw_shape": [
+    10601,
+    32
+  ],
+  "canonical_shape": [
+    501,
+    32
+  ],
+  "finite_ok": true,
+  "gprmax_versions": [
+    "3.1.7"
+  ],
+  "analysis_window_end_ns": 750.0520790863995,
+  "trace_contracts": {
+    "full_scene": {
+      "complete": true,
+      "captured": 32,
+      "expected": 32,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 7.32421875682121e-06,
+      "max_receiver_x_error_m": 3.662109378410605e-06,
+      "position_tolerance_m": 3e-05,
+      "failures": [],
+      "ok": true
+    },
+    "no_basal_contrast_control": {
+      "complete": true,
+      "captured": 32,
+      "expected": 32,
+      "trace_indices_contiguous": true,
+      "max_source_x_error_m": 7.32421875682121e-06,
+      "max_receiver_x_error_m": 3.662109378410605e-06,
+      "position_tolerance_m": 3e-05,
+      "failures": [],
+      "ok": true
+    }
+  },
+  "static_audits": {
+    "full_scene": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "no_basal_contrast_control": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "reference_path": "data/simulations/v2/01_solver_runs/IV2_F02_FORMAL06C_MECHANISM_POS/IV2_F02_GABOR80_MECHANISM_DEV_SPAN32_CUDA129/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "visible_phase_semantics": "continuous signed lobe from solved full-minus-control",
+  "signal_metrics": {
+    "reference_range_ns": [
+      433.4359436035156,
+      462.1227722167969
+    ],
+    "visible_range_ns": [
+      433.530101711939,
+      454.53155992635817
+    ],
+    "median_visible_minus_reference_ns": -0.06224348344935038,
+    "visible_residual_p95_ns": 8.60565082436218,
+    "visible_step_p95_ns": 4.5003124745184095,
+    "visible_step_max_ns": 6.000416632691213,
+    "visible_step_per_canonical_trace_p95_ns": 0.5625390593148012,
+    "visible_step_per_canonical_trace_max_ns": 0.7500520790864016,
+    "visible_residual_step_p95_ns": 2.800889057541383,
+    "visible_residual_step_max_ns": 3.5359570057684095,
+    "visible_residual_step_per_canonical_trace_p95_ns": 0.35011113219267287,
+    "visible_residual_step_per_canonical_trace_max_ns": 0.4419946257210512,
+    "sparse_residual_step_limit_ns": 44.8,
+    "support_median": 133.47982859536356,
+    "support_min": 64.67231333168112,
+    "signed_difference_target_rms": 0.0015504746697843075,
+    "signed_difference_background_rms": 1.2102587788831443e-05,
+    "target_to_background_rms": 128.11100376525445,
+    "full_scene_target_rms": 0.0013159682275727391,
+    "full_scene_background_rms": 0.00028537531034089625,
+    "full_scene_target_to_background_rms": 4.611359777412923,
+    "full_scene_local_background_rms": 0.00014103174908086658,
+    "full_scene_target_to_local_background_rms": 9.331006926803216,
+    "raw_target_rms": 0.001562920748256147,
+    "raw_early_rms": 52.26610565185547,
+    "raw_target_to_early_rms": 2.990314140997537e-05,
+    "control_target_to_background_rms": 0.19253937223402537,
+    "control_target_to_local_background_rms": 0.7793569724290632,
+    "causal_contrast_to_full_scene_target_rms": 1.178200686990831,
+    "target_amplitude_cv": 0.4379357099533081,
+    "target_dropout_fraction_below_25pct_median": 0.0,
+    "early_full_control_relative_difference": 3.903224717899573e-07
+  },
+  "family_spatial_gate": {
+    "passed": true,
+    "formal_promotion": false,
+    "human_morphology_review": "pending",
+    "scope": "distributed full-span causal pair"
+  },
+  "full_scene_detectability_gate": {
+    "passed": true,
+    "automatic_metrics_passed": true,
+    "checks": {
+      "full_scene_target_to_local_background_rms": true,
+      "full_scene_target_to_background_rms": true
+    },
+    "thresholds": {
+      "full_scene_target_to_local_background_rms": 1.0,
+      "full_scene_target_to_background_rms": 0.35
+    },
+    "human_morphology_review": "pending",
+    "human_blind_review_required": true,
+    "difference_only_visibility_is_sufficient": false,
+    "raw_target_to_early_is_cross_domain_diagnostic_only": true,
+    "note": "Automatic metrics cannot promote a case. The unlabelled full-scene preview must expose a distinct, laterally traceable multi-cycle interface."
+  }
+}

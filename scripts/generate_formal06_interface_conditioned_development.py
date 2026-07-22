@@ -22,8 +22,12 @@ from typing import Callable
 import h5py
 import numpy as np
 
-import generate_formal03_correlated_cover_source_ablation as formal03
-import generate_formal04_geology_factorial as formal04
+try:
+    import generate_formal03_correlated_cover_source_ablation as formal03
+    import generate_formal04_geology_factorial as formal04
+except ModuleNotFoundError:  # Package import used by tests and successor generators.
+    from scripts import generate_formal03_correlated_cover_source_ablation as formal03
+    from scripts import generate_formal04_geology_factorial as formal04
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -220,8 +224,11 @@ def generate_case(
     bulk_field_builder: Callable[
         ..., tuple[np.ndarray, np.ndarray, dict]
     ] = build_bulk_field,
+    material_rows_builder: Callable[..., list[formal03.Material]] = material_rows,
     locked_factors: list[str] | None = None,
     geometry_description: str = "smooth weak two-dimensional bulk heterogeneity",
+    flat_ground: bool = True,
+    terrain_stage: str = "flat ground and fixed height",
 ) -> Path:
     validate_spec(spec, design=design, source=source)
     output_root.mkdir(parents=True, exist_ok=True)
@@ -230,6 +237,8 @@ def generate_case(
     labels_dir.mkdir(parents=True, exist_ok=True)
 
     profile, crop_stats = profile_builder(spec)
+    ground_y_m = np.asarray(profile["full_ground_y_m"], dtype=np.float64)
+    flight_height_agl_m = np.asarray(spec.source_y_m - ground_y_m, dtype=np.float64)
     _, cover_bins, field_stats = bulk_field_builder(spec, design=design)
     indices = formal03.build_indices(spec, profile, cover_bins)
     index_array_hash = _array_sha256(indices)
@@ -246,8 +255,8 @@ def generate_case(
             compression_opts=4,
         )
 
-    full_rows = material_rows(spec, control=False, design=design)
-    control_rows = material_rows(spec, control=True, design=design)
+    full_rows = material_rows_builder(spec, control=False, design=design)
+    control_rows = material_rows_builder(spec, control=True, design=design)
     formal03.write_materials(case_dir / "materials_full.txt", full_rows)
     formal03.write_materials(case_dir / "materials_no_basal.txt", control_rows)
     waveform_stats = formal03.write_custom_waveform(
@@ -356,8 +365,14 @@ def generate_case(
             "index_file": "geology_indices.h5",
             "shared_index_array_sha256": index_array_hash,
             "index_shape": list(indices.shape),
-            "flat_ground": True,
-            "fixed_flight_height_m": spec.flight_height_m,
+            "flat_ground": flat_ground,
+            "terrain_stage": terrain_stage,
+            "fixed_source_elevation_m": spec.source_y_m,
+            "flight_height_agl_m": {
+                "min": float(np.min(flight_height_agl_m)),
+                "median": float(np.median(flight_height_agl_m)),
+                "max": float(np.max(flight_height_agl_m)),
+            },
             "discrete_anomaly_bodies": 0,
             "description": geometry_description,
             "bulk_field_statistics": field_stats,

@@ -1,0 +1,210 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL06G_TERRAIN_ACQUISITION_DEVELOPMENT",
+  "case_id": "FORMAL06G_TERRAIN_ACQUISITION_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "terrain/acquisition geometry diagnosis of full-window coherence",
+  "generator_path": "scripts/generate_formal06g_terrain_acquisition_development.py",
+  "generator_sha256": "20574ee5e7fe2374605f4a8a391e0e2b2c28bd50d7273d7502ed97eafd3ade72",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": true,
+  "training_block_reason": "qualitative mechanism was selected after held-out morphology diagnosis; requires complete staged runtime and independent formal regeneration",
+  "parameter_provenance": "bounded custom materials and generic seeded profiles; no measured file is read, but the mechanism choice is development-only",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 32,
+    "transition_levels": 1,
+    "profile_seed": 2026072211,
+    "field_seed": 2026072212
+  },
+  "source": {
+    "case_id": "FORMAL04_SHARED_GABOR80",
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "reference_delay_ns": 50.0,
+    "custom_sigma_ns": 11.5,
+    "locked_from_formal03_source_ablation": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 4.3943970041879595e-25,
+      "peak_frequency_hz": 79377194.32147762,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "ablation": {
+    "predecessor_case_id": "FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT",
+    "locked": [
+      "FORMAL06D generic basal profile and cover-field seeds",
+      "FORMAL06D cover covariance and material endpoints",
+      "FORMAL06F single weathered-cap material mapping",
+      "80 MHz zero-mean Gabor waveform and reference delay",
+      "0.03 m grid, 256 native traces, 0.09 m trace spacing, PML and domain",
+      "fixed absolute Tx/Rx elevation and separation",
+      "basal depth and transition thickness relative to local ground",
+      "strict full/no-basal shared indexed geometry and local-cover control mapping"
+    ],
+    "changed": [
+      "coupled ground/acquisition geometry: flat ground to bounded non-periodic terrain under fixed absolute aerial traverse"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 12.373135065434804
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_array_sha256": "8649161cc0d5676286a40b40d1f00ab1f91b46f62488468ee51fdaf0552e7e2b",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": false,
+    "terrain_stage": "bounded non-periodic terrain with fixed absolute aerial traverse",
+    "fixed_source_elevation_m": 36.51,
+    "flight_height_agl_m": {
+      "min": 7.652045974731443,
+      "median": 8.009999999999998,
+      "max": 8.72999931335449
+    },
+    "discrete_anomaly_bodies": 0,
+    "description": "FORMAL06F basal mechanism under a bounded non-periodic terrain profile and fixed absolute aerial traverse; no discrete non-target bodies",
+    "bulk_field_statistics": {
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.019796744574290485,
+      "vertical_neighbor_bin_change_rate": 0.04294903894302993,
+      "horizontal_latent_step_p95": 0.007785291597247099,
+      "vertical_latent_step_p95": 0.016656935214996338,
+      "latent_min": -2.5,
+      "latent_median": 0.015196556225419044,
+      "latent_max": 2.5,
+      "correlation_design_m": {
+        "long_x": 6.7,
+        "long_y": 3.0,
+        "meso_x": 1.8,
+        "meso_y": 0.96
+      }
+    },
+    "crop_shape_gate": {
+      "min_m": 12.852036616500037,
+      "median_m": 13.164843711168338,
+      "max_m": 13.984333868268779,
+      "range_m": 1.1322972517687422,
+      "smoothed_extrema_count": 4,
+      "quadratic_fit_r2": 0.9420293253878299,
+      "abs_slope_p95": 0.16502724748557396,
+      "accepted_seed": 2026072211,
+      "attempt": 0,
+      "terrain_seed": 2026078278,
+      "terrain_range_m": 1.0779547191340852,
+      "terrain_abs_slope_p95": 0.03371541269680875,
+      "flight_height_agl_min_m": 7.652044296264648,
+      "flight_height_agl_median_m": 8.009998321533203,
+      "flight_height_agl_max_m": 8.729997634887695
+    }
+  },
+  "materials": {
+    "cover_epsilon_min": 12.0,
+    "cover_epsilon_max": 12.8,
+    "cover_conductivity_min_s_per_m": 0.0018,
+    "cover_conductivity_max_s_per_m": 0.0025,
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18,
+    "cover_bins": 32,
+    "weathered_cap_levels": 1,
+    "maximum_physical_epsilon_step": 0.9875000000000007,
+    "maximum_physical_conductivity_step_s_per_m": 0.0007890624999999998,
+    "full_material_count": 96,
+    "basal_reflection_proxy": -0.008806945264739722
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_cap_and_bedrock_to_each_local_cover_bin": true,
+    "full_materials_sha256": "cc236eca6e8b17c25f75de3f3d7052aaadbbe6e8f45e5970664e37203622d314",
+    "control_materials_sha256": "7c693994892a7e36d59db36e8a88b61a8f68b47025e4a0e008d89b32518b8490"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 406.2380676269531,
+      "median": 415.0892333984375,
+      "max": 433.7037658691406
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus source delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a complete signed runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true,
+    "full_scene_target_to_local_background_rms_review_above": 5.0
+  },
+  "next_gate": "static, geometry, attenuation, then one-trace full/control smoke",
+  "development_scope": {
+    "line9_conditioned": true,
+    "conditioning_scope": "mechanism diagnosis only",
+    "strict_line9_holdout_allowed": false,
+    "formal_training_allowed": false
+  },
+  "terrain_acquisition_diagnosis": {
+    "predecessor_flat_ground": true,
+    "candidate_fixed_absolute_source_elevation_m": 36.51,
+    "terrain_contract": {
+      "broad_correlation_m": 13.0,
+      "meso_correlation_m": 3.4,
+      "broad_amplitude_m": 0.36,
+      "meso_amplitude_m": 0.12,
+      "agl_min_m": 7.15,
+      "agl_max_m": 8.85
+    },
+    "basal_depth_reference": "local ground",
+    "hypothesis": "perfect flat-ground/fixed-height geometry preserves unrealistically coherent ground and multiple events across all traces"
+  }
+}

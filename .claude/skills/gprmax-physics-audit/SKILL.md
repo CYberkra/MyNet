@@ -217,6 +217,72 @@ wavelet-regular for the intended measured-line morphology. They are retained
 as causal-control regressions, not realism candidates, and must not be scaled
 to training data without a redesigned subsurface/source/processing contract.
 
+### Basal-Morphology Screening Lessons (2026-07-22)
+
+For the airborne 55 MHz Ricker proxy, interface shape must be screened before
+adding topography, noise, or finite clutter bodies. Treat the following as
+separate outcomes, not interchangeable "realism":
+
+1. A broad U-shaped trough, bedrock high, terrace with paired flanks, or other
+   compact relief can create a visually convincing but non-representative
+   focusing apex in the B-scan. Keep it as a hard morphology case only after a
+   strict full/no-basal residual proves causality; it is not a default basal
+   interface family.
+2. A regional monotonic dip or distributed low-curvature gradient change is a
+   valid non-focusing calibration family. It should yield a continuous
+   multi-cycle reflector band, but it is intentionally too simple to be the
+   entire training distribution.
+3. Do not spend GPU time on a candidate that fails a geometry-only gate. In
+   particular reject a profile that is effectively straight over the aperture,
+   has insufficient relief, violates the declared extrema budget, or is too
+   close to a periodic wave train.
+4. When a candidate passes geometry and causal gates, inspect a sparse
+   full/control B-scan before native-256 execution. Promote only if the signed
+   residual follows the intended path continuously and lacks a compact apex.
+5. Once a non-focusing interface library is established, introduce measured
+   complexity in this order: continuous transition/material variability,
+   then gentle topography and physical height variation, then finite clutter.
+   Do not use increasingly curved basal geometry as a substitute for realistic
+   stratigraphic texture.
+
+The SHAPE02--SHAPE05 contracts and their reports are screening evidence, not
+training data. Preserve rejected candidates and their rejection reason; do
+not delete them or silently reinterpret them as approved morphologies.
+
+### Wavelet-Inheritance and Visual-Comparison Contract (2026-07-22)
+
+When a previously accepted synthetic B-scan is used as a visual mechanism
+baseline, compare its successor in the following order before changing basal
+geometry:
+
+1. Render both runs with the same raw component, time crop, horizontal
+   common-mode suppression, time-power gain, AGC window, and colour rule.
+   A display mismatch must never be diagnosed as a geology mismatch.
+2. Compare source support duration, zero crossings, spectral peak and spectral
+   centroid. A narrow-band Gabor packet and a low-frequency Ricker pulse are
+   not interchangeable source choices: they produce different numbers of
+   visible black/white lobes even at the same interface.
+3. Compare effective spatial sampling. A 16-trace scan across 22.95 m is a
+   1.53 m display spacing; it cannot be judged against a 32-trace 0.72 m
+   preview as if both showed the same lateral continuity.
+4. Only after source, processing and sampling are matched, compare the basal
+   path, transition-thickness field and cover correlation scales.
+
+For the current project, `FORMAL06C_SUBTLE_INTERFACE_DEVELOPMENT` is a
+development-only visual mechanism baseline: 80 MHz zero-mean Gabor proxy,
+bounded continuous transition thickness, and smooth multiscale cover field.
+Its original model is Line9-conditioned development evidence and is not
+eligible for strict Line9 formal training. A new run may inherit this *tested
+measurement mechanism* only when it uses newly generated geometry/fields,
+records the conditioning provenance, completes a same-scope full/no-basal
+pair, and remains development-only until the source/material choice is
+re-originated without held-out-line influence.
+
+Never replace an accepted wavelet-and-transition mechanism with a Ricker,
+fixed transition and geometry-only bank simultaneously, then attribute the
+resulting visual change to basal shape alone. That is a three-factor change
+and invalidates the comparison.
+
 ### FORMAL02 Graded-Bedrock Successor
 
 FORMAL02 replaces the failed F-series morphology with a deliberately smaller
@@ -689,11 +755,94 @@ rejected shortcut merely because it improves a display statistic.
     non-Line9 geometry, no constructed layer stack or point-target chain,
     accepted visible-phase extraction from signed pairs, measured true-negative
     policy, V15 split validation, and a response fit that never read Line9.
+11. A morphology screening run must sample the complete acquisition aperture.
+    Do not use the first contiguous 32 native traces to judge a 22.95 m basal
+    shape: they cover only 2.79 m and can turn a broad high or trough into an
+    apparently straight event. Use native indices `0,8,...,248` for the
+    disclosed 32-trace full-span screen, then rerun selected cases at all 256
+    native traces. Never interpolate the sparse screen into a dense B-scan.
+12. During a basal-shape factorial, freeze the exact cover field, material
+    table, transition thickness, ground surface, flight height, source, and
+    acquisition hashes. Shape-specific transition seeds invalidate a claim
+    that morphology was the only changed factor. Add terrain, height, material
+    diversity, and measurement noise only in later orthogonal branches.
+
+### FORMAL06C Bridge and Resume Lessons (2026-07-22)
+
+The 32-trace `IV2_F02_FORMAL06C_MECHANISM_POS` pair is retained as development
+mechanism evidence, not a formal training family. It establishes the following
+hard rules for reproducing a useful subtle multi-cycle basal packet.
+
+1. **A source-name inheritance claim is insufficient.** F02 retained the
+   80 MHz zero-mean Gabor proxy and variable basal transition, but its cover
+   field changed from FORMAL06C's long/meso 6.7/3.0 m and 1.8/0.96 m field
+   (meso weight 0.18) to a long/meso/local 9.0/3.0, 2.4/1.2, 0.75/0.45 m
+   field (weights 0.55/0.30/0.15). Its horizontal and vertical bin-change
+   rates became 0.0594 and 0.1074 versus 0.0215 and 0.0475. The causal packet
+   remained strong, but the processed background became visibly harder and
+   more blocky. A visual successor must lock or intentionally ablate the
+   complete cover-field statistics, material table, transition generator,
+   source waveform, spatial sampling, and display transform together.
+2. **Use two independent gates.** A case may pass causal detectability yet
+   fail visual inheritance. F02 passed its full/control gates (pair
+   target/background RMS 128.11; full-scene local target/background 9.33;
+   zero target dropout), but remains only a bridge because it does not fully
+   match FORMAL06C's softer background texture. Never use a high difference
+   ratio as proof of measured-domain realism.
+3. **Distinguish acquisition horizon from wavelet appearance.** FORMAL06C's
+   500 ns protected window and F02's 700 ns protected window alter context and
+   runtime; they do not explain a change from a long multi-cycle Gabor packet
+   to a short packet. Compare the same protected time crop before blaming the
+   FDTD domain.
+4. **Resume a stopped causal pair only under a trace contract.** If a desktop
+   run is interrupted after full-scene completion, verify the source-manifest
+   SHA256, staged acquisition indices, completed full-scene trace contract,
+   and a contiguous no-basal output prefix. Then run only the missing suffix,
+   capture the finished control contract, and merge. Refuse missing indices,
+   duplicate/unknown output names, hash mismatch, or a purportedly complete
+   control. `scripts/run_native_256_release_pilot.py --resume-control` is the
+   project implementation. A lone full scene is morphology evidence only.
+5. **Candidate FORMAL06D specification.** Start from FORMAL06C's complete
+   measurement/cover/transition contract, replace only its Line9-conditioned
+   geometry seed with a documented independent geometry prior, then conduct a
+   single-factor factorial. Do not simultaneously change source, cover
+   texture, transition, interface profile, time window, and display gain.
+
+Record the before/after manifest excerpts and same-processing preview paths in
+the family report whenever a development baseline is used as a visual target.
 
 The evidence index is kept at
 `reports/simulation_realism_ten_rounds_20260716/research_ledger.json`. Update
 it and this section together whenever a new physical factor is accepted,
 rejected, or given a narrower role.
+
+### FORMAL06D Native-Spacing Stop Rule (2026-07-22)
+
+The valid FORMAL06D 32-trace distributed pair proved a smooth, causal basal
+packet across the aperture, but that result did not establish native-resolution
+realism. The consecutive 64-trace full-scene checkpoint at canonical traces
+109--172 exposed a regular, full-window parallel wave train under both
+restrained time-power gain and AGC. It was non-focusing but still too
+constructed and layered for measured-domain use.
+
+1. A sparse full-span pair may prove geometry-wide causality yet conceal a
+   native-spacing wavelet comb. Every candidate selected from a stride-8 screen
+   must pass a label-free consecutive native-spacing checkpoint before a
+   native-256 pair, label export, or training-window proposal.
+2. Reject a candidate when the native blind image contains repeated parallel
+   lobe trains that occupy most of the protected window, even when the basal
+   residual is continuous, there is zero dropout, and target/background energy
+   is strong. Such regularity is a morphology failure, not an invitation to
+   weaken the gate or call it geological layering.
+3. Stop before the native-256 pair after a full-only native checkpoint fails.
+   Preserve the run as a morphology regression, retain any earlier strict pair
+   as causal-mechanism evidence, and do not create visible-phase labels from
+   the rejected family.
+4. The next successor may retain the broad basal source/transition mechanism,
+   but must change the non-target/background mechanism in one named,
+   independently auditable factor. Do not simultaneously change basal geometry,
+   source, material endpoints, transition, and cover texture in response to
+   this failure.
 
 ### MyNet VTI Lifecycle
 
@@ -713,6 +862,121 @@ artifact. Apply this project contract:
    Retain one locally only while resolving a documented geometry dispute. Use
    `scripts/cleanup_gprmax_geometry_views.py --report REPORT.json --delete` to
    hash and clear legacy views under the project data tree.
+
+### FORMAL06D Strict-Pair and Visibility-Gate Lessons (2026-07-22)
+
+`FORMAL06D_INDEPENDENT_MECHANISM_DEVELOPMENT` is the first independently
+seeded geometry check that locked the complete FORMAL06C measurement mechanism:
+the 80 MHz zero-mean Gabor proxy, 0.03 m grid, acquisition, cover-field
+statistics, material endpoints, and eight-level transition. It changes only
+the generic profile and cover-field seeds. It remains
+`line9_conditioned=true`, development-only, and is not formal training data.
+
+1. A 32-trace full-span pilot must use native indices `0,8,...,248`, not a
+   contiguous prefix. The correct FORMAL06D pair covered 22.32 m of the 22.95 m
+   aperture, had zero dropout, visible-phase residual P95 7.04 ns, signed-pair
+   target/background RMS 100.81, and matched full/control source and receiver
+   positions to within 3.7e-06 m. Its difference proves the broad multi-cycle
+   event is basal-caused.
+2. A strong full-scene local target/background ratio is a realism-review signal,
+   not automatically a physics failure. FORMAL06D measured 10.27. For a
+   development morphology candidate, record
+   `full_scene_target_to_local_background_rms_review_above` and keep the
+   mandatory blind morphology review. Retain the legacy
+   `..._rms_max` only when a case is explicitly a hard-difficulty rejection
+   experiment; it remains a hard automatic gate for backward compatibility.
+3. `--full-scene-only --trace-stride N` must not be followed by a control scan
+   with the default stride. The resume path must regenerate the staged control
+   input from the immutable source deck, then apply the same `trace_stride` and
+   `trace_start` before any solver call. A pair whose full/control coordinates
+   differ, even if both HDF5 outputs are finite, is invalid and must be retained
+   only as an audit record.
+4. A sparse full-span visual screen can select or reject a mechanism but cannot
+   establish local diffraction topology. FORMAL06D's next evidence step is a
+   native-spacing consecutive 64-trace full-scene checkpoint around a selected
+   geometry feature, then a full native-256 pair only if the interface remains
+   broad, laterally traceable, and free of compact focusing.
+5. Do not weaken the basal contrast merely to force a development ratio beneath
+   an arbitrary cap. First add independent, low-contrast, non-periodic
+   background complexity in a separate factor and compare it at identical
+   source, acquisition, time crop, and display transform. A stronger-looking
+   ratio cannot substitute for a measured-realism decision.
+
+### Native Comb Causal Triage (FORMAL06E/F, 2026-07-22)
+
+FORMAL06E and FORMAL06F were designed as separate, one-factor diagnoses of
+the native 64-trace FORMAL06D wavelet comb. FORMAL06E replaced only the
+elongated cover-field covariance with a near-isotropic, non-periodic weak
+field. FORMAL06F retained the FORMAL06D cover field but replaced the
+eight-stage weathered transition with one variable-thickness full-contrast
+weathered cap. Both passed static input and one-trace strict full/control
+contracts, yet both label-free native 64-trace full-scene images retained the
+regular full-window parallel lobe train under both restrained time-power gain
+and AGC.
+
+1. Treat this as a causal exclusion: neither cover-field anisotropy nor the
+   repeated transition staircase alone is sufficient to explain the comb. Do
+   not combine their unproven variants merely because the result may look
+   different.
+2. Do not run a matched native-64 control or native-256 pair for a family that
+   fails this blind morphology gate. Its one-trace strict pair remains useful
+   only to prove the basal mechanism was not broken by the diagnostic change.
+3. The next named factor is the *acquisition/ground geometry*: a perfectly
+   planar ground surface with a fixed absolute aerial source can preserve
+   unrealistically coherent direct/ground/multiple events across every trace.
+   Test a bounded, non-periodic terrain profile with a fixed absolute aerial
+   traverse as one coupled physical factor before changing source waveform or
+   material endpoints. Record the resulting AGL range and keep basal depth
+   relative to the local ground explicit.
+4. All such cases remain development-only. Native full-window regularity is a
+   rejection condition even when post-processed images hide it or the signed
+   pair shows a large basal residual.
+
+### Terrain Is Not a Comb Cure (FORMAL06G, 2026-07-22)
+
+FORMAL06G tested the next coupled physical factor after FORMAL06E/F: bounded,
+non-periodic terrain under a fixed absolute aerial traverse. It retained the
+FORMAL06F single-cap transition, FORMAL06D cover and basal mechanisms, source,
+materials, grid, and acquisition. Local basal depth stayed relative to the
+local ground and AGL was restricted to 7.15--8.85 m.
+
+The static audit and one-trace strict pair passed. The label-free consecutive
+native 64-trace image showed the expected small geometric warping, but retained
+the full-window regular multi-cycle lobe train. Therefore:
+
+1. Bounded terrain/AGL variation is physically appropriate and should remain
+   available for later realism families, but it is **not** sufficient to cure
+   the current comb. Reject FORMAL06G before a native-64 control or 256 pair.
+2. Do not increase terrain amplitude merely to decorrelate the display. That
+   would trade a coherent artifact for unphysical geometry rather than improve
+   the measurement model.
+3. After independent failures of cover covariance (F06E), transition staging
+   (F06F), and terrain/acquisition geometry (F06G), the next isolated
+   investigation is the ideal point-source/receiver measurement abstraction:
+   source waveform temporal support, radiation/directivity, and receiver
+   coupling must be evaluated against the installed gprMax antenna-model
+   capabilities before another expensive geometry sweep.
+
+### 2D Source Abstraction Gate (Installed gprMax 3.1.7, 2026-07-22)
+
+The installed source at `gprMax/input_cmds_multiuse.py` reports that a
+Hertzian dipole is a **line source in 2D**. It is therefore a numerical source
+proxy, not a finite UAV-GPR antenna. The same installed parser rejects
+`#transmission_line` with GPU solving. Bundled antenna-like GSSI models are
+3D high-frequency examples (400 MHz and above), not validated 80 MHz UAV
+models.
+
+1. Do not continue solving new 2D geology variants merely to cure a
+full-window wavelet comb once F06E/F/G have failed. Treat the source/receiver
+abstraction as the leading unresolved mechanism.
+2. A future finite-antenna investigation needs a separately auditable 3D local
+window or a rigorously justified reduced-order proxy. It must first establish
+the antenna dimensions, polarization, feed/receiver layout, aircraft/antenna
+height, and an 80 MHz-compatible source spectrum. Do not scale a 400 MHz
+example by intuition and call it hardware-realistic.
+3. A user waveform can test temporal support and measured-spectrum proxies,
+but it cannot supply missing finite-antenna directivity or coupling. Keep a
+waveform-only ablation separate from an antenna-geometry ablation.
 
 ## References
 

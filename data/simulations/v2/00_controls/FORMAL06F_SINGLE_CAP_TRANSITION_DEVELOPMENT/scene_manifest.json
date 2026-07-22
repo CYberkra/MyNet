@@ -1,0 +1,189 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT",
+  "case_id": "FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "single weathered-cap diagnosis of repeated transition reflections",
+  "generator_path": "scripts/generate_formal06f_single_cap_transition_development.py",
+  "generator_sha256": "b05ddb1638b8ad53e39d45ff9ba39ac546bf6f24114cb7cf7b5ca3818b12111a",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": true,
+  "training_block_reason": "qualitative mechanism was selected after held-out morphology diagnosis; requires complete staged runtime and independent formal regeneration",
+  "parameter_provenance": "bounded custom materials and generic seeded profiles; no measured file is read, but the mechanism choice is development-only",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 32,
+    "transition_levels": 1,
+    "profile_seed": 2026072211,
+    "field_seed": 2026072212
+  },
+  "source": {
+    "case_id": "FORMAL04_SHARED_GABOR80",
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "reference_delay_ns": 50.0,
+    "custom_sigma_ns": 11.5,
+    "locked_from_formal03_source_ablation": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 4.3943970041879595e-25,
+      "peak_frequency_hz": 79377194.32147762,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "ablation": {
+    "predecessor_case_id": "FORMAL06D_INDEPENDENT_MECHANISM_DEVELOPMENT",
+    "locked": [
+      "FORMAL06D generic profile and cover-field seeds",
+      "FORMAL06D cover covariance and material endpoints",
+      "80 MHz zero-mean Gabor waveform and reference delay",
+      "0.03 m grid, 256 native traces, 0.09 m trace spacing, PML and domain",
+      "flat ground, 8.01 m flight height, and Tx/Rx separation",
+      "basal depth family, transition-thickness geometry and cap-to-bedrock endpoint",
+      "strict full/no-basal shared indexed geometry and local-cover control mapping"
+    ],
+    "changed": [
+      "weathered transition material mapping: eight graded stages to one full-contrast cap"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 12.373135065434804
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_array_sha256": "2f8a0f7e5b2fd590bcc68c113e3f06eaa1b8521e2c3d087c739b858777e0735e",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "description": "FORMAL06D cover and basal geometry with one variable-thickness, full-contrast weathered cap rather than an eight-stage transition stack",
+    "bulk_field_statistics": {
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.019796744574290485,
+      "vertical_neighbor_bin_change_rate": 0.04294903894302993,
+      "horizontal_latent_step_p95": 0.007785291597247099,
+      "vertical_latent_step_p95": 0.016656935214996338,
+      "latent_min": -2.5,
+      "latent_median": 0.015196556225419044,
+      "latent_max": 2.5,
+      "correlation_design_m": {
+        "long_x": 6.7,
+        "long_y": 3.0,
+        "meso_x": 1.8,
+        "meso_y": 0.96
+      }
+    },
+    "crop_shape_gate": {
+      "min_m": 12.852036616500037,
+      "median_m": 13.164843711168338,
+      "max_m": 13.984333868268779,
+      "range_m": 1.1322972517687422,
+      "smoothed_extrema_count": 4,
+      "quadratic_fit_r2": 0.9420293253878299,
+      "abs_slope_p95": 0.16502724748557396,
+      "accepted_seed": 2026072211,
+      "attempt": 0
+    }
+  },
+  "materials": {
+    "cover_epsilon_min": 12.0,
+    "cover_epsilon_max": 12.8,
+    "cover_conductivity_min_s_per_m": 0.0018,
+    "cover_conductivity_max_s_per_m": 0.0025,
+    "weathered_cap_epsilon_r": 13.0,
+    "weathered_cap_conductivity_s_per_m": 0.0026,
+    "bedrock_epsilon_r": 12.55,
+    "bedrock_conductivity_s_per_m": 0.00225,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18,
+    "cover_bins": 32,
+    "weathered_cap_levels": 1,
+    "maximum_physical_epsilon_step": 0.9875000000000007,
+    "maximum_physical_conductivity_step_s_per_m": 0.0007890624999999998,
+    "full_material_count": 96,
+    "basal_reflection_proxy": -0.008806945264739722
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_cap_and_bedrock_to_each_local_cover_bin": true,
+    "full_materials_sha256": "cc236eca6e8b17c25f75de3f3d7052aaadbbe6e8f45e5970664e37203622d314",
+    "control_materials_sha256": "7c693994892a7e36d59db36e8a88b61a8f68b47025e4a0e008d89b32518b8490"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 406.44378662109375,
+      "median": 415.26220703125,
+      "max": 433.7868957519531
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus source delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a complete signed runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true,
+    "full_scene_target_to_local_background_rms_review_above": 5.0
+  },
+  "next_gate": "static, geometry, attenuation, then one-trace full/control smoke",
+  "development_scope": {
+    "line9_conditioned": true,
+    "conditioning_scope": "mechanism diagnosis only",
+    "strict_line9_holdout_allowed": false,
+    "formal_training_allowed": false
+  },
+  "transition_diagnosis": {
+    "predecessor_transition_levels": 8,
+    "candidate_transition_levels": 1,
+    "candidate_cap_blend": 1.0,
+    "hypothesis": "the predecessor's native-spacing parallel packet is dominated by repeated dielectric transition boundaries"
+  }
+}

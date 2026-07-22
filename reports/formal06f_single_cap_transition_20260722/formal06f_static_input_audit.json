@@ -1,0 +1,759 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      179.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 6.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 179.73,
+        "cells": 5991,
+        "realised_m": 179.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 78.3,
+        "cells": 2610,
+        "realised_m": 78.3,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 78.48,
+        "cells": 2616,
+        "realised_m": 78.48,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {},
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt",
+        "material_count": 96,
+        "shape": [
+          5991,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 95,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 12.0125,
+        "conductivity": 0.0018109375,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0375,
+        "conductivity": 0.0018328125,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0625,
+        "conductivity": 0.0018546875,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0875,
+        "conductivity": 0.0018765625,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1125,
+        "conductivity": 0.0018984375,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1375,
+        "conductivity": 0.0019203125,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1625,
+        "conductivity": 0.0019421875,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1875,
+        "conductivity": 0.0019640625,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2125,
+        "conductivity": 0.0019859375,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2375,
+        "conductivity": 0.0020078125,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2625,
+        "conductivity": 0.0020296875,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2875,
+        "conductivity": 0.0020515625,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3125,
+        "conductivity": 0.0020734375,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3375,
+        "conductivity": 0.0020953125,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3625,
+        "conductivity": 0.0021171875,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3875,
+        "conductivity": 0.0021390625,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4125,
+        "conductivity": 0.0021609375,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4375,
+        "conductivity": 0.0021828125,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4625,
+        "conductivity": 0.0022046875,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4875,
+        "conductivity": 0.0022265625,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5125,
+        "conductivity": 0.0022484375,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5375,
+        "conductivity": 0.0022703125,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5625,
+        "conductivity": 0.0022921875,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5875,
+        "conductivity": 0.0023140625,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6125,
+        "conductivity": 0.0023359375,
+        "id": "cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6375,
+        "conductivity": 0.0023578125,
+        "id": "cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6625,
+        "conductivity": 0.0023796875,
+        "id": "cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6875,
+        "conductivity": 0.0024015625,
+        "id": "cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7125,
+        "conductivity": 0.0024234375,
+        "id": "cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7375,
+        "conductivity": 0.0024453125,
+        "id": "cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7625,
+        "conductivity": 0.0024671875,
+        "id": "cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.7875,
+        "conductivity": 0.0024890625,
+        "id": "cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 13.0,
+        "conductivity": 0.0026,
+        "id": "weathered_cap_cover_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.55,
+        "conductivity": 0.00225,
+        "id": "bedrock_cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\FORMAL06F_SINGLE_CAP_TRANSITION_DEVELOPMENT\\materials_full.txt"
+      }
+    ],
+    "command_count": 12
+  }
+}
