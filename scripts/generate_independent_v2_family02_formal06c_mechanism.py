@@ -183,10 +183,13 @@ def _write_case(
     physical_rows = full_rows if target_presence else control_rows
     f01.write_materials(case_dir / "materials_full.txt", physical_rows)
     waveform_stats = formal03.write_custom_waveform(case_dir / "source_waveform.txt", SOURCE, spec)
-    (case_dir / "full_scene.in").write_text(
-        input_text(spec, f"{case['case_id']} full", "materials_full.txt"), encoding="ascii"
+    f01.write_canonical_text(
+        case_dir / "full_scene.in",
+        input_text(spec, f"{case['case_id']} full", "materials_full.txt"),
+        encoding="ascii",
     )
-    (case_dir / "geometry_check_full.in").write_text(
+    f01.write_canonical_text(
+        case_dir / "geometry_check_full.in",
         input_text(
             spec,
             f"{case['case_id']} geometry",
@@ -197,11 +200,13 @@ def _write_case(
     )
     if target_presence:
         f01.write_materials(case_dir / "materials_no_basal.txt", control_rows)
-        (case_dir / "no_basal_contrast_control.in").write_text(
+        f01.write_canonical_text(
+            case_dir / "no_basal_contrast_control.in",
             input_text(spec, f"{case['case_id']} no basal", "materials_no_basal.txt"),
             encoding="ascii",
         )
-        (case_dir / "geometry_check_control.in").write_text(
+        f01.write_canonical_text(
+            case_dir / "geometry_check_control.in",
             input_text(
                 spec,
                 f"{case['case_id']} control geometry",
@@ -210,8 +215,10 @@ def _write_case(
             ),
             encoding="ascii",
         )
-    (case_dir / "air_reference.in").write_text(
-        input_text(spec, f"{case['case_id']} air", None), encoding="ascii"
+    f01.write_canonical_text(
+        case_dir / "air_reference.in",
+        input_text(spec, f"{case['case_id']} air", None),
+        encoding="ascii",
     )
 
     np.save(labels_dir / "target_presence.npy", np.asarray(target_presence, dtype=np.bool_))
@@ -319,10 +326,13 @@ def _write_case(
         manifest["materials"]["no_basal_materials_sha256"] = f01.sha256(
             case_dir / "materials_no_basal.txt"
         )
-    (case_dir / "scene_manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
+    f01.write_canonical_text(
+        case_dir / "scene_manifest.json",
+        json.dumps(manifest, ensure_ascii=True, indent=2) + "\n",
+        encoding="utf-8",
     )
-    (case_dir / "RUN_COMMANDS.md").write_text(
+    f01.write_canonical_text(
+        case_dir / "RUN_COMMANDS.md",
         "# Runtime commands\n\n"
         "Run through `scripts/run_native_256_release_pilot.py`; never execute or overwrite this source deck in place.\n",
         encoding="utf-8",
@@ -451,8 +461,10 @@ def generate_family(
         "preview": preview_path.name,
         "next_gate": "static, geometry-only and one-trace runtime audit; no training export",
     }
-    (family_dir / "family_manifest.json").write_text(
-        json.dumps(family_manifest, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
+    f01.write_canonical_text(
+        family_dir / "family_manifest.json",
+        json.dumps(family_manifest, ensure_ascii=True, indent=2) + "\n",
+        encoding="utf-8",
     )
     f01.write_checksums(family_dir)
     return family_manifest

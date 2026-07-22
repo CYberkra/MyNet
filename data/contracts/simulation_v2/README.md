@@ -26,6 +26,12 @@ full-scene blind morphology review. It remains blocked from training until all
 native 256-trace required runs, immutable evidence packaging, and independent
 human release approval are complete.
 
+`independent_v2_family01_r2_pilot.json` is a separate, pre-solver provenance
+rebuild. It retains the original generic physics and seeds but writes every
+hash-protected text artifact with canonical LF serialization. It never
+overwrites the historical Family 01 assets, which remain audit-blocked until
+their recorded/raw hash mismatch is resolved as historical evidence.
+
 `legacy_quarantine.csv` 冻结旧合同中的全部仿真 case；这些 case 可保留作开发回归、smoke 或压力测试，但不能被 V2 exporter 晋级。
 
 旧 V1 case 的唯一去重、标签 override 与 trace-level ignore/weak 状态由
