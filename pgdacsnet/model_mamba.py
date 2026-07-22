@@ -189,7 +189,10 @@ class SelectiveSSMCUDA(nn.Module):
             in_channels=self.d_inner,
             out_channels=self.d_inner,
             kernel_size=d_conv,
-            padding=d_conv - 1,
+            # Causal left-padding is applied explicitly in ``forward``.  Do
+            # not also request Conv1d padding or its output becomes longer
+            # than the gate sequence.
+            padding=0,
             groups=self.d_inner,
             bias=True,
         )
@@ -222,6 +225,10 @@ class SelectiveSSMCUDA(nn.Module):
         # 2. Depthwise conv1d (causal)
         x_pad = F.pad(x_res, (self.d_conv - 1, 0))
         x_conv = self.conv1d(x_pad)
+        if x_conv.shape[-1] != L:
+            raise RuntimeError(
+                f"causal convolution changed sequence length: expected {L}, got {x_conv.shape[-1]}"
+            )
 
         # 3. Discretisation: delta, A, B, C
         dt_params = self.dt_proj(x_conv.transpose(1, 2))   # (B, L, d_inner + d_state)

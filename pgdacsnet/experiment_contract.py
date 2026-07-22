@@ -97,6 +97,12 @@ def validate_experiment_config(
     val = _normalise_lines(cfg.get("val_lines"))
     test = _normalise_lines(cfg.get("test_lines"))
     review = _normalise_lines(cfg.get("review_lines"))
+    # Preserve the declared spellings for audit output, but perform every
+    # membership and split-overlap check on canonical IDs.  Otherwise aliases
+    # such as ``line-9`` and ``Line9`` can bypass the holdout contract.
+    train_norm = {_normalise_line(value) for value in train}
+    val_norm = {_normalise_line(value) for value in val}
+    test_norm = {_normalise_line(value) for value in test}
 
     if cfg.get("enabled") is False:
         errors.append("configuration is explicitly disabled by the audit freeze")
@@ -117,29 +123,31 @@ def validate_experiment_config(
     if misplaced:
         errors.append(f"review-only lines appear in train/val/test: {sorted(misplaced)}")
 
-    if train & test:
-        errors.append(f"train/test line overlap: {sorted(train & test)}")
+    if train_norm & test_norm:
+        errors.append(f"train/test line overlap: {sorted(train_norm & test_norm)}")
     if run_type in FORMAL_RUN_TYPES:
         if not val:
             errors.append(f"val_lines is empty for formal run_type={run_type}")
-        if val & test:
-            errors.append(f"validation/test line overlap: {sorted(val & test)}")
-        if train & val:
-            errors.append(f"train/validation line overlap: {sorted(train & val)}")
+        if val_norm & test_norm:
+            errors.append(f"validation/test line overlap: {sorted(val_norm & test_norm)}")
+        if train_norm & val_norm:
+            errors.append(f"train/validation line overlap: {sorted(train_norm & val_norm)}")
     elif not val and run_type not in NO_VALIDATION_RUN_TYPES and not bool(cfg.get("allow_train_loss_monitor", False)):
         warnings.append("val_lines is empty; best checkpoint would monitor train loss")
 
     if split_policy:
         allowed_main = _normalise_lines(split_policy.get("main_measured_lines"))
+        declared_norm = {_normalise_line(value) for value in allowed_main | review_only_values}
         measured = {line for line in train | val | test if _normalise_line(line).startswith("line")}
-        unknown = measured - allowed_main - review_only_values
+        unknown = {line for line in measured if _normalise_line(line) not in declared_norm}
         if unknown:
             errors.append(f"lines are not declared by paper split policy: {sorted(unknown)}")
         inner = split_policy.get("inner_validation_by_holdout") or {}
-        if run_type in FORMAL_RUN_TYPES and len(test) == 1:
-            heldout = next(iter(test))
-            expected = inner.get(heldout)
-            if expected and val != {str(expected)}:
+        if run_type in FORMAL_RUN_TYPES and len(test_norm) == 1:
+            heldout = next(iter(test_norm))
+            inner_norm = {_normalise_line(key): _normalise_line(value) for key, value in inner.items()}
+            expected = inner_norm.get(heldout)
+            if expected and val_norm != {expected}:
                 errors.append(
                     f"formal holdout {heldout} must use inner validation line {expected} according to {split_policy_path}"
                 )
@@ -231,11 +239,58 @@ def validate_experiment_config(
 
 
 def resolve_window_npz(root: Path, row: dict[str, str]) -> Path:
+    root = Path(root).resolve()
     relative = str(row.get("path") or row.get("npz_path") or row.get("file") or "").strip()
     if relative:
         path = Path(relative)
-        return path if path.is_absolute() else root / path
-    return root / "windows" / f"{row['sample_id']}.npz"
+        candidate = path if path.is_absolute() else root / path
+    else:
+        candidate = root / "windows" / f"{row['sample_id']}.npz"
+    try:
+        candidate.resolve().relative_to(root)
+    except ValueError as exc:
+        raise ContractError(
+            f"window NPZ path escapes dataset root: {candidate} (root={root})"
+        ) from exc
+    return candidate
+
+
+def _validate_window_npz(path: Path, sample_id: str) -> None:
+    """Verify the minimum on-disk contract before a training loader sees it."""
+    required = {"x_raw", "y_mask", "status_code", "label_weight"}
+    try:
+        with np.load(path, allow_pickle=False) as archive:
+            missing = required - set(archive.files)
+            if missing:
+                raise ContractError(
+                    f"window NPZ for {sample_id} is missing arrays {sorted(missing)}: {path}"
+                )
+            x_raw = np.asarray(archive["x_raw"])
+            y_mask = np.asarray(archive["y_mask"])
+            status = np.asarray(archive["status_code"])
+            weight = np.asarray(archive["label_weight"])
+            if x_raw.ndim != 2 or y_mask.shape != x_raw.shape:
+                raise ContractError(
+                    f"window NPZ x_raw/y_mask shapes are incompatible for {sample_id}: "
+                    f"{tuple(x_raw.shape)} vs {tuple(y_mask.shape)}"
+                )
+            if status.shape != (x_raw.shape[1],) or weight.shape != (x_raw.shape[1],):
+                raise ContractError(f"window NPZ trace metadata shapes are incompatible for {sample_id}: {path}")
+            numeric = {"x_raw": x_raw, "y_mask": y_mask, "label_weight": weight}
+            if "ignore_mask" in archive.files:
+                ignore_mask = np.asarray(archive["ignore_mask"])
+                if ignore_mask.shape != x_raw.shape:
+                    raise ContractError(f"window NPZ ignore_mask shape is incompatible for {sample_id}: {path}")
+                numeric["ignore_mask"] = ignore_mask
+            for name, values in numeric.items():
+                if not np.issubdtype(values.dtype, np.number) or not np.isfinite(values).all():
+                    raise ContractError(f"window NPZ {name} contains non-numeric or non-finite values for {sample_id}: {path}")
+            if not np.issubdtype(status.dtype, np.integer) or not np.isin(status, (0, 1, 2)).all():
+                raise ContractError(f"window NPZ status_code must be integer values 0, 1, or 2 for {sample_id}: {path}")
+    except ContractError:
+        raise
+    except Exception as exc:
+        raise ContractError(f"failed to read window NPZ for {sample_id}: {path}: {exc}") from exc
 
 
 def inspect_window_dataset(
@@ -289,10 +344,14 @@ def inspect_window_dataset(
             raise ContractError(f"invalid trace range for {sample_id}: start={row.get('start')} end={row.get('end')}") from exc
         sample_ids.append(sample_id)
         lines.add(line)
-        if require_windows and not resolve_window_npz(root, row).is_file():
-            missing_npz.append(sample_id)
-            if len(missing_npz) >= 20:
-                break
+        if require_windows:
+            path = resolve_window_npz(root, row)
+            if not path.is_file():
+                missing_npz.append(sample_id)
+                if len(missing_npz) >= 20:
+                    break
+            else:
+                _validate_window_npz(path, sample_id)
     if missing_npz:
         raise ContractError(f"window_index.csv references missing NPZ files: {missing_npz}")
 
@@ -366,6 +425,11 @@ def load_dataset_usage_policy(root: Path) -> dict[str, Any] | None:
 
 def enforce_simulation_holdout_policy(cfg: dict[str, Any], sim_root: Path) -> dict[str, Any] | None:
     policy = load_dataset_usage_policy(sim_root)
+    if policy is None:
+        raise ContractError(
+            f"simulation dataset has no explicit training-use policy: {sim_root}; "
+            "refusing to train without dataset_policy.json or DATA_USAGE_POLICY.json"
+        )
     tests = _normalised_line_set(cfg.get("test_lines"))
     run_type = str(cfg.get("run_type", "")).strip().lower()
     conditioned = _normalised_line_set((policy or {}).get("conditioned_on_lines"))
@@ -378,7 +442,7 @@ def enforce_simulation_holdout_policy(cfg: dict[str, Any], sim_root: Path) -> di
         raise ContractError(
             f"simulation dataset {sim_root} is conditioned on formal test line(s) {sorted(overlap)}"
         )
-    allowed = (policy or {}).get("training_allowed", (policy or {}).get("train_allowed", True))
-    if allowed is False:
+    allowed = policy.get("training_allowed", policy.get("train_allowed", False))
+    if allowed is not True:
         raise ContractError(f"simulation dataset policy forbids training use: {sim_root}")
     return policy

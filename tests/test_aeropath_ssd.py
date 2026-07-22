@@ -288,6 +288,36 @@ def test_aeropath_smoothness_uses_physical_trace_spacing():
     assert physical_gap["path_smooth"] < uniform["path_smooth"] * 0.5
 
 
+def test_aeropath_position_losses_condition_on_non_null_path_mass():
+    # A NULL probability must affect abstention supervision, not shrink a
+    # correctly localized physical path toward time zero.
+    path = torch.zeros(1, 1, 5, 1)
+    path[0, 0, 4, 0] = 0.25
+    target = torch.zeros_like(path)
+    target[0, 0, 4, 0] = 1.0
+    output = SimpleNamespace(
+        path_marginals=path,
+        uncertainty_logits=torch.zeros_like(path),
+        null_marginals=torch.tensor([[[0.75]]]),
+        path_start_prob=None,
+        path_end_prob=None,
+        no_pick_logits=torch.zeros(1, 1),
+    )
+    batch = {
+        "y": target,
+        "valid_pix": torch.ones_like(target),
+        "weight": torch.ones(1, 1),
+        "presence": torch.ones(1, 1),
+        "presence_valid": torch.ones(1, 1),
+        "trace_state": torch.ones(1, 1, dtype=torch.long),
+        "valid_trace_mask": torch.ones(1, 1),
+        "ignore_mask": torch.zeros_like(target),
+    }
+    losses = structured_path_losses(output, batch, {})
+    assert losses["path_center_l1"].item() == pytest.approx(0.0)
+    assert losses["path_uncertainty_nll"].item() == pytest.approx(0.0)
+
+
 def test_no_pick_skips_windows_with_invalid_trace_padding():
     path = torch.full((1, 1, 5, 4), 0.2)
     output = SimpleNamespace(
