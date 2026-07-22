@@ -21,3 +21,23 @@
 - 历史 V1 与 Batch 3 已由归档分支保存，不再进入当前合同。
 
 V15 最终标签发布完成不等于正式训练放行。只有 `dataset_manifest.json` 明确设置 `formal_training_allowed=true` 且 `python scripts/validate_project_contracts.py --require-formal-ready` 通过后才允许启动正式训练。
+
+## 真负样本审计
+
+`status_code=0` 是唯一可进入实测真负样本人工复核的起点。弱标签、无标签、交叉区 ignore、低信噪比和失败正样本均不代表“没有基覆界面”，不得自动转换为负类。
+
+对任何候选发布先运行：
+
+```powershell
+python scripts\audit_real_negative_candidates.py `
+  --data-root <checksum-verified-v15-release> `
+  --output-dir reports\<task_id>\real_negative_audit
+```
+
+该命令只生成候选与阻断结论，不修改 V15，也不会放行训练。只有地质人员确认候选窗口确实不含目标界面、生成新的版本化发布和 manifest 后，才可更新正式训练门。
+
+2026-07-22 checksum-verified V15 audit result: all six canonical lines contain
+zero explicit `status_code=0` traces. The 310 zero-weight regions are V15
+ignore intervals on Line3, Line6, and LineX1, so they remain ineligible for
+negative supervision. The real-negative blocker is therefore a data fact, not
+a configuration issue.
