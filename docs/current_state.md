@@ -1,4 +1,9 @@
-# PGDA-CSNet Current State (2026-07-16)
+# PGDA-CSNet Current State
+
+> Last reviewed: 2026-07-22. This is a human-readable index, not the source
+> of machine facts. Dataset manifests, committed configuration, and validation
+> output remain authoritative. Regenerate or update this file whenever a
+> release gate, active architecture, dataset version, or formal split changes.
 
 ## Active research line
 
@@ -7,6 +12,11 @@ per-trace acquisition conditioning, bidirectional axial sequence mixing, and a
 structured interface-path objective with physical, NULL, start, and end
 states. The official Mamba-2 path has an explicit `headdim` contract; the
 formal config uses `headdim=16`.
+
+Training-safety and AeroPath numerical guards are merged on `master` through
+commit `dd6754b`, with the current hardware-evidence preflight at `265ee81`.
+The regular CPU CI validates these guards; the official-Mamba2 GPU smoke stays
+a separate self-hosted workflow.
 
 GprMambaSep/Route-2 and the ConvNeXt curve model are frozen comparison
 baselines. A/S/G decomposition is not established as a physical separation.
