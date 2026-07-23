@@ -1,0 +1,306 @@
+{
+  "contract_id": "PGDA_SIMULATION_CONTRACT_V2",
+  "family_id": "FORMAL10A_MULTISCALE_HETEROGENEOUS_COVER_DEVELOPMENT",
+  "case_id": "FORMAL10A_MULTISCALE_HETEROGENEOUS_COVER_DEVELOPMENT",
+  "lifecycle_state": "pre_solver_review",
+  "purpose": "multiscale heterogeneous cover development with five-scale texture and explicit lateral discontinuities; informed by failure-mode analysis",
+  "generator_path": "scripts/generate_formal10a_multiscale_heterogeneous_cover.py",
+  "generator_sha256": "6cfbd81e8fa4f5c7a89d0fd066def1166012964b4cc55eae7963ef7baed32e85",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "strict_line9_holdout_allowed": false,
+  "line9_conditioned": true,
+  "training_block_reason": "qualitative mechanism was selected after held-out morphology diagnosis; requires complete staged runtime and independent formal regeneration",
+  "parameter_provenance": "bounded custom materials and generic seeded profiles; no measured file is read, but the mechanism choice is development-only",
+  "terrain_stage": "flat ground and fixed height",
+  "spec": {
+    "domain_x_m": 179.73,
+    "domain_y_m": 48.0,
+    "dl_m": 0.03,
+    "pml_cells": 60,
+    "physical_side_guard_m": 76.5,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "scan_start_x_m": 78.3,
+    "tx_rx_offset_m": 0.18,
+    "ground_y_m": 28.5,
+    "source_y_m": 36.51,
+    "solver_time_window_s": 6.5e-07,
+    "protected_window_end_ns": 500.0,
+    "cover_bins": 48,
+    "transition_levels": 8,
+    "profile_seed": 2026071517,
+    "field_seed": 2026072321
+  },
+  "source": {
+    "case_id": "FORMAL04_SHARED_GABOR80",
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "reference_delay_ns": 50.0,
+    "custom_sigma_ns": 11.5,
+    "locked_from_formal03_source_ablation": true,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "custom_waveform_statistics": {
+      "sample_interval_ns": 0.10000000000000002,
+      "discrete_time_integral": 4.3943970041879595e-25,
+      "peak_frequency_hz": 79377194.32147762,
+      "maximum_absolute_amplitude": 1.0
+    }
+  },
+  "ablation": {
+    "predecessor_case_id": "FORMAL08A_LINE9_REALISM_BACKGROUND_DEVELOPMENT",
+    "locked": [
+      "source waveform",
+      "grid and PML",
+      "acquisition and flight height",
+      "basal path family and transition-thickness family"
+    ],
+    "changed": [
+      "five-scale depth-tapered aperiodic cover texture",
+      "explicit lateral erosional breaks",
+      "wider epsilon span (11-14) for stronger internal reflections",
+      "deeper active texture zone (0.5-14m)"
+    ]
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "nx_ny_nz": [
+      5991,
+      1600,
+      1
+    ],
+    "pml_thickness_m": 1.7999999999999998,
+    "left_physical_guard_m": 76.5,
+    "right_physical_guard_m": 76.49999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 510.35306565317245,
+    "protected_window_end_ns": 500.0,
+    "solver_window_end_ns": 650.0,
+    "cells_per_min_wavelength_at_2_8fc": 11.936380581577911
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "shared_index_array_sha256": "bcfe5755653585a7b89730bfa4f6cc490b25ccb9bb008107ff5dc3f2c56da888",
+    "index_shape": [
+      5991,
+      1600,
+      1
+    ],
+    "flat_ground": true,
+    "terrain_stage": "flat ground and fixed height",
+    "fixed_source_elevation_m": 36.51,
+    "flight_height_agl_m": {
+      "min": 8.009999999999998,
+      "median": 8.009999999999998,
+      "max": 8.009999999999998
+    },
+    "discrete_anomaly_bodies": 0,
+    "description": "FORMAL08A-locked basal morphology plus five-scale depth-tapered continuous non-target cover texture with random lateral breaks; no slabs or discrete bodies",
+    "bulk_field_statistics": {
+      "model": "formal06c_plus_depth_tapered_five_scale_aperiodic_cover_with_breaks",
+      "predecessor_model": "FORMAL06C smooth weak two-dimensional bulk field",
+      "active_depth_m": {
+        "surface_zero_end": 0.5,
+        "surface_full_start": 1.5,
+        "deep_full_end": 12.0,
+        "deep_zero_start": 14.0
+      },
+      "texture_components": [
+        {
+          "name": "ultra_broad_trend",
+          "weight": 0.15,
+          "correlation_xy_m": [
+            12.0,
+            4.0
+          ],
+          "smoothing_sigma": [
+            3.0,
+            2.8
+          ]
+        },
+        {
+          "name": "broad_regional",
+          "weight": 0.2,
+          "correlation_xy_m": [
+            6.0,
+            2.5
+          ],
+          "smoothing_sigma": [
+            2.8,
+            2.5
+          ]
+        },
+        {
+          "name": "meso_layering",
+          "weight": 0.22,
+          "correlation_xy_m": [
+            2.2,
+            0.9
+          ],
+          "smoothing_sigma": [
+            2.2,
+            2.0
+          ]
+        },
+        {
+          "name": "fine_detail",
+          "weight": 0.15,
+          "correlation_xy_m": [
+            0.8,
+            0.35
+          ],
+          "smoothing_sigma": [
+            1.8,
+            1.8
+          ]
+        },
+        {
+          "name": "micro_noise",
+          "weight": 0.08,
+          "correlation_xy_m": [
+            0.3,
+            0.15
+          ],
+          "smoothing_sigma": [
+            1.5,
+            1.5
+          ]
+        }
+      ],
+      "lateral_break_params": {
+        "break_probability_per_layer": 0.25,
+        "min_break_width_m": 2.0,
+        "max_break_width_m": 8.0,
+        "break_count_range": [
+          3,
+          10
+        ]
+      },
+      "used_bins": 48,
+      "horizontal_neighbor_bin_change_rate": 0.037121765442404,
+      "vertical_neighbor_bin_change_rate": 0.07726599279782713,
+      "horizontal_latent_step_p95": 0.009828805923461914,
+      "vertical_latent_step_p95": 0.02023029327392578,
+      "latent_min": -2.5,
+      "latent_median": 0.07155650854110718,
+      "latent_max": 2.5,
+      "predecessor_statistics": {
+        "used_bins": 48,
+        "horizontal_neighbor_bin_change_rate": 0.033501669449081804,
+        "vertical_neighbor_bin_change_rate": 0.06902619929477288,
+        "horizontal_latent_step_p95": 0.008747398853302002,
+        "vertical_latent_step_p95": 0.01780867576599121,
+        "latent_min": -2.5,
+        "latent_median": 0.08500850200653076,
+        "latent_max": 2.5,
+        "correlation_design_m": {
+          "long_x": 6.7,
+          "long_y": 3.0,
+          "meso_x": 1.8,
+          "meso_y": 0.96
+        }
+      },
+      "predecessor_latent_correlation": 0.9525247629833212,
+      "perturbation_rms": 0.24050642259151128,
+      "changed_cover_bin_fraction": 0.2208004715406443,
+      "cover_bin_delta_p99": 7.0,
+      "protected_surface_and_basal_bins_exact": true,
+      "baseline_cover_texture_metrics": {
+        "laterally_coherent_depth_variance_ratio": 0.0283171216413868,
+        "vertical_spectral_peak_fraction": 0.6964252242754916
+      },
+      "candidate_cover_texture_metrics": {
+        "laterally_coherent_depth_variance_ratio": 0.061471348508695456,
+        "vertical_spectral_peak_fraction": 0.6191299157466642
+      },
+      "gates": {
+        "predecessor_latent_correlation_min": 0.85,
+        "perturbation_rms_min": 0.2,
+        "perturbation_rms_max": 0.5,
+        "laterally_coherent_depth_variance_ratio_max": 0.65,
+        "vertical_spectral_peak_fraction_max": 0.97,
+        "bin_delta_p99_max": 8.0,
+        "protected_surface_and_basal_bins_exact": true
+      },
+      "gate_results": {
+        "predecessor_latent_correlation": true,
+        "perturbation_rms": true,
+        "coherent_depth_variance": true,
+        "vertical_spectral_peak": true,
+        "bin_delta_p99": true,
+        "protected_surface_and_basal_bins_exact": true
+      },
+      "sinusoidal_stratigraphy": false,
+      "isolated_inclusions": 0,
+      "point_targets": 0,
+      "vertical_partitions": 0
+    },
+    "crop_shape_gate": {
+      "min_m": 12.355183847483342,
+      "median_m": 13.27269848753622,
+      "max_m": 13.82939496684314,
+      "range_m": 1.474211119359797,
+      "smoothed_extrema_count": 2,
+      "quadratic_fit_r2": 0.9748824225012314,
+      "abs_slope_p95": 0.15205959593171198,
+      "accepted_seed": 2026071525,
+      "attempt": 8
+    }
+  },
+  "materials": {
+    "cover_epsilon_min": 11.0,
+    "cover_epsilon_max": 14.0,
+    "cover_conductivity_min_s_per_m": 0.0015,
+    "cover_conductivity_max_s_per_m": 0.003,
+    "weathered_cap_epsilon_r": 12.5,
+    "weathered_cap_conductivity_s_per_m": 0.0025,
+    "bedrock_epsilon_r": 10.0,
+    "bedrock_conductivity_s_per_m": 0.0018,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18,
+    "cover_bins": 48,
+    "weathered_cap_levels": 8,
+    "maximum_physical_epsilon_step": 2.5164947509765625,
+    "maximum_physical_conductivity_step_s_per_m": 0.0007054397583007815,
+    "full_material_count": 480,
+    "basal_reflection_proxy": -0.055728090000841196
+  },
+  "strict_pair": {
+    "shared_geometry_hdf5": true,
+    "control_restores_cap_and_bedrock_to_each_local_cover_bin": true,
+    "full_materials_sha256": "415833cf5e34a13766476d6b5d5ae292a9ac769c9e8bdc4039b5e561e490596e",
+    "control_materials_sha256": "20d4ebdaca01a9a95e46c88e02d6beacafff227cc12fde91535af3ec64ca07c7"
+  },
+  "reference_statistics": {
+    "source_referenced_arrival_time_ns": {
+      "min": 381.7865295410156,
+      "median": 409.8255920410156,
+      "max": 427.62628173828125
+    }
+  },
+  "labels": {
+    "geometric_reference": "material-interface estimate only",
+    "source_referenced_arrival": "geometric estimate plus source delay; not a visible-phase label",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase": "absent until a complete signed runtime pair is reviewed",
+    "training_allowed": false
+  },
+  "visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_local_background_rms_max": 5.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true
+  },
+  "next_gate": "static, geometry, attenuation, then one-trace full/control smoke"
+}

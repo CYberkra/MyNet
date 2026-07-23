@@ -1,0 +1,47 @@
+{
+  "family_id": "FORMAL10A_MULTISCALE_HETEROGENEOUS_COVER_DEVELOPMENT",
+  "case_id": "FORMAL10A_MULTISCALE_HETEROGENEOUS_COVER_DEVELOPMENT",
+  "formal_training_allowed": false,
+  "line9_conditioned": true,
+  "development_only": true,
+  "locked_source": {
+    "kind": "gaussian_modulated_zero_mean",
+    "center_frequency_hz": 80000000.0,
+    "waveform_id": "formal04_shared_gabor80",
+    "custom_waveform_sha256": "c26eb393c15a7eaa6fa7043c8f010c85b1f16fbedb437c4c3a9c1c034d5c3a75"
+  },
+  "locked_index_array_sha256": "bcfe5755653585a7b89730bfa4f6cc490b25ccb9bb008107ff5dc3f2c56da888",
+  "material_design": {
+    "cover_epsilon_min": 11.0,
+    "cover_epsilon_max": 14.0,
+    "cover_conductivity_min_s_per_m": 0.0015,
+    "cover_conductivity_max_s_per_m": 0.003,
+    "weathered_cap_epsilon_r": 12.5,
+    "weathered_cap_conductivity_s_per_m": 0.0025,
+    "bedrock_epsilon_r": 10.0,
+    "bedrock_conductivity_s_per_m": 0.0018,
+    "bulk_long_x_scale_m": 6.7,
+    "bulk_long_y_scale_m": 3.0,
+    "bulk_meso_x_scale_m": 1.8,
+    "bulk_meso_y_scale_m": 0.96,
+    "bulk_meso_weight": 0.18
+  },
+  "release_order": [
+    "static_geometry_attenuation",
+    "one_trace_strict_pair",
+    "blind_local_8_trace_full_scene",
+    "distributed_span_32_trace_full_scene_only_after_blind_pass",
+    "distributed_span_32_trace_strict_pair_only_after_morphology_pass",
+    "dense_full_256_trace_pair_only_after_sparse_pair_pass"
+  ],
+  "full_scene_visibility_gate": {
+    "full_scene_target_to_local_background_rms_min": 1.0,
+    "full_scene_target_to_local_background_rms_max": 5.0,
+    "full_scene_target_to_background_rms_min": 0.35,
+    "raw_target_to_early_rms": "diagnostic_only_cross_domain_uncalibrated",
+    "difference_only_visibility_is_sufficient": false,
+    "requires_shared_full_window_display": true,
+    "requires_human_visible_multicycle_interface": true,
+    "requires_blind_review_before_label_overlay": true
+  }
+}
