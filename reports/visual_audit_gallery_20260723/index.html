@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>仿真数据集视觉审计图库 2026-07-23</title>
+    <style>
+        body { font-family: "Segoe UI", Arial, sans-serif; margin: 20px 40px; background: #f5f5f5; }
+        h1 { color: #1a1a1a; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { color: #333; margin-top: 40px; padding: 8px 12px; background: #e0e0e0; border-radius: 4px; }
+        h3 { color: #555; margin-top: 25px; }
+        .gallery-section { margin-bottom: 50px; }
+        .image-card { background: white; border-radius: 8px; padding: 16px; margin: 16px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-card img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+        .image-label { font-size: 14px; color: #666; margin-top: 8px; }
+        .status-pass { color: #2e7d32; font-weight: bold; }
+        .status-reject { color: #c62828; font-weight: bold; }
+        .status-wait { color: #f57c00; font-weight: bold; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        @media (max-width: 1200px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+        .nav { position: sticky; top: 0; background: #f5f5f5; padding: 10px 0; z-index: 100; }
+        .nav a { margin-right: 16px; color: #1565c0; text-decoration: none; }
+        .nav a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>仿真数据集视觉审计图库 2026-07-23</h1>
+    <p>本图库汇集了所有已审计案例的 raw / background-suppressed time-power / AGC 预览图，按案例分组展示。</p>
+
+    <div class="nav">
+        <a href="#baseline">基准</a>
+        <a href="#formal06">FORMAL06系列</a>
+        <a href="#formal07">FORMAL07系列</a>
+        <a href="#formal08">FORMAL08系列</a>
+        <a href="#iv2">IV2独立系列</a>
+        <a href="#formal09">FORMAL09C</a>
+        <a href="#formal02-04">FORMAL02-04</a>
+        <a href="#shape">SHAPE几何</a>
+        <a href="#formal01">FORMAL01</a>
+    </div>
+
+    <div class="gallery-section" id="baseline">
+        <h2>📌 已发布基准: FORMAL06C</h2>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="01_FORMAL06C_baseline_tpower15.png" alt="FORMAL06C baseline">
+                <div class="image-label"><span class="status-pass">✅ 基准质量</span> — distributed32 raw vs tpower15<br>连续多周期波形，背景干净，目标/背景=151</div>
+            </div>
+            <div class="image-card">
+                <img src="01b_FORMAL06C_smoke1_pair.png" alt="FORMAL06C smoke1">
+                <div class="image-label"><span class="status-pass">✅ gate=PASS</span> — 单道因果对审计<br>T/B=151.67, dropout=0%, 多周期波形清晰</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal06">
+        <h2>FORMAL06 接口系列消融（D–H）</h2>
+
+        <h3>FORMAL06D — Independent Mechanism <span class="status-wait">⚠️ pair32 only</span></h3>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="02_FORMAL06D_native64_tpower15.png" alt="FORMAL06D native64">
+                <div class="image-label">native64 tpower15 — 基底存在但形态不如06C锐利，有轻微水平条纹</div>
+            </div>
+            <div class="image-card">
+                <img src="02b_FORMAL06D_pair32_audit.png" alt="FORMAL06D pair32">
+                <div class="image-label"><span class="status-wait">gate=HOLD</span> — pair32因果证据充分，T/B=100.81</div>
+            </div>
+        </div>
+
+        <h3>FORMAL06E — Nonlayered Cover <span class="status-reject">❌ REJECTED</span></h3>
+        <div class="image-card">
+            <img src="04_FORMAL06E_rejected_tpower15.png" alt="FORMAL06E rejected">
+            <div class="image-label"><span class="status-reject">核心缺陷</span>：非层状覆盖产生大量平行叶瓣噪声（水平条纹），基底区域被严重干扰</div>
+        </div>
+
+        <h3>FORMAL06F — Single Cap Transition <span class="status-reject">❌ REJECTED</span></h3>
+        <div class="image-card">
+            <img src="05_FORMAL06F_rejected_tpower15.png" alt="FORMAL06F rejected">
+            <div class="image-label"><span class="status-reject">核心缺陷</span>：单帽过渡导致波形弥散，波列不紧凑</div>
+        </div>
+
+        <h3>FORMAL06G — Terrain Acquisition <span class="status-reject">❌ REJECTED</span></h3>
+        <div class="image-card">
+            <img src="06_FORMAL06G_rejected_tpower15.png" alt="FORMAL06G rejected">
+            <div class="image-label"><span class="status-reject">核心缺陷</span>：地形起伏引入采集路径噪声，单道T/B高但分布视图中S/N下降</div>
+        </div>
+
+        <h3>FORMAL06H — Source Temporal <span class="status-reject">❌ REJECTED</span></h3>
+        <div class="image-card">
+            <img src="07_FORMAL06H_rejected_tpower15.png" alt="FORMAL06H rejected">
+            <div class="image-label"><span class="status-reject">核心缺陷</span>：源波形变化破坏相干性，整个图像有水平条纹，基底反射模糊</div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal07">
+        <h2>FORMAL07 地层系列</h2>
+        <h3>FORMAL07B — Weak Aperiodic Background <span class="status-wait">⚠️ successor only</span></h3>
+        <div class="image-card">
+            <img src="08_FORMAL07B_vs_06C_blind32.png" alt="FORMAL07B vs 06C">
+            <div class="image-label">Blind32 对比：与06C极其相似（相关性0.99994），背景纹理略多但不遮蔽目标。<span class="status-wait">不能进入formal training（Line9-conditioned）</span></div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal08">
+        <h2>FORMAL08 真实感系列 <span class="status-reject">❌ not promoted</span></h2>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="09_FORMAL08A_tpower16.png" alt="FORMAL08A">
+                <div class="image-label"><span class="status-reject">问题</span>：背景比实测Line9更结构化/层状，不真实</div>
+            </div>
+            <div class="image-card">
+                <img src="10_FORMAL08B_tpower16.png" alt="FORMAL08B">
+                <div class="image-label"><span class="status-reject">问题</span>：深背景使目标主导性反而增加，与意图相反</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="iv2">
+        <h2>IV2 独立系列</h2>
+        <h3>IV2_F01 — Gentle Aperiodic <span class="status-wait">⏳ 等待native-256</span></h3>
+        <div class="image-card">
+            <img src="11_IV2_F01_tpower.png" alt="IV2_F01">
+            <div class="image-label"><span class="status-pass">目前最干净的独立先验</span>！基底反射清晰，背景自然，形态接近06C。等待native-256完整对运行。</div>
+        </div>
+
+        <h3>IV2_F02 — Formal06C Mechanism Transfer</h3>
+        <div class="image-card">
+            <img src="03_IV2_F02_tpower15.png" alt="IV2_F02">
+            <div class="image-label">形态与06C非常相似，机制转移验证成功。但继承Line9条件化决策，不能进入formal training。</div>
+        </div>
+
+        <h3>IV2_F03 — Instrument Band <span class="status-wait">⏳ 等待native-256</span></h3>
+        <div class="image-card">
+            <img src="12_IV2_F03_vs_06C_blind.png" alt="IV2_F03 vs 06C">
+            <div class="image-label"><span class="status-reject">形态偏离</span>：硬件频带导致波形过锐（右侧），不像06C的柔和多周期波形。等待完整运行后再评估。</div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal09">
+        <h2>FORMAL09C 有限层系列</h2>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="13_FORMAL09C_P1_tpower.png" alt="FORMAL09C P1">
+                <div class="image-label"><span class="status-wait">P1 Dense</span>：大量水平层状反射干扰基底区域</div>
+            </div>
+            <div class="image-card">
+                <img src="14_FORMAL09C_P2_tpower.png" alt="FORMAL09C P2">
+                <div class="image-label"><span class="status-wait">P2 Sparse</span>：层状反射比P1少，基底较清晰</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal02-04">
+        <h2>FORMAL02-04 早期实验</h2>
+        <h3>FORMAL02 — 分级基岩</h3>
+        <div class="image-card">
+            <img src="15_FORMAL02_tpower15.png" alt="FORMAL02">
+            <div class="image-label"><span class="status-reject">波形弥散</span>：分级基岩过渡区过宽，波形能量分散，缺少紧凑多周期特征</div>
+        </div>
+
+        <h3>FORMAL03 — Gabor80 源消融</h3>
+        <div class="image-card">
+            <img src="16_FORMAL03_Gabor80_tpower.png" alt="FORMAL03 Gabor80">
+            <div class="image-label">Gabor80产生更丰富的层状纹理，但形态与项目偏好的多周期波形有差异。源消融参考。</div>
+        </div>
+
+        <h3>FORMAL04 — 地质因子 A vs C</h3>
+        <div class="image-card">
+            <img src="17_FORMAL04_A_vs_C.png" alt="FORMAL04 A vs C">
+            <div class="image-label">上：04A弱基底（T/B=18.76）— 干净；下：04C组合（T/B=10.30）— 纹理更强，目标/背景比下降</div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="shape">
+        <h2>SHAPE 基底几何系列</h2>
+        <h3>平面/简单几何</h3>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="18_SHAPE_CAL00_pair.png" alt="SHAPE CAL00">
+                <div class="image-label"><span class="status-pass">CAL00 平面参考</span> — T/B=128.56，非常干净的标准参考</div>
+            </div>
+            <div class="image-card">
+                <img src="19_SHAPE_GEO02_pair.png" alt="SHAPE GEO02">
+                <div class="image-label"><span class="status-pass">GEO02 宽基岩槽</span> — T/B=110.97，槽形地形，波形清晰</div>
+            </div>
+        </div>
+
+        <h3>复杂几何</h3>
+        <div class="image-card">
+            <img src="20_SHAPE_GEO07_pair.png" alt="SHAPE GEO07">
+            <div class="image-label"><span class="status-pass">GEO07 平滑台地坡</span> — T/B=113.20，台地坡地形，波形连续</div>
+        </div>
+
+        <h3>128道因果对审计</h3>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="21_SHAPE_GEO01_trace128.png" alt="SHAPE GEO01 trace128">
+                <div class="image-label">GEO01 宽基岩高 — target/pre-target=33.5 dB</div>
+            </div>
+            <div class="image-card">
+                <img src="22_SHAPE_GEO05_trace128.png" alt="SHAPE GEO05 trace128">
+                <div class="image-label">GEO05 非周期多尺度低 — target/pre-target=41.3 dB</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-section" id="formal01">
+        <h2>FORMAL01 基岩密窗</h2>
+        <div class="two-col">
+            <div class="image-card">
+                <img src="23_FORMAL01_F0_full256.png" alt="FORMAL01 F0 full256">
+                <div class="image-label">256道完整运行 — 红蓝相位图，能量强但波形散布较宽</div>
+            </div>
+            <div class="image-card">
+                <img src="24_FORMAL01_F0_smoke.png" alt="FORMAL01 F0 smoke">
+                <div class="image-label">8道smoke — 因果性清晰，但标注"development-only until 256-trace review pass"</div>
+            </div>
+        </div>
+    </div>
+
+    <hr style="margin: 50px 0;">
+    <p style="color: #888; font-size: 13px;">
+        图库路径: <code>reports/visual_audit_gallery_20260723/</code> | 
+        审计报告: <code>reports/VISUAL_AUDIT_20260723.md</code>
+    </p>
+</body>
+</html>
