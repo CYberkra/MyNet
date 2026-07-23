@@ -1,0 +1,46 @@
+Line9 Real Data Analysis
+==========================
+File: Line9origin(36).csv
+Size: 68,794,423 bytes
+
+METADATA:
+  Number of Samples: 501
+  Number of Traces: 2378
+  Time Window: 700.0 ns
+  Trace Interval: 0.09093 m
+  Total Line Length: 216.23 m
+  Sample Rate: 0.72 samples/ns
+
+AMPLITUDE STATISTICS:
+  Min: -0.06878751
+  Max: 0.07553911
+  Mean: 0.00000465
+  Std: 0.00784872
+  P99.5 abs: 5.989910e-02
+
+RMS DECAY (per time sample, averaged over all traces):
+  t=0ns:   0.00954308
+  t=100ns: 0.00141444
+  t=200ns: 0.00044367
+  t=300ns: 0.00005019
+  t=400ns: 0.00006603
+  t=500ns: 0.00003586
+  t=600ns: 0.00001868
+  t=700ns: 0.00001585
+
+DYNAMIC RANGE:
+  Ratio (t=0ns / t=500ns): 266.1x
+  Ratio (t=0ns / t=700ns): 602.1x
+
+FREQUENCY ANALYSIS:
+  Dominant Frequency: 102.9 MHz
+
+BACKGROUND TEXTURE OBSERVATION:
+  After time-power gain, real data shows EXTENSIVE horizontal layering texture
+  throughout the entire time window (0-700ns). This is NOT noise -- it is
+  geological heterogeneity (sub-horizontal stratification, moisture variations,
+  clay/sand interfaces, etc.) that is PHYSICALLY REAL.
+  
+  Key difference from simulations: Real data has CONTINUOUS background texture
+  from near-surface to deep. Most simulations have NEAR-BLANK backgrounds with
+  only the basal interface visible after gain.
