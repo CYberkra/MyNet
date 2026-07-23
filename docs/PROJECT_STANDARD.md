@@ -42,8 +42,10 @@ The portable template and supported environment variables are documented in
   padding; 0-700 ns / 501 samples; 0.09 m trace spacing.
 - A **positive** simulation requires `full_scene`, strictly paired
   `no_basal_contrast_control`, and `air_reference`.
-- A **negative** simulation requires target-absent `full_scene` plus
-  `air_reference`; a failed positive is never a negative sample.
+- A controlled **unpickable** simulation requires target-absent `full_scene`
+  plus `air_reference`; a failed positive is never a negative sample. NULL
+  means "no reliable automatic pick in this data window", not "no geological
+  bedrock exists".
 - Training masks come only from the signed, solver-validated
   `full - no_basal` visible-phase result. Geometric priors are audit evidence,
   not training labels.
@@ -79,11 +81,17 @@ source decks, canonical releases, manifests, or measured data.
 
 Do not enable formal training until all are true:
 
-- confirmed real negative windows exist;
 - approved non-Line9-conditioned V2 simulations exist;
 - no source-trace/split leakage exists;
 - the formal validation configuration is enabled deliberately;
 - `python scripts/validate_project_contracts.py --require-formal-ready` passes.
+
+The measured V15 lines were acquired to trace a basal interface. They support
+the primary **conditional path-picking** task even though no `status_code=0`
+trace has been confirmed. This absence only blocks claims of measured
+no-pick/rejection performance. Until an external measured rejection set is
+released, train and evaluate abstention only with an approved, strictly paired
+simulation family and report it as controlled-simulation evidence.
 
 Current normal governance validation should pass even while the formal gate is
 intentionally blocked.

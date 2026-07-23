@@ -1,7 +1,26 @@
 {
   "schema_version": "dataset_contract_v2",
-  "updated_at": "2026-07-16",
+  "updated_at": "2026-07-22",
   "formal_training_allowed": false,
+  "task_eligibility": {
+    "measured_conditional_path": {
+      "training_evidence_available": true,
+      "evaluation_evidence_available": true,
+      "requires_confirmed_real_negative": false,
+      "scope": "pick the basal-interface path only where a reliable interface label exists"
+    },
+    "simulated_abstention": {
+      "training_evidence_available": false,
+      "evaluation_evidence_available": false,
+      "requires_approved_independent_simulation": true,
+      "scope": "controlled simulation only; NULL means no reliable automatic pick, not no geological bedrock"
+    },
+    "measured_abstention": {
+      "evaluation_evidence_available": false,
+      "requires_confirmed_real_negative": true,
+      "scope": "not claimable until an external measured rejection set is released"
+    }
+  },
   "label_semantics": "visible_phase_v15_final_with_weak_crossing_relabels_and_explicit_ignore",
   "required_files": [
     "real_lines.csv",
@@ -12,12 +31,12 @@
     "label_semantics.json"
   ],
   "blockers": [
-    "no confirmed true-negative real windows",
     "no independent non-Line9-conditioned simulation family is approved for training"
   ],
   "observations": [
     "The formal line split is locked in configs/paper_splits_v15_aeropath.json.",
     "Line7 retains measured flight heights above the planned 20 m range with an explicit QC flag.",
+    "The six measured survey lines intentionally track the basal interface, so they contain no confirmed status_code=0 traces. This does not block conditional path picking; it blocks claims of measured rejection/no-pick performance.",
     "Canonical arrays remain in acquisition order; engineering-profile reversal is display-only.",
     "FORMAL06C is accepted only as Line9-conditioned development evidence.",
     "FORMAL07A was rejected by strict common-trace blind review for an over-stratified background.",
@@ -46,6 +65,9 @@
     "training_allowed_cases": 0,
     "real_lines_registered": 6,
     "real_windows_registered": 78,
-    "confirmed_true_negative_windows": 0
+    "confirmed_true_negative_windows": 0,
+    "measured_conditional_path_training_allowed": true,
+    "measured_abstention_evaluation_allowed": false,
+    "simulated_abstention_training_allowed": false
   }
 }

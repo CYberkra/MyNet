@@ -15,6 +15,8 @@
   "notes": [
     "Line9 remains test-only and Line9-conditioned legacy simulations are forbidden from formal training.",
     "LineX1 is review-only and may not enter train, validation, or test.",
-    "This split is disabled until the V2 data-release gate has approved true negatives and independent simulations."
+    "This split supports measured conditional path picking: every included survey line was acquired to trace a basal interface.",
+    "The overall formal run remains disabled until the V2 data-release gate approves an independent non-Line9-conditioned simulation family.",
+    "Measured no-pick/rejection metrics are not claimable because V15 has no confirmed status_code=0 traces."
   ]
 }

@@ -1,0 +1,73 @@
+{
+  "schema_version": "uav_gpr_hardware_measurement_contract_v1",
+  "contract_id": "PGDA_UAV_GPR_HARDWARE_MEASUREMENT_V1",
+  "status": "blocked_pending_measurement",
+  "formal_training_allowed": false,
+  "finite_antenna_3d_run_allowed": false,
+  "purpose": "Collect the minimum traceable hardware evidence required before a finite-antenna or reduced-order 3D gprMax study.",
+  "hardware_identity": {
+    "system_model": null,
+    "system_serial": null,
+    "antenna_model": null,
+    "antenna_serial": null,
+    "evidence_path": null
+  },
+  "antenna_geometry": {
+    "element_type": null,
+    "physical_length_m": null,
+    "physical_width_m": null,
+    "physical_thickness_m": null,
+    "tx_rx_separation_m": null,
+    "polarization": null,
+    "boresight_direction": null,
+    "mount_geometry_description": null
+  },
+  "acquisition": {
+    "nominal_center_frequency_hz": null,
+    "usable_band_low_hz": null,
+    "usable_band_high_hz": null,
+    "trace_spacing_m": 0.09,
+    "flight_height_reference_m": null,
+    "height_measurement_method": null
+  },
+  "source_measurement": {
+    "direct_or_air_reference_raw_path": null,
+    "direct_or_air_reference_sha256": null,
+    "sample_interval_s": null,
+    "time_zero_definition": null,
+    "channel_and_component": null,
+    "dewow_or_filtering_recipe": null,
+    "normalization_recipe": null,
+    "preprocessing_manifest_path": null
+  },
+  "three_dimensional_preflight": {
+    "scope": "bounded_local_window_only",
+    "max_native_traces": 16,
+    "required_acquisitions": [
+      "full_scene",
+      "no_basal_contrast_control",
+      "air_reference"
+    ],
+    "geometry_claim": "No finite-antenna claim is permitted until every required hardware field and source evidence hash are verified.",
+    "forbidden_shortcuts": [
+      "scale_a_high_frequency_bundled_antenna_by_intuition",
+      "infer_tx_rx_spacing_from_a_bscan_image",
+      "tune_the_source_against_line9_test_labels"
+    ]
+  },
+  "release_gate": {
+    "required_status": "ready_for_3d_local_preflight",
+    "required_fields": [
+      "hardware_identity.system_model",
+      "hardware_identity.antenna_model",
+      "antenna_geometry.element_type",
+      "antenna_geometry.physical_length_m",
+      "antenna_geometry.tx_rx_separation_m",
+      "antenna_geometry.polarization",
+      "source_measurement.direct_or_air_reference_raw_path",
+      "source_measurement.direct_or_air_reference_sha256",
+      "source_measurement.sample_interval_s",
+      "source_measurement.preprocessing_manifest_path"
+    ]
+  }
+}

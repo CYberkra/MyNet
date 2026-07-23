@@ -498,7 +498,8 @@ def main() -> int:
     env["TMP"] = str(toolchain_tmp)
     pycuda_cache = toolchain_tmp / "pycuda_cache"
     pycuda_cache.mkdir(parents=True, exist_ok=True)
-    # Keep generated CUDA cubins in the project runtime area, never in C:\\Users.
+    # Keep generated CUDA cubins in the configured project runtime area, never
+    # in a machine-local user profile directory.
     env["PYCUDA_CACHE_DIR"] = str(pycuda_cache)
     if runtime.cuda_nvcc_flags:
         env["PYCUDA_DEFAULT_NVCC_FLAGS"] = " ".join(runtime.cuda_nvcc_flags)

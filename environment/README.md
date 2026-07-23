@@ -41,6 +41,26 @@ Commit source code, source decks, compact validated canonical arrays, manifests,
 and reports. Do not commit solver `.out`, `.h5`, `.vti`, logs, scratch data, or
 machine-local profiles.
 
+## Dependency evidence
+
+`requirements.txt` and `requirements-dev.txt` define compatible installation
+ranges for development and CPU CI. They are intentionally not a CUDA or paper
+release lock: PyTorch, CUDA, driver, and `mamba-ssm` compatibility must be
+captured on the actual execution machine.
+
+Before a formal training run or a release evaluation, create an immutable
+environment record inside that run's versioned evidence directory:
+
+```powershell
+python --version
+python -m pip freeze --all | Set-Content reports\<task_id>\environment-freeze.txt
+python -m pip check | Set-Content reports\<task_id>\pip-check.txt
+```
+
+Record the Python executable, GPU model, driver/CUDA versions, current Git
+commit, and the two generated files in the handoff or experiment record. Never
+replace a prior freeze file; a later run receives a new task identifier.
+
 Handoff records name required capabilities such as `training`,
 `official_mamba2`, or `gprmax_gpu`. They must never copy executable paths from
 the local runtime profile. The receiving computer resolves those capabilities

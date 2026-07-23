@@ -1,14 +1,17 @@
 {
-  "version": "aeropath_ssd_v15_formal_blocked_v2",
+  "version": "aeropath_ssd_v15_formal_blocked_v3",
   "run_type": "paper_train",
   "enabled": false,
   "config_status": "blocked",
-  "training_block_reason": "Formal training is disabled until the V2 dataset gate approves confirmed real true negatives and independent non-Line9-conditioned simulations.",
+  "training_block_reason": "Formal training is disabled until the V2 dataset gate approves independent non-Line9-conditioned simulations.",
   "blocked_reasons": [
     "dataset_contract_v2.formal_training_allowed is false",
-    "confirmed true-negative windows are not yet available",
     "independent V2 simulations are not yet approved"
   ],
+  "task_scope": "measured_conditional_path_picking",
+  "abstention_claim_scope": "controlled_simulation_only",
+  "real_nopick_evaluation_allowed": false,
+  "real_nopick_metric_reporting": "forbidden",
   "model_arch": "aeropath_ssd",
   "ssm_impl": "official_mamba2",
   "base_ch": 24,

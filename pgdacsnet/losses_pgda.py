@@ -22,10 +22,13 @@ ZERO_PART_KEYS = (
 
 
 def dice_loss_from_prob(pred: torch.Tensor, target: torch.Tensor, weight: torch.Tensor) -> torch.Tensor:
-    eps = 1e-6
+    # Add the smoothing term to both numerator and denominator.  With an
+    # empty target, numerator-only smoothing would otherwise leave Dice at a
+    # constant loss of one and provide no false-positive gradient.
+    eps = 1.0
     inter = (pred * target * weight).sum((1, 2, 3))
-    den = ((pred + target) * weight).sum((1, 2, 3)) + eps
-    return (1 - 2 * inter / den).mean()
+    den = ((pred + target) * weight).sum((1, 2, 3))
+    return (1 - (2 * inter + eps) / (den + eps)).mean()
 
 
 def centerline_aux_losses(center_logits, target, weight, cfg, ignore=None):
@@ -121,7 +124,10 @@ def compute_segmentation_losses(outputs: dict[str, torch.Tensor | None], batch: 
     pres_bce = F.binary_cross_entropy_with_logits(outputs['presence_logits'], pres, reduction='none')
     neg_boost = float(lp.get('presence_negative_weight', 5.0))
     pres_class_w = torch.where(pres <= 0.05, torch.full_like(pres, neg_boost), torch.ones_like(pres))
-    pres_w = (0.25 + lw[:, None, :]) * pres_class_w * pres_valid[:, None, :]
+    # ``pres_valid`` is already (B, 1, W) after the normalization above.
+    # Adding another singleton dimension broadcasts the batch axis against
+    # itself when B > 1, mixing validity masks across samples.
+    pres_w = (0.25 + lw[:, None, :]) * pres_class_w * pres_valid
     pres_loss = (pres_bce * pres_w).sum() / pres_w.sum().clamp_min(1e-6)
     center_l1, continuity = centerline_aux_losses(outputs['center_logits'], y, lw, cfg, batch.get('ignore_mask'))
     spec_loss = spectral_consistency_loss(prob, y, cfg)

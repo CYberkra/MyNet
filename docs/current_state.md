@@ -1,4 +1,9 @@
-# PGDA-CSNet Current State (2026-07-16)
+# PGDA-CSNet Current State
+
+> Last reviewed: 2026-07-22. This is a human-readable index, not the source
+> of machine facts. Dataset manifests, committed configuration, and validation
+> output remain authoritative. Regenerate or update this file whenever a
+> release gate, active architecture, dataset version, or formal split changes.
 
 ## Active research line
 
@@ -7,6 +12,11 @@ per-trace acquisition conditioning, bidirectional axial sequence mixing, and a
 structured interface-path objective with physical, NULL, start, and end
 states. The official Mamba-2 path has an explicit `headdim` contract; the
 formal config uses `headdim=16`.
+
+Training-safety and AeroPath numerical guards are merged on `master` through
+commit `dd6754b`, with the current hardware-evidence preflight at `265ee81`.
+The regular CPU CI validates these guards; the official-Mamba2 GPU smoke stays
+a separate self-hosted workflow.
 
 GprMambaSep/Route-2 and the ConvNeXt curve model are frozen comparison
 baselines. A/S/G decomposition is not established as a physical separation.
@@ -96,11 +106,16 @@ the training-governance view is
 
 ## Formal training gate
 
-`configs/aeropath_ssd_v15_formal_blocked.json` remains disabled. Only two
-dataset blockers remain:
+`configs/aeropath_ssd_v15_formal_blocked.json` remains disabled. V15 supports
+the primary conditional path-picking task, but it contains no confirmed real
+negative traces because the survey was designed to follow the basal interface.
+This blocks measured rejection/no-pick claims rather than conditional path
+picking. NULL/no-pick evidence is limited to approved controlled simulations
+until an external measured rejection set exists.
 
-1. confirmed real true-negative windows are absent;
-2. approved non-Line9-conditioned simulation families are absent.
+The remaining formal dataset blocker is:
+
+1. approved non-Line9-conditioned simulation families are absent.
 
 The V15 release and the measured split are complete. They are not current
 blockers. Run `scripts/validate_project_contracts.py --require-formal-ready`
@@ -123,8 +138,10 @@ before changing the formal config.
    claims or use a held-out-line/leave-one-line-out evaluation contract.
 6. Solve matched positive controls and promote only cases passing numerical,
    causal, visual, provenance, and human gates.
-7. Audit candidate real true-negative intervals; ambiguous/failed-positive
-   regions remain weak or ignored.
+7. Do not manufacture real negatives from the existing interface-following
+   lines. When a separate measured rejection survey is acquired, audit it as
+   an external abstention-evaluation set; ambiguous/failed-positive regions
+   remain weak or ignored.
 8. Run official-Mamba2 CUDA and 501x256 VRAM smoke tests.
 9. Pass the formal data gate, then run multi-seed AeroPath training and frozen
    baseline comparisons.

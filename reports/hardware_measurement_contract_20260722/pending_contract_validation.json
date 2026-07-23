@@ -1,0 +1,10 @@
+{
+  "contract": "F:\\codex\\PSGN-CSNet\\MyNet_push_integration_eedb22e\\data\\contracts\\simulation_v2\\hardware_measurement_contract_v1.json",
+  "status": "blocked_pending_measurement",
+  "ok": true,
+  "finite_antenna_3d_run_allowed": false,
+  "errors": [],
+  "warnings": [
+    "finite-antenna 3D solve remains blocked pending measured hardware evidence"
+  ]
+}

@@ -60,13 +60,23 @@ def _read_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def validate(data_root: Path, *, require_formal_ready: bool = False) -> dict[str, object]:
+def validate(
+    data_root: Path,
+    *,
+    require_formal_ready: bool = False,
+    task_scope: str = "conditional_path",
+) -> dict[str, object]:
     errors: list[str] = []
     warnings: list[str] = []
     facts: dict[str, object] = {"data_root": str(data_root)}
 
     policy = load_dataset_usage_policy(data_root) or {}
     facts["dataset_policy"] = policy
+    if policy.get("task_scope") == "measured_conditional_path_picking":
+        if policy.get("measured_conditional_path_training_evidence") is not True:
+            errors.append("conditional-path dataset policy must explicitly confirm path-training evidence")
+        if policy.get("measured_nopick_evaluation_allowed") is not False:
+            errors.append("conditional-path dataset policy must not enable measured no-pick evaluation")
     training_allowed = policy.get("training_allowed", policy.get("train_allowed", True))
     if training_allowed is False:
         message = f"dataset policy blocks training: {policy.get('reason', policy.get('blocking_reasons', 'unspecified'))}"
@@ -181,8 +191,13 @@ def validate(data_root: Path, *, require_formal_ready: bool = False) -> dict[str
     confirmed_negative_count = int(status_counts.get(0, 0))
     facts["confirmed_negative_trace_count"] = confirmed_negative_count
     if confirmed_negative_count == 0:
-        message = "no confirmed status_code=0 traces; presence/no-target rejection supervision is not trainable"
-        (errors if require_formal_ready else warnings).append(message)
+        message = "no confirmed status_code=0 traces; measured rejection/no-pick supervision is unavailable"
+        if require_formal_ready and task_scope == "measured_abstention":
+            errors.append(message)
+        else:
+            warnings.append(message)
+        if policy.get("measured_nopick_evaluation_allowed") is True:
+            errors.append("dataset policy enables measured no-pick evaluation without status_code=0 traces")
 
     # Dataset-level split metadata is optional. Config/manifests own the actual
     # split; when a split column exists, only enforce immutable review/test locks.
@@ -192,7 +207,10 @@ def validate(data_root: Path, *, require_formal_ready: bool = False) -> dict[str
         if any(row["line"] in {"LineX1", "X1"} and row.get("split") != "exclude" for row in rows):
             errors.append("X1 rows must remain excluded review rows")
 
-    formal_ready = not errors and training_allowed is not False and confirmed_negative_count > 0
+    requires_real_negatives = task_scope == "measured_abstention"
+    formal_ready = not errors and training_allowed is not False and (
+        confirmed_negative_count > 0 or not requires_real_negatives
+    )
     if require_formal_ready and not formal_ready and not errors:
         errors.append("dataset is not formal-training-ready")
     return {
@@ -208,8 +226,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-root", default="data/measured/yingshan_v15")
     parser.add_argument("--require-formal-ready", action="store_true")
+    parser.add_argument(
+        "--task-scope",
+        choices=("conditional_path", "measured_abstention"),
+        default="conditional_path",
+        help="Conditional path picking does not require status_code=0; measured abstention evaluation does.",
+    )
     args = parser.parse_args()
-    report = validate(_resolve(args.data_root), require_formal_ready=args.require_formal_ready)
+    report = validate(
+        _resolve(args.data_root),
+        require_formal_ready=args.require_formal_ready,
+        task_scope=args.task_scope,
+    )
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["ok"] else 1
 
