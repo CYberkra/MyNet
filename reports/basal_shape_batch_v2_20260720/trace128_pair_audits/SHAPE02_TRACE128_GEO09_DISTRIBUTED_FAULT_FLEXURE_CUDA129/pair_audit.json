@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/simulations/v2/01_solver_runs/GEO09_DISTRIBUTED_FAULT_FLEXURE_POS/SHAPE02_TRACE128_GEO09_DISTRIBUTED_FAULT_FLEXURE_CUDA129",
+  "source_case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO09_DISTRIBUTED_FAULT_FLEXURE/GEO09_DISTRIBUTED_FAULT_FLEXURE_POS",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 128,
+  "reference_path": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO09_DISTRIBUTED_FAULT_FLEXURE/GEO09_DISTRIBUTED_FAULT_FLEXURE_POS/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 431.2878112792969,
+  "difference_envelope_pick_ns": 422.9303091225858,
+  "difference_pick_offset_ns": -8.357502156711064,
+  "target_window_ns": [
+    396.2878112792969,
+    466.2878112792969
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.0005552358438722443,
+  "pre_target_difference_rms": 1.0736066468156595e-05,
+  "target_to_pre_target_difference_db": 34.272646062423824,
+  "full_direct_rms": 31.46995868504416,
+  "control_direct_rms": 31.46995868064186,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

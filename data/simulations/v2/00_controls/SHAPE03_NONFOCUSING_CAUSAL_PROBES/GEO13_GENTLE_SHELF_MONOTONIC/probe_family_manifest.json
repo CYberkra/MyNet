@@ -1,0 +1,26 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE03_NONFOCUSING_CAUSAL_PROBES/GEO13_GENTLE_SHELF_MONOTONIC/GEO13_GENTLE_SHELF_MONOTONIC_POS",
+  "geometry_index_sha256": "e6828bb5abde44c548336d5f5d218a7b828cbf5ce58171470880f5fa1d03b340",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.030382188973414402,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.661876594695547,
+    "depth_median_m": 15.327048880383149,
+    "depth_min_m": 14.981909233634411,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.9999707411483884,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.6799673610611361,
+    "role": "nonfocusing_secondary",
+    "shape_id": "GEO13_GENTLE_SHELF_MONOTONIC",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "nonfocusing_secondary",
+  "scene_manifest_sha256": "fd7d75fb05df3edc36d46bd56ea688efbd7b4ed4420bd5539ef3b306abc0d46a",
+  "shape_id": "GEO13_GENTLE_SHELF_MONOTONIC",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

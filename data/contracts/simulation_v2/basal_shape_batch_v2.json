@@ -1,0 +1,172 @@
+{
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "status": "planned_pre_solver",
+  "formal_training_allowed": false,
+  "purpose": "Isolate and select geologically plausible basal-interface morphology before adding terrain, flight-height, material, or measurement nuisance diversity.",
+  "supersedes": "SHAPE01_BASAL_GEOMETRY_PILOT",
+  "factor_isolation": {
+    "only_variable": "basal_interface_depth_profile",
+    "locked": {
+      "ground_surface": "flat",
+      "flight_height_agl_m": 8.01,
+      "waveform": "ricker",
+      "center_frequency_hz": 55000000.0,
+      "tx_rx_offset_m": 0.18,
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "scan_span_m": 22.95,
+      "cover_index_field": "one shared deterministic field and hash for every shape",
+      "weathered_transition_thickness_m": 1.35,
+      "material_table": "one shared table and hash for every shape",
+      "source_receiver_orientation": "fixed",
+      "random_seed": "shared for every non-shape field"
+    },
+    "deferred": [
+      "surface_topography",
+      "flight_height_variation",
+      "instrument_noise",
+      "trace_gain_variation",
+      "trace_dropout",
+      "material_contrast_variation",
+      "weathered_transition_variation",
+      "additional finite clutter bodies"
+    ]
+  },
+  "canonical_release": {
+    "dl_m": 0.0225,
+    "time_samples": 501,
+    "time_start_ns": 0.0,
+    "time_end_ns": 700.0,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "horizontal_resize_or_padding": "forbidden",
+    "pair": [
+      "full_scene",
+      "no_basal_contrast_control"
+    ],
+    "shared_air_reference": "required once before release when acquisition and source hashes are identical"
+  },
+  "shape_bank": [
+    {
+      "id": "CAL00_FLAT_REFERENCE",
+      "role": "calibration_only",
+      "description": "Constant-depth basal interface. Never used as the main morphology claim."
+    },
+    {
+      "id": "CAL01_GENTLE_DIP",
+      "role": "calibration_and_low_complexity",
+      "description": "Smooth monotonic dip across the aperture without steps."
+    },
+    {
+      "id": "GEO01_BROAD_BEDROCK_HIGH",
+      "role": "candidate",
+      "description": "One broad centre shallowing with tapered shoulders."
+    },
+    {
+      "id": "GEO02_BROAD_BEDROCK_TROUGH",
+      "role": "candidate",
+      "description": "One broad centre deepening with tapered shoulders."
+    },
+    {
+      "id": "GEO03_ASYMMETRIC_FLEXURE",
+      "role": "candidate",
+      "description": "An asymmetric shoulder and smooth ramp with no vertical wall."
+    },
+    {
+      "id": "GEO04_DOUBLE_RELIEF",
+      "role": "candidate",
+      "description": "One broad high and one broad trough with unequal widths."
+    },
+    {
+      "id": "GEO05_APERIODIC_MULTISCALE_LOW",
+      "role": "candidate",
+      "description": "Two to four smooth extrema and low relief."
+    },
+    {
+      "id": "GEO06_APERIODIC_MULTISCALE_MEDIUM",
+      "role": "candidate",
+      "description": "Four to seven smooth extrema and moderate relief."
+    },
+    {
+      "id": "GEO07_SMOOTH_TERRACE_RAMP",
+      "role": "candidate",
+      "description": "A broad terrace connected by a distributed smooth ramp."
+    },
+    {
+      "id": "GEO08_BROAD_INCISED_LOW",
+      "role": "candidate",
+      "description": "A broad asymmetric incision-like low without a sharp V."
+    },
+    {
+      "id": "GEO09_DISTRIBUTED_FAULT_FLEXURE",
+      "role": "stress_minority",
+      "description": "A bounded offset spread over 2-4 m, never an abrupt vertical step."
+    },
+    {
+      "id": "GEO10_COMPOUND_SHOULDER",
+      "role": "candidate",
+      "description": "A low-relief shoulder superposed on a long regional trend."
+    }
+  ],
+  "geometry_gates": {
+    "depth_m": [
+      13.5,
+      17.5
+    ],
+    "candidate_relief_m": [
+      0.45,
+      2.2
+    ],
+    "abs_slope_p95_max": 0.2,
+    "minimum_feature_width_m": 1.8,
+    "forbidden": [
+      "vertical wall",
+      "sharp V notch",
+      "periodic sinusoid train",
+      "isolated point target",
+      "unbounded polynomial edge excursion"
+    ],
+    "quadratic_rejection": "Reject candidate shapes with quadratic R2 > 0.985 and <= 1 extremum; calibration cases are exempt."
+  },
+  "execution_stages": [
+    {
+      "stage": "A_geometry_bank",
+      "run": "no FDTD",
+      "scope": "all 12 shapes",
+      "gate": "geometry metrics, full-aperture preview, shared-factor hash equality"
+    },
+    {
+      "stage": "B_causal_probe",
+      "run": "one central trace full/control pair",
+      "scope": "all geometry-passing candidates",
+      "gate": "signed residual localized near geometric basal arrival"
+    },
+    {
+      "stage": "C_full_span_sparse",
+      "run": "32 traces at native indices 0,8,...,248 for full/control",
+      "scope": "all causal-passing candidates",
+      "effective_spacing_m": 0.72,
+      "gate": "whole-aperture morphology, no interpolation, causal path continuity"
+    },
+    {
+      "stage": "D_native_release",
+      "run": "256 traces at 0.09 m and dl=0.0225 m for full/control",
+      "scope": "four to six visually and numerically selected candidates",
+      "gate": "501x256 export, signed visible-phase extraction, human release decision"
+    },
+    {
+      "stage": "E_diversification",
+      "run": "independent shape parameter seeds within accepted families",
+      "scope": "24 or more indivisible scene families",
+      "gate": "scene-family split, no Line9 conditioning, duplicate and correlation audit"
+    }
+  ],
+  "later_factor_order": [
+    "material and transition diversity",
+    "gentle surface topography",
+    "physical flight-height variation",
+    "finite clutter topology",
+    "measurement response and noise"
+  ]
+}
+

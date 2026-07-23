@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "c1bf793f797ac349418bd5708d429ef7e220c2506496bdde6faa520e9cb27bf7",
+  "basal_depth_scan_sha256": "87316a14710c46e089471359ba836e8f16c97c11bd57a590767cdc7a5df151b2",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "A broad terrace connected by a distributed smooth ramp.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.17255124472423772,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.0159799021879,
+    "depth_median_m": 15.389579367877673,
+    "depth_min_m": 15.201559871249193,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7200723886271756,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.8144200309387077,
+    "role": "candidate",
+    "shape_id": "GEO07_SMOOTH_TERRACE_RAMP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO07_SMOOTH_TERRACE_RAMP_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO07_SMOOTH_TERRACE_RAMP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

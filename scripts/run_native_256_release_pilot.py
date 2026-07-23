@@ -141,6 +141,43 @@ def _set_spatial_step(input_path: Path, step_m: float) -> None:
     input_path.write_text(updated, encoding="utf-8")
 
 
+def _set_trace_start(input_path: Path, offset_m: float) -> None:
+    """Translate the source and receiver origins for a subset probe.
+
+    gprMax applies ``#src_steps`` and ``#rx_steps`` after the origin declared
+    by the corresponding directives.  A one-trace smoke test therefore has to
+    move both origins explicitly when it is meant to sample a central (rather
+    than edge) canonical trace.
+    """
+    if offset_m == 0:
+        return
+    directives = ("#hertzian_dipole:", "#rx:")
+    updated_lines: list[str] = []
+    changed: dict[str, int] = {directive: 0 for directive in directives}
+    for line in input_path.read_text(encoding="utf-8").splitlines(keepends=True):
+        stripped = line.lstrip()
+        directive = next((item for item in directives if stripped.startswith(item)), None)
+        if directive is None:
+            updated_lines.append(line)
+            continue
+        prefix, payload = stripped.split(":", 1)
+        values = payload.strip().split()
+        coordinate_index = 1 if directive == "#hertzian_dipole:" else 0
+        if len(values) <= coordinate_index + 2:
+            raise RuntimeError(f"invalid {directive} declaration in {input_path}")
+        try:
+            values[coordinate_index] = f"{float(values[coordinate_index]) + offset_m:.12g}"
+        except ValueError as exc:
+            raise RuntimeError(f"invalid x coordinate in {directive} declaration in {input_path}") from exc
+        newline = "\n" if line.endswith("\n") else ""
+        indentation = line[: len(line) - len(stripped)]
+        updated_lines.append(f"{indentation}{prefix}: {' '.join(values)}{newline}")
+        changed[directive] += 1
+    if any(count != 1 for count in changed.values()):
+        raise RuntimeError(f"expected one source and receiver origin declaration in {input_path}")
+    input_path.write_text("".join(updated_lines), encoding="utf-8")
+
+
 def stage_case(
     source_case_dir: Path,
     run_case_dir: Path,
@@ -148,6 +185,7 @@ def stage_case(
     requested_trace_count: int,
     geometry_only: bool,
     trace_stride: int = 1,
+    trace_start: int = 0,
     include_air_reference: bool = True,
     full_scene_only: bool = False,
 ) -> Path:
@@ -165,7 +203,9 @@ def stage_case(
     declared_trace_count = int(source_manifest["grid"]["trace_count"])
     if trace_stride < 1:
         raise ValueError("trace stride must be positive")
-    selected_indices = [index * trace_stride for index in range(requested_trace_count)]
+    if trace_start < 0:
+        raise ValueError("trace start must be non-negative")
+    selected_indices = [trace_start + index * trace_stride for index in range(requested_trace_count)]
     if selected_indices and selected_indices[-1] >= declared_trace_count:
         raise ValueError(
             f"distributed subset ends at trace index {selected_indices[-1]}, "
@@ -189,6 +229,10 @@ def stage_case(
         step_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_stride
         for input_name in input_names:
             _set_spatial_step(run_case_dir / input_name, step_m)
+    if trace_start:
+        offset_m = float(source_manifest["grid"]["trace_spacing_m"]) * trace_start
+        for input_name in input_names:
+            _set_trace_start(run_case_dir / input_name, offset_m)
     provenance = {
         "schema": "native_256_solver_run_v1",
         "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -197,6 +241,7 @@ def stage_case(
         "requested_trace_count": requested_trace_count,
         "declared_trace_count": declared_trace_count,
         "trace_stride": trace_stride,
+        "trace_start": trace_start,
         "input_groups": [Path(name).stem for name in input_names],
         "selected_trace_indices_zero_based": selected_indices,
         "mode": "geometry_only" if geometry_only else (
@@ -240,6 +285,122 @@ def _write_state(case_dir: Path, **state: object) -> None:
     (case_dir / "run_state.json").write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
 
 
+def _solver_trace_chunks(trace_count: int, max_per_call: int | None) -> list[tuple[int, int]]:
+    """Return gprMax ``(restart_index, model_count)`` chunks.
+
+    gprMax interprets ``-n`` as the number of models *after* ``-restart``.
+    Keeping both values in one helper prevents a resumed subset from silently
+    producing traces beyond its declared acquisition contract.
+    """
+    if max_per_call is None or max_per_call >= trace_count:
+        return [(1, trace_count)]
+    return [
+        (start, min(max_per_call, trace_count - start + 1))
+        for start in range(1, trace_count + 1, max_per_call)
+    ]
+
+
+def _solver_command(
+    python: Path,
+    input_name: str,
+    *,
+    restart_index: int,
+    model_count: int,
+    gpu: int,
+) -> list[str]:
+    command = [str(python), "-m", "gprMax", input_name, "-n", str(model_count)]
+    if restart_index > 1:
+        command.extend(["-restart", str(restart_index)])
+    command.extend(["--geometry-fixed", "-gpu", str(gpu)])
+    return command
+
+
+def _resume_control_preflight(
+    source_case_dir: Path,
+    run_case_dir: Path,
+    *,
+    trace_count: int,
+    trace_stride: int,
+    trace_start: int,
+) -> dict[str, object]:
+    """Validate that a stopped causal subset can safely run its control only.
+
+    A resume is deliberately narrower than a general restart: the completed
+    full-scene acquisition must already be present and no control trace may
+    exist.  This prevents a later command from silently mixing source decks,
+    trace positions, or partially written control outputs.
+    """
+    source_manifest_path = source_case_dir / "scene_manifest.json"
+    run_manifest_path = run_case_dir / "run_manifest.json"
+    if not source_manifest_path.is_file() or not run_manifest_path.is_file():
+        raise FileNotFoundError("control resume requires source and staged run manifests")
+    if not (run_case_dir / "full_scene.in").is_file():
+        raise FileNotFoundError("control resume requires the staged full_scene input")
+    if not (run_case_dir / "no_basal_contrast_control.in").is_file():
+        raise FileNotFoundError("control resume requires a staged no-basal input")
+
+    source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8"))
+    run_manifest = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+    if run_manifest.get("source_scene_manifest_sha256") != _sha256(source_manifest_path):
+        raise RuntimeError("control resume source manifest hash does not match the staged run")
+    expected_indices = [trace_start + index * trace_stride for index in range(trace_count)]
+    for key, expected in (
+        ("requested_trace_count", trace_count),
+        ("trace_stride", trace_stride),
+        ("trace_start", trace_start),
+        ("selected_trace_indices_zero_based", expected_indices),
+    ):
+        if run_manifest.get(key) != expected:
+            raise RuntimeError(f"control resume acquisition contract mismatch for {key}")
+    if trace_count > 1:
+        full_output = run_case_dir / "full_scene_merged.out"
+    else:
+        full_output = run_case_dir / "full_scene.out"
+    if not full_output.is_file():
+        raise FileNotFoundError(f"control resume requires completed full-scene output: {full_output}")
+    full_contract = run_case_dir / "run_logs" / "full_scene_trace_contract.json"
+    if not full_contract.is_file():
+        raise FileNotFoundError(f"control resume requires full-scene trace contract: {full_contract}")
+    output_pattern = re.compile(r"^no_basal_contrast_control(?P<index>\d*)\.out$")
+    completed_indices: list[int] = []
+    for output in run_case_dir.glob("no_basal_contrast_control*.out"):
+        match = output_pattern.match(output.name)
+        if match is None:
+            raise RuntimeError(f"control resume found an unrecognised control output: {output.name}")
+        completed_indices.append(int(match.group("index") or "1"))
+    completed_indices.sort()
+    if completed_indices and completed_indices != list(range(1, len(completed_indices) + 1)):
+        raise RuntimeError("control resume requires a contiguous control-trace prefix starting at index 1")
+    if len(completed_indices) >= trace_count:
+        raise RuntimeError("control resume found a complete control acquisition; capture or merge it instead")
+    if not bool(source_manifest.get("target_presence")):
+        raise RuntimeError("control resume is only valid for target-present source decks")
+    return {
+        "source_manifest": source_manifest,
+        "completed_control_trace_count": len(completed_indices),
+        "next_restart_index": len(completed_indices) + 1,
+    }
+
+
+def _remaining_solver_trace_chunks(
+    *,
+    next_restart_index: int,
+    trace_count: int,
+    max_per_call: int | None,
+) -> list[tuple[int, int]]:
+    """Return only the still-missing contiguous suffix of a trace acquisition."""
+    if not 1 <= next_restart_index <= trace_count:
+        raise ValueError("next restart index must identify an unfinished trace")
+    remaining = trace_count - next_restart_index + 1
+    size = remaining if max_per_call is None else min(max_per_call, remaining)
+    if size < 1:
+        raise ValueError("maximum traces per call must be positive")
+    return [
+        (start, min(size, trace_count - start + 1))
+        for start in range(next_restart_index, trace_count + 1, size)
+    ]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("case_dir", type=Path, help="Versioned pre-solver source deck.")
@@ -250,7 +411,21 @@ def main() -> int:
     parser.add_argument("--run-dir", type=Path, help="Fresh disposable solver work directory.")
     parser.add_argument("--run-id", help="Run identifier below runtime.solver_run_root (default: UTC timestamp).")
     parser.add_argument("--trace-count", type=int, help="Run 1, 32, 64, or the full declared trace count.")
+    parser.add_argument(
+        "--max-traces-per-solver-call",
+        type=int,
+        help=(
+            "Bound one gprMax invocation to this many traces. Later chunks use "
+            "the matching -restart and remaining-model count, so no extra traces are generated."
+        ),
+    )
     parser.add_argument("--trace-stride", type=int, default=1, help="Audit-only stride through canonical trace positions.")
+    parser.add_argument(
+        "--trace-start",
+        type=int,
+        default=0,
+        help="Zero-based canonical trace index represented by the first subset trace.",
+    )
     parser.add_argument(
         "--skip-air-reference",
         action="store_true",
@@ -262,6 +437,14 @@ def main() -> int:
         help=(
             "Run only full_scene for an early morphology decision. This mode cannot prove "
             "causal attribution and is never release eligible."
+        ),
+    )
+    parser.add_argument(
+        "--resume-control",
+        action="store_true",
+        help=(
+            "Run only a missing no-basal control in an existing interrupted causal run. "
+            "The staged source hash, full-scene contract, and requested acquisition must match exactly."
         ),
     )
     parser.add_argument("--geometry-only", action="store_true", help="Run geometry checks and remove VTI views afterwards.")
@@ -279,10 +462,16 @@ def main() -> int:
     trace_count = args.trace_count or declared_trace_count
     if not 1 <= trace_count <= declared_trace_count:
         raise ValueError(f"trace count must be in [1, {declared_trace_count}], got {trace_count}")
-    if args.trace_stride < 1 or (trace_count - 1) * args.trace_stride >= declared_trace_count:
-        raise ValueError("trace stride and count exceed the declared acquisition span")
+    if args.max_traces_per_solver_call is not None and args.max_traces_per_solver_call < 1:
+        raise ValueError("max traces per solver call must be positive")
+    if args.trace_start < 0 or args.trace_stride < 1 or args.trace_start + (trace_count - 1) * args.trace_stride >= declared_trace_count:
+        raise ValueError("trace start, stride, and count exceed the declared acquisition span")
     if args.trace_stride > 1 and (args.geometry_only or trace_count == declared_trace_count):
         raise ValueError("trace stride is only valid for non-full spatial audit subsets")
+    if args.resume_control and (args.geometry_only or args.full_scene_only):
+        raise ValueError("control resume cannot be combined with geometry-only or full-scene-only modes")
+    if args.resume_control and not args.run_dir and not args.run_id:
+        raise ValueError("control resume requires --run-dir or --run-id")
 
     runtime = load_runtime()
     try:
@@ -311,9 +500,14 @@ def main() -> int:
     pycuda_cache.mkdir(parents=True, exist_ok=True)
     # Keep generated CUDA cubins in the project runtime area, never in C:\\Users.
     env["PYCUDA_CACHE_DIR"] = str(pycuda_cache)
+    if runtime.cuda_nvcc_flags:
+        env["PYCUDA_DEFAULT_NVCC_FLAGS"] = " ".join(runtime.cuda_nvcc_flags)
+        env["GPRMAX_NVCC_FLAGS"] = " ".join(runtime.cuda_nvcc_flags)
+    if runtime.gprmax_force_cuda_arch:
+        env["GPRMAX_FORCE_CUDA_ARCH"] = runtime.gprmax_force_cuda_arch
     if args.execute and not args.geometry_only:
         env = _load_vcvars_environment(env, runtime.gprmax_vcvars)
-        cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else None
+        cuda_bin = args.cuda_bin.resolve() if args.cuda_bin else runtime.cuda_bin
         nvcc = (cuda_bin / "nvcc.exe") if cuda_bin else shutil.which("nvcc", path=env.get("PATH"))
         if not nvcc or not Path(nvcc).is_file():
             raise RuntimeError(
@@ -323,16 +517,114 @@ def main() -> int:
             )
         nvcc_path = Path(nvcc).resolve()
         env["CUDA_PATH"] = str(nvcc_path.parents[1])
-        env["PATH"] = str(nvcc_path.parent) + os.pathsep + env.get("PATH", "")
+        env["GPRMAX_CUDA_INCLUDE"] = str(nvcc_path.parents[1] / "include")
+        nvvm_bin = nvcc_path.parents[1] / "nvvm" / "bin"
+        env["PATH"] = os.pathsep.join(
+            part for part in (str(nvcc_path.parent), str(nvvm_bin), env.get("PATH", "")) if part
+        )
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_case_dir = args.run_dir.resolve() if args.run_dir else (runtime.solver_run_root / source_case_dir.name / run_id).resolve()
+    if args.resume_control:
+        if not args.execute:
+            print("PLAN ONLY: a matching staged run will be checked before resuming the no-basal control.")
+            print(f"source deck: {source_case_dir}")
+            print(f"solver run:  {run_case_dir}")
+            return 0
+        resume = _resume_control_preflight(
+            source_case_dir,
+            run_case_dir,
+            trace_count=trace_count,
+            trace_stride=args.trace_stride,
+            trace_start=args.trace_start,
+        )
+        log_dir = run_case_dir / "run_logs"
+        preflight_dir = run_case_dir / "preflight"
+        log_dir.mkdir(exist_ok=True)
+        preflight_dir.mkdir(exist_ok=True)
+        control_input = run_case_dir / "no_basal_contrast_control.in"
+        # A full-scene-only subset stages only the full input, so regenerate the
+        # control input from the immutable source deck before applying the same
+        # acquisition transform.  Otherwise a distributed full scene can be
+        # incorrectly paired with a contiguous control scan.
+        shutil.copy2(source_case_dir / control_input.name, control_input)
+        if args.trace_stride > 1:
+            step_m = float(manifest["grid"]["trace_spacing_m"]) * args.trace_stride
+            _set_spatial_step(control_input, step_m)
+        if args.trace_start:
+            offset_m = float(manifest["grid"]["trace_spacing_m"]) * args.trace_start
+            _set_trace_start(control_input, offset_m)
+        _run(
+            [
+                str(gprmax_python),
+                str(STATIC_AUDIT),
+                str(control_input),
+                "--json",
+                str(preflight_dir / "no_basal_contrast_control_static_audit.json"),
+            ],
+            cwd=run_case_dir,
+            env=env,
+            execute=True,
+        )
+        for restart_index, model_count in _remaining_solver_trace_chunks(
+            next_restart_index=int(resume["next_restart_index"]),
+            trace_count=trace_count,
+            max_per_call=args.max_traces_per_solver_call,
+        ):
+            _run(
+                _solver_command(
+                    gprmax_python,
+                    control_input.name,
+                    restart_index=restart_index,
+                    model_count=model_count,
+                    gpu=gpu,
+                ),
+                cwd=run_case_dir,
+                env=env,
+                execute=True,
+            )
+        _run(
+            [
+                str(gprmax_python),
+                str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"),
+                str(run_case_dir),
+                "--prefix",
+                "no_basal_contrast_control",
+                "--expected",
+                str(trace_count),
+                "--output",
+                str(log_dir / "no_basal_contrast_control_trace_contract.json"),
+            ],
+            cwd=run_case_dir,
+            env=env,
+            execute=True,
+        )
+        if trace_count > 1:
+            _run(
+                [str(gprmax_python), "-m", "tools.outputfiles_merge", "no_basal_contrast_control", "--remove-files"],
+                cwd=run_case_dir,
+                env=env,
+                execute=True,
+            )
+        _write_state(
+            run_case_dir,
+            completed_utc=datetime.now(timezone.utc).isoformat(),
+            status="smoke_subset_causal_pair_resumed_complete",
+            requested_trace_count=trace_count,
+            declared_trace_count=declared_trace_count,
+            release_eligible=False,
+            causal_pair_complete=True,
+            completed_control_trace_count_before_resume=int(resume["completed_control_trace_count"]),
+            note="Only the missing no-basal control suffix was resumed after a matching full-scene subset completed.",
+        )
+        return 0
     include_air_reference = not args.skip_air_reference and not args.full_scene_only
     inputs = _input_names(
         manifest,
         include_air_reference=include_air_reference,
         full_scene_only=args.full_scene_only,
     )
+    solver_chunks = _solver_trace_chunks(trace_count, args.max_traces_per_solver_call)
     if not args.execute:
         print("PLAN ONLY: source deck will remain untouched. Add --execute to stage and run.")
         print(f"source deck: {source_case_dir}")
@@ -343,13 +635,27 @@ def main() -> int:
             else "smoke_subset"
         )
         print(f"mode: {mode}")
+        print(f"trace start: {args.trace_start}")
         print(f"trace stride: {args.trace_stride}")
+        print(f"solver chunks: {solver_chunks}")
         for input_name in inputs:
             print(f"static audit: {input_name}")
             if args.geometry_only:
                 _run([str(gprmax_python), "-m", "gprMax", _geometry_input(input_name), "--geometry-only"], cwd=run_case_dir, env=env, execute=False)
             else:
-                _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=run_case_dir, env=env, execute=False)
+                for restart_index, model_count in solver_chunks:
+                    _run(
+                        _solver_command(
+                            gprmax_python,
+                            input_name,
+                            restart_index=restart_index,
+                            model_count=model_count,
+                            gpu=gpu,
+                        ),
+                        cwd=run_case_dir,
+                        env=env,
+                        execute=False,
+                    )
         return 0
 
     case_dir = stage_case(
@@ -358,6 +664,7 @@ def main() -> int:
         requested_trace_count=trace_count,
         geometry_only=args.geometry_only,
         trace_stride=args.trace_stride,
+        trace_start=args.trace_start,
         include_air_reference=include_air_reference,
         full_scene_only=args.full_scene_only,
     )
@@ -379,7 +686,19 @@ def main() -> int:
                 record["geometry_input"] = _geometry_input(input_name)
             geometry_view_cleanup.extend(cleanup_records)
             continue
-        _run([str(gprmax_python), "-m", "gprMax", input_name, "-n", str(trace_count), "--geometry-fixed", "-gpu", str(gpu)], cwd=case_dir, env=env, execute=True)
+        for restart_index, model_count in solver_chunks:
+            _run(
+                _solver_command(
+                    gprmax_python,
+                    input_name,
+                    restart_index=restart_index,
+                    model_count=model_count,
+                    gpu=gpu,
+                ),
+                cwd=case_dir,
+                env=env,
+                execute=True,
+            )
         _run([str(gprmax_python), str(ROOT / "scripts" / "capture_gprmax_trace_contract.py"), str(case_dir), "--prefix", stem, "--expected", str(trace_count), "--output", str(log_dir / f"{stem}_trace_contract.json")], cwd=case_dir, env=env, execute=True)
         if trace_count > 1:
             _run([str(gprmax_python), "-m", "tools.outputfiles_merge", stem, "--remove-files"], cwd=case_dir, env=env, execute=True)

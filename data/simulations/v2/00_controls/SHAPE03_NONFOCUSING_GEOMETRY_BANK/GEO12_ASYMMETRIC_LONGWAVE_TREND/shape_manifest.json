@@ -1,0 +1,33 @@
+{
+  "basal_depth_full_domain_sha256": "90a2c4bcdaf5fa3e759979df498ab76ebd553d2fcb9aea3f900b021c0dab2065",
+  "basal_depth_scan_sha256": "2fe37e6ff16a76ec4cb99214082b339ca52c03f1aa4d43575f9cb6355f513425",
+  "contract_id": "BASAL_SHAPE_BATCH_V3_SHAPE03_NONFOCUSING",
+  "description": "Monotonic regional trend with a distributed asymmetric change in slope, not a local basin.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.053564424202006466,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.705577613315436,
+    "depth_median_m": 15.14296144888656,
+    "depth_min_m": 14.6648829173048,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.9987545972885139,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.040694696010636,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO12_ASYMMETRIC_LONGWAVE_TREND",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO12_ASYMMETRIC_LONGWAVE_TREND_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "nonfocusing_primary",
+  "shape_id": "GEO12_ASYMMETRIC_LONGWAVE_TREND",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

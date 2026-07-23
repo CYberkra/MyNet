@@ -34,11 +34,14 @@ def main() -> int:
             errors.append(f"project Python does not exist: {profile.project_python}")
         if args.require_gprmax:
             require_gprmax(profile)
-        if args.require_gpu_compiler and not shutil.which("nvcc"):
-            errors.append(
-                "CUDA Toolkit compiler nvcc.exe is not available on PATH; "
-                "gprMax GPU runs cannot compile kernels."
-            )
+        if args.require_gpu_compiler:
+            configured_nvcc = (profile.cuda_bin / "nvcc.exe") if profile.cuda_bin else None
+            nvcc = configured_nvcc if configured_nvcc and configured_nvcc.is_file() else shutil.which("nvcc")
+            if nvcc is None:
+                errors.append(
+                    "CUDA Toolkit compiler nvcc.exe is not available on PATH or profile.cuda_bin; "
+                    "gprMax GPU runs cannot compile kernels."
+                )
     except RuntimeConfigError as exc:
         result = {"profile_path": str(args.profile) if args.profile else None}
         errors.append(str(exc))

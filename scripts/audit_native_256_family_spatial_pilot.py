@@ -71,11 +71,28 @@ def _full_scene_detectability_gate(
         checks["full_scene_target_to_local_background_rms_max"] = bool(
             float(metrics["full_scene_target_to_local_background_rms"]) <= float(local_max)
         )
+    review_flags: dict[str, bool] = {}
+    local_review_above = contract.get(
+        "full_scene_target_to_local_background_rms_review_above"
+    )
+    if local_review_above is not None:
+        review_flags["full_scene_target_to_local_background_rms_above_review"] = bool(
+            float(metrics["full_scene_target_to_local_background_rms"])
+            > float(local_review_above)
+        )
     return {
         "passed": bool(all(checks.values())),
         "automatic_metrics_passed": bool(all(checks.values())),
         "checks": checks,
         "thresholds": thresholds,
+        "review_thresholds": {
+            "full_scene_target_to_local_background_rms_review_above": float(
+                local_review_above
+            )
+        }
+        if local_review_above is not None
+        else {},
+        "review_flags": review_flags,
         "human_morphology_review": "pending",
         "human_blind_review_required": bool(
             contract.get("requires_human_visible_multicycle_interface", True)

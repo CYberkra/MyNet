@@ -1,0 +1,2109 @@
+{
+  "input": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "facts": {
+    "domain_m": [
+      242.73,
+      48.0,
+      0.03
+    ],
+    "grid_m": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "time_window_s": 7.5e-07,
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "grid_rounding": [
+      {
+        "kind": "domain",
+        "axis": 0,
+        "requested_m": 242.73,
+        "cells": 8091,
+        "realised_m": 242.73
+      },
+      {
+        "kind": "domain",
+        "axis": 1,
+        "requested_m": 48.0,
+        "cells": 1600,
+        "realised_m": 48.0
+      },
+      {
+        "kind": "domain",
+        "axis": 2,
+        "requested_m": 0.03,
+        "cells": 1,
+        "realised_m": 0.03
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 0,
+        "requested_m": 109.8,
+        "cells": 3660,
+        "realised_m": 109.8,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#hertzian_dipole",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 8
+      },
+      {
+        "kind": "#rx",
+        "axis": 0,
+        "requested_m": 109.98,
+        "cells": 3666,
+        "realised_m": 109.97999999999999,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 1,
+        "requested_m": 36.51,
+        "cells": 1217,
+        "realised_m": 36.51,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#rx",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 9
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#src_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 10
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 0,
+        "requested_m": 0.09,
+        "cells": 3,
+        "realised_m": 0.09,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 1,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 11
+      },
+      {
+        "kind": "#rx_steps",
+        "axis": 2,
+        "requested_m": 0.0,
+        "cells": 0,
+        "realised_m": 0.0,
+        "path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\full_scene.in",
+        "line": 11
+      }
+    ],
+    "inline_materials": [],
+    "waveform_center_frequencies_hz": {
+      "iv2_f01_ricker55": 55000000.0
+    },
+    "imported_geometry": [
+      {
+        "geometry": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\geology_indices.h5",
+        "materials": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt",
+        "material_count": 320,
+        "shape": [
+          8091,
+          1600,
+          1
+        ],
+        "dtype": "int16",
+        "min_index": -1,
+        "max_index": 319,
+        "dx_dy_dz": [
+          0.03,
+          0.03,
+          0.03
+        ]
+      }
+    ],
+    "imported_materials": [
+      {
+        "epsilon_r": 11.8,
+        "conductivity": 0.0018,
+        "id": "cover_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00183225806,
+        "id": "cover_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8516129,
+        "conductivity": 0.00186451613,
+        "id": "cover_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8774194,
+        "conductivity": 0.00189677419,
+        "id": "cover_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9032258,
+        "conductivity": 0.00192903226,
+        "id": "cover_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9290323,
+        "conductivity": 0.00196129032,
+        "id": "cover_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9548387,
+        "conductivity": 0.00199354839,
+        "id": "cover_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9806452,
+        "conductivity": 0.00202580645,
+        "id": "cover_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.00205806452,
+        "id": "cover_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0322581,
+        "conductivity": 0.00209032258,
+        "id": "cover_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0580645,
+        "conductivity": 0.00212258065,
+        "id": "cover_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.083871,
+        "conductivity": 0.00215483871,
+        "id": "cover_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1096774,
+        "conductivity": 0.00218709677,
+        "id": "cover_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1354839,
+        "conductivity": 0.00221935484,
+        "id": "cover_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1612903,
+        "conductivity": 0.0022516129,
+        "id": "cover_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00228387097,
+        "id": "cover_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2129032,
+        "conductivity": 0.00231612903,
+        "id": "cover_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2387097,
+        "conductivity": 0.0023483871,
+        "id": "cover_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2645161,
+        "conductivity": 0.00238064516,
+        "id": "cover_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2903226,
+        "conductivity": 0.00241290323,
+        "id": "cover_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.316129,
+        "conductivity": 0.00244516129,
+        "id": "cover_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3419355,
+        "conductivity": 0.00247741935,
+        "id": "cover_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3677419,
+        "conductivity": 0.00250967742,
+        "id": "cover_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3935484,
+        "conductivity": 0.00254193548,
+        "id": "cover_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4193548,
+        "conductivity": 0.00257419355,
+        "id": "cover_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4451613,
+        "conductivity": 0.00260645161,
+        "id": "cover_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4709677,
+        "conductivity": 0.00263870968,
+        "id": "cover_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4967742,
+        "conductivity": 0.00267096774,
+        "id": "cover_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5225806,
+        "conductivity": 0.00270322581,
+        "id": "cover_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5483871,
+        "conductivity": 0.00273548387,
+        "id": "cover_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.5741935,
+        "conductivity": 0.00276774194,
+        "id": "cover_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.6,
+        "conductivity": 0.0028,
+        "id": "cover_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.77,
+        "conductivity": 0.0018025,
+        "id": "transition_1_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7930645,
+        "conductivity": 0.00183137097,
+        "id": "transition_1_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.816129,
+        "conductivity": 0.00186024194,
+        "id": "transition_1_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8391935,
+        "conductivity": 0.0018891129,
+        "id": "transition_1_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8622581,
+        "conductivity": 0.00191798387,
+        "id": "transition_1_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8853226,
+        "conductivity": 0.00194685484,
+        "id": "transition_1_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9083871,
+        "conductivity": 0.00197572581,
+        "id": "transition_1_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9314516,
+        "conductivity": 0.00200459677,
+        "id": "transition_1_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9545161,
+        "conductivity": 0.00203346774,
+        "id": "transition_1_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9775806,
+        "conductivity": 0.00206233871,
+        "id": "transition_1_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0006452,
+        "conductivity": 0.00209120968,
+        "id": "transition_1_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0237097,
+        "conductivity": 0.00212008065,
+        "id": "transition_1_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0467742,
+        "conductivity": 0.00214895161,
+        "id": "transition_1_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0698387,
+        "conductivity": 0.00217782258,
+        "id": "transition_1_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0929032,
+        "conductivity": 0.00220669355,
+        "id": "transition_1_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1159677,
+        "conductivity": 0.00223556452,
+        "id": "transition_1_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1390323,
+        "conductivity": 0.00226443548,
+        "id": "transition_1_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1620968,
+        "conductivity": 0.00229330645,
+        "id": "transition_1_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1851613,
+        "conductivity": 0.00232217742,
+        "id": "transition_1_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2082258,
+        "conductivity": 0.00235104839,
+        "id": "transition_1_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2312903,
+        "conductivity": 0.00237991935,
+        "id": "transition_1_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2543548,
+        "conductivity": 0.00240879032,
+        "id": "transition_1_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2774194,
+        "conductivity": 0.00243766129,
+        "id": "transition_1_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3004839,
+        "conductivity": 0.00246653226,
+        "id": "transition_1_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3235484,
+        "conductivity": 0.00249540323,
+        "id": "transition_1_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3466129,
+        "conductivity": 0.00252427419,
+        "id": "transition_1_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3696774,
+        "conductivity": 0.00255314516,
+        "id": "transition_1_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3927419,
+        "conductivity": 0.00258201613,
+        "id": "transition_1_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4158065,
+        "conductivity": 0.0026108871,
+        "id": "transition_1_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.438871,
+        "conductivity": 0.00263975806,
+        "id": "transition_1_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.4619355,
+        "conductivity": 0.00266862903,
+        "id": "transition_1_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.485,
+        "conductivity": 0.0026975,
+        "id": "transition_1_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.74,
+        "conductivity": 0.001805,
+        "id": "transition_2_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7603226,
+        "conductivity": 0.00183048387,
+        "id": "transition_2_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7806452,
+        "conductivity": 0.00185596774,
+        "id": "transition_2_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8009677,
+        "conductivity": 0.00188145161,
+        "id": "transition_2_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8212903,
+        "conductivity": 0.00190693548,
+        "id": "transition_2_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8416129,
+        "conductivity": 0.00193241935,
+        "id": "transition_2_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8619355,
+        "conductivity": 0.00195790323,
+        "id": "transition_2_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8822581,
+        "conductivity": 0.0019833871,
+        "id": "transition_2_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9025806,
+        "conductivity": 0.00200887097,
+        "id": "transition_2_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9229032,
+        "conductivity": 0.00203435484,
+        "id": "transition_2_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9432258,
+        "conductivity": 0.00205983871,
+        "id": "transition_2_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9635484,
+        "conductivity": 0.00208532258,
+        "id": "transition_2_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.983871,
+        "conductivity": 0.00211080645,
+        "id": "transition_2_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0041935,
+        "conductivity": 0.00213629032,
+        "id": "transition_2_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0245161,
+        "conductivity": 0.00216177419,
+        "id": "transition_2_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0448387,
+        "conductivity": 0.00218725806,
+        "id": "transition_2_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0651613,
+        "conductivity": 0.00221274194,
+        "id": "transition_2_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0854839,
+        "conductivity": 0.00223822581,
+        "id": "transition_2_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1058065,
+        "conductivity": 0.00226370968,
+        "id": "transition_2_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.126129,
+        "conductivity": 0.00228919355,
+        "id": "transition_2_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1464516,
+        "conductivity": 0.00231467742,
+        "id": "transition_2_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1667742,
+        "conductivity": 0.00234016129,
+        "id": "transition_2_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1870968,
+        "conductivity": 0.00236564516,
+        "id": "transition_2_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2074194,
+        "conductivity": 0.00239112903,
+        "id": "transition_2_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2277419,
+        "conductivity": 0.0024166129,
+        "id": "transition_2_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2480645,
+        "conductivity": 0.00244209677,
+        "id": "transition_2_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2683871,
+        "conductivity": 0.00246758065,
+        "id": "transition_2_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2887097,
+        "conductivity": 0.00249306452,
+        "id": "transition_2_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3090323,
+        "conductivity": 0.00251854839,
+        "id": "transition_2_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3293548,
+        "conductivity": 0.00254403226,
+        "id": "transition_2_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.3496774,
+        "conductivity": 0.00256951613,
+        "id": "transition_2_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.37,
+        "conductivity": 0.002595,
+        "id": "transition_2_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.71,
+        "conductivity": 0.0018075,
+        "id": "transition_3_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7275806,
+        "conductivity": 0.00182959677,
+        "id": "transition_3_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7451613,
+        "conductivity": 0.00185169355,
+        "id": "transition_3_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7627419,
+        "conductivity": 0.00187379032,
+        "id": "transition_3_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7803226,
+        "conductivity": 0.0018958871,
+        "id": "transition_3_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7979032,
+        "conductivity": 0.00191798387,
+        "id": "transition_3_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8154839,
+        "conductivity": 0.00194008065,
+        "id": "transition_3_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8330645,
+        "conductivity": 0.00196217742,
+        "id": "transition_3_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8506452,
+        "conductivity": 0.00198427419,
+        "id": "transition_3_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8682258,
+        "conductivity": 0.00200637097,
+        "id": "transition_3_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8858065,
+        "conductivity": 0.00202846774,
+        "id": "transition_3_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9033871,
+        "conductivity": 0.00205056452,
+        "id": "transition_3_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9209677,
+        "conductivity": 0.00207266129,
+        "id": "transition_3_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9385484,
+        "conductivity": 0.00209475806,
+        "id": "transition_3_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.956129,
+        "conductivity": 0.00211685484,
+        "id": "transition_3_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9737097,
+        "conductivity": 0.00213895161,
+        "id": "transition_3_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9912903,
+        "conductivity": 0.00216104839,
+        "id": "transition_3_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.008871,
+        "conductivity": 0.00218314516,
+        "id": "transition_3_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0264516,
+        "conductivity": 0.00220524194,
+        "id": "transition_3_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0440323,
+        "conductivity": 0.00222733871,
+        "id": "transition_3_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0616129,
+        "conductivity": 0.00224943548,
+        "id": "transition_3_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0791935,
+        "conductivity": 0.00227153226,
+        "id": "transition_3_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0967742,
+        "conductivity": 0.00229362903,
+        "id": "transition_3_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1143548,
+        "conductivity": 0.00231572581,
+        "id": "transition_3_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1319355,
+        "conductivity": 0.00233782258,
+        "id": "transition_3_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1495161,
+        "conductivity": 0.00235991935,
+        "id": "transition_3_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1670968,
+        "conductivity": 0.00238201613,
+        "id": "transition_3_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1846774,
+        "conductivity": 0.0024041129,
+        "id": "transition_3_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2022581,
+        "conductivity": 0.00242620968,
+        "id": "transition_3_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2198387,
+        "conductivity": 0.00244830645,
+        "id": "transition_3_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.2374194,
+        "conductivity": 0.00247040323,
+        "id": "transition_3_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.255,
+        "conductivity": 0.0024925,
+        "id": "transition_3_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.68,
+        "conductivity": 0.00181,
+        "id": "transition_4_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6948387,
+        "conductivity": 0.00182870968,
+        "id": "transition_4_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7096774,
+        "conductivity": 0.00184741935,
+        "id": "transition_4_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7245161,
+        "conductivity": 0.00186612903,
+        "id": "transition_4_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7393548,
+        "conductivity": 0.00188483871,
+        "id": "transition_4_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7541935,
+        "conductivity": 0.00190354839,
+        "id": "transition_4_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7690323,
+        "conductivity": 0.00192225806,
+        "id": "transition_4_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.783871,
+        "conductivity": 0.00194096774,
+        "id": "transition_4_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7987097,
+        "conductivity": 0.00195967742,
+        "id": "transition_4_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8135484,
+        "conductivity": 0.0019783871,
+        "id": "transition_4_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8283871,
+        "conductivity": 0.00199709677,
+        "id": "transition_4_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8432258,
+        "conductivity": 0.00201580645,
+        "id": "transition_4_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8580645,
+        "conductivity": 0.00203451613,
+        "id": "transition_4_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8729032,
+        "conductivity": 0.00205322581,
+        "id": "transition_4_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8877419,
+        "conductivity": 0.00207193548,
+        "id": "transition_4_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9025806,
+        "conductivity": 0.00209064516,
+        "id": "transition_4_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9174194,
+        "conductivity": 0.00210935484,
+        "id": "transition_4_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9322581,
+        "conductivity": 0.00212806452,
+        "id": "transition_4_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9470968,
+        "conductivity": 0.00214677419,
+        "id": "transition_4_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9619355,
+        "conductivity": 0.00216548387,
+        "id": "transition_4_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9767742,
+        "conductivity": 0.00218419355,
+        "id": "transition_4_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9916129,
+        "conductivity": 0.00220290323,
+        "id": "transition_4_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0064516,
+        "conductivity": 0.0022216129,
+        "id": "transition_4_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0212903,
+        "conductivity": 0.00224032258,
+        "id": "transition_4_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.036129,
+        "conductivity": 0.00225903226,
+        "id": "transition_4_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0509677,
+        "conductivity": 0.00227774194,
+        "id": "transition_4_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0658065,
+        "conductivity": 0.00229645161,
+        "id": "transition_4_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0806452,
+        "conductivity": 0.00231516129,
+        "id": "transition_4_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0954839,
+        "conductivity": 0.00233387097,
+        "id": "transition_4_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1103226,
+        "conductivity": 0.00235258065,
+        "id": "transition_4_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.1251613,
+        "conductivity": 0.00237129032,
+        "id": "transition_4_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.14,
+        "conductivity": 0.00239,
+        "id": "transition_4_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.65,
+        "conductivity": 0.0018125,
+        "id": "transition_5_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6620968,
+        "conductivity": 0.00182782258,
+        "id": "transition_5_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6741935,
+        "conductivity": 0.00184314516,
+        "id": "transition_5_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6862903,
+        "conductivity": 0.00185846774,
+        "id": "transition_5_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6983871,
+        "conductivity": 0.00187379032,
+        "id": "transition_5_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7104839,
+        "conductivity": 0.0018891129,
+        "id": "transition_5_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7225806,
+        "conductivity": 0.00190443548,
+        "id": "transition_5_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7346774,
+        "conductivity": 0.00191975806,
+        "id": "transition_5_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7467742,
+        "conductivity": 0.00193508065,
+        "id": "transition_5_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.758871,
+        "conductivity": 0.00195040323,
+        "id": "transition_5_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7709677,
+        "conductivity": 0.00196572581,
+        "id": "transition_5_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7830645,
+        "conductivity": 0.00198104839,
+        "id": "transition_5_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7951613,
+        "conductivity": 0.00199637097,
+        "id": "transition_5_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8072581,
+        "conductivity": 0.00201169355,
+        "id": "transition_5_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8193548,
+        "conductivity": 0.00202701613,
+        "id": "transition_5_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8314516,
+        "conductivity": 0.00204233871,
+        "id": "transition_5_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8435484,
+        "conductivity": 0.00205766129,
+        "id": "transition_5_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8556452,
+        "conductivity": 0.00207298387,
+        "id": "transition_5_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8677419,
+        "conductivity": 0.00208830645,
+        "id": "transition_5_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8798387,
+        "conductivity": 0.00210362903,
+        "id": "transition_5_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8919355,
+        "conductivity": 0.00211895161,
+        "id": "transition_5_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9040323,
+        "conductivity": 0.00213427419,
+        "id": "transition_5_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.916129,
+        "conductivity": 0.00214959677,
+        "id": "transition_5_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9282258,
+        "conductivity": 0.00216491935,
+        "id": "transition_5_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9403226,
+        "conductivity": 0.00218024194,
+        "id": "transition_5_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9524194,
+        "conductivity": 0.00219556452,
+        "id": "transition_5_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9645161,
+        "conductivity": 0.0022108871,
+        "id": "transition_5_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9766129,
+        "conductivity": 0.00222620968,
+        "id": "transition_5_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9887097,
+        "conductivity": 0.00224153226,
+        "id": "transition_5_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0008065,
+        "conductivity": 0.00225685484,
+        "id": "transition_5_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.0129032,
+        "conductivity": 0.00227217742,
+        "id": "transition_5_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 12.025,
+        "conductivity": 0.0022875,
+        "id": "transition_5_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.62,
+        "conductivity": 0.001815,
+        "id": "transition_6_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6293548,
+        "conductivity": 0.00182693548,
+        "id": "transition_6_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6387097,
+        "conductivity": 0.00183887097,
+        "id": "transition_6_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6480645,
+        "conductivity": 0.00185080645,
+        "id": "transition_6_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6574194,
+        "conductivity": 0.00186274194,
+        "id": "transition_6_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6667742,
+        "conductivity": 0.00187467742,
+        "id": "transition_6_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.676129,
+        "conductivity": 0.0018866129,
+        "id": "transition_6_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6854839,
+        "conductivity": 0.00189854839,
+        "id": "transition_6_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6948387,
+        "conductivity": 0.00191048387,
+        "id": "transition_6_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7041935,
+        "conductivity": 0.00192241935,
+        "id": "transition_6_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7135484,
+        "conductivity": 0.00193435484,
+        "id": "transition_6_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7229032,
+        "conductivity": 0.00194629032,
+        "id": "transition_6_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7322581,
+        "conductivity": 0.00195822581,
+        "id": "transition_6_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7416129,
+        "conductivity": 0.00197016129,
+        "id": "transition_6_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7509677,
+        "conductivity": 0.00198209677,
+        "id": "transition_6_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7603226,
+        "conductivity": 0.00199403226,
+        "id": "transition_6_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7696774,
+        "conductivity": 0.00200596774,
+        "id": "transition_6_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7790323,
+        "conductivity": 0.00201790323,
+        "id": "transition_6_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7883871,
+        "conductivity": 0.00202983871,
+        "id": "transition_6_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7977419,
+        "conductivity": 0.00204177419,
+        "id": "transition_6_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8070968,
+        "conductivity": 0.00205370968,
+        "id": "transition_6_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8164516,
+        "conductivity": 0.00206564516,
+        "id": "transition_6_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8258065,
+        "conductivity": 0.00207758065,
+        "id": "transition_6_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8351613,
+        "conductivity": 0.00208951613,
+        "id": "transition_6_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8445161,
+        "conductivity": 0.00210145161,
+        "id": "transition_6_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.853871,
+        "conductivity": 0.0021133871,
+        "id": "transition_6_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8632258,
+        "conductivity": 0.00212532258,
+        "id": "transition_6_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8725806,
+        "conductivity": 0.00213725806,
+        "id": "transition_6_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8819355,
+        "conductivity": 0.00214919355,
+        "id": "transition_6_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.8912903,
+        "conductivity": 0.00216112903,
+        "id": "transition_6_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.9006452,
+        "conductivity": 0.00217306452,
+        "id": "transition_6_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.91,
+        "conductivity": 0.002185,
+        "id": "transition_6_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.59,
+        "conductivity": 0.0018175,
+        "id": "transition_7_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5966129,
+        "conductivity": 0.00182604839,
+        "id": "transition_7_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6032258,
+        "conductivity": 0.00183459677,
+        "id": "transition_7_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6098387,
+        "conductivity": 0.00184314516,
+        "id": "transition_7_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6164516,
+        "conductivity": 0.00185169355,
+        "id": "transition_7_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6230645,
+        "conductivity": 0.00186024194,
+        "id": "transition_7_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6296774,
+        "conductivity": 0.00186879032,
+        "id": "transition_7_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6362903,
+        "conductivity": 0.00187733871,
+        "id": "transition_7_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6429032,
+        "conductivity": 0.0018858871,
+        "id": "transition_7_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6495161,
+        "conductivity": 0.00189443548,
+        "id": "transition_7_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.656129,
+        "conductivity": 0.00190298387,
+        "id": "transition_7_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6627419,
+        "conductivity": 0.00191153226,
+        "id": "transition_7_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6693548,
+        "conductivity": 0.00192008065,
+        "id": "transition_7_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6759677,
+        "conductivity": 0.00192862903,
+        "id": "transition_7_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6825806,
+        "conductivity": 0.00193717742,
+        "id": "transition_7_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6891935,
+        "conductivity": 0.00194572581,
+        "id": "transition_7_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6958065,
+        "conductivity": 0.00195427419,
+        "id": "transition_7_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7024194,
+        "conductivity": 0.00196282258,
+        "id": "transition_7_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7090323,
+        "conductivity": 0.00197137097,
+        "id": "transition_7_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7156452,
+        "conductivity": 0.00197991935,
+        "id": "transition_7_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7222581,
+        "conductivity": 0.00198846774,
+        "id": "transition_7_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.728871,
+        "conductivity": 0.00199701613,
+        "id": "transition_7_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7354839,
+        "conductivity": 0.00200556452,
+        "id": "transition_7_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7420968,
+        "conductivity": 0.0020141129,
+        "id": "transition_7_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7487097,
+        "conductivity": 0.00202266129,
+        "id": "transition_7_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7553226,
+        "conductivity": 0.00203120968,
+        "id": "transition_7_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7619355,
+        "conductivity": 0.00203975806,
+        "id": "transition_7_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7685484,
+        "conductivity": 0.00204830645,
+        "id": "transition_7_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7751613,
+        "conductivity": 0.00205685484,
+        "id": "transition_7_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7817742,
+        "conductivity": 0.00206540323,
+        "id": "transition_7_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.7883871,
+        "conductivity": 0.00207395161,
+        "id": "transition_7_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.795,
+        "conductivity": 0.0020825,
+        "id": "transition_7_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.56,
+        "conductivity": 0.00182,
+        "id": "transition_8_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.563871,
+        "conductivity": 0.00182516129,
+        "id": "transition_8_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5677419,
+        "conductivity": 0.00183032258,
+        "id": "transition_8_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5716129,
+        "conductivity": 0.00183548387,
+        "id": "transition_8_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5754839,
+        "conductivity": 0.00184064516,
+        "id": "transition_8_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5793548,
+        "conductivity": 0.00184580645,
+        "id": "transition_8_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5832258,
+        "conductivity": 0.00185096774,
+        "id": "transition_8_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5870968,
+        "conductivity": 0.00185612903,
+        "id": "transition_8_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5909677,
+        "conductivity": 0.00186129032,
+        "id": "transition_8_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5948387,
+        "conductivity": 0.00186645161,
+        "id": "transition_8_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.5987097,
+        "conductivity": 0.0018716129,
+        "id": "transition_8_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6025806,
+        "conductivity": 0.00187677419,
+        "id": "transition_8_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6064516,
+        "conductivity": 0.00188193548,
+        "id": "transition_8_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6103226,
+        "conductivity": 0.00188709677,
+        "id": "transition_8_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6141935,
+        "conductivity": 0.00189225806,
+        "id": "transition_8_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6180645,
+        "conductivity": 0.00189741935,
+        "id": "transition_8_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6219355,
+        "conductivity": 0.00190258065,
+        "id": "transition_8_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6258065,
+        "conductivity": 0.00190774194,
+        "id": "transition_8_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6296774,
+        "conductivity": 0.00191290323,
+        "id": "transition_8_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6335484,
+        "conductivity": 0.00191806452,
+        "id": "transition_8_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6374194,
+        "conductivity": 0.00192322581,
+        "id": "transition_8_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6412903,
+        "conductivity": 0.0019283871,
+        "id": "transition_8_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6451613,
+        "conductivity": 0.00193354839,
+        "id": "transition_8_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6490323,
+        "conductivity": 0.00193870968,
+        "id": "transition_8_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6529032,
+        "conductivity": 0.00194387097,
+        "id": "transition_8_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6567742,
+        "conductivity": 0.00194903226,
+        "id": "transition_8_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6606452,
+        "conductivity": 0.00195419355,
+        "id": "transition_8_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6645161,
+        "conductivity": 0.00195935484,
+        "id": "transition_8_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6683871,
+        "conductivity": 0.00196451613,
+        "id": "transition_8_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.6722581,
+        "conductivity": 0.00196967742,
+        "id": "transition_8_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.676129,
+        "conductivity": 0.00197483871,
+        "id": "transition_8_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.68,
+        "conductivity": 0.00198,
+        "id": "transition_8_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.27,
+        "conductivity": 0.00114,
+        "id": "bedrock_00",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2732258,
+        "conductivity": 0.00114387097,
+        "id": "bedrock_01",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2764516,
+        "conductivity": 0.00114774194,
+        "id": "bedrock_02",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2796774,
+        "conductivity": 0.0011516129,
+        "id": "bedrock_03",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2829032,
+        "conductivity": 0.00115548387,
+        "id": "bedrock_04",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.286129,
+        "conductivity": 0.00115935484,
+        "id": "bedrock_05",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2893548,
+        "conductivity": 0.00116322581,
+        "id": "bedrock_06",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2925806,
+        "conductivity": 0.00116709677,
+        "id": "bedrock_07",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2958065,
+        "conductivity": 0.00117096774,
+        "id": "bedrock_08",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.2990323,
+        "conductivity": 0.00117483871,
+        "id": "bedrock_09",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3022581,
+        "conductivity": 0.00117870968,
+        "id": "bedrock_10",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3054839,
+        "conductivity": 0.00118258065,
+        "id": "bedrock_11",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3087097,
+        "conductivity": 0.00118645161,
+        "id": "bedrock_12",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3119355,
+        "conductivity": 0.00119032258,
+        "id": "bedrock_13",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3151613,
+        "conductivity": 0.00119419355,
+        "id": "bedrock_14",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3183871,
+        "conductivity": 0.00119806452,
+        "id": "bedrock_15",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3216129,
+        "conductivity": 0.00120193548,
+        "id": "bedrock_16",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3248387,
+        "conductivity": 0.00120580645,
+        "id": "bedrock_17",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3280645,
+        "conductivity": 0.00120967742,
+        "id": "bedrock_18",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3312903,
+        "conductivity": 0.00121354839,
+        "id": "bedrock_19",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3345161,
+        "conductivity": 0.00121741935,
+        "id": "bedrock_20",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3377419,
+        "conductivity": 0.00122129032,
+        "id": "bedrock_21",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3409677,
+        "conductivity": 0.00122516129,
+        "id": "bedrock_22",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3441935,
+        "conductivity": 0.00122903226,
+        "id": "bedrock_23",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3474194,
+        "conductivity": 0.00123290323,
+        "id": "bedrock_24",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3506452,
+        "conductivity": 0.00123677419,
+        "id": "bedrock_25",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.353871,
+        "conductivity": 0.00124064516,
+        "id": "bedrock_26",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3570968,
+        "conductivity": 0.00124451613,
+        "id": "bedrock_27",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3603226,
+        "conductivity": 0.0012483871,
+        "id": "bedrock_28",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3635484,
+        "conductivity": 0.00125225806,
+        "id": "bedrock_29",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.3667742,
+        "conductivity": 0.00125612903,
+        "id": "bedrock_30",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      },
+      {
+        "epsilon_r": 11.37,
+        "conductivity": 0.00126,
+        "id": "bedrock_31",
+        "source": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\00_controls\\SHAPE02_BASAL_CAUSAL_PROBES\\GEO10_COMPOUND_SHOULDER\\GEO10_COMPOUND_SHOULDER_POS\\materials_full.txt"
+      }
+    ],
+    "max_material_epsilon_r": 12.6,
+    "lambda_min_m": 0.548421799597879,
+    "cells_per_lambda_min": 18.280726653262633,
+    "frequency_multiplier_for_grid_check": 2.8,
+    "command_count": 12
+  }
+}

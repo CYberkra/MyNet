@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "0af43069dffa8036f7c22a812d26480197f41d681d9a6f4430eaf645bfa2359c",
+  "basal_depth_scan_sha256": "6ab6d995a114d6b9889e5572e4d697baca5d2aef75a4d23e36b58a62de3176e0",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "Four to seven smooth extrema and moderate relief.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.16895446932590202,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.425994076756844,
+    "depth_median_m": 15.255894213599309,
+    "depth_min_m": 14.891377158378745,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.18046496824217928,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.5346169183780987,
+    "role": "candidate",
+    "shape_id": "GEO06_APERIODIC_MULTISCALE_MEDIUM",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 5
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO06_APERIODIC_MULTISCALE_MEDIUM_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO06_APERIODIC_MULTISCALE_MEDIUM",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

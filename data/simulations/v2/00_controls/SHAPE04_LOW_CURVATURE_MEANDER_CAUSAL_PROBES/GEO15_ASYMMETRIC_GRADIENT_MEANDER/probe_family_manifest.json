@@ -1,0 +1,26 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE04_LOW_CURVATURE_MEANDER_CAUSAL_PROBES/GEO15_ASYMMETRIC_GRADIENT_MEANDER/GEO15_ASYMMETRIC_GRADIENT_MEANDER_POS",
+  "geometry_index_sha256": "0af1554af477ba0ebf787d649ca1ac0b775c23471256ae3ca0dd2a382ce2e9c7",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.06268064624212527,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.654723231650982,
+    "depth_median_m": 15.21382755256722,
+    "depth_min_m": 14.741619205662024,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.983250016857062,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9131040259889573,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO15_ASYMMETRIC_GRADIENT_MEANDER",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "nonfocusing_primary",
+  "scene_manifest_sha256": "94c899cf6bff8870bc1a2006a0e02673a7280604784c923cf371fd07a365cdc6",
+  "shape_id": "GEO15_ASYMMETRIC_GRADIENT_MEANDER",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

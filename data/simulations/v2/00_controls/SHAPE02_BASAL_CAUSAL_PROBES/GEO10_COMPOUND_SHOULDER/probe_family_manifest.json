@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO10_COMPOUND_SHOULDER/GEO10_COMPOUND_SHOULDER_POS",
+  "geometry_index_sha256": "d9801fd13631ae11eb3abc541dd4df7871c86dfdce3176a8905156f7213206c2",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.16477662460522688,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.7260092005438,
+    "depth_median_m": 15.052407799670878,
+    "depth_min_m": 14.690154146406472,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7976535041419278,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.0358550541373273,
+    "role": "candidate",
+    "shape_id": "GEO10_COMPOUND_SHOULDER",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 3
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "717c51a61a5d922420939a3dcfb92149ab9f0425e036bcda7b96c20ce9189548",
+  "shape_id": "GEO10_COMPOUND_SHOULDER",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

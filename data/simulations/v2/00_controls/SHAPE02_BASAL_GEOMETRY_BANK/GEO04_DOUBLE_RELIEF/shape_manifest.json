@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "f7c43981c704c66853bd80652652de709ba49a2d817a9f3aa0aac13834e48de0",
+  "basal_depth_scan_sha256": "194d89e9e85846760ff5fae54772957b29575391533ffa31d9d1aed7512a1372",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "One broad high and one broad trough with unequal widths.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.19395508142520265,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.787258270080281,
+    "depth_median_m": 15.274134283414558,
+    "depth_min_m": 14.719475078410762,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.4587729348560118,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.0677831916695197,
+    "role": "candidate",
+    "shape_id": "GEO04_DOUBLE_RELIEF",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 2
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO04_DOUBLE_RELIEF_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO04_DOUBLE_RELIEF",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

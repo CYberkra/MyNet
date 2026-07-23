@@ -13,11 +13,29 @@ python scripts/validate_machine_runtime.py --require-gprmax
 The active resolver accepts `PGDA_RUNTIME_CONFIG` when the local profile should
 live outside the repository. Individual values can be overridden with
 `PGDA_PROJECT_PYTHON`, `PGDA_GPRMAX_PYTHON`, `PGDA_GPRMAX_ROOT`,
-`PGDA_GPU_INDEX`, `PGDA_OUTPUT_ROOT`, and `PGDA_SCRATCH_ROOT`.
+`PGDA_GPRMAX_VCVARS`, `PGDA_CUDA_BIN`, `PGDA_GPU_INDEX`, `PGDA_OUTPUT_ROOT`,
+and `PGDA_SCRATCH_ROOT`.
 
 For Windows GPU gprMax runs, set `gprmax_vcvars` to the existing Visual Studio
 `vcvars64.bat` on that machine. The native pilot runner loads it only for the
 solver subprocess so `nvcc` can find `cl.exe`; no absolute path is committed.
+Set `cuda_bin` to the toolkit `bin` directory containing `nvcc.exe`. This is a
+machine-local value and belongs only in the ignored `project_runtime.local.json`
+or in `PGDA_CUDA_BIN`, never in source decks or committed reports.
+If the toolkit is bundled by MATLAB and its host compiler is newer than the
+toolkit support window, `cuda_nvcc_flags` may contain
+`-allow-unsupported-compiler` as an explicitly reviewed local workaround.
+`gprmax_force_cuda_arch` is an experimental compatibility override only; it
+must be removed when a toolkit that natively supports the installed GPU is
+available. It is never part of a formal simulation contract.
+
+The reviewed local gprMax 3.1.7 source tree has a small environment bridge so
+`GPRMAX_NVCC_FLAGS` can append these flags to its Windows PyCUDA compile list.
+It also consumes `GPRMAX_CUDA_INCLUDE`, which the runner derives from the
+configured Toolkit and uses when a private Toolkit does not self-register its
+header directory.
+The bridge is a toolchain compatibility patch only and does not alter FDTD
+equations, geometry, materials, or output semantics.
 
 Commit source code, source decks, compact validated canonical arrays, manifests,
 and reports. Do not commit solver `.out`, `.h5`, `.vti`, logs, scratch data, or

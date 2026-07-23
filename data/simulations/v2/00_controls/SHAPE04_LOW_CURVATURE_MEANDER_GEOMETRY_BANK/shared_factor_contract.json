@@ -1,0 +1,15 @@
+{
+  "center_frequency_hz": 55000000.0,
+  "cover_index_field": "one shared deterministic field and hash for every shape",
+  "flight_height_agl_m": 8.01,
+  "ground_surface": "flat",
+  "material_table": "one shared table and hash for every shape",
+  "scan_span_m": 22.95,
+  "screening_grid_dl_m": 0.03,
+  "sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "trace_count": 256,
+  "trace_spacing_m": 0.09,
+  "tx_rx_offset_m": 0.18,
+  "waveform": "ricker",
+  "weathered_transition_thickness_m": 1.35
+}

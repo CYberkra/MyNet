@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "041e7a5030b0a3a6a936e833d243bc956538ae7a2e11f78d748ae51aa123ca42",
+  "basal_depth_scan_sha256": "51cf5d4cf4fdefc7cb3341694d296c42dd6514202d47155d07997b58008e07c2",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "A broad asymmetric incision-like low without a sharp V.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.19507858707736295,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.17914523296809,
+    "depth_median_m": 15.486631645031876,
+    "depth_min_m": 15.20111534635538,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7446530472381945,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9780298866127097,
+    "role": "candidate",
+    "shape_id": "GEO08_BROAD_INCISED_LOW",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO08_BROAD_INCISED_LOW_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO08_BROAD_INCISED_LOW",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

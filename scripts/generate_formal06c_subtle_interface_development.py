@@ -12,7 +12,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-import generate_formal06_interface_conditioned_development as formal06
+try:
+    import generate_formal06_interface_conditioned_development as formal06
+except ModuleNotFoundError:  # Package import used by tests and successor generators.
+    from scripts import generate_formal06_interface_conditioned_development as formal06
 
 
 ROOT = Path(__file__).resolve().parents[1]

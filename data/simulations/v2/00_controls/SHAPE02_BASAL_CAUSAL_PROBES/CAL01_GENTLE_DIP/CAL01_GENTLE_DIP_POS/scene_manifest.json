@@ -1,0 +1,184 @@
+{
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "case_id": "CAL01_GENTLE_DIP_POS",
+  "scene_family_id": "CAL01_GENTLE_DIP",
+  "lifecycle_state": "pre_solver_shape02_one_trace_probe",
+  "formal_training_allowed": false,
+  "promotion_allowed": false,
+  "target_presence": true,
+  "negative_semantics": "not_a_negative_sample; one-trace positive full/control causal probe only",
+  "line9_conditioned": false,
+  "strict_line9_holdout_allowed": true,
+  "generator_path": "scripts/generate_basal_shape_batch_v2.py",
+  "generator_sha256": "d09a14eff027372f9d4388bb9f92daa9f8e883895dad38b2d4f57bdcb3b30ae7",
+  "contract_path": "data/contracts/simulation_v2/basal_shape_batch_v2.json",
+  "contract_sha256": "fca29d95ac207af080ac17bf13edb49b15deada627ddc8bbdd337684b757ddee",
+  "training_block_reason": "SHAPE02 one-trace causal probe. It is screening-only and cannot become training data without full-span and native-256 paired evidence.",
+  "parameter_provenance": {
+    "line9_conditioned": false,
+    "measured_files_read_by_generator": [],
+    "shape_prior": "SHAPE02 analytic basal morphology bank",
+    "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+    "shared_cover_seed": 2026072201,
+    "transition_thickness_m": 1.35
+  },
+  "grid": {
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "dl_m": 0.03,
+    "domain_x_m": 242.73,
+    "domain_y_m": 48.0,
+    "nx_ny_nz": [
+      8091,
+      1600,
+      1
+    ],
+    "pml_cells": [
+      60,
+      60,
+      0,
+      60,
+      60,
+      0
+    ],
+    "left_physical_guard_m": 108.0,
+    "right_physical_guard_m": 107.99999999999997,
+    "earliest_lateral_boundary_round_trip_ns": 720.4984456280082,
+    "solver_time_window_ns": 750.0,
+    "protected_time_window_ns": 700.0,
+    "protected_window_end_ns": 700.0,
+    "canonical_output_samples": 501,
+    "canonical_output_dt_ns": 1.4,
+    "cells_per_min_wavelength_at_2_8fc": 18.280726653262633
+  },
+  "source": {
+    "model": "ideal_hertzian_line_source",
+    "waveform": "55 MHz Ricker pulse proxy",
+    "center_frequency_hz": 55000000.0,
+    "tx_rx_offset_m": 0.18,
+    "proxy_only": true,
+    "not_sfcw": true,
+    "reference_delay_ns": 25.712973861329
+  },
+  "geometry": {
+    "index_file": "geology_indices.h5",
+    "index_file_sha256": "686aab0a9f457bee6492cad30b84781eacdfbe1eeec4459da100b7e37e9634df",
+    "index_array_sha256": "60d667384bd5659310521a7871077b7ae61e9f0ac9823aade89f9c5d4a8f1abf",
+    "index_shape": [
+      8091,
+      1600,
+      1
+    ],
+    "profile_shape_gate": {
+      "shape_name": "CAL01_GENTLE_DIP",
+      "scan_depth_min_m": 14.427650594288167,
+      "scan_depth_median_m": 15.2,
+      "scan_depth_max_m": 15.972349405711832,
+      "scan_depth_range_m": 1.5446988114236646,
+      "smoothed_extrema_count": 0,
+      "quadratic_fit_r2": 0.9906639195808499,
+      "abs_slope_p95": 0.0971516949529675,
+      "broad_shape_gate_ok": true,
+      "flat_ground": true,
+      "generated_from_measured_arrays": false
+    },
+    "cover_field_statistics": {
+      "seed": 2026072201,
+      "coarse_shape": [
+        1349,
+        267
+      ],
+      "correlation_scales_m": {
+        "long_xy": [
+          9.0,
+          3.0
+        ],
+        "meso_xy": [
+          2.4,
+          1.2
+        ],
+        "local_xy": [
+          0.75,
+          0.45
+        ]
+      },
+      "component_weights": [
+        0.55,
+        0.3,
+        0.15
+      ],
+      "used_bins": 32,
+      "horizontal_neighbor_bin_change_rate": 0.05773308096415328,
+      "vertical_neighbor_bin_change_rate": 0.10854315154486076,
+      "vertical_spectral_peak_fraction_in_scan_cover": 0.8562576689200677,
+      "quantile_thresholds": [
+        -2.027028799057007,
+        -1.6455332040786743,
+        -1.3913072347640991,
+        -1.1852028369903564,
+        -1.0105061531066895,
+        -0.8637372851371765,
+        -0.7365323305130005,
+        -0.622427225112915,
+        -0.5183194279670715,
+        -0.42549189925193787,
+        -0.3379906415939331,
+        -0.25553378462791443,
+        -0.17869684100151062,
+        -0.10592091083526611,
+        -0.03171180188655853,
+        0.04307611286640167,
+        0.11828751116991043,
+        0.1943250149488449,
+        0.27092576026916504,
+        0.35230395197868347,
+        0.4380015432834625,
+        0.5263257026672363,
+        0.61654132604599,
+        0.7068830728530884,
+        0.7985573410987854,
+        0.894782304763794,
+        0.999882698059082,
+        1.1269855499267578,
+        1.2681169509887695,
+        1.4488344192504883,
+        1.7125864028930664
+      ],
+      "sinusoidal_stratigraphy": false,
+      "isolated_inclusions": 0,
+      "point_targets": 0,
+      "vertical_partitions": 0
+    },
+    "flat_ground": true,
+    "fixed_flight_height_m": 8.009999999999998,
+    "discrete_anomaly_bodies": 0,
+    "visible_phase_geometry_written": false,
+    "latent_target_partition_constitutively_neutral": false,
+    "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+    "transition_thickness_fixed_m": 1.35
+  },
+  "materials": {
+    "full_materials_sha256": "0226a148fb4c49f8b9f80d59f5187e0a4a34c0d16ddfb53ec2b821021057c834",
+    "material_count": 320,
+    "cover_bins": 32,
+    "transition_levels": 8,
+    "only_positive_full_has_basal_contrast": true,
+    "no_basal_materials_sha256": "601fa20802d840bcf05bd6ee72f321eff12c5bcbbf9e3007cf921584d7812034"
+  },
+  "strict_pair": {
+    "required": true,
+    "shared_geometry_hdf5": true,
+    "control_restores_transition_and_bedrock_to_each_local_cover_bin": true,
+    "positive_control_equals_family_negative_full": false,
+    "probe_scope": "full_scene/no_basal_contrast_control only; target-absent negative deferred"
+  },
+  "labels": {
+    "geometric_reference": "audit prior only",
+    "source_referenced_arrival": "audit prior only",
+    "visible_phase_search_half_width_ns": 55.0,
+    "visible_phase_phase_half_width_ns": 10.0,
+    "visible_phase": "absent until solved signed pair review",
+    "target_mask_training_allowed": false
+  },
+  "next_gate": "static + geometry-only audit, then one trace full/control GPU causal probe"
+}

@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "295436859686676f6b17fe1b8f5d980fe7ed95060aba4fd0599872c785e7db29",
+  "basal_depth_scan_sha256": "3d42f7b1e109d16a713b15ab6071557f19ecbaafe65c87b66706c6e0095f187c",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "A low-relief shoulder superposed on a long regional trend.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.16477662460522688,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.7260092005438,
+    "depth_median_m": 15.052407799670878,
+    "depth_min_m": 14.690154146406472,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7976535041419278,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.0358550541373273,
+    "role": "candidate",
+    "shape_id": "GEO10_COMPOUND_SHOULDER",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 3
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO10_COMPOUND_SHOULDER_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO10_COMPOUND_SHOULDER",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

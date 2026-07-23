@@ -1,0 +1,20 @@
+{
+  "profile_path": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\environment\\project_runtime.local.json",
+  "profile_name": "baiiy1",
+  "project_root": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup",
+  "project_python": "F:\\codex\\envs\\psgn-csnet\\python.exe",
+  "gprmax_python": "F:\\codex\\envs\\psgn-csnet\\python.exe",
+  "gprmax_source": "F:\\codex\\PSGN-CSNet\\gprMax-master",
+  "cuda_bin": "E:\\MATLAB R2024b\\sys\\cuda\\win64\\cuda\\bin",
+  "cuda_nvcc_flags": [
+    "-allow-unsupported-compiler",
+    "-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH"
+  ],
+  "gprmax_force_cuda_arch": null,
+  "gpu_index": 0,
+  "output_root": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\outputs",
+  "scratch_root": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\workspace",
+  "solver_run_root": "F:\\codex\\PSGN-CSNet\\MyNet_master_cleanup\\data\\simulations\\v2\\01_solver_runs",
+  "ok": true,
+  "errors": []
+}

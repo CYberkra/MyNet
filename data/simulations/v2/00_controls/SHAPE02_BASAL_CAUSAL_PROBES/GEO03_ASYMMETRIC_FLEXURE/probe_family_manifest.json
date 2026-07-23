@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO03_ASYMMETRIC_FLEXURE/GEO03_ASYMMETRIC_FLEXURE_POS",
+  "geometry_index_sha256": "f8adf3dd3f7961755a65628f6437edf644bb57ac16e3a20d20a19258cecd56f2",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.18139783989074457,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.09910113421963,
+    "depth_median_m": 15.458741666762268,
+    "depth_min_m": 14.583502131205462,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.8915689668520179,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.5155990030141684,
+    "role": "candidate",
+    "shape_id": "GEO03_ASYMMETRIC_FLEXURE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "ede038024d06f98cce1dcb669d28b4c6f60d5a59438343653f0c0ec121a0b329",
+  "shape_id": "GEO03_ASYMMETRIC_FLEXURE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

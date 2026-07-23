@@ -1,0 +1,26 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE03_NONFOCUSING_CAUSAL_PROBES/GEO11_REGIONAL_MONOTONIC_DIP/GEO11_REGIONAL_MONOTONIC_DIP_POS",
+  "geometry_index_sha256": "5f8e735e0f6f22d68b1f802df80dba205c44aca240969311510ca718b865117a",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.055915290412744026,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.794530642640762,
+    "depth_median_m": 15.234268541473963,
+    "depth_min_m": 14.621000117004051,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.9996976898323278,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.1735305256367106,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO11_REGIONAL_MONOTONIC_DIP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "nonfocusing_primary",
+  "scene_manifest_sha256": "ac9737533c39dc8be0268dd51267b037f8c90af26b1cb28483f44e094e9e2c60",
+  "shape_id": "GEO11_REGIONAL_MONOTONIC_DIP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "8c104e6ece9ec9d8560dc49b0c0454432b420afd7fbc29290d1169e3baa932fe",
+  "basal_depth_scan_sha256": "64beee8aabf83163288864273d773a5f41cab8c6440b4d1bea9190ba533f1004",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "A bounded offset spread over 2-4 m, never an abrupt vertical step.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.1632211807755943,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.855359572373976,
+    "depth_median_m": 15.122719342576548,
+    "depth_min_m": 14.542902402221408,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.9326570195993573,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.3124571701525678,
+    "role": "stress_minority",
+    "shape_id": "GEO09_DISTRIBUTED_FAULT_FLEXURE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO09_DISTRIBUTED_FAULT_FLEXURE_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "stress_minority",
+  "shape_id": "GEO09_DISTRIBUTED_FAULT_FLEXURE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

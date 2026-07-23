@@ -1,0 +1,33 @@
+{
+  "basal_depth_full_domain_sha256": "bc40d6d1d9d39de7017ac338730ed29d9e67d4fa9095e192b5beac545becd3b5",
+  "basal_depth_scan_sha256": "1ace1ef74a0d5865f905cc25452f9f71e005f8d2b4365057559767c075c45510",
+  "contract_id": "BASAL_SHAPE_BATCH_V3_SHAPE03_NONFOCUSING",
+  "description": "Long monotonic regional dip with no interior high, low, or reflection-path convergence.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.055915290412744026,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.794530642640762,
+    "depth_median_m": 15.234268541473963,
+    "depth_min_m": 14.621000117004051,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.9996976898323278,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.1735305256367106,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO11_REGIONAL_MONOTONIC_DIP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO11_REGIONAL_MONOTONIC_DIP_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "nonfocusing_primary",
+  "shape_id": "GEO11_REGIONAL_MONOTONIC_DIP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

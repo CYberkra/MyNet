@@ -1,0 +1,66 @@
+{
+  "root": "F:\\codex\\PSGN-CSNet\\gprMax-master",
+  "reviewed_utc": "2026-07-20T07:51:25.984064+00:00",
+  "version": "3.1.7",
+  "codename": "Big Smoke",
+  "files": {
+    "gprMax/_version.py": {
+      "sha256": "109fe890dff10d5d724e44873032286542b5a2e51992b14868af61724880dac0",
+      "size_bytes": 136
+    },
+    "gprMax/input_cmds_geometry.py": {
+      "sha256": "bab2fe9fd902e163aee84df286bedeb4c8b01047335b13add906e65e6ab6941f",
+      "size_bytes": 93595
+    },
+    "gprMax/fractals.py": {
+      "sha256": "0d78200a3d1d9de1f643c142e62222e3ca8e0d440e52da2161eaa7909b47d6cd",
+      "size_bytes": 11359
+    },
+    "gprMax/fractals_generate_ext.pyx": {
+      "sha256": "ab991753b5ee36b393351528694d4cf2581f1cb7ddb05113f3d813c98117ee0a",
+      "size_bytes": 3580
+    },
+    "gprMax/materials.py": {
+      "sha256": "2b015caeef5dd231e11901f0fb83743f3a53001812fd077e632c59482b5fa4f8",
+      "size_bytes": 13808
+    },
+    "gprMax/grid.py": {
+      "sha256": "3b8591757c336b53c0fc84b5f5a9a0b2fec0c19e2b61fa9be1e4b09879c9e190",
+      "size_bytes": 18265
+    },
+    "gprMax/pml.py": {
+      "sha256": "c95d7cf633b5cde7a326e5ba934ffcb396b027fc5ccff2b32b4fd9268e6e3748",
+      "size_bytes": 21814
+    },
+    "gprMax/model_build_run.py": {
+      "sha256": "2587ee2412c1b0825660c37012a4d02eafdc46ce07b3ba90490e83bc4011221e",
+      "size_bytes": 39933
+    },
+    "gprMax/utilities.py": {
+      "sha256": "e70ef869e9623621aa0414c92ab83f75f1b66c3ab2c17b1a88def54f2b78e720",
+      "size_bytes": 14942
+    },
+    "tools/outputfiles_merge.py": {
+      "sha256": "57dea77de03e728794100135be13e499c4134083d4e4e674ba2e71143fbcbdc6",
+      "size_bytes": 4701
+    },
+    "docs/source/input.rst": {
+      "sha256": "5dc5ec42e96e7551d4564b0b1689e7468dc30e5fcc67d5385dfb5b4bf0f891cc",
+      "size_bytes": 65545
+    },
+    "docs/source/gprmodelling.rst": {
+      "sha256": "7639a7507bd14589f16e42e90f91703897d338eef4e102f367ab4d7fadac15cc",
+      "size_bytes": 14307
+    },
+    "docs/source/gpu.rst": {
+      "sha256": "038050045ebdeeebb59b0322f6dee7daf0116a423b78676c34458ff5459f7e08",
+      "size_bytes": 3141
+    },
+    "docs/source/output.rst": {
+      "sha256": "ec59d50c2b4d3bdbc6422e25489a5934777846892148a134afec1e60e148631c",
+      "size_bytes": 9908
+    }
+  },
+  "missing": [],
+  "ok": true
+}

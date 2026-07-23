@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "f0ef92ac0807463d873b803af4f0bdde67e3cc16ed0021933374f1a15a84c16a",
+  "basal_depth_scan_sha256": "d2b2714db1701a5bdebf563df533b3235e96af7c4c9e0d1fb674fc918a09b22e",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "Two to four smooth extrema and low relief.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.15380279391281684,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.48708037898179,
+    "depth_median_m": 15.19079309416153,
+    "depth_min_m": 14.890665714543806,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.1243868774313146,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.5964146644379849,
+    "role": "candidate",
+    "shape_id": "GEO05_APERIODIC_MULTISCALE_LOW",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 4
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO05_APERIODIC_MULTISCALE_LOW_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO05_APERIODIC_MULTISCALE_LOW",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

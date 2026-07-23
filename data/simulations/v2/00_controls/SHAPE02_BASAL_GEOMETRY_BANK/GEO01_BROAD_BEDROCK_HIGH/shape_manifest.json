@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "72043ecf9cb6a7f541bda9fa75f0ba02f5bce1a718c0acffb7f66881ddfabe2d",
+  "basal_depth_scan_sha256": "cea6da901c2fd1cb056bdf3592e018cedbc9d2e17ed3110636b5934c0fd7e9fa",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "One broad centre shallowing with tapered shoulders.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.16122487618053613,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.196580013260883,
+    "depth_median_m": 14.956831199734133,
+    "depth_min_m": 14.250000790143828,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7634407928621696,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9465792231170553,
+    "role": "candidate",
+    "shape_id": "GEO01_BROAD_BEDROCK_HIGH",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO01_BROAD_BEDROCK_HIGH_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO01_BROAD_BEDROCK_HIGH",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

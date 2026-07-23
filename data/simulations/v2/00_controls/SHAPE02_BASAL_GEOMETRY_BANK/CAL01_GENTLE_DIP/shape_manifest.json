@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "3d37badf4f707193d7f0cb8c6aa6cb6a4077ef2f1beaa2da4058dd6cac44c59e",
+  "basal_depth_scan_sha256": "8cdac7996772e937cc625309a8fd268ebe02b77acbf669d97f59e8134594af3e",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "Smooth monotonic dip across the aperture without steps.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.0971516949529675,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.972349405711832,
+    "depth_median_m": 15.2,
+    "depth_min_m": 14.427650594288167,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.9906639195808499,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.5446988114236646,
+    "role": "calibration_and_low_complexity",
+    "shape_id": "CAL01_GENTLE_DIP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "CAL01_GENTLE_DIP_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "calibration_and_low_complexity",
+  "shape_id": "CAL01_GENTLE_DIP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

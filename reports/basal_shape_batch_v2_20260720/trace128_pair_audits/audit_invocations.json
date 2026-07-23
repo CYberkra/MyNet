@@ -1,0 +1,62 @@
+[
+  {
+    "run": "SHAPE02_TRACE128_CAL00_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_CAL00_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_CAL01_GENTLE_DIP_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_CAL01_GENTLE_DIP_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO01_BROAD_BEDROCK_HIGH_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO01_BROAD_BEDROCK_HIGH_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO02_BROAD_BEDROCK_TROUGH_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO02_BROAD_BEDROCK_TROUGH_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO03_ASYMMETRIC_FLEXURE_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO03_ASYMMETRIC_FLEXURE_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO04_DOUBLE_RELIEF_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO04_DOUBLE_RELIEF_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO05_APERIODIC_MULTISCALE_LOW_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO05_APERIODIC_MULTISCALE_LOW_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO06_APERIODIC_MULTISCALE_MEDIUM_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO06_APERIODIC_MULTISCALE_MEDIUM_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO07_SMOOTH_TERRACE_RAMP_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO07_SMOOTH_TERRACE_RAMP_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO08_BROAD_INCISED_LOW_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO08_BROAD_INCISED_LOW_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO09_DISTRIBUTED_FAULT_FLEXURE_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO09_DISTRIBUTED_FAULT_FLEXURE_CUDA129"
+  },
+  {
+    "run": "SHAPE02_TRACE128_GEO10_COMPOUND_SHOULDER_CUDA129",
+    "exit_code": 0,
+    "output_dir": "reports\\basal_shape_batch_v2_20260720\\trace128_pair_audits\\SHAPE02_TRACE128_GEO10_COMPOUND_SHOULDER_CUDA129"
+  }
+]

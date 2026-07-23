@@ -31,6 +31,9 @@ class RuntimeProfile:
     gprmax_python: Path | None
     gprmax_source: Path | None
     gprmax_vcvars: Path | None
+    cuda_bin: Path | None
+    cuda_nvcc_flags: tuple[str, ...]
+    gprmax_force_cuda_arch: str | None
     gpu_index: int
     cuda_visible_devices: str | None
     output_root: Path
@@ -83,6 +86,13 @@ def load_runtime(profile_path: Path | None = None) -> RuntimeProfile:
         gpu_index = int(gpu_value)
     except (TypeError, ValueError) as exc:
         raise RuntimeConfigError(f"gpu_index must be an integer, got {gpu_value!r}") from exc
+    raw_cuda_flags = value("cuda_nvcc_flags", "PGDA_CUDA_NVCC_FLAGS", "")
+    if isinstance(raw_cuda_flags, list):
+        cuda_nvcc_flags = tuple(str(flag) for flag in raw_cuda_flags if str(flag).strip())
+    else:
+        cuda_nvcc_flags = tuple(str(raw_cuda_flags or "").split())
+    raw_force_arch = value("gprmax_force_cuda_arch", "GPRMAX_FORCE_CUDA_ARCH", "")
+    force_arch = None if raw_force_arch in (None, "") else str(raw_force_arch).strip() or None
     return RuntimeProfile(
         profile_path=path,
         profile_name=str(payload.get("profile_name") or "unconfigured-machine"),
@@ -90,6 +100,9 @@ def load_runtime(profile_path: Path | None = None) -> RuntimeProfile:
         gprmax_python=_optional_path(value("gprmax_python", "PGDA_GPRMAX_PYTHON"), root=ROOT),
         gprmax_source=_optional_path(value("gprmax_source", "PGDA_GPRMAX_ROOT"), root=ROOT),
         gprmax_vcvars=_optional_path(value("gprmax_vcvars", "PGDA_GPRMAX_VCVARS"), root=ROOT),
+        cuda_bin=_optional_path(value("cuda_bin", "PGDA_CUDA_BIN"), root=ROOT),
+        cuda_nvcc_flags=cuda_nvcc_flags,
+        gprmax_force_cuda_arch=force_arch,
         gpu_index=gpu_index,
         cuda_visible_devices=(str(value("cuda_visible_devices", "CUDA_VISIBLE_DEVICES", "")).strip() or None),
         output_root=_optional_path(value("output_root", "PGDA_OUTPUT_ROOT", "outputs"), root=ROOT) or ROOT / "outputs",
@@ -121,6 +134,9 @@ def profile_summary(profile: RuntimeProfile) -> dict[str, object]:
         "project_python": str(profile.project_python),
         "gprmax_python": str(profile.gprmax_python) if profile.gprmax_python else None,
         "gprmax_source": str(profile.gprmax_source) if profile.gprmax_source else None,
+        "cuda_bin": str(profile.cuda_bin) if profile.cuda_bin else None,
+        "cuda_nvcc_flags": list(profile.cuda_nvcc_flags),
+        "gprmax_force_cuda_arch": profile.gprmax_force_cuda_arch,
         "gpu_index": profile.gpu_index,
         "output_root": str(profile.output_root),
         "scratch_root": str(profile.scratch_root),

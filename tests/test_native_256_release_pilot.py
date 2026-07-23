@@ -11,7 +11,12 @@ from scripts.create_native_domain_equivalence import create_equivalence
 from scripts.create_native_256_waveform_ablation import create_waveform_ablation
 from scripts.capture_gprmax_trace_contract import trace_filename, trace_index_for_path
 from scripts.postprocess_sfcw_band_equivalent import apply_sfcw_band_equivalent, raised_cosine_sfcw_window
-from scripts.run_native_256_release_pilot import _remove_geometry_views, stage_case
+from scripts.run_native_256_release_pilot import (
+    _remaining_solver_trace_chunks,
+    _remove_geometry_views,
+    _resume_control_preflight,
+    stage_case,
+)
 from scripts.audit_native_256_spatial_pilot import _position_tolerance_m
 from scripts.audit_native_domain_equivalence import _corr
 from scripts.audit_native_256_family_spatial_pilot import (
@@ -133,6 +138,38 @@ def test_native_runner_stages_distributed_audit_subset(tmp_path: Path) -> None:
     assert provenance["selected_trace_indices_zero_based"] == list(range(0, 249, 8))
 
 
+def test_native_runner_can_stage_a_central_single_trace_probe(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    manifest = {
+        "target_presence": True,
+        "grid": {"trace_count": 256, "trace_spacing_m": 0.09},
+    }
+    (source / "scene_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    deck = (
+        "#hertzian_dipole: z 100 1 0 ricker\n"
+        "#rx: 100.18 1 0\n"
+        "#src_steps: 0.09 0 0\n"
+        "#rx_steps: 0.09 0 0\n"
+    )
+    for name in ("full_scene.in", "no_basal_contrast_control.in", "air_reference.in"):
+        (source / name).write_text(deck, encoding="utf-8")
+    staged = stage_case(
+        source,
+        tmp_path / "run",
+        requested_trace_count=1,
+        geometry_only=False,
+        trace_start=128,
+        include_air_reference=False,
+    )
+    text = (staged / "full_scene.in").read_text(encoding="utf-8")
+    assert "#hertzian_dipole: z 111.52 1 0 ricker" in text
+    assert "#rx: 111.7 1 0" in text
+    provenance = json.loads((staged / "run_manifest.json").read_text(encoding="utf-8"))
+    assert provenance["trace_start"] == 128
+    assert provenance["selected_trace_indices_zero_based"] == [128]
+
+
 def test_native_runner_can_stage_only_the_causal_pair(tmp_path: Path) -> None:
     source = tmp_path / "source"
     source.mkdir()
@@ -155,6 +192,64 @@ def test_native_runner_can_stage_only_the_causal_pair(tmp_path: Path) -> None:
     provenance = json.loads((staged / "run_manifest.json").read_text(encoding="utf-8"))
     assert provenance["input_groups"] == ["full_scene", "no_basal_contrast_control"]
     assert "#src_steps: 0.72 0 0" in (staged / "full_scene.in").read_text(encoding="utf-8")
+
+
+def test_native_runner_resumes_only_a_matching_missing_control(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    manifest = {
+        "target_presence": True,
+        "grid": {"trace_count": 256, "trace_spacing_m": 0.09},
+    }
+    (source / "scene_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    deck = "#src_steps: 0.09 0 0\n#rx_steps: 0.09 0 0\n"
+    for name in ("full_scene.in", "no_basal_contrast_control.in", "air_reference.in"):
+        (source / name).write_text(deck, encoding="utf-8")
+    staged = stage_case(
+        source,
+        tmp_path / "run",
+        requested_trace_count=32,
+        geometry_only=False,
+        trace_stride=8,
+        include_air_reference=False,
+    )
+    (staged / "full_scene_merged.out").write_bytes(b"completed full subset")
+    logs = staged / "run_logs"
+    logs.mkdir()
+    (logs / "full_scene_trace_contract.json").write_text("{}", encoding="utf-8")
+    resolved = _resume_control_preflight(
+        source,
+        staged,
+        trace_count=32,
+        trace_stride=8,
+        trace_start=0,
+    )
+    assert resolved["source_manifest"]["target_presence"] is True
+    assert resolved["next_restart_index"] == 1
+    for index in range(1, 32):
+        (staged / f"no_basal_contrast_control{index}.out").write_bytes(b"partial output")
+    resumed = _resume_control_preflight(
+        source,
+        staged,
+        trace_count=32,
+        trace_stride=8,
+        trace_start=0,
+    )
+    assert resumed["completed_control_trace_count"] == 31
+    assert _remaining_solver_trace_chunks(
+        next_restart_index=int(resumed["next_restart_index"]),
+        trace_count=32,
+        max_per_call=8,
+    ) == [(32, 1)]
+    (staged / "no_basal_contrast_control17.out").unlink()
+    with pytest.raises(RuntimeError, match="contiguous control-trace prefix"):
+        _resume_control_preflight(
+            source,
+            staged,
+            trace_count=32,
+            trace_stride=8,
+            trace_start=0,
+        )
 
 
 def test_native_runner_can_stage_full_scene_only_for_morphology(tmp_path: Path) -> None:
@@ -343,6 +438,24 @@ def test_full_scene_detectability_keeps_human_review_as_separate_hard_gate() -> 
     assert gate["human_blind_review_required"] is True
     assert gate["human_morphology_review"] == "pending"
     assert gate["raw_target_to_early_is_cross_domain_diagnostic_only"] is True
+
+
+def test_full_scene_detectability_reports_development_overexposure_for_review() -> None:
+    metrics = {
+        "full_scene_target_to_local_background_rms": 10.27,
+        "full_scene_target_to_background_rms": 4.83,
+        "raw_target_to_early_rms": 4.3e-5,
+    }
+    manifest = {
+        "visibility_gate": {
+            "full_scene_target_to_local_background_rms_min": 1.0,
+            "full_scene_target_to_background_rms_min": 0.35,
+            "full_scene_target_to_local_background_rms_review_above": 5.0,
+        }
+    }
+    gate = _full_scene_detectability_gate(metrics, manifest)
+    assert gate["automatic_metrics_passed"] is True
+    assert gate["review_flags"]["full_scene_target_to_local_background_rms_above_review"] is True
 
 
 def test_family_spatial_audit_records_portable_reference_paths() -> None:

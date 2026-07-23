@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO01_BROAD_BEDROCK_HIGH/GEO01_BROAD_BEDROCK_HIGH_POS",
+  "geometry_index_sha256": "3888b2253a11210d90a6654bd1e90fc4faf2d36eb5f932a37b226587f6a8a35c",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.16122487618053613,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.196580013260883,
+    "depth_median_m": 14.956831199734133,
+    "depth_min_m": 14.250000790143828,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7634407928621696,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9465792231170553,
+    "role": "candidate",
+    "shape_id": "GEO01_BROAD_BEDROCK_HIGH",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "f09e39118131492a217a1fcf383dd429ee0521f19f3e938ed010e9aa0b00925f",
+  "shape_id": "GEO01_BROAD_BEDROCK_HIGH",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

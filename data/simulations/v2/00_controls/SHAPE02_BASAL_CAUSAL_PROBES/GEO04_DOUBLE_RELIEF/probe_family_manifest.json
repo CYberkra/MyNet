@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO04_DOUBLE_RELIEF/GEO04_DOUBLE_RELIEF_POS",
+  "geometry_index_sha256": "82b84b0d4edb48d452565e7a8c79ba44ef9fdcef8ee5dcbc9f3a438130a6458a",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.19395508142520265,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.787258270080281,
+    "depth_median_m": 15.274134283414558,
+    "depth_min_m": 14.719475078410762,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.4587729348560118,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.0677831916695197,
+    "role": "candidate",
+    "shape_id": "GEO04_DOUBLE_RELIEF",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 2
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "10b1ae4d9fb9a6786edfa298791e60d61bca1dbdea82a7ff6a4e26040e0592c6",
+  "shape_id": "GEO04_DOUBLE_RELIEF",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

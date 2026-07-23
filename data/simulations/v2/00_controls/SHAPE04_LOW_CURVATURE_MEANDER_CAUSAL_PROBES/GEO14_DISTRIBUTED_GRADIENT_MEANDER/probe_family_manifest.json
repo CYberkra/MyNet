@@ -1,0 +1,26 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE04_LOW_CURVATURE_MEANDER_CAUSAL_PROBES/GEO14_DISTRIBUTED_GRADIENT_MEANDER/GEO14_DISTRIBUTED_GRADIENT_MEANDER_POS",
+  "geometry_index_sha256": "0e5146052f37a493830958fe0781bdb5e66e1431314561bd44c6cc9155462353",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.06537304262127527,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.733710636803984,
+    "depth_median_m": 15.202930741316823,
+    "depth_min_m": 14.662270209449527,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.9911783940962334,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.0714404273544567,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO14_DISTRIBUTED_GRADIENT_MEANDER",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "nonfocusing_primary",
+  "scene_manifest_sha256": "0e625c1f06e6fe7b9f16460b00f168abfb1e79d022563d602cb4fa4d6d17911f",
+  "shape_id": "GEO14_DISTRIBUTED_GRADIENT_MEANDER",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

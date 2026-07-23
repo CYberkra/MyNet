@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO09_DISTRIBUTED_FAULT_FLEXURE/GEO09_DISTRIBUTED_FAULT_FLEXURE_POS",
+  "geometry_index_sha256": "4ff0937f98515562d33cf07ff787003722b73fbbb3a5e8155fbee10bbe427e1f",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.1632211807755943,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.855359572373976,
+    "depth_median_m": 15.122719342576548,
+    "depth_min_m": 14.542902402221408,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.9326570195993573,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.3124571701525678,
+    "role": "stress_minority",
+    "shape_id": "GEO09_DISTRIBUTED_FAULT_FLEXURE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "stress_minority",
+  "scene_manifest_sha256": "0f9f7dec107cac4ddc29dbca3e141579d3084b70d7c8281238537400caf5f0ce",
+  "shape_id": "GEO09_DISTRIBUTED_FAULT_FLEXURE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

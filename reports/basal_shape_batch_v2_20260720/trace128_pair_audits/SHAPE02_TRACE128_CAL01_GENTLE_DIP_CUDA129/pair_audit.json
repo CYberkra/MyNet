@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/simulations/v2/01_solver_runs/CAL01_GENTLE_DIP_POS/SHAPE02_TRACE128_CAL01_GENTLE_DIP_CUDA129",
+  "source_case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/CAL01_GENTLE_DIP/CAL01_GENTLE_DIP_POS",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 128,
+  "reference_path": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/CAL01_GENTLE_DIP/CAL01_GENTLE_DIP_POS/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 433.0161437988281,
+  "difference_envelope_pick_ns": 427.3881658190428,
+  "difference_pick_offset_ns": -5.627977979785328,
+  "target_window_ns": [
+    398.0161437988281,
+    468.0161437988281
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.0007447694942809396,
+  "pre_target_difference_rms": 9.459472911684499e-06,
+  "target_to_pre_target_difference_db": 37.92309883537784,
+  "full_direct_rms": 31.46995867492056,
+  "control_direct_rms": 31.46995868064186,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

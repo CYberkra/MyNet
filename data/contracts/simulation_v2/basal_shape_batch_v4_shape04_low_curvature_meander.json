@@ -1,0 +1,65 @@
+{
+  "contract_id": "BASAL_SHAPE_BATCH_V4_SHAPE04_LOW_CURVATURE_MEANDER",
+  "status": "planned_pre_solver",
+  "formal_training_allowed": false,
+  "purpose": "Test whether distributed, low-curvature slope changes improve visual realism over a pure regional dip without creating basin-focused or point-target-like responses.",
+  "supersedes": "none; SHAPE02 and SHAPE03 remain immutable screening evidence",
+  "factor_isolation": {
+    "only_variable": "basal_interface_depth_profile",
+    "locked": {
+      "ground_surface": "flat",
+      "flight_height_agl_m": 8.01,
+      "waveform": "ricker",
+      "center_frequency_hz": 55000000.0,
+      "tx_rx_offset_m": 0.18,
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "scan_span_m": 22.95,
+      "cover_index_field": "one shared deterministic field and hash for every shape",
+      "weathered_transition_thickness_m": 1.35,
+      "material_table": "one shared table and hash for every shape",
+      "source_receiver_orientation": "fixed",
+      "random_seed": "shared for every non-shape field"
+    },
+    "deferred": ["surface_topography", "flight_height_variation", "instrument_noise", "trace_gain_variation", "material_contrast_variation", "additional finite clutter bodies"]
+  },
+  "canonical_release": {
+    "dl_m": 0.0225,
+    "time_samples": 501,
+    "time_start_ns": 0.0,
+    "time_end_ns": 700.0,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "horizontal_resize_or_padding": "forbidden",
+    "pair": ["full_scene", "no_basal_contrast_control"],
+    "shared_air_reference": "required once before release when acquisition and source hashes are identical"
+  },
+  "shape_bank": [
+    {
+      "id": "GEO14_DISTRIBUTED_GRADIENT_MEANDER",
+      "role": "nonfocusing_primary",
+      "description": "A monotonic regional dip with three long, low-amplitude non-periodic changes in slope."
+    },
+    {
+      "id": "GEO15_ASYMMETRIC_GRADIENT_MEANDER",
+      "role": "nonfocusing_primary",
+      "description": "A monotonic asymmetric dip with distributed gradient changes of unequal widths."
+    }
+  ],
+  "geometry_gates": {
+    "depth_m": [13.5, 17.5],
+    "candidate_relief_m": [0.45, 2.2],
+    "abs_slope_p95_max": 0.2,
+    "minimum_feature_width_m": 3.6,
+    "require_no_internal_extremum": true,
+    "forbidden": ["centred U-shaped basin", "centred bedrock high", "paired converging flanks", "vertical wall", "sharp V notch", "periodic sinusoid train", "isolated point target"],
+    "quadratic_rejection": "A monotonic profile may have near-linear global fit; zero internal extrema and bounded derivative are the controlling conditions."
+  },
+  "execution_stages": [
+    {"stage": "A_geometry_bank", "run": "no FDTD", "scope": "both profiles", "gate": "bounded depth, slope, no internal extrema, visual review"},
+    {"stage": "B_causal_probe", "run": "one central full/control pair", "scope": "geometry-passing profiles", "gate": "signed residual near expected basal arrival"},
+    {"stage": "C_full_span_sparse", "run": "16 traces at indices 0,17,...,255 for full/control", "scope": "causal-passing profiles", "gate": "continuous visible band without apex"},
+    {"stage": "D_native_release", "run": "256 traces at 0.09 m for full/control", "scope": "human-approved profile only", "gate": "501x256 export and blind morphology review"}
+  ],
+  "later_factor_order": ["material and transition diversity", "gentle surface topography", "physical flight-height variation", "finite clutter topology", "measurement response and noise"]
+}

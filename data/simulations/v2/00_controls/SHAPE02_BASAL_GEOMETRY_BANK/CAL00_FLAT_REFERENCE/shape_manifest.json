@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "72b82988420cb9bed4e549d04cb058057c823831fbaa06d0340905164d2c6d0e",
+  "basal_depth_scan_sha256": "e881ca132d5a9fd29619272e6631c1129edfdb7a45f543e3aaca8a4bb165f37b",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "Constant-depth basal interface. Never used as the main morphology claim.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.0,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.2,
+    "depth_median_m": 15.2,
+    "depth_min_m": 15.2,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": -1.25,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.0,
+    "role": "calibration_only",
+    "shape_id": "CAL00_FLAT_REFERENCE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "CAL00_FLAT_REFERENCE_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "calibration_only",
+  "shape_id": "CAL00_FLAT_REFERENCE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

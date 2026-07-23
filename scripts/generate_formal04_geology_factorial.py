@@ -23,7 +23,10 @@ import h5py
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-import generate_formal03_correlated_cover_source_ablation as formal03
+try:
+    import generate_formal03_correlated_cover_source_ablation as formal03
+except ModuleNotFoundError:  # Package import used by tests and successor generators.
+    from scripts import generate_formal03_correlated_cover_source_ablation as formal03
 
 
 ROOT = Path(__file__).resolve().parents[1]

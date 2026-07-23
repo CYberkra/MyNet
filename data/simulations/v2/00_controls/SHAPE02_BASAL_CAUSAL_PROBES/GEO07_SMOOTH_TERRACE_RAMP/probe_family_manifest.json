@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO07_SMOOTH_TERRACE_RAMP/GEO07_SMOOTH_TERRACE_RAMP_POS",
+  "geometry_index_sha256": "d89e8e42a92ac62a2d74b1e85bc0ff5564789f900e610b83256eeea8a6bdb83d",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.17255124472423772,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.0159799021879,
+    "depth_median_m": 15.389579367877673,
+    "depth_min_m": 15.201559871249193,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7200723886271756,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.8144200309387077,
+    "role": "candidate",
+    "shape_id": "GEO07_SMOOTH_TERRACE_RAMP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "26e9ad26484b2a8d78367b87e7fb5a9603d48bcb12be117d4b0cf279979e6c4e",
+  "shape_id": "GEO07_SMOOTH_TERRACE_RAMP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

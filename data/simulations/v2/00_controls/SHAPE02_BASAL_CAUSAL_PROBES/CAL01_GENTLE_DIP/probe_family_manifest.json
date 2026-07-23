@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/CAL01_GENTLE_DIP/CAL01_GENTLE_DIP_POS",
+  "geometry_index_sha256": "686aab0a9f457bee6492cad30b84781eacdfbe1eeec4459da100b7e37e9634df",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.0971516949529675,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.972349405711832,
+    "depth_median_m": 15.2,
+    "depth_min_m": 14.427650594288167,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.9906639195808499,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.5446988114236646,
+    "role": "calibration_and_low_complexity",
+    "shape_id": "CAL01_GENTLE_DIP",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "calibration_and_low_complexity",
+  "scene_manifest_sha256": "7cd173d4baf94be23154dcf570d2a7e7e62afd8d80d5a6ea83a011bfdb25f73b",
+  "shape_id": "CAL01_GENTLE_DIP",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

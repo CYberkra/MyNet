@@ -1,0 +1,32 @@
+{
+  "basal_depth_full_domain_sha256": "a93356fb2e8dbaeff0678f83cbfdca2982509de447e2f04d50d9f5dd0ad553a4",
+  "basal_depth_scan_sha256": "e1446e2d3f6068aed7a275b9113b7085a2344cc9798086f0b0edddce46989948",
+  "contract_id": "BASAL_SHAPE_BATCH_V2_SHAPE02",
+  "description": "An asymmetric shoulder and smooth ramp with no vertical wall.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.18139783989074457,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.09910113421963,
+    "depth_median_m": 15.458741666762268,
+    "depth_min_m": 14.583502131205462,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.8915689668520179,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 1.5155990030141684,
+    "role": "candidate",
+    "shape_id": "GEO03_ASYMMETRIC_FLEXURE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO03_ASYMMETRIC_FLEXURE_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "candidate",
+  "shape_id": "GEO03_ASYMMETRIC_FLEXURE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

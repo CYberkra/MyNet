@@ -1,0 +1,74 @@
+{
+  "schema": "native_gprmax_smoke_pair_audit_v2",
+  "case_dir": "data/simulations/v2/01_solver_runs/GEO11_REGIONAL_MONOTONIC_DIP_POS/SHAPE03_TRACE128_GEO11_REGIONAL_MONOTONIC_DIP_CUDA129",
+  "source_case_dir": "data/simulations/v2/00_controls/SHAPE03_NONFOCUSING_CAUSAL_PROBES/GEO11_REGIONAL_MONOTONIC_DIP/GEO11_REGIONAL_MONOTONIC_DIP_POS",
+  "component": "Ez",
+  "air_reference_included": false,
+  "trace_index": 128,
+  "reference_path": "data/simulations/v2/00_controls/SHAPE03_NONFOCUSING_CAUSAL_PROBES/GEO11_REGIONAL_MONOTONIC_DIP/GEO11_REGIONAL_MONOTONIC_DIP_POS/labels/source_referenced_arrival_time_ns.npy",
+  "reference_semantics": "geometric_interface_plus_explicit_source_reference_delay",
+  "reference_arrival_ns": 433.76934814453125,
+  "difference_envelope_pick_ns": 431.2799454746797,
+  "difference_pick_offset_ns": -2.489402669851529,
+  "target_window_ns": [
+    398.76934814453125,
+    468.76934814453125
+  ],
+  "alignment_ok": true,
+  "finite_ok": true,
+  "target_difference_rms": 0.000844943537569618,
+  "pre_target_difference_rms": 9.711929142285755e-06,
+  "target_to_pre_target_difference_db": 38.790443670214316,
+  "full_direct_rms": 31.469958679454063,
+  "control_direct_rms": 31.46995868064186,
+  "air_direct_rms": null,
+  "metadata": {
+    "full_scene": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    },
+    "no_basal_contrast_control": {
+      "iterations": 10601,
+      "dt_s": 7.075963010249052e-11,
+      "grid_m": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "source_position_m": [
+        121.32,
+        36.51,
+        0.0
+      ],
+      "receiver_position_m": [
+        121.5,
+        36.51,
+        0.0
+      ]
+    }
+  },
+  "smoke_gate": {
+    "passed": true,
+    "criteria": {
+      "strict_pair_alignment": true,
+      "finite_arrays": true,
+      "target_difference_over_pre_target_db_min": 6.0,
+      "difference_pick_within_target_half_window_ns": 35.0
+    }
+  }
+}

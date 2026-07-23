@@ -1,0 +1,65 @@
+{
+  "contract_id": "BASAL_SHAPE_BATCH_V5_SHAPE05_BROAD_LOW_RELIEF",
+  "status": "planned_pre_solver",
+  "formal_training_allowed": false,
+  "purpose": "Add one aperture-scale, low-relief bend to the nonfocusing bank so simulated basal reflections are not limited to straight regional dips, while explicitly excluding bowl-like focusing geometries.",
+  "supersedes": "none; SHAPE02 through SHAPE04 remain immutable screening evidence",
+  "factor_isolation": {
+    "only_variable": "basal_interface_depth_profile",
+    "locked": {
+      "ground_surface": "flat",
+      "flight_height_agl_m": 8.01,
+      "waveform": "ricker",
+      "center_frequency_hz": 55000000.0,
+      "tx_rx_offset_m": 0.18,
+      "trace_count": 256,
+      "trace_spacing_m": 0.09,
+      "scan_span_m": 22.95,
+      "cover_index_field": "one shared deterministic field and hash for every shape",
+      "weathered_transition_thickness_m": 1.35,
+      "material_table": "one shared table and hash for every shape",
+      "source_receiver_orientation": "fixed",
+      "random_seed": "shared for every non-shape field"
+    },
+    "deferred": ["surface_topography", "flight_height_variation", "instrument_noise", "trace_gain_variation", "material_contrast_variation", "additional finite clutter bodies"]
+  },
+  "canonical_release": {
+    "dl_m": 0.0225,
+    "time_samples": 501,
+    "time_start_ns": 0.0,
+    "time_end_ns": 700.0,
+    "trace_count": 256,
+    "trace_spacing_m": 0.09,
+    "horizontal_resize_or_padding": "forbidden",
+    "pair": ["full_scene", "no_basal_contrast_control"],
+    "shared_air_reference": "required once before release when acquisition and source hashes are identical"
+  },
+  "shape_bank": [
+    {
+      "id": "GEO16_BROAD_SHALLOW_SAG",
+      "role": "nonfocusing_primary",
+      "description": "A regional dip with one intentionally shallow, aperture-scale arch; it has no narrow converging flanks."
+    },
+    {
+      "id": "GEO17_BROAD_ASYMMETRIC_SHOULDER",
+      "role": "nonfocusing_primary",
+      "description": "A regional dip with a broad asymmetric shoulder and no closed trough."
+    }
+  ],
+  "geometry_gates": {
+    "depth_m": [13.5, 17.5],
+    "candidate_relief_m": [0.45, 2.2],
+    "abs_slope_p95_max": 0.2,
+    "minimum_feature_width_m": 12.0,
+    "max_internal_extrema": 1,
+    "forbidden": ["centred U-shaped basin", "paired converging flanks", "vertical wall", "sharp V notch", "periodic sinusoid train", "isolated point target"],
+    "quadratic_rejection": "Low-relief, one-extremum geometry is allowed only if its feature width is aperture-scale and the causal spatial residual has no compact apex."
+  },
+  "execution_stages": [
+    {"stage": "A_geometry_bank", "run": "no FDTD", "scope": "both profiles", "gate": "bounded depth, slope, maximum one broad extremum, visual review"},
+    {"stage": "B_causal_probe", "run": "one central full/control pair", "scope": "geometry-passing profiles", "gate": "signed residual near expected basal arrival"},
+    {"stage": "C_full_span_sparse", "run": "16 traces at indices 0,17,...,255 for full/control", "scope": "causal-passing profiles", "gate": "continuous visible band without compact apex"},
+    {"stage": "D_native_release", "run": "256 traces at 0.09 m for full/control", "scope": "human-approved profile only", "gate": "501x256 export and blind morphology review"}
+  ],
+  "later_factor_order": ["material and transition diversity", "gentle surface topography", "physical flight-height variation", "finite clutter topology", "measurement response and noise"]
+}

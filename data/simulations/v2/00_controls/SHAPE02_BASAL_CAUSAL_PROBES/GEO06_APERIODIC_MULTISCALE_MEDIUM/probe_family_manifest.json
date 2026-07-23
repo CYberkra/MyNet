@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO06_APERIODIC_MULTISCALE_MEDIUM/GEO06_APERIODIC_MULTISCALE_MEDIUM_POS",
+  "geometry_index_sha256": "ba1f3342bc2dcbb5c9dd9114102da667823caf33af410a81974462d73cc4f5eb",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.16895446932590202,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.425994076756844,
+    "depth_median_m": 15.255894213599309,
+    "depth_min_m": 14.891377158378745,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.18046496824217928,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.5346169183780987,
+    "role": "candidate",
+    "shape_id": "GEO06_APERIODIC_MULTISCALE_MEDIUM",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 5
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "f89d15b9d6ec151385ff9f491dac419ca20128c08572d2aad32cceeecb86e9ff",
+  "shape_id": "GEO06_APERIODIC_MULTISCALE_MEDIUM",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

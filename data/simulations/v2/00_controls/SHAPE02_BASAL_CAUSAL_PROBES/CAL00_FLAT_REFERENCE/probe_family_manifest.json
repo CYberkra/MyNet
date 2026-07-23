@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/CAL00_FLAT_REFERENCE/CAL00_FLAT_REFERENCE_POS",
+  "geometry_index_sha256": "01d346f914462c3573fa04e953031b8348de8a52d4e3f137e1b1fb21fcb8b42f",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.0,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.2,
+    "depth_median_m": 15.2,
+    "depth_min_m": 15.2,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": -1.25,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.0,
+    "role": "calibration_only",
+    "shape_id": "CAL00_FLAT_REFERENCE",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "role": "calibration_only",
+  "scene_manifest_sha256": "b7d39f9ce25766e55c6faa07bd8c210e5885073257c0885e9e873d850bbfcc76",
+  "shape_id": "CAL00_FLAT_REFERENCE",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}

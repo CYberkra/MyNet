@@ -1,0 +1,33 @@
+{
+  "basal_depth_full_domain_sha256": "c84738b79576bac3b7ce60b7edaa117c094d0afd52ce99fda439d7b57addee5a",
+  "basal_depth_scan_sha256": "6a3da06ad95e1c05c093b79f4d9a54c50386838216d7a5eb9a6c0cad01f91d95",
+  "contract_id": "BASAL_SHAPE_BATCH_V4_SHAPE04_LOW_CURVATURE_MEANDER",
+  "description": "A monotonic asymmetric dip with distributed gradient changes of unequal widths.",
+  "formal_training_allowed": false,
+  "line9_conditioned": false,
+  "metrics": {
+    "abs_slope_p95": 0.06268064624212527,
+    "depth_gate_ok": true,
+    "depth_max_m": 15.654723231650982,
+    "depth_median_m": 15.21382755256722,
+    "depth_min_m": 14.741619205662024,
+    "geometry_gate_ok": true,
+    "no_internal_extremum_gate_ok": true,
+    "quadratic_fit_r2": 0.983250016857062,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9131040259889573,
+    "role": "nonfocusing_primary",
+    "shape_id": "GEO15_ASYMMETRIC_GRADIENT_MEANDER",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 0
+  },
+  "next_gate": "one central full/control causal probe",
+  "preview": "GEO15_ASYMMETRIC_GRADIENT_MEANDER_GEOMETRY_PREVIEW.png",
+  "promotion_allowed": false,
+  "role": "nonfocusing_primary",
+  "shape_id": "GEO15_ASYMMETRIC_GRADIENT_MEANDER",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false,
+  "stage": "A_geometry_bank"
+}

@@ -1,0 +1,25 @@
+{
+  "case_dir": "data/simulations/v2/00_controls/SHAPE02_BASAL_CAUSAL_PROBES/GEO08_BROAD_INCISED_LOW/GEO08_BROAD_INCISED_LOW_POS",
+  "geometry_index_sha256": "716f46d44efb98ecf4a55106c99930dd230b142ef7b574a97a488a9796c1fd7c",
+  "geometry_metrics": {
+    "abs_slope_p95": 0.19507858707736295,
+    "depth_gate_ok": true,
+    "depth_max_m": 16.17914523296809,
+    "depth_median_m": 15.486631645031876,
+    "depth_min_m": 15.20111534635538,
+    "geometry_gate_ok": true,
+    "quadratic_fit_r2": 0.7446530472381945,
+    "quadratic_gate_ok": true,
+    "relief_gate_ok": true,
+    "relief_m": 0.9780298866127097,
+    "role": "candidate",
+    "shape_id": "GEO08_BROAD_INCISED_LOW",
+    "slope_gate_ok": true,
+    "smoothed_extrema_count": 1
+  },
+  "role": "candidate",
+  "scene_manifest_sha256": "2ba743f683a402876bc87437d619170dd23d3485bf37c827afd6550df1095e22",
+  "shape_id": "GEO08_BROAD_INCISED_LOW",
+  "shared_factor_sha256": "638a33beb9f0e6f6e1758862772b03cf92de0955eef62c728544afb8e5e0eccd",
+  "solver_executed": false
+}
